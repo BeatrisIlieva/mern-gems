@@ -2,7 +2,7 @@ const express = require("express");
 const routes = require("./routes");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const {auth} = require("./middlewares/authMiddleware");
+const { auth } = require("./middlewares/authMiddleware");
 
 const app = express();
 
@@ -15,7 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 app.use(auth);
-
 
 app.get("/", (req, res) => {
   res.send("RESTful service");
