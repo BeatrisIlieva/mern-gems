@@ -9,8 +9,6 @@ const {
 const userAddressInformationSchema = new mongoose.Schema({
   _id: {
     type: String,
-    ref: "UserLoginInformation",
-    required: true,
   },
   phoneNumber: {
     type: String,
@@ -35,7 +33,7 @@ const userAddressInformationSchema = new mongoose.Schema({
 });
 
 userAddressInformationSchema.pre("save", async function () {
-  this._id = this.userUUID;
+  this._id = this._id;
 });
 
 const UserAddressInformation = mongoose.model(

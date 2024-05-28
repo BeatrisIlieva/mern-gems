@@ -5,8 +5,6 @@ const { DATE_PATTERN, DATE_ERROR_MESSAGE } = require("../constants/date");
 const userPersonalInformationSchema = new mongoose.Schema({
   _id: {
     type: String,
-    ref: "UserLoginInformation",
-    required: true,
   },
   firstName: {
     type: String,
@@ -27,7 +25,7 @@ const userPersonalInformationSchema = new mongoose.Schema({
 });
 
 userPersonalInformationSchema.pre("save", async function () {
-  this._id = this.userUUID;
+  this._id = this._id;
 });
 
 const UserPersonaLInformation = mongoose.model(

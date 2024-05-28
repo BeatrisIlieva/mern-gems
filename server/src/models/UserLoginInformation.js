@@ -31,7 +31,7 @@ const userLoginInformationSchema = new mongoose.Schema({
 });
 
 userLoginInformationSchema.pre("save", async function () {
-  this._id = this.userUUID;
+  this._id = this._id;
 });
 
 userLoginInformationSchema.pre("save", async function () {
@@ -40,6 +40,9 @@ userLoginInformationSchema.pre("save", async function () {
   this.password = hash;
 });
 
-const UserLoginInformation = mongoose.model("UserLoginInformation", userLoginInformationSchema);
+const UserLoginInformation = mongoose.model(
+  "UserLoginInformation",
+  userLoginInformationSchema
+);
 
 module.exports = UserLoginInformation;

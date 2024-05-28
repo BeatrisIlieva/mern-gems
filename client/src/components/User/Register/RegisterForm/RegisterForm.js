@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useAuthContext } from "../../../../contexts/AuthContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { useContext } from "react";
 import {
   getErrorMessage,
   getEmailMismatchErrorMessage,
@@ -10,8 +11,7 @@ import formStyles from "../../../../commonCSS/forms.module.css";
 import styles from "./RegisterForm.module.css";
 
 export const RegisterForm = () => {
-  const { onRegisterSubmit } = useAuthContext();
-
+  const { onRegisterSubmit } = useContext(AuthContext);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
   const [errorOccurred, setErrorOccurred] = useState(false);
 
@@ -22,7 +22,7 @@ export const RegisterForm = () => {
     }));
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     Object.keys(values).forEach((key) => {
@@ -44,7 +44,7 @@ export const RegisterForm = () => {
         values[FORM_KEYS.Email].fieldValue,
         values[FORM_KEYS.RetypeEmail].fieldValue
       );
-  
+
       values[FORM_KEYS.Email].errorMessage = emailErrorMessage;
       values[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
 
@@ -53,13 +53,12 @@ export const RegisterForm = () => {
       }
     }
 
-
     if (values[FORM_KEYS.Password].errorMessage === "") {
       const passwordErrorMessage = getPasswordMismatchErrorMessage(
-        values[FORM_KEYS.Password],
-        values[FORM_KEYS.RetypePassword]
+        values[FORM_KEYS.Password].fieldValue,
+        values[FORM_KEYS.RetypePassword].fieldValue
       );
-  
+
       values[FORM_KEYS.Password].errorMessage = passwordErrorMessage;
       values[FORM_KEYS.RetypePassword].errorMessage = passwordErrorMessage;
 
@@ -67,18 +66,30 @@ export const RegisterForm = () => {
         setErrorOccurred(true);
       }
     }
-    }
 
     if (errorOccurred) {
       setErrorOccurred(false);
       return;
     } else {
+      const email = values.email.fieldValue;
+      console.log(email);
+      const password = values.password.fieldValue;
+      const firstName = values.firstName.fieldValue;
+      const lastName = values.lastName.fieldValue;
+
+      const data = { email, password, firstName, lastName };
+      try {
+        console.log("try");
+        await onRegisterSubmit(data);
+      } catch (err) {
+        values[FORM_KEYS.Email].errorMessage = err.message;
+      }
     }
   };
 
   return (
     <form
-      action="POST"
+      method="POST"
       onSubmit={submitHandler}
       className={styles["form-container"]}
     >
@@ -225,7 +236,7 @@ export const RegisterForm = () => {
         </div>
       </div>
       <input
-        className={`${formStyles["button"]} ${formStyles["pink"]} ${formStyles["hover"]} ${styles["button"]} `}
+        className={`${formStyles["button"]} ${formStyles["pink"]} ${formStyles["hover"]} ${styles["button"]}`}
         type="submit"
         value="Save"
       />

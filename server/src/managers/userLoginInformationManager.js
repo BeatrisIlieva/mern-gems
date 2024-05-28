@@ -1,5 +1,7 @@
 const UserLoginInformation = require("../models/UserLoginInformation");
 const { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } = require("../constants/email");
+const jwt = require("../lib/jwt");
+const { SECRET } = require("../config/config");
 
 exports.register = async (data) => {
   const user = await UserLoginInformation.findOne({ email: data.email });

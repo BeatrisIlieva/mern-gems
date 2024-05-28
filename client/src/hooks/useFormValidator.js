@@ -5,11 +5,6 @@ const isValid = (value, pattern) => {
 };
 
 export const getErrorMessage = (field, value, pattern) => {
-  const error = ERROR_MESSAGES[field];
-  console.log(field);
-  console.log(value);
-  console.log(pattern)
-  console.log(error);
   if (!isValid(value, pattern)) {
     return ERROR_MESSAGES[field];
   } else {
