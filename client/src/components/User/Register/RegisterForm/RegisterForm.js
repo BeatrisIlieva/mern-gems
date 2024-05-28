@@ -47,6 +47,10 @@ export const RegisterForm = () => {
   
       values[FORM_KEYS.Email].errorMessage = emailErrorMessage;
       values[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
+
+      if (emailErrorMessage !== "") {
+        setErrorOccurred(true);
+      }
     }
 
 
@@ -58,11 +62,12 @@ export const RegisterForm = () => {
   
       values[FORM_KEYS.Password].errorMessage = passwordErrorMessage;
       values[FORM_KEYS.RetypePassword].errorMessage = passwordErrorMessage;
-    }
 
-    // if (emailErrorMessage || passwordErrorMessage !== "") {
-    //   setErrorOccurred(true);
-    // }
+      if (passwordErrorMessage !== "") {
+        setErrorOccurred(true);
+      }
+    }
+    }
 
     if (errorOccurred) {
       setErrorOccurred(false);
