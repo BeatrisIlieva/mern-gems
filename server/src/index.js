@@ -11,7 +11,7 @@ mongoose
   .then(() => console.log("DB connected"))
   .catch((err) => console.log(err.message));
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(auth);
@@ -22,6 +22,8 @@ app.get("/", (req, res) => {
 
 app.use(routes);
 
-app.listen(3030, () =>
+const server = app.listen(3030, () =>
   console.log("RESTful server is listening on port 3030...")
 );
+
+module.exports = { app, server };

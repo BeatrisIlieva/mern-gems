@@ -8,8 +8,6 @@ router.post("/register", async (req, res) => {
 
   const { email, password, firstName, lastName } = req.body;
 
-  console.log(`Body : ${req.body.email}`);
-
   try {
     const { token } = await userLoginInformationManager.register({
       _id: userUUID,
@@ -25,9 +23,9 @@ router.post("/register", async (req, res) => {
 
     await userAddressInformationManager.create({ _id: userUUID });
 
-    res.status(200).json({ token, userId: userUUID });
+    res.status(201).json({ token, userId: userUUID });
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
     res.status(401).json({
       message: err.message,
     });
