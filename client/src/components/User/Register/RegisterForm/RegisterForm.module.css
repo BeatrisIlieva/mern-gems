@@ -1,0 +1,14 @@
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.half {
+    /* width: 300px; */
+    width: 50%;
+}
+
+.button {
+    width: 100%;
+}

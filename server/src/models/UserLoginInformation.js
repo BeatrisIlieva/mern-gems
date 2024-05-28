@@ -40,6 +40,6 @@ userLoginInformationSchema.pre("save", async function () {
   this.password = hash;
 });
 
-const UserLoginInformation = mongoose.model("UserLoginInformation", userSchema);
+const UserLoginInformation = mongoose.model("UserLoginInformation", userLoginInformationSchema);
 
 module.exports = UserLoginInformation;
