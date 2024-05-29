@@ -79,7 +79,6 @@ export const RegisterForm = () => {
 
       const data = { email, password, firstName, lastName };
       try {
-        console.log("try");
         await onRegisterSubmit(data);
       } catch (err) {
         values[FORM_KEYS.Email].errorMessage = err.message;
@@ -88,6 +87,8 @@ export const RegisterForm = () => {
   };
 
   return (
+    <>
+    <h1>New Customers</h1>
     <form
       method="POST"
       onSubmit={submitHandler}
@@ -241,5 +242,6 @@ export const RegisterForm = () => {
         value="Save"
       />
     </form>
+    </>
   );
 };
