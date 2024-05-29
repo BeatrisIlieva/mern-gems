@@ -455,3 +455,39 @@ describe("RegisterFrom Component", () => {
     expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.passwordMismatch);
   });
 });
+
+describe("RegisterFrom Component", () => {
+  test("Fill Password with invalid data, fill Retype Password with invalid data expect error", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const button = screen.getByTestId("submit");
+    expect(button).toBeInTheDocument();
+
+    const input = screen.getByTestId(`${FORM_KEYS.Password}-input`);
+    expect(input).toBeInTheDocument();
+
+    const retypeInput = screen.getByTestId(`${FORM_KEYS.RetypePassword}-input`);
+    expect(retypeInput).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "1t" } });
+    fireEvent.change(retypeInput, { target: { value: "1t" } });
+    fireEvent.click(button);
+
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Password}-error`
+    );
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.password);
+
+    const retypeErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Password}-error`
+    );
+    const retypeErrorMessageContent =
+      retypeErrorMessageContainer.textContent.trim();
+    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.password);
+  });
+});
