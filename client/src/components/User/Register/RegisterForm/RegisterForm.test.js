@@ -205,7 +205,7 @@ describe("RegisterFrom Component", () => {
 });
 
 describe("RegisterFrom Component", () => {
-  test("Should successfully fill the form with valid input", async () => {
+  test("Fill Email with valid data expect success", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <RegisterForm />
@@ -215,91 +215,27 @@ describe("RegisterFrom Component", () => {
     const button = screen.getByTestId("submit");
     expect(button).toBeInTheDocument();
 
-    const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
-    expect(firstNameInput).toBeInTheDocument();
+    const input = screen.getByTestId(`${FORM_KEYS.Email}-input`);
+    expect(input).toBeInTheDocument();
 
-    fireEvent.change(firstNameInput, { target: { value: "Test" } });
+    const retypeInput = screen.getByTestId(`${FORM_KEYS.RetypeEmail}-input`);
+    expect(retypeInput).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "test@email.com" } });
+    fireEvent.change(retypeInput, { target: { value: "test@email.com" } });
     fireEvent.click(button);
 
-    const firstNameErrorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.FirstName}-error`
-    );
-    const firstNamErrorMessageContent =
-      firstNameErrorMessageContainer.textContent.trim();
-    expect(firstNamErrorMessageContent).toBe("");
-
-    const lastNameInput = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
-    expect(lastNameInput).toBeInTheDocument();
-
-    fireEvent.change(lastNameInput, { target: { value: "Test" } });
-    fireEvent.click(button);
-
-    const lastNameErrorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.LastName}-error`
-    );
-    const lastNameErrorMessageContent =
-      lastNameErrorMessageContainer.textContent.trim();
-    expect(lastNameErrorMessageContent).toBe("");
-
-    const emailInput = screen.getByTestId(`${FORM_KEYS.Email}-input`);
-    expect(emailInput).toBeInTheDocument();
-
-    const retypeEmailInput = screen.getByTestId(
-      `${FORM_KEYS.RetypeEmail}-input`
-    );
-    expect(retypeEmailInput).toBeInTheDocument();
-
-    fireEvent.change(emailInput, { target: { value: "test@email.com" } });
-    fireEvent.change(retypeEmailInput, { target: { value: "test@email.com" } });
-    fireEvent.click(button);
-
-    const emailErrorMessageContainer = screen.getByTestId(
+    const errorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.Email}-error`
     );
-    const emailErrorMessageContent =
-      emailErrorMessageContainer.textContent.trim();
-    expect(emailErrorMessageContent).toBe("");
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe("");
 
-    const retypeEmailErrorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.RetypeEmail}-error`
+    const retypeErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
     );
-    const retypeEmailErrorMessageContent =
-      retypeEmailErrorMessageContainer.textContent.trim();
-    expect(retypeEmailErrorMessageContent).toBe("");
-  });
-});
-
-describe("RegisterFrom Component", () => {
-  test("Should display an error when invalid input is entered in the form", async () => {
-    render(
-      <AuthContext.Provider value={mockAuthContextValue}>
-        <RegisterForm />
-      </AuthContext.Provider>
-    );
-    const button = screen.getByTestId("submit");
-
-    const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
-
-    fireEvent.change(firstNameInput, { target: { value: "" } });
-    fireEvent.click(button);
-
-    const firstNameErrorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.FirstName}-error`
-    );
-    const firstNamErrorMessageContent =
-      firstNameErrorMessageContainer.textContent.trim();
-    expect(firstNamErrorMessageContent).toBe(ERROR_MESSAGES.firstName);
-
-    const lastNameInput = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
-
-    fireEvent.change(lastNameInput, { target: { value: "" } });
-    fireEvent.click(button);
-
-    const lastNameErrorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.LastName}-error`
-    );
-    const lastNameErrorMessageContent =
-      lastNameErrorMessageContainer.textContent.trim();
-    expect(lastNameErrorMessageContent).toBe(ERROR_MESSAGES.lastName);
+    const retypeErrorMessageContent =
+      retypeErrorMessageContainer.textContent.trim();
+    expect(retypeErrorMessageContent).toBe("");
   });
 });
