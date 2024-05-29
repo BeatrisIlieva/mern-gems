@@ -27,12 +27,12 @@ describe("RegisterFrom Component", () => {
     fireEvent.change(firstNameInput, { target: { value: "Test" } });
     fireEvent.click(button);
 
-    const errorMessageContainerFirstName = screen.getByTestId(
+    const firstNameErrorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.FirstName}-error`
     );
-    const errorMessageTextFirstName =
-      errorMessageContainerFirstName.textContent.trim();
-    expect(errorMessageTextFirstName).toBe("");
+    const firstNamErrorMessageContent =
+      firstNameErrorMessageContainer.textContent.trim();
+    expect(firstNamErrorMessageContent).toBe("");
 
     const lastNameInput = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
     expect(lastNameInput).toBeInTheDocument();
@@ -40,12 +40,12 @@ describe("RegisterFrom Component", () => {
     fireEvent.change(lastNameInput, { target: { value: "Test" } });
     fireEvent.click(button);
 
-    const errorMessageContainerLastName = screen.getByTestId(
+    const lastNameErrorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.LastName}-error`
     );
-    const errorMessageTextLastName =
-      errorMessageContainerLastName.textContent.trim();
-    expect(errorMessageTextLastName).toBe("");
+    const lastNameErrorMessageContent =
+      lastNameErrorMessageContainer.textContent.trim();
+    expect(lastNameErrorMessageContent).toBe("");
   });
 });
 
@@ -59,14 +59,29 @@ describe("RegisterFrom Component", () => {
     const button = screen.getByTestId("submit");
 
     const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
+    expect(firstNameInput).toBeInTheDocument();
 
     fireEvent.change(firstNameInput, { target: { value: "" } });
     fireEvent.click(button);
 
-    const errorMessageContainer = screen.getByTestId(
+    const firstNameErrorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.FirstName}-error`
     );
-    const errorMessageText = errorMessageContainer.textContent.trim();
-    expect(errorMessageText).toBe(ERROR_MESSAGES.firstName);
+    const firstNamErrorMessageContent =
+      firstNameErrorMessageContainer.textContent.trim();
+    expect(firstNamErrorMessageContent).toBe(ERROR_MESSAGES.firstName);
+
+    const lastNameInput = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
+    expect(lastNameInput).toBeInTheDocument();
+
+    fireEvent.change(lastNameInput, { target: { value: "" } });
+    fireEvent.click(button);
+
+    const lastNameErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.LastName}-error`
+    );
+    const lastNameErrorMessageContent =
+      lastNameErrorMessageContainer.textContent.trim();
+    expect(lastNameErrorMessageContent).toBe(ERROR_MESSAGES.lastName);
   });
 });
