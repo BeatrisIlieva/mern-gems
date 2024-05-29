@@ -108,11 +108,12 @@ export const RegisterForm = () => {
             id={FORM_KEYS.FirstName}
             value={values[FORM_KEYS.FirstName].fieldValue}
             onChange={(e) => changeHandler(FORM_KEYS.FirstName, e.target.value)}
+            data-testid={`${FORM_KEYS.FirstName}-input`}
           />
           <label htmlFor={FORM_KEYS.FirstName}>
             {INITIAL_FORM_VALUES[FORM_KEYS.FirstName].fieldLabel}
           </label>
-          <div className={formStyles["error-message"]} data-testid={FORM_KEYS.FirstName}>
+          <div className={formStyles["error-message"]} data-testid={`${FORM_KEYS.FirstName}-error`}>
             {values[FORM_KEYS.FirstName].errorMessage}
           </div>
         </div>
@@ -240,6 +241,7 @@ export const RegisterForm = () => {
         className={`${formStyles["button"]} ${formStyles["pink"]} ${formStyles["hover"]} ${styles["button"]}`}
         type="submit"
         value="Save"
+        data-testid="submit"
       />
     </form>
     </>

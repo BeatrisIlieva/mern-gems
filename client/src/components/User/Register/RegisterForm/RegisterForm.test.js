@@ -12,57 +12,47 @@ const mockAuthContextValue = {
 
 describe("RegisterFrom Component", () => {
   test("Should successfully fill the form with valid input", async () => {
-    const title = "New Customers";
-
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <RegisterForm />
       </AuthContext.Provider>
     );
 
-    expect(screen.queryByText(title)).toBeInTheDocument();
+    const button = screen.getByTestId("submit");
+    expect(button).toBeInTheDocument();
 
-    const firstNameInput = screen.getByLabelText(
-      INITIAL_FORM_VALUES[FORM_KEYS.FirstName].fieldLabel
-    );
+    const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
     expect(firstNameInput).toBeInTheDocument();
 
     fireEvent.change(firstNameInput, { target: { value: "Test" } });
+    fireEvent.click(button);
 
-    const saveButton = screen.getByRole("button", { name: /save/i });
-
-    fireEvent.click(saveButton);
-
-    const errorMessages = screen.getByTestId(FORM_KEYS.FirstName);
-    const errorMessageText = errorMessages.textContent.trim();
-
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.FirstName}-error`
+    );
+    const errorMessageText = errorMessageContainer.textContent.trim();
     expect(errorMessageText).toBe("");
   });
 });
 
 describe("RegisterFrom Component", () => {
   test("Should display an error when invalid input is entered in the form", async () => {
-    const title = "New Customers";
-
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <RegisterForm />
       </AuthContext.Provider>
     );
+    const button = screen.getByTestId("submit");
 
-    const firstNameInput = screen.getByLabelText(
-      INITIAL_FORM_VALUES[FORM_KEYS.FirstName].fieldLabel
-    );
+    const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
 
     fireEvent.change(firstNameInput, { target: { value: "" } });
+    fireEvent.click(button);
 
-    const saveButton = screen.getByRole("button", { name: /save/i });
-
-    fireEvent.click(saveButton);
-
-    const errorMessages = screen.getByTestId(FORM_KEYS.FirstName);
-    const errorMessageText = errorMessages.textContent.trim();
-
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.FirstName}-error`
+    );
+    const errorMessageText = errorMessageContainer.textContent.trim();
     expect(errorMessageText).toBe(ERROR_MESSAGES.firstName);
   });
 });
