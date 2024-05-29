@@ -167,17 +167,40 @@ describe("RegisterFrom Component", () => {
     const button = screen.getByTestId("submit");
     expect(button).toBeInTheDocument();
 
-    const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
+    const input = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
 
-    fireEvent.change(firstNameInput, { target: { value: "T" } });
+    fireEvent.change(input, { target: { value: "T" } });
     fireEvent.click(button);
 
-    const firstNameErrorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.FirstName}-error`
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.LastName}-error`
     );
-    const firstNamErrorMessageContent =
-      firstNameErrorMessageContainer.textContent.trim();
-    expect(firstNamErrorMessageContent).toBe(ERROR_MESSAGES.firstName);
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.lastName);
+  });
+});
+
+describe("RegisterFrom Component", () => {
+  test("Fill Last Name including digit expect error", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const button = screen.getByTestId("submit");
+    expect(button).toBeInTheDocument();
+
+    const input = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
+
+    fireEvent.change(input, { target: { value: "T1" } });
+    fireEvent.click(button);
+
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.LastName}-error`
+    );
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.lastName);
   });
 });
 
