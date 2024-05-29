@@ -205,7 +205,7 @@ describe("RegisterFrom Component", () => {
 });
 
 describe("RegisterFrom Component", () => {
-  test("Fill Email with valid data expect success", async () => {
+  test("Fill Email and Retype Email with valid data expect success", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <RegisterForm />
@@ -237,5 +237,113 @@ describe("RegisterFrom Component", () => {
     const retypeErrorMessageContent =
       retypeErrorMessageContainer.textContent.trim();
     expect(retypeErrorMessageContent).toBe("");
+  });
+});
+
+describe("RegisterFrom Component", () => {
+  test("Fill Email with empty string, fill Retype Email with valid data expect error", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const button = screen.getByTestId("submit");
+    expect(button).toBeInTheDocument();
+
+    const input = screen.getByTestId(`${FORM_KEYS.Email}-input`);
+    expect(input).toBeInTheDocument();
+
+    const retypeInput = screen.getByTestId(`${FORM_KEYS.RetypeEmail}-input`);
+    expect(retypeInput).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "" } });
+    fireEvent.change(retypeInput, { target: { value: "test@email.com" } });
+    fireEvent.click(button);
+
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.email);
+
+    const retypeErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+    const retypeErrorMessageContent =
+      retypeErrorMessageContainer.textContent.trim();
+    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.email);
+  });
+});
+
+describe("RegisterFrom Component", () => {
+  test("Fill Email with valid data, fill Retype Email with empty string expect error", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const button = screen.getByTestId("submit");
+    expect(button).toBeInTheDocument();
+
+    const input = screen.getByTestId(`${FORM_KEYS.Email}-input`);
+    expect(input).toBeInTheDocument();
+
+    const retypeInput = screen.getByTestId(`${FORM_KEYS.RetypeEmail}-input`);
+    expect(retypeInput).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "test@email.com" } });
+    fireEvent.change(retypeInput, { target: { value: "" } });
+    fireEvent.click(button);
+
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.emailMismatch);
+
+    const retypeErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+    const retypeErrorMessageContent =
+      retypeErrorMessageContainer.textContent.trim();
+    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.emailMismatch);
+  });
+});
+
+describe("RegisterFrom Component", () => {
+  test("Fill Email with invalid data, fill Retype Email with invalid data expect error", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const button = screen.getByTestId("submit");
+    expect(button).toBeInTheDocument();
+
+    const input = screen.getByTestId(`${FORM_KEYS.Email}-input`);
+    expect(input).toBeInTheDocument();
+
+    const retypeInput = screen.getByTestId(`${FORM_KEYS.RetypeEmail}-input`);
+    expect(retypeInput).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "t@e.c" } });
+    fireEvent.change(retypeInput, { target: { value: "t@e.c" } });
+    fireEvent.click(button);
+
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.email);
+
+    const retypeErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+    const retypeErrorMessageContent =
+      retypeErrorMessageContainer.textContent.trim();
+    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.email);
   });
 });
