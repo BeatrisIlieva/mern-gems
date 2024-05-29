@@ -347,3 +347,39 @@ describe("RegisterFrom Component", () => {
     expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.email);
   });
 });
+
+describe("RegisterFrom Component", () => {
+  test("Fill Password and Retype Password with valid data expect success", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const button = screen.getByTestId("submit");
+    expect(button).toBeInTheDocument();
+
+    const input = screen.getByTestId(`${FORM_KEYS.Password}-input`);
+    expect(input).toBeInTheDocument();
+
+    const retypeInput = screen.getByTestId(`${FORM_KEYS.RetypePassword}-input`);
+    expect(retypeInput).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "123456Tt" } });
+    fireEvent.change(retypeInput, { target: { value: "123456Tt" } });
+    fireEvent.click(button);
+
+    const errorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Password}-error`
+    );
+    const errorMessageContent = errorMessageContainer.textContent.trim();
+    expect(errorMessageContent).toBe("");
+
+    const retypeErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.RetypePassword}-error`
+    );
+    const retypeErrorMessageContent =
+      retypeErrorMessageContainer.textContent.trim();
+    expect(retypeErrorMessageContent).toBe("");
+  });
+});

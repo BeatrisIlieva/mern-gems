@@ -206,11 +206,12 @@ export const RegisterForm = () => {
             id={FORM_KEYS.Password}
             value={values[FORM_KEYS.Password].fieldValue}
             onChange={(e) => changeHandler(FORM_KEYS.Password, e.target.value)}
+            data-testid={`${FORM_KEYS.Password}-input`}
           />
           <label htmlFor="password">
             {INITIAL_FORM_VALUES[FORM_KEYS.Password].fieldLabel}
           </label>
-          <div className={formStyles["error-message"]}>
+          <div className={formStyles["error-message"]} data-testid={`${FORM_KEYS.Password}-error`}>
             {values[FORM_KEYS.Password].errorMessage}
           </div>
         </div>
@@ -231,11 +232,12 @@ export const RegisterForm = () => {
             onChange={(e) =>
               changeHandler(FORM_KEYS.RetypePassword, e.target.value)
             }
+            data-testid={`${FORM_KEYS.RetypePassword}-input`}
           />
           <label htmlFor="retypePassword">
             {INITIAL_FORM_VALUES[FORM_KEYS.RetypePassword].fieldLabel}
           </label>
-          <div className={formStyles["error-message"]}>
+          <div className={formStyles["error-message"]} data-testid={`${FORM_KEYS.RetypePassword}-error`}>
             {values[FORM_KEYS.RetypePassword].errorMessage}
           </div>
         </div>
