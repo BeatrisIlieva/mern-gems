@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { RegisterForm } from "./RegisterForm";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { FORM_KEYS, INITIAL_FORM_VALUES } from "./initialFormValues";
+import { FORM_KEYS } from "./initialFormValues";
 import { ERROR_MESSAGES } from "../../../../constants/forms";
 
 const mockOnRegisterSubmit = jest.fn();
@@ -27,11 +27,25 @@ describe("RegisterFrom Component", () => {
     fireEvent.change(firstNameInput, { target: { value: "Test" } });
     fireEvent.click(button);
 
-    const errorMessageContainer = screen.getByTestId(
+    const errorMessageContainerFirstName = screen.getByTestId(
       `${FORM_KEYS.FirstName}-error`
     );
-    const errorMessageText = errorMessageContainer.textContent.trim();
-    expect(errorMessageText).toBe("");
+    const errorMessageTextFirstName =
+      errorMessageContainerFirstName.textContent.trim();
+    expect(errorMessageTextFirstName).toBe("");
+
+    const lastNameInput = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
+    expect(lastNameInput).toBeInTheDocument();
+
+    fireEvent.change(lastNameInput, { target: { value: "Test" } });
+    fireEvent.click(button);
+
+    const errorMessageContainerLastName = screen.getByTestId(
+      `${FORM_KEYS.LastName}-error`
+    );
+    const errorMessageTextLastName =
+      errorMessageContainerLastName.textContent.trim();
+    expect(errorMessageTextLastName).toBe("");
   });
 });
 

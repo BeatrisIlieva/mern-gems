@@ -132,11 +132,12 @@ export const RegisterForm = () => {
             id={FORM_KEYS.LastName}
             value={values[FORM_KEYS.LastName].fieldValue}
             onChange={(e) => changeHandler(FORM_KEYS.LastName, e.target.value)}
+            data-testid={`${FORM_KEYS.LastName}-input`}
           />
           <label htmlFor="lastName">
             {INITIAL_FORM_VALUES[FORM_KEYS.LastName].fieldLabel}
           </label>
-          <div className={formStyles["error-message"]}>
+          <div className={formStyles["error-message"]} data-testid={`${FORM_KEYS.LastName}-error`}>
             {values[FORM_KEYS.LastName].errorMessage}
           </div>
         </div>
