@@ -134,7 +134,7 @@ export const RegisterForm = () => {
             onChange={(e) => changeHandler(FORM_KEYS.LastName, e.target.value)}
             data-testid={`${FORM_KEYS.LastName}-input`}
           />
-          <label htmlFor="lastName">
+          <label htmlFor={FORM_KEYS.LastName}>
             {INITIAL_FORM_VALUES[FORM_KEYS.LastName].fieldLabel}
           </label>
           <div className={formStyles["error-message"]} data-testid={`${FORM_KEYS.LastName}-error`}>
@@ -156,11 +156,12 @@ export const RegisterForm = () => {
             id={FORM_KEYS.Email}
             value={values[FORM_KEYS.Email].fieldValue}
             onChange={(e) => changeHandler(FORM_KEYS.Email, e.target.value)}
+            data-testid={`${FORM_KEYS.Email}-input`}
           />
-          <label htmlFor="email">
+          <label htmlFor={FORM_KEYS.Email}>
             {INITIAL_FORM_VALUES[FORM_KEYS.Email].fieldLabel}
           </label>
-          <div className={formStyles["error-message"]}>
+          <div className={formStyles["error-message"]} data-testid={`${FORM_KEYS.Email}-error`}>
             {values[FORM_KEYS.Email].errorMessage}
           </div>
         </div>
@@ -181,11 +182,12 @@ export const RegisterForm = () => {
             onChange={(e) =>
               changeHandler(FORM_KEYS.RetypeEmail, e.target.value)
             }
+            data-testid={`${FORM_KEYS.RetypeEmail}-input`}
           />
           <label htmlFor="email">
             {INITIAL_FORM_VALUES[FORM_KEYS.RetypeEmail].fieldLabel}
           </label>
-          <div className={formStyles["error-message"]}>
+          <div className={formStyles["error-message"]} data-testid={`${FORM_KEYS.RetypeEmail}-error`}>
             {values[FORM_KEYS.RetypeEmail].errorMessage}
           </div>
         </div>

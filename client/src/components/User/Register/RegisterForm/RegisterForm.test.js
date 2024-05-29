@@ -46,6 +46,32 @@ describe("RegisterFrom Component", () => {
     const lastNameErrorMessageContent =
       lastNameErrorMessageContainer.textContent.trim();
     expect(lastNameErrorMessageContent).toBe("");
+
+    const emailInput = screen.getByTestId(`${FORM_KEYS.Email}-input`);
+    expect(emailInput).toBeInTheDocument();
+
+    const retypeEmailInput = screen.getByTestId(
+      `${FORM_KEYS.RetypeEmail}-input`
+    );
+    expect(retypeEmailInput).toBeInTheDocument();
+
+    fireEvent.change(emailInput, { target: { value: "test@email.com" } });
+    fireEvent.change(retypeEmailInput, { target: { value: "test@email.com" } });
+    fireEvent.click(button);
+
+    const emailErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+    const emailErrorMessageContent =
+      emailErrorMessageContainer.textContent.trim();
+    expect(emailErrorMessageContent).toBe("");
+
+    const retypeEmailErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.RetypeEmail}-error`
+    );
+    const retypeEmailErrorMessageContent =
+      retypeEmailErrorMessageContainer.textContent.trim();
+    expect(retypeEmailErrorMessageContent).toBe("");
   });
 });
 
@@ -59,7 +85,6 @@ describe("RegisterFrom Component", () => {
     const button = screen.getByTestId("submit");
 
     const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
-    expect(firstNameInput).toBeInTheDocument();
 
     fireEvent.change(firstNameInput, { target: { value: "" } });
     fireEvent.click(button);
@@ -72,7 +97,6 @@ describe("RegisterFrom Component", () => {
     expect(firstNamErrorMessageContent).toBe(ERROR_MESSAGES.firstName);
 
     const lastNameInput = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
-    expect(lastNameInput).toBeInTheDocument();
 
     fireEvent.change(lastNameInput, { target: { value: "" } });
     fireEvent.click(button);
