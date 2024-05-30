@@ -50,6 +50,7 @@ export const Home = () => {
           />
         </div>
       </Link>
+      <VerticalLine/>
       <Link to="/">
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
