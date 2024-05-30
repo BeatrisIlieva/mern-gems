@@ -35,6 +35,7 @@ export const Home = () => {
           />
         </div>
       </Link>
+      <VerticalLine/>
       <Link to="/">
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
