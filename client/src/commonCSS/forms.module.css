@@ -45,9 +45,14 @@
 
 .button.pink {
   background-color: var(--dark-pink);
-  border: 1px solid #fc8eac;
+  border: 1px solid var(--dark-pink);
 }
 
 .button.pink:hover {
   background-color: white;
+}
+
+.custom-placeholder::placeholder {
+  color: var(--dark-pink);
+  opacity: 1;
 }

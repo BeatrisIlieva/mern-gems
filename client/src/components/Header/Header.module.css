@@ -1,5 +1,5 @@
 .header {
-  height: 14%;
+  height: 18%;
   position: sticky;
   z-index: 1;
   top: 0;
@@ -18,12 +18,10 @@
 
 .logo-box {
   width: 135.5px;
-  height: 18%;
   margin: 0px 32px 0px 0px;
 }
 
 .logo-container {
-  width: 100px;
   aspect-ratio: 1 / 1;
 }
 
@@ -54,15 +52,16 @@
 
 .search-box {
   display: flex;
-  border: 1px solid var(--dark-pink);
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  box-shadow: 0 0 0 0.2px var(--dark-pink);
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
   background-color: var(--white-pink);
   width: 100%;
   margin: 0px 32px;
-  font-size: 14px;
+  color: var(--white-gray);
+  padding: 6px;
 }
 
 .search-container {
@@ -83,7 +82,7 @@
 
 .icon-search {
   position: absolute;
-  transform: translateY(calc(34%));
+  transform: translateY(calc(24%));
   left: 14px;
   color: var(--dark-pink);
 }

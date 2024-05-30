@@ -19,12 +19,7 @@
 
 .main {
   background-color: aqua;
-  height: 82%;
+  height: 76%;
   margin: 32px 201.5px 32px 201.5px;
 }
 
-.footer {
-  /* background-color: yellow; */
-  border-top: 1px solid var(--border);
-  height: 4%;
-}

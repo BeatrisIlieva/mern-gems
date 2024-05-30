@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
+import formStyles from "../../commonCSS/forms.module.css"
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
@@ -11,8 +11,8 @@ export const Header = () => {
   const wishListCountGreaterThanZero = true;
   const bagCountGreaterThanZero = true;
   const isAuthenticated = false;
-  const wishlistCount = 11;
-  const bagCount = 2;
+  const wishlistCount = 1;
+  const bagCount = 3;
   const user = null;
 
   return (
@@ -24,7 +24,7 @@ export const Header = () => {
               <img
                 className={styles["logo-img"]}
                 src={
-                  "https://res.cloudinary.com/deztgvefu/image/upload/v1714938711/template_images/Untitled_design_t0jumi.png"
+                  "https://res.cloudinary.com/deztgvefu/image/upload/v1717068724/logo/Screenshot_2024-05-30_at_14.29.45_kxpaut.png"
                 }
                 alt={"Logo"}
               />
@@ -68,15 +68,17 @@ export const Header = () => {
                 //   value={query}
                 //   onChange={onChange}
                 type="text"
-                className={styles["search-input"]}
-                placeholder="Find a jewelry"
+                className={`${styles["search-input"]} ${formStyles["custom-placeholder"]}`}
+                placeholder="Search"
               />
             </form>
           </div>
         </div>
         <div className={styles["icon-box"]}>
           <ul className={styles["icon-list"]} role="list">
-            <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
+            <li
+              className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
+            >
               <Link
                 className={`${styles["icon-bar-item"]} ${styles["icon-bar-item-no-margin"]}`}
                 to={`/wishlist`}
@@ -96,7 +98,9 @@ export const Header = () => {
                 )}
               </Link>
             </li>
-            <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
+            <li
+              className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
+            >
               <Link
                 className={styles["icon-bar-item"]}
                 to={`/bag/display/${user}`}
