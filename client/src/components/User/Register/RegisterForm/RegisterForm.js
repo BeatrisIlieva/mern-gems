@@ -15,6 +15,23 @@ export const RegisterForm = () => {
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
   const [errorOccurred, setErrorOccurred] = useState(false);
 
+  const clickHandler = (fieldKey) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
+    }));
+  };
+
+  const blurHandler = (fieldKey) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [fieldKey]: {
+        ...prevValues[fieldKey],
+        isFocused: prevValues[fieldKey].fieldValue !== "",
+      },
+    }));
+  };
+
   const changeHandler = (fieldKey, newValue) => {
     setValues((prevValues) => ({
       ...prevValues,
@@ -39,7 +56,7 @@ export const RegisterForm = () => {
       }
 
       if (field.fieldValue !== "") {
-        values[key].isFilled = true;
+        values[key].isFocused = true;
       }
     });
 
@@ -76,7 +93,6 @@ export const RegisterForm = () => {
       return;
     } else {
       const email = values.email.fieldValue;
-      console.log(email);
       const password = values.password.fieldValue;
       const firstName = values.firstName.fieldValue;
       const lastName = values.lastName.fieldValue;
@@ -88,23 +104,6 @@ export const RegisterForm = () => {
         values[FORM_KEYS.Email].errorMessage = err.message;
       }
     }
-  };
-
-  const handleClick = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: { ...prevValues[fieldKey], isFilled: true },
-    }));
-  };
-
-  const handleBlur = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: {
-        ...prevValues[fieldKey],
-        isFilled: true ? prevValues[fieldKey].fieldValue !== "" : false,
-      },
-    }));
   };
 
   return (
@@ -122,8 +121,8 @@ export const RegisterForm = () => {
                 ? formStyles["error"]
                 : ""
             }`.trim()}
-            onClick={() => handleClick(FORM_KEYS.FirstName)}
-            onBlur={() => handleBlur(FORM_KEYS.FirstName)}
+            onClick={() => clickHandler(FORM_KEYS.FirstName)}
+            onBlur={() => blurHandler(FORM_KEYS.FirstName)}
           >
             <input
               type="text"
@@ -138,8 +137,8 @@ export const RegisterForm = () => {
             <label
               htmlFor={FORM_KEYS.FirstName}
               className={`${formStyles["label"]} ${
-                values[FORM_KEYS.FirstName].isFilled === true
-                  ? formStyles["isFilled"]
+                values[FORM_KEYS.FirstName].isFocused === true
+                  ? formStyles["isFocused"]
                   : ""
               }`.trim()}
             >
@@ -160,6 +159,8 @@ export const RegisterForm = () => {
                 ? formStyles["error"]
                 : ""
             }`.trim()}
+            onClick={() => clickHandler(FORM_KEYS.LastName)}
+            onBlur={() => blurHandler(FORM_KEYS.LastName)}
           >
             <input
               type="text"
@@ -171,7 +172,14 @@ export const RegisterForm = () => {
               }
               data-testid={`${FORM_KEYS.LastName}-input`}
             />
-            <label htmlFor={FORM_KEYS.LastName}>
+            <label
+              htmlFor={FORM_KEYS.LastName}
+              className={`${formStyles["label"]} ${
+                values[FORM_KEYS.LastName].isFocused === true
+                  ? formStyles["isFocused"]
+                  : ""
+              }`.trim()}
+            >
               {INITIAL_FORM_VALUES[FORM_KEYS.LastName].fieldLabel}
             </label>
           </div>
@@ -189,6 +197,8 @@ export const RegisterForm = () => {
                 ? formStyles["error"]
                 : ""
             }`.trim()}
+            onClick={() => clickHandler(FORM_KEYS.Email)}
+            onBlur={() => blurHandler(FORM_KEYS.Email)}
           >
             <input
               type="email"
@@ -198,7 +208,14 @@ export const RegisterForm = () => {
               onChange={(e) => changeHandler(FORM_KEYS.Email, e.target.value)}
               data-testid={`${FORM_KEYS.Email}-input`}
             />
-            <label htmlFor={FORM_KEYS.Email}>
+            <label
+              htmlFor={FORM_KEYS.Email}
+              className={`${formStyles["label"]} ${
+                values[FORM_KEYS.Email].isFocused === true
+                  ? formStyles["isFocused"]
+                  : ""
+              }`.trim()}
+            >
               {INITIAL_FORM_VALUES[FORM_KEYS.Email].fieldLabel}
             </label>
           </div>
@@ -216,6 +233,8 @@ export const RegisterForm = () => {
                 ? formStyles["error"]
                 : ""
             }`.trim()}
+            onClick={() => clickHandler(FORM_KEYS.RetypeEmail)}
+            onBlur={() => blurHandler(FORM_KEYS.RetypeEmail)}
           >
             <input
               type="email"
@@ -227,7 +246,14 @@ export const RegisterForm = () => {
               }
               data-testid={`${FORM_KEYS.RetypeEmail}-input`}
             />
-            <label htmlFor="email">
+            <label
+              htmlFor={FORM_KEYS.RetypeEmail}
+              className={`${formStyles["label"]} ${
+                values[FORM_KEYS.RetypeEmail].isFocused === true
+                  ? formStyles["isFocused"]
+                  : ""
+              }`.trim()}
+            >
               {INITIAL_FORM_VALUES[FORM_KEYS.RetypeEmail].fieldLabel}
             </label>
           </div>
@@ -245,6 +271,8 @@ export const RegisterForm = () => {
                 ? formStyles["error"]
                 : ""
             }`.trim()}
+            onClick={() => clickHandler(FORM_KEYS.Password)}
+            onBlur={() => blurHandler(FORM_KEYS.Password)}
           >
             <input
               type="password"
@@ -256,7 +284,14 @@ export const RegisterForm = () => {
               }
               data-testid={`${FORM_KEYS.Password}-input`}
             />
-            <label htmlFor="password">
+            <label
+              htmlFor={FORM_KEYS.Password}
+              className={`${formStyles["label"]} ${
+                values[FORM_KEYS.Password].isFocused === true
+                  ? formStyles["isFocused"]
+                  : ""
+              }`.trim()}
+            >
               {INITIAL_FORM_VALUES[FORM_KEYS.Password].fieldLabel}
             </label>
           </div>
@@ -274,6 +309,8 @@ export const RegisterForm = () => {
                 ? formStyles["error"]
                 : ""
             }`.trim()}
+            onClick={() => clickHandler(FORM_KEYS.RetypePassword)}
+            onBlur={() => blurHandler(FORM_KEYS.RetypePassword)}
           >
             <input
               type="password"
@@ -285,8 +322,15 @@ export const RegisterForm = () => {
               }
               data-testid={`${FORM_KEYS.RetypePassword}-input`}
             />
-            <label htmlFor="retypePassword">
-              {INITIAL_FORM_VALUES[FORM_KEYS.RetypePassword].fieldLabel}
+            <label
+              htmlFor={FORM_KEYS.RetypePassword}
+              className={`${formStyles["label"]} ${
+                values[FORM_KEYS.RetypePassword].isFocused === true
+                  ? formStyles["isFocused"]
+                  : ""
+              }`.trim()}
+            >
+              {INITIAL_FORM_VALUES[FORM_KEYS.RetypePassword].fieldLabel}{" "}
             </label>
           </div>
           <div
