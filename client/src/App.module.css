@@ -1,4 +1,30 @@
+@font-face {
+  font-family: 'Optimist Normal';
+  src: url('./fonts/optimist-2.ttf') format('truetype');
+}
+
+
 .app {
   font-size: 16px;
   color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Optimist Normal', sans-serif, -apple-system,ui-sans-serif,system-ui;
+  line-height: 1.5;
+  letter-spacing: 1.2px;
+}
+
+.main {
+  background-color: aqua;
+  height: 82%;
+  margin: 32px 201.5px 32px 201.5px;
+}
+
+.footer {
+  /* background-color: yellow; */
+  border-top: 1px solid var(--border);
+  height: 4%;
 }
