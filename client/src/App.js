@@ -15,7 +15,6 @@ function App() {
       <AuthProvider>
         <div className={styles["app"]}>
           <Header />
-
           <main className={styles["main"]}>
             <Routes>
               <Route path="/user/register" element={<Register />} />

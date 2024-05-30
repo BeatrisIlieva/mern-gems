@@ -28,7 +28,7 @@
 .title {
   margin-bottom: 10px;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
   font-style: italic;
   color: var(--black);
@@ -40,23 +40,6 @@
   color: var(--gray);
   font-size: 14px;
   text-align: center;
-}
-
-.button {
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: transparent;
-  border: 1px solid var(--white-golden);
-  padding: 16px 48px;
-  font-size: 16px;
-  color: var(--dark-golden);
-  display: inline-block;
-  transition: width 0.5s ease, left 0.5s ease;
-}
-
-.button:hover {
-  border-bottom: 10px solid var(--white-golden);
 }
 
 .animated-button {
@@ -72,6 +55,7 @@
   color: var(--dark-golden);
   box-shadow: 0 0 0 0.6px var(--white-golden);
   outline: none;
+  letter-spacing: 1.2px;
 }
 
 .animated-button::before {

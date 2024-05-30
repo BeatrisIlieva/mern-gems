@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import formStyles from "../../commonCSS/forms.module.css"
+import formStyles from "../../commonCSS/forms.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -19,19 +19,17 @@ export const Header = () => {
     <header className={styles["header"]}>
       <div className={styles["header-box"]}>
         <Link to="/">
-          <div className={styles["logo-box"]}>
-            <div className={styles["logo-container"]}>
-              <img
-                className={styles["logo-img"]}
-                src={
-                  "https://res.cloudinary.com/deztgvefu/image/upload/v1717068724/logo/Screenshot_2024-05-30_at_14.29.45_kxpaut.png"
-                }
-                alt={"Logo"}
-              />
-            </div>
+          <div className={styles["logo-container"]}>
+            <img
+              className={styles["logo-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1717068724/logo/Screenshot_2024-05-30_at_14.29.45_kxpaut.png"
+              }
+              alt={"Logo"}
+            />
           </div>
         </Link>
-        <nav className={styles["nav-box"]}>
+        <nav>
           <ul className={styles["nav-list"]} role="list">
             <li>
               <Link className={styles["nav-item"]} to="/2">
@@ -74,74 +72,68 @@ export const Header = () => {
             </form>
           </div>
         </div>
-        <div className={styles["icon-box"]}>
-          <ul className={styles["icon-list"]} role="list">
-            <li
-              className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
+        <ul className={styles["icon-list"]} role="list">
+          <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
+            <Link
+              className={`${styles["icon-bar-item"]} ${styles["icon-bar-item-no-margin"]}`}
+              to={`/wishlist`}
             >
-              <Link
-                className={`${styles["icon-bar-item"]} ${styles["icon-bar-item-no-margin"]}`}
-                to={`/wishlist`}
-              >
+              <span>
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className={styles["icon-pink"]}
+                />
+              </span>
+              {wishListCountGreaterThanZero ? (
+                <span className={styles["icon-bar-count"]}>
+                  ({wishlistCount})
+                </span>
+              ) : (
+                <span className={styles["icon-bar-count"]} />
+              )}
+            </Link>
+          </li>
+          <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
+            <Link
+              className={styles["icon-bar-item"]}
+              to={`/bag/display/${user}`}
+            >
+              <span>
+                <FontAwesomeIcon
+                  icon={faBagShopping}
+                  className={styles["icon-pink"]}
+                />
+              </span>
+              {bagCountGreaterThanZero && (
+                <span className={styles["icon-bar-count"]}>({bagCount})</span>
+              )}
+            </Link>
+          </li>
+          {!isAuthenticated && (
+            <li className={styles["icon-item"]}>
+              <Link className={styles["icon-bar-item"]} to="/user/login">
                 <span>
                   <FontAwesomeIcon
-                    icon={faHeart}
+                    icon={faUser}
                     className={styles["icon-pink"]}
                   />
                 </span>
-                {wishListCountGreaterThanZero ? (
-                  <span className={styles["icon-bar-count"]}>
-                    ({wishlistCount})
-                  </span>
-                ) : (
-                  <span className={styles["icon-bar-count"]} />
-                )}
               </Link>
             </li>
-            <li
-              className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
-            >
-              <Link
-                className={styles["icon-bar-item"]}
-                to={`/bag/display/${user}`}
-              >
+          )}
+          {isAuthenticated && (
+            <li className={styles["icon-item"]}>
+              <Link className={styles["icon-bar-item"]} to="/user/details">
                 <span>
                   <FontAwesomeIcon
-                    icon={faBagShopping}
+                    icon={faUser}
                     className={styles["icon-pink"]}
                   />
                 </span>
-                {bagCountGreaterThanZero && (
-                  <span className={styles["icon-bar-count"]}>({bagCount})</span>
-                )}
               </Link>
             </li>
-            {!isAuthenticated && (
-              <li className={styles["icon-item"]}>
-                <Link className={styles["icon-bar-item"]} to="/user/login">
-                  <span>
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className={styles["icon-pink"]}
-                    />
-                  </span>
-                </Link>
-              </li>
-            )}
-            {isAuthenticated && (
-              <li className={styles["icon-item"]}>
-                <Link className={styles["icon-bar-item"]} to="/user/details">
-                  <span>
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className={styles["icon-pink"]}
-                    />
-                  </span>
-                </Link>
-              </li>
-            )}
-          </ul>
-        </div>
+          )}
+        </ul>
       </div>
     </header>
   );
