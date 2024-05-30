@@ -8,7 +8,7 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
-          <h2 className={styles["title"]}>Forget-Me-Not Collection</h2>
+            <h2 className={styles["title"]}>Forget-Me-Not Collection</h2>
             <p className={styles["paragraph"]}>
               An enchanting medley of round brilliant, pear-shaped and marquise
               stones that together reveal a beautiful flower.
@@ -25,15 +25,16 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/">
+      <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
-            <h2>Forget-Me-Not</h2>
-            <p>
-              An enchanting medley of round brilliant, pear-shaped and marquise
-              stones that together reveal a beautiful flower.
+            <h2 className={styles["title"]}>Pirouette Collection</h2>
+            <p className={styles["paragraph"]}>
+              Inspired by ballet's most beloved turn, this graceful and
+              captivating line of diamond jewelry features dazzling marquise and
+              round brilliant diamonds.
             </p>
-            <button>Discover</button>
+            <button className={styles["animated-button"]}>Discover</button>
           </div>
           <img
             className={styles["hero-img"]}
@@ -45,7 +46,7 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/">
+      <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <p>text</p>
@@ -60,7 +61,7 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/">
+      <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
             <p>text</p>
@@ -75,7 +76,7 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/">
+      <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <p>text</p>
