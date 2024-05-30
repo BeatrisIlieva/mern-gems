@@ -13,16 +13,17 @@
   display: flex;
   align-items: center;
   margin: 0 32px;
-  font-size: 16px;
+  font-size: 14px;
   width: 100%;
 }
 
 .logo-box {
   width: 135.5px;
-  margin: 0px 32px 0px 0px;
+  margin: 0px 40px 0px 0px;
 }
 
 .logo-container {
+  width: 128px;
   aspect-ratio: 1 / 1;
 }
 
@@ -41,7 +42,7 @@
 
 .nav-list {
   display: flex;
-  gap: 32px;
+  gap: 40px;
 }
 
 .nav-item {
@@ -49,6 +50,12 @@
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 500;
+  transition: transform 0.5s ease-in-out;
+  display: inline-block;
+}
+
+.nav-item:hover {
+  transform: scale(1.2);
 }
 
 .search-box {
@@ -60,9 +67,9 @@
   border-bottom-right-radius: 32px;
   background-color: var(--white-pink);
   width: 100%;
-  margin: 0px 32px;
+  margin: 0px 40px;
   color: var(--white-gray);
-  padding: 6px;
+  padding: 4px;
 }
 
 .search-container {
@@ -109,7 +116,7 @@
 }
 
 .icon-item {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -123,3 +130,8 @@
 .icon-bar-item {
   text-decoration: none;
 }
+
+
+
+
+

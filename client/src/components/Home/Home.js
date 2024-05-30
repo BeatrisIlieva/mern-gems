@@ -4,12 +4,16 @@ import { VerticalLine } from "../VerticalLine/VerticalLine";
 
 export const Home = () => {
   return (
-   
     <section className={styles["hero"]}>
-      <Link to="/">
+      <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
-            <p>text</p>
+          <h2 className={styles["title"]}>Forget-Me-Not Collection</h2>
+            <p className={styles["paragraph"]}>
+              An enchanting medley of round brilliant, pear-shaped and marquise
+              stones that together reveal a beautiful flower.
+            </p>
+            <button className={styles["animated-button"]}>Discover</button>
           </div>
           <img
             className={styles["hero-img"]}
@@ -20,11 +24,16 @@ export const Home = () => {
           />
         </div>
       </Link>
-      <VerticalLine/>
+      <VerticalLine />
       <Link to="/">
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
-            <p>text</p>
+            <h2>Forget-Me-Not</h2>
+            <p>
+              An enchanting medley of round brilliant, pear-shaped and marquise
+              stones that together reveal a beautiful flower.
+            </p>
+            <button>Discover</button>
           </div>
           <img
             className={styles["hero-img"]}
@@ -35,7 +44,7 @@ export const Home = () => {
           />
         </div>
       </Link>
-      <VerticalLine/>
+      <VerticalLine />
       <Link to="/">
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
@@ -50,7 +59,7 @@ export const Home = () => {
           />
         </div>
       </Link>
-      <VerticalLine/>
+      <VerticalLine />
       <Link to="/">
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
@@ -65,7 +74,7 @@ export const Home = () => {
           />
         </div>
       </Link>
-      <VerticalLine/>
+      <VerticalLine />
       <Link to="/">
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
