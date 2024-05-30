@@ -89,7 +89,12 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
-            <p>text</p>
+            <h2 className={styles["title"]}>Sparkling Cluster Collection</h2>
+            <p className={styles["paragraph"]}>
+              Captivating diamond jewels designed to perfectly complement
+              brilliant celebrations.
+            </p>
+            <button className={styles["animated-button"]}>Discover</button>
           </div>
           <img
             className={styles["hero-img"]}
