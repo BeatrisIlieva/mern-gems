@@ -70,7 +70,11 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
-            <p>text</p>
+            <h2 className={styles["title"]}>Sunflower Collection</h2>
+            <p className={styles["paragraph"]}>
+              Natural brilliance radiates in timeless blooms.
+            </p>
+            <button className={styles["animated-button"]}>Discover</button>
           </div>
           <img
             className={styles["hero-img"]}
