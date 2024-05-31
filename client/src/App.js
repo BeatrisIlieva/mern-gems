@@ -7,6 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Home } from "./components/Home/Home";
+import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Header />
           <main className={styles["main"]}>
             <Routes>
+              <Route path="/user/login" element={<Login />} />
               <Route path="/user/register" element={<Register />} />
               <Route path="/" element={<Home />} />
             </Routes>
