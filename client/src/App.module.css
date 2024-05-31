@@ -13,7 +13,6 @@
   src: url("./fonts/tisaSansProMediumItalic.ttf") format("truetype");
 }
 
-
 .app {
   font-size: 16px;
   color: var(--gray);
@@ -21,8 +20,8 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-  font-family: "tisaSansProLight", Arial, sans-serif, -apple-system, ui-sans-serif,
-    system-ui;
+  font-family: "tisaSansProLight", Arial, sans-serif, -apple-system,
+    ui-sans-serif, system-ui;
   line-height: 1.5;
   letter-spacing: 1.2px;
 }

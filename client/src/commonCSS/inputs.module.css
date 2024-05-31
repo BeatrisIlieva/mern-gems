@@ -19,7 +19,7 @@ input[type="email"]:focus {
   outline: none;
 }
 
-input, textarea {
-  caret-color: var(--dark-pink); 
+input,
+textarea {
+  caret-color: var(--dark-pink);
 }
-

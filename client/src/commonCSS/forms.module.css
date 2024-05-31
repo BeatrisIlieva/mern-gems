@@ -7,7 +7,7 @@
 }
 
 .field-container {
-  border-bottom: .1px solid var(--dark-pink);
+  border-bottom: 0.1px solid var(--dark-pink);
   position: relative;
   padding: 4px;
   font-size: 14px;
@@ -22,9 +22,8 @@
 }
 
 .error {
-  border-bottom: .1px solid var(--dark-red);
+  border-bottom: 0.1px solid var(--dark-red);
 }
-
 
 .custom-placeholder::placeholder {
   color: var(--dark-pink);
