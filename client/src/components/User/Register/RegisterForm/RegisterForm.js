@@ -14,7 +14,7 @@ import styles from "./RegisterForm.module.css";
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
-  const [errorOccurred, setErrorOccurred] = useState(false);
+  // const [errorOccurred, setErrorOccurred] = useState(false);
 
   const clickHandler = (fieldKey) => {
     setValues((prevValues) => ({
@@ -103,7 +103,7 @@ export const RegisterForm = () => {
     if (hasErrorOccurred) {
       setValues(updatedValues);
 
-      setErrorOccurred(hasErrorOccurred);
+      // setErrorOccurred(hasErrorOccurred);
       return;
     } else {
       const email = values.email.fieldValue;
@@ -117,7 +117,10 @@ export const RegisterForm = () => {
       } catch (err) {
         if (err.message === EMAIL_ALREADY_EXISTS_ERROR_MESSAGE) {
           values[FORM_KEYS.Email].errorMessage = err.message;
-          setErrorOccurred(true);
+
+          const updatedValues = { ...values };
+          setValues(updatedValues);
+          // setErrorOccurred(true);
         }
       }
     }
