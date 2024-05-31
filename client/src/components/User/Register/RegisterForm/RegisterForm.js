@@ -120,7 +120,6 @@ export const RegisterForm = () => {
 
           const updatedValues = { ...values };
           setValues(updatedValues);
-          // setErrorOccurred(true);
         }
       }
     }
