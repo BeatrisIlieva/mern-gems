@@ -2,7 +2,7 @@
   position: sticky;
   z-index: 1;
   top: 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: .1px solid var(--border);
   display: flex;
   margin-top: auto;
   margin-bottom: auto;

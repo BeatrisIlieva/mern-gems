@@ -3,6 +3,7 @@ import { RegisterForm } from "./RegisterForm";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { FORM_KEYS } from "./initialFormValues";
 import { ERROR_MESSAGES } from "../../../../constants/forms";
+import {EMAIL_ALREADY_EXISTS_ERROR_MESSAGE} from "../../../../constants/forms";
 
 const mockOnRegisterSubmit = jest.fn();
 
@@ -265,14 +266,14 @@ describe("RegisterFrom Component", () => {
       `${FORM_KEYS.Email}-error`
     );
     const errorMessageContent = errorMessageContainer.textContent.trim();
-    expect(errorMessageContent).toBe(ERROR_MESSAGES.email);
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.emailMismatch);
 
     const retypeErrorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.Email}-error`
     );
     const retypeErrorMessageContent =
       retypeErrorMessageContainer.textContent.trim();
-    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.email);
+    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.emailMismatch);
   });
 });
 
@@ -409,14 +410,14 @@ describe("RegisterFrom Component", () => {
       `${FORM_KEYS.Password}-error`
     );
     const errorMessageContent = errorMessageContainer.textContent.trim();
-    expect(errorMessageContent).toBe(ERROR_MESSAGES.password);
+    expect(errorMessageContent).toBe(ERROR_MESSAGES.passwordMismatch);
 
     const retypeErrorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.Password}-error`
     );
     const retypeErrorMessageContent =
       retypeErrorMessageContainer.textContent.trim();
-    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.password);
+    expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.passwordMismatch);
   });
 });
 
@@ -491,3 +492,4 @@ describe("RegisterFrom Component", () => {
     expect(retypeErrorMessageContent).toBe(ERROR_MESSAGES.password);
   });
 });
+

@@ -143,7 +143,6 @@ export const RegisterForm = () => {
 
   return (
     <section className={styles["register-container"]}>
-      <h1>New Customers</h1>
       <form
         method="POST"
         onSubmit={submitHandler}

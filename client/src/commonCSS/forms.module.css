@@ -6,11 +6,7 @@
 }
 
 .field-container {
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
-  border-bottom-left-radius: 32px;
-  border-bottom-right-radius: 32px;
-  border: 1px solid var(--dark-pink);
+  border-bottom: .1px solid var(--dark-pink);
   position: relative;
   padding: 12px;
 }
