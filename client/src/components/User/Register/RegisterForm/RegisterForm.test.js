@@ -3,7 +3,6 @@ import { RegisterForm } from "./RegisterForm";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { FORM_KEYS } from "./initialFormValues";
 import { ERROR_MESSAGES } from "../../../../constants/forms";
-import {EMAIL_ALREADY_EXISTS_ERROR_MESSAGE} from "../../../../constants/forms";
 
 const mockOnRegisterSubmit = jest.fn();
 
