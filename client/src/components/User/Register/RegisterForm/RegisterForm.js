@@ -409,7 +409,7 @@ export const RegisterForm = () => {
           </div>
         </div>
         <button
-          className={styles["animated-button"]}
+          className={`${formStyles["animated-button"]} ${styles["button"]}`}
           type="submit"
           data-testid="submit"
         >

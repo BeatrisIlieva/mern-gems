@@ -3,6 +3,17 @@
   src: url("./fonts/tisaSansProLight.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "tisaSansProBold";
+  src: url("./fonts/tisaSansProMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "tisaSansProBoldItalic";
+  src: url("./fonts/tisaSansProMediumItalic.ttf") format("truetype");
+}
+
+
 .app {
   font-size: 16px;
   color: var(--gray);

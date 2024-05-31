@@ -3,6 +3,7 @@ import { ToggleMenu } from "../../ToggleMenu/ToggleMenu";
 import styles from "./Register.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
   const options = [
@@ -20,12 +21,14 @@ export const Register = () => {
       <h1 className={styles["title"]}>Create an Account</h1>
       <div className={styles["sub-title"]}>
         <h3 className={styles["sub-title-left"]}>Have a ReactGems account?</h3>
-        <h3 className={styles["sub-title-right"]}>
-          Sign in{" "}
-          <span className={styles["arrow"]}>
-            <FontAwesomeIcon icon={faAngleRight} />
-          </span>
-        </h3>
+        <Link className={styles["link"]}>
+          <h3 className={styles["sub-title-right"]}>
+            Sign in{" "}
+            <span className={styles["arrow"]}>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </span>
+          </h3>
+        </Link>
       </div>
       <div className={styles["register-box"]}>
         <div className={styles["form-container"]}>

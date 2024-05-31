@@ -8,30 +8,65 @@
 }
 
 .title {
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 20px;
+  font-family: tisaSansProBoldItalic;
   padding: 0;
   margin: 0px 0px 20px 0px;
 }
 
 .sub-title {
     font-size: 12px;
-    margin: 0px 0px 20px 0px;
+    margin: 0px 0px 40px 0px;
     display: flex;
     gap: 20px;
+    
 }
 
 .sub-title-left {
-    font-weight: 900;
+    font-family: tisaSansProBold;
 }
 
 .sub-title-right {
-    font-weight: 900;
+    font-family: tisaSansProBold;
 }
 
 .arrow {
     font-size: 12px;
 }
+
+.link {
+    text-decoration: none;
+    color: var(--gray);
+    position: relative;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    letter-spacing: 1.2px;
+    padding-bottom: 4px;
+}
+
+  
+  .link::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--dark-pink);
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .link:hover::before {
+    width: 100%;
+    color: var(--dark-pink);
+    left: 0;
+  }
+  
+  
+
+
 
 
 .password-requirements-container {
@@ -48,4 +83,5 @@
     margin-top: 40px;
     height: 50%;
   }
+
 

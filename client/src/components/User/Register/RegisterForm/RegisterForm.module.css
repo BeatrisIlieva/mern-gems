@@ -20,37 +20,6 @@
   width: 9px;
 }
 
-.animated-button {
-  margin-top: 20px;
-  position: relative;
-  padding: 16px 48px;
-  font-size: 16px;
-  font-weight: 900;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  background-color: var(--white-pink);
-  color: var(--gray);
-  box-shadow: 0 0 0 0.3px var(--dark-pink);
-  outline: none;
-  letter-spacing: 1.2px;
+.button {
   width: 100%;
 }
-
-.animated-button::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background-color: var(--dark-pink);
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.animated-button:hover::before {
-  width: 100%;
-  color: var(--dark-pink);
-  left: 0;
-}
-
