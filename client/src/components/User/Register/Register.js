@@ -18,20 +18,22 @@ export const Register = () => {
   const subtitle = "Please ensure your password:";
   return (
     <section className={styles["register-box"]}>
-      <h2 className={styles["title"]}>Create an Account</h2>
-      <div className={styles["sub-title"]}>
-        <h3 className={styles["sub-title-left"]}>Have a ReactGems account?</h3>
-        <Link className={styles["link"]}>
-          <h3 className={styles["sub-title-right"]}>
-            Sign in{" "}
-            <span className={styles["arrow"]}>
-              <FontAwesomeIcon icon={faAngleRight} />
-            </span>
-          </h3>
-        </Link>
-      </div>
       <div className={styles["register-container"]}>
         <div className={styles["form-container"]}>
+          <h2 className={styles["title"]}>Create an Account</h2>
+          <div className={styles["sub-title"]}>
+            <h3 className={styles["sub-title-left"]}>
+              Have a ReactGems account?
+            </h3>
+            <Link className={styles["link"]}>
+              <h3 className={styles["sub-title-right"]}>
+                Sign in{" "}
+                <span className={styles["arrow"]}>
+                  <FontAwesomeIcon icon={faAngleRight} />
+                </span>
+              </h3>
+            </Link>
+          </div>
           <RegisterForm />
         </div>
         <div className={styles["password-requirements-container"]}>
@@ -39,7 +41,7 @@ export const Register = () => {
             <img
               className={styles["img"]}
               src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1715634166/template_images/herolarged_ny24_plp-2_bs_necklace_jrpvsh.avif"
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1715602900/template_images/herolarged_ny24_plp_718_necklace_blue_g0wqz9.jpg"
               }
               alt={"Img"}
             />

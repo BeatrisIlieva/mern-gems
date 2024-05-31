@@ -70,13 +70,13 @@
   display: flex;
   flex-direction: column;
   width: 50%;
+  position: relative;
 }
 
 .image {
-  height: 50%;
+  width: 140%;
 }
-
 .password-requirements {
-  margin-top: 40px;
-  height: 50%;
+  position: absolute;
+  bottom: 0;
 }
