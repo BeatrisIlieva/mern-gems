@@ -1,5 +1,5 @@
 .image {
-  height: 320px;
+  height: 326px;
   margin-bottom: 40px;
 }
 .img {
@@ -41,12 +41,12 @@
 
 .login-container {
   width: 50%;
-  height: 220px;
+  height: 326px;
 }
 
 .register-container {
   width: 50%;
-  height: 220px;
+  height: 326px;
   position: relative;
 }
 
