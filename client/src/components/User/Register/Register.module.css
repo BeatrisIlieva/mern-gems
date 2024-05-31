@@ -15,73 +15,64 @@
 }
 
 .sub-title {
-    font-size: 12px;
-    margin: 0px 0px 40px 0px;
-    display: flex;
-    gap: 20px;
-    
+  font-size: 12px;
+  margin: 0px 0px 40px 0px;
+  display: flex;
+  gap: 20px;
 }
 
 .sub-title-left {
-    font-family: tisaSansProBold;
+  font-family: tisaSansProBold;
 }
 
 .sub-title-right {
-    font-family: tisaSansProBold;
+  font-family: tisaSansProBold;
 }
 
 .arrow {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .link {
-    text-decoration: none;
-    color: var(--gray);
-    position: relative;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
-    letter-spacing: 1.2px;
-    padding-bottom: 4px;
+  text-decoration: none;
+  color: var(--gray);
+  position: relative;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  letter-spacing: 1.2px;
+  padding-bottom: 4px;
 }
 
-  
-  .link::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    background-color: var(--dark-pink);
-    transition: width 0.3s ease, left 0.3s ease;
-  }
-  
-  .link:hover::before {
-    width: 100%;
-    color: var(--dark-pink);
-    left: 0;
-  }
-  
-  
+.link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--dark-pink);
+  transition: width 0.3s ease, left 0.3s ease;
+}
 
-
-
+.link:hover::before {
+  width: 100%;
+  color: var(--dark-pink);
+  left: 0;
+}
 
 .password-requirements-container {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .image {
-    height: 50%;
+  height: 50%;
 }
 
 .password-requirements {
-    margin-top: 40px;
-    height: 50%;
-  }
-
-
+  margin-top: 40px;
+  height: 50%;
+}
