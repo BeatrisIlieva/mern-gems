@@ -103,7 +103,6 @@ export const RegisterForm = () => {
     if (hasErrorOccurred) {
       setValues(updatedValues);
 
-      // setErrorOccurred(hasErrorOccurred);
       return;
     } else {
       const email = values.email.fieldValue;
