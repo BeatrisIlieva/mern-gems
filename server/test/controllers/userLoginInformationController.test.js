@@ -169,7 +169,7 @@ describe("Test User Login with wrong password Expect Error", () => {
   const userUUID = "user-id";
   const email = "test@email.com";
   const password = "123456Bb";
-  const wrongPassword = "123456Bc"
+  const wrongPassword = "123456Bc";
   const firstName = "TestName";
   const lastName = "TestName";
 
@@ -189,6 +189,44 @@ describe("Test User Login with wrong password Expect Error", () => {
       .post("/user-login-information/login")
       .set("user-uuid", userUUID)
       .send({ email, wrongPassword });
+
+    expect(res2.status).toBe(401);
+  });
+});
+
+describe("Test User Login with wrong email Expect Error", () => {
+  beforeAll(async () => {
+    await connectDB();
+  });
+
+  afterAll(async () => {
+    await disconnectDB();
+    server.close();
+  });
+
+  const userUUID = "user-id";
+  const email = "test@email.com";
+  const wrongEmail = "test2@email.com";
+  const password = "123456Bb";
+  const firstName = "TestName";
+  const lastName = "TestName";
+
+  afterEach(async () => {
+    await UserLoginInformation.findByIdAndDelete(userUUID);
+    await UserPersonalInformation.findByIdAndDelete(userUUID);
+    await UserAddressInformation.findByIdAndDelete(userUUID);
+  });
+
+  test("It should not login user", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    const res2 = await request
+      .post("/user-login-information/login")
+      .set("user-uuid", userUUID)
+      .send({ wrongEmail, password });
 
     expect(res2.status).toBe(401);
   });

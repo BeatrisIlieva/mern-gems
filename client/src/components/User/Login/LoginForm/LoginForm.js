@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
 import { getErrorMessage } from "../../../../hooks/useFormValidator";
-import { INVALID_CREDENTIALS } from "../../../../constants/forms";
+import { INVALID_CREDENTIALS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../commonCSS/forms.module.css";
 import styles from "./LoginForm.module.css";
@@ -90,7 +90,7 @@ export const LoginForm = () => {
       try {
         await onLoginSubmit(data);
       } catch (err) {
-        if (err.message === INVALID_CREDENTIALS) {
+        if (err.message === INVALID_CREDENTIALS_ERROR_MESSAGE) {
           values[FORM_KEYS.Email].errorMessage = err.message;
           const updatedValues = { ...values };
           setValues(updatedValues);

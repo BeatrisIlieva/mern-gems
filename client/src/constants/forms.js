@@ -17,7 +17,7 @@ const EMAIL_MISMATCH_ERROR_MESSAGE =
 export const EMAIL_ALREADY_EXISTS_ERROR_MESSAGE =
   "This email address is already registered. Please log in or use a different one";
 
-export const INVALID_CREDENTIALS =
+export const INVALID_CREDENTIALS_ERROR_MESSAGE =
   "We couldn't find an account matching the email and password you entered";
 
 const NAME_LENGTH = {
