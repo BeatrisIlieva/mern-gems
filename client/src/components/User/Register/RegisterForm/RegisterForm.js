@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
 import {
@@ -14,6 +14,27 @@ import styles from "./RegisterForm.module.css";
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
+
+  const updateForm = () => {
+    Object.keys(values).forEach((fieldKey) => {
+      const input = document.getElementById(fieldKey);
+
+      if (input.value !== "") {
+        setValues((prevValues) => ({
+          ...prevValues,
+          [fieldKey]: {
+            ...prevValues[fieldKey],
+            fieldValue: input.value,
+            isFocused: true,
+          },
+        }));
+      }
+    });
+  };
+
+  useEffect(() => {
+    updateForm();
+  }, []);
 
   const clickHandler = (fieldKey) => {
     setValues((prevValues) => ({
@@ -37,6 +58,7 @@ export const RegisterForm = () => {
       ...prevValues,
       [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
     }));
+    updateForm();
   };
 
   const submitHandler = async (e) => {
@@ -57,10 +79,6 @@ export const RegisterForm = () => {
 
       if (field.errorMessage !== "") {
         hasErrorOccurred = true;
-      }
-
-      if (field.fieldValue !== "") {
-        values[key].isFocused = true;
       }
     });
 
