@@ -78,41 +78,6 @@ export const LoginForm = () => {
       }
     });
 
-    if (
-      updatedValues[FORM_KEYS.Email].errorMessage === "" ||
-      updatedValues[FORM_KEYS.RetypeEmail].errorMessage === ""
-    ) {
-      const emailErrorMessage = getEmailMismatchErrorMessage(
-        updatedValues[FORM_KEYS.Email].fieldValue,
-        updatedValues[FORM_KEYS.RetypeEmail].fieldValue
-      );
-
-      updatedValues[FORM_KEYS.Email].errorMessage = emailErrorMessage;
-      updatedValues[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
-
-      if (emailErrorMessage !== "") {
-        hasErrorOccurred = true;
-      }
-    }
-
-    if (
-      updatedValues[FORM_KEYS.Password].errorMessage === "" ||
-      updatedValues[FORM_KEYS.RetypePassword].errorMessage === ""
-    ) {
-      const passwordErrorMessage = getPasswordMismatchErrorMessage(
-        values[FORM_KEYS.Password].fieldValue,
-        values[FORM_KEYS.RetypePassword].fieldValue
-      );
-
-      updatedValues[FORM_KEYS.Password].errorMessage = passwordErrorMessage;
-      updatedValues[FORM_KEYS.RetypePassword].errorMessage =
-        passwordErrorMessage;
-
-      if (passwordErrorMessage !== "") {
-        hasErrorOccurred = true;
-      }
-    }
-
     if (hasErrorOccurred) {
       setValues(updatedValues);
 
@@ -120,14 +85,12 @@ export const LoginForm = () => {
     } else {
       const email = values.email.fieldValue;
       const password = values.password.fieldValue;
-      const firstName = values.firstName.fieldValue;
-      const lastName = values.lastName.fieldValue;
 
-      const data = { email, password, firstName, lastName };
+      const data = { email, password };
       try {
-        await onRegisterSubmit(data);
+        await onLoginSubmit(data);
       } catch (err) {
-        if (err.message === EMAIL_ALREADY_EXISTS_ERROR_MESSAGE) {
+        if (err.message === INVALID_CREDENTIALS) {
           values[FORM_KEYS.Email].errorMessage = err.message;
           const updatedValues = { ...values };
           setValues(updatedValues);
@@ -145,93 +108,6 @@ export const LoginForm = () => {
         className={styles["form-container"]}
       >
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
-          <div
-            className={`${formStyles["field-container"]} ${
-              values[FORM_KEYS.FirstName].errorMessage !== ""
-                ? formStyles["error"]
-                : ""
-            }`.trim()}
-            onClick={() => clickHandler(FORM_KEYS.FirstName)}
-            onBlur={() => blurHandler(FORM_KEYS.FirstName)}
-          >
-            <input
-              type="text"
-              name={FORM_KEYS.FirstName}
-              id={FORM_KEYS.FirstName}
-              value={values[FORM_KEYS.FirstName].fieldValue}
-              onChange={(e) =>
-                changeHandler(FORM_KEYS.FirstName, e.target.value)
-              }
-              onFocus={() => clickHandler(FORM_KEYS.FirstName)}
-              data-testid={`${FORM_KEYS.FirstName}-input`}
-            />
-            <label
-              htmlFor={FORM_KEYS.FirstName}
-              className={`${formStyles["label"]} ${
-                values[FORM_KEYS.FirstName].isFocused === true
-                  ? formStyles["isFocused"]
-                  : ""
-              }`.trim()}
-            >
-              {INITIAL_FORM_VALUES[FORM_KEYS.FirstName].fieldLabel}
-            </label>
-          </div>
-          <div
-            className={formStyles["error-message"]}
-            data-testid={`${FORM_KEYS.FirstName}-error`}
-          >
-            {values[FORM_KEYS.FirstName].errorMessage}
-          </div>
-        </div>
-        <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
-          <div
-            className={`${formStyles["field-container"]} ${
-              values[FORM_KEYS.LastName].errorMessage !== ""
-                ? formStyles["error"]
-                : ""
-            }`.trim()}
-            onClick={() => clickHandler(FORM_KEYS.LastName)}
-            onBlur={() => blurHandler(FORM_KEYS.LastName)}
-          >
-            <input
-              type="text"
-              name={FORM_KEYS.LastName}
-              id={FORM_KEYS.LastName}
-              value={values[FORM_KEYS.LastName].fieldValue}
-              onChange={(e) =>
-                changeHandler(FORM_KEYS.LastName, e.target.value)
-              }
-              onFocus={() => clickHandler(FORM_KEYS.LastName)}
-              data-testid={`${FORM_KEYS.LastName}-input`}
-            />
-            <label
-              htmlFor={FORM_KEYS.LastName}
-              className={`${formStyles["label"]} ${
-                values[FORM_KEYS.LastName].isFocused === true
-                  ? formStyles["isFocused"]
-                  : ""
-              }`.trim()}
-            >
-              {INITIAL_FORM_VALUES[FORM_KEYS.LastName].fieldLabel}
-            </label>
-          </div>
-          <div
-            className={formStyles["error-message"]}
-            data-testid={`${FORM_KEYS.LastName}-error`}
-          >
-            {values[FORM_KEYS.LastName].errorMessage}
-          </div>
-        </div>
-        <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
-          <span>
-            <>{hoveredQuestionMarkEmail && <QuestionMarkEmail />}</>
-            <FontAwesomeIcon
-              icon={faQuestion}
-              className={styles["input-icon"]}
-              onMouseEnter={() => onHoverQuestionMarkEmail()}
-              onMouseLeave={() => onUnhoverQuestionMarkEmail()}
-            />
-          </span>
           <div
             className={`${formStyles["field-container"]} ${
               values[FORM_KEYS.Email].errorMessage !== ""
@@ -266,45 +142,6 @@ export const LoginForm = () => {
             data-testid={`${FORM_KEYS.Email}-error`}
           >
             {values[FORM_KEYS.Email].errorMessage}
-          </div>
-        </div>
-        <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
-          <div
-            className={`${formStyles["field-container"]} ${
-              values[FORM_KEYS.RetypeEmail].errorMessage !== ""
-                ? formStyles["error"]
-                : ""
-            }`.trim()}
-            onClick={() => clickHandler(FORM_KEYS.RetypeEmail)}
-            onBlur={() => blurHandler(FORM_KEYS.RetypeEmail)}
-          >
-            <input
-              type="email"
-              name={FORM_KEYS.RetypeEmail}
-              id={FORM_KEYS.RetypeEmail}
-              value={values[FORM_KEYS.RetypeEmail].fieldValue}
-              onChange={(e) =>
-                changeHandler(FORM_KEYS.RetypeEmail, e.target.value)
-              }
-              onFocus={() => clickHandler(FORM_KEYS.RetypeEmail)}
-              data-testid={`${FORM_KEYS.RetypeEmail}-input`}
-            />
-            <label
-              htmlFor={FORM_KEYS.RetypeEmail}
-              className={`${formStyles["label"]} ${
-                values[FORM_KEYS.RetypeEmail].isFocused === true
-                  ? formStyles["isFocused"]
-                  : ""
-              }`.trim()}
-            >
-              {INITIAL_FORM_VALUES[FORM_KEYS.RetypeEmail].fieldLabel}
-            </label>
-          </div>
-          <div
-            className={formStyles["error-message"]}
-            data-testid={`${FORM_KEYS.RetypeEmail}-error`}
-          >
-            {values[FORM_KEYS.RetypeEmail].errorMessage}
           </div>
         </div>
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
@@ -346,51 +183,12 @@ export const LoginForm = () => {
             {values[FORM_KEYS.Password].errorMessage}
           </div>
         </div>
-        <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
-          <div
-            className={`${formStyles["field-container"]} ${
-              values[FORM_KEYS.RetypePassword].errorMessage !== ""
-                ? formStyles["error"]
-                : ""
-            }`.trim()}
-            onClick={() => clickHandler(FORM_KEYS.RetypePassword)}
-            onBlur={() => blurHandler(FORM_KEYS.RetypePassword)}
-          >
-            <input
-              type="password"
-              name={FORM_KEYS.RetypePassword}
-              id={FORM_KEYS.RetypePassword}
-              value={values[FORM_KEYS.RetypePassword].fieldValue}
-              onChange={(e) =>
-                changeHandler(FORM_KEYS.RetypePassword, e.target.value)
-              }
-              onFocus={() => clickHandler(FORM_KEYS.RetypePassword)}
-              data-testid={`${FORM_KEYS.RetypePassword}-input`}
-            />
-            <label
-              htmlFor={FORM_KEYS.RetypePassword}
-              className={`${formStyles["label"]} ${
-                values[FORM_KEYS.RetypePassword].isFocused === true
-                  ? formStyles["isFocused"]
-                  : ""
-              }`.trim()}
-            >
-              {INITIAL_FORM_VALUES[FORM_KEYS.RetypePassword].fieldLabel}
-            </label>
-          </div>
-          <div
-            className={formStyles["error-message"]}
-            data-testid={`${FORM_KEYS.RetypePassword}-error`}
-          >
-            {values[FORM_KEYS.RetypePassword].errorMessage}
-          </div>
-        </div>
         <button
           className={`${formStyles["animated-button"]} ${styles["button"]}`}
           type="submit"
           data-testid="submit"
         >
-          Create an Account
+          Sign In
         </button>
       </form>
     </section>
