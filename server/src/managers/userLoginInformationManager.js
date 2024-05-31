@@ -17,6 +17,28 @@ exports.register = async (data) => {
   return { token };
 };
 
+exports.login = async (email, password) => {
+  const user = await UserLoginInformation.findOne({ email });
+
+  if (!user) {
+    throw new Error(
+      "We couldn't find an account matching the email and password you entered"
+    );
+  }
+
+  const isValid = await bcrypt.compare(password, user.password);
+
+  if (!isValid) {
+    throw new Error(
+      "We couldn't find an account matching the email and password you entered"
+    );
+  }
+
+  const token = await generateToken(user);
+
+  return { token, user };
+};
+
 async function generateToken(user) {
   const payload = {
     _id: user._id,

@@ -32,4 +32,18 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = { ...req.body };
+    const result = await userManager.login(email, password);
+
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err.message);
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+});
+
 module.exports = router;
