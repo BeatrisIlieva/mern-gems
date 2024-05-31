@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   const onRegisterSubmit = async (data) => {
     const from = location.state?.from?.pathname || "/";
+    console.log(from)
 
     try {
       const result = await authService.register({ ...data });

@@ -6,6 +6,7 @@ import {
   getEmailMismatchErrorMessage,
   getPasswordMismatchErrorMessage,
 } from "../../../../hooks/useFormValidator";
+import { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../commonCSS/forms.module.css";
 import styles from "./RegisterForm.module.css";
@@ -42,6 +43,10 @@ export const RegisterForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    const updatedValues = { ...values };
+
+    let hasErrorOccurred = false;
+
     Object.keys(values).forEach((key) => {
       const field = values[key];
 
@@ -52,7 +57,7 @@ export const RegisterForm = () => {
       );
 
       if (field.errorMessage !== "") {
-        setErrorOccurred(true);
+        hasErrorOccurred = true;
       }
 
       if (field.fieldValue !== "") {
@@ -60,36 +65,45 @@ export const RegisterForm = () => {
       }
     });
 
-    if (values[FORM_KEYS.Email].errorMessage === "") {
+    if (
+      updatedValues[FORM_KEYS.Email].errorMessage === "" ||
+      updatedValues[FORM_KEYS.RetypeEmail].errorMessage === ""
+    ) {
       const emailErrorMessage = getEmailMismatchErrorMessage(
-        values[FORM_KEYS.Email].fieldValue,
-        values[FORM_KEYS.RetypeEmail].fieldValue
+        updatedValues[FORM_KEYS.Email].fieldValue,
+        updatedValues[FORM_KEYS.RetypeEmail].fieldValue
       );
 
-      values[FORM_KEYS.Email].errorMessage = emailErrorMessage;
-      values[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
+      updatedValues[FORM_KEYS.Email].errorMessage = emailErrorMessage;
+      updatedValues[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
 
       if (emailErrorMessage !== "") {
-        setErrorOccurred(true);
+        hasErrorOccurred = true;
       }
     }
 
-    if (values[FORM_KEYS.Password].errorMessage === "") {
+    if (
+      updatedValues[FORM_KEYS.Password].errorMessage === "" ||
+      updatedValues[FORM_KEYS.RetypePassword].errorMessage === ""
+    ) {
       const passwordErrorMessage = getPasswordMismatchErrorMessage(
         values[FORM_KEYS.Password].fieldValue,
         values[FORM_KEYS.RetypePassword].fieldValue
       );
 
-      values[FORM_KEYS.Password].errorMessage = passwordErrorMessage;
-      values[FORM_KEYS.RetypePassword].errorMessage = passwordErrorMessage;
+      updatedValues[FORM_KEYS.Password].errorMessage = passwordErrorMessage;
+      updatedValues[FORM_KEYS.RetypePassword].errorMessage =
+        passwordErrorMessage;
 
       if (passwordErrorMessage !== "") {
-        setErrorOccurred(true);
+        hasErrorOccurred = true;
       }
     }
 
-    if (errorOccurred) {
-      setErrorOccurred(false);
+    if (hasErrorOccurred) {
+      setValues(updatedValues);
+
+      setErrorOccurred(hasErrorOccurred);
       return;
     } else {
       const email = values.email.fieldValue;
@@ -101,7 +115,10 @@ export const RegisterForm = () => {
       try {
         await onRegisterSubmit(data);
       } catch (err) {
-        values[FORM_KEYS.Email].errorMessage = err.message;
+        if (err.message === EMAIL_ALREADY_EXISTS_ERROR_MESSAGE) {
+          values[FORM_KEYS.Email].errorMessage = err.message;
+          setErrorOccurred(true);
+        }
       }
     }
   };
@@ -117,7 +134,7 @@ export const RegisterForm = () => {
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
           <div
             className={`${formStyles["field-container"]} ${
-              INITIAL_FORM_VALUES[FORM_KEYS.FirstName].errorMessage !== ""
+              values[FORM_KEYS.FirstName].errorMessage !== ""
                 ? formStyles["error"]
                 : ""
             }`.trim()}
@@ -132,6 +149,7 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.FirstName, e.target.value)
               }
+              autoFocus
               data-testid={`${FORM_KEYS.FirstName}-input`}
             />
             <label
@@ -155,7 +173,7 @@ export const RegisterForm = () => {
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
           <div
             className={`${formStyles["field-container"]} ${
-              INITIAL_FORM_VALUES[FORM_KEYS.LastName].errorMessage !== ""
+              values[FORM_KEYS.LastName].errorMessage !== ""
                 ? formStyles["error"]
                 : ""
             }`.trim()}
@@ -170,6 +188,7 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.LastName, e.target.value)
               }
+              autoFocus
               data-testid={`${FORM_KEYS.LastName}-input`}
             />
             <label
@@ -193,7 +212,7 @@ export const RegisterForm = () => {
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
           <div
             className={`${formStyles["field-container"]} ${
-              INITIAL_FORM_VALUES[FORM_KEYS.Email].errorMessage !== ""
+              values[FORM_KEYS.Email].errorMessage !== ""
                 ? formStyles["error"]
                 : ""
             }`.trim()}
@@ -206,6 +225,7 @@ export const RegisterForm = () => {
               id={FORM_KEYS.Email}
               value={values[FORM_KEYS.Email].fieldValue}
               onChange={(e) => changeHandler(FORM_KEYS.Email, e.target.value)}
+              autoFocus
               data-testid={`${FORM_KEYS.Email}-input`}
             />
             <label
@@ -229,7 +249,7 @@ export const RegisterForm = () => {
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
           <div
             className={`${formStyles["field-container"]} ${
-              INITIAL_FORM_VALUES[FORM_KEYS.RetypeEmail].errorMessage !== ""
+              values[FORM_KEYS.RetypeEmail].errorMessage !== ""
                 ? formStyles["error"]
                 : ""
             }`.trim()}
@@ -241,6 +261,7 @@ export const RegisterForm = () => {
               name={FORM_KEYS.RetypeEmail}
               id={FORM_KEYS.RetypeEmail}
               value={values[FORM_KEYS.RetypeEmail].fieldValue}
+              autoFocus
               onChange={(e) =>
                 changeHandler(FORM_KEYS.RetypeEmail, e.target.value)
               }
@@ -267,7 +288,7 @@ export const RegisterForm = () => {
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
           <div
             className={`${formStyles["field-container"]} ${
-              INITIAL_FORM_VALUES[FORM_KEYS.Password].errorMessage !== ""
+              values[FORM_KEYS.Password].errorMessage !== ""
                 ? formStyles["error"]
                 : ""
             }`.trim()}
@@ -282,6 +303,7 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.Password, e.target.value)
               }
+              autoFocus
               data-testid={`${FORM_KEYS.Password}-input`}
             />
             <label
@@ -305,7 +327,7 @@ export const RegisterForm = () => {
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
           <div
             className={`${formStyles["field-container"]} ${
-              INITIAL_FORM_VALUES[FORM_KEYS.RetypePassword].errorMessage !== ""
+              values[FORM_KEYS.RetypePassword].errorMessage !== ""
                 ? formStyles["error"]
                 : ""
             }`.trim()}
@@ -320,6 +342,7 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.RetypePassword, e.target.value)
               }
+              autoFocus
               data-testid={`${FORM_KEYS.RetypePassword}-input`}
             />
             <label
