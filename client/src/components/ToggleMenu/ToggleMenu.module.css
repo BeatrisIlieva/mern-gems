@@ -35,6 +35,22 @@
 
 
 .title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 900;
+}
+
+.sub-title {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.toggle-list {
+  font-size: 12px;
+  font-weight: 900;
+
+}
+
+.toggle-item {
+  list-style:circle;
+  margin-left: 14px;
 }

@@ -5,8 +5,9 @@ import styles from "./Register.module.css";
 export const Register = () => {
   const options = [
     "Is at least eight characters in length",
-    "Contains at least one letter",
+    "Contains at least one capital letter and one lowercase letter",
     "Contains at least one number",
+    "Does not contain spaces",
   ];
 
   const title = "Password Requirements";
