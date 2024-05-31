@@ -5,7 +5,7 @@ import { getErrorMessage } from "../../../../hooks/useFormValidator";
 import { INVALID_CREDENTIALS } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../commonCSS/forms.module.css";
-import styles from "./RegisterForm.module.css";
+import styles from "./LoginForm.module.css";
 
 export const LoginForm = () => {
   const { onLoginSubmit } = useContext(AuthContext);

@@ -13,10 +13,27 @@ export const AuthProvider = ({ children }) => {
 
   const onRegisterSubmit = async (data) => {
     const from = location.state?.from?.pathname || "/";
-    console.log(from)
 
     try {
       const result = await authService.register({ ...data });
+
+      const token = result["token"];
+
+      setAuth(token);
+
+      navigate(from, { replace: true });
+    } catch (err) {
+      const errorMessage = err.message;
+      console.log(err.message);
+      throw new Error(errorMessage);
+    }
+  };
+
+  const onLoginSubmit = async (data) => {
+    const from = location.state?.from?.pathname || "/";
+
+    try {
+      const result = await authService.login({ ...data });
 
       const token = result["token"];
 
@@ -38,6 +55,7 @@ export const AuthProvider = ({ children }) => {
 
   const context = {
     onRegisterSubmit,
+    onLoginSubmit,
     onLogout,
     userId: auth._id,
     token: auth.accessToken,
