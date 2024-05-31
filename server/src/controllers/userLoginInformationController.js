@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = { ...req.body };
+    const { email, password } = req.body;
     const result = await userManager.login(email, password);
 
     res.status(200).json(result);

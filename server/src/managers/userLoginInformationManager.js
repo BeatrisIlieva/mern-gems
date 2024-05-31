@@ -1,5 +1,6 @@
 const UserLoginInformation = require("../models/UserLoginInformation");
 const { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } = require("../constants/email");
+const { INVALID_CREDENTIALS } = require("../constants/email");
 const jwt = require("../lib/jwt");
 const { SECRET } = require("../config/config");
 
@@ -17,21 +18,17 @@ exports.register = async (data) => {
   return { token };
 };
 
-exports.login = async (email, password) => {
-  const user = await UserLoginInformation.findOne({ email });
+exports.login = async (data) => {
+  const user = await UserLoginInformation.findOne({ email: data.email });
 
   if (!user) {
-    throw new Error(
-      "We couldn't find an account matching the email and password you entered"
-    );
+    throw new Error(INVALID_CREDENTIALS);
   }
 
-  const isValid = await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(data.password, user.password);
 
   if (!isValid) {
-    throw new Error(
-      "We couldn't find an account matching the email and password you entered"
-    );
+    throw new Error(INVALID_CREDENTIALS);
   }
 
   const token = await generateToken(user);
