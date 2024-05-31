@@ -413,7 +413,7 @@ export const RegisterForm = () => {
           type="submit"
           data-testid="submit"
         >
-          Save
+          Create an Account
         </button>
       </form>
     </section>

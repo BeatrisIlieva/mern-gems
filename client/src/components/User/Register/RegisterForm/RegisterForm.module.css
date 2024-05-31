@@ -25,14 +25,13 @@
   position: relative;
   padding: 16px 48px;
   font-size: 16px;
-  background-color: var(--white-golden);
-  color: white;
+  font-weight: 900;
   border: none;
   cursor: pointer;
   overflow: hidden;
-  background: none;
-  color: var(--dark-golden);
-  box-shadow: 0 0 0 0.6px var(--white-golden);
+  background-color: var(--white-pink);
+  color: var(--gray);
+  box-shadow: 0 0 0 0.3px var(--dark-pink);
   outline: none;
   letter-spacing: 1.2px;
   width: 100%;
@@ -45,11 +44,13 @@
   height: 2px;
   bottom: 0;
   left: 50%;
-  background-color: var(--white-golden);
+  background-color: var(--dark-pink);
   transition: width 0.3s ease, left 0.3s ease;
 }
 
 .animated-button:hover::before {
   width: 100%;
+  color: var(--dark-pink);
   left: 0;
 }
+
