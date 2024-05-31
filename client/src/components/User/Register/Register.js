@@ -17,8 +17,8 @@ export const Register = () => {
 
   const subtitle = "Please ensure your password:";
   return (
-    <section>
-      <h1 className={styles["title"]}>Create an Account</h1>
+    <section className={styles["register-box"]}>
+      <h2 className={styles["title"]}>Create an Account</h2>
       <div className={styles["sub-title"]}>
         <h3 className={styles["sub-title-left"]}>Have a ReactGems account?</h3>
         <Link className={styles["link"]}>
@@ -30,7 +30,7 @@ export const Register = () => {
           </h3>
         </Link>
       </div>
-      <div className={styles["register-box"]}>
+      <div className={styles["register-container"]}>
         <div className={styles["form-container"]}>
           <RegisterForm />
         </div>
