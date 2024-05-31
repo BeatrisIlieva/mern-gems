@@ -14,7 +14,6 @@ import styles from "./RegisterForm.module.css";
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
-  // const [errorOccurred, setErrorOccurred] = useState(false);
 
   const clickHandler = (fieldKey) => {
     setValues((prevValues) => ({
