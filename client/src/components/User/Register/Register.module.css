@@ -11,7 +11,26 @@
   font-size: 22px;
   font-weight: 900;
   padding: 0;
-  margin: 0px 0px 40px 0px;
+  margin: 0px 0px 20px 0px;
+}
+
+.sub-title {
+    font-size: 12px;
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    gap: 20px;
+}
+
+.sub-title-left {
+    font-weight: 900;
+}
+
+.sub-title-right {
+    font-weight: 900;
+}
+
+.arrow {
+    font-size: 12px;
 }
 
 
