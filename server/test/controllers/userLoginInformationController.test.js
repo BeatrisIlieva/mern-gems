@@ -118,3 +118,40 @@ describe("Test User Registration Expect Error", () => {
     expect(createdUserAddressInformation).toBeNull();
   });
 });
+
+describe("Test User Login Expect Success", () => {
+  beforeAll(async () => {
+    await connectDB();
+  });
+
+  afterAll(async () => {
+    await disconnectDB();
+    server.close();
+  });
+
+  const userUUID = "user-id";
+  const email = "test@email.com";
+  const password = "123456Bb";
+  const firstName = "TestName";
+  const lastName = "TestName";
+
+  afterEach(async () => {
+    await UserLoginInformation.findByIdAndDelete(userUUID);
+    await UserPersonalInformation.findByIdAndDelete(userUUID);
+    await UserAddressInformation.findByIdAndDelete(userUUID);
+  });
+
+  test("It should populate user models", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    const res2 = await request
+      .post("/user-login-information/login")
+      .set("user-uuid", userUUID)
+      .send({ email, password });
+
+    expect(res2.status).toBe(200);
+  });
+});
