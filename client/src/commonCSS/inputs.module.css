@@ -17,3 +17,8 @@ input[type="password"]:focus,
 input[type="email"]:focus {
   outline: none;
 }
+
+input, textarea {
+  caret-color: var(--dark-pink); 
+}
+

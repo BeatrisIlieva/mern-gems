@@ -10,10 +10,23 @@ import { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } from "../../../../constants/forms"
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../commonCSS/forms.module.css";
 import styles from "./RegisterForm.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { QuestionMarkEmail } from "../QuestionMarkEmail/QuestionMarkEmail";
 
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
+  const [hoveredQuestionMarkEmail, setHoveredQuestionMarkEmail] =
+    useState(false);
+
+  const onHoverQuestionMarkEmail = () => {
+    setHoveredQuestionMarkEmail(true);
+  };
+
+  const onUnhoverQuestionMarkEmail = () => {
+    setHoveredQuestionMarkEmail(false);
+  };
 
   const updateForm = () => {
     Object.keys(values).forEach((fieldKey) => {
@@ -133,9 +146,9 @@ export const RegisterForm = () => {
       } catch (err) {
         if (err.message === EMAIL_ALREADY_EXISTS_ERROR_MESSAGE) {
           values[FORM_KEYS.Email].errorMessage = err.message;
-
           const updatedValues = { ...values };
           setValues(updatedValues);
+          updateForm();
         }
       }
     }
@@ -167,6 +180,7 @@ export const RegisterForm = () => {
                 changeHandler(FORM_KEYS.FirstName, e.target.value)
               }
               autoFocus
+              onFocus={() => clickHandler(FORM_KEYS.FirstName)}
               data-testid={`${FORM_KEYS.FirstName}-input`}
             />
             <label
@@ -206,6 +220,7 @@ export const RegisterForm = () => {
                 changeHandler(FORM_KEYS.LastName, e.target.value)
               }
               autoFocus
+              onFocus={() => clickHandler(FORM_KEYS.LastName)}
               data-testid={`${FORM_KEYS.LastName}-input`}
             />
             <label
@@ -227,6 +242,15 @@ export const RegisterForm = () => {
           </div>
         </div>
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
+          <span>
+            <>{hoveredQuestionMarkEmail && <QuestionMarkEmail />}</>
+            <FontAwesomeIcon
+              icon={faQuestion}
+              className={styles["input-icon"]}
+              onMouseEnter={() => onHoverQuestionMarkEmail()}
+              onMouseLeave={() => onUnhoverQuestionMarkEmail()}
+            />
+          </span>
           <div
             className={`${formStyles["field-container"]} ${
               values[FORM_KEYS.Email].errorMessage !== ""
@@ -243,6 +267,7 @@ export const RegisterForm = () => {
               value={values[FORM_KEYS.Email].fieldValue}
               onChange={(e) => changeHandler(FORM_KEYS.Email, e.target.value)}
               autoFocus
+              onFocus={() => clickHandler(FORM_KEYS.Email)}
               data-testid={`${FORM_KEYS.Email}-input`}
             />
             <label
@@ -282,6 +307,7 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.RetypeEmail, e.target.value)
               }
+              onFocus={() => clickHandler(FORM_KEYS.RetypeEmail)}
               data-testid={`${FORM_KEYS.RetypeEmail}-input`}
             />
             <label
@@ -321,6 +347,7 @@ export const RegisterForm = () => {
                 changeHandler(FORM_KEYS.Password, e.target.value)
               }
               autoFocus
+              onFocus={() => clickHandler(FORM_KEYS.Password)}
               data-testid={`${FORM_KEYS.Password}-input`}
             />
             <label
@@ -360,6 +387,7 @@ export const RegisterForm = () => {
                 changeHandler(FORM_KEYS.RetypePassword, e.target.value)
               }
               autoFocus
+              onFocus={() => clickHandler(FORM_KEYS.RetypePassword)}
               data-testid={`${FORM_KEYS.RetypePassword}-input`}
             />
             <label
@@ -380,12 +408,13 @@ export const RegisterForm = () => {
             {values[FORM_KEYS.RetypePassword].errorMessage}
           </div>
         </div>
-        <input
-          className={`${formStyles["button"]} ${formStyles["pink"]} ${formStyles["hover"]} ${styles["button"]}`}
+        <button
+          className={styles["animated-button"]}
           type="submit"
-          value="Save"
           data-testid="submit"
-        />
+        >
+          Save
+        </button>
       </form>
     </section>
   );

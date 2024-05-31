@@ -1,12 +1,55 @@
 .form-container {
   display: flex;
   flex-wrap: wrap;
+  gap: 40px;
 }
 
 .half {
-  width: 50%;
+  width: calc(50% - 20px);
 }
 
-.button {
+.input-icon {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  color: var(--gray);
+  background-color: var(--medium-pink);
+  border-radius: 32px;
+  padding: 3px;
+  z-index: 10;
+  width: 9px;
+}
+
+
+.animated-button {
+  position: relative;
+  padding: 16px 48px;
+  font-size: 16px;
+  background-color: var(--white-golden);
+  color: white;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  background: none;
+  color: var(--dark-golden);
+  box-shadow: 0 0 0 0.6px var(--white-golden);
+  outline: none;
+  letter-spacing: 1.2px;
   width: 100%;
+}
+
+.animated-button::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--white-golden);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.animated-button:hover::before {
+  width: 100%;
+  left: 0;
 }
