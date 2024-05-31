@@ -179,7 +179,6 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.FirstName, e.target.value)
               }
-              autoFocus
               onFocus={() => clickHandler(FORM_KEYS.FirstName)}
               data-testid={`${FORM_KEYS.FirstName}-input`}
             />
@@ -219,7 +218,6 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.LastName, e.target.value)
               }
-              autoFocus
               onFocus={() => clickHandler(FORM_KEYS.LastName)}
               data-testid={`${FORM_KEYS.LastName}-input`}
             />
@@ -266,7 +264,6 @@ export const RegisterForm = () => {
               id={FORM_KEYS.Email}
               value={values[FORM_KEYS.Email].fieldValue}
               onChange={(e) => changeHandler(FORM_KEYS.Email, e.target.value)}
-              autoFocus
               onFocus={() => clickHandler(FORM_KEYS.Email)}
               data-testid={`${FORM_KEYS.Email}-input`}
             />
@@ -303,7 +300,6 @@ export const RegisterForm = () => {
               name={FORM_KEYS.RetypeEmail}
               id={FORM_KEYS.RetypeEmail}
               value={values[FORM_KEYS.RetypeEmail].fieldValue}
-              autoFocus
               onChange={(e) =>
                 changeHandler(FORM_KEYS.RetypeEmail, e.target.value)
               }
@@ -346,7 +342,6 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.Password, e.target.value)
               }
-              autoFocus
               onFocus={() => clickHandler(FORM_KEYS.Password)}
               data-testid={`${FORM_KEYS.Password}-input`}
             />
@@ -386,7 +381,6 @@ export const RegisterForm = () => {
               onChange={(e) =>
                 changeHandler(FORM_KEYS.RetypePassword, e.target.value)
               }
-              autoFocus
               onFocus={() => clickHandler(FORM_KEYS.RetypePassword)}
               data-testid={`${FORM_KEYS.RetypePassword}-input`}
             />
@@ -398,7 +392,7 @@ export const RegisterForm = () => {
                   : ""
               }`.trim()}
             >
-              {INITIAL_FORM_VALUES[FORM_KEYS.RetypePassword].fieldLabel}{" "}
+              {INITIAL_FORM_VALUES[FORM_KEYS.RetypePassword].fieldLabel}
             </label>
           </div>
           <div
