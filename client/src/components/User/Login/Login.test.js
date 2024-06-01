@@ -91,23 +91,23 @@ describe("Login Component", () => {
 });
 
 describe("Login Component", () => {
-    test("Should redirect to register", async () => {
-      render(
-        <AuthContext.Provider value={mockAuthContextValue}>
-          <MemoryRouter initialEntries={["/user/login"]}>
-            <Routes>
-              <Route path="/user/login" element={<Login />} />
-              <Route path="/user/register" element={<Register />} />
-            </Routes>
-          </MemoryRouter>
-        </AuthContext.Provider>
-      );
-  
-      const signUpButton = screen.getByTestId("sign-up-button");
-      expect(signUpButton).toBeInTheDocument();
-      fireEvent.click(signUpButton);
-  
-      const signUpTitleElement = screen.getByTestId("sign-up-title-element");
-      expect(signUpTitleElement).toBeInTheDocument();
-    });
+  test("Should redirect to register", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <MemoryRouter initialEntries={["/user/login"]}>
+          <Routes>
+            <Route path="/user/login" element={<Login />} />
+            <Route path="/user/register" element={<Register />} />
+          </Routes>
+        </MemoryRouter>
+      </AuthContext.Provider>
+    );
+
+    const signUpButton = screen.getByTestId("sign-up-button");
+    expect(signUpButton).toBeInTheDocument();
+    fireEvent.click(signUpButton);
+
+    const signUpTitleElement = screen.getByTestId("sign-up-title-element");
+    expect(signUpTitleElement).toBeInTheDocument();
   });
+});

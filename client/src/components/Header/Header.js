@@ -6,11 +6,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Header = () => {
   const wishListCountGreaterThanZero = true;
   const bagCountGreaterThanZero = true;
-  const isAuthenticated = false;
+  const isAuthenticated = useAuthContext();
   const wishlistCount = 1;
   const bagCount = 3;
   const user = null;
@@ -123,7 +124,7 @@ export const Header = () => {
           )}
           {isAuthenticated && (
             <li className={styles["icon-item"]}>
-              <Link className={styles["icon-bar-item"]} to="/user/details">
+              <Link className={styles["icon-bar-item"]} to="/user/account">
                 <span>
                   <FontAwesomeIcon
                     icon={faUser}

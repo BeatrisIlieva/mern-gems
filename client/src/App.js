@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer/Footer";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
+import { Account } from "./components/User/Account/Account";
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
           <Header />
           <main className={styles["main"]}>
             <Routes>
+              <Route path="/" element={<Home />} />
               <Route path="/user/login" element={<Login />} />
               <Route path="/user/register" element={<Register />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/user/account" element={<Account />} />
             </Routes>
           </main>
           <footer className={styles["footer"]}>
