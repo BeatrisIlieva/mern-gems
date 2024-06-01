@@ -5,7 +5,7 @@ import formStyles from "../../../commonCSS/forms.module.css";
 export const Login = () => {
   return (
     <section>
-      <div className={styles["image"]}>
+      <div className={styles["image"]} data-testid="image-element">
         <img
           className={styles["img"]}
           src={

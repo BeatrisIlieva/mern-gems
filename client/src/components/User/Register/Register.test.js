@@ -73,26 +73,24 @@ describe("Register Component", () => {
   });
 });
 
-
 describe("Register Component", () => {
-    test("Should load password requirements", async () => {
-      render(
-        <AuthContext.Provider value={mockAuthContextValue}>
-            <MemoryRouter initialEntries={["/user/register"]}>
-            <Routes>
-              <Route path="/user/login" element={<Login />} />
-              <Route path="/user/register" element={<Register />} />
-            </Routes>
-            </MemoryRouter>
-        </AuthContext.Provider>
-      );
-  
-      const signInButton = screen.getByTestId("sign-in-button");
-      expect(signInButton).toBeInTheDocument();
-      fireEvent.click(signInButton);
-  
-      
+  test("Should load password requirements", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <MemoryRouter initialEntries={["/user/register"]}>
+          <Routes>
+            <Route path="/user/login" element={<Login />} />
+            <Route path="/user/register" element={<Register />} />
+          </Routes>
+        </MemoryRouter>
+      </AuthContext.Provider>
+    );
+
+    const signInButton = screen.getByTestId("sign-in-button");
+    expect(signInButton).toBeInTheDocument();
+    fireEvent.click(signInButton);
+
     const signInTitleElement = screen.getByTestId("sign-in-title-element");
     expect(signInTitleElement).toBeInTheDocument();
-    });
   });
+});
