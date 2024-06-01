@@ -1,4 +1,5 @@
 import { PersonalInformationForm } from "./PersonalInformationForm/PersonalInformationForm";
+import { AddressInformationForm } from "./AddressInformationForm/AddressInformationForm";
 import styles from "./PersonalInformation.module.css";
 
 export const PersonalInformation = () => {
@@ -10,6 +11,7 @@ export const PersonalInformation = () => {
       </div>
       <div className={styles["right-container"]}>
         <h2 className={styles["form-title"]}>Address Book</h2>
+        <AddressInformationForm />
       </div>
     </section>
   );
