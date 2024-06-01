@@ -17,7 +17,7 @@ export const Login = () => {
       <div className={styles["login-box"]}>
         <div className={styles["login-container"]}>
           <h2 className={styles["title"]} data-testid="sign-in-title-element">Sign In</h2>
-          <h3 className={styles["sub-title"]}>
+          <h3 className={styles["sub-title"]} data-testid="sign-in-sub-title-element">
             Please Sign In to your ReactGems account
           </h3>
           <LoginForm />

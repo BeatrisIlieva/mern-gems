@@ -40,3 +40,18 @@ describe("Login Component", () => {
       expect(singInTitleElement).toBeInTheDocument();
     });
   });
+
+  describe("Login Component", () => {
+    test("Should load sing in sub-title", async () => {
+      render(
+        <AuthContext.Provider value={mockAuthContextValue}>
+          <BrowserRouter>
+            <Login />
+          </BrowserRouter>
+        </AuthContext.Provider>
+      );
+  
+      const singInTitleElement = screen.getByTestId("sign-in-sub-title-element");
+      expect(singInTitleElement).toBeInTheDocument();
+    });
+  });
