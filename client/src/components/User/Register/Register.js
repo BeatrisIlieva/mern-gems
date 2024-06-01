@@ -25,7 +25,7 @@ export const Register = () => {
             <h3 className={styles["sub-title-left"]}>
               Have a ReactGems account?
             </h3>
-            <Link className={styles["link"]}>
+            <Link className={styles["link"]} to="/user/login">
               <h3 className={styles["sub-title-right"]}>
                 Sign in{" "}
                 <span className={styles["arrow"]}>
@@ -36,9 +36,10 @@ export const Register = () => {
           </div>
           <RegisterForm />
         </div>
-        <div className={styles["password-requirements-container"]}>
+        <div className={styles["password-requirements-container"]} data-testid="image-element">
           <div className={styles["image"]}>
             <img
+            
               className={styles["img"]}
               src={
                 "https://res.cloudinary.com/deztgvefu/image/upload/v1715602900/template_images/herolarged_ny24_plp_718_necklace_blue_g0wqz9.jpg"

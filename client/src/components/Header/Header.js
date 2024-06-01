@@ -23,7 +23,7 @@ export const Header = () => {
             <img
               className={styles["logo-img"]}
               src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1717068724/logo/Screenshot_2024-05-30_at_14.29.45_kxpaut.png"
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1717179026/template_images/Screenshot_2024-05-31_at_21.08.36_nps68o.png"
               }
               alt={"Logo"}
             />
