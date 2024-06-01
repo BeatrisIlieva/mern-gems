@@ -31,7 +31,7 @@ export const AddressInformationFormPopup = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [popupCloseHandler]);
+  }, []);
 
   const updateForm = () => {
     Object.keys(values).forEach((fieldKey) => {
