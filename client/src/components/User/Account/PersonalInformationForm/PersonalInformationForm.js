@@ -38,12 +38,24 @@ export const PersonalInformationForm = () => {
     personalInformationService
       .find(userId)
       .then((data) => {
+        const updatedValues = { ...values };
+              
+        for (let fieldKey in FORM_KEYS) {
+            
+          updatedValues[FORM_KEYS[fieldKey]] = {
+            ...updatedValues[FORM_KEYS[fieldKey]],
+            fieldValue: data[FORM_KEYS[fieldKey]],
+            isFocused: data[FORM_KEYS[fieldKey]] !== "",
+          };
+        }
+        setValues(updatedValues);
+        
         setUserPersonalInformation(data);
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [userPersonalInformation]);
+  }, []);
 
   const clickHandler = (fieldKey) => {
     setValues((prevValues) => ({
