@@ -40,7 +40,22 @@ describe("Register Component", () => {
 });
 
 describe("Register Component", () => {
-    test("Should load sub-title", async () => {
+  test("Should load sub-title", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const subTitleElement = screen.getByTestId("sub-title-element");
+    expect(subTitleElement).toBeInTheDocument();
+  });
+});
+
+describe("Register Component", () => {
+    test("Should load password requirements", async () => {
       render(
         <AuthContext.Provider value={mockAuthContextValue}>
           <BrowserRouter>
@@ -49,7 +64,7 @@ describe("Register Component", () => {
         </AuthContext.Provider>
       );
   
-      const subTitleElement = screen.getByTestId("sub-title-element");
-      expect(subTitleElement).toBeInTheDocument();
+      const passwordRequirementsElement = screen.getByTestId("password-requirements-element");
+      expect(passwordRequirementsElement).toBeInTheDocument();
     });
   });

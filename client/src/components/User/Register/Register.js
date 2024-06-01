@@ -47,7 +47,7 @@ export const Register = () => {
               alt={"Img"}
             />
           </div>
-          <div className={styles["password-requirements"]}>
+          <div className={styles["password-requirements"]} data-testid="password-requirements-element">
             <ToggleMenu options={options} title={title} subtitle={subtitle} />
           </div>
         </div>
