@@ -23,3 +23,18 @@ describe("Register Component", () => {
     expect(imageElement).toBeInTheDocument();
   });
 });
+
+describe("Register Component", () => {
+  test("Should load image", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const titleElement = screen.getByTestId("title-element");
+    expect(titleElement).toBeInTheDocument();
+  });
+});
