@@ -3,7 +3,7 @@ import { HOST } from "../constants/host";
 
 const baseUrl = `${HOST}/user-address-information`;
 
-export const personalInformationServiceFactory = (token) => {
+export const addressInformationServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {

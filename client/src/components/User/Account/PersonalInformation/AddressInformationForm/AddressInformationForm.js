@@ -10,31 +10,31 @@ export const AddressInformationForm = () => {
     setDisplayAddressInformationFormPopup,
   ] = useState(false);
 
-  const clickHandler = async () => {
+  const popupClickHandler = async () => {
     document.body.style.overflow = "hidden";
     setDisplayAddressInformationFormPopup(true);
   };
 
-  const submitHandler = () => {
+  const popupSubmitHandler = () => {
     document.body.style.overflow = "visible";
     setDisplayAddressInformationFormPopup(false);
   };
 
-  const closeHandler = () => {
+  const popupCloseHandler = () => {
     document.body.style.overflow = "visible";
     setDisplayAddressInformationFormPopup(false);
   };
 
   return (
     <section className={styles["address-container"]}>
-      <button className={styles["button"]} onClick={clickHandler}>
+      <button className={styles["button"]} onClick={popupClickHandler}>
         <FontAwesomeIcon icon={faCirclePlus} className={styles["icon"]} />
         <span>Add a New Address</span>
       </button>
       {displayAddressInformationFormPopup && (
         <AddressInformationFormPopup
-          submitHandler={submitHandler}
-          closeHandler={closeHandler}
+          popupSubmitHandler={popupSubmitHandler}
+          popupCloseHandler={popupCloseHandler}
         />
       )}
     </section>
