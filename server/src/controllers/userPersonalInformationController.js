@@ -16,33 +16,19 @@ router.get("/:userId", async (req, res) => {
   }
 });
 
-// router.post("/update", async (req, res) => {
-//   const userUUID = req.headers["user-uuid"];
+router.put("/:userId", async (req, res) => {
+  const userId = req.params.userId;
 
-//   const { email, password, firstName, lastName } = req.body;
+  const data = { ...req.body };
 
-//   try {
-//     const { token } = await userLoginInformationManager.register({
-//       _id: userUUID,
-//       email,
-//       password,
-//     });
+  try {
+    const result = await userPersonalInformationManager.update(userId, data);
 
-//     await userPersonalInformationManager.create({
-//       _id: userUUID,
-//       firstName,
-//       lastName,
-//     });
-
-//     await userAddressInformationManager.create({ _id: userUUID });
-
-//     res.status(201).json({ token, userId: userUUID });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(401).json({
-//       message: err.message,
-//     });
-//   }
-// });
-
-module.exports = router;
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(401).json({
+      message: err.message,
+    });
+  }
+});

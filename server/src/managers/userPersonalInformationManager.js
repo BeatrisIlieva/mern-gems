@@ -8,4 +8,13 @@ exports.find = async (userId) => {
   const result = await UserPersonalInformation.findById(userId);
 
   return result;
-}
+};
+
+exports.update = async (userId, data) => {
+  const result = await UserPersonalInformation.findByIdAndUpdate(userId, data, {
+    runValidators: true,
+    new: true,
+  });
+
+  return result;
+};

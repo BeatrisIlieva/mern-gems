@@ -116,7 +116,7 @@ export const PersonalInformationForm = () => {
 
       const data = { firstName, lastName, birthday, specialDay };
       try {
-        // await onRegisterSubmit(data);
+        await personalInformationService.update(userId, data);
       } catch (err) {
         console.log(err.message);
         const updatedValues = { ...values };
