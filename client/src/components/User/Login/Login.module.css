@@ -14,16 +14,16 @@
 }
 
 .title {
-  font-size: 18px;
-  font-family: tisaSansProBoldItalic;
+  font-size: var(--large-font-size);
+  font-family: var(--bold-italic-font-family);
   padding: 0;
   margin: 0px 0px 20px 0px;
 }
 
 .sub-title {
-  font-size: 12px;
+  font-size: var(--small-font-size);
+  font-family: var(--bold-font-family);
   margin: 0px 0px 40px 0px;
-  font-family: tisaSansProBold;
 }
 
 .login-box {
@@ -86,7 +86,6 @@
 }
 
 .list {
-  font-size: 14px;
   font-weight: 900;
   margin-left: 0px;
   padding-left: 0px;

@@ -1,0 +1,25 @@
+.top-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--bold-italic-font-family);
+  font-size: var(--large-font-size);
+}
+
+.paragraph {
+  text-align: center;
+  width: 50%;
+  margin-bottom: 40px;
+}
+
+.sub-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.1px solid var(--border);
+}

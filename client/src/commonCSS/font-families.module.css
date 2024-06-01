@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "tisaSansProLight";
+  src: url("../fonts/tisaSansProLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "tisaSansProBold";
+  src: url("../fonts/tisaSansProMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "tisaSansProBoldItalic";
+  src: url("../fonts/tisaSansProMediumItalic.ttf") format("truetype");
+}
+
+:root {
+  --main-font-family: tisaSansProLight, Arial, sans-serif, -apple-system,
+    ui-sans-serif, system-ui;
+  --bold-font-family: tisaSansProBold, Arial, sans-serif, -apple-system,
+    ui-sans-serif, system-ui;
+  --bold-italic-font-family: tisaSansProBoldItalic, Arial, sans-serif,
+    -apple-system, ui-sans-serif, system-ui;
+}

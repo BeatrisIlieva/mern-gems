@@ -2,17 +2,18 @@
   position: sticky;
   z-index: 1;
   top: 0;
-  border-bottom: .1px solid var(--border);
+  border-bottom: 0.1px solid var(--border);
   display: flex;
   margin-top: auto;
   margin-bottom: auto;
   background-color: var(--white);
+  font-size: var(--medium-font-size);
 }
+
 .header-box {
   display: flex;
   align-items: center;
   margin: 0 40px;
-  font-size: 14px;
   width: 100%;
 }
 
@@ -40,10 +41,14 @@
   gap: 40px;
 }
 
+.nav-title {
+  font-size: var(--medium-font-size);
+  font-family: (--main-font-family);
+}
+
 .nav-item {
   color: var(--gray);
   text-decoration: none;
-  /* text-transform: uppercase; */
   font-weight: 500;
   transition: transform 0.5s ease-in-out;
   display: inline-block;
@@ -107,7 +112,6 @@
 }
 
 .icon-item {
-  font-size: 16px;
   font-weight: 600;
   transition: transform 0.5s ease-in-out;
   display: inline-block;

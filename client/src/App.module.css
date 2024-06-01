@@ -1,27 +1,11 @@
-@font-face {
-  font-family: "tisaSansProLight";
-  src: url("./fonts/tisaSansProLight.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "tisaSansProBold";
-  src: url("./fonts/tisaSansProMedium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "tisaSansProBoldItalic";
-  src: url("./fonts/tisaSansProMediumItalic.ttf") format("truetype");
-}
-
 .app {
-  font-size: 16px;
+  font-size: var(--main-font-size);
   color: var(--gray);
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  font-family: "tisaSansProLight", Arial, sans-serif, -apple-system,
-    ui-sans-serif, system-ui;
+  font-family: var(--main-font-family);
   line-height: 1.5;
   letter-spacing: 1.2px;
 }

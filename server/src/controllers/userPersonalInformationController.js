@@ -3,7 +3,6 @@ const userPersonalInformationManager = require("../managers/userPersonalInformat
 
 router.get("/:userId", async (req, res) => {
   const userId = req.params.userId;
-  console.log("controller")
 
   try {
     const result = await userPersonalInformationManager.find(userId);
