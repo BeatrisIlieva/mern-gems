@@ -114,7 +114,7 @@ export const PersonalInformationForm = () => {
   };
 
   return (
-    <section className={styles["register-container"]}>
+    <section className={styles["login-container"]}>
       <form
         method="POST"
         onSubmit={submitHandler}
@@ -213,7 +213,9 @@ export const PersonalInformationForm = () => {
               name={FORM_KEYS.Birthday}
               id={FORM_KEYS.Birthday}
               value={values[FORM_KEYS.Birthday].fieldValue}
-              onChange={(e) => changeHandler(FORM_KEYS.Birthday, e.target.value)}
+              onChange={(e) =>
+                changeHandler(FORM_KEYS.Birthday, e.target.value)
+              }
               onFocus={() => clickHandler(FORM_KEYS.Birthday)}
               data-testid={`${FORM_KEYS.Birthday}-input`}
             />

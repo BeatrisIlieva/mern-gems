@@ -1,0 +1,13 @@
+.form-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.half {
+  width: calc(50% - 20px);
+}
+
+.button {
+  width: 100%;
+}

@@ -3,7 +3,7 @@ input[type="text"],
 [type="email"] {
   border: none;
   background-color: transparent;
-  width: 200px;
+  min-width: 200px;
 }
 
 input:-webkit-autofill,
