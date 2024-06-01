@@ -67,4 +67,15 @@
 .right-container {
   width: 40%;
   box-shadow: 0 0 0 0.3px var(--dark-pink);
+  text-align: center;
+}
+
+.left-container, .right-container {
+    padding: 40px 20px;
+}
+
+.form-title {
+    font-family: var(--bold-italic-font-family);
+    font-size: var(--large-font-size);
+    margin: 0px 0px 40px 0px;
 }
