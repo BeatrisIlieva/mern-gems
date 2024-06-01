@@ -40,6 +40,7 @@ export const Login = () => {
               className={`${formStyles["animated-button"]} ${styles["register-button"]} `}
               type="submit"
               data-testid="submit"
+              data-testid="sign-up-button"
             >
               Create an Account
             </button>

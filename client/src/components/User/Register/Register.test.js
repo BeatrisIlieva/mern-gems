@@ -36,7 +36,7 @@ describe("Register Component", () => {
       </AuthContext.Provider>
     );
 
-    const titleElement = screen.getByTestId("title-element");
+    const titleElement = screen.getByTestId("sign-up-title-element");
     expect(titleElement).toBeInTheDocument();
   });
 });
@@ -51,7 +51,7 @@ describe("Register Component", () => {
       </AuthContext.Provider>
     );
 
-    const subTitleElement = screen.getByTestId("sub-title-element");
+    const subTitleElement = screen.getByTestId("sign-up-sub-title-element");
     expect(subTitleElement).toBeInTheDocument();
   });
 });
@@ -74,7 +74,7 @@ describe("Register Component", () => {
 });
 
 describe("Register Component", () => {
-  test("Should load password requirements", async () => {
+  test("Should redirect to login", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <MemoryRouter initialEntries={["/user/register"]}>

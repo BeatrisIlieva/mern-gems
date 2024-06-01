@@ -51,37 +51,63 @@ describe("Login Component", () => {
       </AuthContext.Provider>
     );
 
-    const singInSubTitleElement = screen.getByTestId("sign-in-sub-title-element");
+    const singInSubTitleElement = screen.getByTestId(
+      "sign-in-sub-title-element"
+    );
     expect(singInSubTitleElement).toBeInTheDocument();
   });
 });
 
 describe("Login Component", () => {
-    test("Should load sing-up in title", async () => {
-      render(
-        <AuthContext.Provider value={mockAuthContextValue}>
-          <BrowserRouter>
-            <Login />
-          </BrowserRouter>
-        </AuthContext.Provider>
-      );
-  
-      const singUpTitleElement = screen.getByTestId("sign-up-title-element");
-      expect(singUpTitleElement).toBeInTheDocument();
-    });
+  test("Should load sing-up in title", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const singUpTitleElement = screen.getByTestId("sign-up-title-element");
+    expect(singUpTitleElement).toBeInTheDocument();
   });
-  
-  describe("Login Component", () => {
-    test("Should load sing up sub-title", async () => {
+});
+
+describe("Login Component", () => {
+  test("Should load sing up sub-title", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const singUpSubTitleElement = screen.getByTestId(
+      "sign-up-sub-title-element"
+    );
+    expect(singUpSubTitleElement).toBeInTheDocument();
+  });
+});
+
+describe("Login Component", () => {
+    test("Should redirect to register", async () => {
       render(
         <AuthContext.Provider value={mockAuthContextValue}>
-          <BrowserRouter>
-            <Login />
-          </BrowserRouter>
+          <MemoryRouter initialEntries={["/user/login"]}>
+            <Routes>
+              <Route path="/user/login" element={<Login />} />
+              <Route path="/user/register" element={<Register />} />
+            </Routes>
+          </MemoryRouter>
         </AuthContext.Provider>
       );
   
-      const singUpSubTitleElement = screen.getByTestId("sign-up-sub-title-element");
-      expect(singUpSubTitleElement).toBeInTheDocument();
+      const signUpButton = screen.getByTestId("sign-up-button");
+      expect(signUpButton).toBeInTheDocument();
+      fireEvent.click(signUpButton);
+  
+      const signUpTitleElement = screen.getByTestId("sign-up-title-element");
+      expect(signUpTitleElement).toBeInTheDocument();
     });
   });
