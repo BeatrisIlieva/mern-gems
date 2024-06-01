@@ -21,7 +21,7 @@ export const Register = () => {
       <div className={styles["register-container"]}>
         <div className={styles["form-container"]}>
           <h2 className={styles["title"]} data-testid="title-element">Create an Account</h2>
-          <div className={styles["sub-title"]}>
+          <div className={styles["sub-title"]} data-testid="sub-title-element">
             <h3 className={styles["sub-title-left"]}>
               Have a ReactGems account?
             </h3>

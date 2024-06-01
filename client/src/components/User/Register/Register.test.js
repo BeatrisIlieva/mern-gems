@@ -25,7 +25,7 @@ describe("Register Component", () => {
 });
 
 describe("Register Component", () => {
-  test("Should load image", async () => {
+  test("Should load title", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <BrowserRouter>
@@ -38,3 +38,18 @@ describe("Register Component", () => {
     expect(titleElement).toBeInTheDocument();
   });
 });
+
+describe("Register Component", () => {
+    test("Should load sub-title", async () => {
+      render(
+        <AuthContext.Provider value={mockAuthContextValue}>
+          <BrowserRouter>
+            <Register />
+          </BrowserRouter>
+        </AuthContext.Provider>
+      );
+  
+      const subTitleElement = screen.getByTestId("sub-title-element");
+      expect(subTitleElement).toBeInTheDocument();
+    });
+  });
