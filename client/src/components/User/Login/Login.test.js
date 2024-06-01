@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Register } from "../Register/Register"; 
+import { Register } from "../Register/Register";
 import { Login } from "./Login";
 
 const mockOnRegisterSubmit = jest.fn();
@@ -27,7 +27,37 @@ describe("Login Component", () => {
 });
 
 describe("Login Component", () => {
-    test("Should load sing in title", async () => {
+  test("Should load sing in title", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const singInTitleElement = screen.getByTestId("sign-in-title-element");
+    expect(singInTitleElement).toBeInTheDocument();
+  });
+});
+
+describe("Login Component", () => {
+  test("Should load sing in sub-title", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const singInSubTitleElement = screen.getByTestId("sign-in-sub-title-element");
+    expect(singInSubTitleElement).toBeInTheDocument();
+  });
+});
+
+describe("Login Component", () => {
+    test("Should load sing-up in title", async () => {
       render(
         <AuthContext.Provider value={mockAuthContextValue}>
           <BrowserRouter>
@@ -36,13 +66,13 @@ describe("Login Component", () => {
         </AuthContext.Provider>
       );
   
-      const singInTitleElement = screen.getByTestId("sign-in-title-element");
-      expect(singInTitleElement).toBeInTheDocument();
+      const singUpTitleElement = screen.getByTestId("sign-up-title-element");
+      expect(singUpTitleElement).toBeInTheDocument();
     });
   });
-
+  
   describe("Login Component", () => {
-    test("Should load sing in sub-title", async () => {
+    test("Should load sing up sub-title", async () => {
       render(
         <AuthContext.Provider value={mockAuthContextValue}>
           <BrowserRouter>
@@ -51,7 +81,7 @@ describe("Login Component", () => {
         </AuthContext.Provider>
       );
   
-      const singInTitleElement = screen.getByTestId("sign-in-sub-title-element");
-      expect(singInTitleElement).toBeInTheDocument();
+      const singUpSubTitleElement = screen.getByTestId("sign-up-sub-title-element");
+      expect(singUpSubTitleElement).toBeInTheDocument();
     });
   });
