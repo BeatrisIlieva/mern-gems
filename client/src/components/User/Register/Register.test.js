@@ -1,7 +1,9 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Register } from "./Register";
+import { Login } from "../Login/Login";
 
 const mockOnRegisterSubmit = jest.fn();
 
@@ -55,16 +57,42 @@ describe("Register Component", () => {
 });
 
 describe("Register Component", () => {
+  test("Should load password requirements", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const passwordRequirementsElement = screen.getByTestId(
+      "password-requirements-element"
+    );
+    expect(passwordRequirementsElement).toBeInTheDocument();
+  });
+});
+
+
+describe("Register Component", () => {
     test("Should load password requirements", async () => {
       render(
         <AuthContext.Provider value={mockAuthContextValue}>
-          <BrowserRouter>
-            <Register />
-          </BrowserRouter>
+            <MemoryRouter initialEntries={["/user/register"]}>
+            <Routes>
+              <Route path="/user/login" element={<Login />} />
+              <Route path="/user/register" element={<Register />} />
+            </Routes>
+            </MemoryRouter>
         </AuthContext.Provider>
       );
   
-      const passwordRequirementsElement = screen.getByTestId("password-requirements-element");
-      expect(passwordRequirementsElement).toBeInTheDocument();
+      const signInButton = screen.getByTestId("sign-in-button");
+      expect(signInButton).toBeInTheDocument();
+      fireEvent.click(signInButton);
+  
+      
+    const signInTitleElement = screen.getByTestId("sign-in-title-element");
+    expect(signInTitleElement).toBeInTheDocument();
     });
   });

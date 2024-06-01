@@ -26,7 +26,7 @@ export const Register = () => {
               Have a ReactGems account?
             </h3>
             <Link className={styles["link"]} to="/user/login">
-              <h3 className={styles["sub-title-right"]}>
+              <h3 className={styles["sub-title-right"]} data-testid="sign-in-button">
                 Sign in{" "}
                 <span className={styles["arrow"]}>
                   <FontAwesomeIcon icon={faAngleRight} />
