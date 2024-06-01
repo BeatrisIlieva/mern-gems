@@ -136,7 +136,6 @@ export const PersonalInformationForm = () => {
               name={FORM_KEYS.FirstName}
               id={FORM_KEYS.FirstName}
               defaultValue={userPersonalInformation[FORM_KEYS.FirstName]}
-            //   value={values[FORM_KEYS.FirstName].fieldValue}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.FirstName, e.target.value)
               }
@@ -176,7 +175,7 @@ export const PersonalInformationForm = () => {
               name={FORM_KEYS.LastName}
               id={FORM_KEYS.LastName}
               defaultValue={userPersonalInformation[FORM_KEYS.LastName]}
-            //   value={values[FORM_KEYS.LastName].fieldValue}
+              //   value={values[FORM_KEYS.LastName].fieldValue}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.LastName, e.target.value)
               }
@@ -216,7 +215,7 @@ export const PersonalInformationForm = () => {
               name={FORM_KEYS.Birthday}
               id={FORM_KEYS.Birthday}
               defaultValue={userPersonalInformation[FORM_KEYS.Birthday]}
-            //   value={values[FORM_KEYS.Birthday].fieldValue}
+              //   value={values[FORM_KEYS.Birthday].fieldValue}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.Birthday, e.target.value)
               }
