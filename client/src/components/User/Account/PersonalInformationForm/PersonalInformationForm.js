@@ -175,7 +175,6 @@ export const PersonalInformationForm = () => {
               name={FORM_KEYS.LastName}
               id={FORM_KEYS.LastName}
               defaultValue={userPersonalInformation[FORM_KEYS.LastName]}
-              
               onChange={(e) =>
                 changeHandler(FORM_KEYS.LastName, e.target.value)
               }
@@ -215,7 +214,6 @@ export const PersonalInformationForm = () => {
               name={FORM_KEYS.Birthday}
               id={FORM_KEYS.Birthday}
               defaultValue={userPersonalInformation[FORM_KEYS.Birthday]}
-              //   value={values[FORM_KEYS.Birthday].fieldValue}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.Birthday, e.target.value)
               }
