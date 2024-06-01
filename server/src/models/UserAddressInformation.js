@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { NAME_PATTERN, NAME_ERROR_MESSAGE } = require("../constants/name");
+const { PHONE_PATTERN, PHONE_ERROR_MESSAGE } = require("../constants/phone");
 const { STREET_PATTERN, STREET_ERROR_MESSAGE } = require("../constants/street");
 const {
   ZIP_CODE_PATTERN,
@@ -12,7 +13,7 @@ const userAddressInformationSchema = new mongoose.Schema({
   },
   phoneNumber: {
     type: String,
-    match: [NAME_PATTERN, NAME_ERROR_MESSAGE],
+    match: [PHONE_PATTERN, PHONE_ERROR_MESSAGE],
   },
   country: {
     type: String,

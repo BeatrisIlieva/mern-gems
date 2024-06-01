@@ -6,6 +6,8 @@ import { addressInformationServiceFactory } from "../../../../../../services/add
 import { getErrorMessage } from "../../../../../../hooks/useFormValidator";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../../../commonCSS/forms.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export const AddressInformationFormPopup = ({
   popupSubmitHandler,
@@ -113,6 +115,7 @@ export const AddressInformationFormPopup = ({
       };
       try {
         await addressInformationService.update(userId, data);
+        popupSubmitHandler();
       } catch (err) {
         console.log(err.message);
         const updatedValues = { ...values };
@@ -126,50 +129,17 @@ export const AddressInformationFormPopup = ({
     <section className={styles["popup-box"]}>
       <div className={styles["modal-dialog"]}>
         <div className={styles["modal-content"]}>
+          <div className={styles["modal-header"]}>
+            <div id={styles["xMark"]} onClick={() => popupCloseHandler()}>
+              <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} />
+            </div>
+            <h2 className={styles["title"]}>Add a New Address</h2>
+          </div>
           <form
             method="POST"
             onSubmit={submitHandler}
             className={styles["form-container"]}
           >
-            <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
-              <div
-                className={`${formStyles["field-container"]} ${
-                  values[FORM_KEYS.PhoneNumber].errorMessage !== ""
-                    ? formStyles["error"]
-                    : ""
-                }`.trim()}
-                onClick={() => clickHandler(FORM_KEYS.PhoneNumber)}
-                onBlur={() => blurHandler(FORM_KEYS.PhoneNumber)}
-              >
-                <input
-                  type="text"
-                  name={FORM_KEYS.PhoneNumber}
-                  id={FORM_KEYS.PhoneNumber}
-                  defaultValue={userAddressInformation[FORM_KEYS.PhoneNumber]}
-                  onChange={(e) =>
-                    changeHandler(FORM_KEYS.PhoneNumber, e.target.value)
-                  }
-                  onFocus={() => clickHandler(FORM_KEYS.PhoneNumber)}
-                  data-testid={`${FORM_KEYS.PhoneNumber}-input`}
-                />
-                <label
-                  htmlFor={FORM_KEYS.PhoneNumber}
-                  className={`${formStyles["label"]} ${
-                    values[FORM_KEYS.PhoneNumber].isFocused === true
-                      ? formStyles["isFocused"]
-                      : ""
-                  }`.trim()}
-                >
-                  {INITIAL_FORM_VALUES[FORM_KEYS.PhoneNumber].fieldLabel}
-                </label>
-              </div>
-              <div
-                className={formStyles["error-message"]}
-                data-testid={`${FORM_KEYS.PhoneNumber}-error`}
-              >
-                {values[FORM_KEYS.PhoneNumber].errorMessage}
-              </div>
-            </div>
             <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
               <div
                 className={`${formStyles["field-container"]} ${
@@ -248,7 +218,7 @@ export const AddressInformationFormPopup = ({
                 {values[FORM_KEYS.City].errorMessage}
               </div>
             </div>
-            <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
+            <div className={styles["field-box-full"]}>
               <div
                 className={`${formStyles["field-container"]} ${
                   values[FORM_KEYS.Street].errorMessage !== ""
@@ -266,7 +236,7 @@ export const AddressInformationFormPopup = ({
                   onChange={(e) =>
                     changeHandler(FORM_KEYS.Street, e.target.value)
                   }
-                  onFocus={() => clickHandler(FORM_KEYS.SpecialDay)}
+                  onFocus={() => clickHandler(FORM_KEYS.Street)}
                   data-testid={`${FORM_KEYS.Street}-input`}
                 />
                 <label
@@ -295,7 +265,7 @@ export const AddressInformationFormPopup = ({
                     : ""
                 }`.trim()}
                 onClick={() => clickHandler(FORM_KEYS.ZipCode)}
-                onBlur={() => blurHandler(FORM_KEYS.Street)}
+                onBlur={() => blurHandler(FORM_KEYS.ZipCode)}
               >
                 <input
                   type="text"
@@ -305,7 +275,7 @@ export const AddressInformationFormPopup = ({
                   onChange={(e) =>
                     changeHandler(FORM_KEYS.ZipCode, e.target.value)
                   }
-                  onFocus={() => clickHandler(FORM_KEYS.SpecialDay)}
+                  onFocus={() => clickHandler(FORM_KEYS.ZipCode)}
                   data-testid={`${FORM_KEYS.ZipCode}-input`}
                 />
                 <label
@@ -326,13 +296,60 @@ export const AddressInformationFormPopup = ({
                 {values[FORM_KEYS.ZipCode].errorMessage}
               </div>
             </div>
-            <button
-              className={`${formStyles["animated-button"]} ${styles["button"]}`}
-              type="submit"
-              data-testid="submit"
-            >
-              Save
-            </button>
+            <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
+              <div
+                className={`${formStyles["field-container"]} ${
+                  values[FORM_KEYS.PhoneNumber].errorMessage !== ""
+                    ? formStyles["error"]
+                    : ""
+                }`.trim()}
+                onClick={() => clickHandler(FORM_KEYS.PhoneNumber)}
+                onBlur={() => blurHandler(FORM_KEYS.PhoneNumber)}
+              >
+                <input
+                  type="text"
+                  name={FORM_KEYS.PhoneNumber}
+                  id={FORM_KEYS.PhoneNumber}
+                  defaultValue={userAddressInformation[FORM_KEYS.PhoneNumber]}
+                  onChange={(e) =>
+                    changeHandler(FORM_KEYS.PhoneNumber, e.target.value)
+                  }
+                  onFocus={() => clickHandler(FORM_KEYS.PhoneNumber)}
+                  data-testid={`${FORM_KEYS.PhoneNumber}-input`}
+                />
+                <label
+                  htmlFor={FORM_KEYS.PhoneNumber}
+                  className={`${formStyles["label"]} ${
+                    values[FORM_KEYS.PhoneNumber].isFocused === true
+                      ? formStyles["isFocused"]
+                      : ""
+                  }`.trim()}
+                >
+                  {INITIAL_FORM_VALUES[FORM_KEYS.PhoneNumber].fieldLabel}
+                </label>
+              </div>
+              <div
+                className={formStyles["error-message"]}
+                data-testid={`${FORM_KEYS.PhoneNumber}-error`}
+              >
+                {values[FORM_KEYS.PhoneNumber].errorMessage}
+              </div>
+            </div>
+            <div className={styles["button-container"]}>
+              <button
+                className={`${formStyles["animated-button"]} ${styles["button"]}`}
+                type="submit"
+                data-testid="submit"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => popupCloseHandler()}
+                className={formStyles["dismiss-button"]}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>

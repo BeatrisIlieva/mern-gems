@@ -49,17 +49,17 @@ const STREET_LENGTH = {
 };
 
 export const STREET_PATTERN = new RegExp(
-  `^[a-zA-z0-9]{${STREET_LENGTH.MIN},${STREET_LENGTH.MAX}}$`
+  `^[a-zA-z0-9 ]{${STREET_LENGTH.MIN},${STREET_LENGTH.MAX}}$`
 );
 const STREET_ERROR_MESSAGE = `* This field requires ${STREET_LENGTH.MIN}-${STREET_LENGTH.MAX} characters`;
 
 const ZIP_CODE_LENGTH = {
-  MIN: 5,
+  MIN: 4,
   MAX: 15,
 };
 
 export const ZIP_CODE_PATTERN = new RegExp(
-  `^[\w\s\d-]{${ZIP_CODE_LENGTH.MIN},${ZIP_CODE_LENGTH.MAX}}$`
+  `^[A-Aa-z0-9 ]{${ZIP_CODE_LENGTH.MIN},${ZIP_CODE_LENGTH.MAX}}$`
 );
 const ZIP_CODE_ERROR_MESSAGE = `* This field requires ${ZIP_CODE_LENGTH.MIN}-${ZIP_CODE_LENGTH.MAX} characters`;
 
@@ -74,7 +74,9 @@ export const ERROR_MESSAGES = {
   lastName: NAME_ERROR_MESSAGE,
   birthday: DATE_ERROR_MESSAGE,
   specialDay: DATE_ERROR_MESSAGE,
-  // PHONE_ERROR_MESSAGE: PHONE_ERROR_MESSAGE,
-  // STREET_ERROR_MESSAGE: STREET_ERROR_MESSAGE,
-  // ZIP_CODE_ERROR_MESSAGE: ZIP_CODE_ERROR_MESSAGE,
+  phoneNumber: PHONE_ERROR_MESSAGE,
+  street: STREET_ERROR_MESSAGE,
+  zipCode: ZIP_CODE_ERROR_MESSAGE,
+  city: NAME_ERROR_MESSAGE,
+  country: NAME_ERROR_MESSAGE,
 };

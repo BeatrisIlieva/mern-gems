@@ -10,7 +10,6 @@
   border-bottom: 0.1px solid var(--dark-pink);
   position: relative;
   padding: 4px;
-  font-size: 14px;
 }
 
 .error-message {
@@ -56,7 +55,7 @@
   box-shadow: 0 0 0 0.3px var(--dark-pink);
   outline: none;
   letter-spacing: 1.2px;
-  font-family: tisaSansProBold;
+  font-family: var(----bold-font-family);
 }
 
 .animated-button::before {
@@ -74,4 +73,19 @@
   width: 100%;
   color: var(--dark-pink);
   left: 0;
+}
+
+.dismiss-button {
+  font-size: 14px;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: var(--white);
+  outline: none;
+  font-family: var(----bold-font-family);
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6px;
 }
