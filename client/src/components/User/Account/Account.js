@@ -4,12 +4,24 @@ import { useService } from "../../../hooks/useService";
 import { personalInformationServiceFactory } from "../../../services/personalInformationService";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
+const SUB_MENU_OPTIONS = {
+  AccountDetails: "accountDetails",
+  OrderHistory: "orderHistory",
+};
+
 export const Account = () => {
   const { userId } = useAuthContext();
   const personalInformationService = useService(
     personalInformationServiceFactory
   );
   const [userPersonalInformation, setUserPersonalInformation] = useState([]);
+  const [selectedSubMenu, setSelectedSubMenu] = useState(
+    SUB_MENU_OPTIONS.AccountDetails
+  );
+
+  const switchSubmenuHandler = (option) => {
+    setSelectedSubMenu(option);
+  };
 
   useEffect(() => {
     personalInformationService
@@ -25,7 +37,9 @@ export const Account = () => {
   return (
     <section className={styles["account-box"]}>
       <div className={styles["top-container"]}>
-        <h2 className={styles["title"]}>Hi, {userPersonalInformation.firstName}</h2>
+        <h2 className={styles["title"]}>
+          Hi, {userPersonalInformation.firstName}
+        </h2>
         <p className={styles["paragraph"]}>
           You can access all your previous orders, set default shipping
           addresses for faster checkout as well as save items to your wishlist
@@ -33,8 +47,26 @@ export const Account = () => {
         </p>
       </div>
       <div className={styles["sub-nav"]}>
-        <h3>Account Details</h3>
-        <h3>Order History</h3>
+        <h3
+          className={`${styles["sub-nav-title"]} ${
+            selectedSubMenu === SUB_MENU_OPTIONS.AccountDetails
+              ? styles["selected"]
+              : ""
+          }`.trim()}
+          onClick={() => switchSubmenuHandler(SUB_MENU_OPTIONS.AccountDetails)}
+        >
+          Account Details
+        </h3>
+        <h3
+          className={`${styles["sub-nav-title"]} ${
+            selectedSubMenu === SUB_MENU_OPTIONS.OrderHistory
+              ? styles["selected"]
+              : ""
+          }`.trim()}
+          onClick={() => switchSubmenuHandler(SUB_MENU_OPTIONS.OrderHistory)}
+        >
+          Order History
+        </h3>
       </div>
     </section>
   );

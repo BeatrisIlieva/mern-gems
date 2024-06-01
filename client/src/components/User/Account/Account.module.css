@@ -18,8 +18,37 @@
 
 .sub-nav {
   display: flex;
-  gap: 20px;
+  gap: 40px;
   align-items: center;
   justify-content: center;
   border-bottom: 0.1px solid var(--border);
+}
+
+.sub-nav-title {
+  color: var(--middle-gray);
+  font-family: var(--main-font-family);
+  font-size: var(--medium-font-size);
+  position: relative;
+}
+
+.selected {
+  font-family: var(--bold-font-family);
+  color: var(--gray);
+}
+
+.sub-nav-title::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #000;
+  transition: width var(--animation-duration, 0.3s) ease,
+    left var(--animation-duration, 0.3s) ease;
+}
+
+.sub-nav-title.selected::before {
+  width: 100%;
+  left: 0;
 }
