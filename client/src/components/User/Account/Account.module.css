@@ -7,7 +7,7 @@
 
 .title {
   font-family: var(--bold-italic-font-family);
-  font-size: var(--large-font-size);
+  font-size: var(--extra-large-font-size);
 }
 
 .paragraph {
@@ -43,7 +43,7 @@
   height: 2px;
   bottom: 0;
   left: 50%;
-  background-color: #000;
+  background-color: var(--gray);
   transition: width var(--animation-duration, 0.3s) ease,
     left var(--animation-duration, 0.3s) ease;
 }
