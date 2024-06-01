@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useAuthContext } from "../../../../contexts/AuthContext";
-import { useService } from "../../../../hooks/useService";
-import { personalInformationServiceFactory } from "../../../../services/personalInformationService";
-import { getErrorMessage } from "../../../../hooks/useFormValidator";
+import { useAuthContext } from "../../../../../contexts/AuthContext";
+import { useService } from "../../../../../hooks/useService";
+import { personalInformationServiceFactory } from "../../../../../services/personalInformationService";
+import { getErrorMessage } from "../../../../../hooks/useFormValidator";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
-import formStyles from "../../../../commonCSS/forms.module.css";
+import formStyles from "../../../../../commonCSS/forms.module.css";
 import styles from "./PersonalInformationForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faQuestion } from "@fortawesome/free-solid-svg-icons";
@@ -282,7 +282,7 @@ export const PersonalInformationForm = () => {
           type="submit"
           data-testid="submit"
         >
-          Create an Account
+          Save
         </button>
       </form>
     </section>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useService } from "../../../hooks/useService";
 import { personalInformationServiceFactory } from "../../../services/personalInformationService";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { PersonalInformationForm } from "./PersonalInformationForm/PersonalInformationForm";
+import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
 
 const SUB_MENU_OPTIONS = {
   AccountDetails: "accountDetails",
@@ -83,13 +83,9 @@ export const Account = () => {
         </h3>
       </div>
       <div className={styles["bottom-container"]}>
-        <div className={styles["left-container"]}>
-          <h2 className={styles["form-title"]}>Personal Information</h2>
-          <PersonalInformationForm />
-        </div>
-        <div className={styles["right-container"]}>
-        <h2 className={styles["form-title"]}>Address Book</h2>
-        </div>
+        {selectedSubMenu === SUB_MENU_OPTIONS.AccountDetails && (
+          <PersonalInformation />
+        )}
       </div>
     </section>
   );

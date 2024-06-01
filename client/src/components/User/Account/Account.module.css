@@ -54,28 +54,5 @@
   left: 0;
 }
 
-.bottom-container {
-  display: flex;
-  gap: 40px;
-}
 
-.left-container {
-  width: 70%;
-  box-shadow: 0 0 0 0.3px var(--dark-pink);
-}
 
-.right-container {
-  width: 30%;
-  box-shadow: 0 0 0 0.3px var(--dark-pink);
-  text-align: center;
-}
-
-.left-container, .right-container {
-    padding: 40px;
-}
-
-.form-title {
-    font-family: var(--bold-italic-font-family);
-    font-size: var(--large-font-size);
-    margin: 0px 0px 40px 0px;
-}

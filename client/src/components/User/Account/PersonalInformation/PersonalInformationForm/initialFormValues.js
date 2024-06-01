@@ -1,4 +1,4 @@
-import { DATE_PATTERN, NAME_PATTERN} from "../../../../constants/forms";
+import { DATE_PATTERN, NAME_PATTERN} from "../../../../../constants/forms";
 
 
 const FORM_KEYS = {
