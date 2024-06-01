@@ -20,6 +20,19 @@ export const AddressInformationFormPopup = ({
   const [userAddressInformation, setUserAddressInformation] = useState([]);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        popupCloseHandler();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [popupCloseHandler]);
+
   const updateForm = () => {
     Object.keys(values).forEach((fieldKey) => {
       const input = document.getElementById(fieldKey);
