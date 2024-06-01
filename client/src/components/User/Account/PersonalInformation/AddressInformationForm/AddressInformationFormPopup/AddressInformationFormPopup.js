@@ -15,7 +15,7 @@ export const AddressInformationFormPopup = ({
   const addressInformationService = useService(
     addressInformationServiceFactory
   );
-  const [userPersonalInformation, setUserPersonalInformation] = useState([]);
+  const [userAddressInformation, setUserAddressInformation] = useState([]);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
   const updateForm = () => {
@@ -36,16 +36,16 @@ export const AddressInformationFormPopup = ({
   };
 
   useEffect(() => {
-    personalInformationService
+    addressInformationService
       .find(userId)
       .then((data) => {
-        setUserPersonalInformation(data);
+        setUserAddressInformation(data);
         updateForm();
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [userPersonalInformation]);
+  }, [userAddressInformation]);
 
   const clickHandler = (fieldKey) => {
     setValues((prevValues) => ({
@@ -98,14 +98,21 @@ export const AddressInformationFormPopup = ({
 
       return;
     } else {
-      const firstName = values.firstName.fieldValue;
-      const lastName = values.lastName.fieldValue;
-      const birthday = values.birthday.fieldValue;
-      const specialDay = values.specialDay.fieldValue;
+      const phoneNumber = values.phoneNumber.fieldValue;
+      const country = values.country.fieldValue;
+      const city = values.city.fieldValue;
+      const street = values.street.fieldValue;
+      const zipCode = values.zipCode.fieldValue;
 
-      const data = { firstName, lastName, birthday, specialDay };
+      const data = {
+        phoneNumber,
+        country,
+        city,
+        street,
+        zipCode,
+      };
       try {
-        await personalInformationService.update(userId, data);
+        await addressInformationService.update(userId, data);
       } catch (err) {
         console.log(err.message);
         const updatedValues = { ...values };
