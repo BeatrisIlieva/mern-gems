@@ -14,10 +14,16 @@
   padding: 40px;
 }
 
-.form-title {
+.form-title,
+.form-title-address {
   font-family: var(--bold-italic-font-family);
   font-size: var(--large-font-size);
   margin: 0px 0px 40px 0px;
+}
+
+.form-title-address {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
 }
 
 .personal-information-box {

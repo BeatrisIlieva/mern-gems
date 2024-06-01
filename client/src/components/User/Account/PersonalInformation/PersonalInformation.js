@@ -10,7 +10,7 @@ export const PersonalInformation = () => {
         <PersonalInformationForm />
       </div>
       <div className={styles["right-container"]}>
-        <h2 className={styles["form-title"]}>Address Book</h2>
+        <h2 className={styles["form-title-address"]}>Address Book</h2>
         <AddressInformationForm />
       </div>
     </section>

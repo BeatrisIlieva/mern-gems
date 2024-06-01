@@ -6,8 +6,7 @@ import { getErrorMessage } from "../../../../../hooks/useFormValidator";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../../commonCSS/forms.module.css";
 import styles from "./PersonalInformationForm.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+
 
 export const PersonalInformationForm = () => {
   const { userId } = useAuthContext();
