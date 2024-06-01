@@ -7,7 +7,7 @@ import { useAuthContext } from "../../../contexts/AuthContext";
 const SUB_MENU_OPTIONS = {
   AccountDetails: "accountDetails",
   OrderHistory: "orderHistory",
-  LoginPreferences: "loginPreferences"
+  LoginPreferences: "loginPreferences",
 };
 
 export const Account = () => {
@@ -48,13 +48,15 @@ export const Account = () => {
         </p>
       </div>
       <div className={styles["sub-nav"]}>
-      <h3
+        <h3
           className={`${styles["sub-nav-title"]} ${
             selectedSubMenu === SUB_MENU_OPTIONS.LoginPreferences
               ? styles["selected"]
               : ""
           }`.trim()}
-          onClick={() => switchSubmenuHandler(SUB_MENU_OPTIONS.LoginPreferences)}
+          onClick={() =>
+            switchSubmenuHandler(SUB_MENU_OPTIONS.LoginPreferences)
+          }
         >
           Login Preferences
         </h3>
@@ -78,6 +80,14 @@ export const Account = () => {
         >
           Order History
         </h3>
+      </div>
+      <div className={styles["bottom-container"]}>
+        <div className={styles["left-container"]}>
+            <h1>here</h1>
+        </div>
+        <div className={styles["right-container"]}>
+        <h1>here</h1>
+        </div>
       </div>
     </section>
   );
