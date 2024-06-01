@@ -1,7 +1,7 @@
 import styles from "./AddressInformationFormPopup.module.css";
 import { useState, useEffect } from "react";
-import { useAuthContext } from "../../../../../contexts/AuthContext";
-import { useService } from "../../../../../hooks/useService";
+import { useAuthContext } from "../../../../../../contexts/AuthContext";
+import { useService } from "../../../../../../hooks/useService";
 import { addressInformationServiceFactory } from "../../../../../../services/addressInformationService";
 import { getErrorMessage } from "../../../../../../hooks/useFormValidator";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
@@ -134,157 +134,196 @@ export const AddressInformationFormPopup = ({
             <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
               <div
                 className={`${formStyles["field-container"]} ${
-                  values[FORM_KEYS.FirstName].errorMessage !== ""
+                  values[FORM_KEYS.PhoneNumber].errorMessage !== ""
                     ? formStyles["error"]
                     : ""
                 }`.trim()}
-                onClick={() => clickHandler(FORM_KEYS.FirstName)}
-                onBlur={() => blurHandler(FORM_KEYS.FirstName)}
+                onClick={() => clickHandler(FORM_KEYS.PhoneNumber)}
+                onBlur={() => blurHandler(FORM_KEYS.PhoneNumber)}
               >
                 <input
                   type="text"
-                  name={FORM_KEYS.FirstName}
-                  id={FORM_KEYS.FirstName}
-                  defaultValue={userPersonalInformation[FORM_KEYS.FirstName]}
+                  name={FORM_KEYS.PhoneNumber}
+                  id={FORM_KEYS.PhoneNumber}
+                  defaultValue={userAddressInformation[FORM_KEYS.PhoneNumber]}
                   onChange={(e) =>
-                    changeHandler(FORM_KEYS.FirstName, e.target.value)
+                    changeHandler(FORM_KEYS.PhoneNumber, e.target.value)
                   }
-                  onFocus={() => clickHandler(FORM_KEYS.FirstName)}
-                  data-testid={`${FORM_KEYS.FirstName}-input`}
+                  onFocus={() => clickHandler(FORM_KEYS.PhoneNumber)}
+                  data-testid={`${FORM_KEYS.PhoneNumber}-input`}
                 />
                 <label
-                  htmlFor={FORM_KEYS.FirstName}
+                  htmlFor={FORM_KEYS.PhoneNumber}
                   className={`${formStyles["label"]} ${
-                    values[FORM_KEYS.FirstName].isFocused === true
+                    values[FORM_KEYS.PhoneNumber].isFocused === true
                       ? formStyles["isFocused"]
                       : ""
                   }`.trim()}
                 >
-                  {INITIAL_FORM_VALUES[FORM_KEYS.FirstName].fieldLabel}
+                  {INITIAL_FORM_VALUES[FORM_KEYS.PhoneNumber].fieldLabel}
                 </label>
               </div>
               <div
                 className={formStyles["error-message"]}
-                data-testid={`${FORM_KEYS.FirstName}-error`}
+                data-testid={`${FORM_KEYS.PhoneNumber}-error`}
               >
-                {values[FORM_KEYS.FirstName].errorMessage}
+                {values[FORM_KEYS.PhoneNumber].errorMessage}
               </div>
             </div>
             <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
               <div
                 className={`${formStyles["field-container"]} ${
-                  values[FORM_KEYS.LastName].errorMessage !== ""
+                  values[FORM_KEYS.Country].errorMessage !== ""
                     ? formStyles["error"]
                     : ""
                 }`.trim()}
-                onClick={() => clickHandler(FORM_KEYS.LastName)}
-                onBlur={() => blurHandler(FORM_KEYS.LastName)}
+                onClick={() => clickHandler(FORM_KEYS.Country)}
+                onBlur={() => blurHandler(FORM_KEYS.Country)}
               >
                 <input
                   type="text"
-                  name={FORM_KEYS.LastName}
-                  id={FORM_KEYS.LastName}
-                  defaultValue={userPersonalInformation[FORM_KEYS.LastName]}
+                  name={FORM_KEYS.Country}
+                  id={FORM_KEYS.Country}
+                  defaultValue={userAddressInformation[FORM_KEYS.Country]}
                   onChange={(e) =>
-                    changeHandler(FORM_KEYS.LastName, e.target.value)
+                    changeHandler(FORM_KEYS.Country, e.target.value)
                   }
-                  onFocus={() => clickHandler(FORM_KEYS.LastName)}
-                  data-testid={`${FORM_KEYS.LastName}-input`}
+                  onFocus={() => clickHandler(FORM_KEYS.Country)}
+                  data-testid={`${FORM_KEYS.Country}-input`}
                 />
                 <label
-                  htmlFor={FORM_KEYS.LastName}
+                  htmlFor={FORM_KEYS.Country}
                   className={`${formStyles["label"]} ${
-                    values[FORM_KEYS.LastName].isFocused === true
+                    values[FORM_KEYS.Country].isFocused === true
                       ? formStyles["isFocused"]
                       : ""
                   }`.trim()}
                 >
-                  {INITIAL_FORM_VALUES[FORM_KEYS.LastName].fieldLabel}
+                  {INITIAL_FORM_VALUES[FORM_KEYS.Country].fieldLabel}
                 </label>
               </div>
               <div
                 className={formStyles["error-message"]}
-                data-testid={`${FORM_KEYS.LastName}-error`}
+                data-testid={`${FORM_KEYS.Country}-error`}
               >
-                {values[FORM_KEYS.LastName].errorMessage}
+                {values[FORM_KEYS.Country].errorMessage}
               </div>
             </div>
             <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
               <div
                 className={`${formStyles["field-container"]} ${
-                  values[FORM_KEYS.Birthday].errorMessage !== ""
+                  values[FORM_KEYS.City].errorMessage !== ""
                     ? formStyles["error"]
                     : ""
                 }`.trim()}
-                onClick={() => clickHandler(FORM_KEYS.Birthday)}
-                onBlur={() => blurHandler(FORM_KEYS.Birthday)}
+                onClick={() => clickHandler(FORM_KEYS.City)}
+                onBlur={() => blurHandler(FORM_KEYS.City)}
               >
                 <input
                   type="text"
-                  name={FORM_KEYS.Birthday}
-                  id={FORM_KEYS.Birthday}
-                  defaultValue={userPersonalInformation[FORM_KEYS.Birthday]}
+                  name={FORM_KEYS.City}
+                  id={FORM_KEYS.City}
+                  defaultValue={userAddressInformation[FORM_KEYS.City]}
                   onChange={(e) =>
-                    changeHandler(FORM_KEYS.Birthday, e.target.value)
+                    changeHandler(FORM_KEYS.City, e.target.value)
                   }
-                  onFocus={() => clickHandler(FORM_KEYS.Birthday)}
-                  data-testid={`${FORM_KEYS.Birthday}-input`}
+                  onFocus={() => clickHandler(FORM_KEYS.City)}
+                  data-testid={`${FORM_KEYS.City}-input`}
                 />
                 <label
-                  htmlFor={FORM_KEYS.Birthday}
+                  htmlFor={FORM_KEYS.City}
                   className={`${formStyles["label"]} ${
-                    values[FORM_KEYS.Birthday].isFocused === true
+                    values[FORM_KEYS.City].isFocused === true
                       ? formStyles["isFocused"]
                       : ""
                   }`.trim()}
                 >
-                  {INITIAL_FORM_VALUES[FORM_KEYS.Birthday].fieldLabel}
+                  {INITIAL_FORM_VALUES[FORM_KEYS.City].fieldLabel}
                 </label>
               </div>
               <div
                 className={formStyles["error-message"]}
-                data-testid={`${FORM_KEYS.Birthday}-error`}
+                data-testid={`${FORM_KEYS.City}-error`}
               >
-                {values[FORM_KEYS.Birthday].errorMessage}
+                {values[FORM_KEYS.City].errorMessage}
               </div>
             </div>
             <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
               <div
                 className={`${formStyles["field-container"]} ${
-                  values[FORM_KEYS.SpecialDay].errorMessage !== ""
+                  values[FORM_KEYS.Street].errorMessage !== ""
                     ? formStyles["error"]
                     : ""
                 }`.trim()}
-                onClick={() => clickHandler(FORM_KEYS.SpecialDay)}
-                onBlur={() => blurHandler(FORM_KEYS.SpecialDay)}
+                onClick={() => clickHandler(FORM_KEYS.Street)}
+                onBlur={() => blurHandler(FORM_KEYS.Street)}
               >
                 <input
                   type="text"
-                  name={FORM_KEYS.SpecialDay}
-                  id={FORM_KEYS.SpecialDay}
-                  defaultValue={userPersonalInformation[FORM_KEYS.SpecialDay]}
+                  name={FORM_KEYS.Street}
+                  id={FORM_KEYS.Street}
+                  defaultValue={userAddressInformation[FORM_KEYS.Street]}
                   onChange={(e) =>
-                    changeHandler(FORM_KEYS.SpecialDay, e.target.value)
+                    changeHandler(FORM_KEYS.Street, e.target.value)
                   }
                   onFocus={() => clickHandler(FORM_KEYS.SpecialDay)}
-                  data-testid={`${FORM_KEYS.SpecialDay}-input`}
+                  data-testid={`${FORM_KEYS.Street}-input`}
                 />
                 <label
-                  htmlFor={FORM_KEYS.SpecialDay}
+                  htmlFor={FORM_KEYS.Street}
                   className={`${formStyles["label"]} ${
-                    values[FORM_KEYS.SpecialDay].isFocused === true
+                    values[FORM_KEYS.Street].isFocused === true
                       ? formStyles["isFocused"]
                       : ""
                   }`.trim()}
                 >
-                  {INITIAL_FORM_VALUES[FORM_KEYS.SpecialDay].fieldLabel}
+                  {INITIAL_FORM_VALUES[FORM_KEYS.Street].fieldLabel}
                 </label>
               </div>
               <div
                 className={formStyles["error-message"]}
-                data-testid={`${FORM_KEYS.SpecialDay}-error`}
+                data-testid={`${FORM_KEYS.Street}-error`}
               >
-                {values[FORM_KEYS.SpecialDay].errorMessage}
+                {values[FORM_KEYS.Street].errorMessage}
+              </div>
+            </div>
+            <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
+              <div
+                className={`${formStyles["field-container"]} ${
+                  values[FORM_KEYS.ZipCode].errorMessage !== ""
+                    ? formStyles["error"]
+                    : ""
+                }`.trim()}
+                onClick={() => clickHandler(FORM_KEYS.ZipCode)}
+                onBlur={() => blurHandler(FORM_KEYS.Street)}
+              >
+                <input
+                  type="text"
+                  name={FORM_KEYS.ZipCode}
+                  id={FORM_KEYS.ZipCode}
+                  defaultValue={userAddressInformation[FORM_KEYS.ZipCode]}
+                  onChange={(e) =>
+                    changeHandler(FORM_KEYS.ZipCode, e.target.value)
+                  }
+                  onFocus={() => clickHandler(FORM_KEYS.SpecialDay)}
+                  data-testid={`${FORM_KEYS.ZipCode}-input`}
+                />
+                <label
+                  htmlFor={FORM_KEYS.ZipCode}
+                  className={`${formStyles["label"]} ${
+                    values[FORM_KEYS.ZipCode].isFocused === true
+                      ? formStyles["isFocused"]
+                      : ""
+                  }`.trim()}
+                >
+                  {INITIAL_FORM_VALUES[FORM_KEYS.ZipCode].fieldLabel}
+                </label>
+              </div>
+              <div
+                className={formStyles["error-message"]}
+                data-testid={`${FORM_KEYS.ZipCode}-error`}
+              >
+                {values[FORM_KEYS.ZipCode].errorMessage}
               </div>
             </div>
             <button

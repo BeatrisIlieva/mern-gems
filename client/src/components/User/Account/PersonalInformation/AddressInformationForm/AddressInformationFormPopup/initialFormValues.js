@@ -2,6 +2,7 @@ import {
   PHONE_PATTERN,
   ZIP_CODE_PATTERN,
   NAME_PATTERN,
+  STREET_PATTERN,
 } from "../../../../../../constants/forms";
 
 const FORM_KEYS = {
