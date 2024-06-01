@@ -38,24 +38,25 @@ export const PersonalInformationForm = () => {
     personalInformationService
       .find(userId)
       .then((data) => {
-        const updatedValues = { ...values };
+        // const updatedValues = { ...values };
               
-        for (let fieldKey in FORM_KEYS) {
+        // for (let fieldKey in FORM_KEYS) {
             
-          updatedValues[FORM_KEYS[fieldKey]] = {
-            ...updatedValues[FORM_KEYS[fieldKey]],
-            fieldValue: data[FORM_KEYS[fieldKey]],
-            isFocused: data[FORM_KEYS[fieldKey]] !== "",
-          };
-        }
-        setValues(updatedValues);
+        //   updatedValues[FORM_KEYS[fieldKey]] = {
+        //     ...updatedValues[FORM_KEYS[fieldKey]],
+        //     fieldValue: data[FORM_KEYS[fieldKey]],
+        //     isFocused: data[FORM_KEYS[fieldKey]] !== "",
+        //   };
+        // }
+        // setValues(updatedValues);
         
         setUserPersonalInformation(data);
+        updateForm();
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
+  }, [userPersonalInformation]);
 
   const clickHandler = (fieldKey) => {
     setValues((prevValues) => ({
@@ -146,7 +147,8 @@ export const PersonalInformationForm = () => {
               type="text"
               name={FORM_KEYS.FirstName}
               id={FORM_KEYS.FirstName}
-              value={values[FORM_KEYS.FirstName].fieldValue}
+              defaultValue={userPersonalInformation[FORM_KEYS.FirstName]}
+            //   value={values[FORM_KEYS.FirstName].fieldValue}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.FirstName, e.target.value)
               }
@@ -185,7 +187,8 @@ export const PersonalInformationForm = () => {
               type="text"
               name={FORM_KEYS.LastName}
               id={FORM_KEYS.LastName}
-              value={values[FORM_KEYS.LastName].fieldValue}
+              defaultValue={userPersonalInformation[FORM_KEYS.LastName]}
+            //   value={values[FORM_KEYS.LastName].fieldValue}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.LastName, e.target.value)
               }
@@ -224,7 +227,8 @@ export const PersonalInformationForm = () => {
               type="text"
               name={FORM_KEYS.Birthday}
               id={FORM_KEYS.Birthday}
-              value={values[FORM_KEYS.Birthday].fieldValue}
+              defaultValue={userPersonalInformation[FORM_KEYS.Birthday]}
+            //   value={values[FORM_KEYS.Birthday].fieldValue}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.Birthday, e.target.value)
               }
@@ -263,7 +267,7 @@ export const PersonalInformationForm = () => {
               type="text"
               name={FORM_KEYS.SpecialDay}
               id={FORM_KEYS.SpecialDay}
-              value={values[FORM_KEYS.SpecialDay].fieldValue}
+              defaultValue={userPersonalInformation[FORM_KEYS.SpecialDay]}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.SpecialDay, e.target.value)
               }
