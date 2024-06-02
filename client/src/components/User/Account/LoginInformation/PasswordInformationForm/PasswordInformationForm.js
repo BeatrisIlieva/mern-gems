@@ -7,7 +7,7 @@ import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../../commonCSS/forms.module.css";
 import styles from "./PasswordInformationForm.module.css";
 
-export const EmailInformationForm = () => {
+export const PasswordInformationForm = () => {
   const { userId } = useAuthContext();
   const loginInformationService = useService(loginInformationServiceFactory);
   const [userPasswordInformation, setUserPasswordInformation] = useState([]);
@@ -119,43 +119,6 @@ export const EmailInformationForm = () => {
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
           <div
             className={`${formStyles["field-container"]} ${
-              values[FORM_KEYS.Email].errorMessage !== ""
-                ? formStyles["error"]
-                : ""
-            }`.trim()}
-            onClick={() => clickHandler(FORM_KEYS.Email)}
-            onBlur={() => blurHandler(FORM_KEYS.Email)}
-          >
-            <input
-              type="text"
-              name={FORM_KEYS.Email}
-              id={FORM_KEYS.Email}
-              defaultValue={userEmailInformation[FORM_KEYS.Email]}
-              onChange={(e) => changeHandler(FORM_KEYS.Email, e.target.value)}
-              onFocus={() => clickHandler(FORM_KEYS.Email)}
-              data-testid={`${FORM_KEYS.Email}-input`}
-            />
-            <label
-              htmlFor={FORM_KEYS.Email}
-              className={`${formStyles["label"]} ${
-                values[FORM_KEYS.Email].isFocused === true
-                  ? formStyles["isFocused"]
-                  : ""
-              }`.trim()}
-            >
-              {INITIAL_FORM_VALUES[FORM_KEYS.Email].fieldLabel}
-            </label>
-          </div>
-          <div
-            className={formStyles["error-message"]}
-            data-testid={`${FORM_KEYS.Email}-error`}
-          >
-            {values[FORM_KEYS.Email].errorMessage}
-          </div>
-        </div>
-        <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
-          <div
-            className={`${formStyles["field-container"]} ${
               values[FORM_KEYS.Password].errorMessage !== ""
                 ? formStyles["error"]
                 : ""
@@ -167,13 +130,12 @@ export const EmailInformationForm = () => {
               type="password"
               name={FORM_KEYS.Password}
               id={FORM_KEYS.Password}
-              defaultValue={userEmailInformation[FORM_KEYS.Password]}
+              defaultValue={userPasswordInformation[FORM_KEYS.Password]}
               onChange={(e) =>
                 changeHandler(FORM_KEYS.Password, e.target.value)
               }
               onFocus={() => clickHandler(FORM_KEYS.Password)}
               data-testid={`${FORM_KEYS.Password}-input`}
-              className={styles["password"]}
             />
             <label
               htmlFor={FORM_KEYS.Password}
@@ -191,6 +153,88 @@ export const EmailInformationForm = () => {
             data-testid={`${FORM_KEYS.Password}-error`}
           >
             {values[FORM_KEYS.Password].errorMessage}
+          </div>
+        </div>
+        <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
+          <div
+            className={`${formStyles["field-container"]} ${
+              values[FORM_KEYS.NewPassword].errorMessage !== ""
+                ? formStyles["error"]
+                : ""
+            }`.trim()}
+            onClick={() => clickHandler(FORM_KEYS.NewPassword)}
+            onBlur={() => blurHandler(FORM_KEYS.NewPassword)}
+          >
+            <input
+              type="password"
+              name={FORM_KEYS.NewPassword}
+              id={FORM_KEYS.NewPassword}
+              defaultValue={userPasswordInformation[FORM_KEYS.NewPassword]}
+              onChange={(e) =>
+                changeHandler(FORM_KEYS.NewPassword, e.target.value)
+              }
+              onFocus={() => clickHandler(FORM_KEYS.NewPassword)}
+              data-testid={`${FORM_KEYS.NewPassword}-input`}
+              className={styles["password"]}
+            />
+            <label
+              htmlFor={FORM_KEYS.NewPassword}
+              className={`${formStyles["label"]} ${
+                values[FORM_KEYS.NewPassword].isFocused === true
+                  ? formStyles["isFocused"]
+                  : ""
+              }`.trim()}
+            >
+              {INITIAL_FORM_VALUES[FORM_KEYS.NewPassword].fieldLabel}
+            </label>
+          </div>
+          <div
+            className={formStyles["error-message"]}
+            data-testid={`${FORM_KEYS.NewPassword}-error`}
+          >
+            {values[FORM_KEYS.NewPassword].errorMessage}
+          </div>
+        </div>
+        <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
+          <div
+            className={`${formStyles["field-container"]} ${
+              values[FORM_KEYS.RetypeNewPassword].errorMessage !== ""
+                ? formStyles["error"]
+                : ""
+            }`.trim()}
+            onClick={() => clickHandler(FORM_KEYS.RetypeNewPassword)}
+            onBlur={() => blurHandler(FORM_KEYS.RetypeNewPassword)}
+          >
+            <input
+              type="password"
+              name={FORM_KEYS.RetypeNewPassword}
+              id={FORM_KEYS.RetypeNewPassword}
+              defaultValue={
+                userPasswordInformation[FORM_KEYS.RetypeNewPassword]
+              }
+              onChange={(e) =>
+                changeHandler(FORM_KEYS.RetypeNewPassword, e.target.value)
+              }
+              onFocus={() => clickHandler(FORM_KEYS.RetypeNewPassword)}
+              data-testid={`${FORM_KEYS.RetypeNewPassword}-input`}
+              className={styles["password"]}
+            />
+            <label
+              htmlFor={FORM_KEYS.RetypeNewPassword}
+              className={`${formStyles["label"]} ${
+                values[FORM_KEYS.RetypeNewPassword].isFocused === true
+                  ? formStyles["isFocused"]
+                  : ""
+              }`.trim()}
+            >
+              {INITIAL_FORM_VALUES[FORM_KEYS.RetypeNewPassword].fieldLabel}
+            </label>
+          </div>
+          <div
+            className={formStyles["error-message"]}
+            data-testid={`${FORM_KEYS.RetypeNewPassword}-error`}
+          >
+            {values[FORM_KEYS.RetypeNewPassword].errorMessage}
           </div>
         </div>
         <button
