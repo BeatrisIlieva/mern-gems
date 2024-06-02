@@ -75,7 +75,9 @@ exports.updatePassword = async (userId, data) => {
     throw new Error(INVALID_PASSWORD_ERROR_MESSAGE);
   } else {
     const hash = await bcrypt.hash(data.newPassword, DEFAULT_SALT);
-    const user = await User.findByIdAndUpdate(userId, { password: hash });
+    const user = await UserLoginInformation.findByIdAndUpdate(userId, {
+      password: hash,
+    });
     return user;
   }
 };

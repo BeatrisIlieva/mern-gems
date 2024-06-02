@@ -65,7 +65,7 @@ router.put("/update-email/:userId", async (req, res) => {
   const userId = req.params.userId;
 
   const data = { ...req.body };
-  console.log(data)
+
   try {
     const result = await userLoginInformationManager.updateEmail(userId, data);
 
@@ -79,12 +79,15 @@ router.put("/update-email/:userId", async (req, res) => {
 });
 
 router.put("/update-password/:userId", async (req, res) => {
+  const userId = req.params.userId;
+
+  const data = { ...req.body };
+
   try {
-    const { password } = { ...req.body };
-    const result = await userLoginInformationManager.updatePassword({
-      email,
-      password,
-    });
+    const result = await userLoginInformationManager.updatePassword(
+      userId,
+      data
+    );
 
     res.status(200).json(result);
   } catch (err) {
