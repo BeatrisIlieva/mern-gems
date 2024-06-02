@@ -1,9 +1,13 @@
 const UserLoginInformation = require("../models/UserLoginInformation");
+const { EMAIL_PATTERN, EMAIL_ERROR_MESSAGE } = require("../constants/email");
 const { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } = require("../constants/email");
 const { INVALID_CREDENTIALS_ERROR_MESSAGE } = require("../constants/email");
 const jwt = require("../lib/jwt");
 const bcrypt = require("bcrypt");
-const { DEFAULT_SALT } = require("../constants/password");
+const {
+  DEFAULT_SALT,
+  INVALID_PASSWORD_ERROR_MESSAGE,
+} = require("../constants/password");
 const { SECRET } = require("../config/config");
 
 exports.register = async (data) => {
@@ -36,6 +40,30 @@ exports.login = async (data) => {
   const token = await generateToken(user);
 
   return { token, user };
+};
+
+exports.find = async (userId) => {
+  const result = await UserLoginInformation.findById(userId);
+
+  return result;
+};
+
+exports.changeEmail = async (userId, data) => {
+  let user = await UserLoginInformation.findById(userId);
+
+  const isPasswordValid = await bcrypt.compare(data.password, user.password);
+
+  const isEmailValid = EMAIL_PATTERN.test(data.email);
+
+  if (!isPasswordValid) {
+    throw new Error(INVALID_PASSWORD_ERROR_MESSAGE);
+  } else if (!isEmailValid) {
+    throw new Error(EMAIL_ERROR_MESSAGE);
+  } else {
+    await UserLoginInformation.findByIdAndUpdate(userId, { email: data.email });
+
+    return user;
+  }
 };
 
 async function generateToken(user) {
