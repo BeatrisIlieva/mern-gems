@@ -53,23 +53,7 @@ export const LoginForm = () => {
   //   }));
   // };
 
-  // const blurHandler = (fieldKey) => {
-  //   setValues((prevValues) => ({
-  //     ...prevValues,
-  //     [fieldKey]: {
-  //       ...prevValues[fieldKey],
-  //       isFocused: prevValues[fieldKey].fieldValue !== "",
-  //     },
-  //   }));
-  // };
 
-  // const changeHandler = (fieldKey, newValue) => {
-  //   setValues((prevValues) => ({
-  //     ...prevValues,
-  //     [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
-  //   }));
-  //   updateForm();
-  // };
 
   const onSubmit = async (e) => {
     
