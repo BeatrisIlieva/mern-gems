@@ -85,10 +85,10 @@ export const Account = () => {
       </div>
       <div className={styles["bottom-container"]}>
         {selectedSubMenu === SUB_MENU_OPTIONS.AccountDetails && (
-          <PersonalInformation />
+          <PersonalInformation/>
         )}
         {selectedSubMenu === SUB_MENU_OPTIONS.LoginPreferences && (
-          <LoginInformation />
+          <LoginInformation firstName={userPersonalInformation.firstName}/>
         )}
       </div>
     </section>
