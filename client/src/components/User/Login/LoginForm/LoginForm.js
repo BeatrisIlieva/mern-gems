@@ -25,22 +25,7 @@ export const LoginForm = () => {
     submitHandler,
   } = useForm(INITIAL_FORM_VALUES);
 
-  // const updateForm = () => {
-  //   Object.keys(values).forEach((fieldKey) => {
-  //     const input = document.getElementById(fieldKey);
 
-  //     if (input.value !== "") {
-  //       setValues((prevValues) => ({
-  //         ...prevValues,
-  //         [fieldKey]: {
-  //           ...prevValues[fieldKey],
-  //           fieldValue: input.value,
-  //           isFocused: true,
-  //         },
-  //       }));
-  //     }
-  //   });
-  // };
 
   useEffect(() => {
     updateForm();
