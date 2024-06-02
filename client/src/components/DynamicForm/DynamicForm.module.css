@@ -59,7 +59,8 @@
   box-shadow: 0 0 0 0.3px var(--dark-pink);
   outline: none;
   letter-spacing: 1.2px;
-  font-family: var(----bold-font-family);
+  font-family: var(--bold-font-family);
+  width: 100%;
 }
 
 .animated-button::before {
@@ -79,17 +80,13 @@
   left: 0;
 }
 
-.button {
-  width: 100%;
-}
-
 .dismiss-button {
   border: none;
   cursor: pointer;
   overflow: hidden;
   background-color: var(--white);
   outline: none;
-  font-family: var(----bold-font-family);
+  font-family: var(--bold-font-family);
   display: flex;
   margin-left: auto;
   margin-right: auto;

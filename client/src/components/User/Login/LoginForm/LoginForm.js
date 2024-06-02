@@ -54,6 +54,8 @@ export const LoginForm = () => {
     }
   };
 
+  const buttonValue = "Sign In"
+
   return (
     <section className={styles["register-container"]}>
       <form
@@ -68,6 +70,7 @@ export const LoginForm = () => {
           blurHandler={blurHandler}
           changeHandler={changeHandler}
           INITIAL_FORM_VALUES={INITIAL_FORM_VALUES}
+          buttonValue={buttonValue}
         />
       </form>
     </section>

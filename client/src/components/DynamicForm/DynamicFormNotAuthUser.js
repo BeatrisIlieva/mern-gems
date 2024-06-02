@@ -7,6 +7,7 @@ export const DynamicFormNotAuthUser = ({
   blurHandler,
   changeHandler,
   INITIAL_FORM_VALUES,
+  buttonValue,
 }) => {
   return (
     <>
@@ -23,7 +24,6 @@ export const DynamicFormNotAuthUser = ({
               type="text"
               name={value}
               id={value}
-            //   {values[FORM_KEYS.Email].fieldValue}
               value={values[key]}
               onChange={(e) => changeHandler(value, e.target.value)}
               onFocus={() => clickHandler(value)}
@@ -58,7 +58,7 @@ export const DynamicFormNotAuthUser = ({
         type="submit"
         data-testid="submit"
       >
-        Save
+        {buttonValue}
       </button>
     </>
   );
