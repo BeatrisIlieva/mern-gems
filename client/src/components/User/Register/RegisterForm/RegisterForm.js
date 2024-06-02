@@ -33,12 +33,7 @@ export const RegisterForm = () => {
     updateForm();
   }, []);
 
-  // const clickHandler = (fieldKey) => {
-  //   setValues((prevValues) => ({
-  //     ...prevValues,
-  //     [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
-  //   }));
-  // };
+
 
   // const blurHandler = (fieldKey) => {
   //   setValues((prevValues) => ({
