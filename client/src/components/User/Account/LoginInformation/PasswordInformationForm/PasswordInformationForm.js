@@ -5,12 +5,12 @@ import { loginInformationServiceFactory } from "../../../../../services/loginInf
 import { getErrorMessage } from "../../../../../hooks/useFormValidator";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../../commonCSS/forms.module.css";
-import styles from "./EmailInformationForm.module.css";
+import styles from "./PasswordInformationForm.module.css";
 
 export const EmailInformationForm = () => {
   const { userId } = useAuthContext();
   const loginInformationService = useService(loginInformationServiceFactory);
-  const [userEmailInformation, setUserEmailInformation] = useState([]);
+  const [userPasswordInformation, setUserPasswordInformation] = useState([]);
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
   const updateForm = () => {
@@ -34,13 +34,13 @@ export const EmailInformationForm = () => {
     loginInformationService
       .find(userId)
       .then((data) => {
-        setUserEmailInformation(data);
+        setUserPasswordInformation(data);
         updateForm();
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [userEmailInformation]);
+  }, [userPasswordInformation]);
 
   const clickHandler = (fieldKey) => {
     setValues((prevValues) => ({
@@ -98,7 +98,7 @@ export const EmailInformationForm = () => {
 
       const data = { email, password };
       try {
-        await loginInformationService.updateEmail(userId, data);
+        await loginInformationService.updatePassword(userId, data);
       } catch (err) {
         console.log(err.message);
         values[FORM_KEYS.Password].errorMessage = err.message;
