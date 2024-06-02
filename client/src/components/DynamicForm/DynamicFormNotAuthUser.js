@@ -1,4 +1,8 @@
 import styles from "./DynamicForm.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { QuestionMarkEmail } from "./QuestionMarkEmail/QuestionMarkEmail";
+import { useState } from "react";
 
 export const DynamicFormNotAuthUser = ({
   values,
@@ -9,10 +13,31 @@ export const DynamicFormNotAuthUser = ({
   INITIAL_FORM_VALUES,
   buttonValue,
 }) => {
+  const [hoveredQuestionMarkEmail, setHoveredQuestionMarkEmail] =
+    useState(false);
+
+  const onHoverQuestionMarkEmail = () => {
+    setHoveredQuestionMarkEmail(true);
+  };
+
+  const onUnhoverQuestionMarkEmail = () => {
+    setHoveredQuestionMarkEmail(false);
+  };
   return (
     <>
       {Object.entries(FORM_KEYS).map(([key, value]) => (
         <div key={key} className={styles["field-box"]}>
+          {key === "Email" && (
+            <span>
+              <>{hoveredQuestionMarkEmail && <QuestionMarkEmail />}</>
+              <FontAwesomeIcon
+                icon={faQuestion}
+                className={styles["input-icon"]}
+                onMouseEnter={() => onHoverQuestionMarkEmail()}
+                onMouseLeave={() => onUnhoverQuestionMarkEmail()}
+              />
+            </span>
+          )}
           <div
             className={`${styles["field-container"]} ${
               values[value].errorMessage !== "" ? styles["error"] : ""

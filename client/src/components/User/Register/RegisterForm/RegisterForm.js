@@ -10,16 +10,14 @@ import { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } from "../../../../constants/forms"
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../commonCSS/forms.module.css";
 import styles from "./RegisterForm.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestion } from "@fortawesome/free-solid-svg-icons";
-import { QuestionMarkEmail } from "../QuestionMarkEmail/QuestionMarkEmail";
+
 import {useForm} from "../../../../hooks/useForm";
+import {DynamicFormNotAuthUser} from "../../../DynamicForm/DynamicFormNotAuthUser"
 
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
   // const [values, setValues] = useState(INITIAL_FORM_VALUES);
-  const [hoveredQuestionMarkEmail, setHoveredQuestionMarkEmail] =
-    useState(false);
+
 
     const {
       values,
@@ -33,80 +31,59 @@ export const RegisterForm = () => {
       submitHandler,
     } = useForm(INITIAL_FORM_VALUES);
 
-  const onHoverQuestionMarkEmail = () => {
-    setHoveredQuestionMarkEmail(true);
-  };
 
-  const onUnhoverQuestionMarkEmail = () => {
-    setHoveredQuestionMarkEmail(false);
-  };
 
-  const updateForm = () => {
-    Object.keys(values).forEach((fieldKey) => {
-      const input = document.getElementById(fieldKey);
+  // const updateForm = () => {
+  //   Object.keys(values).forEach((fieldKey) => {
+  //     const input = document.getElementById(fieldKey);
 
-      if (input.value !== "") {
-        setValues((prevValues) => ({
-          ...prevValues,
-          [fieldKey]: {
-            ...prevValues[fieldKey],
-            fieldValue: input.value,
-            isFocused: true,
-          },
-        }));
-      }
-    });
-  };
+  //     if (input.value !== "") {
+  //       setValues((prevValues) => ({
+  //         ...prevValues,
+  //         [fieldKey]: {
+  //           ...prevValues[fieldKey],
+  //           fieldValue: input.value,
+  //           isFocused: true,
+  //         },
+  //       }));
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     updateForm();
   }, []);
 
-  const clickHandler = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
-    }));
-  };
+  // const clickHandler = (fieldKey) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
+  //   }));
+  // };
 
-  const blurHandler = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: {
-        ...prevValues[fieldKey],
-        isFocused: prevValues[fieldKey].fieldValue !== "",
-      },
-    }));
-  };
+  // const blurHandler = (fieldKey) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: {
+  //       ...prevValues[fieldKey],
+  //       isFocused: prevValues[fieldKey].fieldValue !== "",
+  //     },
+  //   }));
+  // };
 
-  const changeHandler = (fieldKey, newValue) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
-    }));
-    updateForm();
-  };
+  // const changeHandler = (fieldKey, newValue) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
+  //   }));
+  //   updateForm();
+  // };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (e) => {
+    submitHandler(e);
+    setErrorOccurred(false);
 
     const updatedValues = { ...values };
-
-    let hasErrorOccurred = false;
-
-    Object.keys(values).forEach((key) => {
-      const field = values[key];
-
-      field.errorMessage = getErrorMessage(
-        key,
-        field.fieldValue,
-        field.regexPattern
-      );
-
-      if (field.errorMessage !== "") {
-        hasErrorOccurred = true;
-      }
-    });
 
     if (
       updatedValues[FORM_KEYS.Email].errorMessage === "" ||
@@ -121,7 +98,7 @@ export const RegisterForm = () => {
       updatedValues[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
 
       if (emailErrorMessage !== "") {
-        hasErrorOccurred = true;
+        setErrorOccurred(true);
       }
     }
 
@@ -139,11 +116,12 @@ export const RegisterForm = () => {
         passwordErrorMessage;
 
       if (passwordErrorMessage !== "") {
-        hasErrorOccurred = true;
+        setErrorOccurred(true);
       }
     }
 
-    if (hasErrorOccurred) {
+    if (errorOccurred) {
+      setErrorOccurred(false);
       setValues(updatedValues);
 
       return;
@@ -167,11 +145,28 @@ export const RegisterForm = () => {
     }
   };
 
+  const buttonValue = "Create an account"
+
   return (
     <section className={styles["register-container"]}>
-      <form
+            <form
         method="POST"
-        onSubmit={submitHandler}
+        onSubmit={onSubmit}
+        className={styles["form-container"]}
+      >
+        <DynamicFormNotAuthUser
+          values={values}
+          FORM_KEYS={FORM_KEYS}
+          clickHandler={clickHandler}
+          blurHandler={blurHandler}
+          changeHandler={changeHandler}
+          INITIAL_FORM_VALUES={INITIAL_FORM_VALUES}
+          buttonValue={buttonValue}
+        />
+      </form>
+      {/* <form
+        method="POST"
+        onSubmit={onSubmit}
         className={styles["form-container"]}
       >
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
@@ -422,7 +417,7 @@ export const RegisterForm = () => {
         >
           Create an Account
         </button>
-      </form>
+      </form> */}
     </section>
   );
 };

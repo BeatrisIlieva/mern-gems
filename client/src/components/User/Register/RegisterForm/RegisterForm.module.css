@@ -3,23 +3,3 @@
   flex-wrap: wrap;
   gap: 40px;
 }
-
-.half {
-  width: calc(50% - 20px);
-}
-
-.input-icon {
-  position: absolute;
-  top: 0px;
-  right: 0;
-  color: var(--gray);
-  background-color: var(--medium-pink);
-  border-radius: 32px;
-  padding: 3px;
-  z-index: 10;
-  width: 9px;
-}
-
-.button {
-  width: 100%;
-}

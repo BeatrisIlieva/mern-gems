@@ -1,13 +1,16 @@
-import { EMAIL_PATTERN, PASSWORD_PATTERN, NAME_PATTERN} from "../../../../constants/forms";
-
+import {
+  EMAIL_PATTERN,
+  PASSWORD_PATTERN,
+  NAME_PATTERN,
+} from "../../../../constants/forms";
 
 const FORM_KEYS = {
-  Email: "email",
-  Password: "password",
-  RetypeEmail: "retypeEmail",
-  RetypePassword: "retypePassword",
   FirstName: "firstName",
   LastName: "lastName",
+  Email: "email",
+  RetypeEmail: "retypeEmail",
+  Password: "password",
+  RetypePassword: "retypePassword",
 };
 
 export const INITIAL_FORM_VALUES = {
