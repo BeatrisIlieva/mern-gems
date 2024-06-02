@@ -11,7 +11,6 @@ import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthU
 
 export const LoginForm = () => {
   const { onLoginSubmit } = useContext(AuthContext);
-  // const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
   const {
     values,
@@ -25,24 +24,14 @@ export const LoginForm = () => {
     submitHandler,
   } = useForm(INITIAL_FORM_VALUES);
 
-
-
   useEffect(() => {
     updateForm();
   }, []);
 
-
-
-
-
   const onSubmit = async (e) => {
-    
     submitHandler(e);
 
-
     const updatedValues = { ...values };
-
-
 
     if (errorOccurred) {
       setErrorOccurred(false);
@@ -69,7 +58,7 @@ export const LoginForm = () => {
 
   return (
     <section className={styles["register-container"]}>
-            <form
+      <form
         method="POST"
         onSubmit={onSubmit}
         className={styles["form-container"]}
