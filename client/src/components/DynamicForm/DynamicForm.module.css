@@ -20,6 +20,14 @@
   padding-bottom: 0px;
 }
 
+.success-message {
+    font-size: 12px;
+    color: var(--green);
+    padding-top: 4px;
+    margin: 0px;
+    padding-bottom: 0px;
+  }
+
 .error {
   border-bottom: 0.1px solid var(--dark-red);
 }

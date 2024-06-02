@@ -63,6 +63,7 @@ export const PasswordInformationForm = () => {
 
     if (errorOccurred) {
       setValues(updatedValues);
+
       setErrorOccurred(false);
 
       return;
