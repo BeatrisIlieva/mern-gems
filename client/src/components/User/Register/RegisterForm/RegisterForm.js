@@ -13,12 +13,25 @@ import styles from "./RegisterForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { QuestionMarkEmail } from "../QuestionMarkEmail/QuestionMarkEmail";
+import {useForm} from "../../../../hooks/useForm";
 
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
-  const [values, setValues] = useState(INITIAL_FORM_VALUES);
+  // const [values, setValues] = useState(INITIAL_FORM_VALUES);
   const [hoveredQuestionMarkEmail, setHoveredQuestionMarkEmail] =
     useState(false);
+
+    const {
+      values,
+      setValues,
+      errorOccurred,
+      setErrorOccurred,
+      updateForm,
+      clickHandler,
+      blurHandler,
+      changeHandler,
+      submitHandler,
+    } = useForm(INITIAL_FORM_VALUES);
 
   const onHoverQuestionMarkEmail = () => {
     setHoveredQuestionMarkEmail(true);
