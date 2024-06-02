@@ -37,14 +37,6 @@ export const RegisterForm = () => {
 
 
 
-  // const changeHandler = (fieldKey, newValue) => {
-  //   setValues((prevValues) => ({
-  //     ...prevValues,
-  //     [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
-  //   }));
-  //   updateForm();
-  // };
-
   const onSubmit = async (e) => {
     submitHandler(e);
     setErrorOccurred(false);
