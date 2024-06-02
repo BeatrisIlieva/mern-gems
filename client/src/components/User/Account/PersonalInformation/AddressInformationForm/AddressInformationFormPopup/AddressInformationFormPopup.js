@@ -31,12 +31,11 @@ export const AddressInformationFormPopup = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [popupCloseHandler]);
 
   const updateForm = () => {
     Object.keys(values).forEach((fieldKey) => {
       const input = document.getElementById(fieldKey);
-
       if (input.value !== "") {
         setValues((prevValues) => ({
           ...prevValues,

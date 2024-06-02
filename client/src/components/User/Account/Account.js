@@ -4,11 +4,12 @@ import { useService } from "../../../hooks/useService";
 import { personalInformationServiceFactory } from "../../../services/personalInformationService";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
+import { LoginInformation } from "./LoginInformation/LoginInformation";
 
 const SUB_MENU_OPTIONS = {
   AccountDetails: "accountDetails",
-  OrderHistory: "orderHistory",
   LoginPreferences: "loginPreferences",
+  OrderHistory: "orderHistory",
 };
 
 export const Account = () => {
@@ -85,6 +86,9 @@ export const Account = () => {
       <div className={styles["bottom-container"]}>
         {selectedSubMenu === SUB_MENU_OPTIONS.AccountDetails && (
           <PersonalInformation />
+        )}
+        {selectedSubMenu === SUB_MENU_OPTIONS.LoginPreferences && (
+          <LoginInformation />
         )}
       </div>
     </section>
