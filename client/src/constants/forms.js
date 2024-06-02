@@ -65,6 +65,8 @@ const ZIP_CODE_ERROR_MESSAGE = `* This field requires ${ZIP_CODE_LENGTH.MIN}-${Z
 
 export const ERROR_MESSAGES = {
   password: PASSWORD_ERROR_MESSAGE,
+  newPassword: PASSWORD_ERROR_MESSAGE,
+  retypeNewPassword: PASSWORD_ERROR_MESSAGE,
   retypePassword: PASSWORD_ERROR_MESSAGE,
   passwordMismatch: PASSWORD_MISMATCH_ERROR_MESSAGE,
   email: EMAIL_ERROR_MESSAGE,
