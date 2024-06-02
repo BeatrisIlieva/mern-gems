@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getErrorMessage} from "./useFormValidator";
+import { getErrorMessage } from "./useFormValidator";
 
 export const useForm = (INITIAL_FORM_VALUES) => {
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
@@ -58,7 +58,6 @@ export const useForm = (INITIAL_FORM_VALUES) => {
         field.fieldValue,
         field.regexPattern
       );
-
 
       if (field.errorMessage !== "") {
         setErrorOccurred(true);
