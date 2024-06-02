@@ -67,7 +67,7 @@ router.put("/update-email/:userId", async (req, res) => {
   const data = { ...req.body };
   console.log(data)
   try {
-    const result = await userLoginInformationManager.changeEmail(userId, data);
+    const result = await userLoginInformationManager.updateEmail(userId, data);
 
     res.status(200).json(result);
   } catch (err) {
@@ -78,10 +78,10 @@ router.put("/update-email/:userId", async (req, res) => {
   }
 });
 
-router.put("/update-password", async (req, res) => {
+router.put("/update-password/:userId", async (req, res) => {
   try {
     const { password } = { ...req.body };
-    const result = await userLoginInformationManager.changePassword({
+    const result = await userLoginInformationManager.updatePassword({
       email,
       password,
     });

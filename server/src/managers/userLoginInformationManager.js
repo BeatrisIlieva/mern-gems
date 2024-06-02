@@ -48,7 +48,7 @@ exports.find = async (userId) => {
   return result;
 };
 
-exports.changeEmail = async (userId, data) => {
+exports.updateEmail = async (userId, data) => {
   let user = await UserLoginInformation.findById(userId);
 
   const isPasswordValid = await bcrypt.compare(data.password, user.password);
@@ -62,6 +62,20 @@ exports.changeEmail = async (userId, data) => {
   } else {
     await UserLoginInformation.findByIdAndUpdate(userId, { email: data.email });
 
+    return user;
+  }
+};
+
+exports.updatePassword = async (userId, data) => {
+  let user = await UserLoginInformation.findById(userId);
+
+  const isPasswordValid = await bcrypt.compare(data.password, user.password);
+
+  if (!isPasswordValid) {
+    throw new Error(INVALID_PASSWORD_ERROR_MESSAGE);
+  } else {
+    const hash = await bcrypt.hash(data.newPassword, DEFAULT_SALT);
+    const user = await User.findByIdAndUpdate(userId, { password: hash });
     return user;
   }
 };

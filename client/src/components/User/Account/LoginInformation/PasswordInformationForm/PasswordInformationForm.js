@@ -93,10 +93,10 @@ export const PasswordInformationForm = () => {
 
       return;
     } else {
-      const email = values.email.fieldValue;
       const password = values.password.fieldValue;
+      const newPassword = values.newPassword.fieldValue;
 
-      const data = { email, password };
+      const data = { password, newPassword };
       try {
         await loginInformationService.updatePassword(userId, data);
       } catch (err) {
