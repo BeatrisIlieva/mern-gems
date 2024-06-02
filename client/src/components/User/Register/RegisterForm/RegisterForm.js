@@ -35,15 +35,7 @@ export const RegisterForm = () => {
 
 
 
-  // const blurHandler = (fieldKey) => {
-  //   setValues((prevValues) => ({
-  //     ...prevValues,
-  //     [fieldKey]: {
-  //       ...prevValues[fieldKey],
-  //       isFocused: prevValues[fieldKey].fieldValue !== "",
-  //     },
-  //   }));
-  // };
+
 
   // const changeHandler = (fieldKey, newValue) => {
   //   setValues((prevValues) => ({
