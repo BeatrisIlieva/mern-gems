@@ -56,19 +56,6 @@
   bottom: 0;
 }
 
-/* .link {
-  text-decoration: none;
-  color: var(--gray);
-  position: relative;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  letter-spacing: 1.2px;
-  padding-bottom: 4px;
-} */
-
-
 .list {
   font-weight: 900;
   margin-left: 0px;
