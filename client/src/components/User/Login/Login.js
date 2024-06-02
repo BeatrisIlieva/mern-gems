@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { LoginForm } from "./LoginForm/LoginForm";
 import styles from "./Login.module.css";
-import formStyles from "../../../commonCSS/forms.module.css";
+import dynamicFormStyles from "../../DynamicForm/DynamicForm.module.css";
 export const Login = () => {
   return (
     <section>
@@ -37,7 +37,7 @@ export const Login = () => {
           </ul>
           <Link to="/user/register">
             <button
-              className={`${formStyles["animated-button"]} ${styles["register-button"]} `}
+              className={`${dynamicFormStyles["animated-button"]} ${styles["register-button"]} `}
               type="submit"
               data-testid="submit"
               data-testid="sign-up-button"
