@@ -1,8 +1,5 @@
-/* @import "../colors.module.css";
-@import "./inputs.module.css"; */
-
 .field-box {
-  height: 76px;
+  height: 80px;
   position: relative;
 }
 
@@ -12,8 +9,12 @@
   padding: 4px;
 }
 
+.error {
+  border-bottom: 0.1px solid var(--dark-red);
+}
+
 .error-message {
-  font-size: 12px;
+  font-size: var(--small-font-size);
   color: var(--dark-red);
   padding-top: 4px;
   margin: 0px;
@@ -21,15 +22,11 @@
 }
 
 .success-message {
-    font-size: 12px;
-    color: var(--green);
-    padding-top: 4px;
-    margin: 0px;
-    padding-bottom: 0px;
-  }
-
-.error {
-  border-bottom: 0.1px solid var(--dark-red);
+  font-size: var(--small-font-size);
+  color: var(--green);
+  padding-top: 4px;
+  margin: 0px;
+  padding-bottom: 0px;
 }
 
 .custom-placeholder::placeholder {
@@ -38,7 +35,6 @@
 }
 
 .label {
-  font-size: 14px;
   color: var(--middle-gray);
   position: absolute;
   left: 0;
@@ -47,7 +43,7 @@
 .isFocused {
   top: -12px;
   left: 0;
-  font-size: 10px;
+  font-size: var(--minimum-font-size);
 }
 
 .animated-button {
@@ -83,9 +79,11 @@
   left: 0;
 }
 
+.button {
+  width: 100%;
+}
+
 .dismiss-button {
-  font-size: 14px;
-  font-weight: 900;
   border: none;
   cursor: pointer;
   overflow: hidden;

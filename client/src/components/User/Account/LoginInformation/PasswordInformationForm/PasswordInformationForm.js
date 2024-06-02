@@ -62,6 +62,7 @@ export const PasswordInformationForm = () => {
     }
 
     if (errorOccurred) {
+      values[FORM_KEYS.NewPassword].successMessage = "";
       setValues(updatedValues);
 
       setErrorOccurred(false);

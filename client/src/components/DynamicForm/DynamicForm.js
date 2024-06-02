@@ -12,7 +12,7 @@ export const DynamicForm = ({
   return (
     <>
       {Object.entries(FORM_KEYS).map(([key, value]) => (
-        <div key={key} className={`${styles["field-box"]} ${styles["half"]}`}>
+        <div key={key} className={styles["field-box"]}>
           <div
             className={`${styles["field-container"]} ${
               values[value].errorMessage !== "" ? styles["error"] : ""

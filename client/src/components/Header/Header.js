@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import formStyles from "../../commonCSS/forms.module.css";
+// import formStyles from "../../commonCSS/forms.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -67,7 +67,7 @@ export const Header = () => {
                 //   value={query}
                 //   onChange={onChange}
                 type="text"
-                className={`${styles["search-input"]} ${formStyles["custom-placeholder"]}`}
+                className={`${styles["search-input"]} ${styles["custom-placeholder"]}`}
                 placeholder="Search"
               />
             </form>

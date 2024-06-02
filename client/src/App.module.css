@@ -14,3 +14,79 @@
 .main {
   margin: 0px 214px 40px 214px;
 }
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --dark-pink: #fc8eac;
+  --medium-pink: #fec7d6;
+  --white-pink: #fff4f7;
+  --dark-red: #fa2a55;
+  --green: #5daa68;
+  --gray: #1a1a1a;
+  --middle-gray: #808080;
+  --white-gray: #999999;
+  --dark-golden: #947a27;
+  --white-golden: #d4af37;
+  --border: hsl(0deg 0.99% 80.2%);
+  --transparent-gray: #1a1a1aa5;
+}
+
+@font-face {
+  font-family: "tisaSansProLight";
+  src: url("./fonts/tisaSansProLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "tisaSansProBold";
+  src: url("./fonts/tisaSansProMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "tisaSansProBoldItalic";
+  src: url("./fonts/tisaSansProMediumItalic.ttf") format("truetype");
+}
+
+:root {
+  --main-font-family: tisaSansProLight, Arial, sans-serif, -apple-system,
+    ui-sans-serif, system-ui;
+  --bold-font-family: tisaSansProBold, Arial, sans-serif, -apple-system,
+    ui-sans-serif, system-ui;
+  --bold-italic-font-family: tisaSansProBoldItalic, Arial, sans-serif,
+    -apple-system, ui-sans-serif, system-ui;
+}
+
+:root {
+  --main-font-size: 14px;
+  --extra-large-font-size: 28px;
+  --large-font-size: 22px;
+  --medium-font-size: 16px;
+  --small-font-size: 12px;
+  --minimum-font-size: 10px;
+}
+
+input[type="text"],
+[type="password"],
+[type="email"] {
+  border: none;
+  background-color: transparent;
+  min-width: 200px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-internal-autofill-selected {
+  -webkit-box-shadow: 0 0 0px 1000px var(--white) inset !important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline: none;
+}
+
+input,
+textarea {
+  caret-color: var(--dark-pink);
+}
