@@ -68,22 +68,6 @@
   padding-bottom: 4px;
 } */
 
-/* .link::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background-color: var(--dark-pink);
-  transition: width 0.3s ease, left 0.3s ease;
-} */
-
-/* .link:hover::before {
-  width: 100%;
-  color: var(--dark-pink);
-  left: 0;
-} */
 
 .list {
   font-weight: 900;
@@ -93,7 +77,7 @@
 
 .item {
   list-style: circle;
-  margin-left: 0px;
+  margin-left: 12px;
   padding-left: 0px;
   margin-bottom: 8px;
 }
