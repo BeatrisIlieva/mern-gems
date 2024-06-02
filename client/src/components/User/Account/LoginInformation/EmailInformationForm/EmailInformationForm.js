@@ -164,7 +164,7 @@ export const EmailInformationForm = () => {
             onBlur={() => blurHandler(FORM_KEYS.Password)}
           >
             <input
-              type="text"
+              type="password"
               name={FORM_KEYS.Password}
               id={FORM_KEYS.Password}
               defaultValue={userEmailInformation[FORM_KEYS.Password]}
@@ -173,6 +173,7 @@ export const EmailInformationForm = () => {
               }
               onFocus={() => clickHandler(FORM_KEYS.Password)}
               data-testid={`${FORM_KEYS.Password}-input`}
+              className={styles["password"]}
             />
             <label
               htmlFor={FORM_KEYS.Password}
