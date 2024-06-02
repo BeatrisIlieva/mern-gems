@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
-import { getErrorMessage } from "../../../../hooks/useFormValidator";
 import { INVALID_CREDENTIALS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import styles from "./LoginForm.module.css";
