@@ -1,22 +1,18 @@
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
 import {
-  getErrorMessage,
   getEmailMismatchErrorMessage,
   getPasswordMismatchErrorMessage,
 } from "../../../../hooks/useFormValidator";
 import { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
-import formStyles from "../../../../commonCSS/forms.module.css";
 import styles from "./RegisterForm.module.css";
-
 import {useForm} from "../../../../hooks/useForm";
 import {DynamicFormNotAuthUser} from "../../../DynamicForm/DynamicFormNotAuthUser"
 
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
-  // const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
 
     const {
