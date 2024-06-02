@@ -16,16 +16,26 @@ export const Login = () => {
       </div>
       <div className={styles["login-box"]}>
         <div className={styles["login-container"]}>
-          <h2 className={styles["title"]} data-testid="sign-in-title-element">Sign In</h2>
-          <h3 className={styles["sub-title"]} data-testid="sign-in-sub-title-element">
+          <h2 className={styles["title"]} data-testid="sign-in-title-element">
+            Sign In
+          </h2>
+          <h3
+            className={styles["sub-title"]}
+            data-testid="sign-in-sub-title-element"
+          >
             Please Sign In to your ReactGems account
           </h3>
           <LoginForm />
         </div>
         <div className={styles["form-vertical-line"]}></div>
         <div className={styles["register-container"]}>
-          <h2 className={styles["title"]} data-testid="sign-up-title-element">New Customers</h2>
-          <h3 className={styles["sub-title"]} data-testid="sign-up-sub-title-element">
+          <h2 className={styles["title"]} data-testid="sign-up-title-element">
+            New Customers
+          </h2>
+          <h3
+            className={styles["sub-title"]}
+            data-testid="sign-up-sub-title-element"
+          >
             Register with React Gems for the following benefits:
           </h3>
           <ul role="list" className={styles["list"]}>

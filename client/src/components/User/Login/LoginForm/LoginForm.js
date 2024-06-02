@@ -6,79 +6,96 @@ import { INVALID_CREDENTIALS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../commonCSS/forms.module.css";
 import styles from "./LoginForm.module.css";
+import { useForm } from "../../../../hooks/useForm";
+import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthUser";
 
 export const LoginForm = () => {
   const { onLoginSubmit } = useContext(AuthContext);
-  const [values, setValues] = useState(INITIAL_FORM_VALUES);
+  // const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
-  const updateForm = () => {
-    Object.keys(values).forEach((fieldKey) => {
-      const input = document.getElementById(fieldKey);
+  const {
+    values,
+    setValues,
+    errorOccurred,
+    setErrorOccurred,
+    updateForm,
+    clickHandler,
+    blurHandler,
+    changeHandler,
+    submitHandler,
+  } = useForm(INITIAL_FORM_VALUES);
 
-      if (input.value !== "") {
-        setValues((prevValues) => ({
-          ...prevValues,
-          [fieldKey]: {
-            ...prevValues[fieldKey],
-            fieldValue: input.value,
-            isFocused: true,
-          },
-        }));
-      }
-    });
-  };
+  // const updateForm = () => {
+  //   Object.keys(values).forEach((fieldKey) => {
+  //     const input = document.getElementById(fieldKey);
+
+  //     if (input.value !== "") {
+  //       setValues((prevValues) => ({
+  //         ...prevValues,
+  //         [fieldKey]: {
+  //           ...prevValues[fieldKey],
+  //           fieldValue: input.value,
+  //           isFocused: true,
+  //         },
+  //       }));
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     updateForm();
   }, []);
 
-  const clickHandler = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
-    }));
-  };
+  // const clickHandler = (fieldKey) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
+  //   }));
+  // };
 
-  const blurHandler = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: {
-        ...prevValues[fieldKey],
-        isFocused: prevValues[fieldKey].fieldValue !== "",
-      },
-    }));
-  };
+  // const blurHandler = (fieldKey) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: {
+  //       ...prevValues[fieldKey],
+  //       isFocused: prevValues[fieldKey].fieldValue !== "",
+  //     },
+  //   }));
+  // };
 
-  const changeHandler = (fieldKey, newValue) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
-    }));
-    updateForm();
-  };
+  // const changeHandler = (fieldKey, newValue) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
+  //   }));
+  //   updateForm();
+  // };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (e) => {
+    
+    submitHandler(e);
+
 
     const updatedValues = { ...values };
 
-    let hasErrorOccurred = false;
+    // let hasErrorOccurred = false;
 
-    Object.keys(values).forEach((key) => {
-      const field = values[key];
+    // Object.keys(values).forEach((key) => {
+    //   const field = values[key];
 
-      field.errorMessage = getErrorMessage(
-        key,
-        field.fieldValue,
-        field.regexPattern
-      );
+    //   field.errorMessage = getErrorMessage(
+    //     key,
+    //     field.fieldValue,
+    //     field.regexPattern
+    //   );
 
-      if (field.errorMessage !== "") {
-        hasErrorOccurred = true;
-      }
-    });
+    //   if (field.errorMessage !== "") {
+    //     hasErrorOccurred = true;
+    //   }
+    // });
 
-    if (hasErrorOccurred) {
+    if (errorOccurred) {
+      setErrorOccurred(false);
       setValues(updatedValues);
 
       return;
@@ -102,7 +119,22 @@ export const LoginForm = () => {
 
   return (
     <section className={styles["register-container"]}>
-      <form
+            <form
+        method="POST"
+        onSubmit={onSubmit}
+        className={styles["form-container"]}
+      >
+        <DynamicFormNotAuthUser
+          values={values}
+          FORM_KEYS={FORM_KEYS}
+          clickHandler={clickHandler}
+          blurHandler={blurHandler}
+          changeHandler={changeHandler}
+          INITIAL_FORM_VALUES={INITIAL_FORM_VALUES}
+          // userPasswordInformation={userPasswordInformation}
+        />
+      </form>
+      {/* <form
         method="POST"
         onSubmit={submitHandler}
         className={styles["form-container"]}
@@ -190,7 +222,7 @@ export const LoginForm = () => {
         >
           Sign In
         </button>
-      </form>
+      </form> */}
     </section>
   );
 };
