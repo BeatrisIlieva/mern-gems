@@ -10,6 +10,8 @@ const PASSWORD_ERROR_MESSAGE = `* Password must be ${PASSWORD_LENGTH.MIN}-${PASS
 const PASSWORD_MISMATCH_ERROR_MESSAGE =
   "Ensure that both password fields contain the same password";
 
+const PASSWORD_SUCCESS_MESSAGE = "Your password has been changed successfully";
+
 export const EMAIL_PATTERN = /^[A-za-z0-9]+@+[a-z]+\.[a-z]{2,4}$/;
 const EMAIL_ERROR_MESSAGE = "* Ensure you enter a valid email address";
 const EMAIL_MISMATCH_ERROR_MESSAGE =
@@ -62,6 +64,10 @@ export const ZIP_CODE_PATTERN = new RegExp(
   `^[A-Aa-z0-9 ]{${ZIP_CODE_LENGTH.MIN},${ZIP_CODE_LENGTH.MAX}}$`
 );
 const ZIP_CODE_ERROR_MESSAGE = `* This field requires ${ZIP_CODE_LENGTH.MIN}-${ZIP_CODE_LENGTH.MAX} characters`;
+
+export const SUCCESS_MESSAGES = {
+  newPassword: PASSWORD_SUCCESS_MESSAGE,
+};
 
 export const ERROR_MESSAGES = {
   password: PASSWORD_ERROR_MESSAGE,

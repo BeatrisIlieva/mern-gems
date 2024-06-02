@@ -3,9 +3,9 @@ import { useAuthContext } from "../../../../../contexts/AuthContext";
 import { useService } from "../../../../../hooks/useService";
 import { loginInformationServiceFactory } from "../../../../../services/loginInformationService";
 import { getPasswordMismatchErrorMessage } from "../../../../../hooks/useFormValidator";
+import { SUCCESS_MESSAGES } from "../../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import styles from "./PasswordInformationForm.module.css";
-
 import { DynamicForm } from "../../../../DynamicForm/DynamicForm";
 import { useForm } from "../../../../../hooks/useForm";
 
@@ -73,6 +73,10 @@ export const PasswordInformationForm = () => {
       const data = { password, newPassword };
       try {
         await loginInformationService.updatePassword(userId, data);
+        values[FORM_KEYS.NewPassword].successMessage =
+          SUCCESS_MESSAGES.newPassword;
+        setValues(updatedValues);
+        updateForm();
       } catch (err) {
         console.log(err.message);
         values[FORM_KEYS.Password].errorMessage = err.message;

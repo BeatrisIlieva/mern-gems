@@ -19,6 +19,7 @@ export const INITIAL_FORM_VALUES = {
     fieldValue: "",
     regexPattern: PASSWORD_PATTERN,
     errorMessage: "",
+    successMessage: "",
     isFocused: false,
   },
   [FORM_KEYS.RetypeNewPassword]: {

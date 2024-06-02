@@ -45,6 +45,12 @@ export const DynamicForm = ({
           >
             {values[value].errorMessage}
           </div>
+          <div
+            // className={styles["error-message"]}
+            // data-testid={`${value}-error`}
+          >
+            {values[value].successMessage}
+          </div>
         </div>
       ))}
       <button

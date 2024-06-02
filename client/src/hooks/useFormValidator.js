@@ -1,5 +1,6 @@
 import { ERROR_MESSAGES } from "../constants/forms";
 
+
 const isValid = (value, pattern) => {
   return pattern.test(value);
 };
@@ -11,6 +12,8 @@ export const getErrorMessage = (field, value, pattern) => {
     return "";
   }
 };
+
+
 
 export const getEmailMismatchErrorMessage = (email, retypeEmail) => {
   if (email !== retypeEmail) {
