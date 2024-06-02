@@ -68,7 +68,6 @@ export const LoginForm = () => {
           blurHandler={blurHandler}
           changeHandler={changeHandler}
           INITIAL_FORM_VALUES={INITIAL_FORM_VALUES}
-          // userPasswordInformation={userPasswordInformation}
         />
       </form>
       {/* <form
