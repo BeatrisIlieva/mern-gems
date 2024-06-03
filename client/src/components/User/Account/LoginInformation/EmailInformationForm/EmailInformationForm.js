@@ -46,21 +46,7 @@ export const EmailInformationForm = () => {
 
     const updatedValues = { ...values };
 
-    // let hasErrorOccurred = false;
 
-    // Object.keys(values).forEach((key) => {
-    //   const field = values[key];
-
-    //   field.errorMessage = getErrorMessage(
-    //     key,
-    //     field.fieldValue,
-    //     field.regexPattern
-    //   );
-
-    //   if (field.errorMessage !== "") {
-    //     hasErrorOccurred = true;
-    //   }
-    // });
 
     if (errorOccurred) {
       errorOccurred = false;
