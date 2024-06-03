@@ -60,7 +60,7 @@ export const RegisterForm = () => {
         passwordErrorMessage;
     }
 
-    const errorOccurred = hasFormErrorOccurred(values);
+    const errorOccurred = hasFormErrorOccurred(updatedValues);
 
     if (!errorOccurred) {
       const email = values.email.fieldValue;

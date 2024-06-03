@@ -26,6 +26,9 @@ export const LoginForm = () => {
 
   const onSubmit = async (e) => {
     submitHandler(e);
+    const updatedValues = { ...values };
+    setValues(updatedValues);
+    updateForm();
 
     const errorOccurred = hasFormErrorOccurred(values);
 
@@ -38,9 +41,13 @@ export const LoginForm = () => {
         await onLoginSubmit(data);
       } catch (err) {
         if (err.message === INVALID_CREDENTIALS_ERROR_MESSAGE) {
-          values[FORM_KEYS.Email].errorMessage = err.message;
-          const updatedValues = { ...values };
-          setValues(updatedValues);
+          setValues((prevValues) => ({
+            ...prevValues,
+            [FORM_KEYS.Email]: {
+              ...prevValues[FORM_KEYS.Email],
+              errorMessage: err.message,
+            },
+          }));
           updateForm();
         }
       }
