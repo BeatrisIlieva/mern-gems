@@ -32,12 +32,21 @@ export const DeleteAccountPopup = ({
             <div id={styles["xMark"]} onClick={() => popupCloseHandler()}>
               <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} />
             </div>
-            <h2 className={styles["title"]}>
-              Are you sure you want to delete tour Account?
-            </h2>
+            <h2 className={styles["title"]}>Delete Account</h2>
+            <p className={styles["paragraph"]}>
+              Are you sure you want to delete your Account?
+            </p>
           </div>
-          <button>Yes</button>
-          <button onClick={() => popupCloseHandler()}>Go Back</button>
+          <div className={styles["button-container"]}>
+            <button
+              className={styles["button-cancel"]}
+              onClick={() => popupCloseHandler()}
+            >
+              Cancel
+            </button>
+            <div className={styles["form-vertical-line"]}></div>
+            <button className={styles["button-delete"]}>Delete</button>
+          </div>
         </div>
       </div>
     </section>
