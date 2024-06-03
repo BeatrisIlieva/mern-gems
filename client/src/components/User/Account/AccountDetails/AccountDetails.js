@@ -3,10 +3,27 @@ import { AddressInformationForm } from "./AddressInformationForm/AddressInformat
 import styles from "./AccountDetails.module.css";
 import { EmailInformationForm } from "./EmailInformationForm/EmailInformationForm";
 import { PasswordInformationForm } from "./PasswordInformationForm/PasswordInformationForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuthContext } from "../../../../contexts/AuthContext";
+import { authServiceFactory } from "../../../../services/authService";
+import { useService } from "../../../../hooks/useService";
 
 export const AccountDetails = () => {
+  const { userId } = useAuthContext();
+  const [userInformation, setUserInformation] = useState([]);
+  const authService = useService(authServiceFactory);
   const [showUpdateEmail, setShowUpdateEmail] = useState(false);
+
+  useEffect(() => {
+    authService
+      .find(userId)
+      .then((data) => {
+        setUserInformation(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [userInformation]);
 
   const onUpdateEmailClick = async () => {
     setShowUpdateEmail(true);
@@ -29,6 +46,7 @@ export const AccountDetails = () => {
         <div className={styles["right-top-container"]}>
           <h2 className={styles["form-title"]}>Login Information</h2>
           <h4 className={styles["form-sub-title"]}>Email Address</h4>
+          {userInformation.email}
           <div className={styles["button-container"]}>
             <button
               className={styles["button"]}
