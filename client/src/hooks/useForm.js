@@ -3,7 +3,6 @@ import { getErrorMessage } from "./useFormValidator";
 
 export const useForm = (INITIAL_FORM_VALUES) => {
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
-  let errorOccurred = false;
 
   const updateForm = () => {
     Object.keys(values).forEach((fieldKey) => {
@@ -58,10 +57,6 @@ export const useForm = (INITIAL_FORM_VALUES) => {
         field.fieldValue,
         field.regexPattern
       );
-
-      if (field.errorMessage !== "") {
-        errorOccurred = true;
-      }
     });
   };
 
@@ -73,6 +68,5 @@ export const useForm = (INITIAL_FORM_VALUES) => {
     blurHandler,
     changeHandler,
     submitHandler,
-    errorOccurred,
   };
 };

@@ -2,20 +2,22 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../../../contexts/AuthContext";
 import { useService } from "../../../../../hooks/useService";
 import { loginInformationServiceFactory } from "../../../../../services/loginInformationService";
+import { getPasswordMismatchErrorMessage } from "../../../../../hooks/useFormValidator";
+import { SUCCESS_MESSAGES } from "../../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
-import styles from "./EmailInformationForm.module.css";
-import { useForm } from "../../../../../hooks/useForm";
 import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
+import { useForm } from "../../../../../hooks/useForm";
+import { hasFormErrorOccurred } from "../../../../../utils/hasFormErrorOccurred";
+import styles from "../AccountDetails.module.css"
 
-export const EmailInformationForm = () => {
+export const PasswordInformationForm = () => {
   const { userId } = useAuthContext();
   const loginInformationService = useService(loginInformationServiceFactory);
-  const [userEmailInformation, setUserEmailInformation] = useState([]);
+  const [userInformation, setUserInformation] = useState([]);
 
   const {
     values,
     setValues,
-    errorOccurred,
     updateForm,
     clickHandler,
     blurHandler,
@@ -27,31 +29,48 @@ export const EmailInformationForm = () => {
     loginInformationService
       .find(userId)
       .then((data) => {
-        setUserEmailInformation(data);
+        setUserInformation(data);
         updateForm();
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [userEmailInformation]);
+  }, [userInformation]);
 
   const onSubmit = async (e) => {
     submitHandler(e);
 
     const updatedValues = { ...values };
 
-    if (errorOccurred) {
-      errorOccurred = false;
-      setValues(updatedValues);
+    if (
+      updatedValues[FORM_KEYS.NewPassword].errorMessage === "" ||
+      updatedValues[FORM_KEYS.RetypeNewPassword].errorMessage === ""
+    ) {
+      const passwordErrorMessage = getPasswordMismatchErrorMessage(
+        values[FORM_KEYS.NewPassword].fieldValue,
+        values[FORM_KEYS.RetypeNewPassword].fieldValue
+      );
 
-      return;
-    } else {
-      const email = values.email.fieldValue;
+      updatedValues[FORM_KEYS.NewPassword].errorMessage = passwordErrorMessage;
+      updatedValues[FORM_KEYS.RetypeNewPassword].errorMessage =
+        passwordErrorMessage;
+    }
+
+    setValues(updatedValues);
+
+    const errorOccurred = hasFormErrorOccurred(values);
+
+    if (!errorOccurred) {
       const password = values.password.fieldValue;
+      const newPassword = values.newPassword.fieldValue;
 
-      const data = { email, password };
+      const data = { password, newPassword };
       try {
-        await loginInformationService.updateEmail(userId, data);
+        await loginInformationService.updatePassword(userId, data);
+        values[FORM_KEYS.NewPassword].successMessage =
+          SUCCESS_MESSAGES.newPassword;
+        setValues(updatedValues);
+        updateForm();
       } catch (err) {
         console.log(err.message);
         values[FORM_KEYS.Password].errorMessage = err.message;
@@ -60,10 +79,11 @@ export const EmailInformationForm = () => {
         updateForm();
       }
     }
+    values[FORM_KEYS.NewPassword].successMessage = "";
   };
 
   return (
-    <section className={styles["login-container"]}>
+    <section className={styles["slideIn"]}>
       <form method="POST" onSubmit={onSubmit}>
         <DynamicFormAuthUser
           values={values}
@@ -72,7 +92,7 @@ export const EmailInformationForm = () => {
           blurHandler={blurHandler}
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
-          userInformation={userEmailInformation}
+          userInformation={userInformation}
         />
       </form>
     </section>

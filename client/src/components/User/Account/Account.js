@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 import { useService } from "../../../hooks/useService";
 import { personalInformationServiceFactory } from "../../../services/personalInformationService";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { PersonalInformation } from "./PersonalInformation/PersonalInformation";
-import { LoginInformation } from "./LoginInformation/LoginInformation";
+import { AccountDetails } from "./AccountDetails/AccountDetails";
 
 const SUB_MENU_OPTIONS = {
   AccountDetails: "accountDetails",
-  LoginPreferences: "loginPreferences",
   OrderHistory: "orderHistory",
 };
 
@@ -52,18 +50,6 @@ export const Account = () => {
       <div className={styles["sub-nav"]}>
         <h3
           className={`${styles["sub-nav-title"]} ${
-            selectedSubMenu === SUB_MENU_OPTIONS.LoginPreferences
-              ? styles["selected"]
-              : ""
-          }`.trim()}
-          onClick={() =>
-            switchSubmenuHandler(SUB_MENU_OPTIONS.LoginPreferences)
-          }
-        >
-          Login Preferences
-        </h3>
-        <h3
-          className={`${styles["sub-nav-title"]} ${
             selectedSubMenu === SUB_MENU_OPTIONS.AccountDetails
               ? styles["selected"]
               : ""
@@ -85,11 +71,11 @@ export const Account = () => {
       </div>
       <div className={styles["bottom-container"]}>
         {selectedSubMenu === SUB_MENU_OPTIONS.AccountDetails && (
-          <PersonalInformation/>
+          <AccountDetails/>
         )}
-        {selectedSubMenu === SUB_MENU_OPTIONS.LoginPreferences && (
+        {/* {selectedSubMenu === SUB_MENU_OPTIONS.LoginPreferences && (
           <LoginInformation firstName={userPersonalInformation.firstName}/>
-        )}
+        )} */}
       </div>
     </section>
   );
