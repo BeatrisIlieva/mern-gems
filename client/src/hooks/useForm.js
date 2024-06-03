@@ -3,7 +3,7 @@ import { getErrorMessage } from "./useFormValidator";
 
 export const useForm = (INITIAL_FORM_VALUES) => {
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
-  const [errorOccurred, setErrorOccurred] = useState(false);
+  let errorOccurred = false;
 
   const updateForm = () => {
     Object.keys(values).forEach((fieldKey) => {
@@ -60,7 +60,7 @@ export const useForm = (INITIAL_FORM_VALUES) => {
       );
 
       if (field.errorMessage !== "") {
-        setErrorOccurred(true);
+        errorOccurred = true;
       }
     });
   };
@@ -68,12 +68,11 @@ export const useForm = (INITIAL_FORM_VALUES) => {
   return {
     values,
     setValues,
-    errorOccurred,
-    setErrorOccurred,
     updateForm,
     clickHandler,
     blurHandler,
     changeHandler,
     submitHandler,
+    errorOccurred,
   };
 };

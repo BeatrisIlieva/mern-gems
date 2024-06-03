@@ -3,23 +3,21 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
 import { INVALID_CREDENTIALS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
-import styles from "./LoginForm.module.css";
 import { useForm } from "../../../../hooks/useForm";
 import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthUser";
 
 export const LoginForm = () => {
   const { onLoginSubmit } = useContext(AuthContext);
 
-  const {
+  let {
     values,
     setValues,
-    errorOccurred,
-    setErrorOccurred,
     updateForm,
     clickHandler,
     blurHandler,
     changeHandler,
     submitHandler,
+    errorOccurred,
   } = useForm(INITIAL_FORM_VALUES);
 
   useEffect(() => {
@@ -32,7 +30,7 @@ export const LoginForm = () => {
     const updatedValues = { ...values };
 
     if (errorOccurred) {
-      setErrorOccurred(false);
+      errorOccurred = false;
       setValues(updatedValues);
 
       return;
@@ -54,14 +52,13 @@ export const LoginForm = () => {
     }
   };
 
-  const buttonValue = "Sign In"
+  const buttonValue = "Sign In";
 
   return (
-    <section className={styles["register-container"]}>
+    <section>
       <form
         method="POST"
         onSubmit={onSubmit}
-        className={styles["form-container"]}
       >
         <DynamicFormNotAuthUser
           values={values}
@@ -69,7 +66,7 @@ export const LoginForm = () => {
           clickHandler={clickHandler}
           blurHandler={blurHandler}
           changeHandler={changeHandler}
-          INITIAL_FORM_VALUES={INITIAL_FORM_VALUES}
+          initialFormValues={INITIAL_FORM_VALUES}
           buttonValue={buttonValue}
         />
       </form>

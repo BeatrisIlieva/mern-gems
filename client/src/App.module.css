@@ -70,7 +70,7 @@ input[type="text"],
 [type="email"] {
   border: none;
   background-color: transparent;
-  min-width: 200px;
+  width: 100%;
 }
 
 input:-webkit-autofill,

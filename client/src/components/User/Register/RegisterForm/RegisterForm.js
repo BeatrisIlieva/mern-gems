@@ -7,23 +7,21 @@ import {
 } from "../../../../hooks/useFormValidator";
 import { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
-import styles from "./RegisterForm.module.css";
 import { useForm } from "../../../../hooks/useForm";
 import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthUser";
 
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
 
-  const {
+  let {
     values,
     setValues,
-    errorOccurred,
-    setErrorOccurred,
     updateForm,
     clickHandler,
     blurHandler,
     changeHandler,
     submitHandler,
+    errorOccurred,
   } = useForm(INITIAL_FORM_VALUES);
 
   useEffect(() => {
@@ -32,7 +30,6 @@ export const RegisterForm = () => {
 
   const onSubmit = async (e) => {
     submitHandler(e);
-    setErrorOccurred(false);
 
     const updatedValues = { ...values };
 
@@ -49,7 +46,7 @@ export const RegisterForm = () => {
       updatedValues[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
 
       if (emailErrorMessage !== "") {
-        setErrorOccurred(true);
+        errorOccurred = true;
       }
     }
 
@@ -67,12 +64,12 @@ export const RegisterForm = () => {
         passwordErrorMessage;
 
       if (passwordErrorMessage !== "") {
-        setErrorOccurred(true);
+        errorOccurred = true;
       }
     }
 
     if (errorOccurred) {
-      setErrorOccurred(false);
+      errorOccurred = false;
       setValues(updatedValues);
 
       return;
@@ -99,19 +96,15 @@ export const RegisterForm = () => {
   const buttonValue = "Create an account";
 
   return (
-    <section className={styles["register-container"]}>
-      <form
-        method="POST"
-        onSubmit={onSubmit}
-        className={styles["form-container"]}
-      >
+    <section>
+      <form method="POST" onSubmit={onSubmit}>
         <DynamicFormNotAuthUser
           values={values}
           FORM_KEYS={FORM_KEYS}
           clickHandler={clickHandler}
           blurHandler={blurHandler}
           changeHandler={changeHandler}
-          INITIAL_FORM_VALUES={INITIAL_FORM_VALUES}
+          initialFormValues={INITIAL_FORM_VALUES}
           buttonValue={buttonValue}
         />
       </form>

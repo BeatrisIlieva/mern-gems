@@ -1,7 +1,7 @@
 import styles from "./DynamicForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
-import { QuestionMarkEmail } from "./QuestionMarkEmail/QuestionMarkEmail";
+import { QuestionMarkEmailRegister } from "./QuestionMarkEmailRegister/QuestionMarkEmailRegister";
 import { useState } from "react";
 
 export const DynamicFormNotAuthUser = ({
@@ -10,7 +10,7 @@ export const DynamicFormNotAuthUser = ({
   clickHandler,
   blurHandler,
   changeHandler,
-  INITIAL_FORM_VALUES,
+  initialFormValues,
   buttonValue,
 }) => {
   const [hoveredQuestionMarkEmail, setHoveredQuestionMarkEmail] =
@@ -27,9 +27,9 @@ export const DynamicFormNotAuthUser = ({
     <>
       {Object.entries(FORM_KEYS).map(([key, value]) => (
         <div key={key} className={styles["field-box"]}>
-          {key === "Email" && (
+          {key === "Email" && buttonValue === "Create an account" && (
             <span>
-              <>{hoveredQuestionMarkEmail && <QuestionMarkEmail />}</>
+              <>{hoveredQuestionMarkEmail && <QuestionMarkEmailRegister />}</>
               <FontAwesomeIcon
                 icon={faQuestion}
                 className={styles["input-icon"]}
@@ -61,7 +61,7 @@ export const DynamicFormNotAuthUser = ({
                 values[value].isFocused === true ? styles["isFocused"] : ""
               }`.trim()}
             >
-              {INITIAL_FORM_VALUES[value].fieldLabel}
+              {initialFormValues[value].fieldLabel}
             </label>
           </div>
           <div

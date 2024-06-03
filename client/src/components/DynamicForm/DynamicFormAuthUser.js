@@ -1,13 +1,13 @@
 import styles from "./DynamicForm.module.css";
 
-export const DynamicForm = ({
+export const DynamicFormAuthUser = ({
   values,
   FORM_KEYS,
   clickHandler,
   blurHandler,
   changeHandler,
-  INITIAL_FORM_VALUES,
-  userPasswordInformation,
+  initialFormValues,
+  userInformation,
 }) => {
   return (
     <>
@@ -24,7 +24,7 @@ export const DynamicForm = ({
               type="password"
               name={value}
               id={value}
-              defaultValue={userPasswordInformation[value]}
+              defaultValue={userInformation[value]}
               onChange={(e) => changeHandler(value, e.target.value)}
               onFocus={() => clickHandler(value)}
               data-testid={`${value}-input`}
@@ -36,7 +36,7 @@ export const DynamicForm = ({
                 values[value].isFocused === true ? styles["isFocused"] : ""
               }`.trim()}
             >
-              {INITIAL_FORM_VALUES[value].fieldLabel}
+              {initialFormValues[value].fieldLabel}
             </label>
           </div>
           <div

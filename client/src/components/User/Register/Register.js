@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 export const Register = () => {
   const options = [
     "Is at least eight characters in length",
-    "Contains at least one capital letter and one lowercase letter",
+    "Contains at least one capital letter",
+    "Contains at least one lowercase letter",
     "Contains at least one number",
     "Does not contain spaces",
   ];

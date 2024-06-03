@@ -5,8 +5,7 @@ import { loginInformationServiceFactory } from "../../../../../services/loginInf
 import { getPasswordMismatchErrorMessage } from "../../../../../hooks/useFormValidator";
 import { SUCCESS_MESSAGES } from "../../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
-import styles from "./PasswordInformationForm.module.css";
-import { DynamicForm } from "../../../../DynamicForm/DynamicForm";
+import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
 import { useForm } from "../../../../../hooks/useForm";
 
 export const PasswordInformationForm = () => {
@@ -18,7 +17,6 @@ export const PasswordInformationForm = () => {
     values,
     setValues,
     errorOccurred,
-    setErrorOccurred,
     updateForm,
     clickHandler,
     blurHandler,
@@ -57,7 +55,7 @@ export const PasswordInformationForm = () => {
         passwordErrorMessage;
 
       if (passwordErrorMessage !== "") {
-        setErrorOccurred(true);
+        errorOccurred = true;
       }
     }
 
@@ -65,7 +63,7 @@ export const PasswordInformationForm = () => {
       values[FORM_KEYS.NewPassword].successMessage = "";
       setValues(updatedValues);
 
-      setErrorOccurred(false);
+      errorOccurred = false;
 
       return;
     } else {
@@ -90,20 +88,16 @@ export const PasswordInformationForm = () => {
   };
 
   return (
-    <section className={styles["login-container"]}>
-      <form
-        method="POST"
-        onSubmit={onSubmit}
-        className={styles["form-container"]}
-      >
-        <DynamicForm
+    <section>
+      <form method="POST" onSubmit={onSubmit}>
+        <DynamicFormAuthUser
           values={values}
           FORM_KEYS={FORM_KEYS}
           clickHandler={clickHandler}
           blurHandler={blurHandler}
           changeHandler={changeHandler}
-          INITIAL_FORM_VALUES={INITIAL_FORM_VALUES}
-          userPasswordInformation={userPasswordInformation}
+          initialFormValues={INITIAL_FORM_VALUES}
+          userInformation={userPasswordInformation}
         />
       </form>
     </section>

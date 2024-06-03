@@ -5,14 +5,14 @@ import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import styles from "../ToggleMenu/ToggleMenu.module.css";
 
 export const ToggleMenu = ({ options, title, subtitle }) => {
-  const [isMenuOpen, setMenuOpen] = useState(true);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen((prevState) => !prevState);
   };
 
   const handleMenuItemClick = () => {
-    setMenuOpen(false);
+    setMenuOpen(true);
   };
 
   return (
