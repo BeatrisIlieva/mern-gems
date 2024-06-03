@@ -12,11 +12,10 @@ export const PersonalInformationForm = () => {
   const personalInformationService = useService(
     personalInformationServiceFactory
   );
-  const [userPersonalInformation, setUserPersonalInformation] = useState([]);
+  const [userInformation, setUserInformation] = useState([]);
 
   const {
     values,
-    setValues,
     updateForm,
     clickHandler,
     blurHandler,
@@ -28,13 +27,13 @@ export const PersonalInformationForm = () => {
     personalInformationService
       .find(userId)
       .then((data) => {
-        setUserPersonalInformation(data);
+        setUserInformation(data);
         updateForm();
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [userPersonalInformation]);
+  }, [userInformation]);
 
   const onSubmit = async (e) => {
     submitHandler(e);
@@ -52,9 +51,6 @@ export const PersonalInformationForm = () => {
         await personalInformationService.update(userId, data);
       } catch (err) {
         console.log(err.message);
-        // const updatedValues = { ...values };
-        // setValues(updatedValues);
-        // updateForm();
       }
     }
   };
@@ -69,7 +65,7 @@ export const PersonalInformationForm = () => {
           blurHandler={blurHandler}
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
-          userInformation={userPersonalInformation}
+          userInformation={userInformation}
         />
       </form>
     </section>
