@@ -5,6 +5,7 @@ import { INVALID_CREDENTIALS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../hooks/useForm";
 import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthUser";
+import { hasFormErrorOccurred } from "../../../../utils/hasFormErrorOccurred";
 
 export const LoginForm = () => {
   const { onLoginSubmit } = useContext(AuthContext);
@@ -17,7 +18,6 @@ export const LoginForm = () => {
     blurHandler,
     changeHandler,
     submitHandler,
-    errorOccurred,
   } = useForm(INITIAL_FORM_VALUES);
 
   useEffect(() => {
@@ -27,14 +27,9 @@ export const LoginForm = () => {
   const onSubmit = async (e) => {
     submitHandler(e);
 
-    const updatedValues = { ...values };
+    const errorOccurred = hasFormErrorOccurred(values);
 
-    if (errorOccurred) {
-      errorOccurred = false;
-      setValues(updatedValues);
-
-      return;
-    } else {
+    if (!errorOccurred) {
       const email = values.email.fieldValue;
       const password = values.password.fieldValue;
 
@@ -56,10 +51,7 @@ export const LoginForm = () => {
 
   return (
     <section>
-      <form
-        method="POST"
-        onSubmit={onSubmit}
-      >
+      <form method="POST" onSubmit={onSubmit}>
         <DynamicFormNotAuthUser
           values={values}
           FORM_KEYS={FORM_KEYS}

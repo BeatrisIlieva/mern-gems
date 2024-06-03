@@ -10,7 +10,7 @@ import { useService } from "../../../../hooks/useService";
 import { DeleteAccountPopup } from "./DeleteAccountPopup/DeleteAccountPopup";
 
 export const AccountDetails = () => {
-  const { userId } = useAuthContext();
+  const { userId, onDelete } = useAuthContext();
   const [userInformation, setUserInformation] = useState([]);
   const authService = useService(authServiceFactory);
   const [showUpdateEmail, setShowUpdateEmail] = useState(false);
@@ -48,9 +48,9 @@ export const AccountDetails = () => {
   const popupSubmitHandler = async () => {
     document.body.style.overflow = "visible";
 
-    await authService.delete(userId);
-
     setDisplayDeleteAccountPopup(false);
+
+    await onDelete();
   };
 
   const popupCloseHandler = () => {

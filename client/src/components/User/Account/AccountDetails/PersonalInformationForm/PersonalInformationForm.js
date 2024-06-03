@@ -5,6 +5,7 @@ import { personalInformationServiceFactory } from "../../../../../services/perso
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../../hooks/useForm";
 import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
+import { hasFormErrorOccurred } from "../../../../../utils/hasFormErrorOccurred";
 
 export const PersonalInformationForm = () => {
   const { userId } = useAuthContext();
@@ -16,7 +17,6 @@ export const PersonalInformationForm = () => {
   const {
     values,
     setValues,
-    errorOccurred,
     updateForm,
     clickHandler,
     blurHandler,
@@ -39,15 +39,9 @@ export const PersonalInformationForm = () => {
   const onSubmit = async (e) => {
     submitHandler(e);
 
-    const updatedValues = { ...values };
+    const errorOccurred = hasFormErrorOccurred(values);
 
-    if (errorOccurred) {
-      setValues(updatedValues);
-
-      errorOccurred = false;
-
-      return;
-    } else {
+    if (!errorOccurred) {
       const firstName = values.firstName.fieldValue;
       const lastName = values.lastName.fieldValue;
       const birthday = values.birthday.fieldValue;
@@ -58,19 +52,16 @@ export const PersonalInformationForm = () => {
         await personalInformationService.update(userId, data);
       } catch (err) {
         console.log(err.message);
-        const updatedValues = { ...values };
-        setValues(updatedValues);
-        updateForm();
+        // const updatedValues = { ...values };
+        // setValues(updatedValues);
+        // updateForm();
       }
     }
   };
 
   return (
     <section>
-      <form
-        method="POST"
-        onSubmit={onSubmit}
-      >
+      <form method="POST" onSubmit={onSubmit}>
         <DynamicFormAuthUser
           values={values}
           FORM_KEYS={FORM_KEYS}

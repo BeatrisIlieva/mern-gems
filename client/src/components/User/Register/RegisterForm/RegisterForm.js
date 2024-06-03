@@ -9,6 +9,7 @@ import { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } from "../../../../constants/forms"
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../hooks/useForm";
 import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthUser";
+import { hasFormErrorOccurred } from "../../../../utils/hasFormErrorOccurred";
 
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
@@ -21,7 +22,6 @@ export const RegisterForm = () => {
     blurHandler,
     changeHandler,
     submitHandler,
-    errorOccurred,
   } = useForm(INITIAL_FORM_VALUES);
 
   useEffect(() => {
@@ -44,10 +44,6 @@ export const RegisterForm = () => {
 
       updatedValues[FORM_KEYS.Email].errorMessage = emailErrorMessage;
       updatedValues[FORM_KEYS.RetypeEmail].errorMessage = emailErrorMessage;
-
-      if (emailErrorMessage !== "") {
-        errorOccurred = true;
-      }
     }
 
     if (
@@ -62,18 +58,11 @@ export const RegisterForm = () => {
       updatedValues[FORM_KEYS.Password].errorMessage = passwordErrorMessage;
       updatedValues[FORM_KEYS.RetypePassword].errorMessage =
         passwordErrorMessage;
-
-      if (passwordErrorMessage !== "") {
-        errorOccurred = true;
-      }
     }
 
-    if (errorOccurred) {
-      errorOccurred = false;
-      setValues(updatedValues);
+    const errorOccurred = hasFormErrorOccurred(values);
 
-      return;
-    } else {
+    if (!errorOccurred) {
       const email = values.email.fieldValue;
       const password = values.password.fieldValue;
       const firstName = values.firstName.fieldValue;

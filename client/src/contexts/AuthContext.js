@@ -51,12 +51,23 @@ export const AuthProvider = ({ children }) => {
     await authService.logout();
 
     setAuth({});
+
+    navigate("/user/login");
+  };
+
+  const onDelete = async () => {
+    await authService.delete(auth._id);
+
+    setAuth({});
+
+    navigate("/user/login");
   };
 
   const context = {
     onRegisterSubmit,
     onLoginSubmit,
     onLogout,
+    onDelete,
     userId: auth._id,
     token: auth.accessToken,
     isAuthenticated: !!auth.accessToken,
