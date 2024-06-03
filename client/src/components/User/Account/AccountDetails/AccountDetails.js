@@ -46,7 +46,7 @@ export const AccountDetails = () => {
         <div className={styles["right-top-container"]}>
           <h2 className={styles["form-title"]}>Login Information</h2>
           <h4 className={styles["form-sub-title"]}>Email Address</h4>
-          {userInformation.email}
+          <p className={styles["email"]}> {userInformation.email}</p>
           <div className={styles["button-container"]}>
             <button
               className={styles["button"]}

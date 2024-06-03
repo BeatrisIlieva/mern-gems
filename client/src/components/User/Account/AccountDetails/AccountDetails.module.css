@@ -21,11 +21,11 @@
 }
 
 .right-top-container {
-  height: 60%;
+  height: 70%;
 }
 
 .right-bottom-container {
-  height: 40%;
+  height: 30%;
   text-align: center;
 }
 
@@ -44,7 +44,11 @@
 
 .form-sub-title {
   font-family: var(--bold-font-family);
-  margin-bottom: 40px;
+  margin: 0px 0px 8px 0px;
+}
+
+.email {
+  margin: 0px 0px 40px 0px;
 }
 
 .form-title-address {
@@ -56,6 +60,7 @@
   flex-direction: column;
   gap: 20px;
   align-items: flex-start;
+  margin-bottom: 40px;
 }
 .button {
   border: none;
@@ -64,9 +69,11 @@
   background-color: white;
   outline: none;
   text-decoration: underline;
+  margin: 0px;
+  padding: 0px;
 }
 
-.button:hover{
+.button:hover {
   font-family: var(--bold-font-family);
 }
 
