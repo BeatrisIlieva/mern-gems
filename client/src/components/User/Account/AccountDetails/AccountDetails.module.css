@@ -9,7 +9,7 @@
 }
 
 .right-container {
-  width:  calc(50% - 30px);
+  width: calc(50% - 30px);
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -55,6 +55,7 @@
   border-bottom: 1px solid var(--border);
   padding-bottom: 20px;
 }
+
 .button-container {
   display: flex;
   flex-direction: column;
@@ -62,6 +63,7 @@
   align-items: flex-start;
   margin-bottom: 40px;
 }
+
 .button {
   border: none;
   cursor: pointer;

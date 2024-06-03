@@ -75,7 +75,6 @@
   justify-content: center;
   margin: 40px 0px 0px 0px;
   border-top: 0.1px solid var(--border);
-
 }
 
 .button-cancel,
@@ -90,7 +89,6 @@
   font-size: var(--large-font-size);
   font-family: var(--bold-font-family);
   background-color: var(--white);
-
 }
 
 .button-cancel {
@@ -102,5 +100,5 @@
 }
 
 .form-vertical-line {
-    border: 0.1px solid var(--border);
-  }
+  border: 0.1px solid var(--border);
+}

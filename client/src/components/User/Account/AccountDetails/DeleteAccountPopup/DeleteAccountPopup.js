@@ -45,7 +45,12 @@ export const DeleteAccountPopup = ({
               Cancel
             </button>
             <div className={styles["form-vertical-line"]}></div>
-            <button className={styles["button-delete"]}>Delete</button>
+            <button
+              className={styles["button-delete"]}
+              onClick={() => popupSubmitHandler()}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
