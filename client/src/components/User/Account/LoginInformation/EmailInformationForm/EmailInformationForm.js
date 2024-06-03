@@ -25,8 +25,6 @@ export const EmailInformationForm = () => {
     submitHandler,
   } = useForm(INITIAL_FORM_VALUES);
 
-
-
   useEffect(() => {
     loginInformationService
       .find(userId)
@@ -39,14 +37,10 @@ export const EmailInformationForm = () => {
       });
   }, [userEmailInformation]);
 
-
-
   const onSubmit = async (e) => {
     submitHandler(e);
 
     const updatedValues = { ...values };
-
-
 
     if (errorOccurred) {
       errorOccurred = false;
@@ -72,7 +66,7 @@ export const EmailInformationForm = () => {
 
   return (
     <section className={styles["login-container"]}>
-            <form method="POST" onSubmit={onSubmit}>
+      <form method="POST" onSubmit={onSubmit}>
         <DynamicFormAuthUser
           values={values}
           FORM_KEYS={FORM_KEYS}
@@ -83,7 +77,6 @@ export const EmailInformationForm = () => {
           userInformation={userEmailInformation}
         />
       </form>
-
     </section>
   );
 };
