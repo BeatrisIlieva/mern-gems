@@ -11,6 +11,7 @@ const FORM_KEYS = {
   City: "city",
   Street: "street",
   ZipCode: "zipCode",
+  fieldType: "text",
 };
 
 export const INITIAL_FORM_VALUES = {
@@ -20,6 +21,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: PHONE_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.Country]: {
@@ -28,6 +30,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: NAME_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.City]: {
@@ -36,6 +39,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: NAME_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.Street]: {
@@ -44,6 +48,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: STREET_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.ZipCode]: {
@@ -52,6 +57,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: ZIP_CODE_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 };
 

@@ -21,7 +21,7 @@ export const DynamicFormAuthUser = ({
             onBlur={() => blurHandler(value)}
           >
             <input
-              type="password"
+              type={values[value].fieldType}
               name={value}
               id={value}
               defaultValue={userInformation[value]}

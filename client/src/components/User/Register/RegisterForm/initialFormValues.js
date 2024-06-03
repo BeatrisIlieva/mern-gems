@@ -20,6 +20,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: EMAIL_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "email",
   },
 
   [FORM_KEYS.RetypeEmail]: {
@@ -28,6 +29,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: EMAIL_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "email",
   },
 
   [FORM_KEYS.Password]: {
@@ -36,6 +38,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: PASSWORD_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "password",
   },
 
   [FORM_KEYS.RetypePassword]: {
@@ -44,6 +47,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: PASSWORD_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "password",
   },
 
   [FORM_KEYS.FirstName]: {
@@ -52,6 +56,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: NAME_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.LastName]: {
@@ -60,6 +65,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: NAME_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 };
 

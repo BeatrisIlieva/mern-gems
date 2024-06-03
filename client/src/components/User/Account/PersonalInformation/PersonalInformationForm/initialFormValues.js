@@ -15,6 +15,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: NAME_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.LastName]: {
@@ -23,6 +24,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: NAME_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.Birthday]: {
@@ -31,6 +33,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: DATE_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 
   [FORM_KEYS.SpecialDay]: {
@@ -39,6 +42,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: DATE_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "text",
   },
 };
 

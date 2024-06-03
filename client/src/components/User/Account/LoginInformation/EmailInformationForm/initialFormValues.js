@@ -15,6 +15,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: EMAIL_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "email",
   },
 
   [FORM_KEYS.Password]: {
@@ -23,6 +24,7 @@ export const INITIAL_FORM_VALUES = {
     regexPattern: PASSWORD_PATTERN,
     errorMessage: "",
     isFocused: false,
+    fieldType: "password",
   },
 };
 

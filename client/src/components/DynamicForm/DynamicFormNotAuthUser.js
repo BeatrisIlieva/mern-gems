@@ -46,7 +46,7 @@ export const DynamicFormNotAuthUser = ({
             onBlur={() => blurHandler(value)}
           >
             <input
-              type="text"
+              type={values[value].fieldType}
               name={value}
               id={value}
               value={values[key]}
