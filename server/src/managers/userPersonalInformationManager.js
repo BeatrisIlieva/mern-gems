@@ -18,3 +18,9 @@ exports.update = async (userId, data) => {
 
   return result;
 };
+
+exports.delete = async (userId) => {
+  const result = await UserPersonalInformation.findByIdAndDelete(userId);
+
+  return result;
+};

@@ -82,6 +82,12 @@ exports.updatePassword = async (userId, data) => {
   }
 };
 
+exports.delete = async (userId) => {
+  const result = await UserLoginInformation.findByIdAndDelete(userId);
+
+  return result;
+};
+
 async function generateToken(user) {
   const payload = {
     _id: user._id,

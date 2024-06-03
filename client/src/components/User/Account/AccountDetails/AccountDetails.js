@@ -45,10 +45,11 @@ export const AccountDetails = () => {
     setDisplayDeleteAccountPopup(true);
   };
 
-  const popupSubmitHandler = () => {
+  const popupSubmitHandler = async () => {
     document.body.style.overflow = "visible";
 
-    await 
+    await authService.delete(userId);
+
     setDisplayDeleteAccountPopup(false);
   };
 

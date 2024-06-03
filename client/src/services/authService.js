@@ -15,5 +15,7 @@ export const authServiceFactory = (token) => {
     find: (userId) => request.get(`${baseUrl}/${userId}`),
 
     logout: () => request.get(`${baseUrl}/logout`),
+
+    delete: (userId) => request.delete(`${baseUrl}/${userId}`),
   };
 };
