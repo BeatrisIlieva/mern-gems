@@ -6,29 +6,42 @@ import { getErrorMessage } from "../../../../../hooks/useFormValidator";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import formStyles from "../../../../../commonCSS/forms.module.css";
 import styles from "./EmailInformationForm.module.css";
+import { useForm } from "../../../../../hooks/useForm";
+import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
 
 export const EmailInformationForm = () => {
   const { userId } = useAuthContext();
   const loginInformationService = useService(loginInformationServiceFactory);
   const [userEmailInformation, setUserEmailInformation] = useState([]);
-  const [values, setValues] = useState(INITIAL_FORM_VALUES);
+  // const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
-  const updateForm = () => {
-    Object.keys(values).forEach((fieldKey) => {
-      const input = document.getElementById(fieldKey);
+  const {
+    values,
+    setValues,
+    errorOccurred,
+    updateForm,
+    clickHandler,
+    blurHandler,
+    changeHandler,
+    submitHandler,
+  } = useForm(INITIAL_FORM_VALUES);
 
-      if (input.value !== "") {
-        setValues((prevValues) => ({
-          ...prevValues,
-          [fieldKey]: {
-            ...prevValues[fieldKey],
-            fieldValue: input.value,
-            isFocused: true,
-          },
-        }));
-      }
-    });
-  };
+  // const updateForm = () => {
+  //   Object.keys(values).forEach((fieldKey) => {
+  //     const input = document.getElementById(fieldKey);
+
+  //     if (input.value !== "") {
+  //       setValues((prevValues) => ({
+  //         ...prevValues,
+  //         [fieldKey]: {
+  //           ...prevValues[fieldKey],
+  //           fieldValue: input.value,
+  //           isFocused: true,
+  //         },
+  //       }));
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     loginInformationService
@@ -42,53 +55,54 @@ export const EmailInformationForm = () => {
       });
   }, [userEmailInformation]);
 
-  const clickHandler = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
-    }));
-  };
+  // const clickHandler = (fieldKey) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: { ...prevValues[fieldKey], isFocused: true },
+  //   }));
+  // };
 
-  const blurHandler = (fieldKey) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: {
-        ...prevValues[fieldKey],
-        isFocused: prevValues[fieldKey].fieldValue !== "",
-      },
-    }));
-  };
+  // const blurHandler = (fieldKey) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: {
+  //       ...prevValues[fieldKey],
+  //       isFocused: prevValues[fieldKey].fieldValue !== "",
+  //     },
+  //   }));
+  // };
 
-  const changeHandler = (fieldKey, newValue) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
-    }));
-    updateForm();
-  };
+  // const changeHandler = (fieldKey, newValue) => {
+  //   setValues((prevValues) => ({
+  //     ...prevValues,
+  //     [fieldKey]: { ...prevValues[fieldKey], fieldValue: newValue },
+  //   }));
+  //   updateForm();
+  // };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (e) => {
+    submitHandler(e);
 
     const updatedValues = { ...values };
 
-    let hasErrorOccurred = false;
+    // let hasErrorOccurred = false;
 
-    Object.keys(values).forEach((key) => {
-      const field = values[key];
+    // Object.keys(values).forEach((key) => {
+    //   const field = values[key];
 
-      field.errorMessage = getErrorMessage(
-        key,
-        field.fieldValue,
-        field.regexPattern
-      );
+    //   field.errorMessage = getErrorMessage(
+    //     key,
+    //     field.fieldValue,
+    //     field.regexPattern
+    //   );
 
-      if (field.errorMessage !== "") {
-        hasErrorOccurred = true;
-      }
-    });
+    //   if (field.errorMessage !== "") {
+    //     hasErrorOccurred = true;
+    //   }
+    // });
 
-    if (hasErrorOccurred) {
+    if (errorOccurred) {
+      errorOccurred = false;
       setValues(updatedValues);
 
       return;
@@ -111,9 +125,20 @@ export const EmailInformationForm = () => {
 
   return (
     <section className={styles["login-container"]}>
-      <form
+            <form method="POST" onSubmit={onSubmit}>
+        <DynamicFormAuthUser
+          values={values}
+          FORM_KEYS={FORM_KEYS}
+          clickHandler={clickHandler}
+          blurHandler={blurHandler}
+          changeHandler={changeHandler}
+          initialFormValues={INITIAL_FORM_VALUES}
+          userInformation={userEmailInformation}
+        />
+      </form>
+      {/* <form
         method="POST"
-        onSubmit={submitHandler}
+        onSubmit={onSubmit}
         className={styles["form-container"]}
       >
         <div className={`${formStyles["field-box"]} ${styles["half"]}`}>
@@ -200,7 +225,7 @@ export const EmailInformationForm = () => {
         >
           Save
         </button>
-      </form>
+      </form> */}
     </section>
   );
 };
