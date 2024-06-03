@@ -11,7 +11,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 export const Header = () => {
   const wishListCountGreaterThanZero = true;
   const bagCountGreaterThanZero = true;
-  const isAuthenticated = useAuthContext();
+  const {isAuthenticated} = useAuthContext();
   const wishlistCount = 1;
   const bagCount = 3;
   const user = null;

@@ -59,8 +59,7 @@ export const AuthProvider = ({ children }) => {
     await authService.delete(auth._id);
 
     setAuth({});
-
-    navigate("/user/login");
+    navigate("/user/register");
   };
 
   const context = {

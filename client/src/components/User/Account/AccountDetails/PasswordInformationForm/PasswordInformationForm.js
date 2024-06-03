@@ -68,9 +68,15 @@ export const PasswordInformationForm = () => {
       const data = { password, newPassword };
       try {
         await loginInformationService.updatePassword(userId, data);
-        values[FORM_KEYS.NewPassword].successMessage =
-          SUCCESS_MESSAGES.newPassword;
-        setValues(updatedValues);
+
+        setValues((prevValues) => ({
+          ...prevValues,
+          [FORM_KEYS.NewPassword]: {
+            ...prevValues[FORM_KEYS.NewPassword],
+            successMessage: SUCCESS_MESSAGES.newPassword,
+          },
+        }));
+
         updateForm();
       } catch (err) {
         console.log(err.message);
