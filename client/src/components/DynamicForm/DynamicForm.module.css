@@ -1,5 +1,6 @@
 .field-box {
-  height: 80px;
+  height: 90px;
+  min-width: 240px;
   position: relative;
 }
 
@@ -47,7 +48,7 @@
 }
 
 .animated-button {
-  margin-top: 20px;
+  margin-top: 10px;
   position: relative;
   padding: 16px 48px;
   font-size: 14px;

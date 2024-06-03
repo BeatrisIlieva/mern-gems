@@ -11,7 +11,7 @@ const FORM_KEYS = {
   City: "city",
   Street: "street",
   ZipCode: "zipCode",
-  fieldType: "text",
+  Apartment: "apartment",
 };
 
 export const INITIAL_FORM_VALUES = {
@@ -44,6 +44,15 @@ export const INITIAL_FORM_VALUES = {
 
   [FORM_KEYS.Street]: {
     fieldLabel: "Street",
+    fieldValue: "",
+    regexPattern: STREET_PATTERN,
+    errorMessage: "",
+    isFocused: false,
+    fieldType: "text",
+  },
+
+  [FORM_KEYS.Apartment]: {
+    fieldLabel: "Apartment/Suite",
     fieldValue: "",
     regexPattern: STREET_PATTERN,
     errorMessage: "",

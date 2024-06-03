@@ -6,6 +6,7 @@ import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../../hooks/useForm";
 import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
 import { hasFormErrorOccurred } from "../../../../../utils/hasFormErrorOccurred";
+import styles from "./PersonalInformationForm.module.css"
 
 export const PersonalInformationForm = () => {
   const { userId } = useAuthContext();
@@ -56,8 +57,8 @@ export const PersonalInformationForm = () => {
   };
 
   return (
-    <section>
-      <form method="POST" onSubmit={onSubmit}>
+    <section >
+      <form method="POST" onSubmit={onSubmit} className={styles["form-container"]}>
         <DynamicFormAuthUser
           values={values}
           FORM_KEYS={FORM_KEYS}

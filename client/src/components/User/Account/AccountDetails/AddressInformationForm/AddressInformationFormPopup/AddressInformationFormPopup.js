@@ -60,7 +60,7 @@ export const AddressInformationFormPopup = ({
         street,
         zipCode,
       };
-      
+
       try {
         await addressInformationService.update(userId, data);
         popupSubmitHandler();
@@ -93,7 +93,11 @@ export const AddressInformationFormPopup = ({
             </div>
             <h2 className={styles["title"]}>Add a New Address</h2>
           </div>
-          <form method="POST" onSubmit={onSubmit}>
+          <form
+            method="POST"
+            onSubmit={onSubmit}
+            className={styles["form-container"]}
+          >
             <DynamicFormAuthUser
               values={values}
               FORM_KEYS={FORM_KEYS}
@@ -104,6 +108,12 @@ export const AddressInformationFormPopup = ({
               userInformation={userInformation}
             />
           </form>
+          <button
+            className={styles["dismiss-button"]}
+            onClick={() => popupCloseHandler()}
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </section>
