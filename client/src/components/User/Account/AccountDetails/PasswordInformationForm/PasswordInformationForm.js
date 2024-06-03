@@ -8,7 +8,7 @@ import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
 import { useForm } from "../../../../../hooks/useForm";
 import { hasFormErrorOccurred } from "../../../../../utils/hasFormErrorOccurred";
-import styles from "../AccountDetails.module.css"
+import styles from "../AccountDetails.module.css";
 
 export const PasswordInformationForm = () => {
   const { userId } = useAuthContext();
@@ -57,6 +57,7 @@ export const PasswordInformationForm = () => {
     }
 
     setValues(updatedValues);
+    updateForm();
 
     const errorOccurred = hasFormErrorOccurred(values);
 
@@ -73,9 +74,15 @@ export const PasswordInformationForm = () => {
         updateForm();
       } catch (err) {
         console.log(err.message);
-        values[FORM_KEYS.Password].errorMessage = err.message;
-        const updatedValues = { ...values };
-        setValues(updatedValues);
+
+        setValues((prevValues) => ({
+          ...prevValues,
+          [FORM_KEYS.Password]: {
+            ...prevValues[FORM_KEYS.Password],
+            errorMessage: err.message,
+          },
+        }));
+
         updateForm();
       }
     }
