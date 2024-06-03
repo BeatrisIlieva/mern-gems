@@ -1,3 +1,8 @@
+.account-details-box {
+  display: flex;
+  gap: 60px;
+}
+
 .left-container {
   width: 50%;
   box-shadow: 0 0 0 0.3px var(--dark-pink);
@@ -5,23 +10,28 @@
 
 .right-container {
   width: 50%;
-  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 60px;
 }
 
+.right-bottom-container,
 .right-top-container {
-  height: 100%;
   box-shadow: 0 0 0 0.3px var(--dark-pink);
+}
+
+.right-top-container {
+  height: 60%;
 }
 
 .right-bottom-container {
-  height: 100%;
-  box-shadow: 0 0 0 0.3px var(--dark-pink);
+  height: 40%;
+  text-align: center;
 }
 
-.left-container, .right-top-container, .right-bottom-container {
+.left-container,
+.right-top-container,
+.right-bottom-container {
   padding: 40px;
 }
 
@@ -32,18 +42,29 @@
   margin: 0px 0px 40px 0px;
 }
 
+.form-sub-title {
+  font-family: var(--bold-font-family);
+  margin-bottom: 40px;
+}
+
 .form-title-address {
   border-bottom: 1px solid var(--border);
   padding-bottom: 20px;
 }
-
-.personal-information-box {
+.button-container {
   display: flex;
-  gap: 60px;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
 }
-
-
-
+.button {
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: white;
+  outline: none;
+  text-decoration: underline;
+}
 
 .slideIn {
   animation: slideIn 0.4s forwards;
