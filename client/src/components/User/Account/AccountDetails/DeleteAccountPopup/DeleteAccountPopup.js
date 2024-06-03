@@ -1,7 +1,5 @@
 import styles from "./DeleteAccountPopup.module.css";
-import { useState, useEffect } from "react";
-import { useAuthContext } from "../../../../../contexts/AuthContext";
-import { useService } from "../../../../../hooks/useService";
+import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,8 +7,6 @@ export const DeleteAccountPopup = ({
   popupSubmitHandler,
   popupCloseHandler,
 }) => {
-  const { userId } = useAuthContext();
-
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {

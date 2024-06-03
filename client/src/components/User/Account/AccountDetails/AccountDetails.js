@@ -47,6 +47,8 @@ export const AccountDetails = () => {
 
   const popupSubmitHandler = () => {
     document.body.style.overflow = "visible";
+
+    await 
     setDisplayDeleteAccountPopup(false);
   };
 
