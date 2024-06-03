@@ -13,7 +13,6 @@ export const EmailInformationForm = () => {
   const { userId } = useAuthContext();
   const loginInformationService = useService(loginInformationServiceFactory);
   const [userEmailInformation, setUserEmailInformation] = useState([]);
-  // const [values, setValues] = useState(INITIAL_FORM_VALUES);
 
   const {
     values,
