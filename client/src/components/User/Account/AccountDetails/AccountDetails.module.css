@@ -4,12 +4,12 @@
 }
 
 .left-container {
-  width: 50%;
+  width: calc(50% - 30px);
   box-shadow: 0 0 0 0.3px var(--dark-pink);
 }
 
 .right-container {
-  width: 50%;
+  width:  calc(50% - 30px);
   display: flex;
   flex-direction: column;
   gap: 60px;

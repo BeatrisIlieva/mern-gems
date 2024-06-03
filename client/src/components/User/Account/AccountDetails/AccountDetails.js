@@ -7,12 +7,17 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../../contexts/AuthContext";
 import { authServiceFactory } from "../../../../services/authService";
 import { useService } from "../../../../hooks/useService";
+import { DeleteAccountPopup } from "./DeleteAccountPopup/DeleteAccountPopup";
 
 export const AccountDetails = () => {
   const { userId } = useAuthContext();
   const [userInformation, setUserInformation] = useState([]);
   const authService = useService(authServiceFactory);
   const [showUpdateEmail, setShowUpdateEmail] = useState(false);
+  const [showUpdatePassword, setShowUpdatePassword] = useState(false);
+
+  const [displayDeleteAccountPopup, setDisplayDeleteAccountPopup] =
+    useState(false);
 
   useEffect(() => {
     authService
@@ -30,12 +35,26 @@ export const AccountDetails = () => {
     setShowUpdatePassword(false);
   };
 
-  const [showUpdatePassword, setShowUpdatePassword] = useState(false);
-
   const onUpdatePasswordClick = async () => {
     setShowUpdatePassword(true);
     setShowUpdateEmail(false);
   };
+
+  const popupClickHandler = async () => {
+    document.body.style.overflow = "hidden";
+    setDisplayDeleteAccountPopup(true);
+  };
+
+  const popupSubmitHandler = () => {
+    document.body.style.overflow = "visible";
+    setDisplayDeleteAccountPopup(false);
+  };
+
+  const popupCloseHandler = () => {
+    document.body.style.overflow = "visible";
+    setDisplayDeleteAccountPopup(false);
+  };
+
   return (
     <section className={styles["account-details-box"]}>
       <div className={styles["left-container"]}>
@@ -60,6 +79,15 @@ export const AccountDetails = () => {
             >
               Change Password
             </button>
+            <button className={styles["button"]} onClick={popupClickHandler}>
+              Delete Account
+            </button>
+            {displayDeleteAccountPopup && (
+              <DeleteAccountPopup
+                popupSubmitHandler={popupSubmitHandler}
+                popupCloseHandler={popupCloseHandler}
+              />
+            )}
           </div>
           {showUpdateEmail && <EmailInformationForm />}
           {showUpdatePassword && <PasswordInformationForm />}
