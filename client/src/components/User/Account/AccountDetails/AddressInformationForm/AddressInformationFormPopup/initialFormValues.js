@@ -10,8 +10,8 @@ const FORM_KEYS = {
   Country: "country",
   City: "city",
   Street: "street",
-  ZipCode: "zipCode",
   Apartment: "apartment",
+  ZipCode: "zipCode",
 };
 
 export const INITIAL_FORM_VALUES = {
