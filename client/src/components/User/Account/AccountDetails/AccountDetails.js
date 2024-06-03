@@ -29,20 +29,20 @@ export const AccountDetails = () => {
         <div className={styles["right-top-container"]}>
           <h2 className={styles["form-title"]}>Login Information</h2>
           <h4 className={styles["form-sub-title"]}>Email Address</h4>
-<div className={styles["button-container"]}>
-<button
-            className={styles["button"]}
-            onClick={() => onUpdateEmailClick()}
-          >
-            Update Email Address
-          </button>
-          <button
-            className={styles["button"]}
-            onClick={() => onUpdatePasswordClick()}
-          >
-            Change Password
-          </button>
-</div>
+          <div className={styles["button-container"]}>
+            <button
+              className={styles["button"]}
+              onClick={() => onUpdateEmailClick()}
+            >
+              Update Email Address
+            </button>
+            <button
+              className={styles["button"]}
+              onClick={() => onUpdatePasswordClick()}
+            >
+              Change Password
+            </button>
+          </div>
           {showUpdateEmail && <EmailInformationForm />}
           {showUpdatePassword && <PasswordInformationForm />}
         </div>

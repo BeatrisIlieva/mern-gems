@@ -66,6 +66,10 @@
   text-decoration: underline;
 }
 
+.button:hover{
+  font-family: var(--bold-font-family);
+}
+
 .slideIn {
   animation: slideIn 0.4s forwards;
 }
