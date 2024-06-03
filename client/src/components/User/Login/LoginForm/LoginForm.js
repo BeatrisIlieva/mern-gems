@@ -26,8 +26,10 @@ export const LoginForm = () => {
 
   const onSubmit = async (e) => {
     submitHandler(e);
+
     const updatedValues = { ...values };
     setValues(updatedValues);
+
     updateForm();
 
     const errorOccurred = hasFormErrorOccurred(values);
@@ -37,6 +39,7 @@ export const LoginForm = () => {
       const password = values.password.fieldValue;
 
       const data = { email, password };
+
       try {
         await onLoginSubmit(data);
       } catch (err) {
@@ -48,6 +51,7 @@ export const LoginForm = () => {
               errorMessage: err.message,
             },
           }));
+
           updateForm();
         }
       }

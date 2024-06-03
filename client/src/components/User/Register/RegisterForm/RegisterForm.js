@@ -60,6 +60,9 @@ export const RegisterForm = () => {
         passwordErrorMessage;
     }
 
+    setValues(updatedValues);
+    updateForm();
+
     const errorOccurred = hasFormErrorOccurred(updatedValues);
 
     if (!errorOccurred) {
@@ -73,9 +76,14 @@ export const RegisterForm = () => {
         await onRegisterSubmit(data);
       } catch (err) {
         if (err.message === EMAIL_ALREADY_EXISTS_ERROR_MESSAGE) {
-          values[FORM_KEYS.Email].errorMessage = err.message;
-          const updatedValues = { ...values };
-          setValues(updatedValues);
+          setValues((prevValues) => ({
+            ...prevValues,
+            [FORM_KEYS.Email]: {
+              ...prevValues[FORM_KEYS.Email],
+              errorMessage: err.message,
+            },
+          }));
+
           updateForm();
         }
       }

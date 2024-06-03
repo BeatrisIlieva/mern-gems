@@ -49,9 +49,15 @@ export const EmailInformationForm = () => {
         await loginInformationService.updateEmail(userId, data);
       } catch (err) {
         console.log(err.message);
-        values[FORM_KEYS.Password].errorMessage = err.message;
-        const updatedValues = { ...values };
-        setValues(updatedValues);
+
+        setValues((prevValues) => ({
+          ...prevValues,
+          [FORM_KEYS.Password]: {
+            ...prevValues[FORM_KEYS.Password],
+            errorMessage: err.message,
+          },
+        }));
+
         updateForm();
       }
     }
