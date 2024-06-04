@@ -8,16 +8,17 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]}>Forget-Me-Not Collection</h2>
-            <p className={styles["paragraph"]}>
+            <h2 className={styles["title"]} data-testid="forget-me-not-title">Forget-Me-Not Collection</h2>
+            <p className={styles["paragraph"]} data-testid="forget-me-not-paragraph">
               An enchanting medley of round brilliant, pear-shaped and marquise
               stones that together reveal a beautiful flower.
             </p>
-            <button className={styles["animated-button"]}>Discover</button>
+            <button className={styles["animated-button"]} data-testid="forget-me-not-button">Discover</button>
           </div>
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
+              data-testid="forget-me-not-image"
               src={
                 "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/forgetmenot_rz0umv.png"
               }
@@ -32,8 +33,7 @@ export const Home = () => {
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]}>Pirouette Collection</h2>
             <p className={styles["paragraph"]}>
-              Inspired by ballet's most beloved turn, this graceful and
-              captivating line of diamond jewelry features dazzling marquise and
+              Inspired by ballet's most beloved turn, this graceful line of jewelry features dazzling marquise and
               round brilliant diamonds.
             </p>
             <button className={styles["animated-button"]}>Discover</button>
@@ -55,7 +55,7 @@ export const Home = () => {
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]}>Diamond Loop Collection</h2>
             <p className={styles["paragraph"]}>
-              The graceful shape of pear-shaped diamonds inspires delicate
+              The captivating shape of pear-shaped diamonds inspires delicate
               designs.
             </p>
 
