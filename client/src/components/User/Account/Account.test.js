@@ -39,11 +39,10 @@ describe("Account Component", () => {
     expect(titleElement).toBeInTheDocument();
 
     await waitFor(() => {
-        // Check if the title element is rendered with the correct text
-        expect(screen.getByTestId("title-element")).toHaveTextContent(
-          `Hi, ${mockUserPersonalInformation.firstName}`
-        );
-      });
+      expect(titleElement).toHaveTextContent(
+        `Hi, ${mockUserPersonalInformation.firstName}`
+      );
+    });
 
     const paragraphElement = screen.getByTestId("paragraph-element");
     expect(paragraphElement).toBeInTheDocument();
@@ -57,5 +56,9 @@ describe("Account Component", () => {
       "order-history-title-element"
     );
     expect(orderHistoryTitleElement).toBeInTheDocument();
+
+    expect(accountDetailsTitleElement).toHaveClass("selected");
+
+    expect(orderHistoryTitleElement).not.toHaveClass("selected");
   });
 });
