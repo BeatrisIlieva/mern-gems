@@ -55,6 +55,16 @@ export const STREET_PATTERN = new RegExp(
 );
 const STREET_ERROR_MESSAGE = `* This field requires ${STREET_LENGTH.MIN}-${STREET_LENGTH.MAX} characters`;
 
+const APARTMENT_LENGTH = {
+  MIN: 1,
+  MAX: 10,
+};
+
+export const APARTMENT_PATTERN = new RegExp(
+  `^[a-zA-z0-9]{${APARTMENT_LENGTH.MIN},${APARTMENT_LENGTH.MAX}}$`
+);
+const APARTMENT_ERROR_MESSAGE = `* This field requires ${APARTMENT_LENGTH.MIN}-${APARTMENT_LENGTH.MAX} characters`;
+
 const ZIP_CODE_LENGTH = {
   MIN: 4,
   MAX: 15,
@@ -86,5 +96,6 @@ export const ERROR_MESSAGES = {
   street: STREET_ERROR_MESSAGE,
   zipCode: ZIP_CODE_ERROR_MESSAGE,
   city: NAME_ERROR_MESSAGE,
+  apartment:APARTMENT_ERROR_MESSAGE,
   country: NAME_ERROR_MESSAGE,
 };

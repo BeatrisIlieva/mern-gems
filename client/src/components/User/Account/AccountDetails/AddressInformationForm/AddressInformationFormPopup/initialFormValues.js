@@ -3,6 +3,7 @@ import {
   ZIP_CODE_PATTERN,
   NAME_PATTERN,
   STREET_PATTERN,
+  APARTMENT_PATTERN,
 } from "../../../../../../constants/forms";
 
 const FORM_KEYS = {
@@ -54,7 +55,7 @@ export const INITIAL_FORM_VALUES = {
   [FORM_KEYS.Apartment]: {
     fieldLabel: "Apartment/Suite",
     fieldValue: "",
-    regexPattern: STREET_PATTERN,
+    regexPattern: APARTMENT_PATTERN,
     errorMessage: "",
     isFocused: false,
     fieldType: "text",

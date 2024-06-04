@@ -27,6 +27,10 @@ const userAddressInformationSchema = new mongoose.Schema({
     type: String,
     match: [STREET_PATTERN, STREET_ERROR_MESSAGE],
   },
+  apartment: {
+    type: String,
+    match: [STREET_PATTERN, STREET_ERROR_MESSAGE],
+  },
   zipCode: {
     type: String,
     match: [ZIP_CODE_PATTERN, ZIP_CODE_ERROR_MESSAGE],

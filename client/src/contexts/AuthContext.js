@@ -52,6 +52,9 @@ export const AuthProvider = ({ children }) => {
 
     setAuth({});
 
+    localStorage.removeItem("auth");
+    localStorage.removeItem("userUUID");
+
     navigate("/user/login");
   };
 
@@ -59,6 +62,10 @@ export const AuthProvider = ({ children }) => {
     await authService.delete(auth._id);
 
     setAuth({});
+
+    localStorage.removeItem("auth");
+    localStorage.removeItem("userUUID");
+    
     navigate("/user/register");
   };
 

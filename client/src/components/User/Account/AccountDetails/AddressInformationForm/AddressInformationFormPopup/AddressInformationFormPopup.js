@@ -45,12 +45,14 @@ export const AddressInformationFormPopup = ({
     submitHandler(e);
 
     const errorOccurred = hasFormErrorOccurred(values);
+    console.log(values)
 
     if (!errorOccurred) {
       const phoneNumber = values.phoneNumber.fieldValue;
       const country = values.country.fieldValue;
       const city = values.city.fieldValue;
       const street = values.street.fieldValue;
+      const apartment = values.apartment.fieldValue;
       const zipCode = values.zipCode.fieldValue;
 
       const data = {
@@ -58,10 +60,12 @@ export const AddressInformationFormPopup = ({
         country,
         city,
         street,
+        apartment,
         zipCode,
       };
 
       try {
+        console.log(data)
         await addressInformationService.update(userId, data);
         popupSubmitHandler();
       } catch (err) {
