@@ -5,22 +5,22 @@ import { EmailInformationForm } from "./EmailInformationForm/EmailInformationFor
 import { PasswordInformationForm } from "./PasswordInformationForm/PasswordInformationForm";
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../../contexts/AuthContext";
-import { authServiceFactory } from "../../../../services/authService";
 import { useService } from "../../../../hooks/useService";
 import { DeleteAccountPopup } from "./DeleteAccountPopup/DeleteAccountPopup";
+import { loginInformationServiceFactory } from "../../../../services/loginInformationService";
 
 export const AccountDetails = () => {
   const { userId, onDelete } = useAuthContext();
   const [userInformation, setUserInformation] = useState([]);
-  const authService = useService(authServiceFactory);
   const [showUpdateEmail, setShowUpdateEmail] = useState(false);
   const [showUpdatePassword, setShowUpdatePassword] = useState(false);
+  const loginInformationService = useService(loginInformationServiceFactory)
 
   const [displayDeleteAccountPopup, setDisplayDeleteAccountPopup] =
     useState(false);
 
   useEffect(() => {
-    authService
+    loginInformationService
       .find(userId)
       .then((data) => {
         setUserInformation(data);
@@ -63,7 +63,7 @@ export const AccountDetails = () => {
       <div className={styles["left-container"]}>
         <div className={styles["left-top-container"]}>
           <h2 className={styles["form-title"]} data-testid="personal-information-title">Personal Information</h2>
-          <PersonalInformationForm data-testid="personal-information-form"/>
+          <PersonalInformationForm />
         </div>
       </div>
       <div className={styles["right-container"]}>
@@ -72,7 +72,7 @@ export const AccountDetails = () => {
             Login Information
           </h2>
           <h4 className={styles["form-sub-title"]}>Email Address</h4>
-          <p className={styles["email"]}> {userInformation.email}</p>
+          <p className={styles["email"]} data-testid="user-email"> {userInformation.email}</p>
           <div className={styles["button-container"]}>
             <button
               className={styles["button"]}
