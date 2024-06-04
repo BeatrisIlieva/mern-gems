@@ -22,5 +22,11 @@ describe("Home Component", () => {
 
     const titleElement = screen.getByTestId("forget-me-not-title");
     expect(titleElement).toBeInTheDocument();
+
+    const paragraphElement = screen.getByTestId("forget-me-not-paragraph");
+    expect(paragraphElement).toBeInTheDocument();
+
+    const imageElement = screen.getByTestId("forget-me-not-image");
+    expect(imageElement).toBeInTheDocument();
   });
 });
