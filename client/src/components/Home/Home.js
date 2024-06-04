@@ -77,15 +77,16 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]}>Sunflower Collection</h2>
-            <p className={styles["paragraph"]}>
+            <h2 className={styles["title"]} data-testid="sunflower-title">Sunflower Collection</h2>
+            <p className={styles["paragraph"]} data-testid="sunflower-paragraph">
               Natural brilliance radiates in timeless blooms.
             </p>
-            <button className={styles["animated-button"]}>Discover</button>
+            <button className={styles["animated-button"]} data-testid="sunflower-button">Discover</button>
           </div>
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
+              data-testid="sunflower-image"
               src={
                 "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/sunflower_jreu5p.webp"
               }
