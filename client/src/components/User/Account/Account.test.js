@@ -3,16 +3,36 @@ import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Account } from "./Account";
-import { useState } from "react";
+import { personalInformationServiceFactory } from "../../../services/personalInformationService";
 
-const mockOnRegisterSubmit = jest.fn();
 
 const mockAuthContextValue = {
-  onRegisterSubmit: mockOnRegisterSubmit,
-};
+    userId: "user123", // Mock user ID
+  };
+  
+  // Mock the personalInformationServiceFactory
+  jest.mock("../../../services/personalInformationService", () => ({
+    personalInformationServiceFactory: jest.fn(),
+  }));
+  
+  // Mock the find function of personalInformationServiceFactory
+  const mockFind = jest.fn();
 
-describe("Login Component", () => {
-  test("Should load image", async () => {
+describe("Account Component", () => {
+    beforeEach(() => {
+        // Reset the mock implementation before each test
+        personalInformationServiceFactory.mockReturnValue({
+          find: mockFind,
+        });
+    })
+  test("Should Account Component", async () => {
+
+    const mockUserPersonalInformation = {
+        firstName: "John",
+      };
+  
+      // Mock the data returned by the find function
+      mockFind.mockResolvedValue(mockUserPersonalInformation);
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <Account />
@@ -25,10 +45,14 @@ describe("Login Component", () => {
     const paragraphElement = screen.getByTestId("paragraph-element");
     expect(paragraphElement).toBeInTheDocument();
 
-    const accountDetailsTitleElement = screen.getByTestId("account-details-title-element");
+    const accountDetailsTitleElement = screen.getByTestId(
+      "account-details-title-element"
+    );
     expect(accountDetailsTitleElement).toBeInTheDocument();
 
-    const orderHistoryTitleElement = screen.getByTestId("order-history-title-element");
+    const orderHistoryTitleElement = screen.getByTestId(
+      "order-history-title-element"
+    );
     expect(orderHistoryTitleElement).toBeInTheDocument();
   });
 });
