@@ -70,3 +70,32 @@ describe("AccountDetails Component update email button", () => {
     expect(updateEmailForm).toBeInTheDocument();
   });
 });
+
+describe("AccountDetails Component update password button", () => {
+  beforeEach(() => {
+    loginInformationServiceFactory.mockReturnValue({
+      find: mockFind,
+    });
+  });
+
+  test("Should load user update password form", async () => {
+    const mockUserInformation = {
+      email: "test@email.com",
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <AccountDetails />
+      </AuthContext.Provider>
+    );
+
+    const updatePasswordButton = screen.getByTestId("update-password-button");
+    expect(updatePasswordButton).toBeInTheDocument();
+
+    fireEvent.click(updatePasswordButton);
+    const updatePasswordForm = screen.getByTestId("update-password-form");
+    expect(updatePasswordForm).toBeInTheDocument();
+  });
+});

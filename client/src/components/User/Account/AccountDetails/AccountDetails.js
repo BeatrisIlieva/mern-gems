@@ -91,6 +91,7 @@ export const AccountDetails = () => {
             <button
               className={styles["button"]}
               onClick={() => onUpdatePasswordClick()}
+              data-testid="update-password-button"
             >
               Change Password
             </button>
