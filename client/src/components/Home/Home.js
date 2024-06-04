@@ -143,15 +143,16 @@ export const Home = () => {
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="sparkling-cluster-title">Sparkling Cluster Collection</h2>
-            <p className={styles["paragraph"]}>
+            <p className={styles["paragraph"]} data-testid="sparkling-cluster-paragraph">
               Captivating diamond jewels designed to perfectly complement
               brilliant celebrations.
             </p>
-            <button className={styles["animated-button"]}>Discover</button>
+            <button className={styles["animated-button"]} data-testid="sparkling-cluster-button">Discover</button>
           </div>
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
+              data-testid="sparkling-cluster-image"
               src={
                 "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/sparklingcluster_hpovka.webp"
               }

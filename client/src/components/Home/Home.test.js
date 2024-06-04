@@ -115,16 +115,16 @@ describe("Home Component", () => {
         </AuthContext.Provider>
       );
   
-      const titleElement = screen.getByTestId("sunflower-title");
+      const titleElement = screen.getByTestId("sparkling-cluster-title");
       expect(titleElement).toBeInTheDocument();
   
-      const paragraphElement = screen.getByTestId("sunflower-paragraph");
+      const paragraphElement = screen.getByTestId("sparkling-cluster-paragraph");
       expect(paragraphElement).toBeInTheDocument();
   
-      const imageElement = screen.getByTestId("sunflower-image");
+      const imageElement = screen.getByTestId("sparkling-cluster-image");
       expect(imageElement).toBeInTheDocument();
   
-      const buttonElement = screen.getByTestId("sunflower-button");
+      const buttonElement = screen.getByTestId("sparkling-cluster-button");
       expect(buttonElement).toBeInTheDocument();
     });
   });
