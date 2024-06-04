@@ -24,5 +24,11 @@ describe("Login Component", () => {
 
     const paragraphElement = screen.getByTestId("paragraph-element");
     expect(paragraphElement).toBeInTheDocument();
+
+    const accountDetailsTitleElement = screen.getByTestId("account-details-title-element");
+    expect(accountDetailsTitleElement).toBeInTheDocument();
+
+    const orderHistoryTitleElement = screen.getByTestId("order-history-title-element");
+    expect(orderHistoryTitleElement).toBeInTheDocument();
   });
 });
