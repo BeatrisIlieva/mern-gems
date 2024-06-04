@@ -99,3 +99,32 @@ describe("AccountDetails Component update password button", () => {
     expect(updatePasswordForm).toBeInTheDocument();
   });
 });
+
+describe("AccountDetails Component update password button", () => {
+    beforeEach(() => {
+      loginInformationServiceFactory.mockReturnValue({
+        find: mockFind,
+      });
+    });
+  
+    test("Should load user update password form", async () => {
+      const mockUserInformation = {
+        email: "test@email.com",
+      };
+  
+      mockFind.mockResolvedValue(mockUserInformation);
+  
+      render(
+        <AuthContext.Provider value={mockAuthContextValue}>
+          <AccountDetails />
+        </AuthContext.Provider>
+      );
+  
+      const deleteAccountButton = screen.getByTestId("delete-account-button");
+      expect(deleteAccountButton).toBeInTheDocument();
+  
+      fireEvent.click(deleteAccountButton);
+      const deleteAccountPopup = screen.getByTestId("delete-account-popup");
+      expect(deleteAccountPopup).toBeInTheDocument();
+    });
+  });

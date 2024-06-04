@@ -95,7 +95,7 @@ export const AccountDetails = () => {
             >
               Change Password
             </button>
-            <button className={styles["button"]} onClick={popupClickHandler}>
+            <button className={styles["button"]} onClick={popupClickHandler} data-testid="delete-account-button">
               Delete Account
             </button>
             {displayDeleteAccountPopup && (

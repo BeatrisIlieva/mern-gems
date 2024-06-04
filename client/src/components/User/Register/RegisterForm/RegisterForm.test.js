@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { RegisterForm } from "./RegisterForm";
-import { Home } from "../../../Home/Home";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { FORM_KEYS } from "./initialFormValues";
 import { ERROR_MESSAGES } from "../../../../constants/forms";

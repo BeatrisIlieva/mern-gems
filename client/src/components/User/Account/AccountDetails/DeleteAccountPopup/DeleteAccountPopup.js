@@ -21,7 +21,7 @@ export const DeleteAccountPopup = ({
   }, [popupCloseHandler]);
 
   return (
-    <section className={styles["popup-box"]}>
+    <section className={styles["popup-box"]} data-testid="delete-account-popup">
       <div className={styles["modal-dialog"]}>
         <div className={styles["modal-content"]}>
           <div className={styles["modal-header"]}>

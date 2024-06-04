@@ -97,7 +97,11 @@ export const PasswordInformationForm = () => {
 
   return (
     <section className={styles["slideIn"]}>
-      <form method="POST" onSubmit={onSubmit} data-testid="update-password-form">
+      <form
+        method="POST"
+        onSubmit={onSubmit}
+        data-testid="update-password-form"
+      >
         <DynamicFormAuthUser
           values={values}
           formKeys={FORM_KEYS}
