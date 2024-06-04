@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
 
     localStorage.removeItem("auth");
     localStorage.removeItem("userUUID");
-    
+
     navigate("/user/register");
   };
 

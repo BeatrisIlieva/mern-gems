@@ -45,7 +45,6 @@ export const AddressInformationFormPopup = ({
     submitHandler(e);
 
     const errorOccurred = hasFormErrorOccurred(values);
-    console.log(values)
 
     if (!errorOccurred) {
       const phoneNumber = values.phoneNumber.fieldValue;
@@ -65,7 +64,6 @@ export const AddressInformationFormPopup = ({
       };
 
       try {
-        console.log(data)
         await addressInformationService.update(userId, data);
         popupSubmitHandler();
       } catch (err) {

@@ -9,7 +9,6 @@ export const DynamicFormAuthUser = ({
   initialFormValues,
   userInformation,
 }) => {
-
   return (
     <>
       {Object.entries(formKeys).map(([key, value]) => (

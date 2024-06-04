@@ -46,6 +46,7 @@ export const requestFactory = (token) => {
       token = auth.AccessToken;
     }
   }
+
   return {
     get: requester.bind(null, "GET", token),
     post: requester.bind(null, "POST", token),
