@@ -13,21 +13,6 @@ jest.mock("../../../../services/loginInformationService", () => ({
 
 const mockFind = jest.fn();
 
-// describe("AccountDetails Component", () => {
-//   test("Should load Personal Information container", async () => {
-//     render(
-//       <AuthContext.Provider value={mockAuthContextValue}>
-//         <AccountDetails />
-//       </AuthContext.Provider>
-//     );
-
-//     const personalInformationTitleElement = screen.getByTestId(
-//       "personal-information-title"
-//     );
-//     expect(personalInformationTitleElement).toBeInTheDocument();
-//   });
-// });
-
 describe("AccountDetails Component", () => {
   beforeEach(() => {
     loginInformationServiceFactory.mockReturnValue({
@@ -50,9 +35,34 @@ describe("AccountDetails Component", () => {
 
     const userEmailElement = screen.getByTestId("user-email");
     expect(userEmailElement).toBeInTheDocument();
-// console.log(userEmailElement)
+
     await waitFor(() => {
       expect(userEmailElement).toHaveTextContent(mockUserInformation.email);
     });
+  });
+});
+
+describe("AccountDetails Component update email button", () => {
+  beforeEach(() => {
+    loginInformationServiceFactory.mockReturnValue({
+      find: mockFind,
+    });
+  });
+
+  test("Should load user update email form", async () => {
+    const mockUserInformation = {
+      email: "test@email.com",
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <AccountDetails />
+      </AuthContext.Provider>
+    );
+
+    const updateEmailButton = screen.getByTestId("update-email-button");
+    expect(updateEmailButton).toBeInTheDocument();
   });
 });

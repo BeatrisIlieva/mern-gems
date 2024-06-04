@@ -14,7 +14,7 @@ export const AccountDetails = () => {
   const [userInformation, setUserInformation] = useState([]);
   const [showUpdateEmail, setShowUpdateEmail] = useState(false);
   const [showUpdatePassword, setShowUpdatePassword] = useState(false);
-  const loginInformationService = useService(loginInformationServiceFactory)
+  const loginInformationService = useService(loginInformationServiceFactory);
 
   const [displayDeleteAccountPopup, setDisplayDeleteAccountPopup] =
     useState(false);
@@ -62,7 +62,12 @@ export const AccountDetails = () => {
     <section className={styles["account-details-box"]}>
       <div className={styles["left-container"]}>
         <div className={styles["left-top-container"]}>
-          <h2 className={styles["form-title"]} data-testid="personal-information-title">Personal Information</h2>
+          <h2
+            className={styles["form-title"]}
+            data-testid="personal-information-title"
+          >
+            Personal Information
+          </h2>
           <PersonalInformationForm />
         </div>
       </div>
@@ -72,11 +77,14 @@ export const AccountDetails = () => {
             Login Information
           </h2>
           <h4 className={styles["form-sub-title"]}>Email Address</h4>
-          <p className={styles["email"]} data-testid="user-email"> {userInformation.email}</p>
+          <p className={styles["email"]} data-testid="user-email">
+            {userInformation.email}
+          </p>
           <div className={styles["button-container"]}>
             <button
               className={styles["button"]}
               onClick={() => onUpdateEmailClick()}
+              data-testid="update-email-button"
             >
               Update Email Address
             </button>
