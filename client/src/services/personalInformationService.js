@@ -8,6 +8,7 @@ export const personalInformationServiceFactory = (token) => {
 
   return {
     find: (userId) => request.get(`${baseUrl}/${userId}`),
+    
     update: (userId, data) => request.put(`${baseUrl}/${userId}`, data),
   };
 };

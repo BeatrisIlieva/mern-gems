@@ -15,13 +15,15 @@ export const Home = () => {
             </p>
             <button className={styles["animated-button"]}>Discover</button>
           </div>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/forgetmenot_rz0umv.png"
-            }
-            alt={"Img"}
-          />
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/forgetmenot_rz0umv.png"
+              }
+              alt={"Img"}
+            />
+          </div>
         </div>
       </Link>
       <VerticalLine />
@@ -36,13 +38,15 @@ export const Home = () => {
             </p>
             <button className={styles["animated-button"]}>Discover</button>
           </div>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/pirouette_zshews.webp"
-            }
-            alt={"Img"}
-          />
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/pirouette_zshews.webp"
+              }
+              alt={"Img"}
+            />
+          </div>
         </div>
       </Link>
       <VerticalLine />
@@ -57,13 +61,15 @@ export const Home = () => {
 
             <button className={styles["animated-button"]}>Discover</button>
           </div>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/diamondloop_hzmacd.webp"
-            }
-            alt={"Img"}
-          />
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/diamondloop_hzmacd.webp"
+              }
+              alt={"Img"}
+            />
+          </div>
         </div>
       </Link>
       <VerticalLine />
@@ -76,13 +82,15 @@ export const Home = () => {
             </p>
             <button className={styles["animated-button"]}>Discover</button>
           </div>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/sunflower_jreu5p.webp"
-            }
-            alt={"Img"}
-          />
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/sunflower_jreu5p.webp"
+              }
+              alt={"Img"}
+            />
+          </div>
         </div>
       </Link>
       <VerticalLine />
@@ -96,33 +104,15 @@ export const Home = () => {
             </p>
             <button className={styles["animated-button"]}>Discover</button>
           </div>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/sparklingcluster_hpovka.webp"
-            }
-            alt={"Img"}
-          />
-        </div>
-      </Link>
-      <VerticalLine />
-      <Link to="/" className={styles["no-decoration"]}>
-        <div className={styles["hero-box"]}>
-          <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]}>Sparkling Cluster Collection</h2>
-            <p className={styles["paragraph"]}>
-              Captivating diamond jewels designed to perfectly complement
-              brilliant celebrations.
-            </p>
-            <button className={styles["animated-button"]}>Discover</button>
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/sparklingcluster_hpovka.webp"
+              }
+              alt={"Img"}
+            />
           </div>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1717100250/collections/prod_fe_br_23_wdj_a_grpwss.webp"
-            }
-            alt={"Img"}
-          />
         </div>
       </Link>
     </section>
