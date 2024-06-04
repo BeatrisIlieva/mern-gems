@@ -106,25 +106,25 @@ describe("Home Component", () => {
 });
 
 describe("Home Component", () => {
-    test("Should load Sparkling Cluster Collection", async () => {
-      render(
-        <AuthContext.Provider value={mockAuthContextValue}>
-          <BrowserRouter>
-            <Home />
-          </BrowserRouter>
-        </AuthContext.Provider>
-      );
-  
-      const titleElement = screen.getByTestId("sparkling-cluster-title");
-      expect(titleElement).toBeInTheDocument();
-  
-      const paragraphElement = screen.getByTestId("sparkling-cluster-paragraph");
-      expect(paragraphElement).toBeInTheDocument();
-  
-      const imageElement = screen.getByTestId("sparkling-cluster-image");
-      expect(imageElement).toBeInTheDocument();
-  
-      const buttonElement = screen.getByTestId("sparkling-cluster-button");
-      expect(buttonElement).toBeInTheDocument();
-    });
+  test("Should load Sparkling Cluster Collection", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const titleElement = screen.getByTestId("sparkling-cluster-title");
+    expect(titleElement).toBeInTheDocument();
+
+    const paragraphElement = screen.getByTestId("sparkling-cluster-paragraph");
+    expect(paragraphElement).toBeInTheDocument();
+
+    const imageElement = screen.getByTestId("sparkling-cluster-image");
+    expect(imageElement).toBeInTheDocument();
+
+    const buttonElement = screen.getByTestId("sparkling-cluster-button");
+    expect(buttonElement).toBeInTheDocument();
   });
+});

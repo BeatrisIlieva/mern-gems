@@ -142,12 +142,25 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]} data-testid="sparkling-cluster-title">Sparkling Cluster Collection</h2>
-            <p className={styles["paragraph"]} data-testid="sparkling-cluster-paragraph">
+            <h2
+              className={styles["title"]}
+              data-testid="sparkling-cluster-title"
+            >
+              Sparkling Cluster Collection
+            </h2>
+            <p
+              className={styles["paragraph"]}
+              data-testid="sparkling-cluster-paragraph"
+            >
               Captivating diamond jewels designed to perfectly complement
               brilliant celebrations.
             </p>
-            <button className={styles["animated-button"]} data-testid="sparkling-cluster-button">Discover</button>
+            <button
+              className={styles["animated-button"]}
+              data-testid="sparkling-cluster-button"
+            >
+              Discover
+            </button>
           </div>
           <div className={styles["hero-img-container"]}>
             <img
