@@ -64,5 +64,9 @@ describe("AccountDetails Component update email button", () => {
 
     const updateEmailButton = screen.getByTestId("update-email-button");
     expect(updateEmailButton).toBeInTheDocument();
+
+    fireEvent.click(updateEmailButton);
+    const updateEmailForm = screen.getByTestId("update-email-form");
+    expect(updateEmailForm).toBeInTheDocument();
   });
 });

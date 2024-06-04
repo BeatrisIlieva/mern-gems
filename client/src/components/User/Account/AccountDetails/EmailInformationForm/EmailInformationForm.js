@@ -65,7 +65,7 @@ export const EmailInformationForm = () => {
 
   return (
     <section className={styles["slideIn"]}>
-      <form method="POST" onSubmit={onSubmit}>
+      <form method="POST" onSubmit={onSubmit} data-testid="update-email-form">
         <DynamicFormAuthUser
           values={values}
           formKeys={FORM_KEYS}
