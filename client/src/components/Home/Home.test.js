@@ -9,10 +9,6 @@ const mockAuthContextValue = {
   onRegisterSubmit: mockOnRegisterSubmit,
 };
 
-function getPseudoElementStyle(element, pseudoElement) {
-  return window.getComputedStyle(element, pseudoElement);
-}
-
 describe("Home Component", () => {
   test("Should load Forget-Me-Not Collection", async () => {
     render(

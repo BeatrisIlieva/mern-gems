@@ -53,13 +53,13 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]}>Diamond Loop Collection</h2>
-            <p className={styles["paragraph"]}>
+            <h2 className={styles["title"]} data-testid="diamond-loop-title">Diamond Loop Collection</h2>
+            <p className={styles["paragraph"]} data-testid="diamond-loop-paragraph">
               The captivating shape of pear-shaped diamonds inspires delicate
               designs.
             </p>
 
-            <button className={styles["animated-button"]}>Discover</button>
+            <button className={styles["animated-button"]} data-testid="diamond-loop-button">Discover</button>
           </div>
           <div className={styles["hero-img-container"]}>
             <img
