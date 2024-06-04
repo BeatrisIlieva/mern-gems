@@ -95,7 +95,7 @@ export const RegisterForm = () => {
       <form method="POST" onSubmit={onSubmit}>
         <DynamicFormNotAuthUser
           values={values}
-          FORM_KEYS={FORM_KEYS}
+          formKeys={FORM_KEYS}
           clickHandler={clickHandler}
           blurHandler={blurHandler}
           changeHandler={changeHandler}
