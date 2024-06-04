@@ -3,6 +3,10 @@ const { NAME_PATTERN, NAME_ERROR_MESSAGE } = require("../constants/name");
 const { PHONE_PATTERN, PHONE_ERROR_MESSAGE } = require("../constants/phone");
 const { STREET_PATTERN, STREET_ERROR_MESSAGE } = require("../constants/street");
 const {
+  APARTMENT_PATTERN,
+  APARTMENT_ERROR_MESSAGE,
+} = require("../constants/apartment");
+const {
   ZIP_CODE_PATTERN,
   ZIP_CODE_ERROR_MESSAGE,
 } = require("../constants/zipCode");
@@ -29,7 +33,7 @@ const userAddressInformationSchema = new mongoose.Schema({
   },
   apartment: {
     type: String,
-    match: [STREET_PATTERN, STREET_ERROR_MESSAGE],
+    match: [APARTMENT_PATTERN, APARTMENT_ERROR_MESSAGE],
   },
   zipCode: {
     type: String,
