@@ -56,3 +56,27 @@ describe("Home Component", () => {
       expect(buttonElement).toBeInTheDocument();
     });
   });
+
+  describe("Home Component", () => {
+    test("Should load Diamond Loop Collection", async () => {
+      render(
+        <AuthContext.Provider value={mockAuthContextValue}>
+          <BrowserRouter>
+            <Home />
+          </BrowserRouter>
+        </AuthContext.Provider>
+      );
+  
+      const titleElement = screen.getByTestId("diamond-loop-title");
+      expect(titleElement).toBeInTheDocument();
+  
+      const paragraphElement = screen.getByTestId("diamond-loop-paragraph");
+      expect(paragraphElement).toBeInTheDocument();
+  
+      const imageElement = screen.getByTestId("diamond-loop-image");
+      expect(imageElement).toBeInTheDocument();
+  
+      const buttonElement = screen.getByTestId("diamond-loop-button");
+      expect(buttonElement).toBeInTheDocument();
+    });
+  });

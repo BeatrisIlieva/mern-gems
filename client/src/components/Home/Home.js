@@ -64,6 +64,7 @@ export const Home = () => {
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
+              data-testid="diamond-loop-image"
               src={
                 "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/diamondloop_hzmacd.webp"
               }
