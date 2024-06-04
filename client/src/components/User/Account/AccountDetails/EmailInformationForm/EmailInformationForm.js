@@ -68,7 +68,7 @@ export const EmailInformationForm = () => {
       <form method="POST" onSubmit={onSubmit}>
         <DynamicFormAuthUser
           values={values}
-          FORM_KEYS={FORM_KEYS}
+          formKeys={FORM_KEYS}
           clickHandler={clickHandler}
           blurHandler={blurHandler}
           changeHandler={changeHandler}
