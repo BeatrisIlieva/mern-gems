@@ -1,38 +1,34 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Account } from "./Account";
 import { personalInformationServiceFactory } from "../../../services/personalInformationService";
 
-
 const mockAuthContextValue = {
-    userId: "user123", // Mock user ID
-  };
-  
-  // Mock the personalInformationServiceFactory
-  jest.mock("../../../services/personalInformationService", () => ({
-    personalInformationServiceFactory: jest.fn(),
-  }));
-  
-  // Mock the find function of personalInformationServiceFactory
-  const mockFind = jest.fn();
+  userId: "user123",
+};
+
+jest.mock("../../../services/personalInformationService", () => ({
+  personalInformationServiceFactory: jest.fn(),
+}));
+
+const mockFind = jest.fn();
 
 describe("Account Component", () => {
-    beforeEach(() => {
-        // Reset the mock implementation before each test
-        personalInformationServiceFactory.mockReturnValue({
-          find: mockFind,
-        });
-    })
-  test("Should Account Component", async () => {
+  beforeEach(() => {
+    personalInformationServiceFactory.mockReturnValue({
+      find: mockFind,
+    });
+  });
 
+  test("Should Account Component", async () => {
     const mockUserPersonalInformation = {
-        firstName: "John",
-      };
-  
-      // Mock the data returned by the find function
-      mockFind.mockResolvedValue(mockUserPersonalInformation);
+      firstName: "Test",
+    };
+
+    mockFind.mockResolvedValue(mockUserPersonalInformation);
+
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <Account />
@@ -41,6 +37,13 @@ describe("Account Component", () => {
 
     const titleElement = screen.getByTestId("title-element");
     expect(titleElement).toBeInTheDocument();
+
+    await waitFor(() => {
+        // Check if the title element is rendered with the correct text
+        expect(screen.getByTestId("title-element")).toHaveTextContent(
+          `Hi, ${mockUserPersonalInformation.firstName}`
+        );
+      });
 
     const paragraphElement = screen.getByTestId("paragraph-element");
     expect(paragraphElement).toBeInTheDocument();
