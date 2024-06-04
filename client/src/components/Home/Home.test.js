@@ -34,49 +34,73 @@ describe("Home Component", () => {
 });
 
 describe("Home Component", () => {
-    test("Should load Pirouette Collection", async () => {
-      render(
-        <AuthContext.Provider value={mockAuthContextValue}>
-          <BrowserRouter>
-            <Home />
-          </BrowserRouter>
-        </AuthContext.Provider>
-      );
-  
-      const titleElement = screen.getByTestId("pirouette-title");
-      expect(titleElement).toBeInTheDocument();
-  
-      const paragraphElement = screen.getByTestId("pirouette-paragraph");
-      expect(paragraphElement).toBeInTheDocument();
-  
-      const imageElement = screen.getByTestId("pirouette-image");
-      expect(imageElement).toBeInTheDocument();
-  
-      const buttonElement = screen.getByTestId("pirouette-button");
-      expect(buttonElement).toBeInTheDocument();
-    });
-  });
+  test("Should load Pirouette Collection", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
 
-  describe("Home Component", () => {
-    test("Should load Diamond Loop Collection", async () => {
-      render(
-        <AuthContext.Provider value={mockAuthContextValue}>
-          <BrowserRouter>
-            <Home />
-          </BrowserRouter>
-        </AuthContext.Provider>
-      );
-  
-      const titleElement = screen.getByTestId("diamond-loop-title");
-      expect(titleElement).toBeInTheDocument();
-  
-      const paragraphElement = screen.getByTestId("diamond-loop-paragraph");
-      expect(paragraphElement).toBeInTheDocument();
-  
-      const imageElement = screen.getByTestId("diamond-loop-image");
-      expect(imageElement).toBeInTheDocument();
-  
-      const buttonElement = screen.getByTestId("diamond-loop-button");
-      expect(buttonElement).toBeInTheDocument();
-    });
+    const titleElement = screen.getByTestId("pirouette-title");
+    expect(titleElement).toBeInTheDocument();
+
+    const paragraphElement = screen.getByTestId("pirouette-paragraph");
+    expect(paragraphElement).toBeInTheDocument();
+
+    const imageElement = screen.getByTestId("pirouette-image");
+    expect(imageElement).toBeInTheDocument();
+
+    const buttonElement = screen.getByTestId("pirouette-button");
+    expect(buttonElement).toBeInTheDocument();
   });
+});
+
+describe("Home Component", () => {
+  test("Should load Diamond Loop Collection", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const titleElement = screen.getByTestId("diamond-loop-title");
+    expect(titleElement).toBeInTheDocument();
+
+    const paragraphElement = screen.getByTestId("diamond-loop-paragraph");
+    expect(paragraphElement).toBeInTheDocument();
+
+    const imageElement = screen.getByTestId("diamond-loop-image");
+    expect(imageElement).toBeInTheDocument();
+
+    const buttonElement = screen.getByTestId("diamond-loop-button");
+    expect(buttonElement).toBeInTheDocument();
+  });
+});
+
+describe("Home Component", () => {
+  test("Should load Sunflower Collection", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+
+    const titleElement = screen.getByTestId("sunflower-title");
+    expect(titleElement).toBeInTheDocument();
+
+    const paragraphElement = screen.getByTestId("sunflower-paragraph");
+    expect(paragraphElement).toBeInTheDocument();
+
+    const imageElement = screen.getByTestId("sunflower-image");
+    expect(imageElement).toBeInTheDocument();
+
+    const buttonElement = screen.getByTestId("sunflower-button");
+    expect(buttonElement).toBeInTheDocument();
+  });
+});
