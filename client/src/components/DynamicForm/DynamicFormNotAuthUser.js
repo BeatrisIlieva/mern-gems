@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export const DynamicFormNotAuthUser = ({
   values,
-  FORM_KEYS,
+  formKeys,
   clickHandler,
   blurHandler,
   changeHandler,
@@ -25,7 +25,7 @@ export const DynamicFormNotAuthUser = ({
   };
   return (
     <>
-      {Object.entries(FORM_KEYS).map(([key, value]) => (
+      {Object.entries(formKeys).map(([key, value]) => (
         <div key={key} className={styles["field-box"]}>
           {key === "Email" && buttonValue === "Create an account" && (
             <span>

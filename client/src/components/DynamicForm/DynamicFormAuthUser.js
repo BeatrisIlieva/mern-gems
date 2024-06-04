@@ -2,7 +2,7 @@ import styles from "./DynamicForm.module.css";
 
 export const DynamicFormAuthUser = ({
   values,
-  FORM_KEYS,
+  formKeys,
   clickHandler,
   blurHandler,
   changeHandler,
@@ -12,7 +12,7 @@ export const DynamicFormAuthUser = ({
   console.log(values);
   return (
     <>
-      {Object.entries(FORM_KEYS).map(([key, value]) => (
+      {Object.entries(formKeys).map(([key, value]) => (
         <div key={key} className={styles["field-box"]}>
           <div
             className={`${styles["field-container"]} ${
