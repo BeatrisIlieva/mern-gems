@@ -104,3 +104,27 @@ describe("Home Component", () => {
     expect(buttonElement).toBeInTheDocument();
   });
 });
+
+describe("Home Component", () => {
+    test("Should load Sparkling Cluster Collection", async () => {
+      render(
+        <AuthContext.Provider value={mockAuthContextValue}>
+          <BrowserRouter>
+            <Home />
+          </BrowserRouter>
+        </AuthContext.Provider>
+      );
+  
+      const titleElement = screen.getByTestId("sunflower-title");
+      expect(titleElement).toBeInTheDocument();
+  
+      const paragraphElement = screen.getByTestId("sunflower-paragraph");
+      expect(paragraphElement).toBeInTheDocument();
+  
+      const imageElement = screen.getByTestId("sunflower-image");
+      expect(imageElement).toBeInTheDocument();
+  
+      const buttonElement = screen.getByTestId("sunflower-button");
+      expect(buttonElement).toBeInTheDocument();
+    });
+  });
