@@ -6,7 +6,6 @@ import { FORM_KEYS } from "./initialFormValues";
 import { ERROR_MESSAGES } from "../../../../constants/forms";
 import { BrowserRouter } from "react-router-dom";
 
-
 const mockOnRegisterSubmit = jest.fn();
 
 const mockAuthContextValue = {
@@ -467,10 +466,7 @@ describe("RegisterFrom Component", () => {
           <RegisterForm />
         </BrowserRouter>
       </AuthContext.Provider>
-
     );
-
-
 
     const button = screen.getByTestId("submit");
     expect(button).toBeInTheDocument();

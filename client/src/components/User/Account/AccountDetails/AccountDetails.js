@@ -62,8 +62,8 @@ export const AccountDetails = () => {
     <section className={styles["account-details-box"]}>
       <div className={styles["left-container"]}>
         <div className={styles["left-top-container"]}>
-          <h2 className={styles["form-title"]}>Personal Information</h2>
-          <PersonalInformationForm />
+          <h2 className={styles["form-title"]} data-testid="personal-information-title">Personal Information</h2>
+          <PersonalInformationForm data-testid="personal-information-form"/>
         </div>
       </div>
       <div className={styles["right-container"]}>

@@ -1,6 +1,4 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Account } from "./Account";
 import { personalInformationServiceFactory } from "../../../services/personalInformationService";
@@ -22,7 +20,7 @@ describe("Account Component", () => {
     });
   });
 
-  test("Should Account Component", async () => {
+  test("Should load Account Component", async () => {
     const mockUserPersonalInformation = {
       firstName: "Test",
     };
@@ -60,5 +58,11 @@ describe("Account Component", () => {
     expect(accountDetailsTitleElement).toHaveClass("selected");
 
     expect(orderHistoryTitleElement).not.toHaveClass("selected");
+
+    fireEvent.click(orderHistoryTitleElement);
+
+    expect(orderHistoryTitleElement).toHaveClass("selected");
+
+    expect(accountDetailsTitleElement).not.toHaveClass("selected");
   });
 });
