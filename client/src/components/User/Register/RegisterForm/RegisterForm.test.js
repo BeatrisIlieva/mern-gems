@@ -1,8 +1,11 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { RegisterForm } from "./RegisterForm";
+import { Home } from "../../../Home/Home";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { FORM_KEYS } from "./initialFormValues";
 import { ERROR_MESSAGES } from "../../../../constants/forms";
+import { BrowserRouter } from "react-router-dom";
+
 
 const mockOnRegisterSubmit = jest.fn();
 
@@ -460,9 +463,14 @@ describe("RegisterFrom Component", () => {
   test("Fill Password with invalid data, fill Retype Password with invalid data expect error", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
-        <RegisterForm />
+        <BrowserRouter>
+          <RegisterForm />
+        </BrowserRouter>
       </AuthContext.Provider>
+
     );
+
+
 
     const button = screen.getByTestId("submit");
     expect(button).toBeInTheDocument();
@@ -492,3 +500,48 @@ describe("RegisterFrom Component", () => {
   });
 });
 
+// describe("RegisterFrom Component", () => {
+//   test("Fill entire form with valid data, expect redirect to home page", async () => {
+//     render(
+//       <AuthContext.Provider value={mockAuthContextValue}>
+//         <RegisterForm />
+//         {/* <Home /> */}
+//       </AuthContext.Provider>
+//     );
+
+//     const button = screen.getByTestId("submit");
+//     expect(button).toBeInTheDocument();
+
+//     const firstNameInput = screen.getByTestId(`${FORM_KEYS.FirstName}-input`);
+//     expect(firstNameInput).toBeInTheDocument();
+//     fireEvent.change(firstNameInput, { target: { value: "Test" } });
+
+//     const lastNameInput = screen.getByTestId(`${FORM_KEYS.LastName}-input`);
+//     expect(lastNameInput).toBeInTheDocument();
+//     fireEvent.change(lastNameInput, { target: { value: "Test" } });
+
+//     const emailInput = screen.getByTestId(`${FORM_KEYS.Email}-input`);
+//     expect(emailInput).toBeInTheDocument();
+//     fireEvent.change(emailInput, { target: { value: "test@email.com" } });
+
+//     const retypeEmailInput = screen.getByTestId(
+//       `${FORM_KEYS.RetypeEmail}-input`
+//     );
+//     expect(retypeEmailInput).toBeInTheDocument();
+//     fireEvent.change(retypeEmailInput, { target: { value: "test@email.com" } });
+
+//     const passwordInput = screen.getByTestId(`${FORM_KEYS.Password}-input`);
+//     expect(passwordInput).toBeInTheDocument();
+//     fireEvent.change(passwordInput, { target: { value: "123456Tt" } });
+
+//     const retypePasswordInput = screen.getByTestId(
+//       `${FORM_KEYS.RetypePassword}-input`
+//     );
+//     expect(retypePasswordInput).toBeInTheDocument();
+//     fireEvent.change(retypePasswordInput, { target: { value: "123456Tt" } });
+
+//     fireEvent.click(button);
+//     const heroSection = screen.getByTestId("hero-section");
+//     expect(heroSection).toBeInTheDocument;
+//   });
+// });

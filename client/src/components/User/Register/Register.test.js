@@ -94,3 +94,5 @@ describe("Register Component", () => {
     expect(signInTitleElement).toBeInTheDocument();
   });
 });
+
+

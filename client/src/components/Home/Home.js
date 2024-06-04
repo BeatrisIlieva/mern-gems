@@ -4,7 +4,7 @@ import { VerticalLine } from "../VerticalLine/VerticalLine";
 
 export const Home = () => {
   return (
-    <section className={styles["hero"]}>
+    <section className={styles["hero"]} data-testid="hero-section">
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
