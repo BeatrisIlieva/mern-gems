@@ -31,14 +31,14 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]}>Pirouette Collection</h2>
-            <p className={styles["paragraph"]}>
+            <h2 className={styles["title"]} data-testid="pirouette-title">Pirouette Collection</h2>
+            <p className={styles["paragraph"]} data-testid="pirouette-paragraph">
               Inspired by ballet's most beloved turn, this graceful line of jewelry features dazzling marquise and
               round brilliant diamonds.
             </p>
-            <button className={styles["animated-button"]}>Discover</button>
+            <button className={styles["animated-button"]} data-testid="pirouette-button">Discover</button>
           </div>
-          <div className={styles["hero-img-container"]}>
+          <div className={styles["hero-img-container"]} data-testid="pirouette-image">
             <img
               className={styles["hero-img"]}
               src={
