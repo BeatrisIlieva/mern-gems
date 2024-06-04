@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getErrorMessage } from "./useFormValidator";
+import { getPatternErrorMessage } from "../utils/getPatternErrorMessage";
 
 export const useForm = (INITIAL_FORM_VALUES) => {
   const [values, setValues] = useState(INITIAL_FORM_VALUES);
@@ -52,7 +52,7 @@ export const useForm = (INITIAL_FORM_VALUES) => {
     Object.keys(values).forEach((key) => {
       const field = values[key];
 
-      field.errorMessage = getErrorMessage(
+      field.errorMessage = getPatternErrorMessage(
         key,
         field.fieldValue,
         field.regexPattern

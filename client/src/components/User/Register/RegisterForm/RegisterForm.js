@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { useContext } from "react";
-import {
-  getEmailMismatchErrorMessage,
-  getPasswordMismatchErrorMessage,
-} from "../../../../hooks/useFormValidator";
+import { getEmailMismatchErrorMessage } from "../../../../utils/getEmailMismatchErrorMessage";
+import { getPasswordMismatchErrorMessage } from "../../../../utils/getPasswordMismatchErrorMessage";
 import { EMAIL_ALREADY_EXISTS_ERROR_MESSAGE } from "../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../hooks/useForm";

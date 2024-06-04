@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../../../contexts/AuthContext";
 import { useService } from "../../../../../hooks/useService";
 import { loginInformationServiceFactory } from "../../../../../services/loginInformationService";
-import { getPasswordMismatchErrorMessage } from "../../../../../hooks/useFormValidator";
+import { getPasswordMismatchErrorMessage } from "../../../../../utils/getPasswordMismatchErrorMessage";
 import { SUCCESS_MESSAGES } from "../../../../../constants/forms";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
