@@ -49,13 +49,13 @@ describe("PersonalInformationForm", () => {
 
     const inputs = {};
 
-    Object.values(FORM_KEYS).forEach((formValue) => {
-      inputs[formValue] = screen.getByTestId(`${formValue}-input`);
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
     });
 
-    Object.entries(inputs).forEach(([objKey, objValue]) => {
-      fireEvent.change(objValue, {
-        target: { value: INITIAL_FORM_VALUES[objKey].validTestData },
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: { value: INITIAL_FORM_VALUES[inputKey].validTestData },
       });
     });
 
