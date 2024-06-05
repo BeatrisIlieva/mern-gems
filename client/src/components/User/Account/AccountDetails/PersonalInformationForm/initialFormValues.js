@@ -16,6 +16,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "Test",
+    invalidTestData: "Test1",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.LastName]: {
@@ -25,6 +28,10 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "Test",
+    invalidTestData: "Test1",
+    emptyTestData: "",
+
   },
 
   [FORM_KEYS.Birthday]: {
@@ -34,6 +41,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "10/10/1990",
+    invalidTestData: "10101990",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.SpecialDay]: {
@@ -43,6 +53,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "10/10/1990",
+    invalidTestData: "10101990",
+    emptyTestData: "",
   },
 };
 
