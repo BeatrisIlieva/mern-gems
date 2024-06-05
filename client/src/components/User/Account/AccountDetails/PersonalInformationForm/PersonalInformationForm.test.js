@@ -23,9 +23,6 @@ const mockUpdate = jest.fn();
 
 describe("PersonalInformationForm", () => {
   beforeEach(() => {
-    // loginInformationServiceFactory.mockReturnValue({
-    //   find: mockFind,
-    // });
 
     personalInformationServiceFactory.mockReturnValue({
       find: mockFind,
