@@ -26,7 +26,11 @@ export const DeleteAccountPopup = ({
         <div className={styles["modal-content"]}>
           <div className={styles["modal-header"]}>
             <div id={styles["xMark"]} onClick={() => popupCloseHandler()}>
-              <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} />
+              <FontAwesomeIcon
+                icon={faXmark}
+                className={styles["x-mark"]}
+                data-testid="delete-account-popup-x-mark"
+              />
             </div>
             <h2 className={styles["title"]}>Delete Account</h2>
             <p className={styles["paragraph"]}>
@@ -37,6 +41,7 @@ export const DeleteAccountPopup = ({
             <button
               className={styles["button-cancel"]}
               onClick={() => popupCloseHandler()}
+              data-testid="delete-account-popup-cancel"
             >
               Cancel
             </button>

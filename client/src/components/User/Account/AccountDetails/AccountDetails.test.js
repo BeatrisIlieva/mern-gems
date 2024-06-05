@@ -104,6 +104,66 @@ describe("AccountDetails Component", () => {
     expect(deleteAccountPopup).toBeInTheDocument();
   });
 
+  test("Should close user delete account popup by clicking on x-mark", async () => {
+    const mockUserInformation = {
+      email: "test@email.com",
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <AccountDetails />
+      </AuthContext.Provider>
+    );
+
+    const deleteAccountButton = screen.getByTestId("delete-account-button");
+    expect(deleteAccountButton).toBeInTheDocument();
+
+    fireEvent.click(deleteAccountButton);
+    const deleteAccountPopup = screen.getByTestId("delete-account-popup");
+    expect(deleteAccountPopup).toBeInTheDocument();
+
+    const closeDeleteAccountButton = screen.getByTestId(
+      "delete-account-popup-x-mark"
+    );
+    expect(closeDeleteAccountButton).toBeInTheDocument();
+
+    fireEvent.click(closeDeleteAccountButton);
+
+    expect(deleteAccountPopup).not.toBeInTheDocument();
+  });
+
+  test("Should close user delete account popup by clicking on cancel", async () => {
+    const mockUserInformation = {
+      email: "test@email.com",
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <AccountDetails />
+      </AuthContext.Provider>
+    );
+
+    const deleteAccountButton = screen.getByTestId("delete-account-button");
+    expect(deleteAccountButton).toBeInTheDocument();
+
+    fireEvent.click(deleteAccountButton);
+    const deleteAccountPopup = screen.getByTestId("delete-account-popup");
+    expect(deleteAccountPopup).toBeInTheDocument();
+
+    const closeDeleteAccountButton = screen.getByTestId(
+      "delete-account-popup-cancel"
+    );
+    expect(closeDeleteAccountButton).toBeInTheDocument();
+
+    fireEvent.click(closeDeleteAccountButton);
+
+    expect(deleteAccountPopup).not.toBeInTheDocument();
+  });
+
   test("Should load user address book popup", async () => {
     const mockUserInformation = {
       email: "test@email.com",
@@ -149,7 +209,41 @@ describe("AccountDetails Component", () => {
     );
     expect(addAddressBookPopup).toBeInTheDocument();
 
-    const closeAddressBookButton = screen.getByTestId("address-information-form-popup-x-mark");
+    const closeAddressBookButton = screen.getByTestId(
+      "address-information-form-popup-x-mark"
+    );
+    expect(closeAddressBookButton).toBeInTheDocument();
+
+    fireEvent.click(closeAddressBookButton);
+
+    expect(addAddressBookPopup).not.toBeInTheDocument();
+  });
+
+  test("Should close user address book popup by clicking on cancel", async () => {
+    const mockUserInformation = {
+      email: "test@email.com",
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <AccountDetails />
+      </AuthContext.Provider>
+    );
+
+    const addAddressBookButton = screen.getByTestId("add-address-book-button");
+    expect(addAddressBookButton).toBeInTheDocument();
+
+    fireEvent.click(addAddressBookButton);
+    const addAddressBookPopup = screen.getByTestId(
+      "address-information-form-popup"
+    );
+    expect(addAddressBookPopup).toBeInTheDocument();
+
+    const closeAddressBookButton = screen.getByTestId(
+      "address-information-form-popup-cancel"
+    );
     expect(closeAddressBookButton).toBeInTheDocument();
 
     fireEvent.click(closeAddressBookButton);
