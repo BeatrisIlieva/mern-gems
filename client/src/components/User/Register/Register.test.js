@@ -24,9 +24,7 @@ describe("Register Component", () => {
     const imageElement = screen.getByTestId("image-element");
     expect(imageElement).toBeInTheDocument();
   });
-});
 
-describe("Register Component", () => {
   test("Should load title", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -39,9 +37,7 @@ describe("Register Component", () => {
     const titleElement = screen.getByTestId("sign-up-title-element");
     expect(titleElement).toBeInTheDocument();
   });
-});
 
-describe("Register Component", () => {
   test("Should load sub-title", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -54,9 +50,7 @@ describe("Register Component", () => {
     const subTitleElement = screen.getByTestId("sign-up-sub-title-element");
     expect(subTitleElement).toBeInTheDocument();
   });
-});
 
-describe("Register Component", () => {
   test("Should load password requirements", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -71,9 +65,7 @@ describe("Register Component", () => {
     );
     expect(passwordRequirementsElement).toBeInTheDocument();
   });
-});
 
-describe("Register Component", () => {
   test("Should redirect to login", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -94,5 +86,3 @@ describe("Register Component", () => {
     expect(signInTitleElement).toBeInTheDocument();
   });
 });
-
-
