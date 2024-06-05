@@ -1,45 +1,63 @@
 import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { PersonalInformationForm } from "./PersonalInformationForm";
-import {AccountDetails} from "../AccountDetails"
-import { INITIAL_FORM_VALUES } from "./initialFormValues";
-import { useForm } from "../../../../../hooks/useForm";
+import { FORM_KEYS } from "./initialFormValues";
 import { AuthContext } from "../../../../../contexts/AuthContext";
+import { personalInformationServiceFactory } from "../../../../../services/personalInformationService";
 
-jest.mock("../../../../../hooks/useForm");
+
+
 
 const mockAuthContextValue = {
-  userId: "test-user-id",
-  token: "test-token",
-  onRegisterSubmit: jest.fn(),
-  onLoginSubmit: jest.fn(),
-  onLogout: jest.fn(),
-  onDelete: jest.fn(),
-  isAuthenticated: true,
+  userId: "user123",
 };
 
-describe("PersonalInformationForm", () => {
-  let mockSubmitHandler;
 
+
+jest.mock("../../../../../services/personalInformationService", () => ({
+  personalInformationServiceFactory: jest.fn(),
+}));
+
+const mockFind = jest.fn();
+// const mockPersonalInformationServiceFind = jest.fn();
+const mockUpdate = jest.fn();
+
+describe("PersonalInformationForm", () => {
+  // let mockSubmitHandler;
+
+  // beforeEach(() => {
+  //   mockSubmitHandler = jest.fn();
+  //   useForm.mockReturnValue({
+  //     values: INITIAL_FORM_VALUES,
+  //     setValues: jest.fn(),
+  //     updateForm: jest.fn(),
+  //     clickHandler: jest.fn(),
+  //     blurHandler: jest.fn(),
+  //     changeHandler: jest.fn(),
+  //     submitHandler: mockSubmitHandler,
+  //   });
+  // });
   beforeEach(() => {
-    mockSubmitHandler = jest.fn();
-    useForm.mockReturnValue({
-      values: INITIAL_FORM_VALUES,
-      setValues: jest.fn(),
-      updateForm: jest.fn(),
-      clickHandler: jest.fn(),
-      blurHandler: jest.fn(),
-      changeHandler: jest.fn(),
-      submitHandler: mockSubmitHandler,
+    // loginInformationServiceFactory.mockReturnValue({
+    //   find: mockFind,
+    // });
+
+    personalInformationServiceFactory.mockReturnValue({
+      find: mockFind,
+      update: mockUpdate
     });
   });
 
   it("renders the form and fetches user information", () => {
+    const mockUserInformation = {
+      userId: "user-id",
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
-        <AccountDetails>
         <PersonalInformationForm />
-        </AccountDetails>
       </AuthContext.Provider>
     );
 
@@ -51,42 +69,61 @@ describe("PersonalInformationForm", () => {
     ).toBeInTheDocument();
   });
 
-  // it("submits the form with updated values", async () => {
-  //   render(
-  //     <AuthContext.Provider value={mockAuthContextValue}>
-  //       <AccountDetails>
-  //       <PersonalInformationForm />
-  //       </AccountDetails>
-  //     </AuthContext.Provider>
-  //   );
+  it("submits the form with updated values", async () => {
 
-  //   fireEvent.change(screen.getByTestId("firstName-input"), {
-  //     target: { value: "Jane" },
-  //   });
-  //   fireEvent.change(screen.getByTestId("lastName-input"), {
-  //     target: { value: "Smith" },
-  //   });
-  //   fireEvent.change(screen.getByTestId("birthday-input"), {
-  //     target: { value: "15/05/1985" },
-  //   });
-  //   fireEvent.change(screen.getByTestId("specialDay-input"), {
-  //     target: { value: "01/01/2024" },
-  //   });
+    const mockUserInformation = {
+      userId: "user-id",
+    };
 
-  //   fireEvent.click(screen.getByTestId("submit"));
+    mockFind.mockResolvedValue(mockUserInformation);
 
-  //   await waitFor(() => {
-  //     expect(mockSubmitHandler).toHaveBeenCalledWith({
-  //       firstName: { ...INITIAL_FORM_VALUES.firstName, fieldValue: "Jane" },
-  //       lastName: { ...INITIAL_FORM_VALUES.lastName, fieldValue: "Smith" },
-  //       birthday: { ...INITIAL_FORM_VALUES.birthday, fieldValue: "15/05/1985" },
-  //       specialDay: {
-  //         ...INITIAL_FORM_VALUES.specialDay,
-  //         fieldValue: "01/01/2024",
-  //       },
-  //     });
-  //   });
-  // });
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <PersonalInformationForm />
+      </AuthContext.Provider>
+    );
+
+    fireEvent.change(screen.getByTestId("firstName-input"), {
+      target: { value: "Jane" },
+    });
+    fireEvent.change(screen.getByTestId("lastName-input"), {
+      target: { value: "Smith" },
+    });
+    fireEvent.change(screen.getByTestId("birthday-input"), {
+      target: { value: "15/05/1985" },
+    });
+    fireEvent.change(screen.getByTestId("specialDay-input"), {
+      target: { value: "" },
+    });
+
+    fireEvent.click(screen.getByTestId("submit"));
+
+    await waitFor(() => {
+      expect(mockUpdate).not.toHaveBeenCalledWith("user123",{
+        firstName: "Jane" ,
+        lastName: "Smith",
+        birthday:  "15/05/1985" ,
+        specialDay:  "",
+        },
+      );
+    });
+
+    expect(screen.getByTestId("specialDay-error")).toHaveTextContent(
+            "* Ensure you enter a valid date"
+          );
+
+    // await waitFor(() => {
+    //   expect(mockUpdate).toHaveBeenCalledWith({
+    //     firstName: { ...INITIAL_FORM_VALUES.firstName, fieldValue: "Jane" },
+    //     lastName: { ...INITIAL_FORM_VALUES.lastName, fieldValue: "Smith" },
+    //     birthday: { ...INITIAL_FORM_VALUES.birthday, fieldValue: "15/05/1985" },
+    //     specialDay: {
+    //       ...INITIAL_FORM_VALUES.specialDay,
+    //       fieldValue: "01/01/2024",
+    //     },
+    //   });
+    // });
+  });
 
   // it("displays error messages when form validation fails", async () => {
   //   render(
