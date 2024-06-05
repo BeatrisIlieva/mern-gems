@@ -66,10 +66,10 @@ describe("AddressInformationFormPopup", () => {
       );
     });
 
-    // Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
-    //     const errorMessageContainer = screen.getByTestId(`${key}-error`);
-    //     expect(errorMessageContainer).toHaveTextContent("");
-    //   });
+    Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
+        const errorMessageContainer = screen.getByTestId(`${key}-error`);
+        expect(errorMessageContainer).toHaveTextContent("");
+      });
   });
 
 //   test("Submits the form with invalid values; Expect update function to be called; Expect errors", async () => {
