@@ -14,6 +14,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "password",
+    validTestData: "123456Tt",
+    invalidTestData: "12345678",
+    emptyTestData: "",
   },
   [FORM_KEYS.NewPassword]: {
     fieldLabel: "New Password",
@@ -23,6 +26,9 @@ export const INITIAL_FORM_VALUES = {
     successMessage: "",
     isFocused: false,
     fieldType: "password",
+    validTestData: "123456Tt",
+    invalidTestData: "12345678",
+    emptyTestData: "",
   },
   [FORM_KEYS.RetypeNewPassword]: {
     fieldLabel: "Confirm Password",
@@ -31,6 +37,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "password",
+    validTestData: "123456Tt",
+    invalidTestData: "12345678",
+    emptyTestData: "",
   },
 };
 
