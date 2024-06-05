@@ -6,8 +6,10 @@ import { ERROR_MESSAGES } from "../../../../../constants/forms";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { addressInformationServiceFactory } from "../../../../../services/addressInformationService";
 
+const userId = "user-id";
+
 const mockAuthContextValue = {
-  userId: "user-id",
+  userId: userId,
 };
 
 jest.mock("../../../../../services/addressInformationService", () => ({
@@ -27,7 +29,7 @@ describe("AddressInformationFormPopup", () => {
 
   test("Submits the form with valid values; Expect update function to be called", async () => {
     const mockUserInformation = {
-      userId: "user-id",
+      userId: userId,
     };
 
     mockFind.mockResolvedValue(mockUserInformation);
@@ -60,7 +62,7 @@ describe("AddressInformationFormPopup", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdate).toHaveBeenCalledWith("user-id", submitData);
+      expect(mockUpdate).toHaveBeenCalledWith(userId, submitData);
     });
 
     Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
@@ -71,7 +73,7 @@ describe("AddressInformationFormPopup", () => {
 
   test("Submits the form with invalid values; Expect update function to be called; Expect errors", async () => {
     const mockUserInformation = {
-      userId: "user-id",
+      userId: userId,
     };
 
     mockFind.mockResolvedValue(mockUserInformation);
@@ -104,7 +106,7 @@ describe("AddressInformationFormPopup", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdate).not.toHaveBeenCalledWith("user-id", submitData);
+      expect(mockUpdate).not.toHaveBeenCalledWith(userId, submitData);
     });
 
     Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
@@ -115,7 +117,7 @@ describe("AddressInformationFormPopup", () => {
 
   test("Submits the form with empty values; Expect update function to be called; Expect errors", async () => {
     const mockUserInformation = {
-      userId: "user-id",
+      userId: userId,
     };
 
     mockFind.mockResolvedValue(mockUserInformation);
@@ -148,7 +150,7 @@ describe("AddressInformationFormPopup", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdate).not.toHaveBeenCalledWith("user-id", submitData);
+      expect(mockUpdate).not.toHaveBeenCalledWith(userId, submitData);
     });
 
     Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
