@@ -207,14 +207,6 @@ describe("PasswordInformationForm", () => {
       submitData[key] = value.differentPasswordsTestData;
     });
 
-    // await waitFor(() => {
-    //   expect(mockUpdate).not.toHaveBeenCalledWith(userId, {
-    //     password,
-    //     newPassword,
-    //     ...submitData,
-    //   });
-    // });
-
     await waitFor(() => {
       expect(mockUpdate).not.toHaveBeenCalled();
     });
