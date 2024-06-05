@@ -93,18 +93,6 @@ describe("PersonalInformationForm", () => {
     expect(screen.getByTestId("specialDay-error")).toHaveTextContent(
             "* Ensure you enter a valid date"
           );
-
-    // await waitFor(() => {
-    //   expect(mockUpdate).toHaveBeenCalledWith({
-    //     firstName: { ...INITIAL_FORM_VALUES.firstName, fieldValue: "Jane" },
-    //     lastName: { ...INITIAL_FORM_VALUES.lastName, fieldValue: "Smith" },
-    //     birthday: { ...INITIAL_FORM_VALUES.birthday, fieldValue: "15/05/1985" },
-    //     specialDay: {
-    //       ...INITIAL_FORM_VALUES.specialDay,
-    //       fieldValue: "01/01/2024",
-    //     },
-    //   });
-    // });
   });
 
   // it("displays error messages when form validation fails", async () => {
