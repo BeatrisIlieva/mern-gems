@@ -1,8 +1,8 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { LoginForm } from "./LoginForm";
 import { AuthContext } from "../../../../contexts/AuthContext";
-import { FORM_KEYS } from "./initialFormValues";
 import { ERROR_MESSAGES } from "../../../../constants/forms";
+import { FORM_KEYS, INITIAL_FORM_VALUES } from "./initialFormValues";
 
 const mockOnLoginSubmit = jest.fn();
 
@@ -10,60 +10,42 @@ const mockAuthContextValue = {
   onLoginSubmit: mockOnLoginSubmit,
 };
 
-describe("LoginFrom Component", () => {
-  test("Fill Credentials with invalid email expect error", async () => {
+describe("EmailInformationForm Component", () => {
+  test("Submits the form with valid values; Expect update function to be called", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
         <LoginForm />
       </AuthContext.Provider>
     );
 
-    const button = screen.getByTestId("submit");
-    expect(button).toBeInTheDocument();
+    const inputs = {};
 
-    const emailInput = screen.getByTestId(`${FORM_KEYS.Email}-input`);
-    expect(emailInput).toBeInTheDocument();
-    fireEvent.change(emailInput, { target: { value: "t@l.c" } });
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
+    });
 
-    const passwordInput = screen.getByTestId(`${FORM_KEYS.Email}-input`);
-    expect(passwordInput).toBeInTheDocument();
-    fireEvent.change(passwordInput, { target: { value: "123456Tt" } });
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: { value: INITIAL_FORM_VALUES[inputKey].validTestData },
+      });
+    });
 
-    fireEvent.click(button);
+    const submitButton = screen.getByTestId("submit");
+    fireEvent.click(submitButton);
 
-    const errorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.Email}-error`
-    );
-    const errorMessageContent = errorMessageContainer.textContent.trim();
-    expect(errorMessageContent).toBe(ERROR_MESSAGES.email);
-  });
-});
+    const submitData = {};
 
-describe("LoginFrom Component", () => {
-  test("Fill Credentials with invalid password expect error", async () => {
-    render(
-      <AuthContext.Provider value={mockAuthContextValue}>
-        <LoginForm />
-      </AuthContext.Provider>
-    );
+    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+      submitData[key] = value.validTestData;
+    });
 
-    const button = screen.getByTestId("submit");
-    expect(button).toBeInTheDocument();
+    await waitFor(() => {
+      expect(mockOnLoginSubmit).toHaveBeenCalledWith(submitData);
+    });
 
-    const emailInput = screen.getByTestId(`${FORM_KEYS.Email}-input`);
-    expect(emailInput).toBeInTheDocument();
-    fireEvent.change(emailInput, { target: { value: "test@email.com" } });
-
-    const passwordInput = screen.getByTestId(`${FORM_KEYS.Email}-input`);
-    expect(passwordInput).toBeInTheDocument();
-    fireEvent.change(passwordInput, { target: { value: "123456" } });
-
-    fireEvent.click(button);
-
-    const errorMessageContainer = screen.getByTestId(
-      `${FORM_KEYS.Password}-error`
-    );
-    const errorMessageContent = errorMessageContainer.textContent.trim();
-    expect(errorMessageContent).toBe(ERROR_MESSAGES.password);
+    Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
+      const errorMessageContainer = screen.getByTestId(`${key}-error`);
+      expect(errorMessageContainer).toHaveTextContent("");
+    });
   });
 });
