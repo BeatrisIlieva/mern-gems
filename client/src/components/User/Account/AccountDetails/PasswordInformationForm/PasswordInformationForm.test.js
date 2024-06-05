@@ -207,12 +207,16 @@ describe("PasswordInformationForm", () => {
       submitData[key] = value.differentPasswordsTestData;
     });
 
+    // await waitFor(() => {
+    //   expect(mockUpdate).not.toHaveBeenCalledWith(userId, {
+    //     password,
+    //     newPassword,
+    //     ...submitData,
+    //   });
+    // });
+
     await waitFor(() => {
-      expect(mockUpdate).not.toHaveBeenCalledWith(userId, {
-        password,
-        newPassword,
-        ...submitData,
-      });
+      expect(mockUpdate).not.toHaveBeenCalled();
     });
 
     const newPasswordErrorMessageContainer = screen.getByTestId(
