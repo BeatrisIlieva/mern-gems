@@ -171,7 +171,7 @@ describe("PasswordInformationForm", () => {
     });
   });
 
-  test("Submits the form with different values; Expect update function not to be called; Expect errors", async () => {
+  test("Submits the form with different newPassword and retypeNewPassword values; Expect update function not to be called; Expect errors", async () => {
     const mockUserInformation = {
       userId: userId,
     };
