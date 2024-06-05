@@ -128,3 +128,34 @@ describe("AccountDetails Component delete account button", () => {
     expect(deleteAccountPopup).toBeInTheDocument();
   });
 });
+
+describe("AddressInformationForm Component address book button", () => {
+  beforeEach(() => {
+    loginInformationServiceFactory.mockReturnValue({
+      find: mockFind,
+    });
+  });
+
+  test("Should load user address book popup", async () => {
+    const mockUserInformation = {
+      email: "test@email.com",
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <AccountDetails />
+      </AuthContext.Provider>
+    );
+
+    const addAddressBookButton = screen.getByTestId("add-address-book-button");
+    expect(addAddressBookButton).toBeInTheDocument();
+
+    fireEvent.click(addAddressBookButton);
+    const addAddressBookPopup = screen.getByTestId(
+      "address-information-form-popup"
+    );
+    expect(addAddressBookPopup).toBeInTheDocument();
+  });
+});

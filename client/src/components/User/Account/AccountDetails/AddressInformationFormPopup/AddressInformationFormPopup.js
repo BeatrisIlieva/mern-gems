@@ -1,14 +1,14 @@
 import styles from "./AddressInformationFormPopup.module.css";
 import { useState, useEffect } from "react";
-import { useAuthContext } from "../../../../../../contexts/AuthContext";
-import { useService } from "../../../../../../hooks/useService";
-import { addressInformationServiceFactory } from "../../../../../../services/addressInformationService";
+import { useAuthContext } from "../../../../../contexts/AuthContext";
+import { useService } from "../../../../../hooks/useService";
+import { addressInformationServiceFactory } from "../../../../../services/addressInformationService";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { DynamicFormAuthUser } from "../../../../../DynamicForm/DynamicFormAuthUser";
-import { useForm } from "../../../../../../hooks/useForm";
-import { hasFormErrorOccurred } from "../../../../../../utils/hasFormErrorOccurred";
+import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
+import { useForm } from "../../../../../hooks/useForm";
+import { hasFormErrorOccurred } from "../../../../../utils/hasFormErrorOccurred";
 
 export const AddressInformationFormPopup = ({
   popupSubmitHandler,
@@ -86,7 +86,10 @@ export const AddressInformationFormPopup = ({
   }, [popupCloseHandler]);
 
   return (
-    <section className={styles["popup-box"]}>
+    <section
+      className={styles["popup-box"]}
+      data-testid="address-information-form-popup"
+    >
       <div className={styles["modal-dialog"]}>
         <div className={styles["modal-content"]}>
           <div className={styles["modal-header"]}>

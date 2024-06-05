@@ -1,5 +1,5 @@
 import { PersonalInformationForm } from "./PersonalInformationForm/PersonalInformationForm";
-import { AddressInformationForm } from "./AddressInformationForm/AddressInformationForm";
+import { AddressInformationFormPopup } from "./AddressInformationFormPopup/AddressInformationFormPopup";
 import styles from "./AccountDetails.module.css";
 import { EmailInformationForm } from "./EmailInformationForm/EmailInformationForm";
 import { PasswordInformationForm } from "./PasswordInformationForm/PasswordInformationForm";
@@ -8,6 +8,13 @@ import { useAuthContext } from "../../../../contexts/AuthContext";
 import { useService } from "../../../../hooks/useService";
 import { DeleteAccountPopup } from "./DeleteAccountPopup/DeleteAccountPopup";
 import { loginInformationServiceFactory } from "../../../../services/loginInformationService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+
+const POPUP_OPTIONS = {
+  Delete: "delete",
+  Address: "address",
+};
 
 export const AccountDetails = () => {
   const { userId, onDelete } = useAuthContext();
@@ -18,6 +25,11 @@ export const AccountDetails = () => {
 
   const [displayDeleteAccountPopup, setDisplayDeleteAccountPopup] =
     useState(false);
+
+  const [
+    displayAddressInformationFormPopup,
+    setDisplayAddressInformationFormPopup,
+  ] = useState(false);
 
   useEffect(() => {
     loginInformationService
@@ -40,22 +52,36 @@ export const AccountDetails = () => {
     setShowUpdateEmail(false);
   };
 
-  const popupClickHandler = async () => {
+  const popupClickHandler = async (popupOption) => {
     document.body.style.overflow = "hidden";
-    setDisplayDeleteAccountPopup(true);
+
+    if (popupOption === POPUP_OPTIONS.Delete) {
+      setDisplayDeleteAccountPopup(true);
+    } else if (popupOption === POPUP_OPTIONS.Address) {
+      setDisplayAddressInformationFormPopup(true);
+    }
   };
 
-  const popupSubmitHandler = async () => {
+  const popupSubmitHandler = async (popupOption) => {
     document.body.style.overflow = "visible";
 
-    setDisplayDeleteAccountPopup(false);
+    if (popupOption === POPUP_OPTIONS.Delete) {
+      setDisplayDeleteAccountPopup(false);
 
-    await onDelete();
+      await onDelete();
+    } else if (popupOption === POPUP_OPTIONS.Address) {
+      setDisplayAddressInformationFormPopup(false);
+    }
   };
 
-  const popupCloseHandler = () => {
+  const popupCloseHandler = (popupOption) => {
     document.body.style.overflow = "visible";
-    setDisplayDeleteAccountPopup(false);
+
+    if (popupOption === POPUP_OPTIONS.Delete) {
+      setDisplayDeleteAccountPopup(false);
+    } else if (popupOption === POPUP_OPTIONS.Address) {
+      setDisplayAddressInformationFormPopup(false);
+    }
   };
 
   return (
@@ -95,13 +121,21 @@ export const AccountDetails = () => {
             >
               Change Password
             </button>
-            <button className={styles["button"]} onClick={popupClickHandler} data-testid="delete-account-button">
+            <button
+              className={styles["button"]}
+              onClick={() => popupClickHandler(POPUP_OPTIONS.Delete)}
+              data-testid="delete-account-button"
+            >
               Delete Account
             </button>
             {displayDeleteAccountPopup && (
               <DeleteAccountPopup
-                popupSubmitHandler={popupSubmitHandler}
-                popupCloseHandler={popupCloseHandler}
+                popupSubmitHandler={() =>
+                  popupSubmitHandler(POPUP_OPTIONS.Delete)
+                }
+                popupCloseHandler={() =>
+                  popupCloseHandler(POPUP_OPTIONS.Delete)
+                }
               />
             )}
           </div>
@@ -109,8 +143,30 @@ export const AccountDetails = () => {
           {showUpdatePassword && <PasswordInformationForm />}
         </div>
         <div className={styles["right-bottom-container"]}>
-          <h2 className={styles["form-title-address"]}>Address Book</h2>
-          <AddressInformationForm />
+          <section className={styles["address-container"]}>
+            <h2 className={styles["form-title-address"]}>Address Book</h2>
+            <button
+              className={styles["address-button"]}
+              onClick={() => popupClickHandler(POPUP_OPTIONS.Address)}
+              data-testid="add-address-book-button"
+            >
+              <FontAwesomeIcon
+                icon={faCirclePlus}
+                className={styles["address-icon"]}
+              />
+              <span className={styles["address-title"]}>Add a New Address</span>
+            </button>
+            {displayAddressInformationFormPopup && (
+              <AddressInformationFormPopup
+                popupSubmitHandler={() =>
+                  popupSubmitHandler(POPUP_OPTIONS.Address)
+                }
+                popupCloseHandler={() =>
+                  popupCloseHandler(POPUP_OPTIONS.Address)
+                }
+              />
+            )}
+          </section>
         </div>
       </div>
     </section>

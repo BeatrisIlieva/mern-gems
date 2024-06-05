@@ -38,9 +38,12 @@
   font-size: var(--large-font-size);
 }
 
-.form-title,
-.form-title-address {
+.form-title {
   margin: 0px 0px 60px 0px;
+}
+
+.form-title-address {
+  margin: 0px 0px 34px 0px;
 }
 
 .form-title-login-information {
@@ -58,7 +61,7 @@
 
 .form-title-address {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 20px;
+  padding: 0px 40px 20px 40px;
 }
 
 .button-container {
@@ -112,4 +115,26 @@
     opacity: 0;
     transform: translateY(-40px);
   }
+}
+
+.address-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.address-button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.address-icon {
+  color: var(--dark-pink);
+  height: 28px;
 }

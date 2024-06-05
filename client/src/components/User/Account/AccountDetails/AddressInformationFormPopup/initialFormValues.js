@@ -4,7 +4,7 @@ import {
   NAME_PATTERN,
   STREET_PATTERN,
   APARTMENT_PATTERN,
-} from "../../../../../../constants/forms";
+} from "../../../../../constants/forms";
 
 const FORM_KEYS = {
   PhoneNumber: "phoneNumber",
