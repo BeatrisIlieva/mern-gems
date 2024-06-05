@@ -12,7 +12,7 @@ const PASSWORD_MISMATCH_ERROR_MESSAGE =
 
 const PASSWORD_SUCCESS_MESSAGE = "Your password has been changed successfully";
 
-export const EMAIL_PATTERN = /^[A-za-z0-9]+@+[a-z]+\.[a-z]{2,4}$/;
+export const EMAIL_PATTERN = /^[A-Za-z0-9]+@+[a-z]+\.[a-z]{2,4}$/;
 const EMAIL_ERROR_MESSAGE = "* Ensure you enter a valid email address";
 const EMAIL_MISMATCH_ERROR_MESSAGE =
   "* Ensure that both email fields contain the same email address";
@@ -51,7 +51,7 @@ const STREET_LENGTH = {
 };
 
 export const STREET_PATTERN = new RegExp(
-  `^[a-zA-z0-9 ]{${STREET_LENGTH.MIN},${STREET_LENGTH.MAX}}$`
+  `^[a-zA-Z0-9 ]{${STREET_LENGTH.MIN},${STREET_LENGTH.MAX}}$`
 );
 const STREET_ERROR_MESSAGE = `* This field requires ${STREET_LENGTH.MIN}-${STREET_LENGTH.MAX} characters`;
 
@@ -61,7 +61,7 @@ const APARTMENT_LENGTH = {
 };
 
 export const APARTMENT_PATTERN = new RegExp(
-  `^[a-zA-z0-9]{${APARTMENT_LENGTH.MIN},${APARTMENT_LENGTH.MAX}}$`
+  `^[a-zA-Z0-9]{${APARTMENT_LENGTH.MIN},${APARTMENT_LENGTH.MAX}}$`
 );
 const APARTMENT_ERROR_MESSAGE = `* This field requires ${APARTMENT_LENGTH.MIN}-${APARTMENT_LENGTH.MAX} characters`;
 
@@ -71,7 +71,7 @@ const ZIP_CODE_LENGTH = {
 };
 
 export const ZIP_CODE_PATTERN = new RegExp(
-  `^[A-Aa-z0-9 ]{${ZIP_CODE_LENGTH.MIN},${ZIP_CODE_LENGTH.MAX}}$`
+  `^[A-Za-z0-9 ]{${ZIP_CODE_LENGTH.MIN},${ZIP_CODE_LENGTH.MAX}}$`
 );
 const ZIP_CODE_ERROR_MESSAGE = `* This field requires ${ZIP_CODE_LENGTH.MIN}-${ZIP_CODE_LENGTH.MAX} characters`;
 

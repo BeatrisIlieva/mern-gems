@@ -23,6 +23,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "0123456789",
+    invalidTestData: "T01234",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.Country]: {
@@ -32,6 +35,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "Test",
+    invalidTestData: "1Test",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.City]: {
@@ -41,6 +47,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "Test",
+    invalidTestData: "1Test",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.Street]: {
@@ -50,6 +59,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "Test Test 10",
+    invalidTestData: "T",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.Apartment]: {
@@ -59,6 +71,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "A1",
+    invalidTestData: "$",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.ZipCode]: {
@@ -68,6 +83,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "text",
+    validTestData: "Test1",
+    invalidTestData: "$",
+    emptyTestData: "",
   },
 };
 

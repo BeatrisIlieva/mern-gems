@@ -14,14 +14,14 @@ jest.mock("../../../../../services/personalInformationService", () => ({
   personalInformationServiceFactory: jest.fn(),
 }));
 
-const mockFindPersonalInformation = jest.fn();
-const mockUpdatePersonalInformation = jest.fn();
+const mockFind = jest.fn();
+const mockUpdate = jest.fn();
 
 describe("PersonalInformationForm", () => {
   beforeEach(() => {
     personalInformationServiceFactory.mockReturnValue({
-      find: mockFindPersonalInformation,
-      update: mockUpdatePersonalInformation,
+      find: mockFind,
+      update: mockUpdate,
     });
   });
 
@@ -30,7 +30,7 @@ describe("PersonalInformationForm", () => {
       userId: "user-id",
     };
 
-    mockFindPersonalInformation.mockResolvedValue(mockUserInformation);
+    mockFind.mockResolvedValue(mockUserInformation);
 
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -60,13 +60,16 @@ describe("PersonalInformationForm", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdatePersonalInformation).toHaveBeenCalledWith(
+      expect(mockUpdate).toHaveBeenCalledWith(
         "user-id",
         submitData
       );
     });
 
-    expect(screen.getByTestId("specialDay-error")).toHaveTextContent("");
+    Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
+      const errorMessageContainer = screen.getByTestId(`${key}-error`);
+      expect(errorMessageContainer).toHaveTextContent("");
+    });
   });
 
   test("Submits the form with invalid values; Expect update function to be called; Expect errors", async () => {
@@ -74,7 +77,7 @@ describe("PersonalInformationForm", () => {
       userId: "user-id",
     };
 
-    mockFindPersonalInformation.mockResolvedValue(mockUserInformation);
+    mockFind.mockResolvedValue(mockUserInformation);
 
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -104,7 +107,7 @@ describe("PersonalInformationForm", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdatePersonalInformation).not.toHaveBeenCalledWith(
+      expect(mockUpdate).not.toHaveBeenCalledWith(
         "user-id",
         submitData
       );
@@ -121,7 +124,7 @@ describe("PersonalInformationForm", () => {
       userId: "user-id",
     };
 
-    mockFindPersonalInformation.mockResolvedValue(mockUserInformation);
+    mockFind.mockResolvedValue(mockUserInformation);
 
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -151,7 +154,7 @@ describe("PersonalInformationForm", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdatePersonalInformation).not.toHaveBeenCalledWith(
+      expect(mockUpdate).not.toHaveBeenCalledWith(
         "user-id",
         submitData
       );
