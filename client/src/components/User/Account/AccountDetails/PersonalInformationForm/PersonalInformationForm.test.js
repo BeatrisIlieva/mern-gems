@@ -19,7 +19,6 @@ jest.mock("../../../../../services/personalInformationService", () => ({
 }));
 
 const mockFind = jest.fn();
-// const mockPersonalInformationServiceFind = jest.fn();
 const mockUpdate = jest.fn();
 
 describe("PersonalInformationForm", () => {
