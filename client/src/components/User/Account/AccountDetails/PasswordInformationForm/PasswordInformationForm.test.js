@@ -30,7 +30,6 @@ describe("PasswordInformationForm", () => {
   test("Submits the form with valid values; Expect update function to be called", async () => {
     const mockUserInformation = {
       userId: userId,
-      password: "123456Tt",
     };
 
     mockFind.mockResolvedValue(mockUserInformation);
@@ -79,7 +78,6 @@ describe("PasswordInformationForm", () => {
   test("Submits the form with invalid values; Expect update function not to be called; Expect errors", async () => {
     const mockUserInformation = {
       userId: userId,
-      password: "123456Tt",
     };
 
     mockFind.mockResolvedValue(mockUserInformation);
@@ -128,7 +126,6 @@ describe("PasswordInformationForm", () => {
   test("Submits the form with empty values; Expect update function not to be called; Expect errors", async () => {
     const mockUserInformation = {
       userId: userId,
-      password: "123456Tt",
     };
 
     mockFind.mockResolvedValue(mockUserInformation);
@@ -177,7 +174,6 @@ describe("PasswordInformationForm", () => {
   test("Submits the form with different values; Expect update function not to be called; Expect errors", async () => {
     const mockUserInformation = {
       userId: userId,
-      password: "123456Tt",
     };
 
     mockFind.mockResolvedValue(mockUserInformation);
