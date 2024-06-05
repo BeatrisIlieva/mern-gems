@@ -25,7 +25,7 @@ describe("PersonalInformationForm", () => {
     });
   });
 
-  test("submits the form with valid values", async () => {
+  test("Submits the form with valid values; Expect update function to be called", async () => {
     const mockUserInformation = {
       userId: "user-id",
     };
@@ -69,7 +69,7 @@ describe("PersonalInformationForm", () => {
     expect(screen.getByTestId("specialDay-error")).toHaveTextContent("");
   });
 
-  test("submits the form with invalid values", async () => {
+  test("Submits the form with invalid values; Expect update function to be called; Expect errors", async () => {
     const mockUserInformation = {
       userId: "user-id",
     };
@@ -101,6 +101,53 @@ describe("PersonalInformationForm", () => {
 
     Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
       submitData[key] = value.invalidTestData;
+    });
+
+    await waitFor(() => {
+      expect(mockUpdatePersonalInformation).not.toHaveBeenCalledWith(
+        "user-id",
+        submitData
+      );
+    });
+
+    Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
+      const errorMessageContainer = screen.getByTestId(`${key}-error`);
+      expect(errorMessageContainer).toHaveTextContent(ERROR_MESSAGES[key]);
+    });
+  });
+
+  test("Submits the form with empty values; Expect update function to be called; Expect errors", async () => {
+    const mockUserInformation = {
+      userId: "user-id",
+    };
+
+    mockFindPersonalInformation.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <PersonalInformationForm />
+      </AuthContext.Provider>
+    );
+
+    const inputs = {};
+
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
+    });
+
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: { value: INITIAL_FORM_VALUES[inputKey].emptyTestData },
+      });
+    });
+
+    const submitButton = screen.getByTestId("submit");
+    fireEvent.click(submitButton);
+
+    const submitData = {};
+
+    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+      submitData[key] = value.emptyTestData;
     });
 
     await waitFor(() => {
