@@ -93,7 +93,7 @@ export const AddressInformationFormPopup = ({
       <div className={styles["modal-dialog"]}>
         <div className={styles["modal-content"]}>
           <div className={styles["modal-header"]}>
-            <div id={styles["xMark"]} onClick={() => popupCloseHandler()}>
+            <div id={styles["xMark"]} onClick={() => popupCloseHandler()} data-testid="address-information-form-popup-x-mark">
               <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} />
             </div>
             <h2 className={styles["title"]}>Add a New Address</h2>

@@ -40,14 +40,6 @@ describe("AccountDetails Component", () => {
       expect(userEmailElement).toHaveTextContent(mockUserInformation.email);
     });
   });
-});
-
-describe("AccountDetails Component update email button", () => {
-  beforeEach(() => {
-    loginInformationServiceFactory.mockReturnValue({
-      find: mockFind,
-    });
-  });
 
   test("Should load user update email form", async () => {
     const mockUserInformation = {
@@ -68,14 +60,6 @@ describe("AccountDetails Component update email button", () => {
     fireEvent.click(updateEmailButton);
     const updateEmailForm = screen.getByTestId("update-email-form");
     expect(updateEmailForm).toBeInTheDocument();
-  });
-});
-
-describe("AccountDetails Component update password button", () => {
-  beforeEach(() => {
-    loginInformationServiceFactory.mockReturnValue({
-      find: mockFind,
-    });
   });
 
   test("Should load user update password form", async () => {
@@ -98,14 +82,6 @@ describe("AccountDetails Component update password button", () => {
     const updatePasswordForm = screen.getByTestId("update-password-form");
     expect(updatePasswordForm).toBeInTheDocument();
   });
-});
-
-describe("AccountDetails Component delete account button", () => {
-  beforeEach(() => {
-    loginInformationServiceFactory.mockReturnValue({
-      find: mockFind,
-    });
-  });
 
   test("Should load user delete account popup", async () => {
     const mockUserInformation = {
@@ -126,14 +102,6 @@ describe("AccountDetails Component delete account button", () => {
     fireEvent.click(deleteAccountButton);
     const deleteAccountPopup = screen.getByTestId("delete-account-popup");
     expect(deleteAccountPopup).toBeInTheDocument();
-  });
-});
-
-describe("AddressInformationForm Component address book button", () => {
-  beforeEach(() => {
-    loginInformationServiceFactory.mockReturnValue({
-      find: mockFind,
-    });
   });
 
   test("Should load user address book popup", async () => {
@@ -159,3 +127,4 @@ describe("AddressInformationForm Component address book button", () => {
     expect(addAddressBookPopup).toBeInTheDocument();
   });
 });
+
