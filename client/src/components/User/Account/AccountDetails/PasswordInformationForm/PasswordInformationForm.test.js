@@ -192,7 +192,9 @@ describe("PasswordInformationForm", () => {
 
     Object.entries(inputs).forEach(([inputKey, inputValue]) => {
       fireEvent.change(inputValue, {
-        target: { value: INITIAL_FORM_VALUES[inputKey].emptyTestData },
+        target: {
+          value: INITIAL_FORM_VALUES[inputKey].differentPasswordsTestData,
+        },
       });
     });
 
@@ -202,7 +204,7 @@ describe("PasswordInformationForm", () => {
     const submitData = {};
 
     Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
-      submitData[key] = value.emptyTestData;
+      submitData[key] = value.differentPasswordsTestData;
     });
 
     await waitFor(() => {
@@ -213,9 +215,18 @@ describe("PasswordInformationForm", () => {
       });
     });
 
-    Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
-      const errorMessageContainer = screen.getByTestId(`${key}-error`);
-      expect(errorMessageContainer).toHaveTextContent(ERROR_MESSAGES[key]);
-    });
+    const newPasswordErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.NewPassword}-error`
+    );
+    expect(newPasswordErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.passwordMismatch
+    );
+
+    const retypeNewPasswordErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.RetypeNewPassword}-error`
+    );
+    expect(retypeNewPasswordErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.passwordMismatch
+    );
   });
 });
