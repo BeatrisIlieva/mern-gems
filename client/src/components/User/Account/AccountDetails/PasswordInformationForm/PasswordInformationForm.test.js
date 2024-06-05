@@ -2,7 +2,10 @@ import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { PasswordInformationForm } from "./PasswordInformationForm";
 import { FORM_KEYS, INITIAL_FORM_VALUES } from "./initialFormValues";
-import { ERROR_MESSAGES } from "../../../../../constants/forms";
+import {
+  ERROR_MESSAGES,
+  SUCCESS_MESSAGES,
+} from "../../../../../constants/forms";
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { loginInformationServiceFactory } from "../../../../../services/loginInformationService";
 
@@ -27,7 +30,7 @@ describe("PasswordInformationForm", () => {
     });
   });
 
-  test("Submits the form with valid values; Expect update function to be called", async () => {
+  test("Submits the form with valid values; Expect update function to be called; Expect success message", async () => {
     const mockUserInformation = {
       userId: userId,
     };
@@ -73,6 +76,14 @@ describe("PasswordInformationForm", () => {
       const errorMessageContainer = screen.getByTestId(`${key}-error`);
       expect(errorMessageContainer).toHaveTextContent("");
     });
+
+    const successMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.NewPassword}-success`
+    );
+
+    expect(successMessageContainer).toHaveTextContent(
+      SUCCESS_MESSAGES.newPassword
+    );
   });
 
   test("Submits the form with invalid values; Expect update function not to be called; Expect errors", async () => {
