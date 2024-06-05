@@ -86,4 +86,42 @@ describe("EmailInformationForm Component", () => {
       expect(errorMessageContainer).toHaveTextContent(ERROR_MESSAGES[key]);
     });
   });
+
+  test("Submits the form with empty values; Expect update function not to be called", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <LoginForm />
+      </AuthContext.Provider>
+    );
+
+    const inputs = {};
+
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
+    });
+
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: { value: INITIAL_FORM_VALUES[inputKey].emptyTestData },
+      });
+    });
+
+    const submitButton = screen.getByTestId("submit");
+    fireEvent.click(submitButton);
+
+    const submitData = {};
+
+    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+      submitData[key] = value.emptyTestData;
+    });
+
+    await waitFor(() => {
+      expect(mockOnLoginSubmit).not.toHaveBeenCalled();
+    });
+
+    Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
+      const errorMessageContainer = screen.getByTestId(`${key}-error`);
+      expect(errorMessageContainer).toHaveTextContent(ERROR_MESSAGES[key]);
+    });
+  });
 });

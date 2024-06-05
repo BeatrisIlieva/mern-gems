@@ -64,12 +64,12 @@ describe("PasswordInformationForm Component", () => {
       submitData[key] = value.validTestData;
     });
 
+    const { password, newPassword } = submitData;
+
     await waitFor(() => {
-      expect(mockUpdate).not.toHaveBeenCalledWith(userId, {
-        password,
-        newPassword,
-        ...submitData,
-      });
+      expect(mockUpdate).toHaveBeenCalledWith(userId, 
+        { password, newPassword }
+      );
     });
 
     Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
