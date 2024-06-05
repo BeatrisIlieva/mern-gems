@@ -3,8 +3,10 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 import { AccountDetails } from "./AccountDetails";
 import { loginInformationServiceFactory } from "../../../../services/loginInformationService";
 
+const userId = "user-id";
+
 const mockAuthContextValue = {
-  userId: "user123",
+  userId: userId,
 };
 
 jest.mock("../../../../services/loginInformationService", () => ({
