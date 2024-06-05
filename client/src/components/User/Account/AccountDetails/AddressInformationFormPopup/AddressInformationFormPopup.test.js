@@ -150,7 +150,7 @@ describe("AddressInformationFormPopup", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdate).not.toHaveBeenCalledWith(userId, submitData);
+      expect(mockUpdate).not.toHaveBeenCalled();
     });
 
     Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
