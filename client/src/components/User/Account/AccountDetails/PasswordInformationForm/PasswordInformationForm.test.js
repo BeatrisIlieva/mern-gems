@@ -110,12 +110,8 @@ describe("PasswordInformationForm", () => {
     });
 
     await waitFor(() => {
-      expect(mockUpdate).not.toHaveBeenCalledWith(userId, {
-        password,
-        newPassword,
-        ...submitData,
+        expect(mockUpdate).not.toHaveBeenCalled();
       });
-    });
 
     Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
       const errorMessageContainer = screen.getByTestId(`${key}-error`);
