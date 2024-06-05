@@ -22,20 +22,6 @@ const mockFind = jest.fn();
 const mockUpdate = jest.fn();
 
 describe("PersonalInformationForm", () => {
-  // let mockSubmitHandler;
-
-  // beforeEach(() => {
-  //   mockSubmitHandler = jest.fn();
-  //   useForm.mockReturnValue({
-  //     values: INITIAL_FORM_VALUES,
-  //     setValues: jest.fn(),
-  //     updateForm: jest.fn(),
-  //     clickHandler: jest.fn(),
-  //     blurHandler: jest.fn(),
-  //     changeHandler: jest.fn(),
-  //     submitHandler: mockSubmitHandler,
-  //   });
-  // });
   beforeEach(() => {
     // loginInformationServiceFactory.mockReturnValue({
     //   find: mockFind,
