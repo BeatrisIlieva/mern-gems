@@ -16,6 +16,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "email",
+    validTestData: "test@email.com",
+    invalidTestData: "t@e.c",
+    emptyTestData: "",
   },
 
   [FORM_KEYS.Password]: {
@@ -25,6 +28,9 @@ export const INITIAL_FORM_VALUES = {
     errorMessage: "",
     isFocused: false,
     fieldType: "password",
+    validTestData: "123456Tt",
+    invalidTestData: "12345678",
+    emptyTestData: "",
   },
 };
 
