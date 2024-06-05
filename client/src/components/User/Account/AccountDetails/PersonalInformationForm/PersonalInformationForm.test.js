@@ -71,7 +71,7 @@ describe("PersonalInformationForm", () => {
     });
   });
 
-  test("Submits the form with invalid values; Expect update function to be called; Expect errors", async () => {
+  test("Submits the form with invalid values; Expect update function not to be called; Expect errors", async () => {
     const mockUserInformation = {
       userId: userId,
     };
@@ -115,7 +115,7 @@ describe("PersonalInformationForm", () => {
     });
   });
 
-  test("Submits the form with empty values; Expect update function to be called; Expect errors", async () => {
+  test("Submits the form with empty values; Expect update function not to be called; Expect errors", async () => {
     const mockUserInformation = {
       userId: userId,
     };
