@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Home } from "./Home";
@@ -31,9 +31,7 @@ describe("Home Component", () => {
     const buttonElement = screen.getByTestId("forget-me-not-button");
     expect(buttonElement).toBeInTheDocument();
   });
-});
 
-describe("Home Component", () => {
   test("Should load Pirouette Collection", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -55,9 +53,7 @@ describe("Home Component", () => {
     const buttonElement = screen.getByTestId("pirouette-button");
     expect(buttonElement).toBeInTheDocument();
   });
-});
 
-describe("Home Component", () => {
   test("Should load Diamond Loop Collection", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -79,9 +75,7 @@ describe("Home Component", () => {
     const buttonElement = screen.getByTestId("diamond-loop-button");
     expect(buttonElement).toBeInTheDocument();
   });
-});
 
-describe("Home Component", () => {
   test("Should load Sunflower Collection", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -103,9 +97,7 @@ describe("Home Component", () => {
     const buttonElement = screen.getByTestId("sunflower-button");
     expect(buttonElement).toBeInTheDocument();
   });
-});
 
-describe("Home Component", () => {
   test("Should load Sparkling Cluster Collection", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>

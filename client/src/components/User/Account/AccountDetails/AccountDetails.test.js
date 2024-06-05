@@ -5,8 +5,11 @@ import { loginInformationServiceFactory } from "../../../../services/loginInform
 
 const userId = "user-id";
 
+const mockOnDelete = jest.fn();
+
 const mockAuthContextValue = {
   userId: userId,
+  onDelete: mockOnDelete,
 };
 
 jest.mock("../../../../services/loginInformationService", () => ({
@@ -164,6 +167,39 @@ describe("AccountDetails Component", () => {
     fireEvent.click(closeDeleteAccountButton);
 
     expect(deleteAccountPopup).not.toBeInTheDocument();
+  });
+
+  test("Should delete user account by clicking on the delete button", async () => {
+    const mockUserInformation = {
+      email: "test@email.com",
+      // userId
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <AccountDetails />
+      </AuthContext.Provider>
+    );
+
+    const deleteAccountButton = screen.getByTestId("delete-account-button");
+    expect(deleteAccountButton).toBeInTheDocument();
+
+    fireEvent.click(deleteAccountButton);
+    const deleteAccountPopup = screen.getByTestId("delete-account-popup");
+    expect(deleteAccountPopup).toBeInTheDocument();
+
+    const confirmDeleteAccountButton = screen.getByTestId(
+      "delete-account-popup-confirm"
+    );
+    expect(confirmDeleteAccountButton).toBeInTheDocument();
+
+    fireEvent.click(confirmDeleteAccountButton);
+
+    await waitFor(() => {
+      expect(mockOnDelete).toHaveBeenCalled();
+    });
   });
 
   test("Should load user address book popup", async () => {

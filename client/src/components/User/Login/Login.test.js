@@ -24,9 +24,7 @@ describe("Login Component", () => {
     const imageElement = screen.getByTestId("image-element");
     expect(imageElement).toBeInTheDocument();
   });
-});
 
-describe("Login Component", () => {
   test("Should load sing in title", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -39,9 +37,7 @@ describe("Login Component", () => {
     const singInTitleElement = screen.getByTestId("sign-in-title-element");
     expect(singInTitleElement).toBeInTheDocument();
   });
-});
 
-describe("Login Component", () => {
   test("Should load sing in sub-title", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -56,9 +52,7 @@ describe("Login Component", () => {
     );
     expect(singInSubTitleElement).toBeInTheDocument();
   });
-});
 
-describe("Login Component", () => {
   test("Should load sing-up in title", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -71,9 +65,7 @@ describe("Login Component", () => {
     const singUpTitleElement = screen.getByTestId("sign-up-title-element");
     expect(singUpTitleElement).toBeInTheDocument();
   });
-});
 
-describe("Login Component", () => {
   test("Should load sing up sub-title", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>
@@ -88,9 +80,7 @@ describe("Login Component", () => {
     );
     expect(singUpSubTitleElement).toBeInTheDocument();
   });
-});
 
-describe("Login Component", () => {
   test("Should redirect to register", async () => {
     render(
       <AuthContext.Provider value={mockAuthContextValue}>

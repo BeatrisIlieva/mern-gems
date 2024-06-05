@@ -69,6 +69,7 @@ export const AccountDetails = () => {
       setDisplayDeleteAccountPopup(false);
 
       await onDelete();
+      
     } else if (popupOption === POPUP_OPTIONS.Address) {
       setDisplayAddressInformationFormPopup(false);
     }

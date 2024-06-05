@@ -19,7 +19,7 @@ jest.mock("../../../../../services/personalInformationService", () => ({
 const mockFind = jest.fn();
 const mockUpdate = jest.fn();
 
-describe("PersonalInformationForm", () => {
+describe("PersonalInformationForm Component", () => {
   beforeEach(() => {
     personalInformationServiceFactory.mockReturnValue({
       find: mockFind,

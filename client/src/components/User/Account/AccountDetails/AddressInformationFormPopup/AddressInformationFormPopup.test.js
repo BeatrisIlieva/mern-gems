@@ -19,7 +19,7 @@ jest.mock("../../../../../services/addressInformationService", () => ({
 const mockFind = jest.fn();
 const mockUpdate = jest.fn();
 
-describe("AddressInformationFormPopup", () => {
+describe("AddressInformationFormPopup Component", () => {
   beforeEach(() => {
     addressInformationServiceFactory.mockReturnValue({
       find: mockFind,

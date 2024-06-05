@@ -49,6 +49,7 @@ export const DeleteAccountPopup = ({
             <button
               className={styles["button-delete"]}
               onClick={() => popupSubmitHandler()}
+              data-testid="delete-account-popup-confirm"
             >
               Delete
             </button>

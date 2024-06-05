@@ -22,7 +22,7 @@ jest.mock("../../../../../services/loginInformationService", () => ({
 const mockFind = jest.fn();
 const mockUpdate = jest.fn();
 
-describe("PasswordInformationForm", () => {
+describe("PasswordInformationForm Component", () => {
   beforeEach(() => {
     loginInformationServiceFactory.mockReturnValue({
       find: mockFind,
