@@ -17,7 +17,7 @@ const POPUP_OPTIONS = {
 };
 
 export const AccountDetails = () => {
-  const { userId, onDelete } = useAuthContext();
+  const { userId, onDelete, onLogout } = useAuthContext();
   const [userInformation, setUserInformation] = useState([]);
   const [showUpdateEmail, setShowUpdateEmail] = useState(false);
   const [showUpdatePassword, setShowUpdatePassword] = useState(false);
@@ -69,7 +69,6 @@ export const AccountDetails = () => {
       setDisplayDeleteAccountPopup(false);
 
       await onDelete();
-      
     } else if (popupOption === POPUP_OPTIONS.Address) {
       setDisplayAddressInformationFormPopup(false);
     }
@@ -101,7 +100,7 @@ export const AccountDetails = () => {
       <div className={styles["right-container"]}>
         <div className={styles["right-top-container"]}>
           <h2 className={styles["form-title-login-information"]}>
-            Login Information
+            Account Management
           </h2>
           <h4 className={styles["form-sub-title"]}>Email Address</h4>
           <p className={styles["email"]} data-testid="user-email">
@@ -121,6 +120,13 @@ export const AccountDetails = () => {
               data-testid="update-password-button"
             >
               Change Password
+            </button>
+            <button
+              className={styles["button"]}
+              onClick={onLogout}
+              data-testid="delete-account-button"
+            >
+              Logout
             </button>
             <button
               className={styles["button"]}

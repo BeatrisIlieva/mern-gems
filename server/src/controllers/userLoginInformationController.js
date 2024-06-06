@@ -98,6 +98,10 @@ router.put("/update-password/:userId", async (req, res) => {
   }
 });
 
+router.get("/logout", (req, res) => {
+  res.end();
+});
+
 router.delete("/:userId", async (req, res) => {
   const userId = req.params.userId;
 
