@@ -7,6 +7,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { LoginForm } from "../components/User/Login/LoginForm/LoginForm";
+import { RegisterForm } from "../components/User/Register/RegisterForm/RegisterForm";
 import {
   FORM_KEYS,
   INITIAL_FORM_VALUES,
@@ -58,6 +59,60 @@ describe("AuthContext", () => {
   });
 
   test("Should handle login submission, fill auth with userId and accessToken and redirect to home page", async () => {
+    render(
+      <Router>
+        <AuthProvider value={mockAuthContextValue}>
+          <LoginForm />
+        </AuthProvider>
+      </Router>
+    );
+
+    const mockUserInformation = {
+      _id: userId,
+      accessToken: token,
+    };
+
+    mockOnLoginSubmit.mockResolvedValue({ token: mockUserInformation });
+
+    const inputs = {};
+
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
+    });
+
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: { value: INITIAL_FORM_VALUES[inputKey].validTestData },
+      });
+    });
+
+    const submitButton = screen.getByTestId("submit");
+    fireEvent.click(submitButton);
+
+    const submitData = {};
+
+    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+      submitData[key] = value.validTestData;
+    });
+
+    await waitFor(() => {
+      expect(mockOnLoginSubmit).toHaveBeenCalledWith(submitData);
+    });
+
+    await waitFor(() => {
+      expect(mockSetAuth).toHaveBeenCalledWith(mockUserInformation);
+    });
+
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/", { replace: true });
+    });
+
+    const authSetArgument = mockSetAuth.mock.calls[0][0];
+    expect(authSetArgument._id).toBe(userId);
+    expect(authSetArgument.accessToken).toBe(token);
+  });
+
+  test("Should handle register submission, fill auth with userId and accessToken and redirect to home page", async () => {
     render(
       <Router>
         <AuthProvider value={mockAuthContextValue}>
