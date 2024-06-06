@@ -57,7 +57,7 @@ describe("AuthContext", () => {
     useLocation.mockReturnValue({ state: { from: { pathname: "/" } } });
   });
 
-  test("should handle login submission", async () => {
+  test("Should handle login submission, fill auth with userId and accessToken and redirect to home page", async () => {
     render(
       <Router>
         <AuthProvider value={mockAuthContextValue}>
