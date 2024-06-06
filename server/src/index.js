@@ -22,8 +22,10 @@ app.get("/", (req, res) => {
 
 app.use(routes);
 
-const server = app.listen(3030, () =>
-  console.log("RESTful server is listening on port 3030...")
+const port = 3030;
+
+const server = app.listen(port, () =>
+  console.log(`RESTful server is listening on port ${port}...`)
 );
 
 module.exports = { app, server };

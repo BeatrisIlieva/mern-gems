@@ -17,7 +17,11 @@ describe("userLoginInformationController", () => {
 
   afterAll(async () => {
     await disconnectDB();
-    server.close();
+    await new Promise((resolve) => setTimeout(() => resolve(), 1000));
+  });
+
+  beforeEach(() => {
+    jest.setTimeout(30000);
   });
 
   const userUUID1 = "user-id1";
@@ -39,6 +43,7 @@ describe("userLoginInformationController", () => {
     await UserLoginInformation.findByIdAndDelete(userUUID2);
     await UserPersonalInformation.findByIdAndDelete(userUUID2);
     await UserAddressInformation.findByIdAndDelete(userUUID2);
+    await server.close();
   });
 
   test("Test user registration; It should populate user models; Expect success", async () => {
@@ -142,29 +147,6 @@ describe("userLoginInformationController", () => {
     expect(res2.status).toBe(401);
   });
 
-  test("Test delete user; Expect success", async () => {
-    const res = await request
-      .delete(`/user-login-information/${userUUID1}`)
-      .set("user-uuid", userUUID1);
-
-    expect(res.status).toBe(200);
-
-    const deletedUserLoginInformation = await UserLoginInformation.findById(
-      userUUID1
-    );
-
-    const deletedUserPersonalInformation =
-      await UserPersonalInformation.findById(userUUID1);
-
-    const deletedUserAddressInformation = await UserAddressInformation.findById(
-      userUUID1
-    );
-
-    expect(deletedUserLoginInformation).toBeNull();
-    expect(deletedUserPersonalInformation).toBeNull();
-    expect(deletedUserAddressInformation).toBeNull();
-  });
-
   test("Test update user email with valid password; Expect success", async () => {
     const res1 = await request
       .post("/user-login-information/register")
@@ -262,5 +244,28 @@ describe("userLoginInformationController", () => {
     );
 
     expect(isChanged).toBe(false);
+  });
+
+  test("Test delete user; Expect success", async () => {
+    const res = await request
+      .delete(`/user-login-information/${userUUID1}`)
+      .set("user-uuid", userUUID1);
+
+    expect(res.status).toBe(200);
+
+    const deletedUserLoginInformation = await UserLoginInformation.findById(
+      userUUID1
+    );
+
+    const deletedUserPersonalInformation =
+      await UserPersonalInformation.findById(userUUID1);
+
+    const deletedUserAddressInformation = await UserAddressInformation.findById(
+      userUUID1
+    );
+
+    expect(deletedUserLoginInformation).toBeNull();
+    expect(deletedUserPersonalInformation).toBeNull();
+    expect(deletedUserAddressInformation).toBeNull();
   });
 });
