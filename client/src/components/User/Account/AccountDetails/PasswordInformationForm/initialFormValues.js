@@ -19,6 +19,7 @@ export const INITIAL_FORM_VALUES = {
     emptyTestData: "",
     differentPasswordsTestData: "123456Tt",
   },
+  
   [FORM_KEYS.NewPassword]: {
     fieldLabel: "New Password",
     fieldValue: "",
@@ -32,6 +33,7 @@ export const INITIAL_FORM_VALUES = {
     emptyTestData: "",
     differentPasswordsTestData: "123456Tt",
   },
+
   [FORM_KEYS.RetypeNewPassword]: {
     fieldLabel: "Confirm Password",
     fieldValue: "",

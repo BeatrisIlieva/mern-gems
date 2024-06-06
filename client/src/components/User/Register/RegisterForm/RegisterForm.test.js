@@ -672,4 +672,106 @@ describe("RegisterForm Component", () => {
       expect(errorMessageContainer).toHaveTextContent(ERROR_MESSAGES[key]);
     });
   });
+
+  test("Submits the form with different password and retypePassword values; Expect update function not to be called; Expect errors", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const inputs = {};
+
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
+    });
+
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: {
+          value: INITIAL_FORM_VALUES[inputKey].differentPasswordsTestData,
+        },
+      });
+    });
+
+    const submitButton = screen.getByTestId("submit");
+    fireEvent.click(submitButton);
+
+    const submitData = {};
+
+    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+      submitData[key] = value.differentPasswordsTestData;
+    });
+
+    await waitFor(() => {
+      expect(mockOnRegisterSubmit).not.toHaveBeenCalled();
+    });
+
+    const passwordErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Password}-error`
+    );
+
+    expect(passwordErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.passwordMismatch
+    );
+
+    const retypePasswordErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.RetypePassword}-error`
+    );
+
+    expect(retypePasswordErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.passwordMismatch
+    );
+  });
+
+  test("Submits the form with different email and retypeEmail values; Expect update function not to be called; Expect errors", async () => {
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <RegisterForm />
+      </AuthContext.Provider>
+    );
+
+    const inputs = {};
+
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
+    });
+
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: {
+          value: INITIAL_FORM_VALUES[inputKey].differentEmailsTestData,
+        },
+      });
+    });
+
+    const submitButton = screen.getByTestId("submit");
+    fireEvent.click(submitButton);
+
+    const submitData = {};
+
+    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+      submitData[key] = value.differentEmailsTestData;
+    });
+
+    await waitFor(() => {
+      expect(mockOnRegisterSubmit).not.toHaveBeenCalled();
+    });
+
+    const emailErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.Email}-error`
+    );
+
+    expect(emailErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.emailMismatch
+    );
+
+    const retypeEmailErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.RetypeEmail}-error`
+    );
+
+    expect(retypeEmailErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.emailMismatch
+    );
+  });
 });

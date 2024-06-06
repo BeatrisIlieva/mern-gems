@@ -24,6 +24,8 @@ export const INITIAL_FORM_VALUES = {
     validTestData: "test@email.com",
     invalidTestData: "t@e.c",
     emptyTestData: "",
+    differentPasswordsTestData: "test@email.com",
+    differentEmailsTestData: "test@email.com",
   },
 
   [FORM_KEYS.RetypeEmail]: {
@@ -36,6 +38,8 @@ export const INITIAL_FORM_VALUES = {
     validTestData: "test@email.com",
     invalidTestData: "t@e.c",
     emptyTestData: "",
+    differentPasswordsTestData: "test@email.com",
+    differentEmailsTestData: "test1@email.com",
   },
 
   [FORM_KEYS.Password]: {
@@ -48,6 +52,8 @@ export const INITIAL_FORM_VALUES = {
     validTestData: "123456Tt",
     invalidTestData: "12345678",
     emptyTestData: "",
+    differentPasswordsTestData: "123456Tt",
+    differentEmailsTestData: "123456Tt",
   },
 
   [FORM_KEYS.RetypePassword]: {
@@ -60,6 +66,8 @@ export const INITIAL_FORM_VALUES = {
     validTestData: "123456Tt",
     invalidTestData: "12345678",
     emptyTestData: "",
+    differentPasswordsTestData: "123456Ty",
+    differentEmailsTestData: "123456Tt",
   },
 
   [FORM_KEYS.FirstName]: {
@@ -72,6 +80,8 @@ export const INITIAL_FORM_VALUES = {
     validTestData: "Test",
     invalidTestData: "Test1",
     emptyTestData: "",
+    differentPasswordsTestData: "Test",
+    differentEmailsTestData: "Test",
   },
 
   [FORM_KEYS.LastName]: {
@@ -84,6 +94,8 @@ export const INITIAL_FORM_VALUES = {
     validTestData: "Test",
     invalidTestData: "Test1",
     emptyTestData: "",
+    differentPasswordsTestData: "Test",
+    differentEmailsTestData: "Test",
   },
 };
 

@@ -67,9 +67,10 @@ describe("PasswordInformationForm Component", () => {
     const { password, newPassword } = submitData;
 
     await waitFor(() => {
-      expect(mockUpdate).toHaveBeenCalledWith(userId, 
-        { password, newPassword }
-      );
+      expect(mockUpdate).toHaveBeenCalledWith(userId, {
+        password,
+        newPassword,
+      });
     });
 
     Object.keys(INITIAL_FORM_VALUES).forEach((key) => {
@@ -217,6 +218,7 @@ describe("PasswordInformationForm Component", () => {
     const newPasswordErrorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.NewPassword}-error`
     );
+
     expect(newPasswordErrorMessageContainer).toHaveTextContent(
       ERROR_MESSAGES.passwordMismatch
     );
@@ -224,6 +226,64 @@ describe("PasswordInformationForm Component", () => {
     const retypeNewPasswordErrorMessageContainer = screen.getByTestId(
       `${FORM_KEYS.RetypeNewPassword}-error`
     );
+
+    expect(retypeNewPasswordErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.passwordMismatch
+    );
+  });
+
+  test("Submits the form with different newPassword and retypeNewPassword values; Expect update function not to be called; Expect errors", async () => {
+    const mockUserInformation = {
+      userId: userId,
+    };
+
+    mockFind.mockResolvedValue(mockUserInformation);
+
+    render(
+      <AuthContext.Provider value={mockAuthContextValue}>
+        <PasswordInformationForm />
+      </AuthContext.Provider>
+    );
+
+    const inputs = {};
+
+    Object.values(FORM_KEYS).forEach((value) => {
+      inputs[value] = screen.getByTestId(`${value}-input`);
+    });
+
+    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+      fireEvent.change(inputValue, {
+        target: {
+          value: INITIAL_FORM_VALUES[inputKey].differentPasswordsTestData,
+        },
+      });
+    });
+
+    const submitButton = screen.getByTestId("submit");
+    fireEvent.click(submitButton);
+
+    const submitData = {};
+
+    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+      submitData[key] = value.differentPasswordsTestData;
+    });
+
+    await waitFor(() => {
+      expect(mockUpdate).not.toHaveBeenCalled();
+    });
+
+    const newPasswordErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.NewPassword}-error`
+    );
+
+    expect(newPasswordErrorMessageContainer).toHaveTextContent(
+      ERROR_MESSAGES.passwordMismatch
+    );
+
+    const retypeNewPasswordErrorMessageContainer = screen.getByTestId(
+      `${FORM_KEYS.RetypeNewPassword}-error`
+    );
+
     expect(retypeNewPasswordErrorMessageContainer).toHaveTextContent(
       ERROR_MESSAGES.passwordMismatch
     );
