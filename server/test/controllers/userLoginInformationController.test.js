@@ -236,4 +236,31 @@ describe("userLoginInformationController", () => {
 
     expect(isChanged).toBe(true);
   });
+
+  test("Test update user password with invalid current password; Expect success", async () => {
+    const res1 = await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID1)
+      .send({ email, password, firstName, lastName });
+
+    expect(res1.status).toBe(201);
+
+    const res2 = await request
+      .put(`/user-login-information/update-password/${userUUID1}`)
+      .set("user-uuid", userUUID1)
+      .send({ email, wrongPassword, newPassword });
+
+    expect(res2.status).toBe(401);
+
+    const updatedUserLoginInformation = await UserLoginInformation.findById(
+      userUUID1
+    );
+
+    const isChanged = await bcrypt.compare(
+      wrongPassword,
+      updatedUserLoginInformation.password
+    );
+
+    expect(isChanged).toBe(false);
+  });
 });
