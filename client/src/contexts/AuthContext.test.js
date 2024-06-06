@@ -9,9 +9,13 @@ import { useLocation } from "react-router-dom";
 import { LoginForm } from "../components/User/Login/LoginForm/LoginForm";
 import { RegisterForm } from "../components/User/Register/RegisterForm/RegisterForm";
 import {
-  FORM_KEYS,
-  INITIAL_FORM_VALUES,
+  FORM_KEYS as loginFormKeys,
+  INITIAL_FORM_VALUES as loginInitialFormValues,
 } from "../components/User/Login/LoginForm/initialFormValues";
+import {
+    FORM_KEYS as registerFormKeys,
+    INITIAL_FORM_VALUES as registerInitialFormValues,
+  } from "../components/User/Register/RegisterForm/initialFormValues";
 
 jest.mock("../services/authService", () => ({
   authServiceFactory: jest.fn(),
@@ -76,13 +80,13 @@ describe("AuthContext", () => {
 
     const inputs = {};
 
-    Object.values(FORM_KEYS).forEach((value) => {
+    Object.values(loginFormKeys).forEach((value) => {
       inputs[value] = screen.getByTestId(`${value}-input`);
     });
 
     Object.entries(inputs).forEach(([inputKey, inputValue]) => {
       fireEvent.change(inputValue, {
-        target: { value: INITIAL_FORM_VALUES[inputKey].validTestData },
+        target: { value: loginInitialFormValues[inputKey].validTestData },
       });
     });
 
@@ -91,7 +95,7 @@ describe("AuthContext", () => {
 
     const submitData = {};
 
-    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
+    Object.entries(loginInitialFormValues).forEach(([key, value]) => {
       submitData[key] = value.validTestData;
     });
 
@@ -112,57 +116,64 @@ describe("AuthContext", () => {
     expect(authSetArgument.accessToken).toBe(token);
   });
 
-  test("Should handle register submission, fill auth with userId and accessToken and redirect to home page", async () => {
-    render(
-      <Router>
-        <AuthProvider value={mockAuthContextValue}>
-          <LoginForm />
-        </AuthProvider>
-      </Router>
-    );
+    test("Should handle register submission, fill auth with userId and accessToken and redirect to home page", async () => {
+      render(
+        <Router>
+          <AuthProvider value={mockAuthContextValue}>
+            <RegisterForm />
+          </AuthProvider>
+        </Router>
+      );
 
-    const mockUserInformation = {
-      _id: userId,
-      accessToken: token,
-    };
+      const mockUserInformation = {
+        _id: userId,
+        accessToken: token,
+      };
 
-    mockOnLoginSubmit.mockResolvedValue({ token: mockUserInformation });
+      mockOnRegisterSubmit.mockResolvedValue({ token: mockUserInformation });
 
-    const inputs = {};
+      const inputs = {};
 
-    Object.values(FORM_KEYS).forEach((value) => {
-      inputs[value] = screen.getByTestId(`${value}-input`);
-    });
-
-    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
-      fireEvent.change(inputValue, {
-        target: { value: INITIAL_FORM_VALUES[inputKey].validTestData },
+      Object.values(registerFormKeys).forEach((value) => {
+        inputs[value] = screen.getByTestId(`${value}-input`);
       });
+
+      Object.entries(inputs).forEach(([inputKey, inputValue]) => {
+        fireEvent.change(inputValue, {
+          target: { value: registerInitialFormValues[inputKey].validTestData },
+        });
+      });
+
+      const submitButton = screen.getByTestId("submit");
+      fireEvent.click(submitButton);
+
+      const submitData = {};
+
+      Object.entries(registerInitialFormValues).forEach(([key, value]) => {
+        submitData[key] = value.validTestData;
+      });
+
+      const { firstName, lastName, email, password } = submitData;
+      
+      await waitFor(() => {
+        expect(mockOnRegisterSubmit).toHaveBeenCalledWith({
+          firstName,
+          lastName,
+          email,
+          password,
+        });
+      });
+
+      await waitFor(() => {
+        expect(mockSetAuth).toHaveBeenCalledWith(mockUserInformation);
+      });
+
+      await waitFor(() => {
+        expect(mockNavigate).toHaveBeenCalledWith("/", { replace: true });
+      });
+
+      const authSetArgument = mockSetAuth.mock.calls[0][0];
+      expect(authSetArgument._id).toBe(userId);
+      expect(authSetArgument.accessToken).toBe(token);
     });
-
-    const submitButton = screen.getByTestId("submit");
-    fireEvent.click(submitButton);
-
-    const submitData = {};
-
-    Object.entries(INITIAL_FORM_VALUES).forEach(([key, value]) => {
-      submitData[key] = value.validTestData;
-    });
-
-    await waitFor(() => {
-      expect(mockOnLoginSubmit).toHaveBeenCalledWith(submitData);
-    });
-
-    await waitFor(() => {
-      expect(mockSetAuth).toHaveBeenCalledWith(mockUserInformation);
-    });
-
-    await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith("/", { replace: true });
-    });
-
-    const authSetArgument = mockSetAuth.mock.calls[0][0];
-    expect(authSetArgument._id).toBe(userId);
-    expect(authSetArgument.accessToken).toBe(token);
-  });
 });

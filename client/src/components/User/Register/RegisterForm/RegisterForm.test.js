@@ -43,6 +43,7 @@ describe("RegisterForm Component", () => {
     });
 
     const { firstName, lastName, email, password } = submitData;
+    
     await waitFor(() => {
       expect(mockOnRegisterSubmit).toHaveBeenCalledWith({
         firstName,
