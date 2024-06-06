@@ -8,6 +8,7 @@ const UserAddressInformation = require("../../src/models/UserAddressInformation"
 const {
   EMAIL_ALREADY_EXISTS_ERROR_MESSAGE,
 } = require("../../src/constants/email");
+const bcrypt = require("bcrypt");
 
 describe("userLoginInformationController", () => {
   beforeAll(async () => {
@@ -26,6 +27,7 @@ describe("userLoginInformationController", () => {
   const updatedEmail = "test3@email.com";
   const password = "123456Bb";
   const wrongPassword = "123456Bc";
+  const newPassword = "123456Bt";
   const firstName = "TestName";
   const lastName = "TestName";
 
@@ -206,5 +208,32 @@ describe("userLoginInformationController", () => {
 
     expect(updatedUserLoginInformation.email).not.toBe(updatedEmail);
     expect(updatedUserLoginInformation.email).toBe(email);
+  });
+
+  test("Test update user password with valid current password; Expect success", async () => {
+    const res1 = await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID1)
+      .send({ email, password, firstName, lastName });
+
+    expect(res1.status).toBe(201);
+
+    const res2 = await request
+      .put(`/user-login-information/update-password/${userUUID1}`)
+      .set("user-uuid", userUUID1)
+      .send({ email, password, newPassword });
+
+    expect(res2.status).toBe(200);
+
+    const updatedUserLoginInformation = await UserLoginInformation.findById(
+      userUUID1
+    );
+
+    const isChanged = await bcrypt.compare(
+      newPassword,
+      updatedUserLoginInformation.password
+    );
+
+    expect(isChanged).toBe(true);
   });
 });
