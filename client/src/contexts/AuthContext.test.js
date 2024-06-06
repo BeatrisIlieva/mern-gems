@@ -212,8 +212,8 @@ describe("AuthContext", () => {
       expect(mockNavigate).toHaveBeenCalledWith("/user/login");
     });
 
-    // const authSetArgument = mockSetAuth.mock.calls[0][0];
-    // expect(authSetArgument._id).not.toBe(userId);
-    // expect(authSetArgument.accessToken).not.toBe(token);
+    const authSetArgument = mockSetAuth.mock.calls[0][0];
+    expect(authSetArgument._id).not.toBe(userId);
+    expect(authSetArgument.accessToken).not.toBe(token);
   });
 });
