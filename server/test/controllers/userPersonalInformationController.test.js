@@ -28,6 +28,7 @@ describe("userPersonalInformationController", () => {
   const updatedFirstName = "Test";
   const updatedLastName = "Test";
   const birthday = "10/10/1995";
+  const invalidBirthday = "10101995";
   const specialDay = "10/10/1995";
 
   afterEach(async () => {
@@ -57,17 +58,42 @@ describe("userPersonalInformationController", () => {
 
     expect(res2.status).toBe(200);
 
-    const updatedUserLoginInformation = await UserPersonalInformation.findById(
-      userUUID
-    );
+    const updatedUserPersonalInformation =
+      await UserPersonalInformation.findById(userUUID);
 
-    expect(updatedUserLoginInformation.firstName).not.toBe(firstName);
-    expect(updatedUserLoginInformation.firstName).toBe(updatedFirstName);
+    expect(updatedUserPersonalInformation.firstName).not.toBe(firstName);
+    expect(updatedUserPersonalInformation.firstName).toBe(updatedFirstName);
 
-    expect(updatedUserLoginInformation.lastName).not.toBe(lastName);
-    expect(updatedUserLoginInformation.lastName).toBe(updatedLastName);
+    expect(updatedUserPersonalInformation.lastName).not.toBe(lastName);
+    expect(updatedUserPersonalInformation.lastName).toBe(updatedLastName);
 
-    expect(updatedUserLoginInformation.birthday).toBe(birthday);
-    expect(updatedUserLoginInformation.specialDay).toBe(specialDay);
+    expect(updatedUserPersonalInformation.birthday).toBe(birthday);
+    expect(updatedUserPersonalInformation.specialDay).toBe(specialDay);
+  });
+
+  test("Test update user personal details with invalid birthday; Expect error", async () => {
+    const res1 = await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    expect(res1.status).toBe(201);
+
+    const res2 = await request
+      .put(`/user-personal-information/${userUUID}`)
+      .set("user-uuid", userUUID)
+      .send({
+        firstName,
+        lastName,
+        birthday: invalidBirthday,
+        specialDay,
+      });
+
+    expect(res2.status).toBe(401);
+
+    const updatedUserPersonalInformation =
+      await UserPersonalInformation.findById(userUUID);
+
+    expect(updatedUserPersonalInformation.birthday).not.toBe(invalidBirthday);
   });
 });
