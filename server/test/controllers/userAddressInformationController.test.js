@@ -114,4 +114,54 @@ describe("userAddressInformationController", () => {
       invalidPhoneNumber
     );
   });
+
+  test("Test fill user address details with valid data then update with invalid country; Expect error", async () => {
+    const res1 = await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    expect(res1.status).toBe(201);
+
+    const res2 = await request
+      .put(`/user-address-information/${userUUID}`)
+      .set("user-uuid", userUUID)
+      .send({
+        country,
+        city,
+        street,
+        apartment,
+        zipCode,
+        phoneNumber,
+      });
+
+    expect(res2.status).toBe(200);
+
+    const res3 = await request
+      .put(`/user-address-information/${userUUID}`)
+      .set("user-uuid", userUUID)
+      .send({
+        country: invalidCountry,
+        city,
+        street,
+        apartment,
+        zipCode,
+        phoneNumber,
+      });
+
+    expect(res3.status).toBe(401);
+
+    const updatedUserAddressInformation = await UserAddressInformation.findById(
+      userUUID
+    );
+
+    expect(updatedUserAddressInformation.country).toBe(country);
+    expect(updatedUserAddressInformation.city).toBe(city);
+    expect(updatedUserAddressInformation.street).toBe(street);
+    expect(updatedUserAddressInformation.apartment).toBe(apartment);
+    expect(updatedUserAddressInformation.zipCode).toBe(zipCode);
+    expect(updatedUserAddressInformation.phoneNumber).toBe(phoneNumber);
+
+    expect(updatedUserAddressInformation.country).not.toBe(invalidCountry);
+  });
 });
