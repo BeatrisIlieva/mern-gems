@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-import { AuthProvider } from "./AuthContext"; // Use AuthProvider instead of AuthContext
+import { AuthProvider } from "./AuthContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import { authServiceFactory } from "../services/authService";
 import { useLocalStorage } from "../hooks/useLocalStorage";
