@@ -179,7 +179,6 @@ describe("AuthContext", () => {
   });
 
   test("Should handle logout, clear auth and redirect to login page", async () => {
-
     render(
       <Router>
         <AuthProvider value={mockAuthContextValue}>
@@ -187,15 +186,6 @@ describe("AuthContext", () => {
         </AuthProvider>
       </Router>
     );
-    // useLocation.mockReturnValue({ state: { from: { pathname: "/user/register" } } });
-    // const mockUserInformation = {
-    //   _id: userId,
-    //   accessToken: token,
-    // };
-
-    // mockOnRegisterSubmit.mockResolvedValue({ token: mockUserInformation });
-
-    // const inputs = {};
 
     const logoutButton = screen.getByTestId("logout-button");
     fireEvent.click(logoutButton);
