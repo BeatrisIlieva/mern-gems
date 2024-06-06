@@ -165,7 +165,7 @@ describe("AuthContext", () => {
 
     useLocalStorage.mockReturnValue([{}, mockSetAuth]);
     useNavigate.mockReturnValue(mockNavigate);
-    useLocation.mockReturnValue({ state: { from: { pathname: "/home" } } });
+    useLocation.mockReturnValue({ state: { from: { pathname: "/" } } });
   });
 
   test("should handle login submission", async () => {
@@ -177,11 +177,18 @@ describe("AuthContext", () => {
       </Router>
     );
 
+    // const mockUserInformation = {
+    //   token,
+    // };
+
     const mockUserInformation = {
-      token,
+      _id: userId,
+      accessToken: token,
     };
 
-    mockOnLoginSubmit.mockResolvedValue(mockUserInformation);
+    mockOnLoginSubmit.mockResolvedValue({ token: mockUserInformation });
+
+    // mockOnLoginSubmit.mockResolvedValue(mockUserInformation);
 
     const inputs = {};
 
@@ -209,7 +216,15 @@ describe("AuthContext", () => {
     });
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith("/home", { replace: true });
+      expect(mockSetAuth).toHaveBeenCalledWith(mockUserInformation);
     });
+
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/", { replace: true });
+    });
+
+    const authSetArgument = mockSetAuth.mock.calls[0][0];
+    expect(authSetArgument._id).toBe(userId);
+    expect(authSetArgument.accessToken).toBe(token);
   });
 });
