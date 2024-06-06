@@ -177,9 +177,8 @@ describe("AuthContext", () => {
       </Router>
     );
 
-    // const mockUserInformation = {
-    //   token,
-    // };
+
+
 
     const mockUserInformation = {
       _id: userId,
