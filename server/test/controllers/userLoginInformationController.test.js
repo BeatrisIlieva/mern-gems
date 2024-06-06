@@ -23,6 +23,7 @@ describe("userLoginInformationController", () => {
   const userUUID2 = "user-id2";
   const email = "test@email.com";
   const wrongEmail = "test2@email.com";
+  const updatedEmail = "test3@email.com";
   const password = "123456Bb";
   const wrongPassword = "123456Bc";
   const firstName = "TestName";
@@ -160,5 +161,27 @@ describe("userLoginInformationController", () => {
     expect(deletedUserLoginInformation).toBeNull();
     expect(deletedUserPersonalInformation).toBeNull();
     expect(deletedUserAddressInformation).toBeNull();
+  });
+
+  test("Test update user email with valid password; Expect success", async () => {
+    const res1 = await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID1)
+      .send({ email, password, firstName, lastName });
+
+    expect(res1.status).toBe(201);
+
+    const res2 = await request
+      .put(`/user-login-information/update-email/${userUUID1}`)
+      .set("user-uuid", userUUID1)
+      .send({ email: updatedEmail, password });
+
+    expect(res2.status).toBe(200);
+
+    const updatedUserLoginInformation = await UserLoginInformation.findById(
+      userUUID1
+    );
+
+    expect(updatedUserLoginInformation.email).toBe(updatedEmail);
   });
 });
