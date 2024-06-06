@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
 
       navigate(from, { replace: true });
     } catch (err) {
-
       const errorMessage = err.message;
       console.log(err.message);
       throw new Error(errorMessage);
@@ -42,7 +41,6 @@ export const AuthProvider = ({ children }) => {
 
       navigate(from, { replace: true });
     } catch (err) {
-      
       const errorMessage = err.message;
       console.log(err.message);
       throw new Error(errorMessage);

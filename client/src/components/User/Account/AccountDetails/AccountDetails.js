@@ -124,7 +124,7 @@ export const AccountDetails = () => {
             <button
               className={styles["button"]}
               onClick={onLogout}
-              data-testid="delete-account-button"
+              data-testid="logout-button"
             >
               Logout
             </button>

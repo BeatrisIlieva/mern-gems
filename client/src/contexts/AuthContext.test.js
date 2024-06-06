@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { LoginForm } from "../components/User/Login/LoginForm/LoginForm";
 import { RegisterForm } from "../components/User/Register/RegisterForm/RegisterForm";
+import { AccountDetails } from "../components/User/Account/AccountDetails/AccountDetails";
 import {
   FORM_KEYS as loginFormKeys,
   INITIAL_FORM_VALUES as loginInitialFormValues,
@@ -63,6 +64,7 @@ describe("AuthContext", () => {
   });
 
   test("Should handle login submission, fill auth with userId and accessToken and redirect to home page", async () => {
+    // useLocation.mockReturnValue({ state: { from: { pathname: "/" } } });
     render(
       <Router>
         <AuthProvider value={mockAuthContextValue}>
@@ -117,6 +119,7 @@ describe("AuthContext", () => {
   });
 
   test("Should handle register submission, fill auth with userId and accessToken and redirect to home page", async () => {
+    // useLocation.mockReturnValue({ state: { from: { pathname: "/" } } });
     render(
       <Router>
         <AuthProvider value={mockAuthContextValue}>
@@ -178,63 +181,41 @@ describe("AuthContext", () => {
   });
 
   test("Should handle logout, clear auth and redirect to login page", async () => {
+
     render(
       <Router>
         <AuthProvider value={mockAuthContextValue}>
-          <RegisterForm />
+          <AccountDetails />
         </AuthProvider>
       </Router>
     );
+    // useLocation.mockReturnValue({ state: { from: { pathname: "/user/register" } } });
+    // const mockUserInformation = {
+    //   _id: userId,
+    //   accessToken: token,
+    // };
 
-    const mockUserInformation = {
-      _id: userId,
-      accessToken: token,
-    };
+    // mockOnRegisterSubmit.mockResolvedValue({ token: mockUserInformation });
 
-    mockOnRegisterSubmit.mockResolvedValue({ token: mockUserInformation });
+    // const inputs = {};
 
-    const inputs = {};
-
-    Object.values(registerFormKeys).forEach((value) => {
-      inputs[value] = screen.getByTestId(`${value}-input`);
-    });
-
-    Object.entries(inputs).forEach(([inputKey, inputValue]) => {
-      fireEvent.change(inputValue, {
-        target: { value: registerInitialFormValues[inputKey].validTestData },
-      });
-    });
-
-    const submitButton = screen.getByTestId("submit");
-    fireEvent.click(submitButton);
-
-    const submitData = {};
-
-    Object.entries(registerInitialFormValues).forEach(([key, value]) => {
-      submitData[key] = value.validTestData;
-    });
-
-    const { firstName, lastName, email, password } = submitData;
+    const logoutButton = screen.getByTestId("logout-button");
+    fireEvent.click(logoutButton);
 
     await waitFor(() => {
-      expect(mockOnRegisterSubmit).toHaveBeenCalledWith({
-        firstName,
-        lastName,
-        email,
-        password,
-      });
+      expect(mockOnLogout).toHaveBeenCalled();
     });
 
     await waitFor(() => {
-      expect(mockSetAuth).toHaveBeenCalledWith(mockUserInformation);
+      expect(mockSetAuth).toHaveBeenCalledWith({});
     });
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith("/", { replace: true });
+      expect(mockNavigate).toHaveBeenCalledWith("/user/login");
     });
 
-    const authSetArgument = mockSetAuth.mock.calls[0][0];
-    expect(authSetArgument._id).toBe(userId);
-    expect(authSetArgument.accessToken).toBe(token);
+    // const authSetArgument = mockSetAuth.mock.calls[0][0];
+    // expect(authSetArgument._id).not.toBe(userId);
+    // expect(authSetArgument.accessToken).not.toBe(token);
   });
 });
