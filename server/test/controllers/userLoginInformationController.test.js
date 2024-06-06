@@ -22,6 +22,7 @@ describe("userLoginInformationController", () => {
   const userUUID1 = "user-id1";
   const userUUID2 = "user-id2";
   const email = "test@email.com";
+  const wrongEmail = "test2@email.com";
   const password = "123456Bb";
   const wrongPassword = "123456Bc";
   const firstName = "TestName";
@@ -110,7 +111,7 @@ describe("userLoginInformationController", () => {
     expect(res2.status).toBe(200);
   });
 
-  test("Test User Login with wrong password; It should not login user; Expect error", async () => {
+  test("Test user login with wrong password; It should not login user; Expect error", async () => {
     await request
       .post("/user-login-information/register")
       .set("user-uuid", userUUID1)
@@ -123,41 +124,16 @@ describe("userLoginInformationController", () => {
 
     expect(res2.status).toBe(401);
   });
-});
 
-
-describe("Test User Login with wrong email Expect Error", () => {
-  beforeAll(async () => {
-    await connectDB();
-  });
-
-  afterAll(async () => {
-    await disconnectDB();
-    server.close();
-  });
-
-  const userUUID = "user-id";
-  const email = "test@email.com";
-  const wrongEmail = "test2@email.com";
-  const password = "123456Bb";
-  const firstName = "TestName";
-  const lastName = "TestName";
-
-  afterEach(async () => {
-    await UserLoginInformation.findByIdAndDelete(userUUID);
-    await UserPersonalInformation.findByIdAndDelete(userUUID);
-    await UserAddressInformation.findByIdAndDelete(userUUID);
-  });
-
-  test("It should not login user", async () => {
+  test("Test user login with wrong email; It should not login user; Expect error", async () => {
     await request
       .post("/user-login-information/register")
-      .set("user-uuid", userUUID)
+      .set("user-uuid", userUUID1)
       .send({ email, password, firstName, lastName });
 
     const res2 = await request
       .post("/user-login-information/login")
-      .set("user-uuid", userUUID)
+      .set("user-uuid", userUUID1)
       .send({ wrongEmail, password });
 
     expect(res2.status).toBe(401);
