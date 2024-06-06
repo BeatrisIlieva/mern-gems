@@ -184,4 +184,27 @@ describe("userLoginInformationController", () => {
 
     expect(updatedUserLoginInformation.email).toBe(updatedEmail);
   });
+
+  test("Test update user email with invalid password; Expect error", async () => {
+    const res1 = await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID1)
+      .send({ email, password, firstName, lastName });
+
+    expect(res1.status).toBe(201);
+
+    const res2 = await request
+      .put(`/user-login-information/update-email/${userUUID1}`)
+      .set("user-uuid", userUUID1)
+      .send({ email: updatedEmail, password: wrongPassword });
+
+    expect(res2.status).toBe(401);
+
+    const updatedUserLoginInformation = await UserLoginInformation.findById(
+      userUUID1
+    );
+
+    expect(updatedUserLoginInformation.email).not.toBe(updatedEmail);
+    expect(updatedUserLoginInformation.email).toBe(email);
+  });
 });
