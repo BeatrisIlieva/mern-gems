@@ -188,7 +188,6 @@ describe("AuthContext", () => {
 
     mockOnLoginSubmit.mockResolvedValue({ token: mockUserInformation });
 
-    // mockOnLoginSubmit.mockResolvedValue(mockUserInformation);
 
     const inputs = {};
 
