@@ -7,13 +7,13 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "../../contexts/AuthContext";
-import {useWishlistContext} from "../../contexts/WishlistContext";
+import { useWishlistContext } from "../../contexts/WishlistContext";
 
 export const Header = () => {
   const bagCountGreaterThanZero = true;
-  const {isAuthenticated} = useAuthContext();
-  const {wishlistCount} = useWishlistContext();
-  const {wishListCountGreaterThanZero} = useWishlistContext();
+  const { isAuthenticated } = useAuthContext();
+  const { wishlistCount } = useWishlistContext();
+  const { wishlistCountGreaterThanZero } = useWishlistContext();
   const bagCount = 3;
   const user = null;
 
@@ -86,7 +86,7 @@ export const Header = () => {
                   className={styles["icon-pink"]}
                 />
               </span>
-              {wishListCountGreaterThanZero ? (
+              {wishlistCountGreaterThanZero ? (
                 <span className={styles["icon-bar-count"]}>
                   ({wishlistCount})
                 </span>
