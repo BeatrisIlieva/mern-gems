@@ -9,7 +9,7 @@ export const JewelryList = () => {
   const [jewelries, setJewelries] = useState([]);
   const jewelryService = useService(jewelryServiceFactory);
   const location = useLocation();
-  const path = location.pathname; // Get the current path, e.g., "/rings"
+  const path = location.pathname; 
   const categoryTitle = path.substring(1);
   const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
 
@@ -51,7 +51,7 @@ export const JewelryList = () => {
     );
   };
 
-  const handleLikedByUser = (_id) => {
+  const handleLikedByUser = () => {
     fetchData();
   };
 

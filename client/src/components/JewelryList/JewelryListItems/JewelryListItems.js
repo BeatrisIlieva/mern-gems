@@ -19,7 +19,7 @@ export const JewelryListItems = ({
   isHovered,
   handleMouseEnter,
   handleMouseLeave,
-  // handleLikedByUser,
+  handleLikedByUser,
 }) => {
   const { onAddToWishListClick, onRemoveFromWishListClick } =
     useContext(WishListContext);
@@ -48,8 +48,8 @@ export const JewelryListItems = ({
               icon={solidHeart}
               className={`${styles["heart"]}`}
               onClick={() => {
-                // handleLikedByUser(_id);
                 onRemoveFromWishListClick(_id);
+                handleLikedByUser();
               }}
             />
           ) : (
@@ -58,7 +58,7 @@ export const JewelryListItems = ({
               className={`${styles["heart"]}`}
               onClick={() => {
                 onAddToWishListClick(_id);
-                // handleLikedByUser();
+                handleLikedByUser();
               }}
             />
           )}
