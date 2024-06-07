@@ -27,8 +27,10 @@ router.get("/find-all", async (req, res) => {
 router.post("/create/:jewelryId", async (req, res) => {
   let userId;
 
+
   if (req.user) {
     userId = req.user._id;
+    console.log(req.user)
   } else {
     userId = req.headers["user-uuid"];
   }

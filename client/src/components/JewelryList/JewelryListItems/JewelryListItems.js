@@ -24,6 +24,8 @@ export const JewelryListItems = ({
   const { onAddToWishListClick, onRemoveFromWishListClick } =
     useContext(WishListContext);
 
+    // const   isLikedByUser = false;
+
   const slugify = (text) => {
     return text
       .toString()

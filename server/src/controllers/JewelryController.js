@@ -2,12 +2,21 @@ const router = require("express").Router();
 const jewelryManager = require("../managers/jewelryManager");
 
 router.get("/by-category/:categoryId", async (req, res) => {
-  try {
-    
-    const categoryId = Number(req.params.categoryId);
 
-    const result = await jewelryManager.findAll(categoryId);
- 
+
+  let userId;
+  if (req.user) {
+    userId = req.user._id;
+    console.log(req.user);
+  } else {
+    userId = req.headers["user-uuid"];
+  }
+
+  const categoryId = Number(req.params.categoryId);
+
+  const data = { userId, categoryId}
+  try {
+    const result = await jewelryManager.findAll(data);
 
     res.status(200).json(result);
   } catch (err) {
@@ -22,7 +31,7 @@ router.get("/by-jewelry/:jewelryId", async (req, res) => {
   try {
     const jewelryId = Number(req.params.jewelryId);
 
-    const result = await jewelryManager.finOne(jewelryId);
+    const result = await jewelryManager.findOne(jewelryId);
 
     res.status(200).json(result);
   } catch (err) {
