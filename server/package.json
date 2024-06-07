@@ -6,7 +6,8 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "populate": "nodemon src/populateDb.js",
-    "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit"
+    "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit",
+    "populate": "nodemon src/populateDb.js"
   },
   "keywords": [],
   "author": "Beatris Ilieve",
