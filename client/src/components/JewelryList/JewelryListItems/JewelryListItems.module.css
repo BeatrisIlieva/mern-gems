@@ -2,8 +2,10 @@
   overflow: hidden;
   background-color: #fc8eab0d;
   transition: transform 0.5s ease-in-out;
-  display: inline-block;
+  /* display: inline-block; */
   position: relative;
+
+
 }
 
 .jewelry-card:hover {
@@ -13,6 +15,8 @@
 .jewelry-card-thumbnail {
   aspect-ratio: 1 / 1;
   position: relative;
+
+
 }
 
 .jewelry-card-thumbnail-sold-out {

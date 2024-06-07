@@ -4,7 +4,6 @@ const wishlistManager = require("../managers/wishlistManager");
 router.get("/find-all", async (req, res) => {
   let userId;
 
-
   if (req.user) {
     userId = req.user._id;
   } else {
@@ -26,14 +25,12 @@ router.get("/find-all", async (req, res) => {
 router.post("/create/:jewelryId", async (req, res) => {
   let userId;
 
-
   if (req.user) {
     userId = req.user._id;
-  
   } else {
     userId = req.headers["user-uuid"];
   }
-console.log(userId)
+
   const jewelryId = Number(req.params.jewelryId);
 
   const data = { user: userId, jewelry: jewelryId };
@@ -51,7 +48,6 @@ console.log(userId)
 });
 
 router.delete("/delete/:jewelryId", async (req, res) => {
-    console.log("here")
   let userId;
 
   if (req.user) {
