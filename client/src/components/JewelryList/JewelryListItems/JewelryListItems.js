@@ -4,7 +4,7 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import { WishListContext } from "../../../contexts/WishListContext";
+import { WishlistContext } from "../../../contexts/WishlistContext";
 import styles from "./JewelryListItems.module.css";
 
 export const JewelryListItems = ({
@@ -21,10 +21,8 @@ export const JewelryListItems = ({
   handleMouseLeave,
   handleLikedByUser,
 }) => {
-  const { onAddToWishListClick, onRemoveFromWishListClick } =
-    useContext(WishListContext);
-
-    // const   isLikedByUser = false;
+  const { onAddToWishlistClick, onRemoveFromWishlistClick } =
+    useContext(WishlistContext);
 
   const slugify = (text) => {
     return text
@@ -48,7 +46,7 @@ export const JewelryListItems = ({
               icon={solidHeart}
               className={`${styles["heart"]}`}
               onClick={() => {
-                onRemoveFromWishListClick(_id);
+                onRemoveFromWishlistClick(_id);
                 handleLikedByUser();
               }}
             />
@@ -57,7 +55,7 @@ export const JewelryListItems = ({
               icon={regularHeart}
               className={`${styles["heart"]}`}
               onClick={() => {
-                onAddToWishListClick(_id);
+                onAddToWishlistClick(_id);
                 handleLikedByUser();
               }}
             />

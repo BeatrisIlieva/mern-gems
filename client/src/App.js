@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { RouteGuard } from "./components/RouteGuard/RouteGuard";
 import { UserUUIDProvider } from "./contexts/UserUUIDContext";
 import { AuthProvider } from "./contexts/AuthContext";
-import { WishListProvider } from "./contexts/WishListContext";
+import { WishlistProvider } from "./contexts/WishlistContext";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { JewelryList } from "./components/JewelryList/JewelryList";
@@ -19,7 +19,7 @@ function App() {
   return (
     <UserUUIDProvider>
       <AuthProvider>
-        <WishListProvider>
+        <WishlistProvider>
           <div className={styles["app"]}>
             <Header />
             <main className={styles["main"]}>
@@ -40,7 +40,7 @@ function App() {
               <Footer />
             </footer>
           </div>
-        </WishListProvider>
+        </WishlistProvider>
       </AuthProvider>
     </UserUUIDProvider>
   );

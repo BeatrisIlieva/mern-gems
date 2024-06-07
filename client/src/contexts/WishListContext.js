@@ -1,19 +1,20 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { wishListServiceFactory } from "../services/wishListService";
+import { wishListServiceFactory } from "../services/wishlistService";
 import { useService } from "../hooks/useService";
 
-export const WishListContext = createContext();
+export const WishlistContext = createContext();
 
-export const WishListProvider = ({ children }) => {
+export const WishlistProvider = ({ children }) => {
   const wishlistService = useService(wishListServiceFactory);
   const [wishlistCount, setWishlistCount] = useState(0);
-  const wishListCountGreaterThanZero = wishlistCount > 0;
+  const wishlistCountGreaterThanZero = wishlistCount > 0;
 
   const [jewelries, setJewelries] = useState([]);
 
   const fetchData = async () => {
     try {
       const data = await wishlistService.findAll();
+console.log(data)
       setJewelries(data);
     } catch (err) {
       console.log(err.message);
@@ -22,13 +23,13 @@ export const WishListProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData();
-  }, [jewelries]);
+  }, [wishlistCount]);
 
   useEffect(() => {
     setWishlistCount(jewelries.length);
   }, [jewelries]);
 
-  const onAddToWishListClick = async (jewelryId) => {
+  const onAddToWishlistClick = async (jewelryId) => {
     try {
       const result = await wishlistService.create(jewelryId);
       fetchData();
@@ -37,7 +38,7 @@ export const WishListProvider = ({ children }) => {
     }
   };
 
-  const onRemoveFromWishListClick = async (jewelryId) => {
+  const onRemoveFromWishlistClick = async (jewelryId) => {
     try {
       const result = await wishlistService.delete(jewelryId);
       fetchData();
@@ -47,22 +48,22 @@ export const WishListProvider = ({ children }) => {
   };
 
   const context = {
-    onAddToWishListClick,
-    onRemoveFromWishListClick,
+    onAddToWishlistClick,
+    onRemoveFromWishlistClick,
     wishlistCount,
-    wishListCountGreaterThanZero,
+    wishlistCountGreaterThanZero,
     jewelries,
   };
 
   return (
-    <WishListContext.Provider value={context}>
+    <WishlistContext.Provider value={context}>
       {children}
-    </WishListContext.Provider>
+    </WishlistContext.Provider>
   );
 };
 
-export const useWishListContext = () => {
-  const context = useContext(WishListContext);
+export const useWishlistContext = () => {
+  const context = useContext(WishlistContext);
 
   return context;
 };

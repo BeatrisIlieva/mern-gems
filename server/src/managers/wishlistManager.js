@@ -14,8 +14,6 @@ exports.delete = async (data) => {
 };
 
 exports.findAll = async (userId) => {
-//   const user = await User.findById(userId);
-
   const result = await Jewelry.aggregate([
     {
       $lookup: {

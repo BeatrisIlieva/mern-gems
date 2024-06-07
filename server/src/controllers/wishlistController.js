@@ -4,16 +4,15 @@ const wishlistManager = require("../managers/wishlistManager");
 router.get("/find-all", async (req, res) => {
   let userId;
 
+
   if (req.user) {
     userId = req.user._id;
   } else {
     userId = req.headers["user-uuid"];
   }
 
-  const data = { user: userId };
-
   try {
-    const result = await wishlistManager.findAll(data);
+    const result = await wishlistManager.findAll(userId);
 
     res.status(200).json(result);
   } catch (err) {
