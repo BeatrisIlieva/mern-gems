@@ -242,7 +242,7 @@ exports.findAll = async (data) => {
     }
   ]
   const result = await Jewelry.aggregate(query);
-console.log(result)
+
   return result;
 };
 

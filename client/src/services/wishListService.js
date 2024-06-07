@@ -11,6 +11,6 @@ export const wishListServiceFactory = (token) => {
 
     create: (jewelryId) => request.post(`${baseUrl}/create/${jewelryId}`),
 
-    delete: (jewelryId) => request.post(`${baseUrl}/delete/${jewelryId}`),
+    delete: (jewelryId) => request.delete(`${baseUrl}/delete/${jewelryId}`),
   };
 };

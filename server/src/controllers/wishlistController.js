@@ -30,7 +30,7 @@ router.post("/create/:jewelryId", async (req, res) => {
 
   if (req.user) {
     userId = req.user._id;
-    console.log(req.user)
+  
   } else {
     userId = req.headers["user-uuid"];
   }
@@ -52,6 +52,7 @@ router.post("/create/:jewelryId", async (req, res) => {
 });
 
 router.delete("/delete/:jewelryId", async (req, res) => {
+    console.log("here")
   let userId;
 
   if (req.user) {
