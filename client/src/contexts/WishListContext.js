@@ -26,7 +26,7 @@ export const WishListProvider = ({ children }) => {
 
   useEffect(() => {
     setWishlistCount(jewelries.length);
-  }, [wishlist, jewelries]);
+  }, [jewelries]);
 
   const onAddToWishListClick = async (jewelryId) => {
     try {

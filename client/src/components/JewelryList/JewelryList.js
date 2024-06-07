@@ -22,7 +22,7 @@ export const JewelryList = () => {
 
   const fetchData = async () => {
     try {
-      const data = await jewelryService.getAll(categoryId);
+      const data = await jewelryService.findAll(categoryId);
       setJewelries(data);
     } catch (err) {
       console.log(err.message);

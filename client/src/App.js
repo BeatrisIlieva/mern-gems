@@ -27,7 +27,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/rings" element={<JewelryList />} />
                 <Route path="/wishlist" element={<JewelryWishlist />} />
-                <Route path="/:category/:jewelry" element={<JewelryItem />} />
+                <Route
+                  path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle"
+                  element={<JewelryItem />}
+                />
                 <Route path="/user/login" element={<Login />} />
                 <Route path="/user/register" element={<Register />} />
                 <Route path="/user/account" element={<Account />} />

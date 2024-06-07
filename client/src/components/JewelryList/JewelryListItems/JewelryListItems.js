@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
-// import { useContext } from "react";
-// import { WishListContext } from "../../contexts/WishListContext";
+import { useContext } from "react";
+import { WishListContext } from "../../contexts/WishListContext";
 
 export const JewelryListItems = ({
   _id,
@@ -13,21 +13,29 @@ export const JewelryListItems = ({
   categoryId,
   categoryTitle,
   price,
-  isLikedByUser,
+  // isLikedByUser,
   isSoldOut,
   isHovered,
   handleMouseEnter,
   handleMouseLeave,
-  handleLikedByUser,
+  // handleLikedByUser,
 }) => {
-//   const { onAddToWishListClick, onRemoveFromWishListClick, wishlist } =
-//     useContext(WishListContext);
+  const { onAddToWishListClick, onRemoveFromWishListClick} =
+    useContext(WishListContext);
 
-//   const jewelryIsLikedByNotAuthUser = wishlist.find((id) => id === _id);
+    const slugifiedCategoryTitle = slugify(categoryTitle);
+    const slugifiedJewelryTitle = slugify(jewelryTitle);
 
-//   if (jewelryIsLikedByNotAuthUser) {
-//     isLikedByUser = true;
-//   }
+
+    const slugify = (text) => {
+      return text
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+    };
 
   return (
     <article className={styles["jewelry-card"]}>
@@ -38,7 +46,7 @@ export const JewelryListItems = ({
               icon={solidHeart}
               className={`${styles["heart"]}`}
               onClick={() => {
-                handleLikedByUser(_id);
+                // handleLikedByUser(_id);
                 onRemoveFromWishListClick(_id);
               }}
             />
@@ -48,11 +56,11 @@ export const JewelryListItems = ({
               className={`${styles["heart"]}`}
               onClick={() => {
                 onAddToWishListClick(_id);
-                handleLikedByUser();
+                // handleLikedByUser();
               }}
             />
           )}
-          <Link to={`/${categoryId}/${_id}`}>
+          <Link to={`/${slugifiedCategoryTitle}/${slugifiedJewelryTitle}}`}>
             <img
               className={styles["jewelry-card-img"]}
               src={firstImageUrl}
