@@ -1,0 +1,7 @@
+.jewelries-box {
+    margin-top: 40px;
+}
+.jewelries-container {
+    display: flex;
+    gap: 40px;
+}

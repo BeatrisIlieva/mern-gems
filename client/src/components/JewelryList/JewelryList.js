@@ -1,18 +1,18 @@
-import { JewelryListItems } from "./JewelryListItems/JewelryListItems"
+import { JewelryListItems } from "./JewelryListItems/JewelryListItems";
 import { useEffect, useState } from "react";
 import { jewelryServiceFactory } from "../../services/jewelryService";
 import { useService } from "../../hooks/useService";
 import { CATEGORIES_BY_NAMES } from "../../constants/categories";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import styles from "./JewelryList.module.css"
 
 export const JewelryList = () => {
   const [jewelries, setJewelries] = useState([]);
   const jewelryService = useService(jewelryServiceFactory);
   const location = useLocation();
-  const path = location.pathname; 
+  const path = location.pathname;
   const categoryTitle = path.substring(1);
   const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
-
 
   // useEffect(() => {
   //   jewelryService
@@ -27,7 +27,6 @@ export const JewelryList = () => {
     try {
       const data = await jewelryService.findAll(categoryId);
       setJewelries(data);
-
     } catch (err) {
       console.log(err.message);
     }
@@ -56,16 +55,18 @@ export const JewelryList = () => {
   };
 
   return (
-    <section>
-      {jewelries.map((j) => (
-        <JewelryListItems
-          key={j._id}
-          {...j}
-          handleMouseEnter={handleMouseEnter}
-          handleLikedByUser={handleLikedByUser}
-          handleMouseLeave={handleMouseLeave}
-        />
-      ))}
+    <section className={styles["jewelries-box"]}>
+      <div className={styles["jewelries-container"]}>
+        {jewelries.map((j) => (
+          <JewelryListItems
+            key={j._id}
+            {...j}
+            handleMouseEnter={handleMouseEnter}
+            handleLikedByUser={handleLikedByUser}
+            handleMouseLeave={handleMouseLeave}
+          />
+        ))}
+      </div>
     </section>
   );
 };

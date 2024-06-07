@@ -14,7 +14,6 @@ export const WishlistProvider = ({ children }) => {
   const fetchData = async () => {
     try {
       const data = await wishlistService.findAll();
-console.log(data)
       setJewelries(data);
     } catch (err) {
       console.log(err.message);
@@ -23,7 +22,7 @@ console.log(data)
 
   useEffect(() => {
     fetchData();
-  }, [wishlistCount]);
+  }, []);
 
   useEffect(() => {
     setWishlistCount(jewelries.length);

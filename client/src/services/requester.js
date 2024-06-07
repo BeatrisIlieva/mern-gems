@@ -9,7 +9,7 @@ const requester = async (method, token, url, data) => {
     if (data) {
       options.headers = {
         "content-type": "application/json",
-        "user-uuid": userUUID,
+        // "user-uuid": userUUID,
       };
       options.body = JSON.stringify(data);
     }
@@ -21,6 +21,10 @@ const requester = async (method, token, url, data) => {
       "X-Authorization": token,
     };
   }
+
+  options.headers = {
+    "user-uuid": userUUID,
+  };
 
   const response = await fetch(url, options);
 

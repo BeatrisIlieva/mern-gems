@@ -33,7 +33,7 @@ router.post("/create/:jewelryId", async (req, res) => {
   } else {
     userId = req.headers["user-uuid"];
   }
-
+console.log(userId)
   const jewelryId = Number(req.params.jewelryId);
 
   const data = { user: userId, jewelry: jewelryId };

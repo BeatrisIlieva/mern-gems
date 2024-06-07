@@ -165,11 +165,45 @@ async function populateDb() {
       "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
   });
 
+  await Jewelry.create({
+    title: "Diamond Loop Full Motif Diamond",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757558/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-1_ptdbin.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757556/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-2_e6ch2a.avif",
+    category: allCategories[3],
+    collection: allCollections[3],
+    description:
+      "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
+  });
+
+  await Jewelry.create({
+    title: "Diamond Loop Full Motif Diamond",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757558/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-1_ptdbin.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757556/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-2_e6ch2a.avif",
+    category: allCategories[3],
+    collection: allCollections[3],
+    description:
+      "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
+  });
+
   const allJewelries = await Jewelry.find();
 
   await JewelryStones.insertMany([
     {
       jewelry: allJewelries[0],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[1],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[2],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
     },
@@ -190,6 +224,42 @@ async function populateDb() {
     },
     {
       jewelry: allJewelries[0],
+      size: allSizes[11],
+      quantity: 1,
+      price: 12000,
+    },
+    {
+      jewelry: allJewelries[1],
+      size: allSizes[9],
+      quantity: 1,
+      price: 12000,
+    },
+    {
+      jewelry: allJewelries[1],
+      size: allSizes[10],
+      quantity: 1,
+      price: 12000,
+    },
+    {
+      jewelry: allJewelries[1],
+      size: allSizes[11],
+      quantity: 1,
+      price: 12000,
+    },
+    {
+      jewelry: allJewelries[2],
+      size: allSizes[9],
+      quantity: 1,
+      price: 12000,
+    },
+    {
+      jewelry: allJewelries[2],
+      size: allSizes[10],
+      quantity: 1,
+      price: 12000,
+    },
+    {
+      jewelry: allJewelries[2],
       size: allSizes[11],
       quantity: 1,
       price: 12000,
