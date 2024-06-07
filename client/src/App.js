@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { RouteGuard } from "./components/RouteGuard/RouteGuard";
 import { UserUUIDProvider } from "./contexts/UserUUIDContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import { WishListProvider } from "./contexts/WishListContext";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { JewelryList } from "./components/JewelryList/JewelryList";
@@ -18,23 +19,25 @@ function App() {
   return (
     <UserUUIDProvider>
       <AuthProvider>
-        <div className={styles["app"]}>
-          <Header />
-          <main className={styles["main"]}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/rings" element={<JewelryList />} />
-              <Route path="/wishlist" element={<JewelryWishlist />} />
-              <Route path="/:category/:jewelry" element={<JewelryItem />} />
-              <Route path="/user/login" element={<Login />} />
-              <Route path="/user/register" element={<Register />} />
-              <Route path="/user/account" element={<Account />} />
-            </Routes>
-          </main>
-          <footer className={styles["footer"]}>
-            <Footer />
-          </footer>
-        </div>
+        <WishListProvider>
+          <div className={styles["app"]}>
+            <Header />
+            <main className={styles["main"]}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/rings" element={<JewelryList />} />
+                <Route path="/wishlist" element={<JewelryWishlist />} />
+                <Route path="/:category/:jewelry" element={<JewelryItem />} />
+                <Route path="/user/login" element={<Login />} />
+                <Route path="/user/register" element={<Register />} />
+                <Route path="/user/account" element={<Account />} />
+              </Routes>
+            </main>
+            <footer className={styles["footer"]}>
+              <Footer />
+            </footer>
+          </div>
+        </WishListProvider>
       </AuthProvider>
     </UserUUIDProvider>
   );
