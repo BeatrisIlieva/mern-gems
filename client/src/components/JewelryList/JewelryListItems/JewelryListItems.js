@@ -69,25 +69,15 @@ export const JewelryListItems = ({
               onMouseLeave={() => handleMouseLeave(_id)}
               onBlur={() => handleMouseEnter(_id)}
             />
-            {/* {isHovered && (
+            {isHovered && (
               <div className={styles["hovered"]}>
                 <div className={styles["hovered-content"]}>
-                  <p className={styles["hovered-content-left"]}>
+                  <h3 className={styles["hovered-content-title"]}>
                     {jewelryTitle}
-                  </p>{" "}
-                  <p className={styles["hovered-content-right"]}>
-                    {categoryTitle}
-                  </p>
-                </div>
-                <div className={styles["hovered-content-down"]}>
-                  <FontAwesomeIcon
-                    icon={faSackDollar}
-                    className={styles["dollar-icon"]}
-                  />
-                  <p className={styles["dollar-icon"]}>{price}</p>
+                  </h3>
                 </div>
               </div>
-            )} */}
+            )}
           </Link>
         </div>
       )}
