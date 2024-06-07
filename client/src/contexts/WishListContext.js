@@ -15,19 +15,9 @@ export const WishListProvider = ({ children }) => {
 
   const [jewelries, setJewelries] = useState([]);
 
-  const userUUID = localStorage.getItem("userUUID");
-
-  let user;
-
-  if (!userId) {
-    user = userUUID;
-  } else {
-    user = userId;
-  }
-
   const fetchData = async () => {
     try {
-      const data = await wishlistService.display(user);
+      const data = await wishlistService.findAll();
       setJewelries(data);
     } catch (err) {
       console.log(err.message);
@@ -38,7 +28,6 @@ export const WishListProvider = ({ children }) => {
     fetchData();
   }, [jewelries]);
 
-
   const handleLikedByUser = (_id) => {
     fetchData();
   };
@@ -47,27 +36,19 @@ export const WishListProvider = ({ children }) => {
     setWishlistCount(isAuthenticated ? jewelries.length : wishlist.length);
   }, [wishlist, jewelries]);
 
-  const onAddToWishListClick = async (_id) => {
+  const onAddToWishListClick = async (jewelryId) => {
     try {
-      if (isAuthenticated) {
-        await wishlistService.create(_id);
-      } else {
-        setWishlist((state) => [...state, _id]);
-      }
-    } catch (error) {
-      console.error("Error adding item to wishlist:", error);
+      const result = await wishlistService.create(jewelryId);
+    } catch (err) {
+      console.log(err.message);
     }
   };
 
-  const onRemoveFromWishListClick = async (_id) => {
+  const onRemoveFromWishListClick = async (jewelryId) => {
     try {
-      if (isAuthenticated) {
-        await wishlistService.remove(_id);
-      } else {
-        setWishlist((state) => state.filter((id) => id !== _id));
-      }
-    } catch (error) {
-      console.error("Error removing item to wishlist:", error);
+      const result = await wishlistService.delete(jewelryId);
+    } catch (err) {
+      console.log(err.message);
     }
   };
 

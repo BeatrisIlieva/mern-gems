@@ -10,8 +10,10 @@ router.get("/find-all", async (req, res) => {
     userId = req.headers["user-uuid"];
   }
 
+  const data = { user: userId };
+
   try {
-    const result = await wishlistManager.findAll(userId);
+    const result = await wishlistManager.findAll(data);
 
     res.status(200).json(result);
   } catch (err) {
@@ -33,7 +35,7 @@ router.post("/create/:jewelryId", async (req, res) => {
 
   const jewelryId = Number(req.params.jewelryId);
 
-  const data = { userId, jewelryId };
+  const data = { user: userId, jewelry: jewelryId };
 
   try {
     const result = await wishlistManager.create(data);
@@ -58,7 +60,7 @@ router.delete("/delete/:jewelryId", async (req, res) => {
 
   const jewelryId = Number(req.params.jewelryId);
 
-  const data = { userId, jewelryId };
+  const data = { user: userId, jewelry: jewelryId };
 
   try {
     const result = await wishlistManager.delete(data);

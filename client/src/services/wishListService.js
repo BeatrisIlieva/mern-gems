@@ -8,9 +8,9 @@ export const wishListServiceFactory = (token) => {
 
   return {
     findAll: () => request.get(`${baseUrl}/find-all`),
-    
+
     create: (jewelryId) => request.post(`${baseUrl}/create/${jewelryId}`),
-    
+
     delete: (jewelryId) => request.post(`${baseUrl}/delete/${jewelryId}`),
   };
 };
