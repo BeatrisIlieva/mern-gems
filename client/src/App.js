@@ -5,11 +5,12 @@ import { RouteGuard } from "./components/RouteGuard/RouteGuard";
 import { UserUUIDProvider } from "./contexts/UserUUIDContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
 import { Home } from "./components/Home/Home";
+import { JewelryList } from "./components/JewelryList/JewelryList";
 import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <main className={styles["main"]}>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/earrings" element={<JewelryList />} />
               <Route path="/user/login" element={<Login />} />
               <Route path="/user/register" element={<Register />} />
               <Route path="/user/account" element={<Account />} />
