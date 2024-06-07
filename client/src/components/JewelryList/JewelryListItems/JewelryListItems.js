@@ -20,22 +20,21 @@ export const JewelryListItems = ({
   handleMouseLeave,
   // handleLikedByUser,
 }) => {
-  const { onAddToWishListClick, onRemoveFromWishListClick} =
+  const { onAddToWishListClick, onRemoveFromWishListClick } =
     useContext(WishListContext);
 
-    const slugifiedCategoryTitle = slugify(categoryTitle);
-    const slugifiedJewelryTitle = slugify(jewelryTitle);
+  const slugifiedCategoryTitle = slugify(categoryTitle);
+  const slugifiedJewelryTitle = slugify(jewelryTitle);
 
-
-    const slugify = (text) => {
-      return text
-        .toString()
-        .toLowerCase()
-        .trim()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-');        // Replace multiple - with single -
-    };
+  const slugify = (text) => {
+    return text
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-") 
+      .replace(/[^\w\-]+/g, "") 
+      .replace(/\-\-+/g, "-"); 
+  };
 
   return (
     <article className={styles["jewelry-card"]}>
