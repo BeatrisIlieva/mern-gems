@@ -1,15 +1,11 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { wishListServiceFactory } from "../services/wishListService";
 import { useService } from "../hooks/useService";
-import { AuthContext } from "./AuthContext";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const WishListContext = createContext();
 
 export const WishListProvider = ({ children }) => {
   const wishlistService = useService(wishListServiceFactory);
-  const { isAuthenticated, userId } = useContext(AuthContext);
-  const [wishlist, setWishlist] = useLocalStorage("wishlist", []);
   const [wishlistCount, setWishlistCount] = useState(0);
   const wishListCountGreaterThanZero = wishlistCount > 0;
 
@@ -28,17 +24,14 @@ export const WishListProvider = ({ children }) => {
     fetchData();
   }, [jewelries]);
 
-  const handleLikedByUser = (_id) => {
-    fetchData();
-  };
-
   useEffect(() => {
-    setWishlistCount(isAuthenticated ? jewelries.length : wishlist.length);
+    setWishlistCount(jewelries.length);
   }, [wishlist, jewelries]);
 
   const onAddToWishListClick = async (jewelryId) => {
     try {
       const result = await wishlistService.create(jewelryId);
+      fetchData();
     } catch (err) {
       console.log(err.message);
     }
@@ -47,6 +40,7 @@ export const WishListProvider = ({ children }) => {
   const onRemoveFromWishListClick = async (jewelryId) => {
     try {
       const result = await wishlistService.delete(jewelryId);
+      fetchData();
     } catch (err) {
       console.log(err.message);
     }
