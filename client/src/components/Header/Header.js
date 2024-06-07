@@ -33,22 +33,22 @@ export const Header = () => {
         <nav>
           <ul className={styles["nav-list"]} role="list">
             <li>
-              <Link className={styles["nav-item"]} to="/2">
-                <h1 className={styles["nav-title"]}>Earrings</h1>
-              </Link>
-            </li>
-            <li>
-              <Link className={styles["nav-item"]} to="/3">
-                <h1 className={styles["nav-title"]}>Necklaces</h1>
-              </Link>
-            </li>
-            <li>
-              <Link className={styles["nav-item"]} to="/1">
+              <Link className={styles["nav-item"]} to="/bracelets">
                 <h1 className={styles["nav-title"]}>Bracelets</h1>
               </Link>
             </li>
             <li>
-              <Link className={styles["nav-item"]} to="/4">
+              <Link className={styles["nav-item"]} to="/earrings">
+                <h1 className={styles["nav-title"]}>Earrings</h1>
+              </Link>
+            </li>
+            <li>
+              <Link className={styles["nav-item"]} to="/necklaces">
+                <h1 className={styles["nav-title"]}>Necklaces</h1>
+              </Link>
+            </li>
+            <li>
+              <Link className={styles["nav-item"]} to="/rings">
                 <h1 className={styles["nav-title"]}>Rings</h1>
               </Link>
             </li>
