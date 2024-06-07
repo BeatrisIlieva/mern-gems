@@ -70,13 +70,11 @@ export const JewelryListItems = ({
               onBlur={() => handleMouseEnter(_id)}
             />
             {isHovered && (
-              // <div className={styles["hovered"]}>
-                <div className={styles["hovered-content"]}>
-                  <h3 className={styles["hovered-content-title"]}>
-                    {jewelryTitle}
-                  </h3>
-                </div>
-              // </div>
+              <div className={styles["hovered-content"]}>
+                <h3 className={styles["hovered-content-title"]}>
+                  {jewelryTitle}
+                </h3>
+              </div>
             )}
           </Link>
         </div>

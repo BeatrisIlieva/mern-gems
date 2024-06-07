@@ -32,7 +32,7 @@
 }
 
 .jewelry-card-img-sold-out {
-  background-color: #fff8fa;
+  background-color:var(--white-pink);
   opacity: 0.6;
   width: 100%;
   height: 100%;
@@ -42,7 +42,7 @@
 .sold-out {
   z-index: 1 !important;
   position: absolute;
-  color: rgba(0, 0, 0, 0.581);
+  color: var(--gray);
   font-size: 16px;
   right: 20px;
   top: 10px;
@@ -53,7 +53,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  color: #fc8eac;
+  color: var(--dark-pink);
   height: 20px;
   cursor: pointer;
   padding: 8px;
