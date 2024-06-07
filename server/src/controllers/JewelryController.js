@@ -3,30 +3,15 @@ const jewelryManager = require("../managers/jewelryManager");
 
 router.get("/:categoryId", async (req, res) => {
   try {
-    let categoryId = req.params.categoryId;
+    const categoryId = Number(req.params.categoryId);
 
-    categoryId = Number(categoryId);
+    const result = await jewelryManager.getAll(categoryId);
 
-    let jewelries = await jewelryManager.getAll(categoryId);
-
-
-    if (req.user) {
-      const userId = req.user._id;
-
-
-    jewelries = await setJewelriesLikedAuthUser(jewelries, userId);
-    }
-
-    else {
-      jewelries = await jewelryManager.getAll(categoryId);
-    }
-
-    res.status(200).json(jewelries);
+    res.status(200).json(result);
   } catch (err) {
-    console.log(err.message);
-
-    res.status(400).json({
-      message: "Some error",
+    console.log(err);
+    res.status(401).json({
+      message: err.message,
     });
   }
 });
