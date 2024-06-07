@@ -7,6 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { JewelryList } from "./components/JewelryList/JewelryList";
+import { JewelryWishlist } from "./components/JewelryWishlist/JewelryWishlist";
 import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/earrings" element={<JewelryList />} />
+              <Route path="/wishlist" element={<JewelryWishlist />} />
               <Route path="/user/login" element={<Login />} />
               <Route path="/user/register" element={<Register />} />
               <Route path="/user/account" element={<Account />} />
