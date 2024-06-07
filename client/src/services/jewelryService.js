@@ -7,6 +7,9 @@ export const addressInformationServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
-    findAll: (categoryId) => request.get(`${baseUrl}/${categoryId}`),
+    findAll: (categoryId) =>
+      request.get(`${baseUrl}/by-category/${categoryId}`),
+
+    findOne: (jewelryId) => request.get(`${baseUrl}/by-jewelry/${jewelryId}`),
   };
 };

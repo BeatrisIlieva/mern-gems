@@ -22,7 +22,7 @@ function App() {
           <main className={styles["main"]}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/earrings" element={<JewelryList />} />
+              <Route path="/rings" element={<JewelryList />} />
               <Route path="/wishlist" element={<JewelryWishlist />} />
               <Route path="/user/login" element={<Login />} />
               <Route path="/user/register" element={<Register />} />
