@@ -4,7 +4,8 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import { WishListContext } from "../../contexts/WishListContext";
+import { WishListContext } from "../../../contexts/WishListContext";
+import styles from "./JewelryListItems.module.css";
 
 export const JewelryListItems = ({
   _id,
@@ -13,7 +14,7 @@ export const JewelryListItems = ({
   categoryId,
   categoryTitle,
   price,
-  // isLikedByUser,
+  isLikedByUser,
   isSoldOut,
   isHovered,
   handleMouseEnter,
@@ -23,18 +24,18 @@ export const JewelryListItems = ({
   const { onAddToWishListClick, onRemoveFromWishListClick } =
     useContext(WishListContext);
 
-  const slugifiedCategoryTitle = slugify(categoryTitle);
-  const slugifiedJewelryTitle = slugify(jewelryTitle);
-
   const slugify = (text) => {
     return text
       .toString()
       .toLowerCase()
       .trim()
-      .replace(/\s+/g, "-") 
-      .replace(/[^\w\-]+/g, "") 
-      .replace(/\-\-+/g, "-"); 
+      .replace(/\s+/g, "-")
+      .replace(/[^\w\-]+/g, "")
+      .replace(/\-\-+/g, "-");
   };
+
+  const slugifiedCategoryTitle = slugify(categoryTitle);
+  const slugifiedJewelryTitle = slugify(jewelryTitle);
 
   return (
     <article className={styles["jewelry-card"]}>

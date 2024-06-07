@@ -159,7 +159,7 @@ async function populateDb() {
       "https://res.cloudinary.com/deztgvefu/image/upload/v1717757558/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-1_ptdbin.avif",
     secondImageUrl:
       "https://res.cloudinary.com/deztgvefu/image/upload/v1717757556/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-2_e6ch2a.avif",
-    category: allCategories[1],
+    category: allCategories[3],
     collection: allCollections[3],
     description:
       "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",

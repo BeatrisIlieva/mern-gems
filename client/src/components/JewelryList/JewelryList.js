@@ -1,15 +1,18 @@
 import { JewelryListItems } from "./JewelryListItems/JewelryListItems"
 import { useEffect, useState } from "react";
 import { jewelryServiceFactory } from "../../services/jewelryService";
-import { useParams } from "react-router-dom";
 import { useService } from "../../hooks/useService";
 import { CATEGORIES_BY_NAMES } from "../../constants/categories";
+import { useLocation } from 'react-router-dom';
 
 export const JewelryList = () => {
-  const { categoryName } = useParams();
   const [jewelries, setJewelries] = useState([]);
   const jewelryService = useService(jewelryServiceFactory);
-  const categoryId = CATEGORIES_BY_NAMES[categoryName];
+  const location = useLocation();
+  const path = location.pathname; // Get the current path, e.g., "/rings"
+  const categoryTitle = path.substring(1);
+  const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
+
 
   // useEffect(() => {
   //   jewelryService
@@ -24,6 +27,7 @@ export const JewelryList = () => {
     try {
       const data = await jewelryService.findAll(categoryId);
       setJewelries(data);
+
     } catch (err) {
       console.log(err.message);
     }
@@ -52,7 +56,7 @@ export const JewelryList = () => {
   };
 
   return (
-    <section className={styles["jewelry-cards"]}>
+    <section>
       {jewelries.map((j) => (
         <JewelryListItems
           key={j._id}

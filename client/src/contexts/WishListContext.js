@@ -49,11 +49,9 @@ export const WishListProvider = ({ children }) => {
   const context = {
     onAddToWishListClick,
     onRemoveFromWishListClick,
-    wishlist,
     wishlistCount,
     wishListCountGreaterThanZero,
     jewelries,
-    handleLikedByUser,
   };
 
   return (

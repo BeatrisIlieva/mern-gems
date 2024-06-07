@@ -101,7 +101,7 @@ exports.findAll = async (categoryId) => {
   ];
 
   const result = await Jewelry.aggregate(query);
-
+console.log(result)
   return result;
 };
 

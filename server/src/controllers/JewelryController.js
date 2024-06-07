@@ -3,9 +3,11 @@ const jewelryManager = require("../managers/jewelryManager");
 
 router.get("/by-category/:categoryId", async (req, res) => {
   try {
+    
     const categoryId = Number(req.params.categoryId);
 
     const result = await jewelryManager.findAll(categoryId);
+ 
 
     res.status(200).json(result);
   } catch (err) {

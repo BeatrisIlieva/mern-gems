@@ -1,6 +1,5 @@
 const Wishlist = require("../models/Wishlist");
 const Jewelry = require("../models/Jewelry");
-const User = require("../models/User");
 
 exports.create = async (data) => {
   const result = await Wishlist.create(data);
