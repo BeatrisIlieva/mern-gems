@@ -24,7 +24,7 @@ const jewelrySchema = new mongoose.Schema({
     ref: "Category",
     required: true,
   },
-  collection: {
+  jewelryCollection: {
     type: Number,
     ref: "JewelryCollection",
     required: true,
