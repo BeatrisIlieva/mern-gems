@@ -1,5 +1,6 @@
 .jewelry-card-hovered {
   position: relative;
+  width: 100%;
   border: 1px solid var(--border);
 }
 
@@ -25,10 +26,13 @@
 }
 
 .title {
-  text-align: center;
   color: var(--gray);
   position: absolute;
+  display: inline-block;
   bottom: 12px;
-  margin-left: 10px;
-  margin-right: 10px;
+  text-align: center;
+  word-wrap: break-word;
+  margin: 0 40px;
+  transform: translateX(-50%, -50%);
+  max-width: calc(100% - 80px);
 }

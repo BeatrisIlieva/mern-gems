@@ -25,6 +25,9 @@ function App() {
             <main className={styles["main"]}>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/bracelets" element={<JewelryList />} />
+                <Route path="/earrings" element={<JewelryList />} />
+                <Route path="/necklaces" element={<JewelryList />} />
                 <Route path="/rings" element={<JewelryList />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route
