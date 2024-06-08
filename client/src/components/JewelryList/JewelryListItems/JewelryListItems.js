@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { WishlistContext } from "../../../contexts/WishlistContext";
 import { JewelryCard } from "../../JewelryCard/JewelryCard";
 import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
+import { slugify } from "../../../utils/slugify";
 
 export const JewelryListItems = ({
   _id,
@@ -17,8 +18,6 @@ export const JewelryListItems = ({
 }) => {
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
     useContext(WishlistContext);
-
-
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);
