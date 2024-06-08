@@ -1,10 +1,4 @@
 
-
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
-import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { WishlistContext } from "../../../contexts/WishlistContext";
 import styles from "./JewelryListItems.module.css";
