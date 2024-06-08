@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.jewelry-card-thumbnail{
+.jewelry-card-thumbnail {
   aspect-ratio: 1 / 1;
   background-color: var(--white-pink);
 }
@@ -19,13 +19,12 @@
   object-fit: cover;
 }
 
-
 .sold-out {
-  z-index: 1000 !important;
   position: absolute;
-  color: var(--gray);
-  font-size: 16px;
-  right: 20px;
-  top: 10px;
-  padding: 10px;
+  color: var(--dark-golden);
+  font-family: var(--bold-italic-font-family);
+  right: 12px;
+  top: 12px;
+  padding: 8px;
+  opacity: 0.6;
 }
