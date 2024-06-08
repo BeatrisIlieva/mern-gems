@@ -147,7 +147,7 @@ exports.findAll = async (data) => {
                       "$user",
                       data.userId
                     ]
-                  } // Match the specific user
+                  }
                 ]
               }
             }

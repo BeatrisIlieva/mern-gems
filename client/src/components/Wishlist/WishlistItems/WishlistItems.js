@@ -9,25 +9,20 @@ export const WishlistItems = ({
   firstImageUrl,
   jewelryTitle,
   categoryTitle,
-  isLikedByUser,
   isSoldOut,
   isHovered,
   handleMouseEnter,
   handleMouseLeave,
   handleLikedByUser,
 }) => {
-  const { onAddToWishlistClick, onRemoveFromWishlistClick } =
-    useContext(WishlistContext);
+  const { onRemoveFromWishlistClick } = useContext(WishlistContext);
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);
 
   const handleLikeClick = () => {
-    if (isLikedByUser) {
-      onRemoveFromWishlistClick(_id);
-    } else {
-      onAddToWishlistClick(_id);
-    }
+    onRemoveFromWishlistClick(_id);
+
     handleLikedByUser();
   };
 
@@ -36,14 +31,14 @@ export const WishlistItems = ({
       onMouseEnter={() => handleMouseEnter(_id)}
       onMouseLeave={() => handleMouseLeave(_id)}
     >
-      {isHovered && !isSoldOut ? (
+      {isHovered ? (
         <JewelryCardHovered
           firstImageUrl={firstImageUrl}
           jewelryTitle={jewelryTitle}
           handleLikeClick={handleLikeClick}
           slugifiedCategoryTitle={slugifiedCategoryTitle}
           slugifiedJewelryTitle={slugifiedJewelryTitle}
-          isLikedByUser={isLikedByUser}
+          isLikedByUser={true}
         />
       ) : (
         <JewelryCard
@@ -55,5 +50,3 @@ export const WishlistItems = ({
     </article>
   );
 };
-
-
