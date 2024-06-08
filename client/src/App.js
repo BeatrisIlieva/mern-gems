@@ -8,7 +8,7 @@ import { WishlistProvider } from "./contexts/WishlistContext";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { JewelryList } from "./components/JewelryList/JewelryList";
-import { JewelryWishlist } from "./components/JewelryWishlist/JewelryWishlist";
+import { Wishlist } from "./components/Wishlist/Wishlist";
 import { JewelryItem } from "./components/JewelryItem/JewelryItem";
 import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
@@ -26,7 +26,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/rings" element={<JewelryList />} />
-                <Route path="/wishlist" element={<JewelryWishlist />} />
+                <Route path="/wishlist" element={<Wishlist />} />
                 <Route
                   path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle"
                   element={<JewelryItem />}

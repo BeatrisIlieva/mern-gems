@@ -1,11 +1,11 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { wishListServiceFactory } from "../services/wishlistService";
+import { wishlistServiceFactory } from "../services/wishlistService";
 import { useService } from "../hooks/useService";
 
 export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
-  const wishlistService = useService(wishListServiceFactory);
+  const wishlistService = useService(wishlistServiceFactory);
   const [wishlistCount, setWishlistCount] = useState(0);
   const wishlistCountGreaterThanZero = wishlistCount > 0;
   const [jewelries, setJewelries] = useState([]);

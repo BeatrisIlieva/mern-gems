@@ -3,7 +3,7 @@ import { HOST } from "../constants/host";
 
 const baseUrl = `${HOST}/wishlist`;
 
-export const wishListServiceFactory = (token) => {
+export const wishlistServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
