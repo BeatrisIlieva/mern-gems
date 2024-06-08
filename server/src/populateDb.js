@@ -165,12 +165,6 @@ async function populateDb() {
       "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
   });
 
-
-
-
-
-
-
   const allJewelries = await Jewelry.find();
 
   await JewelryStones.insertMany([
@@ -179,7 +173,6 @@ async function populateDb() {
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
     },
- 
   ]);
 
   await Inventory.insertMany([
@@ -201,15 +194,6 @@ async function populateDb() {
       quantity: 1,
       price: 12000,
     },
-    {
-      jewelry: allJewelries[1],
-      size: allSizes[9],
-      quantity: 1,
-      price: 12000,
-    },
-
-
-
   ]);
 }
 populateDb();
