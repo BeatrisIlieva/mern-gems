@@ -31,27 +31,7 @@ exports.findAll = async (data) => {
   //         },
   //       },
   //       firstImageUrl: {
-  //         $addToSet: "$firstImageUrl",
-  //       },
-  //       jewelryIds: {
-  //         $push: "$_id",
-  //       },
-  //       categoryTitle: {
-  //         $addToSet: "$categories.title",
-  //       },
-  //       categoryId: {
-  //         $addToSet: "$categories._id",
-  //       },
-  //       jewelryTitle: {
-  //         $addToSet: "$title",
-  //       },
-  //       inventories: {
-  //         $push: "$inventories",
-  //       },
-  //     },
-  //   },
-  //   {
-  //     $addFields: {
+
 
 
 
