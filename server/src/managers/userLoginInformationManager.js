@@ -12,7 +12,7 @@ const { SECRET } = require("../config/config");
 
 exports.register = async (data) => {
   const user = await UserLoginInformation.findOne({ email: data.email });
-
+console.log(data)
   if (user) {
     throw new Error(EMAIL_ALREADY_EXISTS_ERROR_MESSAGE);
   }
