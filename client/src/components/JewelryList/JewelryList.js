@@ -4,7 +4,8 @@ import { jewelryServiceFactory } from "../../services/jewelryService";
 import { useService } from "../../hooks/useService";
 import { CATEGORIES_BY_NAMES } from "../../constants/categories";
 import { useLocation } from "react-router-dom";
-import styles from "./JewelryList.module.css"
+import styles from "./JewelryList.module.css";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 export const JewelryList = () => {
   const [jewelries, setJewelries] = useState([]);
@@ -13,6 +14,8 @@ export const JewelryList = () => {
   const path = location.pathname;
   const categoryTitle = path.substring(1);
   const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
+
+  let [loading, setLoading] = useState(false);
 
   // useEffect(() => {
   //   jewelryService
@@ -27,6 +30,7 @@ export const JewelryList = () => {
     try {
       const data = await jewelryService.findAll(categoryId);
       setJewelries(data);
+      setLoading(false);
     } catch (err) {
       console.log(err.message);
     }
@@ -51,7 +55,10 @@ export const JewelryList = () => {
   };
 
   const handleLikedByUser = () => {
-    fetchData();
+    setLoading(true);
+    setTimeout(() => {
+      fetchData();
+    }, 600);
   };
 
   return (
@@ -67,6 +74,50 @@ export const JewelryList = () => {
           />
         ))}
       </div>
+      {loading && <LoadingSpinner />}
     </section>
   );
+
+  // return (
+  //   <section className={styles["jewelries-box"]}>
+  //     {!loading ? (
+  //       <div className={styles["jewelries-container"]}>
+  //         {jewelries.map((j) => (
+  //           <JewelryListItems
+  //             key={j._id}
+  //             {...j}
+  //             handleMouseEnter={handleMouseEnter}
+  //             handleLikedByUser={handleLikedByUser}
+  //             handleMouseLeave={handleMouseLeave}
+  //           />
+  //         ))}
+  //       </div>
+  //     ) : (
+  //       <ClipLoader
+  //         // color={var(--dark-pink)}
+  //         loading={loading}
+  //         cssOverride={override}
+  //         size={150}
+  //         aria-label="Loading Spinner"
+  //         data-testid="loader"
+  //       />
+  //     )}
+  //   </section>
+  // );
+
+  // return (
+  //   <section className={styles["jewelries-box"]}>
+  //       <div className={styles["jewelries-container"]}>
+  //         {jewelries.map((j) => (
+  //           <JewelryListItems
+  //             key={j._id}
+  //             {...j}
+  //             handleMouseEnter={handleMouseEnter}
+  //             handleLikedByUser={handleLikedByUser}
+  //             handleMouseLeave={handleMouseLeave}
+  //           />
+  //         ))}
+  //       </div>
+  //   </section>
+  // );
 };

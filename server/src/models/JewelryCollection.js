@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const collectionSchema = new mongoose.Schema({
+const jewelryCollectionSchema = new mongoose.Schema({
   _id: {
     type: Number,
     default: 0,
@@ -11,19 +11,19 @@ const collectionSchema = new mongoose.Schema({
   },
 });
 
-collectionSchema.pre("save", async function () {
+jewelryCollectionSchema.pre("save", async function () {
   const currentId = await setID();
 
   this._id = currentId;
 });
 
-const collection = mongoose.model("Collection", collectionSchema);
+const jewelryCollection = mongoose.model("JewelryCollection", jewelryCollectionSchema);
 
-module.exports = collection;
+module.exports = jewelryCollection;
 
 const setID = async () => {
   try {
-    let lastObj = await collection.findOne().sort({ _id: -1 });
+    let lastObj = await jewelryCollection.findOne().sort({ _id: -1 });
 
     lastId = lastObj._id;
 

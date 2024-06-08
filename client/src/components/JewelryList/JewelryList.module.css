@@ -1,6 +1,8 @@
 .jewelries-box {
   margin-top: 40px;
+  position: relative;
 }
+
 .jewelries-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

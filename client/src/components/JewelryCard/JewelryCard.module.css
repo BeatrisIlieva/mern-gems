@@ -1,25 +1,16 @@
-/* 
-
-
-
 .jewelry-card {
-  display: flex;
+    position: relative;
+  /* display: flex;
   flex-direction: column;
   gap: 40px;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
-
-.hovered {
-  border: 1px solid var(--border);
-}
-
 
 .jewelry-card-thumbnail,
 .jewelry-card-thumbnail-sold-out {
   aspect-ratio: 1 / 1;
   background-color: var(--white-pink);
-  
 }
 
 .jewelry-card-img,
@@ -43,22 +34,3 @@
   top: 10px;
   padding: 10px;
 }
-
-.heart {
-  color: var(--dark-pink);
-  height: 20px;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.hovered-content-title {
-  text-align: center;
-  color: var(--gray);
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-
-
-
- */

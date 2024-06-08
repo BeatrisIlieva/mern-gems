@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Jewelry = require("./models/Jewelry");
 const Category = require("./models/Category");
-const Collection = require("./models/Collection");
+const jewelryCollection = require("./models/jewelryCollection");
 const StoneType = require("./models/StoneType");
 const StoneColor = require("./models/StoneColor");
 const JewelryStones = require("./models/JewelryStones");
@@ -27,23 +27,23 @@ async function populateDb() {
     title: "Ring",
   });
 
-  await Collection.create({
+  await jewelryCollection.create({
     title: "Diamond Loop",
   });
 
-  await Collection.create({
+  await jewelryCollection.create({
     title: "Sunflower",
   });
 
-  await Collection.create({
+  await jewelryCollection.create({
     title: "Sparkling Cluster",
   });
 
-  await Collection.create({
+  await jewelryCollection.create({
     title: "Forget-Me-Not",
   });
 
-  await Collection.create({
+  await jewelryCollection.create({
     title: "Pirouette",
   });
 
@@ -148,7 +148,7 @@ async function populateDb() {
   });
 
   const allCategories = await Category.find();
-  const allCollections = await Collection.find();
+  const allJewelryCollections = await jewelryCollection.find();
   const allStoneTypes = await StoneType.find();
   const allStoneColors = await StoneColor.find();
   const allSizes = await Size.find();
@@ -160,7 +160,7 @@ async function populateDb() {
     secondImageUrl:
       "https://res.cloudinary.com/deztgvefu/image/upload/v1717757556/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-2_e6ch2a.avif",
     category: allCategories[3],
-    collection: allCollections[3],
+    jewelryCollection: allJewelryCollections[3],
     description:
       "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
   });
@@ -172,7 +172,7 @@ async function populateDb() {
     secondImageUrl:
       "https://res.cloudinary.com/deztgvefu/image/upload/v1717757556/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-2_e6ch2a.avif",
     category: allCategories[3],
-    collection: allCollections[3],
+    jewelryCollection: allJewelryCollections[3],
     description:
       "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
   });
@@ -184,7 +184,7 @@ async function populateDb() {
     secondImageUrl:
       "https://res.cloudinary.com/deztgvefu/image/upload/v1717757556/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-2_e6ch2a.avif",
     category: allCategories[3],
-    collection: allCollections[3],
+    jewelryCollection: allJewelryCollections[3],
     description:
       "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
   });
@@ -196,7 +196,7 @@ async function populateDb() {
     secondImageUrl:
       "https://res.cloudinary.com/deztgvefu/image/upload/v1717757556/ReactGems/jewelries/diamond-loop/rings/diamond_loop_ring_diamond_frdprp1ml4c_e-2_e6ch2a.avif",
     category: allCategories[3],
-    collection: allCollections[3],
+    jewelryCollection: allJewelryCollections[3],
     description:
       "4 pear-shaped and 29 round brilliant diamonds weighing a total of approximately 1.08 carats, set in platinum.",
   });

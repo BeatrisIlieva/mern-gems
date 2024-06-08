@@ -8,7 +8,6 @@ export const WishlistProvider = ({ children }) => {
   const wishlistService = useService(wishListServiceFactory);
   const [wishlistCount, setWishlistCount] = useState(0);
   const wishlistCountGreaterThanZero = wishlistCount > 0;
-
   const [jewelries, setJewelries] = useState([]);
 
   const fetchData = async () => {
@@ -22,7 +21,7 @@ export const WishlistProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [wishlistCount]);
 
   useEffect(() => {
     setWishlistCount(jewelries.length);

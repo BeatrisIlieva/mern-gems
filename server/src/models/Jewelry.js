@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Category = require("../models/Category");
-const Collection = require("../models/Collection");
+const JewelryCollection = require("../models/JewelryCollection");
 
 const jewelrySchema = new mongoose.Schema({
   _id: {
@@ -26,7 +26,7 @@ const jewelrySchema = new mongoose.Schema({
   },
   collection: {
     type: Number,
-    ref: "Collection",
+    ref: "JewelryCollection",
     required: true,
   },
   description: {
