@@ -7,7 +7,6 @@ router.post("/register", async (req, res) => {
   const userUUID = req.headers["user-uuid"];
 
   const { email, password, firstName, lastName } = req.body;
-  console.log(req.body)
 
   try {
     const { token } = await userLoginInformationManager.register({
