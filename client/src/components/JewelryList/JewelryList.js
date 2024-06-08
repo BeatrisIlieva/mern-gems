@@ -78,46 +78,5 @@ export const JewelryList = () => {
     </section>
   );
 
-  // return (
-  //   <section className={styles["jewelries-box"]}>
-  //     {!loading ? (
-  //       <div className={styles["jewelries-container"]}>
-  //         {jewelries.map((j) => (
-  //           <JewelryListItems
-  //             key={j._id}
-  //             {...j}
-  //             handleMouseEnter={handleMouseEnter}
-  //             handleLikedByUser={handleLikedByUser}
-  //             handleMouseLeave={handleMouseLeave}
-  //           />
-  //         ))}
-  //       </div>
-  //     ) : (
-  //       <ClipLoader
-  //         // color={var(--dark-pink)}
-  //         loading={loading}
-  //         cssOverride={override}
-  //         size={150}
-  //         aria-label="Loading Spinner"
-  //         data-testid="loader"
-  //       />
-  //     )}
-  //   </section>
-  // );
-
-  // return (
-  //   <section className={styles["jewelries-box"]}>
-  //       <div className={styles["jewelries-container"]}>
-  //         {jewelries.map((j) => (
-  //           <JewelryListItems
-  //             key={j._id}
-  //             {...j}
-  //             handleMouseEnter={handleMouseEnter}
-  //             handleLikedByUser={handleLikedByUser}
-  //             handleMouseLeave={handleMouseLeave}
-  //           />
-  //         ))}
-  //       </div>
-  //   </section>
-  // );
+  
 };
