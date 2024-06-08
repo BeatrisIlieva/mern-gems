@@ -12,25 +12,7 @@ exports.findAll = async (data) => {
   //   {
   //     $lookup: {
   //       as: "categories",
-  //       from: "categories",
-  //       foreignField: "_id",
-  //       localField: "category",
-  //     },
-  //   },
-  //   {
-  //     $match: {
-  //       category: data.categoryId,
-  //     },
-  //   },
-  //   {
-  //     $group: {
-  //       _id: "$_id",
-  //       price: {
-  //         $first: {
-  //           $arrayElemAt: ["$inventories.price", 0],
-  //         },
-  //       },
-  //       firstImageUrl: {
+
 
 
 
