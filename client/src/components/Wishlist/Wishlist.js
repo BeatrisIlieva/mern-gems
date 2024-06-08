@@ -11,7 +11,6 @@ export const Wishlist = () => {
 
   let [loading, setLoading] = useState(false);
 
-
   const fetchData = async () => {
     try {
       const data = await wishlistService.findAll();
@@ -42,15 +41,15 @@ export const Wishlist = () => {
 
   const handleLikedByUser = () => {
     setLoading(true);
-    
+
     setTimeout(() => {
       fetchData();
     }, 600);
   };
 
   return (
-    <section className={styles["jewelries-box"]}>
-      <div className={styles["jewelries-container"]}>
+    <section className={styles["wishlist-box"]}>
+      <div className={styles["wishlist-container"]}>
         {jewelries.map((j) => (
           <WishlistItems
             key={j._id}
