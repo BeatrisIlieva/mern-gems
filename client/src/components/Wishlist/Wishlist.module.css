@@ -1,16 +1,16 @@
 .wishlist-box {
-  margin-top: 40px;
+  margin: 40px 24px 40px 24px;
   position: relative;
 }
 
 .wishlist-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 }
 
 .wish-list-card {
-  height: 68vh;
+  height: 60vh;
   line-height: 1.5;
   position: relative;
 }

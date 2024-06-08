@@ -4,35 +4,28 @@ import { wishlistServiceFactory } from "../../services/wishlistService";
 import { useService } from "../../hooks/useService";
 import styles from "./Wishlist.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import { useContext } from "react";
-import { WishlistContext } from "../../contexts/WishlistContext";
+import { useWishlistContext } from "../../contexts/WishlistContext";
 
 export const Wishlist = () => {
-  // const [jewelries, setJewelries] = useState([]);
+  const [jewelries, setJewelries] = useState([]);
   const wishlistService = useService(wishlistServiceFactory);
-  const {
-    jewelries,
-    fetchData,
-    wishlistCount,
-    wishlistCountGreaterThanZero,
-    setJewelries,
-  } = useContext(WishlistContext);
+  const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
   let [loading, setLoading] = useState(false);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const data = await wishlistService.findAll();
-  //     setJewelries(data);
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // };
+  const fetchData = async () => {
+    try {
+      const data = await wishlistService.findAll();
+      setJewelries(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [wishlistCount]);
 
   const handleMouseEnter = (_id) => {
     setJewelries((state) =>
