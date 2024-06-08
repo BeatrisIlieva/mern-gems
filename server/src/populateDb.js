@@ -225,24 +225,7 @@ async function populateDb() {
       quantity: 1,
       price: 12000,
     },
-    {
-      jewelry: allJewelries[2],
-      size: allSizes[10],
-      quantity: 1,
-      price: 12000,
-    },
-    {
-      jewelry: allJewelries[2],
-      size: allSizes[11],
-      quantity: 1,
-      price: 12000,
-    },
-    {
-      jewelry: allJewelries[3],
-      size: allSizes[9],
-      quantity: 1,
-      price: 12000,
-    },
+
 
   ]);
 }
