@@ -2,12 +2,16 @@
   position: relative;
 }
 
-.jewelry-card-thumbnail,
-.jewelry-card-thumbnail-sold-out {
+.jewelry-card-thumbnail{
   aspect-ratio: 1 / 1;
   background-color: var(--white-pink);
 }
 
+.jewelry-card-thumbnail-sold-out {
+  aspect-ratio: 1 / 1;
+  background-color: var(--white-pink);
+  opacity: 0.6;
+}
 .jewelry-card-img,
 .jewelry-card-img-sold-out {
   width: 100%;
@@ -15,10 +19,10 @@
   object-fit: cover;
 }
 
-.jewelry-card-img-sold-out {
+/* .jewelry-card-img-sold-out {
   background-color: var(--white-pink);
   opacity: 0.6;
-}
+} */
 
 .sold-out {
   z-index: 1000 !important;

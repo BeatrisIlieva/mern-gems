@@ -254,6 +254,7 @@ export const JewelryListItems = ({
         <JewelryCard
           firstImageUrl={firstImageUrl}
           jewelryTitle={jewelryTitle}
+          isSoldOut={isSoldOut}
         />
       )}
     </article>
