@@ -1,14 +1,16 @@
 import styles from "./JewelryCard.module.css";
 
 export const JewelryCard = ({ firstImageUrl, jewelryTitle, isSoldOut }) => {
-    console.log(isSoldOut)
+  console.log(isSoldOut);
   return (
     <article className={styles["jewelry-card"]}>
-      <div         className={
+      <div
+        className={
           isSoldOut
             ? styles["jewelry-card-thumbnail-sold-out"]
             : styles["jewelry-card-thumbnail"]
-        }>
+        }
+      >
         <img
           className={styles["jewelry-card-img"]}
           src={firstImageUrl}
@@ -19,4 +21,3 @@ export const JewelryCard = ({ firstImageUrl, jewelryTitle, isSoldOut }) => {
     </article>
   );
 };
-
