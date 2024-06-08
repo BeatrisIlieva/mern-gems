@@ -1,0 +1,10 @@
+.wishlist-box {
+  margin-top: 40px;
+  position: relative;
+}
+
+.wishlist-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
