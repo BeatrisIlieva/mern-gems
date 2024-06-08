@@ -29,6 +29,7 @@
 .login-box {
   display: flex;
   gap: 80px;
+  margin: 0px 214px 40px 214px;
 }
 
 .login-container-title {
