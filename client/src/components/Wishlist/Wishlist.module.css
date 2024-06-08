@@ -44,8 +44,9 @@
 .wish-list-card .wish-list-content-top {
   position: absolute;
   flex-direction: column;
-  right: -20%;
-  top: 0;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   padding: 12px 32px;
   text-align: center;
