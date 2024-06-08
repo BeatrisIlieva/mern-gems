@@ -1,7 +1,6 @@
 const Jewelry = require("../models/Jewelry");
 
 exports.findAll = async (data) => {
-  // let query = [
   //   {
   //     $lookup: {
   //       as: "inventories",
@@ -89,16 +88,7 @@ exports.findAll = async (data) => {
   //       jewelryIds: 1,
   //       categoryTitle: 1,
   //       categoryId: 1,
-  //       jewelryTitle: 1,
-  //       isSoldOut: 1,
-  //     },
-  //   },
-  //   {
-  //     $sort: {
-  //       _id: 1,
-  //     },
-  //   },
-  // ];
+
 
   const query = [
     {
