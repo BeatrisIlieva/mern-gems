@@ -7,7 +7,6 @@ export const JewelryListItems = ({
   _id,
   firstImageUrl,
   jewelryTitle,
-  categoryId,
   categoryTitle,
   isLikedByUser,
   isSoldOut,
@@ -19,15 +18,7 @@ export const JewelryListItems = ({
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
     useContext(WishlistContext);
 
-  const slugify = (text) => {
-    return text
-      .toString()
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w\-]+/g, "")
-      .replace(/\-\-+/g, "-");
-  };
+
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);
