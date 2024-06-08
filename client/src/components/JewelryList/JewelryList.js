@@ -56,6 +56,7 @@ export const JewelryList = () => {
 
   const handleLikedByUser = () => {
     setLoading(true);
+    
     setTimeout(() => {
       fetchData();
     }, 600);
