@@ -72,22 +72,7 @@ exports.findAll = async (data) => {
   //                       },
   //                     },
   //                   },
-  //                   0,
-  //                 ],
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       },
-  //     },
-  //   },
-  //   {
-  //     $project: {
-  //       price: 1,
-  //       firstImageUrl: 1,
-  //       jewelryIds: 1,
-  //       categoryTitle: 1,
-  //       categoryId: 1,
+
 
 
   const query = [
