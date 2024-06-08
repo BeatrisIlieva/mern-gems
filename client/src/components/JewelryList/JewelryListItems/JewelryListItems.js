@@ -241,7 +241,7 @@ export const JewelryListItems = ({
       onMouseEnter={() => handleMouseEnter(_id)}
       onMouseLeave={() => handleMouseLeave(_id)}
     >
-      {isHovered ? (
+      {isHovered && !isSoldOut ? (
         <JewelryCardHovered
           firstImageUrl={firstImageUrl}
           jewelryTitle={jewelryTitle}
