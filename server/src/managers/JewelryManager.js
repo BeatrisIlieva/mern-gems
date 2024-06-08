@@ -52,26 +52,7 @@ exports.findAll = async (data) => {
   //   },
   //   {
   //     $addFields: {
-  //       isSoldOut: {
-  //         $reduce: {
-  //           input: "$inventories",
-  //           initialValue: true,
-  //           in: {
-  //             $and: [
-  //               "$$value",
-  //               {
-  //                 $eq: [
-  //                   {
-  //                     $size: {
-  //                       $filter: {
-  //                         input: "$$this",
-  //                         as: "inv",
-  //                         cond: {
-  //                           $gt: ["$$inv.quantity", 0],
-  //                         },
-  //                       },
-  //                     },
-  //                   },
+
 
 
 
