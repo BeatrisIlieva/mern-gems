@@ -1,7 +1,5 @@
-
 import { useContext } from "react";
 import { WishlistContext } from "../../../contexts/WishlistContext";
-import styles from "./JewelryListItems.module.css";
 import { JewelryCard } from "../../JewelryCard/JewelryCard";
 import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
 
@@ -11,7 +9,6 @@ export const JewelryListItems = ({
   jewelryTitle,
   categoryId,
   categoryTitle,
-  price,
   isLikedByUser,
   isSoldOut,
   isHovered,
@@ -36,7 +33,6 @@ export const JewelryListItems = ({
   const slugifiedJewelryTitle = slugify(jewelryTitle);
 
   const handleLikeClick = () => {
-
     if (isLikedByUser) {
       onRemoveFromWishlistClick(_id);
     } else {
