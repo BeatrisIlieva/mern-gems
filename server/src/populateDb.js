@@ -179,21 +179,7 @@ async function populateDb() {
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
     },
-    {
-      jewelry: allJewelries[1],
-      stoneType: allStoneTypes[1],
-      stoneColor: allStoneColors[6],
-    },
-    {
-      jewelry: allJewelries[2],
-      stoneType: allStoneTypes[1],
-      stoneColor: allStoneColors[6],
-    },
-    {
-      jewelry: allJewelries[3],
-      stoneType: allStoneTypes[1],
-      stoneColor: allStoneColors[6],
-    },
+ 
   ]);
 
   await Inventory.insertMany([
@@ -257,18 +243,7 @@ async function populateDb() {
       quantity: 1,
       price: 12000,
     },
-    {
-      jewelry: allJewelries[3],
-      size: allSizes[10],
-      quantity: 1,
-      price: 12000,
-    },
-    {
-      jewelry: allJewelries[3],
-      size: allSizes[11],
-      quantity: 1,
-      price: 12000,
-    },
+
   ]);
 }
 populateDb();
