@@ -77,6 +77,4 @@ export const JewelryList = () => {
       {loading && <LoadingSpinner />}
     </section>
   );
-
-  
 };
