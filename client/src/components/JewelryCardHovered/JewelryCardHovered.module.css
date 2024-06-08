@@ -1,10 +1,5 @@
 .jewelry-card-hovered {
-    position: relative;
-  /* display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  align-items: center; */
+  position: relative;
   border: 1px solid var(--border);
 }
 
@@ -38,8 +33,8 @@
 
 .heart {
   position: absolute;
-    top: 12px;
-    right: 12px;
+  top: 12px;
+  right: 12px;
   color: var(--dark-pink);
   height: 20px;
   cursor: pointer;
@@ -50,7 +45,7 @@
   text-align: center;
   color: var(--gray);
   position: absolute;
-    bottom: 12px;
+  bottom: 12px;
   margin-left: 10px;
   margin-right: 10px;
 }
