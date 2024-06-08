@@ -8,3 +8,53 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
+
+
+.wish-list-card {
+  height: 68vh;
+  line-height: 1.5;
+  position: relative;
+}
+
+.wish-list-card::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background-color: black; */
+  opacity: 0.4;
+}
+
+.wish-list-card .img-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wish-list-card .wish-list-content-top .wish-list-tag {
+  font-size: 48px;
+  margin-bottom: 22px;
+}
+
+.wish-list-card .wish-list-content-top .wish-list-title {
+  font-size: 28px;
+}
+
+.wish-list-card .wish-list-content-top {
+  position: absolute;
+  flex-direction: column;
+  right: -20%;
+  top: 0;
+  width: 100%;
+  padding: 12px 32px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 32px;
+  margin-right: 100px;
+}
+
+
+

@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { wishlistServiceFactory } from "../services/wishlistService";
 import { useService } from "../hooks/useService";
 
+
 export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
@@ -48,9 +49,12 @@ export const WishlistProvider = ({ children }) => {
   const context = {
     onAddToWishlistClick,
     onRemoveFromWishlistClick,
+    fetchData,
     wishlistCount,
     wishlistCountGreaterThanZero,
+    setJewelries,
     jewelries,
+
   };
 
   return (
