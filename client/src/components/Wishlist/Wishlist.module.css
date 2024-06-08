@@ -9,7 +9,6 @@
   gap: 40px;
 }
 
-
 .wish-list-card {
   height: 68vh;
   line-height: 1.5;
@@ -23,7 +22,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  /* background-color: black; */
   opacity: 0.4;
 }
 
@@ -34,12 +32,13 @@
 }
 
 .wish-list-card .wish-list-content-top .wish-list-tag {
-  font-size: 48px;
+  font-size: var(--double-large-font-size);
+  font-family: var(--bold-italic-font-family);
   margin-bottom: 22px;
 }
 
 .wish-list-card .wish-list-content-top .wish-list-title {
-  font-size: 28px;
+  font-size: var(--large-font-size);
 }
 
 .wish-list-card .wish-list-content-top {
@@ -55,6 +54,3 @@
   line-height: 32px;
   margin-right: 100px;
 }
-
-
-
