@@ -15,6 +15,7 @@ import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
 import { Footer } from "./components/Footer/Footer";
+import { CATEGORIES_BY_NAMES } from "./constants/categories";
 
 function App() {
   return (
@@ -41,10 +42,34 @@ function App() {
                   path="/sparkling-cluster"
                   element={<JewelryCollectionList />}
                 />
-                <Route path="/bracelets" element={<JewelryList />} />
-                <Route path="/earrings" element={<JewelryList />} />
-                <Route path="/necklaces" element={<JewelryList />} />
-                <Route path="/rings" element={<JewelryList />} />
+                <Route
+                  path="/bracelets"
+                  element={
+                    <JewelryList
+                      categoryId={CATEGORIES_BY_NAMES["bracelets"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/earrings"
+                  element={
+                    <JewelryList categoryId={CATEGORIES_BY_NAMES["earrings"]} />
+                  }
+                />
+                <Route
+                  path="/necklaces"
+                  element={
+                    <JewelryList
+                      categoryId={CATEGORIES_BY_NAMES["necklaces"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/rings"
+                  element={
+                    <JewelryList categoryId={CATEGORIES_BY_NAMES["rings"]} />
+                  }
+                />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route
                   path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle"

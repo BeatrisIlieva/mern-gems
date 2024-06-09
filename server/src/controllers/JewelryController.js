@@ -2,9 +2,9 @@ const router = require("express").Router();
 const jewelryManager = require("../managers/jewelryManager");
 const { SKIP, LIMIT } = require("../constants/pagination");
 
-router.get("/by-category/:categoryId", async (req, res) => {
-  const skip = req.query.skip ? parseInt(req.query.skip, 10) : SKIP;
-  const limit = req.query.limit ? parseInt(req.query.limit, 10) : LIMIT;
+router.get("/by-category/:categoryId/:skip/:limit", async (req, res) => {
+  const skip = Number(req.params.skip) ? Number(req.params.skip) : SKIP;
+  const limit = Number(req.params.limit) ? Number(req.params.limit) : LIMIT;
 
   let userId;
   if (req.user) {
@@ -20,6 +20,8 @@ router.get("/by-category/:categoryId", async (req, res) => {
 
   try {
     const result = await jewelryManager.findAll(data);
+    console.log("*************")
+    console.log(result)
 
     res.status(200).json(result);
   } catch (err) {

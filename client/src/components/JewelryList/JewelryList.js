@@ -9,13 +9,15 @@ import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 
-export const JewelryList = () => {
+export const JewelryList = ({ categoryId }) => {
   const [jewelries, setJewelries] = useState([]);
   const jewelryService = useService(jewelryServiceFactory);
-  const location = useLocation();
-  const path = location.pathname;
-  const categoryTitle = path.substring(1);
-  const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
+  // const location = useLocation();
+  // const path = location.pathname;
+  // const categoryTitle = path.substring(1);
+  // const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
+
+  // const categoryId = CATEGORIES_BY_NAMES[category]
   const [page, setPage] = useState(0);
 
   let [loading, setLoading] = useState(false);
@@ -35,7 +37,11 @@ export const JewelryList = () => {
 
     try {
       const data = await jewelryService.findAll(categoryId, skip, limit);
-      setJewelries((prevItems) => [...prevItems, ...data]);
+      if (page === 0) {
+        setJewelries(data);
+      } else {
+        setJewelries((prevItems) => [...prevItems, ...data]);
+      }
       // setJewelries(data);
       setLoading(false);
     } catch (err) {
@@ -46,6 +52,10 @@ export const JewelryList = () => {
   useEffect(() => {
     fetchData();
   }, [categoryId, page]);
+
+  useEffect(() => {
+    setPage(0);
+  }, [categoryId]);
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
@@ -86,7 +96,7 @@ export const JewelryList = () => {
           />
         ))}
       </div>
-      <LoadMoreButton handleLoadMore={handleLoadMore}/>
+      <LoadMoreButton handleLoadMore={handleLoadMore} />
       {loading && <LoadingSpinner />}
     </section>
   );
