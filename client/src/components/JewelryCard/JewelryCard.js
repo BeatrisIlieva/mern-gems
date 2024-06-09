@@ -1,7 +1,6 @@
 import styles from "./JewelryCard.module.css";
 
 export const JewelryCard = ({ firstImageUrl, jewelryTitle, isSoldOut }) => {
-  console.log(isSoldOut);
   return (
     <article className={styles["jewelry-card"]}>
       <div
