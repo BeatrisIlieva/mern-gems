@@ -477,6 +477,30 @@ async function populateDb() {
       "148 round brilliant and 3 pear-shaped diamonds weighing a total of approximately 15.18 carats, set in platinum",
   });
 
+  await Jewelry.create({
+    title: "Sparkling Cluster Sapphire and Diamond Ring",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757311/ReactGems/jewelries/sparkling-cluster/rings/sparkling_cluster_sap_aqua_and_diamond_ring_frsaqpclrfspc_e-1h_vnciix.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757310/ReactGems/jewelries/sparkling-cluster/rings/sparkling_cluster_sap_aqua_and_diamond_ring_frsaqpclrfspc_e-2h_vkihia.webp",
+    category: allCategories[3],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "148 round brilliant and 3 pear-shaped diamonds weighing a total of approximately 15.18 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sparkling Cluster Diamond Ring",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757310/ReactGems/jewelries/sparkling-cluster/rings/sparkling_cluster_ring_diamond_frdpclrfspc_e-1_tl3dny.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757311/ReactGems/jewelries/sparkling-cluster/rings/sparkling_cluster_ring_diamond_frdpclrfspc_e-2_mga0pd.webp",
+    category: allCategories[3],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "10 round brilliant and 2 pear-shaped diamonds weighing a total of approximately 2.34 carats, set in platinum",
+  });
+
   const allJewelries = await Jewelry.find();
 
   await JewelryStones.insertMany([
@@ -732,6 +756,26 @@ async function populateDb() {
     },
     {
       jewelry: allJewelries[26],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[27],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[0],
+    },
+    {
+      jewelry: allJewelries[27],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[2],
+    },
+    {
+      jewelry: allJewelries[27],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[28],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
     },
@@ -1127,6 +1171,42 @@ async function populateDb() {
       size: allSizes[8],
       quantity: 1,
       price: 46000,
+    },
+    {
+      jewelry: allJewelries[27],
+      size: allSizes[9],
+      quantity: 1,
+      price: 17000,
+    },
+    {
+      jewelry: allJewelries[27],
+      size: allSizes[10],
+      quantity: 1,
+      price: 17000,
+    },
+    {
+      jewelry: allJewelries[27],
+      size: allSizes[11],
+      quantity: 1,
+      price: 17000,
+    },
+    {
+      jewelry: allJewelries[28],
+      size: allSizes[9],
+      quantity: 1,
+      price: 17000,
+    },
+    {
+      jewelry: allJewelries[28],
+      size: allSizes[10],
+      quantity: 1,
+      price: 17000,
+    },
+    {
+      jewelry: allJewelries[28],
+      size: allSizes[11],
+      quantity: 1,
+      price: 17000,
     },
   ]);
 }
