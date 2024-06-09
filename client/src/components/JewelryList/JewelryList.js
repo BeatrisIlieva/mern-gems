@@ -6,6 +6,7 @@ import { CATEGORIES_BY_NAMES } from "../../constants/categories";
 import { useLocation } from "react-router-dom";
 import styles from "./JewelryList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { SKIP, LIMIT } from "../../constants/pagination";
 
 export const JewelryList = () => {
   const [jewelries, setJewelries] = useState([]);
@@ -14,6 +15,7 @@ export const JewelryList = () => {
   const path = location.pathname;
   const categoryTitle = path.substring(1);
   const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
+  const [page, setPage] = useState(0);
 
   let [loading, setLoading] = useState(false);
 
