@@ -9,11 +9,11 @@ import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 export const JewelryList = () => {
   const [jewelries, setJewelries] = useState([]);
-  const jewelryService = useService(jewelryCollectionServiceFactory);
+  const jewelryCollectionService = useService(jewelryCollectionServiceFactory);
   const location = useLocation();
   const path = location.pathname;
-  const categoryTitle = path.substring(1);
-  const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
+  const collectionTitle = path.substring(1);
+  const collectionId = CATEGORIES_BY_NAMES[categoryTitle];
 
   let [loading, setLoading] = useState(false);
 
