@@ -20,7 +20,7 @@ export const JewelryList = ({ categoryId }) => {
   const fetchData = async (isInitialFetch = false) => {
     setLoading(true);
     const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
-    // const skip = page * ITEMS_PER_PAGE;
+
     const limit = ITEMS_PER_PAGE;
 
     try {
@@ -30,7 +30,7 @@ export const JewelryList = ({ categoryId }) => {
         limit
       );
       setTotalCount(totalCount);
-      // const data = await jewelryService.findAll(categoryId, skip, limit);
+
       setJewelries((prevItems) => {
         const updatedItems = [...prevItems];
 
