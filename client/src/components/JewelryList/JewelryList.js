@@ -15,14 +15,6 @@ export const JewelryList = ({ categoryId }) => {
 
   let [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   jewelryService
-  //     .getAll(categoryId)
-  //     .then(setJewelries)
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  // }, [categoryId]);
 
   // const fetchData = async () => {
   //   const skip = page * ITEMS_PER_PAGE;
