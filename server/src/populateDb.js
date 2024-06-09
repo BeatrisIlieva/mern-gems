@@ -549,6 +549,42 @@ async function populateDb() {
       "54 round brilliant diamonds weighing a total of approximately 1.98 carats, set in platinum",
   });
 
+  await Jewelry.create({
+    title: "Sunflower Petite Sapphire and Diamond Pendant",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717909666/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_diamond_eadpna3dsf_e-1_ayoept.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717909666/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_diamond_eadpna3dsf_e-2_m5uzvc.webp",
+    category: allCategories[2],
+    jewelryCollection: allJewelryCollections[1],
+    description:
+      "8 round brilliant diamonds weighing a total of approximately 0.44 carats with a round sapphire center stone of approximately 0.42 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sunflower Petite Ruby and Diamond Pendant",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757316/ReactGems/jewelries/sunflower/necklaces/sunflower_petite_ruby_and_diamond_pendant_perpnapetsf_e-1h_taailn.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757319/ReactGems/jewelries/sunflower/necklaces/sunflower_petite_ruby_and_diamond_pendant_perpnapetsf_e-2_pp9scc.avif",
+    category: allCategories[2],
+    jewelryCollection: allJewelryCollections[1],
+    description:
+      "8 round brilliant diamonds weighing a total of approximately 0.44 carats with a round ruby center stone of approximately 0.46 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sunflower Diamond Necklace",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717910297/ReactGems/jewelries/sunflower/necklaces/sunflower_necklace_diamond_nkdpnamesf_e-1_hy4jwo.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717910296/ReactGems/jewelries/sunflower/necklaces/sunflower_necklace_diamond_nkdpnamesf_e-2_yecmqz.webp",
+    category: allCategories[2],
+    jewelryCollection: allJewelryCollections[1],
+    description:
+      "363 round brilliant diamonds weighing a total of approximately 25.50 carats, set in platinum",
+  });
+
   const allJewelries = await Jewelry.find();
 
   await JewelryStones.insertMany([
@@ -855,6 +891,31 @@ async function populateDb() {
     },
     {
       jewelry: allJewelries[32],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[33],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[2],
+    },
+    {
+      jewelry: allJewelries[33],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[34],
+      stoneType: allStoneTypes[3],
+      stoneColor: allStoneColors[5],
+    },
+    {
+      jewelry: allJewelries[34],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[35],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
     },
@@ -1322,6 +1383,60 @@ async function populateDb() {
       size: allSizes[5],
       quantity: 1,
       price: 29000,
+    },
+    {
+      jewelry: allJewelries[33],
+      size: allSizes[6],
+      quantity: 1,
+      price: 41000,
+    },
+    {
+      jewelry: allJewelries[33],
+      size: allSizes[7],
+      quantity: 1,
+      price: 41000,
+    },
+    {
+      jewelry: allJewelries[33],
+      size: allSizes[8],
+      quantity: 1,
+      price: 41000,
+    },
+    {
+      jewelry: allJewelries[34],
+      size: allSizes[6],
+      quantity: 1,
+      price: 41000,
+    },
+    {
+      jewelry: allJewelries[34],
+      size: allSizes[7],
+      quantity: 1,
+      price: 41000,
+    },
+    {
+      jewelry: allJewelries[34],
+      size: allSizes[8],
+      quantity: 1,
+      price: 41000,
+    },
+    {
+      jewelry: allJewelries[35],
+      size: allSizes[6],
+      quantity: 1,
+      price: 51000,
+    },
+    {
+      jewelry: allJewelries[35],
+      size: allSizes[7],
+      quantity: 1,
+      price: 51000,
+    },
+    {
+      jewelry: allJewelries[35],
+      size: allSizes[8],
+      quantity: 1,
+      price: 51000,
     },
   ]);
 }
