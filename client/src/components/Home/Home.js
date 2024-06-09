@@ -41,6 +41,39 @@ export const Home = () => {
       <Link to="/" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
+            <h2 className={styles["title"]} data-testid="forget-me-not-title">
+              Classics Collection
+            </h2>
+            <p
+              className={styles["paragraph"]}
+              data-testid="forget-me-not-paragraph"
+            >
+              Elegant designs that highlight the innate brilliance of incredible
+              gems.
+            </p>
+            <button
+              className={styles["animated-button"]}
+              data-testid="forget-me-not-button"
+            >
+              Discover
+            </button>
+          </div>
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              data-testid="forget-me-not-image"
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1717917440/collections/herolarged_l2_bri24_sp_wdj_hero_dl66ao.webp"
+              }
+              alt={"Img"}
+            />
+          </div>
+        </div>
+      </Link>
+      <VerticalLine />
+      <Link to="/" className={styles["no-decoration"]}>
+        <div className={styles["hero-box"]}>
+          <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="pirouette-title">
               Pirouette Collection
             </h2>
@@ -74,7 +107,7 @@ export const Home = () => {
       </Link>
       <VerticalLine />
       <Link to="/" className={styles["no-decoration"]}>
-        <div className={styles["hero-box"]}>
+        <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="diamond-loop-title">
               Diamond Loop Collection
@@ -108,7 +141,7 @@ export const Home = () => {
       </Link>
       <VerticalLine />
       <Link to="/" className={styles["no-decoration"]}>
-        <div className={styles["hero-box-reverse"]}>
+        <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="sunflower-title">
               Sunflower Collection
@@ -140,7 +173,7 @@ export const Home = () => {
       </Link>
       <VerticalLine />
       <Link to="/" className={styles["no-decoration"]}>
-        <div className={styles["hero-box"]}>
+        <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
             <h2
               className={styles["title"]}
