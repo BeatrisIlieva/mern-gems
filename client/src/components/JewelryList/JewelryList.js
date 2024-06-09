@@ -10,12 +10,6 @@ import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 export const JewelryList = ({ categoryId }) => {
   const [jewelries, setJewelries] = useState([]);
   const jewelryService = useService(jewelryServiceFactory);
-  // const location = useLocation();
-  // const path = location.pathname;
-  // const categoryTitle = path.substring(1);
-  // const categoryId = CATEGORIES_BY_NAMES[categoryTitle];
-
-  // const categoryId = CATEGORIES_BY_NAMES[category]
   const [page, setPage] = useState(0);
 
   let [loading, setLoading] = useState(false);
