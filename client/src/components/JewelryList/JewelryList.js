@@ -34,7 +34,7 @@ export const JewelryList = ({ categoryId }) => {
       } else {
         setJewelries((prevItems) => [...prevItems, ...data]);
       }
-      // setJewelries(data);
+
       setLoading(false);
     } catch (err) {
       console.log(err.message);
