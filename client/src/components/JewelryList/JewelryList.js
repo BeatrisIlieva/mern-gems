@@ -2,8 +2,6 @@ import { JewelryListItems } from "./JewelryListItems/JewelryListItems";
 import { useEffect, useState } from "react";
 import { jewelryServiceFactory } from "../../services/jewelryService";
 import { useService } from "../../hooks/useService";
-import { CATEGORIES_BY_NAMES } from "../../constants/categories";
-import { useLocation } from "react-router-dom";
 import styles from "./JewelryList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
