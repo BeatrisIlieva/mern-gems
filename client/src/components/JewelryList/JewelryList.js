@@ -87,7 +87,6 @@ export const JewelryList = () => {
         ))}
       </div>
       <LoadMoreButton handleLoadMore={handleLoadMore}/>
-      // <button onClick={handleLoadMore}>Load More</button>
       {loading && <LoadingSpinner />}
     </section>
   );
