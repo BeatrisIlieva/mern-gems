@@ -652,13 +652,25 @@ async function populateDb() {
   await Jewelry.create({
     title: "Classics Diamond Necklace",
     firstImageUrl:
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1717913250/ReactGems/classics/earrings/classics_earrings_diamond_esdpcu010micw_e-1_jjyoso.webp",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1703429659/necklaces/9/hj_ra_3_duchess_necklace_b_k58hlv.webp",
     secondImageUrl:
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1717913253/ReactGems/classics/earrings/classics_earrings_diamond_esdpcu010micw_e-2_catppz.webp",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1703429659/necklaces/9/hj_ra_3_duchess_necklace_a_vowktn.webp",
     category: allCategories[2],
     jewelryCollection: allJewelryCollections[5],
     description:
       "130 marquise, pear-shaped and round brilliant diamonds weighing a total of approximately 24.80 carats, 28 radiant-cut diamond weighing a total of approximately 22.40 carats, with a 40.11 yellow radiant-cut diamond center stone, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Classics Diamond Ring",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1703433929/rings/1/cushion_cut_engagement_ring_yellow_diamond_rgyedgcu015mic_e-1_ghcqyq.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1703433928/rings/1/cushion_cut_engagement_ring_yellow_diamond_rgyedgcu015mic_e-2_lea4hu.webp",
+    category: allCategories[3],
+    jewelryCollection: allJewelryCollections[5],
+    description:
+      "39 round brilliant diamonds weighing a total of approximately 1.18 carats, with a 1.11 yellow radiant-cut diamond center stone set in platinum",
   });
 
   const allJewelries = await Jewelry.find();
@@ -1029,6 +1041,26 @@ async function populateDb() {
       jewelry: allJewelries[40],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[41],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[41],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[7],
+    },
+    {
+      jewelry: allJewelries[42],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[42],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[7],
     },
   ]);
 
@@ -1624,6 +1656,42 @@ async function populateDb() {
     {
       jewelry: allJewelries[40],
       size: allSizes[3],
+      quantity: 1,
+      price: 22000,
+    },
+    {
+      jewelry: allJewelries[41],
+      size: allSizes[6],
+      quantity: 1,
+      price: 54000,
+    },
+    {
+      jewelry: allJewelries[41],
+      size: allSizes[7],
+      quantity: 1,
+      price: 54000,
+    },
+    {
+      jewelry: allJewelries[41],
+      size: allSizes[8],
+      quantity: 1,
+      price: 54000,
+    },
+    {
+      jewelry: allJewelries[42],
+      size: allSizes[9],
+      quantity: 1,
+      price: 22000,
+    },
+    {
+      jewelry: allJewelries[42],
+      size: allSizes[10],
+      quantity: 1,
+      price: 22000,
+    },
+    {
+      jewelry: allJewelries[42],
+      size: allSizes[11],
       quantity: 1,
       price: 22000,
     },
