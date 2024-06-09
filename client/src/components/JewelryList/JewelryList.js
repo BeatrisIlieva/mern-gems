@@ -16,23 +16,6 @@ export const JewelryList = ({ categoryId }) => {
   let [loading, setLoading] = useState(true);
 
 
-  // const fetchData = async () => {
-  //   const skip = page * ITEMS_PER_PAGE;
-  //   const limit = ITEMS_PER_PAGE;
-
-  //   try {
-  //     const data = await jewelryService.findAll(categoryId, skip, limit);
-  //     if (page === 0) {
-  //       setJewelries(data);
-  //     } else {
-  //       setJewelries((prevItems) => [...prevItems, ...data]);
-  //     }
-
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // };
 
   const fetchData = async (isInitialFetch = false) => {
     setLoading(true);
