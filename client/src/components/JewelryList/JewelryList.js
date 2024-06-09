@@ -15,8 +15,6 @@ export const JewelryList = ({ categoryId }) => {
 
   let [loading, setLoading] = useState(true);
 
-
-
   const fetchData = async (isInitialFetch = false) => {
     setLoading(true);
     const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
@@ -39,10 +37,8 @@ export const JewelryList = ({ categoryId }) => {
             (item) => item._id === newItem._id
           );
           if (existingIndex === -1) {
-            // If item does not exist, add it
             updatedItems.push(newItem);
           } else {
-            // If item exists, update it
             updatedItems[existingIndex] = newItem;
           }
         });
@@ -98,19 +94,6 @@ export const JewelryList = ({ categoryId }) => {
     }, 600);
   };
 
-  // const handleLikedByUser = (_id) => {
-  //   setLoading(true);
-
-  //   setTimeout(() => {
-  //     setJewelries((prevJewelries) =>
-  //       prevJewelries.map((jewelry) =>
-  //         jewelry._id === _id ? { ...jewelry, isLikedByUser: prevJewelries.isLikedByUser } : jewelry
-  //       )
-  //     );
-  //     // fetchData();
-  //   }, 600);
-  // };
-
   return (
     <section className={styles["jewelries-box"]}>
       <div className={styles["jewelries-container"]}>
@@ -130,9 +113,7 @@ export const JewelryList = ({ categoryId }) => {
           <LoadMoreButton handleLoadMore={handleLoadMore} />
         )}
       </div>
-      {/* <div className={styles["load-more-button"]}>
-        <LoadMoreButton handleLoadMore={handleLoadMore} />
-      </div> */}
+
       {loading && <LoadingSpinner />}
     </section>
   );
