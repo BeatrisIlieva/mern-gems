@@ -2,8 +2,6 @@ const router = require("express").Router();
 const jewelryManager = require("../managers/jewelryManager");
 
 router.get("/by-category/:categoryId", async (req, res) => {
-
-
   let userId;
   if (req.user) {
     userId = req.user._id;
@@ -14,7 +12,7 @@ router.get("/by-category/:categoryId", async (req, res) => {
 
   const categoryId = Number(req.params.categoryId);
 
-  const data = { userId, categoryId}
+  const data = { userId, categoryId };
   try {
     const result = await jewelryManager.findAll(data);
 
