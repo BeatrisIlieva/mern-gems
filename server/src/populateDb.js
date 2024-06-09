@@ -648,7 +648,18 @@ async function populateDb() {
     description:
       "32 round brilliant diamonds weighing a total of approximately 5.80 carats, center stones are approximately 1.00 carats, set in platinum",
   });
-  
+
+  await Jewelry.create({
+    title: "Classics Diamond Necklace",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717913250/ReactGems/classics/earrings/classics_earrings_diamond_esdpcu010micw_e-1_jjyoso.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717913253/ReactGems/classics/earrings/classics_earrings_diamond_esdpcu010micw_e-2_catppz.webp",
+    category: allCategories[2],
+    jewelryCollection: allJewelryCollections[5],
+    description:
+      "130 marquise, pear-shaped and round brilliant diamonds weighing a total of approximately 24.80 carats, 28 radiant-cut diamond weighing a total of approximately 22.40 carats, with a 40.11 yellow radiant-cut diamond center stone, set in platinum",
+  });
 
   const allJewelries = await Jewelry.find();
 
@@ -1011,6 +1022,11 @@ async function populateDb() {
     },
     {
       jewelry: allJewelries[39],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[40],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
     },
@@ -1604,6 +1620,12 @@ async function populateDb() {
       size: allSizes[2],
       quantity: 1,
       price: 31000,
+    },
+    {
+      jewelry: allJewelries[40],
+      size: allSizes[3],
+      quantity: 1,
+      price: 22000,
     },
   ]);
 }
