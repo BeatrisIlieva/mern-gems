@@ -2,7 +2,6 @@ const router = require("express").Router();
 const jewelryCollectionManager = require("../managers/jewelryCollectionManager");
 
 router.get("/:jewelryCollectionId", async (req, res) => {
-
   let userId;
   if (req.user) {
     userId = req.user._id;

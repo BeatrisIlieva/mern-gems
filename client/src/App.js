@@ -7,7 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { WishlistProvider } from "./contexts/WishlistContext";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
-import {JewelryCollectionList} from "./components/JewelryCollectionList/JewelryCollectionList";
+import { JewelryCollectionList } from "./components/JewelryCollectionList/JewelryCollectionList";
 import { JewelryList } from "./components/JewelryList/JewelryList";
 import { Wishlist } from "./components/Wishlist/Wishlist";
 import { JewelryItem } from "./components/JewelryItem/JewelryItem";
@@ -26,12 +26,21 @@ function App() {
             <main className={styles["main"]}>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/forget-me-not" element={<JewelryCollectionList />} />
+                <Route
+                  path="/forget-me-not"
+                  element={<JewelryCollectionList />}
+                />
                 <Route path="/classics" element={<JewelryCollectionList />} />
                 <Route path="/pirouette" element={<JewelryCollectionList />} />
-                <Route path="/diamond-loop" element={<JewelryCollectionList />} />
+                <Route
+                  path="/diamond-loop"
+                  element={<JewelryCollectionList />}
+                />
                 <Route path="/sunflower" element={<JewelryCollectionList />} />
-                <Route path="/sparkling-cluster" element={<JewelryCollectionList />} />
+                <Route
+                  path="/sparkling-cluster"
+                  element={<JewelryCollectionList />}
+                />
                 <Route path="/bracelets" element={<JewelryList />} />
                 <Route path="/earrings" element={<JewelryList />} />
                 <Route path="/necklaces" element={<JewelryList />} />

@@ -2,12 +2,15 @@
   position: relative;
   width: 100%;
   border: 1px solid var(--border);
-  height: 110%;
-  background-color: var(--white-pink);
+  height: 126%;
+  z-index: 1;
+  background-color: var(--white);
 }
 
 .jewelry-card-thumbnail {
   aspect-ratio: 1 / 1;
+  margin: 28px;
+  background-color: var(--white-pink);
 }
 
 .jewelry-card-img {
@@ -18,8 +21,8 @@
 
 .heart {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0;
+  right: 0;
   color: var(--dark-pink);
   height: 20px;
   cursor: pointer;
@@ -36,4 +39,6 @@
   bottom: 12px;
   text-align: center;
   margin: 0px 20px;
+  font-family: var(--bold-italic-font-family);
+  /* font-size: var(--small-font-size); */
 }
