@@ -51,8 +51,8 @@ export const WishlistProvider = ({ children }) => {
     // fetchData,
     wishlistCount,
     wishlistCountGreaterThanZero,
-    setJewelries,
-    jewelries,
+    // setJewelries,
+    // jewelries,
   };
 
   return (

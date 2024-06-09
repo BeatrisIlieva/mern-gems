@@ -21,7 +21,7 @@ export const JewelryListItems = ({
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);
-  
+
   const handleLikeClick = (_id) => {
     if (isLikedByUser) {
       onRemoveFromWishlistClick(_id);
@@ -31,8 +31,6 @@ export const JewelryListItems = ({
     handleLikedByUser(_id);
   };
 
-
-
   return (
     <article
       onMouseEnter={() => handleMouseEnter(_id)}
@@ -40,7 +38,7 @@ export const JewelryListItems = ({
     >
       {isHovered && !isSoldOut ? (
         <JewelryCardHovered
-        _id={_id}
+          _id={_id}
           firstImageUrl={firstImageUrl}
           jewelryTitle={jewelryTitle}
           handleLikeClick={handleLikeClick}

@@ -1,54 +1,3 @@
-/* .load-more-button {
-  position: relative;
-  padding: 16px 48px;
-  font-size: var(--medium-font-size);
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  background: none;
-  color: var(--dark-golden);
-  box-shadow: 0 0 0 0.6px var(--white-golden);
-  outline: none;
-  letter-spacing: 1.2px;
-  width: 50%;
-  margin-top: 8%;
-}
-
-.load-more-button::before {
-  content: "";
-  position: absolute;
-  width: 0px;
-  height: 1px;
-  bottom: 0;
-  left: 50%;
-  background-color: var(--white-golden);
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.load-more-button:hover::before {
-  width: 100%;
-  left: 0;
-}
-
-.load-more-button-disabled {
-  padding: 16px 48px;
-  font-size: var(--medium-font-size);
-  border: none;
-  overflow: hidden;
-  background: none;
-  color: var(--gray);
-  box-shadow: 0 0 0 0.6px var(--border);
-  outline: none;
-  letter-spacing: 1.2px;
-  width: 50%;
-  margin-top: 8%;
-}
-
-.load-more-button:hover:not(.load-more-button-disabled)::before {
-    width: 100%;
-    left: 0;
-  } */
-
 .load-more-button {
   position: relative;
   padding: 16px 48px;
@@ -87,7 +36,7 @@
   border: none;
   overflow: hidden;
   background: none;
-  color: var(--gray);
+  color: var(--white-gray);
   box-shadow: 0 0 0 0.6px var(--border);
   outline: none;
   letter-spacing: 1.2px;

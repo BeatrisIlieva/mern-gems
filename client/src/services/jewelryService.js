@@ -9,8 +9,6 @@ export const jewelryServiceFactory = (token) => {
   return {
     findAll: (categoryId, skip, limit) =>
       request.get(`${baseUrl}/by-category/${categoryId}/${skip}/${limit}`),
-      // request.get(`${baseUrl}/by-category/&categoryId=${categoryId}&skip=${skip}&limit=${limit}`),
-      // request.get(`${baseUrl}/by-category/${categoryId}/${skip}/`),
 
     findOne: (jewelryId) => request.get(`${baseUrl}/by-jewelry/${jewelryId}`),
   };

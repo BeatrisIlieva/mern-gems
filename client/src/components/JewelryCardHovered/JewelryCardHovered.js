@@ -12,7 +12,6 @@ export const JewelryCardHovered = ({
   slugifiedJewelryTitle,
   isLikedByUser,
 }) => {
-  console.log(_id)
   return (
     <article className={styles["jewelry-card-hovered"]}>
       <FontAwesomeIcon
