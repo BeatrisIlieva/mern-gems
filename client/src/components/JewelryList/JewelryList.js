@@ -11,8 +11,9 @@ export const JewelryList = ({ categoryId }) => {
   const [jewelries, setJewelries] = useState([]);
   const jewelryService = useService(jewelryServiceFactory);
   const [page, setPage] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
 
-  let [loading, setLoading] = useState(false);
+  let [loading, setLoading] = useState(true);
 
   // useEffect(() => {
   //   jewelryService
@@ -23,31 +24,71 @@ export const JewelryList = ({ categoryId }) => {
   //     });
   // }, [categoryId]);
 
-  const fetchData = async () => {
-    const skip = page * ITEMS_PER_PAGE;
+  // const fetchData = async () => {
+  //   const skip = page * ITEMS_PER_PAGE;
+  //   const limit = ITEMS_PER_PAGE;
+
+  //   try {
+  //     const data = await jewelryService.findAll(categoryId, skip, limit);
+  //     if (page === 0) {
+  //       setJewelries(data);
+  //     } else {
+  //       setJewelries((prevItems) => [...prevItems, ...data]);
+  //     }
+
+  //     setLoading(false);
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // };
+
+  const fetchData = async (isInitialFetch = false) => {
+    setLoading(true);
+    const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
+    // const skip = page * ITEMS_PER_PAGE;
     const limit = ITEMS_PER_PAGE;
 
     try {
-      const data = await jewelryService.findAll(categoryId, skip, limit);
-      if (page === 0) {
-        setJewelries(data);
-      } else {
-        setJewelries((prevItems) => [...prevItems, ...data]);
-      }
+      const { data, totalCount } = await jewelryService.findAll(
+        categoryId,
+        skip,
+        limit
+      );
+      setTotalCount(totalCount);
+      // const data = await jewelryService.findAll(categoryId, skip, limit);
+      setJewelries((prevItems) => {
+        const updatedItems = [...prevItems];
 
-      setLoading(false);
+        data.forEach((newItem) => {
+          const existingIndex = updatedItems.findIndex(
+            (item) => item._id === newItem._id
+          );
+          if (existingIndex === -1) {
+            // If item does not exist, add it
+            updatedItems.push(newItem);
+          } else {
+            // If item exists, update it
+            updatedItems[existingIndex] = newItem;
+          }
+        });
+
+        return updatedItems;
+      });
     } catch (err) {
       console.log(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, [categoryId, page]);
+  }, [page]);
 
   useEffect(() => {
     setJewelries([]);
     setPage(0);
+    fetchData(true);
   }, [categoryId]);
 
   const handleLoadMore = () => {
@@ -68,13 +109,32 @@ export const JewelryList = ({ categoryId }) => {
     );
   };
 
-  const handleLikedByUser = () => {
+  const handleLikedByUser = (id) => {
     setLoading(true);
-
+    setJewelries((prevJewelries) =>
+      prevJewelries.map((jewelry) =>
+        jewelry._id === id
+          ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
+          : jewelry
+      )
+    );
     setTimeout(() => {
       fetchData();
     }, 600);
   };
+
+  // const handleLikedByUser = (_id) => {
+  //   setLoading(true);
+
+  //   setTimeout(() => {
+  //     setJewelries((prevJewelries) =>
+  //       prevJewelries.map((jewelry) =>
+  //         jewelry._id === _id ? { ...jewelry, isLikedByUser: prevJewelries.isLikedByUser } : jewelry
+  //       )
+  //     );
+  //     // fetchData();
+  //   }, 600);
+  // };
 
   return (
     <section className={styles["jewelries-box"]}>
@@ -85,11 +145,19 @@ export const JewelryList = ({ categoryId }) => {
             {...j}
             handleMouseEnter={handleMouseEnter}
             handleLikedByUser={handleLikedByUser}
+            setJewelries={setJewelries}
             handleMouseLeave={handleMouseLeave}
           />
         ))}
       </div>
-      <LoadMoreButton handleLoadMore={handleLoadMore} />
+      <div className={styles["load-more-button"]}>
+        {jewelries.length < totalCount && (
+          <LoadMoreButton handleLoadMore={handleLoadMore} />
+        )}
+      </div>
+      {/* <div className={styles["load-more-button"]}>
+        <LoadMoreButton handleLoadMore={handleLoadMore} />
+      </div> */}
       {loading && <LoadingSpinner />}
     </section>
   );

@@ -1,5 +1,5 @@
 .jewelries-box {
-  margin: 40px 214px 40px 214px;
+  margin: 40px 214px 0px 214px;
   position: relative;
 }
 
@@ -7,4 +7,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+}
+
+.load-more-button {
+  display: flex;
+  justify-content: center;
 }

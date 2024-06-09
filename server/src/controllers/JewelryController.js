@@ -20,8 +20,6 @@ router.get("/by-category/:categoryId/:skip/:limit", async (req, res) => {
 
   try {
     const result = await jewelryManager.findAll(data);
-    console.log("*************")
-    console.log(result)
 
     res.status(200).json(result);
   } catch (err) {

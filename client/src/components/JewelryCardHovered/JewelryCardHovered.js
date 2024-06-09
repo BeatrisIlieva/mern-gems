@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 export const JewelryCardHovered = ({
+  _id,
   firstImageUrl,
   jewelryTitle,
   handleLikeClick,
@@ -11,12 +12,13 @@ export const JewelryCardHovered = ({
   slugifiedJewelryTitle,
   isLikedByUser,
 }) => {
+  console.log(_id)
   return (
     <article className={styles["jewelry-card-hovered"]}>
       <FontAwesomeIcon
         icon={isLikedByUser ? solidHeart : regularHeart}
         className={styles["heart"]}
-        onClick={handleLikeClick}
+        onClick={() => handleLikeClick(_id)}
       />
 
       <div className={styles["jewelry-card-thumbnail"]}>
