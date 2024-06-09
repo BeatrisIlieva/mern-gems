@@ -2,11 +2,12 @@
   position: relative;
   width: 100%;
   border: 1px solid var(--border);
+  height: 110%;
+  background-color: var(--white-pink);
 }
 
 .jewelry-card-thumbnail {
   aspect-ratio: 1 / 1;
-  background-color: var(--white-pink);
 }
 
 .jewelry-card-img {
@@ -24,15 +25,15 @@
   cursor: pointer;
   padding: 8px;
 }
-
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .title {
   color: var(--gray);
   position: absolute;
-  display: inline-block;
   bottom: 12px;
   text-align: center;
-  word-wrap: break-word;
-  margin: 0 40px;
-  transform: translateX(-50%, -50%);
-  max-width: calc(100% - 80px);
+  margin: 0px 20px;
 }

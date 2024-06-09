@@ -28,7 +28,9 @@ export const JewelryCardHovered = ({
           />
         </Link>
       </div>
+      <div className={styles["title-container"]}>
       <h3 className={styles["title"]}>{jewelryTitle}</h3>
+      </div>
     </article>
   );
 };

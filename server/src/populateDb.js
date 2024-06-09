@@ -532,9 +532,9 @@ async function populateDb() {
   await Jewelry.create({
     title: "Sunflower Petite Sapphire and Diamond Earrings",
     firstImageUrl:
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757315/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_ruby_and_diamond_earppopetsf_e-1_jcjmuv.avif",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757313/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_sapphire_and_diamond_easppopetsf_e-1_pobx4d.avif",
     secondImageUrl:
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757316/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_ruby_and_diamond_earppopetsf_e-2_zjpfyh.avif",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757314/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_sapphire_and_diamond_easppopetsf_e-2_hc9guj.webp",
     category: allCategories[1],
     jewelryCollection: allJewelryCollections[1],
     description:
@@ -556,9 +556,9 @@ async function populateDb() {
   await Jewelry.create({
     title: "Sunflower Petite Sapphire and Diamond Pendant",
     firstImageUrl:
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1717909666/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_diamond_eadpna3dsf_e-1_ayoept.webp",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757318/ReactGems/jewelries/sunflower/necklaces/sunflower_petite_sapphire_and_diamond_pendant_pespnapetsf_e-1h_fftere.avif",
     secondImageUrl:
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1717909666/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_diamond_eadpna3dsf_e-2_m5uzvc.webp",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757318/ReactGems/jewelries/sunflower/necklaces/sunflower_petite_sapphire_and_diamond_pendant_pespnapetsf_e-2_q2wjzr.avif",
     category: allCategories[2],
     jewelryCollection: allJewelryCollections[1],
     description:
@@ -671,6 +671,18 @@ async function populateDb() {
     jewelryCollection: allJewelryCollections[5],
     description:
       "39 round brilliant diamonds weighing a total of approximately 1.18 carats, with a 1.11 yellow radiant-cut diamond center stone set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Emerald and Diamond Ring",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717916336/ReactGems/jewelries/sparkling-cluster/rings/emerald_and_diamond_ring_emerald_and_diamond_fremecddhwf_e-1_mladcq.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717916338/ReactGems/jewelries/sparkling-cluster/rings/emerald_and_diamond_ring_emerald_and_diamond_fremecddhwf_e-2_ckzo7o.webp",
+    category: allCategories[3],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "1 emerald-cut emerald weighing a total of approximately 0.53 carats and 139 round brilliant diamonds weighing a total of approximately 1.15 carats, set in platinum",
   });
 
   const allJewelries = await Jewelry.find();
@@ -1061,6 +1073,16 @@ async function populateDb() {
       jewelry: allJewelries[42],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[7],
+    },
+    {
+      jewelry: allJewelries[43],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[43],
+      stoneType: allStoneTypes[2],
+      stoneColor: allStoneColors[3],
     },
   ]);
 
@@ -1694,6 +1716,24 @@ async function populateDb() {
       size: allSizes[11],
       quantity: 1,
       price: 22000,
+    },
+    {
+      jewelry: allJewelries[43],
+      size: allSizes[9],
+      quantity: 1,
+      price: 13000,
+    },
+    {
+      jewelry: allJewelries[43],
+      size: allSizes[10],
+      quantity: 1,
+      price: 13000,
+    },
+    {
+      jewelry: allJewelries[43],
+      size: allSizes[11],
+      quantity: 1,
+      price: 13000,
     },
   ]);
 }
