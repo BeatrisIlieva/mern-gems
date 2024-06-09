@@ -1,0 +1,10 @@
+.jewelries-box {
+  margin: 40px 214px 40px 214px;
+  position: relative;
+}
+
+.jewelries-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}

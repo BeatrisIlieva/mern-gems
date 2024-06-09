@@ -5,7 +5,7 @@ import { VerticalLine } from "../VerticalLine/VerticalLine";
 export const Home = () => {
   return (
     <section className={styles["hero"]} data-testid="hero-section">
-      <Link to="/" className={styles["no-decoration"]}>
+      <Link to="/forget-me-not" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="forget-me-not-title">
@@ -38,22 +38,19 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/" className={styles["no-decoration"]}>
+      <Link to="/classics" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]} data-testid="forget-me-not-title">
+            <h2 className={styles["title"]} data-testid="classics-title">
               Classics Collection
             </h2>
-            <p
-              className={styles["paragraph"]}
-              data-testid="forget-me-not-paragraph"
-            >
+            <p className={styles["paragraph"]} data-testid="classics-paragraph">
               Elegant designs that highlight the innate brilliance of incredible
               gems.
             </p>
             <button
               className={styles["animated-button"]}
-              data-testid="forget-me-not-button"
+              data-testid="classics-button"
             >
               Discover
             </button>
@@ -61,7 +58,7 @@ export const Home = () => {
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
-              data-testid="forget-me-not-image"
+              data-testid="classics-image"
               src={
                 "https://res.cloudinary.com/deztgvefu/image/upload/v1717917440/collections/herolarged_l2_bri24_sp_wdj_hero_dl66ao.webp"
               }
@@ -71,7 +68,7 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/" className={styles["no-decoration"]}>
+      <Link to="/pirouette" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="pirouette-title">
@@ -106,7 +103,7 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/" className={styles["no-decoration"]}>
+      <Link to="/diamond-loop" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="diamond-loop-title">
@@ -140,7 +137,7 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/" className={styles["no-decoration"]}>
+      <Link to="/sunflower" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="sunflower-title">
@@ -172,7 +169,7 @@ export const Home = () => {
         </div>
       </Link>
       <VerticalLine />
-      <Link to="/" className={styles["no-decoration"]}>
+      <Link to="/sparkling-cluster" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
             <h2

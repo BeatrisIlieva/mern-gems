@@ -12,6 +12,6 @@ router.use("/user-personal-information", userPersonalInformationController);
 router.use("/user-address-information", userAddressInformationController);
 router.use("/jewelry", jewelryController);
 router.use("/wishlist", wishlistController);
-router.use("/jewelry-collection", jewelryCollectionController);
+router.use("/collection", jewelryCollectionController);
 
 module.exports = router;
