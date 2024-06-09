@@ -3,8 +3,8 @@ const jewelryManager = require("../managers/jewelryManager");
 const { SKIP, LIMIT } = require("../constants/pagination");
 
 router.get("/by-category/:categoryId", async (req, res) => {
-  const skip = req.query.skip ? parseInt(req.query.skip, 10) : 0;
-  const limit = req.query.limit ? parseInt(req.query.limit, 10) : 6;
+  const skip = req.query.skip ? parseInt(req.query.skip, 10) : SKIP;
+  const limit = req.query.limit ? parseInt(req.query.limit, 10) : LIMIT;
 
   let userId;
   if (req.user) {
@@ -16,7 +16,8 @@ router.get("/by-category/:categoryId", async (req, res) => {
 
   const categoryId = Number(req.params.categoryId);
 
-  const data = { userId, categoryId, skipInt, limitInt };
+  const data = { userId, categoryId, skip, limit };
+
   try {
     const result = await jewelryManager.findAll(data);
 

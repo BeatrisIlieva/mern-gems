@@ -135,6 +135,12 @@ exports.findAll = async (data) => {
         _id: 1,
       },
     },
+    {
+      $skip: data.skip, 
+    },
+    {
+      $limit: data.limit, 
+    },
   ];
   const result = await Jewelry.aggregate(query);
 
