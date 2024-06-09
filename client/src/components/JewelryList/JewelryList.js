@@ -6,7 +6,8 @@ import { CATEGORIES_BY_NAMES } from "../../constants/categories";
 import { useLocation } from "react-router-dom";
 import styles from "./JewelryList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import { SKIP, LIMIT } from "../../constants/pagination";
+import { ITEMS_PER_PAGE } from "../../constants/pagination";
+import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 
 export const JewelryList = () => {
   const [jewelries, setJewelries] = useState([]);
@@ -29,9 +30,13 @@ export const JewelryList = () => {
   // }, [categoryId]);
 
   const fetchData = async () => {
+    const skip = page * ITEMS_PER_PAGE;
+    const limit = ITEMS_PER_PAGE;
+
     try {
-      const data = await jewelryService.findAll(categoryId);
-      setJewelries(data);
+      const data = await jewelryService.findAll(categoryId, skip, limit);
+      setJewelries((prevItems) => [...prevItems, ...data]);
+      // setJewelries(data);
       setLoading(false);
     } catch (err) {
       console.log(err.message);
@@ -40,7 +45,11 @@ export const JewelryList = () => {
 
   useEffect(() => {
     fetchData();
-  }, [categoryId]);
+  }, [categoryId, page]);
+
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   const handleMouseEnter = (_id) => {
     setJewelries((state) =>
@@ -77,6 +86,8 @@ export const JewelryList = () => {
           />
         ))}
       </div>
+      <LoadMoreButton handleLoadMore={handleLoadMore}/>
+      // <button onClick={handleLoadMore}>Load More</button>
       {loading && <LoadingSpinner />}
     </section>
   );

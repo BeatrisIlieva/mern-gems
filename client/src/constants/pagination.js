@@ -1,2 +1,1 @@
-export const SKIP = 0;
-export const LIMIT = 8;
+export const ITEMS_PER_PAGE = 8;
