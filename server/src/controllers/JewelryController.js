@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const jewelryManager = require("../managers/jewelryManager");
+const { SKIP, LIMIT } = require("../constants/pagination");
 
 router.get("/by-category/:categoryId", async (req, res) => {
-  const skip = req.query.skip ? parseInt(req.query.skip, 10) : 0; 
-  const limit = req.query.limit ? parseInt(req.query.limit, 10) : 6; 
+  const skip = req.query.skip ? parseInt(req.query.skip, 10) : 0;
+  const limit = req.query.limit ? parseInt(req.query.limit, 10) : 6;
 
   let userId;
   if (req.user) {
