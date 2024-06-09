@@ -1,5 +1,5 @@
 .wishlist-box {
-  margin: 40px 24px 40px 24px;
+  margin: 40px 18px 40px 18px;
   position: relative;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .wish-list-card {
-  height: 67vh;
+  height: 78vh;
   line-height: 1.5;
   position: relative;
 }

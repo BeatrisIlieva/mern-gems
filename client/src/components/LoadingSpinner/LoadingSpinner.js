@@ -10,7 +10,7 @@ export const LoadingSpinner = () => {
             alt="logo"
           />
         </div>
-        <h1 className={styles["title"]}>Loading</h1>
+        <h1 className={styles["title"]}>Loading... !</h1>
       </div>
     </div>
   );

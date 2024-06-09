@@ -393,6 +393,90 @@ async function populateDb() {
       "1 round brilliant and 8 marquise diamonds weighing a total of approximately 2.80 carats, set in platinum",
   });
 
+  await Jewelry.create({
+    title: "Sparkling Cluster Diamond Bracelet",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757312/ReactGems/jewelries/sparkling-cluster/bracelets/round_brilliant_diamond_tennis_bracelet_brdpsrp40te_e-1_ifob2j.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757313/ReactGems/jewelries/sparkling-cluster/bracelets/round_brilliant_diamond_tennis_bracelet_brdpsrp40te_e-2_q4jxzk.avif",
+    category: allCategories[0],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "55 round brilliant and 4 pear-shaped diamonds weighing a total of approximately 10.17 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sparkling Cluster Sapphire and Diamond Earrings",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757306/ReactGems/jewelries/sparkling-cluster/earrings/sparkling_cluster_sap_aqua_and_diamond_earrings_easaqpclrfspc_e-1_d6viea.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757307/ReactGems/jewelries/sparkling-cluster/earrings/sparkling_cluster_sap_aqua_and_diamond_earrings_easaqpclrfspc_e-2_xcn9vw.webp",
+    category: allCategories[1],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "2 round and 2 pear-shaped sapphires weighing a total of approximately 1.90 carats, 4 round aquamarines weighing a total of approximately 1.00 carat, and 12 round brilliant and pear-shaped diamonds weighing a total of approximately 1.79 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sparkling Cluster Emerald and Diamond Earrings",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717759049/ReactGems/jewelries/sparkling-cluster/earrings/berry_cluster_earrings_emerald_and_diamond_eaepclrfber_568120_e-1_nj0ys6.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717759052/ReactGems/jewelries/sparkling-cluster/earrings/berry_cluster_earrings_emerald_and_diamond_eaepclrfber_568120_e-2_vnundp.webp",
+    category: allCategories[1],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "10 pear-shaped diamonds weighing a total of approximately 3.35 carats with 6 round emeralds weighing a total of approximately 2.01 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sparkling Cluster Diamond Earrings",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757306/ReactGems/jewelries/sparkling-cluster/earrings/sparkling_cluster_earrings_diamond_eadppsdrspc_e-1_ccnl2i.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757307/ReactGems/jewelries/sparkling-cluster/earrings/sparkling_cluster_earrings_diamond_eadppsdrspc_e-2_keemcf.webp",
+    category: allCategories[1],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "16 round brilliant and 4 pear-shaped diamonds weighing a total of 4.27 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sparkling Cluster Emerald and Diamond Pendant",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717759023/ReactGems/jewelries/sparkling-cluster/necklaces/berry_cluster_pendant_emerald_and_diamond_peepclrfber_e-1_sqg1sx.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717759026/ReactGems/jewelries/sparkling-cluster/necklaces/berry_cluster_pendant_emerald_and_diamond_peepclrfber_e-2_acdoqe.avif",
+    category: allCategories[2],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "5 pear-shaped diamonds weighing a total of approximately 2.01 carats with 3 round emeralds weighing a total of approximately 1.39 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sparkling Cluster Sapphire and Diamond Necklace",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757308/ReactGems/jewelries/sparkling-cluster/necklaces/sparkling_cluster_sap_aqua_and_diamond_necklace_nksaqpclrfspc_e-1_sfpfaw.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757309/ReactGems/jewelries/sparkling-cluster/necklaces/sparkling_cluster_sap_aqua_and_diamond_necklace_nksaqpclrfspc_e-2_vea6um.webp",
+    category: allCategories[2],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "25 round and pear-shaped sapphires weighing a total of approximately 4.45 carats, 23 round aquamarines weighing a total of approximately 2.80 carats, and 130 round brilliant and pear-shaped diamonds weighing a total of approximately 8.73 carats, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sparkling Cluster Diamond Necklace",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757308/ReactGems/jewelries/sparkling-cluster/necklaces/sparkling_cluster_necklace_diamond_nkdpclrfspc_e-1_ieghak.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757309/ReactGems/jewelries/sparkling-cluster/necklaces/sparkling_cluster_necklace_diamond_nkdpclrfspc_e-2_joo3t3.webp",
+    category: allCategories[2],
+    jewelryCollection: allJewelryCollections[2],
+    description:
+      "148 round brilliant and 3 pear-shaped diamonds weighing a total of approximately 15.18 carats, set in platinum",
+  });
+
   const allJewelries = await Jewelry.find();
 
   await JewelryStones.insertMany([
@@ -583,6 +667,71 @@ async function populateDb() {
     },
     {
       jewelry: allJewelries[19],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[20],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[21],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[21],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[2],
+    },
+    {
+      jewelry: allJewelries[21],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[4],
+    },
+    {
+      jewelry: allJewelries[21],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[22],
+      stoneType: allStoneTypes[2],
+      stoneColor: allStoneColors[3],
+    },
+    {
+      jewelry: allJewelries[23],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[24],
+      stoneType: allStoneTypes[2],
+      stoneColor: allStoneColors[3],
+    },
+    {
+      jewelry: allJewelries[24],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[25],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[25],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[0],
+    },
+    {
+      jewelry: allJewelries[25],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[2],
+    },
+    {
+      jewelry: allJewelries[26],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[6],
     },
@@ -888,6 +1037,96 @@ async function populateDb() {
       size: allSizes[11],
       quantity: 1,
       price: 14000,
+    },
+    {
+      jewelry: allJewelries[20],
+      size: allSizes[0],
+      quantity: 1,
+      price: 14000,
+    },
+    {
+      jewelry: allJewelries[20],
+      size: allSizes[1],
+      quantity: 1,
+      price: 37000,
+    },
+    {
+      jewelry: allJewelries[20],
+      size: allSizes[2],
+      quantity: 1,
+      price: 37000,
+    },
+    {
+      jewelry: allJewelries[21],
+      size: allSizes[5],
+      quantity: 1,
+      price: 38000,
+    },
+    {
+      jewelry: allJewelries[22],
+      size: allSizes[4],
+      quantity: 1,
+      price: 31000,
+    },
+    {
+      jewelry: allJewelries[23],
+      size: allSizes[4],
+      quantity: 1,
+      price: 31000,
+    },
+    {
+      jewelry: allJewelries[24],
+      size: allSizes[6],
+      quantity: 1,
+      price: 44000,
+    },
+    {
+      jewelry: allJewelries[24],
+      size: allSizes[7],
+      quantity: 1,
+      price: 44000,
+    },
+    {
+      jewelry: allJewelries[24],
+      size: allSizes[8],
+      quantity: 1,
+      price: 47000,
+    },
+    {
+      jewelry: allJewelries[25],
+      size: allSizes[6],
+      quantity: 1,
+      price: 47000,
+    },
+    {
+      jewelry: allJewelries[25],
+      size: allSizes[7],
+      quantity: 1,
+      price: 47000,
+    },
+    {
+      jewelry: allJewelries[25],
+      size: allSizes[8],
+      quantity: 1,
+      price: 47000,
+    },
+    {
+      jewelry: allJewelries[26],
+      size: allSizes[6],
+      quantity: 1,
+      price: 46000,
+    },
+    {
+      jewelry: allJewelries[26],
+      size: allSizes[7],
+      quantity: 1,
+      price: 46000,
+    },
+    {
+      jewelry: allJewelries[26],
+      size: allSizes[8],
+      quantity: 1,
+      price: 46000,
     },
   ]);
 }
