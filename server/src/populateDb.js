@@ -525,6 +525,30 @@ async function populateDb() {
       "16 round brilliant diamonds weighing a total of approximately 0.90 carats with round ruby center stones of approximately 0.44 carats each, set in platinum",
   });
 
+  await Jewelry.create({
+    title: "Sunflower Petite Sapphire and Diamond Earrings",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757315/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_ruby_and_diamond_earppopetsf_e-1_jcjmuv.avif",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717757316/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_ruby_and_diamond_earppopetsf_e-2_zjpfyh.avif",
+    category: allCategories[1],
+    jewelryCollection: allJewelryCollections[1],
+    description:
+      "16 round brilliant diamonds weighing a total of approximately 0.90 carats with round sapphire center stones of approximately 0.44 carats each, set in platinum",
+  });
+
+  await Jewelry.create({
+    title: "Sunflower Triple Drop Earrings",
+    firstImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717909666/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_diamond_eadpna3dsf_e-1_ayoept.webp",
+    secondImageUrl:
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1717909666/ReactGems/jewelries/sunflower/earrings/sunflower_earrings_diamond_eadpna3dsf_e-2_m5uzvc.webp",
+    category: allCategories[1],
+    jewelryCollection: allJewelryCollections[1],
+    description:
+      "54 round brilliant diamonds weighing a total of approximately 1.98 carats, set in platinum",
+  });
+
   const allJewelries = await Jewelry.find();
 
   await JewelryStones.insertMany([
@@ -818,6 +842,21 @@ async function populateDb() {
       jewelry: allJewelries[30],
       stoneType: allStoneTypes[3],
       stoneColor: allStoneColors[5],
+    },
+    {
+      jewelry: allJewelries[31],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
+    },
+    {
+      jewelry: allJewelries[31],
+      stoneType: allStoneTypes[4],
+      stoneColor: allStoneColors[2],
+    },
+    {
+      jewelry: allJewelries[32],
+      stoneType: allStoneTypes[1],
+      stoneColor: allStoneColors[6],
     },
   ]);
 
@@ -1271,6 +1310,18 @@ async function populateDb() {
       size: allSizes[3],
       quantity: 1,
       price: 21000,
+    },
+    {
+      jewelry: allJewelries[31],
+      size: allSizes[3],
+      quantity: 1,
+      price: 21000,
+    },
+    {
+      jewelry: allJewelries[32],
+      size: allSizes[5],
+      quantity: 1,
+      price: 29000,
     },
   ]);
 }
