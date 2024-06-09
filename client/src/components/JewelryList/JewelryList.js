@@ -46,6 +46,7 @@ export const JewelryList = ({ categoryId }) => {
   }, [categoryId, page]);
 
   useEffect(() => {
+    setJewelries([]);
     setPage(0);
   }, [categoryId]);
 
