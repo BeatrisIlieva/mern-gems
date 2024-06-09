@@ -1,4 +1,4 @@
-export const CATEGORIES_BY_NAMES = {
+export const COLLECTIONS_BY_NAMES = {
   "diamond-loop": 1,
   sunflower: 2,
   "sparkling-cluster": 3,

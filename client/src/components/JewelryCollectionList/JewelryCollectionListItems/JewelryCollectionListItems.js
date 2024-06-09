@@ -4,7 +4,7 @@ import { JewelryCard } from "../../JewelryCard/JewelryCard";
 import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
 import { slugify } from "../../../utils/slugify";
 
-export const JewelryListItems = ({
+export const JewelryCollectionListItems = ({
   _id,
   firstImageUrl,
   jewelryTitle,

@@ -1,6 +1,6 @@
-const JewelryCollection = require("../models/JewelryCollection");
+const Jewelry = require("../models/Jewelry");
 
-exports.findAll = async (jewelryCollectionId) => {
+exports.findAll = async (data) => {
   const query = [
     {
       $lookup: {
@@ -19,7 +19,9 @@ exports.findAll = async (jewelryCollectionId) => {
       },
     },
     {
-      jewelryCollection: jewelryCollectionId,
+      $match: {
+        jewelryCollection: data.jewelryCollectionId,
+      },
     },
     {
       $lookup: {
@@ -134,7 +136,9 @@ exports.findAll = async (jewelryCollectionId) => {
       },
     },
   ];
-  const result = await JewelryCollection.aggregate(query);
+
+  const result = await Jewelry.aggregate(query);
+  console.log(result);
 
   return result;
 };

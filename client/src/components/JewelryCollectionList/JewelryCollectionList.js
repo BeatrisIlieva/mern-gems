@@ -2,24 +2,24 @@ import { JewelryCollectionListItems } from "./JewelryCollectionListItems/Jewelry
 import { useEffect, useState } from "react";
 import { jewelryCollectionServiceFactory } from "../../services/jewelryCollectionService";
 import { useService } from "../../hooks/useService";
-import { CATEGORIES_BY_NAMES } from "../../constants/categories";
+import { COLLECTIONS_BY_NAMES } from "../../constants/collections";
 import { useLocation } from "react-router-dom";
 import styles from "./JewelryCollectionList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
-export const JewelryList = () => {
+export const JewelryCollectionList = () => {
   const [jewelries, setJewelries] = useState([]);
   const jewelryCollectionService = useService(jewelryCollectionServiceFactory);
   const location = useLocation();
   const path = location.pathname;
   const collectionTitle = path.substring(1);
-  const collectionId = CATEGORIES_BY_NAMES[categoryTitle];
+  const collectionId = COLLECTIONS_BY_NAMES[collectionTitle];
 
   let [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     try {
-      const data = await jewelryCollectionService.findAll(categoryId);
+      const data = await jewelryCollectionService.findAll(collectionId);
       setJewelries(data);
       setLoading(false);
     } catch (err) {
@@ -29,7 +29,7 @@ export const JewelryList = () => {
 
   useEffect(() => {
     fetchData();
-  }, [categoryId]);
+  }, [collectionId]);
 
   const handleMouseEnter = (_id) => {
     setJewelries((state) =>
@@ -57,7 +57,7 @@ export const JewelryList = () => {
     <section className={styles["jewelries-box"]}>
       <div className={styles["jewelries-container"]}>
         {jewelries.map((j) => (
-          <JewelryListItems
+          <JewelryCollectionListItems
             key={j._id}
             {...j}
             handleMouseEnter={handleMouseEnter}
