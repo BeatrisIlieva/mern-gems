@@ -59,29 +59,31 @@ export const Wishlist = () => {
           )}
         </div>
       </article>
-      <section className={styles["wishlist-box"]}>
-        <div className={styles["wishlist-container"]}>
-          {jewelries.map((j) => (
-            <WishlistItems
-              key={j._id}
-              {...j}
-              handleMouseEnter={handleMouseEnter}
-              handleLikedByUser={handleLikedByUser}
-              handleMouseLeave={handleMouseLeave}
-            />
-          ))}
-        </div>
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <div className={styles["load-more-button"]}>
-            <LoadMoreButton
-              handleLoadMore={handleLoadMore}
-              loadMoreDisabled={loadMoreDisabled}
-            />
+      {wishlistCount > 0 && (
+        <section className={styles["wishlist-box"]}>
+          <div className={styles["wishlist-container"]}>
+            {jewelries.map((j) => (
+              <WishlistItems
+                key={j._id}
+                {...j}
+                handleMouseEnter={handleMouseEnter}
+                handleLikedByUser={handleLikedByUser}
+                handleMouseLeave={handleMouseLeave}
+              />
+            ))}
           </div>
-        )}
-      </section>
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <div className={styles["load-more-button"]}>
+              <LoadMoreButton
+                handleLoadMore={handleLoadMore}
+                loadMoreDisabled={loadMoreDisabled}
+              />
+            </div>
+          )}
+        </section>
+      )}
     </>
   );
 };
