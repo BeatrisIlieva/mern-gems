@@ -3,24 +3,16 @@ import styles from "./JewelryList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef  } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
-import { Dropdown } from "../Dropdown/Dropdown";
 
-const MENU_LABELS = {
+const MENU_OPTIONS = {
   Collection: "collection",
   StoneType: "stoneType",
   StoneColor: "stoneColor",
-  NewToOld: "New To Old",
-};
-
-const MENU_SUB_LABELS = {
-  Collection: "collection",
-  StoneType: "stoneType",
-  StoneColor: "stoneColor",
-  NewToOld: "Sort By:",
+  NewToReactGems: "newToReactGems",
 };
 
 const SORT_BY_OPTIONS = {
@@ -46,7 +38,28 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setPage,
   } = useJewelryList(serviceFactory, entityId);
 
-  const [sortByNewToOld, setSortByNewToOld] = useState(true);
+  const menuRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setShowSortByMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const [selectedMenu, setSelectedMenu] = useState([]);
+
+  const [showSortByMenu, setShowSortByMenu] = useState(false);
+
+  const [sortByNewToReactGems, setSortByNewToReactGems] = useState(true);
   const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
   const [sortByHighToLow, setSortByHighToLow] = useState(false);
 
@@ -67,23 +80,17 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     fetchData();
   };
 
-  const clickSortByNewToOldHandler = () => {
-    setSortByNewToOld(true);
-    setSortByLowToHigh(false);
-    setSortByHighToLow(false);
-  };
 
-  const clickSortByLowToHighHandler = () => {
-    setSortByNewToOld(false);
-    setSortByLowToHigh(true);
-    setSortByHighToLow(false);
-  };
 
-  const clickSortByHighToLowHandler = () => {
-    setSortByNewToOld(false);
-    setSortByLowToHigh(false);
-    setSortByHighToLow(true);
-  };
+  const clickSortByMenuHandler = () => {};
+
+  const blurSortByMenuHandler = () => {};
+
+  const clickSortByNewToReactGemsHandler = () => {};
+
+  const clickSortByLowToHighHandler = () => {};
+
+  const clickSortByHighToLowHandler = () => {};
 
   return (
     <section className={styles["jewelries-box"]}>
@@ -121,30 +128,32 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
           </ul>
         </div>
         <div className={styles["sort-by-container"]}>
-          <Dropdown
-            label={MENU_LABELS.NewToOld}
-            subLabel={MENU_SUB_LABELS.NewToOld}
+          <div>Sort By:</div>
+          <div
+            onClick={() => setSelectedMenu(MENU_OPTIONS.NewToReactGems)}
+            ref={menuRef}
+            onBlur={() => setSelectedMenu(null)}
           >
+            New to React Gems{" "}
+            <FontAwesomeIcon icon={faChevronDown} className={styles["heart"]} />
+          </div>
+          {selectedMenu === MENU_OPTIONS.NewToReactGems && (
             <ul className={styles["sort-list"]} role="list">
               <li className={styles["filter-item"]}>
-                <button
-                  className={styles["filter-button"]}
-                  onClick={clickSortByNewToOldHandler}
-                >
+                <button className={styles["filter-button"]}>
                   <FontAwesomeIcon
                     icon={faCircle}
                     className={`${styles["circle"]} ${
-                      sortByNewToOld === true ? styles["circle-selected"] : ""
+                      sortByNewToReactGems === true
+                        ? styles["circle-selected"]
+                        : ""
                     }`.trim()}
                   />
-                  New To Old
+                  New to React Gems
                 </button>
               </li>
               <li className={styles["filter-item"]}>
-                <button
-                  className={styles["filter-button"]}
-                  onClick={clickSortByLowToHighHandler}
-                >
+                <button className={styles["filter-button"]}>
                   <FontAwesomeIcon
                     icon={faCircle}
                     className={`${styles["circle"]} ${
@@ -155,10 +164,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
                 </button>
               </li>
               <li className={styles["filter-item"]}>
-                <button
-                  className={styles["filter-button"]}
-                  onClick={clickSortByHighToLowHandler}
-                >
+                <button className={styles["filter-button"]}>
                   <FontAwesomeIcon
                     icon={faCircle}
                     className={`${styles["circle"]} ${
@@ -169,8 +175,9 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
                 </button>
               </li>
             </ul>
-          </Dropdown>
+          )}
         </div>
+        {/* </div> */}
       </div>
       <div className={styles["jewelries-container"]}>
         {jewelries.map((j) => (

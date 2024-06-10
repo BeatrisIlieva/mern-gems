@@ -7,7 +7,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { WishlistProvider } from "./contexts/WishlistContext";
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
-import { JewelryCollectionList } from "./components/JewelryCollectionList/JewelryCollectionList";
 import { JewelryList } from "./components/JewelryList/JewelryList";
 import { Wishlist } from "./components/Wishlist/Wishlist";
 import { JewelryItem } from "./components/JewelryItem/JewelryItem";
@@ -17,6 +16,8 @@ import { Account } from "./components/User/Account/Account";
 import { Footer } from "./components/Footer/Footer";
 import { CATEGORIES_BY_NAMES } from "./constants/categories";
 import { COLLECTIONS_BY_NAMES } from "./constants/collections";
+import { jewelryCollectionServiceFactory } from "./services/jewelryCollectionService";
+import { jewelryServiceFactory } from "./services/jewelryService";
 
 function App() {
   return (
@@ -31,48 +32,54 @@ function App() {
                 <Route
                   path="/forget-me-not"
                   element={
-                    <JewelryCollectionList
-                      collectionId={COLLECTIONS_BY_NAMES["forget-me-not"]}
+                    <JewelryList
+                      entityId={COLLECTIONS_BY_NAMES["forget-me-not"]}
+                      serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
                 />
                 <Route
                   path="/classics"
                   element={
-                    <JewelryCollectionList
-                      collectionId={COLLECTIONS_BY_NAMES["classics"]}
+                    <JewelryList
+                      entityId={COLLECTIONS_BY_NAMES["classics"]}
+                      serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
                 />
                 <Route
                   path="/pirouette"
                   element={
-                    <JewelryCollectionList
-                      collectionId={COLLECTIONS_BY_NAMES["pirouette"]}
+                    <JewelryList
+                      entityId={COLLECTIONS_BY_NAMES["pirouette"]}
+                      serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
                 />
                 <Route
                   path="/diamond-loop"
                   element={
-                    <JewelryCollectionList
-                      collectionId={COLLECTIONS_BY_NAMES["diamond-loop"]}
+                    <JewelryList
+                      entityId={COLLECTIONS_BY_NAMES["diamond-loop"]}
+                      serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
                 />
                 <Route
                   path="/sunflower"
                   element={
-                    <JewelryCollectionList
-                      collectionId={COLLECTIONS_BY_NAMES["sunflower"]}
+                    <JewelryList
+                      entityId={COLLECTIONS_BY_NAMES["sunflower"]}
+                      serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
                 />
                 <Route
                   path="/sparkling-cluster"
                   element={
-                    <JewelryCollectionList
-                      collectionId={COLLECTIONS_BY_NAMES["sparkling-cluster"]}
+                    <JewelryList
+                      entityId={COLLECTIONS_BY_NAMES["sparkling-cluster"]}
+                      serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
                 />
@@ -80,28 +87,36 @@ function App() {
                   path="/bracelets"
                   element={
                     <JewelryList
-                      categoryId={CATEGORIES_BY_NAMES["bracelets"]}
+                      entityId={CATEGORIES_BY_NAMES["bracelets"]}
+                      serviceFactory={jewelryServiceFactory}
                     />
                   }
                 />
                 <Route
                   path="/earrings"
                   element={
-                    <JewelryList categoryId={CATEGORIES_BY_NAMES["earrings"]} />
+                    <JewelryList
+                      entityId={CATEGORIES_BY_NAMES["earrings"]}
+                      serviceFactory={jewelryServiceFactory}
+                    />
                   }
                 />
                 <Route
                   path="/necklaces"
                   element={
                     <JewelryList
-                      categoryId={CATEGORIES_BY_NAMES["necklaces"]}
+                      entityId={CATEGORIES_BY_NAMES["necklaces"]}
+                      serviceFactory={jewelryServiceFactory}
                     />
                   }
                 />
                 <Route
                   path="/rings"
                   element={
-                    <JewelryList categoryId={CATEGORIES_BY_NAMES["rings"]} />
+                    <JewelryList
+                      entityId={CATEGORIES_BY_NAMES["rings"]}
+                      serviceFactory={jewelryServiceFactory}
+                    />
                   }
                 />
                 <Route path="/wishlist" element={<Wishlist />} />
