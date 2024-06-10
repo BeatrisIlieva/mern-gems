@@ -16,20 +16,13 @@ export const Wishlist = () => {
     handleLoadMore,
     handleMouseEnter,
     handleMouseLeave,
-    // handleLikedByUser,
     fetchData,
-    setLoading,
   } = useJewelryList(wishlistServiceFactory);
 
-  console.log(loadMoreDisabled);
-
-  // const [jewelries, setJewelries] = useState([]);
 
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
   useEffect(() => {
-    // setJewelries([]);
-    // setPage(0);
     fetchData(true);
   }, [wishlistCount]);
 
