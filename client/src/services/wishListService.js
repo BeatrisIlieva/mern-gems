@@ -7,9 +7,10 @@ export const wishlistServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
-    findAll: (id = null, skip, limit) => request.get(`${baseUrl}/find-all/${skip}/${limit}`),
-    findCount: () => request.get(`${baseUrl}/find-count`),
+    findAll: (id = null, skip, limit) =>
+      request.get(`${baseUrl}/find-all/${skip}/${limit}`),
 
+    findCount: () => request.get(`${baseUrl}/find-count`),
 
     create: (jewelryId) => request.post(`${baseUrl}/create/${jewelryId}`),
 

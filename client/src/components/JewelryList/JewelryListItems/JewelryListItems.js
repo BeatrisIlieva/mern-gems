@@ -15,7 +15,8 @@ export const JewelryListItems = ({
   handleMouseLeave,
   handleLikedByUser,
 }) => {
-  const { onAddToWishlistClick, onRemoveFromWishlistClick } = useWishlistContext();
+  const { onAddToWishlistClick, onRemoveFromWishlistClick } =
+    useWishlistContext();
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);

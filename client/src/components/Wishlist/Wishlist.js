@@ -29,6 +29,7 @@ export const Wishlist = () => {
     setJewelries((prevJewelries) =>
       prevJewelries.filter((jewelry) => !jewelry._id)
     );
+    fetchData(false);
   };
 
   return (

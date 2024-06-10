@@ -19,7 +19,7 @@ router.get("/find-all/:skip/:limit", async (req, res) => {
   try {
     const result = await wishlistManager.findAll(data);
 
-    console.log(result)
+    console.log(result);
 
     res.status(200).json(result);
   } catch (err) {
