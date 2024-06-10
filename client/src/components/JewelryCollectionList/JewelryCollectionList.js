@@ -9,21 +9,6 @@ import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 export const JewelryCollectionList = ({ collectionId }) => {
 
 
-
-  // const handleMouseLeave = (_id) => {
-  //   setJewelries((state) =>
-  //     state.map((j) => (j._id === _id ? { ...j, isHovered: false } : j))
-  //   );
-  // };
-
-  // const handleLikedByUser = () => {
-  //   setLoading(true);
-
-  //   setTimeout(() => {
-  //     fetchData();
-  //   }, 600);
-  // };
-
   const {
     setJewelries,
     jewelries,
