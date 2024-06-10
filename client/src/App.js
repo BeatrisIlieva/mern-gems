@@ -16,6 +16,7 @@ import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
 import { Footer } from "./components/Footer/Footer";
 import { CATEGORIES_BY_NAMES } from "./constants/categories";
+import { COLLECTIONS_BY_NAMES } from "./constants/collections";
 
 function App() {
   return (
@@ -31,16 +32,45 @@ function App() {
                   path="/forget-me-not"
                   element={<JewelryCollectionList />}
                 />
-                <Route path="/classics" element={<JewelryCollectionList />} />
-                <Route path="/pirouette" element={<JewelryCollectionList />} />
+                <Route
+                  path="/classics"
+                  element={
+                    <JewelryCollectionList
+                      collectionId={COLLECTIONS_BY_NAMES["classics"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/pirouette"
+                  element={
+                    <JewelryCollectionList
+                      collectionId={COLLECTIONS_BY_NAMES["pirouette"]}
+                    />
+                  }
+                />
                 <Route
                   path="/diamond-loop"
-                  element={<JewelryCollectionList />}
+                  element={
+                    <JewelryCollectionList
+                      collectionId={COLLECTIONS_BY_NAMES["diamond-loop"]}
+                    />
+                  }
                 />
-                <Route path="/sunflower" element={<JewelryCollectionList />} />
+                <Route
+                  path="/sunflower"
+                  element={
+                    <JewelryCollectionList
+                      collectionId={COLLECTIONS_BY_NAMES["sunflower"]}
+                    />
+                  }
+                />
                 <Route
                   path="/sparkling-cluster"
-                  element={<JewelryCollectionList />}
+                  element={
+                    <JewelryCollectionList
+                      collectionId={COLLECTIONS_BY_NAMES["sparkling-cluster"]}
+                    />
+                  }
                 />
                 <Route
                   path="/bracelets"
