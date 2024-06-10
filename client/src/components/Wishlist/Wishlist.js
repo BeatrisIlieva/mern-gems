@@ -18,7 +18,6 @@ export const Wishlist = () => {
     handleMouseLeave,
     fetchData,
     setPage,
-    setLoading,
   } = useJewelryList(wishlistServiceFactory);
 
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
@@ -29,21 +28,10 @@ export const Wishlist = () => {
   }, [wishlistCount]);
 
   const handleLikedByUser = (_id) => {
-
     setJewelries((prevJewelries) =>
       prevJewelries.filter((jewelry) => !jewelry._id)
     );
-    // setTimeout(() => {
-    //   fetchData();
-    // }, 600);
   };
-
-  // const handleLikedByUser = (_id) => {
-  //   setJewelries((prevJewelries) =>
-  //     prevJewelries.filter((jewelry) => !jewelry._id)
-  //   );
-  //   fetchData(true);
-  // };
 
   return (
     <>
