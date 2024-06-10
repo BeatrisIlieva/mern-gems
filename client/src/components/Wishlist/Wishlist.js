@@ -33,17 +33,6 @@ export const Wishlist = () => {
 
 
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [wishlistCount]);
-
-  // const handleMouseEnter = (_id) => {
-  //   setJewelries((state) =>
-  //     state.map((j) =>
-  //       j._id === _id ? { ...j, isHovered: true } : { ...j, isHovered: false }
-  //     )
-  //   );
-  // };
 
   // const handleMouseLeave = (_id) => {
   //   setJewelries((state) =>
