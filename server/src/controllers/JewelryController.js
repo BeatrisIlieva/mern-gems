@@ -9,7 +9,6 @@ router.get("/by-category/:categoryId/:skip/:limit", async (req, res) => {
   let userId;
   if (req.user) {
     userId = req.user._id;
-
   } else {
     userId = req.headers["user-uuid"];
   }

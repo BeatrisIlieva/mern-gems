@@ -1,9 +1,6 @@
 import { JewelryCollectionListItems } from "./JewelryCollectionListItems/JewelryCollectionListItems";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { jewelryCollectionServiceFactory } from "../../services/jewelryCollectionService";
-import { useService } from "../../hooks/useService";
-import { COLLECTIONS_BY_NAMES } from "../../constants/collections";
-import { useLocation } from "react-router-dom";
 import styles from "./JewelryCollectionList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { useJewelryList } from "../../hooks/useJewelryList";

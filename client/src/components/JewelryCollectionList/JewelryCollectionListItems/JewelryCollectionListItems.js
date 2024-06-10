@@ -17,7 +17,7 @@ export const JewelryCollectionListItems = ({
   handleLikedByUser,
 }) => {
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
-    useWishlistContext()
+    useWishlistContext();
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);
@@ -38,7 +38,7 @@ export const JewelryCollectionListItems = ({
     >
       {isHovered && !isSoldOut ? (
         <JewelryCardHovered
-        _id={_id}
+          _id={_id}
           firstImageUrl={firstImageUrl}
           jewelryTitle={jewelryTitle}
           handleLikeClick={handleLikeClick}

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const jewelryCollectionManager = require("../managers/jewelryCollectionManager");
-const{SKIP, LIMIT} = require("../constants/pagination");
+const { SKIP, LIMIT } = require("../constants/pagination");
 
 router.get("/:jewelryCollectionId/:skip/:limit", async (req, res) => {
   const skip = Number(req.params.skip) ? Number(req.params.skip) : SKIP;
