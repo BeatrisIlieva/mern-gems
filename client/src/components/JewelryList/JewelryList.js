@@ -17,6 +17,7 @@ export const JewelryList = ({ categoryId }) => {
     handleMouseLeave,
     fetchData,
     setPage,
+    setLoading,
   } = useJewelryList(jewelryServiceFactory, categoryId);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ export const JewelryList = ({ categoryId }) => {
   }, [categoryId]);
 
   const handleLikedByUser = (id) => {
+    setLoading(true);
     setJewelries((prevJewelries) =>
       prevJewelries.map((jewelry) =>
         jewelry._id === id
@@ -33,8 +35,21 @@ export const JewelryList = ({ categoryId }) => {
           : jewelry
       )
     );
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+    }, 600);
   };
+
+  // const handleLikedByUser = (id) => {
+  //   setJewelries((prevJewelries) =>
+  //     prevJewelries.map((jewelry) =>
+  //       jewelry._id === id
+  //         ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
+  //         : jewelry
+  //     )
+  //   );
+  //   fetchData();
+  // };
 
   return (
     <section className={styles["jewelries-box"]}>

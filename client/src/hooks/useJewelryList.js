@@ -12,43 +12,82 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
 
   const fetchData = async (isInitialFetch = false) => {
     setLoading(true);
-    setTimeout(async () => {
-      const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
 
-      const limit = ITEMS_PER_PAGE;
+    const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
 
-      try {
-        const { data, totalCount } = await serviceFactory.findAll(
-          id,
-          skip,
-          limit
-        );
+    const limit = ITEMS_PER_PAGE;
 
-        setJewelries((prevItems) => {
-          const updatedItems = [...prevItems];
+    try {
+      const { data, totalCount } = await serviceFactory.findAll(
+        id,
+        skip,
+        limit
+      );
 
-          data.forEach((newItem) => {
-            const existingIndex = updatedItems.findIndex(
-              (item) => item._id === newItem._id
-            );
-            if (existingIndex === -1) {
-              updatedItems.push(newItem);
-            } else {
-              updatedItems[existingIndex] = newItem;
-            }
-          });
+      setJewelries((prevItems) => {
+        const updatedItems = [...prevItems];
 
-          setLoadMoreDisabled(updatedItems.length >= totalCount);
-
-          return updatedItems;
+        data.forEach((newItem) => {
+          const existingIndex = updatedItems.findIndex(
+            (item) => item._id === newItem._id
+          );
+          if (existingIndex === -1) {
+            updatedItems.push(newItem);
+          } else {
+            updatedItems[existingIndex] = newItem;
+          }
         });
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }, 600);
+
+        setLoadMoreDisabled(updatedItems.length >= totalCount);
+
+        return updatedItems;
+      });
+    } catch (err) {
+      console.log(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  // const fetchData = async (isInitialFetch = false) => {
+  //   setLoading(true);
+  //   setTimeout(async () => {
+  //     const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
+
+  //     const limit = ITEMS_PER_PAGE;
+
+  //     try {
+  //       const { data, totalCount } = await serviceFactory.findAll(
+  //         id,
+  //         skip,
+  //         limit
+  //       );
+
+  //       setJewelries((prevItems) => {
+  //         const updatedItems = [...prevItems];
+
+  //         data.forEach((newItem) => {
+  //           const existingIndex = updatedItems.findIndex(
+  //             (item) => item._id === newItem._id
+  //           );
+  //           if (existingIndex === -1) {
+  //             updatedItems.push(newItem);
+  //           } else {
+  //             updatedItems[existingIndex] = newItem;
+  //           }
+  //         });
+
+  //         setLoadMoreDisabled(updatedItems.length >= totalCount);
+
+  //         return updatedItems;
+  //       });
+  //     } catch (err) {
+  //       console.log(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }, 600);
+  // };
 
   useEffect(() => {
     fetchData();
