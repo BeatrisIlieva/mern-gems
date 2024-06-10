@@ -17,19 +17,21 @@ export const Wishlist = () => {
     handleMouseEnter,
     handleMouseLeave,
     fetchData,
+    setPage,
   } = useJewelryList(wishlistServiceFactory);
 
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
   useEffect(() => {
     fetchData(true);
+    setPage(0);
   }, [wishlistCount]);
 
   const handleLikedByUser = (_id) => {
     setJewelries((prevJewelries) =>
       prevJewelries.filter((jewelry) => !jewelry._id)
     );
-    fetchData(false);
+    fetchData(true);
   };
 
   return (

@@ -114,9 +114,7 @@ function App() {
                 <Route path="/user/account" element={<Account />} />
               </Routes>
             </main>
-            <footer className={styles["footer"]}>
-              <Footer />
-            </footer>
+            <Footer />
           </div>
         </WishlistProvider>
       </AuthProvider>
