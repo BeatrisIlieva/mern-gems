@@ -1,5 +1,3 @@
-
-
 import { JewelryListItems } from "./JewelryListItems/JewelryListItems";
 import { jewelryServiceFactory } from "../../services/jewelryService";
 import styles from "./JewelryList.module.css";
@@ -17,10 +15,8 @@ export const JewelryList = ({ categoryId }) => {
     handleLoadMore,
     handleMouseEnter,
     handleMouseLeave,
-    // handleLikedByUser,
     fetchData,
     setPage,
-    setLoading
   } = useJewelryList(jewelryServiceFactory, categoryId);
 
   useEffect(() => {
