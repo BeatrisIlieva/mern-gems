@@ -78,20 +78,7 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     );
   };
 
-  // const handleLikedByUser = (id) => {
-  //   setLoading(true);
 
-  //   setJewelries((prevJewelries) =>
-  //     prevJewelries.map((jewelry) =>
-  //       jewelry._id === id
-  //         ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
-  //         : jewelry
-  //     )
-  //   );
-  //   setTimeout(() => {
-  //     fetchData();
-  //   }, 600);
-  // };
 
   return {
     setJewelries,
