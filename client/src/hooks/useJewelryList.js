@@ -12,53 +12,47 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
 
   const fetchData = async (isInitialFetch = false) => {
     setLoading(true);
-    setTimeout(async() => {
+    setTimeout(async () => {
       const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
 
-    const limit = ITEMS_PER_PAGE;
+      const limit = ITEMS_PER_PAGE;
 
-    try {
-      const { data, totalCount } = await serviceFactory.findAll(
-        id,
-        skip,
-        limit
-      );
+      try {
+        const { data, totalCount } = await serviceFactory.findAll(
+          id,
+          skip,
+          limit
+        );
 
-      setJewelries((prevItems) => {
-        const updatedItems = [...prevItems];
+        setJewelries((prevItems) => {
+          const updatedItems = [...prevItems];
 
-        data.forEach((newItem) => {
-          const existingIndex = updatedItems.findIndex(
-            (item) => item._id === newItem._id
-          );
-          if (existingIndex === -1) {
-            updatedItems.push(newItem);
-          } else {
-            updatedItems[existingIndex] = newItem;
-          }
+          data.forEach((newItem) => {
+            const existingIndex = updatedItems.findIndex(
+              (item) => item._id === newItem._id
+            );
+            if (existingIndex === -1) {
+              updatedItems.push(newItem);
+            } else {
+              updatedItems[existingIndex] = newItem;
+            }
+          });
+
+          setLoadMoreDisabled(updatedItems.length >= totalCount);
+
+          return updatedItems;
         });
-
-        setLoadMoreDisabled(updatedItems.length >= totalCount);
-
-        return updatedItems;
-      });
-    } catch (err) {
-      console.log(err.message);
-    } finally {
-      setLoading(false);
-    }
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setLoading(false);
+      }
     }, 600);
-    
   };
-
-
-
 
   useEffect(() => {
     fetchData();
   }, [page]);
-
-
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
@@ -78,8 +72,6 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     );
   };
 
-
-
   return {
     setJewelries,
     jewelries,
@@ -88,7 +80,6 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     handleLoadMore,
     handleMouseEnter,
     handleMouseLeave,
-    // handleLikedByUser,
     fetchData,
     setPage,
     setLoading,
