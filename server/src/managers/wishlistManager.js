@@ -96,16 +96,11 @@ const findAll = async (data) => {
     { $skip: data.skip },
     { $limit: data.limit },
   ];
-  // const countQuery = [
-  //   { $match: { user: data.userId } },
-  //   { $count: "totalCount" },
-  // ];
 
   const result = await Jewelry.aggregate([
     {
       $facet: {
         data: query,
-        // count: countQuery,
       },
     },
   ]);
@@ -116,7 +111,6 @@ const findAll = async (data) => {
     data: result[0].data,
     totalCount: count,
   };
-
 };
 
 const findCount = async (userId) => {
@@ -149,5 +143,5 @@ module.exports = {
   create,
   delete: deleteWishlist,
   findAll,
-  findCount
+  findCount,
 };
