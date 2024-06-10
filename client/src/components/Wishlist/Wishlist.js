@@ -19,7 +19,6 @@ export const Wishlist = () => {
     fetchData,
   } = useJewelryList(wishlistServiceFactory);
 
-
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
   useEffect(() => {
@@ -32,17 +31,7 @@ export const Wishlist = () => {
     );
   };
 
-  // let [loading, setLoading] = useState(false);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const data = await wishlistService.findAll();
-  //     setJewelries(data);
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // };
 
   // useEffect(() => {
   //   fetchData();
