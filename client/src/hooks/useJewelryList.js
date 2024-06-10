@@ -58,11 +58,7 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     fetchData();
   }, [page]);
 
-  // useEffect(() => {
-  //   setJewelries([]);
-  //   setPage(0);
-  //   fetchData(true);
-  // }, [id, wishlistCount]);
+
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
