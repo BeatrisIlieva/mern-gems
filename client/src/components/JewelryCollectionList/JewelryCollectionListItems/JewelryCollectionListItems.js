@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { WishlistContext } from "../../../contexts/WishlistContext";
+import { useWishlistContext } from "../../../contexts/WishlistContext";
 import { JewelryCard } from "../../JewelryCard/JewelryCard";
 import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
 import { slugify } from "../../../utils/slugify";
@@ -17,18 +17,18 @@ export const JewelryCollectionListItems = ({
   handleLikedByUser,
 }) => {
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
-    useContext(WishlistContext);
+    useWishlistContext()
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);
 
-  const handleLikeClick = () => {
+  const handleLikeClick = (_id) => {
     if (isLikedByUser) {
       onRemoveFromWishlistClick(_id);
     } else {
       onAddToWishlistClick(_id);
     }
-    handleLikedByUser();
+    handleLikedByUser(_id);
   };
 
   return (
@@ -38,6 +38,7 @@ export const JewelryCollectionListItems = ({
     >
       {isHovered && !isSoldOut ? (
         <JewelryCardHovered
+        _id={_id}
           firstImageUrl={firstImageUrl}
           jewelryTitle={jewelryTitle}
           handleLikeClick={handleLikeClick}

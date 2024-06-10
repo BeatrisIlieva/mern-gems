@@ -135,10 +135,31 @@ exports.findAll = async (data) => {
         _id: 1,
       },
     },
+    { $skip: data.skip },
+    { $limit: data.limit },
   ];
 
-  const result = await Jewelry.aggregate(query);
-  console.log(result);
+  const countQuery = [
+    { $match: { jewelryCollection: data.jewelryCollectionId } },
+    { $count: "totalCount" },
+  ];
 
-  return result;
+  const result = await Jewelry.aggregate([
+    {
+      $facet: {
+        data: query,
+        count: countQuery,
+      },
+    },
+  ]);
+
+  return {
+    data: result[0].data,
+    totalCount: result[0].count[0] ? result[0].count[0].totalCount : 0,
+  };
+
+  // const result = await Jewelry.aggregate(query);
+  // console.log(result);
+
+  // return result;
 };

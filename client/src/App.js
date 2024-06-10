@@ -30,7 +30,11 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route
                   path="/forget-me-not"
-                  element={<JewelryCollectionList />}
+                  element={
+                    <JewelryCollectionList
+                      collectionId={COLLECTIONS_BY_NAMES["forget-me-not"]}
+                    />
+                  }
                 />
                 <Route
                   path="/classics"
