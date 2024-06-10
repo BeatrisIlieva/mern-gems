@@ -8,15 +8,7 @@ import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 
 export const JewelryCollectionList = ({ collectionId }) => {
 
-  // const fetchData = async () => {
-  //   try {
-  //     const data = await jewelryCollectionService.findAll(collectionId);
-  //     setJewelries(data);
-  //     setLoading(false);
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // };
+
 
   // useEffect(() => {
   //   fetchData();
