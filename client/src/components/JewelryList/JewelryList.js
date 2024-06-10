@@ -26,7 +26,6 @@ export const JewelryList = ({ categoryId }) => {
   }, [categoryId]);
 
   const handleLikedByUser = (id) => {
-    // setLoading(true);
 
     setJewelries((prevJewelries) =>
       prevJewelries.map((jewelry) =>
@@ -36,9 +35,6 @@ export const JewelryList = ({ categoryId }) => {
       )
     );
     fetchData();
-    // setTimeout(() => {
-    //   fetchData();
-    // }, 600);
   };
 
   return (
