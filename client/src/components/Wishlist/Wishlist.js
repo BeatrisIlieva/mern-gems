@@ -31,23 +31,6 @@ export const Wishlist = () => {
     );
   };
 
-
-
-
-  // const handleMouseLeave = (_id) => {
-  //   setJewelries((state) =>
-  //     state.map((j) => (j._id === _id ? { ...j, isHovered: false } : j))
-  //   );
-  // };
-
-  // const handleLikedByUser = () => {
-  //   setLoading(true);
-
-  //   setTimeout(() => {
-  //     fetchData();
-  //   }, 600);
-  // };
-
   return (
     <>
       <article className={styles["wish-list-card"]}>
