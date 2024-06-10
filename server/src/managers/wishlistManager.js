@@ -1,20 +1,20 @@
 const Wishlist = require("../models/Wishlist");
 const Jewelry = require("../models/Jewelry");
 
-exports.create = async (data) => {
+const create = async (data) => {
   const result = await Wishlist.create(data);
 
   return result;
 };
 
-exports.delete = async (data) => {
+const deleteWishlist = async (data) => {
   const result = await Wishlist.findOneAndDelete(data);
 
   return result;
 };
 
-exports.findAll = async (userId) => {
-  const result = await Jewelry.aggregate([
+const findAll = async (data) => {
+  const query = [
     {
       $lookup: {
         as: "wishlists",
@@ -25,7 +25,7 @@ exports.findAll = async (userId) => {
     },
     {
       $match: {
-        "wishlists.user": userId,
+        "wishlists.user": data.userId,
       },
     },
     {
@@ -93,7 +93,61 @@ exports.findAll = async (userId) => {
         createdAt: -1,
       },
     },
+    { $skip: data.skip },
+    { $limit: data.limit },
+  ];
+  // const countQuery = [
+  //   { $match: { user: data.userId } },
+  //   { $count: "totalCount" },
+  // ];
+
+  const result = await Jewelry.aggregate([
+    {
+      $facet: {
+        data: query,
+        // count: countQuery,
+      },
+    },
   ]);
 
-  return result;
+  const count = await findCount(data.userId);
+
+  return {
+    data: result[0].data,
+    totalCount: count,
+  };
+
+};
+
+const findCount = async (userId) => {
+  const result = await Wishlist.aggregate([
+    {
+      $match: {
+        user: userId,
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        count: {
+          $sum: 1,
+        },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        count: 1,
+      },
+    },
+  ]);
+
+  return result[0] ? result[0].count : 0;
+};
+
+module.exports = {
+  create,
+  delete: deleteWishlist,
+  findAll,
+  findCount
 };

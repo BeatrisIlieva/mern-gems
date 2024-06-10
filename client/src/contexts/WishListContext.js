@@ -8,12 +8,12 @@ export const WishlistProvider = ({ children }) => {
   const wishlistService = useService(wishlistServiceFactory);
   const [wishlistCount, setWishlistCount] = useState(0);
   const wishlistCountGreaterThanZero = wishlistCount > 0;
-  const [jewelries, setJewelries] = useState([]);
 
   const fetchData = async () => {
     try {
-      const data = await wishlistService.findAll();
-      setJewelries(data);
+      const data = await wishlistService.findCount();
+
+      setWishlistCount(data);
     } catch (err) {
       console.log(err.message);
     }
@@ -22,10 +22,6 @@ export const WishlistProvider = ({ children }) => {
   useEffect(() => {
     fetchData();
   }, [wishlistCount]);
-
-  useEffect(() => {
-    setWishlistCount(jewelries.length);
-  }, [jewelries]);
 
   const onAddToWishlistClick = async (jewelryId) => {
     try {
@@ -48,11 +44,8 @@ export const WishlistProvider = ({ children }) => {
   const context = {
     onAddToWishlistClick,
     onRemoveFromWishlistClick,
-    // fetchData,
     wishlistCount,
     wishlistCountGreaterThanZero,
-    // setJewelries,
-    // jewelries,
   };
 
   return (

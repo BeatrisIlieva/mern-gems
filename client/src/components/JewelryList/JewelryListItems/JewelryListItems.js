@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { WishlistContext } from "../../../contexts/WishlistContext";
 import { JewelryCard } from "../../JewelryCard/JewelryCard";
 import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
 import { slugify } from "../../../utils/slugify";
+import { useWishlistContext } from "../../../contexts/WishlistContext";
 
 export const JewelryListItems = ({
   _id,
@@ -16,8 +15,7 @@ export const JewelryListItems = ({
   handleMouseLeave,
   handleLikedByUser,
 }) => {
-  const { onAddToWishlistClick, onRemoveFromWishlistClick } =
-    useContext(WishlistContext);
+  const { onAddToWishlistClick, onRemoveFromWishlistClick } = useWishlistContext();
 
   const slugifiedCategoryTitle = slugify(categoryTitle);
   const slugifiedJewelryTitle = slugify(jewelryTitle);
