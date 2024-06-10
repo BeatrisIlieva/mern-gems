@@ -49,13 +49,16 @@ export const JewelryList = ({ categoryId }) => {
           />
         ))}
       </div>
-      <div className={styles["load-more-button"]}>
-        <LoadMoreButton
-          handleLoadMore={handleLoadMore}
-          loadMoreDisabled={loadMoreDisabled}
-        />
-      </div>
-      {loading && <LoadingSpinner />}
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className={styles["load-more-button"]}>
+          <LoadMoreButton
+            handleLoadMore={handleLoadMore}
+            loadMoreDisabled={loadMoreDisabled}
+          />
+        </div>
+      )}
     </section>
   );
 };
