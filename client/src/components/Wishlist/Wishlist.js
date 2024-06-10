@@ -1,8 +1,5 @@
-
-
 import { WishlistItems } from "./WishlistItems/WishlistItems";
 import { wishlistServiceFactory } from "../../services/wishlistService";
-import { useService } from "../../hooks/useService";
 import styles from "./Wishlist.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { useWishlistContext } from "../../contexts/WishlistContext";
@@ -21,11 +18,10 @@ export const Wishlist = () => {
     handleMouseLeave,
     // handleLikedByUser,
     fetchData,
-    setLoading
+    setLoading,
   } = useJewelryList(wishlistServiceFactory);
 
-  console.log(loadMoreDisabled)
-
+  console.log(loadMoreDisabled);
 
   // const [jewelries, setJewelries] = useState([]);
 
@@ -39,9 +35,8 @@ export const Wishlist = () => {
 
   const handleLikedByUser = (_id) => {
     setJewelries((prevJewelries) =>
-      prevJewelries.filter(jewelry => !jewelry._id)
+      prevJewelries.filter((jewelry) => !jewelry._id)
     );
-
   };
 
   // let [loading, setLoading] = useState(false);
