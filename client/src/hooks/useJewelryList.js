@@ -49,25 +49,6 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     }
   };
 
-  // const fetchData = async (isInitialFetch = false) => {
-  //   setLoading(true);
-  //   setTimeout(async () => {
-  //     const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
-
-  //     const limit = ITEMS_PER_PAGE;
-
-  //     try {
-  //       const { data, totalCount } = await serviceFactory.findAll(
-  //         id,
-  //         skip,
-  //         limit
-  //       );
-
-  //       setJewelries((prevItems) => {
-  //         const updatedItems = [...prevItems];
-
-
-
   useEffect(() => {
     fetchData();
   }, [page]);
