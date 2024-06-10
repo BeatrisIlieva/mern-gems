@@ -157,9 +157,4 @@ exports.findAll = async (data) => {
     data: result[0].data,
     totalCount: result[0].count[0] ? result[0].count[0].totalCount : 0,
   };
-
-  // const result = await Jewelry.aggregate(query);
-  // console.log(result);
-
-  // return result;
 };
