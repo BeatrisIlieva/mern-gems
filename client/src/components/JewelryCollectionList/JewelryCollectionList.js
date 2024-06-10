@@ -17,7 +17,6 @@ export const JewelryCollectionList = ({ collectionId }) => {
     handleMouseLeave,
     fetchData,
     setPage,
-    setLoading,
   } = useJewelryList(jewelryCollectionServiceFactory, collectionId);
 
   useEffect(() => {
@@ -27,7 +26,6 @@ export const JewelryCollectionList = ({ collectionId }) => {
   }, [collectionId]);
 
   const handleLikedByUser = (id) => {
-    setLoading(true);
     setJewelries((prevJewelries) =>
       prevJewelries.map((jewelry) =>
         jewelry._id === id
@@ -35,9 +33,7 @@ export const JewelryCollectionList = ({ collectionId }) => {
           : jewelry
       )
     );
-    setTimeout(() => {
-      fetchData();
-    }, 600);
+    fetchData();
   };
 
   return (

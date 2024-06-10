@@ -17,36 +17,38 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
 
     const limit = ITEMS_PER_PAGE;
 
-    try {
-      const { data, totalCount } = await serviceFactory.findAll(
-        id,
-        skip,
-        limit
-      );
+    setTimeout(async () => {
+      try {
+        const { data, totalCount } = await serviceFactory.findAll(
+          id,
+          skip,
+          limit
+        );
 
-      setJewelries((prevItems) => {
-        const updatedItems = [...prevItems];
+        setJewelries((prevItems) => {
+          const updatedItems = [...prevItems];
 
-        data.forEach((newItem) => {
-          const existingIndex = updatedItems.findIndex(
-            (item) => item._id === newItem._id
-          );
-          if (existingIndex === -1) {
-            updatedItems.push(newItem);
-          } else {
-            updatedItems[existingIndex] = newItem;
-          }
+          data.forEach((newItem) => {
+            const existingIndex = updatedItems.findIndex(
+              (item) => item._id === newItem._id
+            );
+            if (existingIndex === -1) {
+              updatedItems.push(newItem);
+            } else {
+              updatedItems[existingIndex] = newItem;
+            }
+          });
+
+          setLoadMoreDisabled(updatedItems.length >= totalCount);
+
+          return updatedItems;
         });
-
-        setLoadMoreDisabled(updatedItems.length >= totalCount);
-
-        return updatedItems;
-      });
-    } catch (err) {
-      console.log(err.message);
-    } finally {
-      setLoading(false);
-    }
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }, 400);
   };
 
   useEffect(() => {
