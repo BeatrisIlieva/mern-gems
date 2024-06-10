@@ -26,7 +26,6 @@ export const JewelryList = ({ categoryId }) => {
   }, [categoryId]);
 
   const handleLikedByUser = (id) => {
-
     setJewelries((prevJewelries) =>
       prevJewelries.map((jewelry) =>
         jewelry._id === id

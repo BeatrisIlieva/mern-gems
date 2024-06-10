@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
-import { useWishlistContext } from "../contexts/WishlistContext";
 
 export const useJewelryList = (fetchDataFunction, id = null) => {
   const [jewelries, setJewelries] = useState([]);
   const serviceFactory = useService(fetchDataFunction);
   const [page, setPage] = useState(0);
-  // const [totalCount, setTotalCount] = useState(0);
   const [loadMoreDisabled, setLoadMoreDisabled] = useState(false);
-  const { wishlistCount } = useWishlistContext();
 
   let [loading, setLoading] = useState(true);
 
