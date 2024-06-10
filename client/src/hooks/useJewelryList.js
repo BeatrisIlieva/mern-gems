@@ -66,28 +66,7 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
   //       setJewelries((prevItems) => {
   //         const updatedItems = [...prevItems];
 
-  //         data.forEach((newItem) => {
-  //           const existingIndex = updatedItems.findIndex(
-  //             (item) => item._id === newItem._id
-  //           );
-  //           if (existingIndex === -1) {
-  //             updatedItems.push(newItem);
-  //           } else {
-  //             updatedItems[existingIndex] = newItem;
-  //           }
-  //         });
 
-  //         setLoadMoreDisabled(updatedItems.length >= totalCount);
-
-  //         return updatedItems;
-  //       });
-  //     } catch (err) {
-  //       console.log(err.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }, 600);
-  // };
 
   useEffect(() => {
     fetchData();
