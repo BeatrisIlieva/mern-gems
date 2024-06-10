@@ -54,20 +54,6 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
 
 
 
-
-  //       setLoadMoreDisabled(updatedItems.length >= totalCount);
-
-  //       return updatedItems;
-  //     });
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   } 
-
-  //   finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   useEffect(() => {
     fetchData();
   }, [page]);
