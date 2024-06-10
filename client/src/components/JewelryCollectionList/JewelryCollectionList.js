@@ -7,14 +7,6 @@ import { useJewelryList } from "../../hooks/useJewelryList";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 
 export const JewelryCollectionList = ({ collectionId }) => {
-  // const [jewelries, setJewelries] = useState([]);
-  // const jewelryCollectionService = useService(jewelryCollectionServiceFactory);
-  // const location = useLocation();
-  // const path = location.pathname;
-  // const collectionTitle = path.substring(1);
-  // const collectionId = COLLECTIONS_BY_NAMES[collectionTitle];
-
-  // let [loading, setLoading] = useState(false);
 
   // const fetchData = async () => {
   //   try {
