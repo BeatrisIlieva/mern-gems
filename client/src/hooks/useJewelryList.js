@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
-import { SORT_BY_OPTIONS } from "../constants/sortBy";
 
 export const useJewelryList = (fetchDataFunction, id = null) => {
   const [jewelries, setJewelries] = useState([]);
