@@ -230,7 +230,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             <img
               className={styles["hero-img"]}
               src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1718122429/ReactGems/common_img/Screenshot_2024-06-11_at_19.12.51_ndmrz2.png"
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1718125861/ReactGems/common_img/Screenshot_2024-06-11_at_20.09.57_cc9fga.png"
               }
               alt={"Img"}
             />
