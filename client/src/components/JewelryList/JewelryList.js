@@ -29,9 +29,9 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     jewelries,
     loadMoreDisabled,
     loading,
-    handleLoadMore,
-    handleMouseEnter,
-    handleMouseLeave,
+    loadMoreHandler,
+    mouseEnterHandler,
+    mouseLeaveHandler,
     fetchData,
     setPage,
   } = useJewelryList(serviceFactory, entityId);
@@ -67,6 +67,8 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setSortByAvailableNow(false);
     setSortByLowToHigh(true);
     setSortByHighToLow(false);
+
+    getSortedByLowToHight();
   };
 
   const clickSortByHighToLowHandler = () => {
@@ -74,6 +76,14 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setSortByLowToHigh(false);
     setSortByHighToLow(true);
   };
+
+  const getSortedByLowToHight = () => {
+    const sortedJewelries = [...jewelries].sort((a, b) => {
+        return a.price - b.price;
+    });
+
+    setJewelries(sortedJewelries);
+  }
 
   return (
     <section className={styles["jewelries-box"]}>
@@ -167,9 +177,9 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
           <JewelryListItems
             key={j._id}
             {...j}
-            handleMouseEnter={handleMouseEnter}
+            mouseEnterHandler={mouseEnterHandler}
             handleLikedByUser={handleLikedByUser}
-            handleMouseLeave={handleMouseLeave}
+            mouseLeaveHandler={mouseLeaveHandler}
           />
         ))}
       </div>
@@ -178,7 +188,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
       ) : (
         <div className={styles["load-more-button"]}>
           <LoadMoreButton
-            handleLoadMore={handleLoadMore}
+            loadMoreHandler={loadMoreHandler}
             loadMoreDisabled={loadMoreDisabled}
           />
         </div>

@@ -13,9 +13,9 @@ export const Wishlist = () => {
     jewelries,
     loadMoreDisabled,
     loading,
-    handleLoadMore,
-    handleMouseEnter,
-    handleMouseLeave,
+    loadMoreHandler,
+    mouseEnterHandler,
+    mouseLeaveHandler,
     fetchData,
     setPage,
   } = useJewelryList(wishlistServiceFactory);
@@ -65,9 +65,9 @@ export const Wishlist = () => {
               <WishlistItems
                 key={j._id}
                 {...j}
-                handleMouseEnter={handleMouseEnter}
+                mouseEnterHandler={mouseEnterHandler}
                 handleLikedByUser={handleLikedByUser}
-                handleMouseLeave={handleMouseLeave}
+                mouseLeaveHandler={mouseLeaveHandler}
               />
             ))}
           </div>
@@ -76,7 +76,7 @@ export const Wishlist = () => {
           ) : (
             <div className={styles["load-more-button"]}>
               <LoadMoreButton
-                handleLoadMore={handleLoadMore}
+                loadMoreHandler={loadMoreHandler}
                 loadMoreDisabled={loadMoreDisabled}
               />
             </div>

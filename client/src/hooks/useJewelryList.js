@@ -55,11 +55,11 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     fetchData();
   }, [page]);
 
-  const handleLoadMore = () => {
+  const loadMoreHandler = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const handleMouseEnter = (_id) => {
+  const mouseEnterHandler = (_id) => {
     setJewelries((state) =>
       state.map((j) =>
         j._id === _id ? { ...j, isHovered: true } : { ...j, isHovered: false }
@@ -67,7 +67,7 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     );
   };
 
-  const handleMouseLeave = (_id) => {
+  const mouseLeaveHandler = (_id) => {
     setJewelries((state) =>
       state.map((j) => (j._id === _id ? { ...j, isHovered: false } : j))
     );
@@ -78,9 +78,9 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     jewelries,
     loadMoreDisabled,
     loading,
-    handleLoadMore,
-    handleMouseEnter,
-    handleMouseLeave,
+    loadMoreHandler,
+    mouseEnterHandler,
+    mouseLeaveHandler,
     fetchData,
     setPage,
     setLoading,

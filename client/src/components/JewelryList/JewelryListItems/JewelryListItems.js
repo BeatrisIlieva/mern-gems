@@ -11,9 +11,10 @@ export const JewelryListItems = ({
   isLikedByUser,
   isSoldOut,
   isHovered,
-  handleMouseEnter,
-  handleMouseLeave,
+  mouseEnterHandler,
+  mouseLeaveHandler,
   handleLikedByUser,
+  price
 }) => {
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
     useWishlistContext();
@@ -32,8 +33,8 @@ export const JewelryListItems = ({
 
   return (
     <article
-      onMouseEnter={() => handleMouseEnter(_id)}
-      onMouseLeave={() => handleMouseLeave(_id)}
+      onMouseEnter={() => mouseEnterHandler(_id)}
+      onMouseLeave={() => mouseLeaveHandler(_id)}
     >
       {isHovered && !isSoldOut ? (
         <JewelryCardHovered
@@ -44,6 +45,7 @@ export const JewelryListItems = ({
           slugifiedCategoryTitle={slugifiedCategoryTitle}
           slugifiedJewelryTitle={slugifiedJewelryTitle}
           isLikedByUser={isLikedByUser}
+          price={price}
         />
       ) : (
         <JewelryCard
