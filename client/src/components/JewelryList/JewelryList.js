@@ -9,6 +9,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
+import { VerticalLine } from "../VerticalLine/VerticalLine";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",
@@ -44,12 +45,12 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
+    categoryName,
   } = useJewelryList(serviceFactory, entityId);
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
   const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
   const [sortByHighToLow, setSortByHighToLow] = useState(false);
-
   const [page, setPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
 
@@ -151,116 +152,137 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
   const displayedJewelries = jewelries.slice(0, displayedItems);
 
   return (
-    <section className={styles["jewelries-box"]}>
-      <div className={styles["jewelries-nav"]}>
-        {totalCount}
-        <div className={styles["filter-by-container"]}>
-          <div>Filter By:</div>
-          <ul className={styles["filter-list"]} role="list">
-            <li className={styles["filter-item"]}>
-              <button className={styles["filter-button"]}>
-                Collection{" "}
-                <FontAwesomeIcon
-                  icon={faChevronDown}
-                  className={styles["heart"]}
-                />
-              </button>
-            </li>
-            <li className={styles["filter-item"]}>
-              <button className={styles["filter-button"]}>
-                Stone Type{" "}
-                <FontAwesomeIcon
-                  icon={faChevronDown}
-                  className={styles["heart"]}
-                />
-              </button>
-            </li>
-            <li className={styles["filter-item"]}>
-              <button className={styles["filter-button"]}>
-                Stone Color{" "}
-                <FontAwesomeIcon
-                  icon={faChevronDown}
-                  className={styles["heart"]}
-                />
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className={styles["sort-by-container"]}>
-          <Dropdown
-            label={getSortLabel()}
-            subLabel={SORT_BY_MENU_SUB_LABEL.SortBy}
-          >
-            <ul className={styles["sort-list"]} role="list">
+    <section>
+      <img
+        className={styles["hero-img"]}
+        src={
+          "https://res.cloudinary.com/deztgvefu/image/upload/v1718118512/ReactGems/common_img/largeherod_l2_hj_incre_heartshape_ea_main_rjzvzb.avif"
+        }
+        alt={"Img"}
+      />
+      <h2 className={styles["box-title"]}>{categoryName}</h2>
+      <VerticalLine />
+      <div className={styles["jewelries-box"]}>
+        <div className={styles["jewelries-nav"]}>
+          <div className={styles["filter-by-container"]}>
+            <div>Filter By:</div>
+            <ul className={styles["filter-list"]} role="list">
               <li className={styles["filter-item"]}>
-                <button
-                  className={styles["filter-button"]}
-                  onClick={() => clickSortByAvailableNowHandler()}
-                >
+                <button className={styles["filter-button"]}>
+                  Collection{" "}
                   <FontAwesomeIcon
-                    icon={faCircle}
-                    className={`${styles["circle"]} ${
-                      sortByAvailableNow === true
-                        ? styles["circle-selected"]
-                        : ""
-                    }`.trim()}
+                    icon={faChevronDown}
+                    className={styles["heart"]}
                   />
-                  {SORT_BY_MENU_LABELS.AvailableNow}
                 </button>
               </li>
+              <div className={styles["form-vertical-line"]}></div>
               <li className={styles["filter-item"]}>
-                <button
-                  className={styles["filter-button"]}
-                  onClick={() => clickSortByLowToHighHandler()}
-                >
+                <button className={styles["filter-button"]}>
+                  Stone Type{" "}
                   <FontAwesomeIcon
-                    icon={faCircle}
-                    className={`${styles["circle"]} ${
-                      sortByLowToHigh === true ? styles["circle-selected"] : ""
-                    }`.trim()}
+                    icon={faChevronDown}
+                    className={styles["heart"]}
                   />
-                  {SORT_BY_MENU_LABELS.ByLowToHigh}
                 </button>
               </li>
+              <div className={styles["form-vertical-line"]}></div>
               <li className={styles["filter-item"]}>
-                <button
-                  className={styles["filter-button"]}
-                  onClick={() => clickSortByHighToLowHandler()}
-                >
+                <button className={styles["filter-button"]}>
+                  Stone Color{" "}
                   <FontAwesomeIcon
-                    icon={faCircle}
-                    className={`${styles["circle"]} ${
-                      sortByHighToLow === true ? styles["circle-selected"] : ""
-                    }`.trim()}
+                    icon={faChevronDown}
+                    className={styles["heart"]}
                   />
-                  {SORT_BY_MENU_LABELS.ByHighToLow}
                 </button>
               </li>
             </ul>
-          </Dropdown>
+          </div>
+          <div className={styles["sort-by-container"]}>
+            <Dropdown
+              label={getSortLabel()}
+              subLabel={SORT_BY_MENU_SUB_LABEL.SortBy}
+            >
+              <ul className={styles["sort-list"]} role="list">
+                <li className={styles["filter-item"]}>
+                  <button
+                    className={styles["filter-button"]}
+                    onClick={() => clickSortByAvailableNowHandler()}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className={`${styles["circle"]} ${
+                        sortByAvailableNow === true
+                          ? styles["circle-selected"]
+                          : ""
+                      }`.trim()}
+                    />
+                    {SORT_BY_MENU_LABELS.AvailableNow}
+                  </button>
+                </li>
+                <li className={styles["filter-item"]}>
+                  <button
+                    className={styles["filter-button"]}
+                    onClick={() => clickSortByLowToHighHandler()}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className={`${styles["circle"]} ${
+                        sortByLowToHigh === true
+                          ? styles["circle-selected"]
+                          : ""
+                      }`.trim()}
+                    />
+                    {SORT_BY_MENU_LABELS.ByLowToHigh}
+                  </button>
+                </li>
+                <li className={styles["filter-item"]}>
+                  <button
+                    className={styles["filter-button"]}
+                    onClick={() => clickSortByHighToLowHandler()}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className={`${styles["circle"]} ${
+                        sortByHighToLow === true
+                          ? styles["circle-selected"]
+                          : ""
+                      }`.trim()}
+                    />
+                    {SORT_BY_MENU_LABELS.ByHighToLow}
+                  </button>
+                </li>
+              </ul>
+            </Dropdown>
+          </div>
         </div>
-      </div>
-      <div className={styles["jewelries-container"]}>
-        {displayedJewelries.map((j) => (
-          <JewelryListItems
-            key={j._id}
-            {...j}
-            mouseEnterHandler={mouseEnterHandler}
-            handleLikedByUser={handleLikedByUser}
-            mouseLeaveHandler={mouseLeaveHandler}
-          />
-        ))}
-      </div>
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <div className={styles["load-more-button"]}>
-          <LoadMoreButton
-            loadMoreHandler={loadMoreHandler}
-            loadMoreDisabled={loadMoreDisabled}
-          />
+        <div className={styles["jewelries-count"]}>
+          Showing 1 -{" "}
+          {totalCount >= displayedItems ? displayedItems : totalCount} 0f{" "}
+          {totalCount}
         </div>
-      )}
+        <div className={styles["jewelries-container"]}>
+          {displayedJewelries.map((j) => (
+            <JewelryListItems
+              key={j._id}
+              {...j}
+              mouseEnterHandler={mouseEnterHandler}
+              handleLikedByUser={handleLikedByUser}
+              mouseLeaveHandler={mouseLeaveHandler}
+            />
+          ))}
+        </div>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <div className={styles["load-more-button"]}>
+            <LoadMoreButton
+              loadMoreHandler={loadMoreHandler}
+              loadMoreDisabled={loadMoreDisabled}
+            />
+          </div>
+        )}
+      </div>
     </section>
   );
 };

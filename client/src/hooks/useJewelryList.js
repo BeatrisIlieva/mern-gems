@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
+import { CATEGORIES_BY_IDS } from "../constants/categories";
 
 export const useJewelryList = (fetchDataFunction, id = null) => {
   const [jewelries, setJewelries] = useState([]);
   const serviceFactory = useService(fetchDataFunction);
-
   let [loading, setLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
+  const categoryName = CATEGORIES_BY_IDS[id]
 
   const [loadMoreDisabled, setLoadMoreDisabled] = useState(true);
 
@@ -53,5 +54,6 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
+    categoryName
   };
 };

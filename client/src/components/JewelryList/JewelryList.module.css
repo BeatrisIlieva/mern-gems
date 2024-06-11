@@ -1,3 +1,16 @@
+.hero-img {
+  /* height: 80vh; */
+}
+
+.box-title {
+  text-align: center;
+  font-family: var(--bold-italic-font-family);
+  font-size: var(--extra-large-font-size);
+  /* margin-bottom: 40px; */
+  margin: 40px 0px 0px 0px;
+  padding: 0px;
+}
+
 .jewelries-box {
   margin: 40px 214px 40px 214px;
   position: relative;
@@ -5,8 +18,14 @@
 
 .jewelries-nav {
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   justify-content: space-between;
+  border-bottom: 0.1px solid var(--border);
+}
+
+.form-vertical-line {
+  border: 0.1px solid var(--border);
+  margin-bottom: 10px;
 }
 
 .filter-by-container,
@@ -78,6 +97,11 @@
 
 .circle-selected {
   color: var(--dark-pink);
+}
+
+.jewelries-count {
+  font-size: var(--small-font-size);
+  margin-bottom: 12px;
 }
 
 .jewelries-container {
