@@ -201,7 +201,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
         </div>
       )}
       {categoryName === "Necklaces & Pendants" && (
-        <>
+        <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
@@ -211,16 +211,18 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
               alt={"Img"}
             />
           </div>
-          <h2 className={styles["box-title"]}>{categoryName}</h2>
-          <VerticalLine />
-          <div className={styles["paragraph-container"]}>
-            <p className={styles["box-paragraph"]}>
-              React Gems's precious gemstones necklaces and pendants, set in
-              platinum, offer a more delicate interpretation of the House's
-              signature fine jewelry aesthetic.
-            </p>
+          <div className={styles["info-container"]}>
+            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <VerticalLine />
+            <div className={styles["paragraph-container"]}>
+              <p className={styles["box-paragraph"]}>
+                React Gems's precious gemstones necklaces and pendants, set in
+                platinum, offer a more delicate interpretation of the House's
+                signature fine jewelry aesthetic.
+              </p>
+            </div>
           </div>
-        </>
+        </div>
       )}
       {categoryName === "Bracelets" && (
         <>
