@@ -61,6 +61,8 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setSortByAvailableNow(true);
     setSortByLowToHigh(false);
     setSortByHighToLow(false);
+
+    getSortedByAvailableNow();
   };
 
   const clickSortByLowToHighHandler = () => {
@@ -68,22 +70,40 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setSortByLowToHigh(true);
     setSortByHighToLow(false);
 
-    getSortedByLowToHight();
+    getSortedByLowToHigh();
   };
 
   const clickSortByHighToLowHandler = () => {
     setSortByAvailableNow(false);
     setSortByLowToHigh(false);
     setSortByHighToLow(true);
+
+    getSortedByHighToLow();
   };
 
-  const getSortedByLowToHight = () => {
+  const getSortedByLowToHigh = () => {
     const sortedJewelries = [...jewelries].sort((a, b) => {
-        return a.price - b.price;
+      return a.price - b.price;
     });
 
     setJewelries(sortedJewelries);
-  }
+  };
+
+  const getSortedByHighToLow = () => {
+    const sortedJewelries = [...jewelries].sort((a, b) => {
+      return b.price - a.price;
+    });
+
+    setJewelries(sortedJewelries);
+  };
+
+  const getSortedByAvailableNow = () => {
+    const sortedJewelries = [...jewelries].sort((a, b) => {
+      return a.isSoldOut - b.isSoldOut;
+    });
+
+    setJewelries(sortedJewelries);
+  };
 
   return (
     <section className={styles["jewelries-box"]}>
@@ -134,7 +154,9 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
                   <FontAwesomeIcon
                     icon={faCircle}
                     className={`${styles["circle"]} ${
-                      sortByAvailableNow === true ? styles["circle-selected"] : ""
+                      sortByAvailableNow === true
+                        ? styles["circle-selected"]
+                        : ""
                     }`.trim()}
                   />
                   Available Now

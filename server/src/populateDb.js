@@ -1091,7 +1091,7 @@ async function populateDb() {
       jewelry: allJewelries[0],
       size: allSizes[0],
       quantity: 1,
-      price: 12000,
+      price: 32000,
     },
     {
       jewelry: allJewelries[0],
@@ -1343,7 +1343,7 @@ async function populateDb() {
       jewelry: allJewelries[16],
       size: allSizes[2],
       quantity: 1,
-      price: 31000,
+      price: 21000,
     },
     {
       jewelry: allJewelries[17],
@@ -1391,7 +1391,7 @@ async function populateDb() {
       jewelry: allJewelries[20],
       size: allSizes[0],
       quantity: 1,
-      price: 14000,
+      price: 37000,
     },
     {
       jewelry: allJewelries[20],
@@ -1439,7 +1439,7 @@ async function populateDb() {
       jewelry: allJewelries[24],
       size: allSizes[8],
       quantity: 1,
-      price: 47000,
+      price: 44000,
     },
     {
       jewelry: allJewelries[25],
@@ -1655,7 +1655,7 @@ async function populateDb() {
       jewelry: allJewelries[38],
       size: allSizes[11],
       quantity: 1,
-      price: 31000,
+      price: 19000,
     },
     {
       jewelry: allJewelries[39],
