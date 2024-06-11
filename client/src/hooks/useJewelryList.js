@@ -15,14 +15,7 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
   const [loadMoreDisabled, setLoadMoreDisabled] = useState(true);
 
   const fetchData = async () => {
-    // let sortBy;
-    // if (sortByAvailableNow) {
-    //   sortBy = SORT_BY_OPTIONS.IsSoldOut;
-    // } else if (sortByLowToHigh) {
-    //   sortBy = SORT_BY_OPTIONS.PriceAsc;
-    // } else if (sortByHighToLow) {
-    //   sortBy = SORT_BY_OPTIONS.PriceDesc;
-    // }
+
 
     setLoading(true);
 
