@@ -1,8 +1,6 @@
 const Jewelry = require("../models/Jewelry");
 
 exports.findAll = async (data) => {
-
-
   const query = [
     {
       $lookup: {
@@ -108,9 +106,7 @@ exports.findAll = async (data) => {
         isLikedByUser: 1,
       },
     },
-    { $sort: { isSoldOut: 1, _id: 1 }},
-    // { $skip: data.skip },
-    // { $limit: data.limit },
+    { $sort: { isSoldOut: 1, _id: 1 } },
   ];
 
   const countQuery = [
@@ -126,8 +122,7 @@ exports.findAll = async (data) => {
       },
     },
   ]);
-  console.log("****************&&&&&&")
-console.log(result[0].data)
+
   return {
     data: result[0].data,
     totalCount: result[0].count[0] ? result[0].count[0].totalCount : 0,
