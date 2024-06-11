@@ -93,8 +93,6 @@ const findAll = async (data) => {
         createdAt: -1,
       },
     },
-    { $skip: data.skip },
-    { $limit: data.limit },
   ];
 
   const result = await Jewelry.aggregate([

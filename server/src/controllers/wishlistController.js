@@ -2,7 +2,6 @@ const router = require("express").Router();
 const wishlistManager = require("../managers/wishlistManager");
 
 router.get("/find-all", async (req, res) => {
-
   let userId;
 
   if (req.user) {
@@ -11,7 +10,7 @@ router.get("/find-all", async (req, res) => {
     userId = req.headers["user-uuid"];
   }
 
-  const data = { userId};
+  const data = { userId };
 
   try {
     const result = await wishlistManager.findAll(data);
