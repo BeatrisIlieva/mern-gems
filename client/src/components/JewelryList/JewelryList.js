@@ -44,9 +44,8 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     fetchData,
     totalCount,
     loadMoreDisabled,
-    setLoadMoreDisabled
+    setLoadMoreDisabled,
   } = useJewelryList(serviceFactory, entityId);
-
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
   const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
@@ -55,12 +54,10 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
   const [page, setPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
 
-
   const clickSortByAvailableNowHandler = () => {
     setSortByAvailableNow(true);
     setSortByLowToHigh(false);
     setSortByHighToLow(false);
-
 
     getSortedByAvailableNow();
   };
@@ -80,8 +77,6 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
 
     getSortedByHighToLow();
   };
-
-
 
   const getSortedByLowToHigh = () => {
     const sortedJewelries = [...jewelries].sort((a, b) => {
@@ -107,20 +102,16 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setJewelries(sortedJewelries);
   };
 
-
-
-
-
   const loadMoreHandler = () => {
     const nextPage = page + 1;
     if (nextPage * ITEMS_PER_PAGE >= totalCount) {
-      setLoadMoreDisabled(true); 
+      setLoadMoreDisabled(true);
     }
     setPage(nextPage);
 
     const newDisplayedItems = displayedItems + ITEMS_PER_PAGE;
     if (newDisplayedItems >= totalCount) {
-      setLoadMoreDisabled(true); 
+      setLoadMoreDisabled(true);
     }
     setDisplayedItems(newDisplayedItems);
   };
@@ -158,9 +149,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     return SORT_BY_MENU_LABELS.AvailableNow;
   };
 
-  // const displayedJewelries = jewelries.slice(0, page * ITEMS_PER_PAGE);
   const displayedJewelries = jewelries.slice(0, displayedItems);
-
 
   return (
     <section className={styles["jewelries-box"]}>
