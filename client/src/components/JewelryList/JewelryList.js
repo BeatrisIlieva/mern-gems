@@ -181,7 +181,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             <img
               className={styles["hero-img"]}
               src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1718120001/ReactGems/common_img/largeherod_l2_hj_incre_pink_ring_main_rcb7f5.avif"
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1718123003/ReactGems/common_img/largeherod_l2_hj_hope_2_main_ahryjw.avif"
               }
               alt={"Img"}
             />
@@ -202,7 +202,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             <img
               className={styles["hero-img"]}
               src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1718120267/ReactGems/common_img/herolarged_icons_lp_amethyst_necklace_punmcp.avif"
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1718123000/ReactGems/common_img/herolarged_incredibles_yellow_1_w7m1st.avif"
               }
               alt={"Img"}
             />
@@ -224,7 +224,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             <img
               className={styles["hero-img"]}
               src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1718121897/ReactGems/common_img/Screenshot_2024-06-11_at_19.04.01_jd5bnh.png"
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1718122429/ReactGems/common_img/Screenshot_2024-06-11_at_19.12.51_ndmrz2.png"
               }
               alt={"Img"}
             />
