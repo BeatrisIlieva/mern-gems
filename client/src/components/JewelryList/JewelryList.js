@@ -8,11 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
+import { ITEMS_PER_PAGE } from "../../constants/pagination";
+import { SORT_BY_OPTIONS } from "../../constants/sortBy";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",
-  ByLowToHigh: "Price: Low To High",
-  ByHighToLow: "Price: High To Low",
+  ByLowToHigh: "Price Low To High",
+  ByHighToLow: "Price High To Low",
 };
 
 const SORT_BY_MENU_SUB_LABEL = {
@@ -36,43 +38,29 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
   const {
     setJewelries,
     jewelries,
-    loadMoreDisabled,
     loading,
-    loadMoreHandler,
     mouseEnterHandler,
     mouseLeaveHandler,
     fetchData,
-    setPage,
+    totalCount,
+    loadMoreDisabled,
+    setLoadMoreDisabled
   } = useJewelryList(serviceFactory, entityId);
+
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
   const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
   const [sortByHighToLow, setSortByHighToLow] = useState(false);
 
-  useEffect(() => {
-    setJewelries([]);
-    setSortByAvailableNow(true);
-    setSortByLowToHigh(false);
-    setSortByHighToLow(false);
-    setPage(0);
-    fetchData(true);
-  }, [entityId]);
+  const [page, setPage] = useState(1);
+  const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
 
-  const handleLikedByUser = (id) => {
-    setJewelries((prevJewelries) =>
-      prevJewelries.map((jewelry) =>
-        jewelry._id === id
-          ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
-          : jewelry
-      )
-    );
-    fetchData();
-  };
 
   const clickSortByAvailableNowHandler = () => {
     setSortByAvailableNow(true);
     setSortByLowToHigh(false);
     setSortByHighToLow(false);
+
 
     getSortedByAvailableNow();
   };
@@ -92,6 +80,8 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
 
     getSortedByHighToLow();
   };
+
+
 
   const getSortedByLowToHigh = () => {
     const sortedJewelries = [...jewelries].sort((a, b) => {
@@ -117,9 +107,65 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setJewelries(sortedJewelries);
   };
 
+
+
+
+
+  const loadMoreHandler = () => {
+    const nextPage = page + 1;
+    if (nextPage * ITEMS_PER_PAGE >= totalCount) {
+      setLoadMoreDisabled(true); // Disable button when all items are loaded
+    }
+    setPage(nextPage);
+
+    const newDisplayedItems = displayedItems + ITEMS_PER_PAGE;
+    if (newDisplayedItems >= totalCount) {
+      setLoadMoreDisabled(true); // Disable button when all items are loaded
+    }
+    setDisplayedItems(newDisplayedItems);
+  };
+
+  useEffect(() => {
+    setJewelries([]);
+    setSortByAvailableNow(true);
+    setSortByLowToHigh(false);
+    setSortByHighToLow(false);
+    setPage(0);
+    setLoadMoreDisabled(false);
+    setDisplayedItems(ITEMS_PER_PAGE);
+    fetchData();
+  }, [entityId]);
+
+  const handleLikedByUser = (id) => {
+    setJewelries((prevJewelries) =>
+      prevJewelries.map((jewelry) =>
+        jewelry._id === id
+          ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
+          : jewelry
+      )
+    );
+    fetchData();
+  };
+
+  const getSortLabel = () => {
+    if (sortByAvailableNow) {
+      return SORT_BY_MENU_LABELS.AvailableNow;
+    } else if (sortByLowToHigh) {
+      return SORT_BY_MENU_LABELS.ByLowToHigh;
+    } else if (sortByHighToLow) {
+      return SORT_BY_MENU_LABELS.ByHighToLow;
+    }
+    return SORT_BY_MENU_LABELS.AvailableNow;
+  };
+
+  // const displayedJewelries = jewelries.slice(0, page * ITEMS_PER_PAGE);
+  const displayedJewelries = jewelries.slice(0, displayedItems);
+
+
   return (
     <section className={styles["jewelries-box"]}>
       <div className={styles["jewelries-nav"]}>
+        {totalCount}
         <div className={styles["filter-by-container"]}>
           <div>Filter By:</div>
           <ul className={styles["filter-list"]} role="list">
@@ -154,14 +200,14 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
         </div>
         <div className={styles["sort-by-container"]}>
           <Dropdown
-            label={SORT_BY_MENU_LABELS.AvailableNow}
+            label={getSortLabel()}
             subLabel={SORT_BY_MENU_SUB_LABEL.SortBy}
           >
             <ul className={styles["sort-list"]} role="list">
               <li className={styles["filter-item"]}>
                 <button
                   className={styles["filter-button"]}
-                  onClick={clickSortByAvailableNowHandler}
+                  onClick={() => clickSortByAvailableNowHandler()}
                 >
                   <FontAwesomeIcon
                     icon={faCircle}
@@ -177,7 +223,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
               <li className={styles["filter-item"]}>
                 <button
                   className={styles["filter-button"]}
-                  onClick={clickSortByLowToHighHandler}
+                  onClick={() => clickSortByLowToHighHandler()}
                 >
                   <FontAwesomeIcon
                     icon={faCircle}
@@ -191,7 +237,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
               <li className={styles["filter-item"]}>
                 <button
                   className={styles["filter-button"]}
-                  onClick={clickSortByHighToLowHandler}
+                  onClick={() => clickSortByHighToLowHandler()}
                 >
                   <FontAwesomeIcon
                     icon={faCircle}
@@ -207,7 +253,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
         </div>
       </div>
       <div className={styles["jewelries-container"]}>
-        {jewelries.map((j) => (
+        {displayedJewelries.map((j) => (
           <JewelryListItems
             key={j._id}
             {...j}

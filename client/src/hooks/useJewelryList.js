@@ -1,48 +1,38 @@
 import { useEffect, useState } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
+import { SORT_BY_OPTIONS } from "../constants/sortBy";
 
 export const useJewelryList = (fetchDataFunction, id = null) => {
   const [jewelries, setJewelries] = useState([]);
   const serviceFactory = useService(fetchDataFunction);
-  const [page, setPage] = useState(0);
-  const [loadMoreDisabled, setLoadMoreDisabled] = useState(false);
+
+
 
   let [loading, setLoading] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
 
-  const fetchData = async (isInitialFetch = false) => {
+  const [loadMoreDisabled, setLoadMoreDisabled] = useState(true);
+
+  const fetchData = async () => {
+    // let sortBy;
+    // if (sortByAvailableNow) {
+    //   sortBy = SORT_BY_OPTIONS.IsSoldOut;
+    // } else if (sortByLowToHigh) {
+    //   sortBy = SORT_BY_OPTIONS.PriceAsc;
+    // } else if (sortByHighToLow) {
+    //   sortBy = SORT_BY_OPTIONS.PriceDesc;
+    // }
+
     setLoading(true);
-
-    const skip = isInitialFetch ? 0 : page * ITEMS_PER_PAGE;
-
-    const limit = ITEMS_PER_PAGE;
 
     setTimeout(async () => {
       try {
-        const { data, totalCount } = await serviceFactory.findAll(
-          id,
-          skip,
-          limit
-        );
+        const { data, totalCount } = await serviceFactory.findAll(id);
 
-        setJewelries((prevItems) => {
-          const updatedItems = [...prevItems];
-
-          data.forEach((newItem) => {
-            const existingIndex = updatedItems.findIndex(
-              (item) => item._id === newItem._id
-            );
-            if (existingIndex === -1) {
-              updatedItems.push(newItem);
-            } else {
-              updatedItems[existingIndex] = newItem;
-            }
-          });
-
-          setLoadMoreDisabled(updatedItems.length >= totalCount);
-
-          return updatedItems;
-        });
+        setJewelries(data);
+        setTotalCount(totalCount);
+        setLoadMoreDisabled(totalCount <= ITEMS_PER_PAGE)
       } catch (err) {
         console.log(err.message);
       } finally {
@@ -51,13 +41,10 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     }, 400);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [page]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [sortByAvailableNow, sortByLowToHigh, sortByHighToLow]);
 
-  const loadMoreHandler = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
 
   const mouseEnterHandler = (_id) => {
     setJewelries((state) =>
@@ -73,16 +60,20 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     );
   };
 
+
+
+
+
   return {
     setJewelries,
     jewelries,
-    loadMoreDisabled,
     loading,
-    loadMoreHandler,
     mouseEnterHandler,
     mouseLeaveHandler,
     fetchData,
-    setPage,
-    setLoading,
+    // setLoading,
+    totalCount,
+    loadMoreDisabled,
+    setLoadMoreDisabled
   };
 };
