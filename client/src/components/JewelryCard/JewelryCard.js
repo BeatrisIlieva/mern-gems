@@ -4,11 +4,9 @@ export const JewelryCard = ({ firstImageUrl, jewelryTitle, isSoldOut }) => {
   return (
     <article className={styles["jewelry-card"]}>
       <div
-        className={
-          isSoldOut
-            ? styles["jewelry-card-thumbnail-sold-out"]
-            : styles["jewelry-card-thumbnail"]
-        }
+        className={`${styles["jewelry-card-thumbnail"]} ${
+          isSoldOut === true ? styles["sold-out"] : ""
+        }`.trim()}
       >
         <img
           className={styles["jewelry-card-img"]}
@@ -16,7 +14,7 @@ export const JewelryCard = ({ firstImageUrl, jewelryTitle, isSoldOut }) => {
           alt={jewelryTitle}
         />
       </div>
-      {isSoldOut && <span className={styles["sold-out"]}>SOLD OUT</span>}
+      {isSoldOut && <span className={styles["sold-out-span"]}>SOLD OUT</span>}
     </article>
   );
 };

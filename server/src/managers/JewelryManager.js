@@ -79,7 +79,9 @@ exports.findAll = async (data) => {
                         $filter: {
                           input: "$$this",
                           as: "inv",
-                          cond: { $gt: ["$$inv.quantity", 0] },
+                          cond: {
+                            $gt: ["$$inv.quantity", 0],
+                          },
                         },
                       },
                     },
@@ -122,6 +124,8 @@ exports.findAll = async (data) => {
       },
     },
   ]);
+
+  console.log(result[0].data);
 
   return {
     data: result[0].data,
