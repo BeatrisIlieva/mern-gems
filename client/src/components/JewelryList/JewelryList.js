@@ -9,7 +9,6 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
-import { SORT_BY_OPTIONS } from "../../constants/sortBy";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",

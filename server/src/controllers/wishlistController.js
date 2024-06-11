@@ -1,10 +1,7 @@
 const router = require("express").Router();
 const wishlistManager = require("../managers/wishlistManager");
-const { SKIP, LIMIT } = require("../constants/pagination");
 
-router.get("/find-all/:skip/:limit", async (req, res) => {
-  const skip = Number(req.params.skip) ? Number(req.params.skip) : SKIP;
-  const limit = Number(req.params.limit) ? Number(req.params.limit) : LIMIT;
+router.get("/find-all", async (req, res) => {
 
   let userId;
 
@@ -14,7 +11,7 @@ router.get("/find-all/:skip/:limit", async (req, res) => {
     userId = req.headers["user-uuid"];
   }
 
-  const data = { userId, skip, limit };
+  const data = { userId};
 
   try {
     const result = await wishlistManager.findAll(data);
