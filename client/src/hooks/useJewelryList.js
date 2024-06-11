@@ -33,9 +33,7 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     }, 400);
   };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [sortByAvailableNow, sortByLowToHigh, sortByHighToLow]);
+
 
 
   const mouseEnterHandler = (_id) => {
