@@ -114,13 +114,13 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
   const loadMoreHandler = () => {
     const nextPage = page + 1;
     if (nextPage * ITEMS_PER_PAGE >= totalCount) {
-      setLoadMoreDisabled(true); // Disable button when all items are loaded
+      setLoadMoreDisabled(true); 
     }
     setPage(nextPage);
 
     const newDisplayedItems = displayedItems + ITEMS_PER_PAGE;
     if (newDisplayedItems >= totalCount) {
-      setLoadMoreDisabled(true); // Disable button when all items are loaded
+      setLoadMoreDisabled(true); 
     }
     setDisplayedItems(newDisplayedItems);
   };

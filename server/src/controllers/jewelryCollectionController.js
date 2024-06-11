@@ -1,10 +1,7 @@
 const router = require("express").Router();
 const jewelryCollectionManager = require("../managers/jewelryCollectionManager");
 
-
 router.get("/:jewelryCollectionId", async (req, res) => {
-
-
   let userId;
 
   if (req.user) {
@@ -16,7 +13,7 @@ router.get("/:jewelryCollectionId", async (req, res) => {
 
   const jewelryCollectionId = Number(req.params.jewelryCollectionId);
 
-  const data = { userId, jewelryCollectionId};
+  const data = { userId, jewelryCollectionId };
 
   try {
     const result = await jewelryCollectionManager.findAll(data);
