@@ -8,6 +8,6 @@ export const CATEGORIES_BY_NAMES = {
 export const CATEGORIES_BY_IDS = {
   1: "Bracelets",
   2: "Earrings",
-  3: "Necklaces",
+  3: "Necklaces & Pendants",
   4: "Rings",
 };

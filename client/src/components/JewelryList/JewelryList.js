@@ -192,6 +192,45 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
           </div>
         </>
       )}
+      {categoryName === "Necklaces & Pendants" && (
+        <>
+          <img
+            className={styles["hero-img"]}
+            src={
+              "https://res.cloudinary.com/deztgvefu/image/upload/v1718120267/ReactGems/common_img/herolarged_icons_lp_amethyst_necklace_punmcp.avif"
+            }
+            alt={"Img"}
+          />
+          <h2 className={styles["box-title"]}>{categoryName}</h2>
+          <VerticalLine />
+          <div className={styles["paragraph-container"]}>
+            <p className={styles["box-paragraph"]}>
+              React Gems's precious gemstones necklaces and pendants, set in
+              platinum, offer a more delicate interpretation of the House's
+              signature fine jewelry aesthetic.
+            </p>
+          </div>
+        </>
+      )}
+      {categoryName === "Bracelets" && (
+        <>
+          <img
+            className={styles["hero-img"]}
+            src={
+              "https://res.cloudinary.com/deztgvefu/image/upload/v1718121897/ReactGems/common_img/Screenshot_2024-06-11_at_19.04.01_jd5bnh.png"
+            }
+            alt={"Img"}
+          />
+          <h2 className={styles["box-title"]}>{categoryName}</h2>
+          <VerticalLine />
+          <div className={styles["paragraph-container"]}>
+            <p className={styles["box-paragraph"]}>
+              From sparkling diamond bracelets to chic diamond bangles, explore
+              the brilliant designs from the House of React Gems'.
+            </p>
+          </div>
+        </>
+      )}
       <div className={styles["jewelries-box"]}>
         <div className={styles["jewelries-nav"]}>
           <div className={styles["filter-by-container"]}>
