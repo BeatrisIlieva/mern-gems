@@ -130,14 +130,7 @@ exports.findAll = async (data) => {
         isLikedByUser: 1,
       },
     },
-    { $sort: { isSoldOut: 1, _id: 1 }},
-    // {
-    //   $sort: {
-    //     _id: 1,
-    //   },
-    // },
-    // { $skip: data.skip },
-    // { $limit: data.limit },
+    { $sort: { isSoldOut: 1, _id: 1 } },
   ];
 
   const countQuery = [
