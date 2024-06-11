@@ -178,7 +178,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
         </div>
       )}
       {categoryName === "Rings" && (
-        <>
+        <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
@@ -188,15 +188,17 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
               alt={"Img"}
             />
           </div>
-          <h2 className={styles["box-title"]}>{categoryName}</h2>
-          <VerticalLine />
-          <div className={styles["paragraph-container"]}>
-            <p className={styles["box-paragraph"]}>
-              React Gems' rings feature the most exceptional diamonds and
-              gemstones and are known for their unequivocal beauty.
-            </p>
+          <div className={styles["info-container"]}>
+            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <VerticalLine />
+            <div className={styles["paragraph-container"]}>
+              <p className={styles["box-paragraph"]}>
+                React Gems' rings feature the most exceptional diamonds and
+                gemstones and are known for their unequivocal beauty.
+              </p>
+            </div>
           </div>
-        </>
+        </div>
       )}
       {categoryName === "Necklaces & Pendants" && (
         <>
