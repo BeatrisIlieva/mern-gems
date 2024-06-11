@@ -1,27 +1,21 @@
-.hero-img {
-  /* height: 80vh; */
-}
-
-.top-container {
+.paragraph-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 100px;
 }
 
 .box-title {
   text-align: center;
   font-family: var(--bold-italic-font-family);
   font-size: var(--extra-large-font-size);
-  /* margin-bottom: 40px; */
   margin: 40px 0px 0px 0px;
   padding: 0px;
 }
 .box-paragraph {
   text-align: center;
   width: 40%;
-
 }
 
 .jewelries-box {

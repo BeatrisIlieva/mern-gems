@@ -153,22 +153,45 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
 
   return (
     <section>
-      <img
-        className={styles["hero-img"]}
-        src={
-          "https://res.cloudinary.com/deztgvefu/image/upload/v1718118512/ReactGems/common_img/largeherod_l2_hj_incre_heartshape_ea_main_rjzvzb.avif"
-        }
-        alt={"Img"}
-      />
-      <h2 className={styles["box-title"]}>{categoryName}</h2>
-      <VerticalLine />
-      <div className={styles["top-container"]}>
-        <p className={styles["box-paragraph"]}>
-          From floral fine jewelry styles to bold designs, to classic earstuds,
-          chandeliers and diamond drops, explore Harry Winston's selection of
-          diamond earrings.
-        </p>
-      </div>
+      {categoryName === "Earrings" && (
+        <>
+          <img
+            className={styles["hero-img"]}
+            src={
+              "https://res.cloudinary.com/deztgvefu/image/upload/v1718118512/ReactGems/common_img/largeherod_l2_hj_incre_heartshape_ea_main_rjzvzb.avif"
+            }
+            alt={"Img"}
+          />
+          <h2 className={styles["box-title"]}>{categoryName}</h2>
+          <VerticalLine />
+          <div className={styles["paragraph-container"]}>
+            <p className={styles["box-paragraph"]}>
+              From floral fine jewelry styles to bold designs, to classic
+              earstuds, chandeliers and diamond drops, explore React Gems'
+              selection of diamond earrings.
+            </p>
+          </div>
+        </>
+      )}
+      {categoryName === "Rings" && (
+        <>
+          <img
+            className={styles["hero-img"]}
+            src={
+              "https://res.cloudinary.com/deztgvefu/image/upload/v1718120001/ReactGems/common_img/largeherod_l2_hj_incre_pink_ring_main_rcb7f5.avif"
+            }
+            alt={"Img"}
+          />
+          <h2 className={styles["box-title"]}>{categoryName}</h2>
+          <VerticalLine />
+          <div className={styles["paragraph-container"]}>
+            <p className={styles["box-paragraph"]}>
+              React Gems' rings feature the most exceptional diamonds and
+              gemstones and are known for their unequivocal beauty.
+            </p>
+          </div>
+        </>
+      )}
       <div className={styles["jewelries-box"]}>
         <div className={styles["jewelries-nav"]}>
           <div className={styles["filter-by-container"]}>
