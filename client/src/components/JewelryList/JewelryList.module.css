@@ -10,7 +10,7 @@
 
 .info-container {
   width: 50%;
-  background-color: #f9f9f979;
+  background-color: var(--transparent-gray);
   display: flex;
   justify-content: center;
   flex-direction: column;
