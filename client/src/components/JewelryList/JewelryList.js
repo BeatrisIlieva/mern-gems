@@ -162,6 +162,13 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
       />
       <h2 className={styles["box-title"]}>{categoryName}</h2>
       <VerticalLine />
+      <div className={styles["top-container"]}>
+        <p className={styles["box-paragraph"]}>
+          From floral fine jewelry styles to bold designs, to classic earstuds,
+          chandeliers and diamond drops, explore Harry Winston's selection of
+          diamond earrings.
+        </p>
+      </div>
       <div className={styles["jewelries-box"]}>
         <div className={styles["jewelries-nav"]}>
           <div className={styles["filter-by-container"]}>
