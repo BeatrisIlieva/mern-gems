@@ -9,6 +9,16 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
 
+const SORT_BY_MENU_LABELS = {
+  AvailableNow: "Available Now",
+  ByLowToHigh: "Price: Low To High",
+  ByHighToLow: "Price: High To Low",
+};
+
+const SORT_BY_MENU_SUB_LABEL = {
+  SortBy: "Sort By:",
+};
+
 const MENU_LABELS = {
   Collection: "collection",
   StoneType: "stoneType",
@@ -20,7 +30,6 @@ const MENU_SUB_LABELS = {
   Collection: "collection",
   StoneType: "stoneType",
   StoneColor: "stoneColor",
-  AvailableNow: "Sort By:",
 };
 
 export const JewelryList = ({ entityId, serviceFactory }) => {
@@ -42,6 +51,9 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
 
   useEffect(() => {
     setJewelries([]);
+    setSortByAvailableNow(true);
+    setSortByLowToHigh(false);
+    setSortByHighToLow(false);
     setPage(0);
     fetchData(true);
   }, [entityId]);
@@ -142,8 +154,8 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
         </div>
         <div className={styles["sort-by-container"]}>
           <Dropdown
-            label={MENU_LABELS.AvailableNow}
-            subLabel={MENU_SUB_LABELS.AvailableNow}
+            label={SORT_BY_MENU_LABELS.AvailableNow}
+            subLabel={SORT_BY_MENU_SUB_LABEL.SortBy}
           >
             <ul className={styles["sort-list"]} role="list">
               <li className={styles["filter-item"]}>
@@ -159,7 +171,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
                         : ""
                     }`.trim()}
                   />
-                  Available Now
+                  {SORT_BY_MENU_LABELS.AvailableNow}
                 </button>
               </li>
               <li className={styles["filter-item"]}>
@@ -173,7 +185,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
                       sortByLowToHigh === true ? styles["circle-selected"] : ""
                     }`.trim()}
                   />
-                  Price: Low To High
+                  {SORT_BY_MENU_LABELS.ByLowToHigh}
                 </button>
               </li>
               <li className={styles["filter-item"]}>
@@ -187,7 +199,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
                       sortByHighToLow === true ? styles["circle-selected"] : ""
                     }`.trim()}
                   />
-                  Price: High To Low
+                  {SORT_BY_MENU_LABELS.ByHighToLow}
                 </button>
               </li>
             </ul>
