@@ -7,7 +7,6 @@ export const jewelryCollectionServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
-    findAll: (collectionId) =>
-      request.get(`${baseUrl}/${collectionId}`),
+    findAll: (collectionId) => request.get(`${baseUrl}/${collectionId}`),
   };
 };
