@@ -7,8 +7,7 @@ export const wishlistServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
-    findAll: (id = null, skip, limit) =>
-      request.get(`${baseUrl}/find-all/${skip}/${limit}`),
+    findAll: (id = null) => request.get(`${baseUrl}/find-all`),
 
     findCount: () => request.get(`${baseUrl}/find-count`),
 

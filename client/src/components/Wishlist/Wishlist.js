@@ -5,22 +5,35 @@ import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { ITEMS_PER_PAGE } from "../../constants/pagination";
 
 export const Wishlist = () => {
   const {
+    // setJewelries,
+    // jewelries,
+    // loadMoreDisabled,
+    // loading,
+    // loadMoreHandler,
+    // mouseEnterHandler,
+    // mouseLeaveHandler,
+    // fetchData,
+    // setPage,
     setJewelries,
     jewelries,
-    loadMoreDisabled,
     loading,
-    loadMoreHandler,
     mouseEnterHandler,
     mouseLeaveHandler,
     fetchData,
-    setPage,
+    totalCount,
+    loadMoreDisabled,
+    setLoadMoreDisabled,
   } = useJewelryList(wishlistServiceFactory);
 
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
+
+  const [page, setPage] = useState(1);
+  const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
 
   useEffect(() => {
     fetchData(true);
@@ -32,6 +45,22 @@ export const Wishlist = () => {
       prevJewelries.filter((jewelry) => !jewelry._id)
     );
   };
+
+  const loadMoreHandler = () => {
+    const nextPage = page + 1;
+    if (nextPage * ITEMS_PER_PAGE >= totalCount) {
+      setLoadMoreDisabled(true);
+    }
+    setPage(nextPage);
+
+    const newDisplayedItems = displayedItems + ITEMS_PER_PAGE;
+    if (newDisplayedItems >= totalCount) {
+      setLoadMoreDisabled(true);
+    }
+    setDisplayedItems(newDisplayedItems);
+  };
+
+  const displayedJewelries = jewelries.slice(0, displayedItems);
 
   return (
     <>
@@ -61,7 +90,7 @@ export const Wishlist = () => {
       {wishlistCount > 0 && (
         <section className={styles["wishlist-box"]}>
           <div className={styles["wishlist-container"]}>
-            {jewelries.map((j) => (
+            {displayedJewelries.map((j) => (
               <WishlistItems
                 key={j._id}
                 {...j}
