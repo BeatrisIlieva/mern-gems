@@ -154,7 +154,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
   return (
     <section>
       {categoryName === "Earrings" && (
-        <>
+        <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
@@ -164,16 +164,18 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
               alt={"Img"}
             />
           </div>
-          <h2 className={styles["box-title"]}>{categoryName}</h2>
-          <VerticalLine />
-          <div className={styles["paragraph-container"]}>
-            <p className={styles["box-paragraph"]}>
-              From floral fine jewelry styles to bold designs, to classic
-              earstuds, chandeliers and diamond drops, explore React Gems'
-              selection of diamond earrings.
-            </p>
+          <div className={styles["info-container"]}>
+            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <VerticalLine />
+            <div className={styles["paragraph-container"]}>
+              <p className={styles["box-paragraph"]}>
+                From floral fine jewelry styles to bold designs, to classic
+                earstuds, chandeliers and diamond drops, explore React Gems'
+                selection of diamond earrings.
+              </p>
+            </div>
           </div>
-        </>
+        </div>
       )}
       {categoryName === "Rings" && (
         <>
