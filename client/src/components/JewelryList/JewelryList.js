@@ -225,7 +225,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
         </div>
       )}
       {categoryName === "Bracelets" && (
-        <>
+        <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
@@ -235,15 +235,17 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
               alt={"Img"}
             />
           </div>
-          <h2 className={styles["box-title"]}>{categoryName}</h2>
-          <VerticalLine />
-          <div className={styles["paragraph-container"]}>
-            <p className={styles["box-paragraph"]}>
-              From sparkling diamond bracelets to chic diamond bangles, explore
-              the brilliant designs from the House of React Gems'.
-            </p>
+          <div className={styles["info-container"]}>
+            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <VerticalLine />
+            <div className={styles["paragraph-container"]}>
+              <p className={styles["box-paragraph"]}>
+                From sparkling diamond bracelets to chic diamond bangles,
+                explore the brilliant designs from the House of React Gems'.
+              </p>
+            </div>
           </div>
-        </>
+        </div>
       )}
       <div className={styles["jewelries-box"]}>
         <div className={styles["jewelries-nav"]}>
