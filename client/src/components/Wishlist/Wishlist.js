@@ -10,15 +10,6 @@ import { ITEMS_PER_PAGE } from "../../constants/pagination";
 
 export const Wishlist = () => {
   const {
-    // setJewelries,
-    // jewelries,
-    // loadMoreDisabled,
-    // loading,
-    // loadMoreHandler,
-    // mouseEnterHandler,
-    // mouseLeaveHandler,
-    // fetchData,
-    // setPage,
     setJewelries,
     jewelries,
     loading,
