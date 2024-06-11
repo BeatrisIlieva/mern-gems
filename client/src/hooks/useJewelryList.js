@@ -6,16 +6,12 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
   const [jewelries, setJewelries] = useState([]);
   const serviceFactory = useService(fetchDataFunction);
 
-
-
   let [loading, setLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
 
   const [loadMoreDisabled, setLoadMoreDisabled] = useState(true);
 
   const fetchData = async () => {
-
-
     setLoading(true);
 
     setTimeout(async () => {
@@ -24,7 +20,7 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
 
         setJewelries(data);
         setTotalCount(totalCount);
-        setLoadMoreDisabled(totalCount <= ITEMS_PER_PAGE)
+        setLoadMoreDisabled(totalCount <= ITEMS_PER_PAGE);
       } catch (err) {
         console.log(err.message);
       } finally {
@@ -32,9 +28,6 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
       }
     }, 400);
   };
-
-
-
 
   const mouseEnterHandler = (_id) => {
     setJewelries((state) =>
@@ -50,10 +43,6 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     );
   };
 
-
-
-
-
   return {
     setJewelries,
     jewelries,
@@ -61,9 +50,8 @@ export const useJewelryList = (fetchDataFunction, id = null) => {
     mouseEnterHandler,
     mouseLeaveHandler,
     fetchData,
-    // setLoading,
     totalCount,
     loadMoreDisabled,
-    setLoadMoreDisabled
+    setLoadMoreDisabled,
   };
 };
