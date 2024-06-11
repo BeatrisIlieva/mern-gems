@@ -18,12 +18,14 @@ import { CATEGORIES_BY_NAMES } from "./constants/categories";
 import { COLLECTIONS_BY_NAMES } from "./constants/collections";
 import { jewelryCollectionServiceFactory } from "./services/jewelryCollectionService";
 import { jewelryServiceFactory } from "./services/jewelryService";
+import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   return (
     <UserUUIDProvider>
       <AuthProvider>
         <WishlistProvider>
+          <ScrollToTop />
           <div className={styles["app"]}>
             <Header />
             <main className={styles["main"]}>

@@ -48,9 +48,6 @@
   gap: 8px;
 }
 
-.sort-by-sub-container {
-}
-
 .sort-list {
   display: flex;
   flex-direction: column;
@@ -72,21 +69,6 @@
   padding-bottom: 10px;
 }
 
-/* .circle,
-.circle-invisible {
-  padding-right: 8px;
-  height: 8px;
-  vertical-align: middle;
-}
-
-.circle {
-  color: var(--dark-pink);
-}
-
-.circle-invisible {
-  color: var(--white);
-} */
-
 .circle {
   padding-right: 8px;
   height: 8px;
@@ -100,8 +82,8 @@
 
 .jewelries-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
 }
 
 .load-more-button {

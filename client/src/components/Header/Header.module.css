@@ -36,6 +36,10 @@
   transform: scale(1.1);
 }
 
+.nav {
+  width: 50.02%;
+}
+
 .nav-list {
   display: flex;
   gap: 40px;
@@ -43,7 +47,6 @@
 
 .nav-title {
   font-size: var(--medium-font-size);
-  font-family: (--main-font-family);
 }
 
 .nav-item {
@@ -66,7 +69,7 @@
   border-bottom-left-radius: 32px;
   border-bottom-right-radius: 32px;
   background-color: var(--white-pink);
-  width: 100%;
+  width: 49.08%;
   margin: 0px 40px;
   padding: 4px;
   cursor: pointer;

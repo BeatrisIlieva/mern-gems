@@ -30,7 +30,7 @@ export const Header = () => {
             />
           </div>
         </Link>
-        <nav>
+        <nav className={styles["nav"]}>
           <ul className={styles["nav-list"]} role="list">
             <li>
               <Link className={styles["nav-item"]} to="/bracelets">
@@ -44,7 +44,7 @@ export const Header = () => {
             </li>
             <li>
               <Link className={styles["nav-item"]} to="/necklaces">
-                <h1 className={styles["nav-title"]}>Necklaces</h1>
+                <h1 className={styles["nav-title"]}>Necklaces & Pendants</h1>
               </Link>
             </li>
             <li>

@@ -13,25 +13,15 @@ const MENU_LABELS = {
   Collection: "collection",
   StoneType: "stoneType",
   StoneColor: "stoneColor",
-  NewToOld: "New To Old",
+  AvailableNow: "Available Now",
 };
 
 const MENU_SUB_LABELS = {
   Collection: "collection",
   StoneType: "stoneType",
   StoneColor: "stoneColor",
-  NewToOld: "Sort By:",
+  AvailableNow: "Sort By:",
 };
-
-const SORT_BY_OPTIONS = {
-  LowToHigh: "lowToHigh",
-  HighToLow: "highToLow",
-  NewToReactGems: "newToReactGems",
-};
-
-// const SERVICES_BY_OPTIONS = {
-
-// }
 
 export const JewelryList = ({ entityId, serviceFactory }) => {
   const {
@@ -46,7 +36,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     setPage,
   } = useJewelryList(serviceFactory, entityId);
 
-  const [sortByNewToOld, setSortByNewToOld] = useState(true);
+  const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
   const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
   const [sortByHighToLow, setSortByHighToLow] = useState(false);
 
@@ -67,20 +57,20 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     fetchData();
   };
 
-  const clickSortByNewToOldHandler = () => {
-    setSortByNewToOld(true);
+  const clickSortByAvailableNowHandler = () => {
+    setSortByAvailableNow(true);
     setSortByLowToHigh(false);
     setSortByHighToLow(false);
   };
 
   const clickSortByLowToHighHandler = () => {
-    setSortByNewToOld(false);
+    setSortByAvailableNow(false);
     setSortByLowToHigh(true);
     setSortByHighToLow(false);
   };
 
   const clickSortByHighToLowHandler = () => {
-    setSortByNewToOld(false);
+    setSortByAvailableNow(false);
     setSortByLowToHigh(false);
     setSortByHighToLow(true);
   };
@@ -122,22 +112,22 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
         </div>
         <div className={styles["sort-by-container"]}>
           <Dropdown
-            label={MENU_LABELS.NewToOld}
-            subLabel={MENU_SUB_LABELS.NewToOld}
+            label={MENU_LABELS.AvailableNow}
+            subLabel={MENU_SUB_LABELS.AvailableNow}
           >
             <ul className={styles["sort-list"]} role="list">
               <li className={styles["filter-item"]}>
                 <button
                   className={styles["filter-button"]}
-                  onClick={clickSortByNewToOldHandler}
+                  onClick={clickSortByAvailableNowHandler}
                 >
                   <FontAwesomeIcon
                     icon={faCircle}
                     className={`${styles["circle"]} ${
-                      sortByNewToOld === true ? styles["circle-selected"] : ""
+                      sortByAvailableNow === true ? styles["circle-selected"] : ""
                     }`.trim()}
                   />
-                  New To Old
+                  Available Now
                 </button>
               </li>
               <li className={styles["filter-item"]}>

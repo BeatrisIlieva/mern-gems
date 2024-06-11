@@ -1,5 +1,6 @@
 .wishlist-box {
-  margin: 40px 18px 40px 18px;
+  margin: 40px 214px 40px 214px;
+  /* margin: 40px 18px 40px 18px; */
   position: relative;
 }
 
@@ -54,4 +55,9 @@
   flex-wrap: wrap;
   line-height: 32px;
   margin-right: 100px;
+}
+
+.load-more-button {
+  display: flex;
+  justify-content: center;
 }
