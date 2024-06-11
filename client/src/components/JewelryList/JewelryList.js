@@ -155,13 +155,15 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     <section>
       {categoryName === "Earrings" && (
         <>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1718118512/ReactGems/common_img/largeherod_l2_hj_incre_heartshape_ea_main_rjzvzb.avif"
-            }
-            alt={"Img"}
-          />
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1718118512/ReactGems/common_img/largeherod_l2_hj_incre_heartshape_ea_main_rjzvzb.avif"
+              }
+              alt={"Img"}
+            />
+          </div>
           <h2 className={styles["box-title"]}>{categoryName}</h2>
           <VerticalLine />
           <div className={styles["paragraph-container"]}>
@@ -175,13 +177,15 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
       )}
       {categoryName === "Rings" && (
         <>
-          <img
-            className={styles["hero-img"]}
-            src={
-              "https://res.cloudinary.com/deztgvefu/image/upload/v1718120001/ReactGems/common_img/largeherod_l2_hj_incre_pink_ring_main_rcb7f5.avif"
-            }
-            alt={"Img"}
-          />
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1718120001/ReactGems/common_img/largeherod_l2_hj_incre_pink_ring_main_rcb7f5.avif"
+              }
+              alt={"Img"}
+            />
+          </div>
           <h2 className={styles["box-title"]}>{categoryName}</h2>
           <VerticalLine />
           <div className={styles["paragraph-container"]}>
