@@ -183,7 +183,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // setSelection({})
+
     handleFilter();
   };
 
