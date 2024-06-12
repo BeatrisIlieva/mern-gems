@@ -164,13 +164,13 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     setSelection((state) => {
       if (isChecked) {
-        // If checkbox is checked, add the selected value to the state
+
         return {
           ...state,
           [entityTitle]: [...(state[entityTitle] || []), Number(selected)],
         };
       } else {
-        // If checkbox is unchecked, remove the selected value from the state
+
         return {
           ...state,
           [entityTitle]: (state[entityTitle] || []).filter(
