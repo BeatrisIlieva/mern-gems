@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./DynamicDropdown.module.css";
 
-export const DynamicDropdown = ({ label, options, changeHandler, submitHandler }) => {
+export const DynamicDropdown = ({
+  label,
+  options,
+  changeHandler,
+  submitHandler,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  // console.log(label);
-  // console.log(options);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -38,7 +41,6 @@ export const DynamicDropdown = ({ label, options, changeHandler, submitHandler }
       {isOpen && (
         <div className={styles["dropdown-menu"]}>
           {options.map((option, index) => (
-            // <div key={index} onClick={() => onSelect(option)}>
             <div key={index}>
               <input
                 type="checkbox"
@@ -53,7 +55,7 @@ export const DynamicDropdown = ({ label, options, changeHandler, submitHandler }
             </div>
           ))}
           <button
-          onClick={submitHandler}
+            onClick={submitHandler}
             className={`${styles["animated-button"]} ${styles["button"]}`}
             type="submit"
             data-testid="submit"

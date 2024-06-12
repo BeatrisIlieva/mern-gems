@@ -49,7 +49,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     stoneTypesData,
     setFilteredJewelries,
     filteredJewelries,
-    setTotalCount
+    setTotalCount,
   } = useJewelryList(serviceFactory, entityId);
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
@@ -154,23 +154,17 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     return SORT_BY_MENU_LABELS.AvailableNow;
   };
 
-
-
-
-
   const changeHandler = (e, entityTitle) => {
     const selected = e.target.value;
     const isChecked = e.target.checked;
 
     setSelection((state) => {
       if (isChecked) {
-
         return {
           ...state,
           [entityTitle]: [...(state[entityTitle] || []), Number(selected)],
         };
       } else {
-
         return {
           ...state,
           [entityTitle]: (state[entityTitle] || []).filter(
@@ -194,8 +188,8 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
       return flattenedStoneTypes.some((id) => selection.StoneType.includes(id));
     });
     setFilteredJewelries(filtered);
-    setTotalCount(filtered.length)
-    setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE)
+    setTotalCount(filtered.length);
+    setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
   };
 
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
