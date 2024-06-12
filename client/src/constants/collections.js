@@ -1,4 +1,4 @@
-export const CATEGORIES_BY_ID_AND_TITLE = {
+export const COLLECTIONS_BY_ID_AND_TITLE = {
   "Diamond Loop": [1, "Diamond Loop"],
   Sunflower: [2, "Sunflower"],
   "Sparkling Cluster": [3, "Sparkling Cluster"],

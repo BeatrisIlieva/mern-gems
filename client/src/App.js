@@ -15,10 +15,7 @@ import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
 import { Footer } from "./components/Footer/Footer";
 import { CATEGORIES_BY_ID_AND_TITLE } from "./constants/categories";
-import {
-  COLLECTIONS_BY_NAMES,
-  COLLECTIONS_BY_IDS,
-} from "./constants/collections";
+import { COLLECTIONS_BY_ID_AND_TITLE } from "./constants/collections";
 import { jewelryCollectionServiceFactory } from "./services/jewelryCollectionService";
 import { jewelryServiceFactory } from "./services/jewelryService";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
