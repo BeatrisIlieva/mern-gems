@@ -162,14 +162,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   //   }));
   // };
 
-  // const changeHandler = (e, entityTitle) => {
-  //   const selected = e.target.value;
 
-  //   setSelection((state) => ({
-  //     ...state,
-  //     [entityTitle]: [...(state[entityTitle] || []), Number(selected)],
-  //   }));
-  // };
 
   const changeHandler = (e, entityTitle) => {
     const selected = e.target.value;
