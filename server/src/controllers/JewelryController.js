@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const jewelryManager = require("../managers/jewelryManager");
 const { getStoneTypesData } = require("../utils/getStoneTypesData");
-const { updateSelectionQuery } = require("../utils/updateSelectionQuery");
 
 // router.get("/by-category/:categoryId", async (req, res) => {
 //   const serializedObject =
