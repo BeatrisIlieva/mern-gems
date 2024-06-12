@@ -35,8 +35,10 @@ function App() {
                   path="/forget-me-not"
                   element={
                     <JewelryList
-                      entityId={COLLECTIONS_BY_NAMES["forget-me-not"]}
-                      entityTitle={COLLECTIONS_BY_IDS[4]}
+                      entityId={COLLECTIONS_BY_ID_AND_TITLE["Forget-Me-Not"][0]}
+                      entityTitle={
+                        COLLECTIONS_BY_ID_AND_TITLE["Forget-Me-Not"][1]
+                      }
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -45,8 +47,8 @@ function App() {
                   path="/classics"
                   element={
                     <JewelryList
-                      entityId={COLLECTIONS_BY_NAMES["classics"]}
-                      entityTitle={COLLECTIONS_BY_IDS[6]}
+                      entityId={COLLECTIONS_BY_ID_AND_TITLE["Classics"][0]}
+                      entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Classics"][1]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -55,8 +57,8 @@ function App() {
                   path="/pirouette"
                   element={
                     <JewelryList
-                      entityId={COLLECTIONS_BY_NAMES["pirouette"]}
-                      entityTitle={COLLECTIONS_BY_IDS[5]}
+                      entityId={COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][0]}
+                      entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][1]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -65,8 +67,10 @@ function App() {
                   path="/diamond-loop"
                   element={
                     <JewelryList
-                      entityId={COLLECTIONS_BY_NAMES["diamond-loop"]}
-                      entityTitle={COLLECTIONS_BY_IDS[1]}
+                      entityId={COLLECTIONS_BY_ID_AND_TITLE["Diamond Loop"][0]}
+                      entityTitle={
+                        COLLECTIONS_BY_ID_AND_TITLE["Diamond Loop"][1]
+                      }
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -75,8 +79,8 @@ function App() {
                   path="/sunflower"
                   element={
                     <JewelryList
-                      entityId={COLLECTIONS_BY_NAMES["sunflower"]}
-                      entityTitle={COLLECTIONS_BY_IDS[2]}
+                      entityId={COLLECTIONS_BY_ID_AND_TITLE["Sunflower"][0]}
+                      entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Sunflower"][1]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -85,8 +89,12 @@ function App() {
                   path="/sparkling-cluster"
                   element={
                     <JewelryList
-                      entityId={COLLECTIONS_BY_NAMES["sparkling-cluster"]}
-                      entityTitle={COLLECTIONS_BY_IDS[3]}
+                      entityId={
+                        COLLECTIONS_BY_ID_AND_TITLE["Sparkling Cluster"][0]
+                      }
+                      entityTitle={
+                        COLLECTIONS_BY_ID_AND_TITLE["Sparkling Cluster"][1]
+                      }
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
