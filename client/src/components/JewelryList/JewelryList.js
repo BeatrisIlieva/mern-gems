@@ -154,13 +154,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     return SORT_BY_MENU_LABELS.AvailableNow;
   };
 
-  // const changeHandler = (e, entityTitle) => {
-  //   const selectedStoneType = e.target.value;
-  //   setStoneTypes((prevStoneTypes) => ({
-  //     ...prevStoneTypes,
-  //     [entityTitle]: [...(prevStoneTypes.StoneTypes || []), selectedStoneType],
-  //   }));
-  // };
+
 
 
 
