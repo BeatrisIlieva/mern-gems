@@ -14,11 +14,7 @@ import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
 import { Footer } from "./components/Footer/Footer";
-import {
-  CATEGORIES_BY_NAMES,
-  CATEGORIES_BY_IDS,
-  CATEGORIES_BY_ID_AND_TITLE,
-} from "./constants/categories";
+import { CATEGORIES_BY_ID_AND_TITLE } from "./constants/categories";
 import {
   COLLECTIONS_BY_NAMES,
   COLLECTIONS_BY_IDS,
