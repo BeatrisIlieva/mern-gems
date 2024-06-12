@@ -14,8 +14,11 @@ import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
 import { Footer } from "./components/Footer/Footer";
-import { CATEGORIES_BY_NAMES } from "./constants/categories";
-import { COLLECTIONS_BY_NAMES } from "./constants/collections";
+import { CATEGORIES_BY_NAMES, CATEGORIES_BY_IDS } from "./constants/categories";
+import {
+  COLLECTIONS_BY_NAMES,
+  COLLECTIONS_BY_IDS,
+} from "./constants/collections";
 import { jewelryCollectionServiceFactory } from "./services/jewelryCollectionService";
 import { jewelryServiceFactory } from "./services/jewelryService";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
@@ -36,6 +39,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={COLLECTIONS_BY_NAMES["forget-me-not"]}
+                      entityTitle={COLLECTIONS_BY_IDS[4]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -45,6 +49,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={COLLECTIONS_BY_NAMES["classics"]}
+                      entityTitle={COLLECTIONS_BY_IDS[6]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -54,6 +59,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={COLLECTIONS_BY_NAMES["pirouette"]}
+                      entityTitle={COLLECTIONS_BY_IDS[5]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -63,6 +69,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={COLLECTIONS_BY_NAMES["diamond-loop"]}
+                      entityTitle={COLLECTIONS_BY_IDS[1]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -72,6 +79,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={COLLECTIONS_BY_NAMES["sunflower"]}
+                      entityTitle={COLLECTIONS_BY_IDS[2]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -81,6 +89,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={COLLECTIONS_BY_NAMES["sparkling-cluster"]}
+                      entityTitle={COLLECTIONS_BY_IDS[3]}
                       serviceFactory={jewelryCollectionServiceFactory}
                     />
                   }
@@ -90,6 +99,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={CATEGORIES_BY_NAMES["bracelets"]}
+                      entityTitle={CATEGORIES_BY_IDS[1]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }
@@ -99,6 +109,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={CATEGORIES_BY_NAMES["earrings"]}
+                      entityTitle={CATEGORIES_BY_IDS[2]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }
@@ -108,6 +119,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={CATEGORIES_BY_NAMES["necklaces"]}
+                      entityTitle={CATEGORIES_BY_IDS[3]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }
@@ -117,6 +129,7 @@ function App() {
                   element={
                     <JewelryList
                       entityId={CATEGORIES_BY_NAMES["rings"]}
+                      entityTitle={CATEGORIES_BY_IDS[4]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }
