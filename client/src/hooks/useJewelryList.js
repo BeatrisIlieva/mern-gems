@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
-import { CATEGORIES_BY_IDS } from "../constants/categories";
 
-export const useJewelryList = (fetchDataFunction, id = null, title) => {
+export const useJewelryList = (fetchDataFunction, entityId = null) => {
   const [jewelries, setJewelries] = useState([]);
   const serviceFactory = useService(fetchDataFunction);
   let [loading, setLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
-  // const categoryName = CATEGORIES_BY_IDS[id];
 
   const [loadMoreDisabled, setLoadMoreDisabled] = useState(true);
 
@@ -17,7 +15,7 @@ export const useJewelryList = (fetchDataFunction, id = null, title) => {
 
     setTimeout(async () => {
       try {
-        const { data, totalCount } = await serviceFactory.findAll(id);
+        const { data, totalCount } = await serviceFactory.findAll(entityId);
 
         setJewelries(data);
         setTotalCount(totalCount);
@@ -54,6 +52,5 @@ export const useJewelryList = (fetchDataFunction, id = null, title) => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
-    categoryName,
   };
 };

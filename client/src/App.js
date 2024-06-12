@@ -14,7 +14,11 @@ import { Login } from "./components/User/Login/Login";
 import { Register } from "./components/User/Register/Register";
 import { Account } from "./components/User/Account/Account";
 import { Footer } from "./components/Footer/Footer";
-import { CATEGORIES_BY_NAMES, CATEGORIES_BY_IDS } from "./constants/categories";
+import {
+  CATEGORIES_BY_NAMES,
+  CATEGORIES_BY_IDS,
+  CATEGORIES_BY_ID_AND_TITLE,
+} from "./constants/categories";
 import {
   COLLECTIONS_BY_NAMES,
   COLLECTIONS_BY_IDS,
@@ -98,8 +102,8 @@ function App() {
                   path="/bracelets"
                   element={
                     <JewelryList
-                      entityId={CATEGORIES_BY_NAMES["bracelets"]}
-                      entityTitle={CATEGORIES_BY_IDS[1]}
+                      entityId={CATEGORIES_BY_ID_AND_TITLE["Bracelets"][0]}
+                      entityTitle={CATEGORIES_BY_ID_AND_TITLE["Bracelets"][1]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }
@@ -108,8 +112,8 @@ function App() {
                   path="/earrings"
                   element={
                     <JewelryList
-                      entityId={CATEGORIES_BY_NAMES["earrings"]}
-                      entityTitle={CATEGORIES_BY_IDS[2]}
+                      entityId={CATEGORIES_BY_ID_AND_TITLE["Earrings"][0]}
+                      entityTitle={CATEGORIES_BY_ID_AND_TITLE["Earrings"][1]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }
@@ -118,8 +122,8 @@ function App() {
                   path="/necklaces"
                   element={
                     <JewelryList
-                      entityId={CATEGORIES_BY_NAMES["necklaces"]}
-                      entityTitle={CATEGORIES_BY_IDS[3]}
+                      entityId={CATEGORIES_BY_ID_AND_TITLE["Necklaces"][0]}
+                      entityTitle={CATEGORIES_BY_ID_AND_TITLE["Necklaces"][1]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }
@@ -128,8 +132,8 @@ function App() {
                   path="/rings"
                   element={
                     <JewelryList
-                      entityId={CATEGORIES_BY_NAMES["rings"]}
-                      entityTitle={CATEGORIES_BY_IDS[4]}
+                      entityId={CATEGORIES_BY_ID_AND_TITLE["Rings"][0]}
+                      entityTitle={CATEGORIES_BY_ID_AND_TITLE["Rings"][1]}
                       serviceFactory={jewelryServiceFactory}
                     />
                   }

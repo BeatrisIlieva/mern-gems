@@ -34,7 +34,7 @@ const MENU_SUB_LABELS = {
   StoneColor: "stoneColor",
 };
 
-export const JewelryList = ({ entityId, serviceFactory }) => {
+export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const {
     setJewelries,
     jewelries,
@@ -45,7 +45,6 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
-    categoryName,
   } = useJewelryList(serviceFactory, entityId);
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
@@ -153,7 +152,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
 
   return (
     <section>
-      {categoryName === "Earrings" && (
+      {entityTitle === "Earrings" && (
         <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
@@ -165,7 +164,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             />
           </div>
           <div className={styles["info-container"]}>
-            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <h2 className={styles["box-title"]}>{entityTitle}</h2>
             <VerticalLine />
             <div className={styles["paragraph-container"]}>
               <p className={styles["box-paragraph"]}>
@@ -177,7 +176,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
           </div>
         </div>
       )}
-      {categoryName === "Rings" && (
+      {entityTitle === "Rings" && (
         <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
@@ -189,7 +188,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             />
           </div>
           <div className={styles["info-container"]}>
-            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <h2 className={styles["box-title"]}>{entityTitle}</h2>
             <VerticalLine />
             <div className={styles["paragraph-container"]}>
               <p className={styles["box-paragraph"]}>
@@ -200,7 +199,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
           </div>
         </div>
       )}
-      {categoryName === "Necklaces & Pendants" && (
+      {entityTitle === "Necklaces & Pendants" && (
         <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
@@ -212,7 +211,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             />
           </div>
           <div className={styles["info-container"]}>
-            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <h2 className={styles["box-title"]}>{entityTitle}</h2>
             <VerticalLine />
             <div className={styles["paragraph-container"]}>
               <p className={styles["box-paragraph"]}>
@@ -224,7 +223,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
           </div>
         </div>
       )}
-      {categoryName === "Bracelets" && (
+      {entityTitle === "Bracelets" && (
         <div className={styles["hero-top-container"]}>
           <div className={styles["hero-img-container"]}>
             <img
@@ -236,7 +235,7 @@ export const JewelryList = ({ entityId, serviceFactory }) => {
             />
           </div>
           <div className={styles["info-container"]}>
-            <h2 className={styles["box-title"]}>{categoryName}</h2>
+            <h2 className={styles["box-title"]}>{entityTitle}</h2>
             <VerticalLine />
             <div className={styles["paragraph-container"]}>
               <p className={styles["box-paragraph"]}>
