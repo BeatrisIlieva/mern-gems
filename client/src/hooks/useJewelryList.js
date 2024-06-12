@@ -1,24 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
 
 export const useJewelryList = (fetchDataFunction, entityId = null) => {
   const [jewelries, setJewelries] = useState([]);
+  const [filteredJewelries, setFilteredJewelries] = useState([]);
   const serviceFactory = useService(fetchDataFunction);
   let [loading, setLoading] = useState(true);
-  const [totalCount, setTotalCount] = useState(0);
-
-  const [loadMoreDisabled, setLoadMoreDisabled] = useState(true);
+  const [totalCount, setTotalCount] = useState(filteredJewelries.length);
+  const [loadMoreDisabled, setLoadMoreDisabled] = useState(
+    filteredJewelries.length <= ITEMS_PER_PAGE
+  );
+  const [stoneTypesData, setStoneTypesData] = useState([]);
 
   const fetchData = async () => {
     setLoading(true);
 
     setTimeout(async () => {
       try {
-        const { data, totalCount } = await serviceFactory.findAll(entityId);
+        const { data, totalCount, stoneTypesData } =
+          await serviceFactory.findAll(entityId);
 
         setJewelries(data);
-        setTotalCount(totalCount);
+        setFilteredJewelries(data);
+        // setTotalCount(totalCount);
+        setStoneTypesData(stoneTypesData);
         setLoadMoreDisabled(totalCount <= ITEMS_PER_PAGE);
       } catch (err) {
         console.log(err.message);
@@ -29,7 +35,7 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
   };
 
   const mouseEnterHandler = (_id) => {
-    setJewelries((state) =>
+    setFilteredJewelries((state) =>
       state.map((j) =>
         j._id === _id ? { ...j, isHovered: true } : { ...j, isHovered: false }
       )
@@ -37,7 +43,7 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
   };
 
   const mouseLeaveHandler = (_id) => {
-    setJewelries((state) =>
+    setFilteredJewelries((state) =>
       state.map((j) => (j._id === _id ? { ...j, isHovered: false } : j))
     );
   };
@@ -52,5 +58,9 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
+    stoneTypesData,
+    setFilteredJewelries,
+    filteredJewelries,
+    setTotalCount,
   };
 };

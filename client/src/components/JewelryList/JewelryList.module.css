@@ -73,6 +73,7 @@
   gap: 60px;
   font-family: var(--bold-font-family);
   font-size: var(--small-font-size);
+  position: relative;
 }
 
 .filter-button {

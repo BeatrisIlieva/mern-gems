@@ -10,6 +10,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { VerticalLine } from "../VerticalLine/VerticalLine";
+import { DynamicDropdown } from "../DynamicDropdown/DynamicDropdown";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",
@@ -45,6 +46,10 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
+    stoneTypesData,
+    setFilteredJewelries,
+    filteredJewelries,
+    setTotalCount
   } = useJewelryList(serviceFactory, entityId);
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
@@ -52,6 +57,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [sortByHighToLow, setSortByHighToLow] = useState(false);
   const [page, setPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
+  const [selection, setSelection] = useState({});
 
   const clickSortByAvailableNowHandler = () => {
     setSortByAvailableNow(true);
@@ -78,27 +84,27 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   };
 
   const getSortedByLowToHigh = () => {
-    const sortedJewelries = [...jewelries].sort((a, b) => {
+    const sortedJewelries = [...filteredJewelries].sort((a, b) => {
       return a.price - b.price;
     });
 
-    setJewelries(sortedJewelries);
+    setFilteredJewelries(sortedJewelries);
   };
 
   const getSortedByHighToLow = () => {
-    const sortedJewelries = [...jewelries].sort((a, b) => {
+    const sortedJewelries = [...filteredJewelries].sort((a, b) => {
       return b.price - a.price;
     });
 
-    setJewelries(sortedJewelries);
+    setFilteredJewelries(sortedJewelries);
   };
 
   const getSortedByAvailableNow = () => {
-    const sortedJewelries = [...jewelries].sort((a, b) => {
+    const sortedJewelries = [...filteredJewelries].sort((a, b) => {
       return a.isSoldOut - b.isSoldOut;
     });
 
-    setJewelries(sortedJewelries);
+    setFilteredJewelries(sortedJewelries);
   };
 
   const loadMoreHandler = () => {
@@ -148,7 +154,64 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     return SORT_BY_MENU_LABELS.AvailableNow;
   };
 
-  const displayedJewelries = jewelries.slice(0, displayedItems);
+  // const changeHandler = (e, entityTitle) => {
+  //   const selectedStoneType = e.target.value;
+  //   setStoneTypes((prevStoneTypes) => ({
+  //     ...prevStoneTypes,
+  //     [entityTitle]: [...(prevStoneTypes.StoneTypes || []), selectedStoneType],
+  //   }));
+  // };
+
+  // const changeHandler = (e, entityTitle) => {
+  //   const selected = e.target.value;
+
+  //   setSelection((state) => ({
+  //     ...state,
+  //     [entityTitle]: [...(state[entityTitle] || []), Number(selected)],
+  //   }));
+  // };
+
+  const changeHandler = (e, entityTitle) => {
+    const selected = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelection((state) => {
+      if (isChecked) {
+        // If checkbox is checked, add the selected value to the state
+        return {
+          ...state,
+          [entityTitle]: [...(state[entityTitle] || []), Number(selected)],
+        };
+      } else {
+        // If checkbox is unchecked, remove the selected value from the state
+        return {
+          ...state,
+          [entityTitle]: (state[entityTitle] || []).filter(
+            (value) => value !== Number(selected)
+          ),
+        };
+      }
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    // setSelection({})
+    handleFilter();
+  };
+
+  const handleFilter = () => {
+    const filtered = jewelries.filter((jewelry) => {
+      const flattenedStoneTypes = jewelry.stoneTypeId.flat();
+
+      return flattenedStoneTypes.some((id) => selection.StoneType.includes(id));
+    });
+    setFilteredJewelries(filtered);
+    setTotalCount(filtered.length)
+    setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE)
+  };
+
+  const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 
   return (
     <section>
@@ -252,13 +315,12 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
             <div>Filter By:</div>
             <ul className={styles["filter-list"]} role="list">
               <li className={styles["filter-item"]}>
-                <button className={styles["filter-button"]}>
-                  Collection{" "}
-                  <FontAwesomeIcon
-                    icon={faChevronDown}
-                    className={styles["heart"]}
-                  />
-                </button>
+                <DynamicDropdown
+                  label="Collection"
+                  options={stoneTypesData}
+                  changeHandler={changeHandler}
+                  submitHandler={submitHandler}
+                />
               </li>
               <div className={styles["form-vertical-line"]}></div>
               <li className={styles["filter-item"]}>

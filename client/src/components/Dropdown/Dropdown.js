@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Dropdown.module.css";
 
-export const Dropdown = ({ label, subLabel, children }) => {
+export const Dropdown = ({ label, subLabel , children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 

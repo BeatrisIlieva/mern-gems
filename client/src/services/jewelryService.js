@@ -7,9 +7,11 @@ export const jewelryServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
+    // findAll: (categoryId, serializedObject) =>
+    //   request.get(`${baseUrl}/by-category/${categoryId}?data=${encodeURIComponent(serializedObject)}`),
     findAll: (categoryId) =>
       request.get(`${baseUrl}/by-category/${categoryId}`),
-
+    
     findOne: (jewelryId) => request.get(`${baseUrl}/by-jewelry/${jewelryId}`),
   };
 };
