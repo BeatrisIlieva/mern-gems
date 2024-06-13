@@ -127,6 +127,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
   useEffect(() => {
     setJewelries([]);
+    setSelection({})
     setSortByAvailableNow(true);
     setSortByLowToHigh(false);
     setSortByHighToLow(false);
