@@ -193,14 +193,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-  // const handleFilter = () => {
-  //   // const filtered = jewelries.filter((jewelry) => {
-  //   //   const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
-
-  //   //   return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
-  //   // });
-  //   let filtered;
-
   //   if (Object.keys(selection).includes("stoneType")) {
   //     filtered = handleFilterByStoneType();
 
