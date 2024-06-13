@@ -1,49 +1,41 @@
 const Jewelry = require("../models/Jewelry");
 
 exports.findAll = async (data) => {
-  // console.log(data.selectionQuery)
-  // const query = [
-
-
-
-
-
-
   const query = [
     {
       $lookup: {
         as: "inventories",
         from: "inventories",
         foreignField: "jewelry",
-        localField: "_id"
-      }
+        localField: "_id",
+      },
     },
     {
       $lookup: {
         as: "categories",
         from: "categories",
         foreignField: "_id",
-        localField: "category"
-      }
+        localField: "category",
+      },
     },
     {
       $match: {
-        category: data.categoryId
-      }
+        category: data.categoryId,
+      },
     },
     {
       $lookup: {
         as: "wishlists",
         from: "wishlists",
         foreignField: "jewelry",
-        localField: "_id"
-      }
+        localField: "_id",
+      },
     },
     {
       $lookup: {
         from: "wishlists",
         let: {
-          jewelryId: "$_id"
+          jewelryId: "$_id",
         },
         pipeline: [
           {
@@ -51,34 +43,34 @@ exports.findAll = async (data) => {
               $expr: {
                 $and: [
                   {
-                    $eq: ["$jewelry", "$$jewelryId"]
+                    $eq: ["$jewelry", "$$jewelryId"],
                   },
                   {
-                    $eq: ["$user", data.userId]
-                  }
-                ]
-              }
-            }
-          }
+                    $eq: ["$user", data.userId],
+                  },
+                ],
+              },
+            },
+          },
         ],
-        as: "userWishlist"
-      }
+        as: "userWishlist",
+      },
     },
     {
       $lookup: {
         as: "jewelrystones",
         from: "jewelrystones",
         foreignField: "jewelry",
-        localField: "_id"
-      }
+        localField: "_id",
+      },
     },
     {
       $lookup: {
         as: "stonetypes",
         from: "stonetypes",
         foreignField: "_id",
-        localField: "jewelrystones.stoneType"
-      }
+        localField: "jewelrystones.stoneType",
+      },
     },
 
     {
@@ -86,52 +78,52 @@ exports.findAll = async (data) => {
         as: "stonecolors",
         from: "stonecolors",
         foreignField: "_id",
-        localField: "jewelrystones.stoneColor"
-      }
+        localField: "jewelrystones.stoneColor",
+      },
     },
     {
       $group: {
         _id: "$_id",
         price: {
           $first: {
-            $arrayElemAt: ["$inventories.price", 0]
-          }
+            $arrayElemAt: ["$inventories.price", 0],
+          },
         },
         firstImageUrl: {
-          $addToSet: "$firstImageUrl"
+          $addToSet: "$firstImageUrl",
         },
         jewelryIds: {
-          $push: "$_id"
+          $push: "$_id",
         },
         categoryTitle: {
-          $addToSet: "$categories.title"
+          $addToSet: "$categories.title",
         },
         categoryId: {
-          $addToSet: "$categories._id"
+          $addToSet: "$categories._id",
         },
         jewelryTitle: {
-          $addToSet: "$title"
+          $addToSet: "$title",
         },
         stoneTypeIds: {
-          $addToSet: "$stonetypes._id"
+          $addToSet: "$stonetypes._id",
         },
         stoneColorIds: {
-          $addToSet: "$stonecolors._id"
+          $addToSet: "$stonecolors._id",
         },
         inventories: {
-          $push: "$inventories"
+          $push: "$inventories",
         },
         isLikedByUser: {
           $first: {
             $gt: [
               {
-                $size: "$userWishlist"
+                $size: "$userWishlist",
               },
-              0
-            ]
-          }
-        }
-      }
+              0,
+            ],
+          },
+        },
+      },
     },
     {
       $addFields: {
@@ -150,22 +142,19 @@ exports.findAll = async (data) => {
                           input: "$$this",
                           as: "inv",
                           cond: {
-                            $gt: [
-                              "$$inv.quantity",
-                              0
-                            ]
-                          }
-                        }
-                      }
+                            $gt: ["$$inv.quantity", 0],
+                          },
+                        },
+                      },
                     },
-                    0
-                  ]
-                }
-              ]
-            }
-          }
-        }
-      }
+                    0,
+                  ],
+                },
+              ],
+            },
+          },
+        },
+      },
     },
     {
       $project: {
@@ -178,16 +167,16 @@ exports.findAll = async (data) => {
         stoneTypeIds: 1,
         stoneColorIds: 1,
         isSoldOut: 1,
-        isLikedByUser: 1
-      }
+        isLikedByUser: 1,
+      },
     },
     {
       $sort: {
         isSoldOut: 1,
-        _id: 1
-      }
-    }
-  ]
+        _id: 1,
+      },
+    },
+  ];
 
   const countQuery = [
     { $match: { category: data.categoryId } },
