@@ -4,21 +4,6 @@ const { getStoneTypesData } = require("../utils/getStoneTypesData");
 const {getStoneColorsData} = require("../utils/getStoneColorsData")
 
 
-
-//   const categoryId = Number(req.params.categoryId);
-
-//   let data;
-//   let selectionQuery = [];
-
-//   if (selection) {
-//     selectionQuery = updateSelectionQuery(selection);
-//     console.log(selectionQuery);
-//     data = { userId, categoryId, selectionQuery };
-//   } else {
-//     data = { userId, categoryId, selectionQuery };
-//   }
-
-//   try {
 //     let result = await jewelryManager.findAll(data);
 
 //     const jewelries = result.data;
