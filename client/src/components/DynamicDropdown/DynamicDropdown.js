@@ -8,7 +8,7 @@ export const DynamicDropdown = ({
   options,
   changeHandler,
   submitHandler,
-  selection 
+  selection,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -23,7 +23,6 @@ export const DynamicDropdown = ({
     }
   };
 
-
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -32,8 +31,8 @@ export const DynamicDropdown = ({
   }, []);
 
   const handleSubmit = (event) => {
-    submitHandler(event);  // Call the original submit handler
-    setIsOpen(false);      // Close the dropdown
+    submitHandler(event);
+    setIsOpen(false);
   };
 
   return (
@@ -55,7 +54,6 @@ export const DynamicDropdown = ({
                 value={option._id}
                 id={option._id}
                 onChange={(e) => changeHandler(e, option.entityTitle)}
-                // checked={options[option]}
                 checked={selection[option.entityTitle]?.includes(option._id)}
               />
               <label htmlFor={option.title}>{option.title}</label>
