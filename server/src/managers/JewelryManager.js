@@ -182,6 +182,15 @@ exports.findAll = async (data) => {
         localField: "jewelrystones.stoneType"
       }
     },
+
+    {
+      $lookup: {
+        as: "stonecolors",
+        from: "stonecolors",
+        foreignField: "_id",
+        localField: "jewelrystones.stoneColor"
+      }
+    },
     {
       $group: {
         _id: "$_id",
@@ -207,6 +216,9 @@ exports.findAll = async (data) => {
         },
         stoneTypeIds: {
           $addToSet: "$stonetypes._id"
+        },
+        stoneColorIds: {
+          $addToSet: "$stonecolors._id"
         },
         inventories: {
           $push: "$inventories"
@@ -266,6 +278,7 @@ exports.findAll = async (data) => {
         categoryId: 1,
         jewelryTitle: 1,
         stoneTypeIds: 1,
+        stoneColorIds: 1,
         isSoldOut: 1,
         isLikedByUser: 1
       }

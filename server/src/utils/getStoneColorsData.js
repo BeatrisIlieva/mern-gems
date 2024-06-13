@@ -40,6 +40,7 @@ exports.getStoneColorsData = async (jewelryIds) => {
     {
       $project: {
         stoneColorId: "$_id",
+        entityTitle: "stoneColor",
         title: { $first: "$stonecolors.title" },
         count: {
           $size: "$jewelries",

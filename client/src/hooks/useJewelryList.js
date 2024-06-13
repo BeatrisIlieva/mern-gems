@@ -12,20 +12,68 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     filteredJewelries.length <= ITEMS_PER_PAGE
   );
   const [stoneTypesData, setStoneTypesData] = useState([]);
+  const [stoneColorsData, setStoneColorsData] = useState([])
 
   const fetchData = async () => {
     setLoading(true);
 
     setTimeout(async () => {
       try {
-        const { data, totalCount, stoneTypesData } =
+        const { data, totalCount, stoneTypesData, stoneColorsData } =
           await serviceFactory.findAll(entityId);
 
         setJewelries(data);
         setFilteredJewelries(data);
         // setTotalCount(totalCount);
         setStoneTypesData(stoneTypesData);
+        setStoneColorsData(stoneColorsData);
         setLoadMoreDisabled(totalCount <= ITEMS_PER_PAGE);
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }, 400);
+  };
+
+  const fetchStoneTypesData = async (serializedObject) => {
+    setLoading(true);
+
+    setTimeout(async () => {
+      try {
+        const { stoneTypesData} =
+          await serviceFactory.findStoneTypes(serializedObject);
+
+        setStoneTypesData(stoneTypesData);
+
+        const { stoneColorsData} =
+        await serviceFactory.findStoneColors(serializedObject);
+
+      setStoneColorsData(stoneColorsData);
+
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }, 400);
+  };
+
+  const fetchStoneColorsData = async (serializedObject) => {
+    setLoading(true);
+
+    setTimeout(async () => {
+      try {
+        const { stoneColorsData} =
+          await serviceFactory.findStoneColors(serializedObject);
+
+        setStoneColorsData(stoneColorsData);
+
+        const { stoneTypesData} =
+        await serviceFactory.findStoneTypes(serializedObject);
+
+      setStoneTypesData(stoneTypesData);
+
       } catch (err) {
         console.log(err.message);
       } finally {
@@ -59,8 +107,11 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     loadMoreDisabled,
     setLoadMoreDisabled,
     stoneTypesData,
+    stoneColorsData,
     setFilteredJewelries,
     filteredJewelries,
     setTotalCount,
+    fetchStoneTypesData,
+    fetchStoneColorsData
   };
 };

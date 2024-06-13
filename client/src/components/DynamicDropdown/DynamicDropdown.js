@@ -23,12 +23,18 @@ export const DynamicDropdown = ({
     }
   };
 
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleSubmit = (event) => {
+    submitHandler(event);  // Call the original submit handler
+    setIsOpen(false);      // Close the dropdown
+  };
 
   return (
     <div ref={dropdownRef} className={styles["dropdown"]}>
@@ -57,7 +63,7 @@ export const DynamicDropdown = ({
             </div>
           ))}
           <button
-            onClick={submitHandler}
+            onClick={handleSubmit}
             className={`${styles["animated-button"]} ${styles["button"]}`}
             type="submit"
             data-testid="submit"

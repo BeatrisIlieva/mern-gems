@@ -47,9 +47,12 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     loadMoreDisabled,
     setLoadMoreDisabled,
     stoneTypesData,
+    stoneColorsData,
     setFilteredJewelries,
     filteredJewelries,
     setTotalCount,
+    fetchStoneTypesData,
+    fetchStoneColorsData,
   } = useJewelryList(serviceFactory, entityId);
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
@@ -145,16 +148,16 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
   const toggleLike = (jewelryId) => {
     setJewelries((prevJewelries) => {
-      return prevJewelries.map(jewelry => {
+      return prevJewelries.map((jewelry) => {
         if (jewelry._id === jewelryId) {
           return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
         }
         return jewelry;
       });
     });
-  
+
     setFilteredJewelries((prevFilteredJewelries) => {
-      return prevFilteredJewelries.map(jewelry => {
+      return prevFilteredJewelries.map((jewelry) => {
         if (jewelry._id === jewelryId) {
           return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
         }
@@ -195,29 +198,96 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-  const submitHandler = (e) => {
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+
+  //   handleFilter();
+  // };
+
+  // const handleFilter = () => {
+  //   // const filtered = jewelries.filter((jewelry) => {
+  //   //   const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
+
+  //   //   return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
+  //   // });
+  //   let filtered;
+
+  //   if (Object.keys(selection).includes("stoneType")) {
+  //     filtered = handleFilterByStoneType();
+
+  //     const jewelryIds = filtered.map((jewelry) => jewelry._id);
+  //     const dynamicObject = { JewelryIds: jewelryIds };
+
+  //     const serializedObject = JSON.stringify(dynamicObject);
+
+  //     fetchStoneColorsData(serializedObject);
+  //   }
+  //   else if (Object.keys(selection).includes("stoneColor")) {
+  //     filtered = handleFilterByStoneColor();
+
+  //     const jewelryIds = filtered.map((jewelry) => jewelry._id);
+  //     const dynamicObject = { JewelryIds: jewelryIds };
+
+  //     const serializedObject = JSON.stringify(dynamicObject);
+  //     fetchStoneTypesData(serializedObject);
+  //   }
+
+  //   setFilteredJewelries(filtered);
+  //   setTotalCount(filtered.length);
+  //   setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
+
+  // };
+
+  const stoneTypeSubmitHandler = (e) => {
     e.preventDefault();
 
-    handleFilter();
-  };
+    const filtered = getFilteredByStoneType();
 
-  const handleFilter = () => {
-    // const filtered = jewelries.filter((jewelry) => {
-    //   const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
+    const jewelryIds = filtered.map((jewelry) => jewelry._id);
+    const dynamicObject = { JewelryIds: jewelryIds };
 
-    //   return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
-    // });
-    const filtered = handleFilterByStoneType();
+    const serializedObject = JSON.stringify(dynamicObject);
+
+    fetchStoneColorsData(serializedObject);
+
     setFilteredJewelries(filtered);
     setTotalCount(filtered.length);
     setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
   };
 
-  const handleFilterByStoneType = () => {
-    const filtered = jewelries.filter((jewelry) => {
+  const stoneColorSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const filtered = getFilteredByStoneColor();
+
+    const jewelryIds = filtered.map((jewelry) => jewelry._id);
+    const dynamicObject = { JewelryIds: jewelryIds };
+
+    const serializedObject = JSON.stringify(dynamicObject);
+
+    fetchStoneTypesData(serializedObject);
+
+    setFilteredJewelries(filtered);
+    setTotalCount(filtered.length);
+    setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
+  };
+
+  const getFilteredByStoneType = () => {
+    const filtered = filteredJewelries.filter((jewelry) => {
       const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
 
       return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
+    });
+    return filtered;
+  };
+
+  const getFilteredByStoneColor = () => {
+    const filtered = filteredJewelries.filter((jewelry) => {
+      const flattenedStoneColors = jewelry.stoneColorIds.flat();
+
+      return flattenedStoneColors.some((id) =>
+        selection.stoneColor.includes(id)
+      );
     });
     return filtered;
   };
@@ -325,7 +395,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
           <div className={styles["filter-by-container"]}>
             <div>Filter By:</div>
             <ul className={styles["filter-list"]} role="list">
-              <li className={styles["filter-item"]}>
+              {/* <li className={styles["filter-item"]}>
                 <DynamicDropdown
                   label="Collection"
                   options={stoneTypesData}
@@ -333,26 +403,26 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
                   submitHandler={submitHandler}
                   selection={selection}
                 />
+              </li> */}
+              <div className={styles["form-vertical-line"]}></div>
+              <li className={styles["filter-item"]}>
+                <DynamicDropdown
+                  label="Stone Type"
+                  options={stoneTypesData}
+                  changeHandler={changeHandler}
+                  submitHandler={stoneTypeSubmitHandler}
+                  selection={selection}
+                />
               </li>
               <div className={styles["form-vertical-line"]}></div>
               <li className={styles["filter-item"]}>
-                <button className={styles["filter-button"]}>
-                  Stone Type{" "}
-                  <FontAwesomeIcon
-                    icon={faChevronDown}
-                    className={styles["heart"]}
-                  />
-                </button>
-              </li>
-              <div className={styles["form-vertical-line"]}></div>
-              <li className={styles["filter-item"]}>
-                <button className={styles["filter-button"]}>
-                  Stone Color{" "}
-                  <FontAwesomeIcon
-                    icon={faChevronDown}
-                    className={styles["heart"]}
-                  />
-                </button>
+                <DynamicDropdown
+                  label="Stone Color"
+                  options={stoneColorsData}
+                  changeHandler={changeHandler}
+                  submitHandler={stoneColorSubmitHandler}
+                  selection={selection}
+                />
               </li>
             </ul>
           </div>
