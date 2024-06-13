@@ -11,6 +11,7 @@ import { Dropdown } from "../Dropdown/Dropdown";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { VerticalLine } from "../VerticalLine/VerticalLine";
 import { DynamicDropdown } from "../DynamicDropdown/DynamicDropdown";
+import { getSerializedObject } from "../../utils/getSerializedObject";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",
@@ -198,14 +199,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     updateState(filtered);
   };
 
-  const getSerializedObject = (filtered) => {
-    const jewelryIds = filtered.map((jewelry) => jewelry._id);
-    const dynamicObject = { JewelryIds: jewelryIds };
 
-    const serializedObject = JSON.stringify(dynamicObject);
-
-    return serializedObject;
-  };
 
   const updateState = (filtered) => {
     setFilteredJewelries(filtered);
