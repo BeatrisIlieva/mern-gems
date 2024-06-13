@@ -193,19 +193,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-  //     const serializedObject = JSON.stringify(dynamicObject);
 
-  //     fetchStoneColorsData(serializedObject);
-  //   }
-  //   else if (Object.keys(selection).includes("stoneColor")) {
-  //     filtered = handleFilterByStoneColor();
-
-  //     const jewelryIds = filtered.map((jewelry) => jewelry._id);
-  //     const dynamicObject = { JewelryIds: jewelryIds };
-
-  //     const serializedObject = JSON.stringify(dynamicObject);
-  //     fetchStoneTypesData(serializedObject);
-  //   }
 
   //   setFilteredJewelries(filtered);
   //   setTotalCount(filtered.length);
