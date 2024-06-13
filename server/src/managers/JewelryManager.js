@@ -95,21 +95,7 @@ exports.findAll = async (data) => {
   //         },
   //       },
   //     },
-  //   },
-  //   {
-  //     $project: {
-  //       price: 1,
-  //       firstImageUrl: 1,
-  //       jewelryIds: 1,
-  //       categoryTitle: 1,
-  //       categoryId: 1,
-  //       jewelryTitle: 1,
-  //       isSoldOut: 1,
-  //       isLikedByUser: 1,
-  //     },
-  //   },
-  //   { $sort: { isSoldOut: 1, _id: 1 } },
-  // ];
+
 
   const query = [
     {
