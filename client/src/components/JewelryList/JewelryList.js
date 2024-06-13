@@ -231,10 +231,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     const serializedObject = getSerializedObject(filtered);
 
-    // const jewelryIds = filtered.map((jewelry) => jewelry._id);
-    // const dynamicObject = { JewelryIds: jewelryIds };
 
-    // const serializedObject = JSON.stringify(dynamicObject);
 
     fetchStonesCountData(serializedObject);
 
