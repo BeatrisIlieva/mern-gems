@@ -132,15 +132,35 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     fetchData();
   }, [entityId]);
 
-  const handleLikedByUser = (id) => {
-    setJewelries((prevJewelries) =>
-      prevJewelries.map((jewelry) =>
-        jewelry._id === id
-          ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
-          : jewelry
-      )
-    );
-    fetchData();
+  // const handleLikedByUser = (id) => {
+  //   setJewelries((prevJewelries) =>
+  //     prevJewelries.map((jewelry) =>
+  //       jewelry._id === id
+  //         ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
+  //         : jewelry
+  //     )
+  //   );
+  //   fetchData();
+  // };
+
+  const toggleLike = (jewelryId) => {
+    setJewelries((prevJewelries) => {
+      return prevJewelries.map(jewelry => {
+        if (jewelry._id === jewelryId) {
+          return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
+        }
+        return jewelry;
+      });
+    });
+  
+    setFilteredJewelries((prevFilteredJewelries) => {
+      return prevFilteredJewelries.map(jewelry => {
+        if (jewelry._id === jewelryId) {
+          return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
+        }
+        return jewelry;
+      });
+    });
   };
 
   const getSortLabel = () => {
@@ -182,14 +202,24 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   };
 
   const handleFilter = () => {
-    const filtered = jewelries.filter((jewelry) => {
-      const flattenedStoneTypes = jewelry.stoneTypeId.flat();
+    // const filtered = jewelries.filter((jewelry) => {
+    //   const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
 
-      return flattenedStoneTypes.some((id) => selection.StoneType.includes(id));
-    });
+    //   return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
+    // });
+    const filtered = handleFilterByStoneType();
     setFilteredJewelries(filtered);
     setTotalCount(filtered.length);
     setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
+  };
+
+  const handleFilterByStoneType = () => {
+    const filtered = jewelries.filter((jewelry) => {
+      const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
+
+      return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
+    });
+    return filtered;
   };
 
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
@@ -301,6 +331,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
                   options={stoneTypesData}
                   changeHandler={changeHandler}
                   submitHandler={submitHandler}
+                  selection={selection}
                 />
               </li>
               <div className={styles["form-vertical-line"]}></div>
@@ -394,7 +425,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
               key={j._id}
               {...j}
               mouseEnterHandler={mouseEnterHandler}
-              handleLikedByUser={handleLikedByUser}
+              toggleLike={toggleLike}
               mouseLeaveHandler={mouseLeaveHandler}
             />
           ))}

@@ -8,6 +8,7 @@ export const DynamicDropdown = ({
   options,
   changeHandler,
   submitHandler,
+  selection 
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -48,7 +49,8 @@ export const DynamicDropdown = ({
                 value={option._id}
                 id={option._id}
                 onChange={(e) => changeHandler(e, option.entityTitle)}
-                checked={options[option]}
+                // checked={options[option]}
+                checked={selection[option.entityTitle]?.includes(option._id)}
               />
               <label htmlFor={option.title}>{option.title}</label>
               <div>{option.count}</div>

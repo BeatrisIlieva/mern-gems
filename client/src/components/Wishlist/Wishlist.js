@@ -8,7 +8,8 @@ import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 
-export const Wishlist = () => {
+export const Wishlist = ({  serviceFactory }) => {
+
   const {
     setJewelries,
     jewelries,
@@ -19,7 +20,12 @@ export const Wishlist = () => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
-  } = useJewelryList(wishlistServiceFactory);
+    setFilteredJewelries,
+    filteredJewelries,
+    setTotalCount,
+  } = useJewelryList(serviceFactory);
+
+  console.log(filteredJewelries)
 
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
@@ -27,11 +33,11 @@ export const Wishlist = () => {
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
 
   useEffect(() => {
-    fetchData(true);
+    fetchData();
     setPage(0);
   }, [wishlistCount]);
 
-  const handleLikedByUser = (_id) => {
+  const toggleLike = (_id) => {
     setJewelries((prevJewelries) =>
       prevJewelries.filter((jewelry) => !jewelry._id)
     );
@@ -51,7 +57,9 @@ export const Wishlist = () => {
     setDisplayedItems(newDisplayedItems);
   };
 
-  const displayedJewelries = jewelries.slice(0, displayedItems);
+  // const displayedJewelries = jewelries.slice(0, displayedItems);
+
+  const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 
   return (
     <>
@@ -86,7 +94,7 @@ export const Wishlist = () => {
                 key={j._id}
                 {...j}
                 mouseEnterHandler={mouseEnterHandler}
-                handleLikedByUser={handleLikedByUser}
+                toggleLike={toggleLike}
                 mouseLeaveHandler={mouseLeaveHandler}
               />
             ))}

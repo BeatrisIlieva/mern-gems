@@ -205,7 +205,7 @@ exports.findAll = async (data) => {
         jewelryTitle: {
           $addToSet: "$title"
         },
-        stoneTypeId: {
+        stoneTypeIds: {
           $addToSet: "$stonetypes._id"
         },
         inventories: {
@@ -265,7 +265,7 @@ exports.findAll = async (data) => {
         categoryTitle: 1,
         categoryId: 1,
         jewelryTitle: 1,
-        stoneTypeId: 1,
+        stoneTypeIds: 1,
         isSoldOut: 1,
         isLikedByUser: 1
       }

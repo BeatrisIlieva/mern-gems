@@ -13,8 +13,9 @@ export const JewelryListItems = ({
   isHovered,
   mouseEnterHandler,
   mouseLeaveHandler,
-  handleLikedByUser,
-  price
+  toggleLike,
+  price,
+  
 }) => {
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
     useWishlistContext();
@@ -28,7 +29,7 @@ export const JewelryListItems = ({
     } else {
       onAddToWishlistClick(_id);
     }
-    handleLikedByUser(_id);
+    toggleLike(_id);
   };
 
   return (

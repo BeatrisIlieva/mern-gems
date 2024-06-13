@@ -39,7 +39,7 @@ exports.getStoneTypesData = async (jewelryIds) => {
     },
     {
       $project: {
-        entityTitle: "StoneType",
+        entityTitle: "stoneType",
         stoneTypeId: "$_id",
         title: { $first: "$stonetypes.title" },
         count: {

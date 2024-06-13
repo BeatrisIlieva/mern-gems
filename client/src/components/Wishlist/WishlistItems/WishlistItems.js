@@ -12,7 +12,7 @@ export const WishlistItems = ({
   isHovered,
   mouseEnterHandler,
   mouseLeaveHandler,
-  handleLikedByUser,
+  toggleLike,
 }) => {
   const { onRemoveFromWishlistClick } = useWishlistContext();
 
@@ -22,7 +22,7 @@ export const WishlistItems = ({
   const handleLikeClick = (_id) => {
     onRemoveFromWishlistClick(_id);
 
-    handleLikedByUser(_id);
+    toggleLike(_id);
   };
 
   return (

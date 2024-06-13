@@ -18,6 +18,7 @@ import { CATEGORIES_BY_ID_AND_TITLE } from "./constants/categories";
 import { COLLECTIONS_BY_ID_AND_TITLE } from "./constants/collections";
 import { jewelryCollectionServiceFactory } from "./services/jewelryCollectionService";
 import { jewelryServiceFactory } from "./services/jewelryService";
+import { wishlistServiceFactory } from "./services/wishlistService";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
@@ -139,7 +140,7 @@ function App() {
                     />
                   }
                 />
-                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/wishlist" element={<Wishlist serviceFactory={wishlistServiceFactory}/>} />
                 <Route
                   path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle"
                   element={<JewelryItem />}
