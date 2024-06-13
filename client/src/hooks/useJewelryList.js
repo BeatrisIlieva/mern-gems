@@ -39,25 +39,7 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
   // const fetchStoneTypesData = async (serializedObject) => {
   //   setLoading(true);
 
-  //   setTimeout(async () => {
-  //     try {
-  //       const { stoneTypesData} =
-  //         await serviceFactory.findStoneTypes(serializedObject);
 
-  //       setStoneTypesData(stoneTypesData);
-
-  //       const { stoneColorsData} =
-  //       await serviceFactory.findStoneColors(serializedObject);
-
-  //     setStoneColorsData(stoneColorsData);
-
-  //     } catch (err) {
-  //       console.log(err.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }, 400);
-  // };
 
 
   const fetchStonesCountData = async (serializedObject) => {
