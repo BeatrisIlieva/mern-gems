@@ -27,28 +27,7 @@ exports.findAll = async (data) => {
   //   },
   //   {
   //     $lookup: {
-  //       as: "wishlists",
-  //       from: "wishlists",
-  //       foreignField: "jewelry",
-  //       localField: "_id",
-  //     },
-  //   },
-  //   {
-  //     $lookup: {
-  //       from: "wishlists",
-  //       let: { jewelryId: "$_id" },
-  //       pipeline: [
-  //         {
-  //           $match: {
-  //             $expr: {
-  //               $and: [
-  //                 { $eq: ["$jewelry", "$$jewelryId"] },
-  //                 { $eq: ["$user", data.userId] },
-  //               ],
-  //             },
-  //           },
-  //         },
-  //       ],
+
 
 
 
