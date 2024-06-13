@@ -198,10 +198,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     const filtered = getFilteredByStoneType();
 
-    // const jewelryIds = filtered.map((jewelry) => jewelry._id);
-    // const dynamicObject = { JewelryIds: jewelryIds };
 
-    // const serializedObject = JSON.stringify(dynamicObject);
 
     const serializedObject = getSerializedObject(filtered);
 
