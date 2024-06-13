@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
 
@@ -12,7 +12,7 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     filteredJewelries.length <= ITEMS_PER_PAGE
   );
   const [stoneTypesData, setStoneTypesData] = useState([]);
-  const [stoneColorsData, setStoneColorsData] = useState([])
+  const [stoneColorsData, setStoneColorsData] = useState([]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -36,24 +36,22 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     }, 400);
   };
 
-
-
-
   const fetchStonesCountData = async (serializedObject) => {
     setLoading(true);
 
     setTimeout(async () => {
       try {
-        const { stoneColorsData} =
-          await serviceFactory.findStoneColors(serializedObject);
+        const { stoneColorsData } = await serviceFactory.findStoneColors(
+          serializedObject
+        );
 
         setStoneColorsData(stoneColorsData);
 
-        const { stoneTypesData} =
-        await serviceFactory.findStoneTypes(serializedObject);
+        const { stoneTypesData } = await serviceFactory.findStoneTypes(
+          serializedObject
+        );
 
-      setStoneTypesData(stoneTypesData);
-
+        setStoneTypesData(stoneTypesData);
       } catch (err) {
         console.log(err.message);
       } finally {
@@ -91,6 +89,6 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     setFilteredJewelries,
     filteredJewelries,
     setTotalCount,
-    fetchStonesCountData
+    fetchStonesCountData,
   };
 };
