@@ -204,11 +204,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
     fetchStonesCountData(serializedObject);
-    // fetchStoneColorsData(serializedObject);
 
-    // setFilteredJewelries(filtered);
-    // setTotalCount(filtered.length);
-    // setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
 
     updateState(filtered);
   };
