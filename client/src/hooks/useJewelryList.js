@@ -134,8 +134,6 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     setFilteredJewelries,
     filteredJewelries,
     setTotalCount,
-    // fetchStoneTypesData,
-    // fetchStoneColorsData
     fetchStonesCountData
   };
 };
