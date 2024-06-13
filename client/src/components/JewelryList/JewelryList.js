@@ -244,34 +244,58 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     const filtered = getFilteredByStoneType();
 
+    // const jewelryIds = filtered.map((jewelry) => jewelry._id);
+    // const dynamicObject = { JewelryIds: jewelryIds };
+
+    // const serializedObject = JSON.stringify(dynamicObject);
+
+    const serializedObject = getSerializedObject(filtered);
+
+
+    fetchStonesCountData(serializedObject);
+    // fetchStoneColorsData(serializedObject);
+
+    // setFilteredJewelries(filtered);
+    // setTotalCount(filtered.length);
+    // setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
+
+    updateState(filtered);
+  };
+
+  const getSerializedObject = (filtered) => {
     const jewelryIds = filtered.map((jewelry) => jewelry._id);
     const dynamicObject = { JewelryIds: jewelryIds };
 
     const serializedObject = JSON.stringify(dynamicObject);
 
-    fetchStonesCountData(serializedObject);
-    // fetchStoneColorsData(serializedObject);
+    return serializedObject;
+  }
 
+  const updateState = (filtered) => {
     setFilteredJewelries(filtered);
     setTotalCount(filtered.length);
     setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
-  };
+  }
 
   const stoneColorSubmitHandler = (e) => {
     e.preventDefault();
 
     const filtered = getFilteredByStoneColor();
 
-    const jewelryIds = filtered.map((jewelry) => jewelry._id);
-    const dynamicObject = { JewelryIds: jewelryIds };
+    const serializedObject = getSerializedObject(filtered);
 
-    const serializedObject = JSON.stringify(dynamicObject);
+    // const jewelryIds = filtered.map((jewelry) => jewelry._id);
+    // const dynamicObject = { JewelryIds: jewelryIds };
+
+    // const serializedObject = JSON.stringify(dynamicObject);
 
     fetchStonesCountData(serializedObject);
 
-    setFilteredJewelries(filtered);
-    setTotalCount(filtered.length);
-    setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
+    updateState(filtered);
+
+    // setFilteredJewelries(filtered);
+    // setTotalCount(filtered.length);
+    // setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
   };
 
   const getFilteredByStoneType = () => {
