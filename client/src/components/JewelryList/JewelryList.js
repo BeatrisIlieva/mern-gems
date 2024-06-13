@@ -132,7 +132,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setLoadMoreDisabled(false);
     setDisplayedItems(ITEMS_PER_PAGE);
     fetchData();
-  }, [entityId]);
+  }, [entityId, entityTitle]);
 
   const toggleLike = (jewelryId) => {
     setJewelries((prevJewelries) => {
