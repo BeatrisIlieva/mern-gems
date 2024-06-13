@@ -143,14 +143,6 @@ exports.findAll = async (data) => {
     },
     {
       $lookup: {
-        as: "jewelrystones",
-        from: "jewelrystones",
-        foreignField: "jewelry",
-        localField: "_id"
-      }
-    },
-    {
-      $lookup: {
         from: "wishlists",
         let: {
           jewelryId: "$_id"
@@ -172,6 +164,14 @@ exports.findAll = async (data) => {
           }
         ],
         as: "userWishlist"
+      }
+    },
+    {
+      $lookup: {
+        as: "jewelrystones",
+        from: "jewelrystones",
+        foreignField: "jewelry",
+        localField: "_id"
       }
     },
     {

@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useService } from "../hooks/useService";
 import { ITEMS_PER_PAGE } from "../constants/pagination";
+import { stoneServiceFactory } from "../services/stoneService";
 
 export const useJewelryList = (fetchDataFunction, entityId = null) => {
   const [jewelries, setJewelries] = useState([]);
   const [filteredJewelries, setFilteredJewelries] = useState([]);
   const serviceFactory = useService(fetchDataFunction);
+  const stoneService = useService(stoneServiceFactory);
   let [loading, setLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(filteredJewelries.length);
   const [loadMoreDisabled, setLoadMoreDisabled] = useState(
@@ -41,13 +43,13 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
 
     setTimeout(async () => {
       try {
-        const { stoneColorsData } = await serviceFactory.findStoneColors(
+        const { stoneColorsData } = await stoneService.findStoneColors(
           serializedObject
         );
 
         setStoneColorsData(stoneColorsData);
 
-        const { stoneTypesData } = await serviceFactory.findStoneTypes(
+        const { stoneTypesData } = await stoneService.findStoneTypes(
           serializedObject
         );
 

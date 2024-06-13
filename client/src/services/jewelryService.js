@@ -10,18 +10,12 @@ export const jewelryServiceFactory = (token) => {
     findAll: (categoryId) =>
       request.get(`${baseUrl}/by-category/${categoryId}`),
 
-    findStoneTypes: (serializedObject) =>
-      request.get(
-        `${baseUrl}/by-stone-types?data=${encodeURIComponent(serializedObject)}`
-      ),
+    // findStoneTypes: (serializedObject) =>
+    //   request.get(`${baseUrl}/by-stone-types?data=${encodeURIComponent(serializedObject)}`),
 
-    findStoneColors: (serializedObject) =>
-      request.get(
-        `${baseUrl}/by-stone-colors?data=${encodeURIComponent(
-          serializedObject
-        )}`
-      ),
-
+    // findStoneColors: (serializedObject) =>
+    //   request.get(`${baseUrl}/by-stone-colors?data=${encodeURIComponent(serializedObject)}`),
+    
     findOne: (jewelryId) => request.get(`${baseUrl}/by-jewelry/${jewelryId}`),
   };
 };

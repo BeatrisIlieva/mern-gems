@@ -87,64 +87,63 @@ router.get("/by-category/:categoryId", async (req, res) => {
   }
 });
 
-router.get("/by-stone-types", async (req, res) => {
-  console.log("here")
-  console.log(req.query.data)
+// router.get("/by-stone-types", async (req, res) => {
 
-  const serializedObject =
-    req.query.data !== "undefined" ? req.query.data : "undefined";
-  const jewelryDictionary =
-    req.query.data !== "undefined"
-      ? JSON.parse(decodeURIComponent(serializedObject))
-      : null;
 
-      const jewelryIds = jewelryDictionary["JewelryIds"];
-      console.log(jewelryIds)
+//   const serializedObject =
+//     req.query.data !== "undefined" ? req.query.data : "undefined";
+//   const jewelryDictionary =
+//     req.query.data !== "undefined"
+//       ? JSON.parse(decodeURIComponent(serializedObject))
+//       : null;
 
-  data = { jewelryIds };
+//       const jewelryIds = jewelryDictionary["JewelryIds"];
+//       console.log(jewelryIds)
 
-  try {
+//   data = { jewelryIds };
 
-    const stoneTypesData = await getStoneTypesData(jewelryIds);
+//   try {
 
-    result = { stoneTypesData };
+//     const stoneTypesData = await getStoneTypesData(jewelryIds);
 
-    res.status(200).json(result);
-  } catch (err) {
-    console.log(err);
-    res.status(401).json({
-      message: err.message,
-    });
-  }
-});
+//     result = { stoneTypesData };
 
-router.get("/by-stone-colors", async (req, res) => {
+//     res.status(200).json(result);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(401).json({
+//       message: err.message,
+//     });
+//   }
+// });
 
-  const serializedObject =
-    req.query.data !== "undefined" ? req.query.data : "undefined";
-  const jewelryDictionary =
-    req.query.data !== "undefined"
-      ? JSON.parse(decodeURIComponent(serializedObject))
-      : null;
+// router.get("/by-stone-colors", async (req, res) => {
 
-      const jewelryIds = jewelryDictionary["JewelryIds"];
+//   const serializedObject =
+//     req.query.data !== "undefined" ? req.query.data : "undefined";
+//   const jewelryDictionary =
+//     req.query.data !== "undefined"
+//       ? JSON.parse(decodeURIComponent(serializedObject))
+//       : null;
 
-  data = { jewelryIds };
+//       const jewelryIds = jewelryDictionary["JewelryIds"];
 
-  try {
+//   data = { jewelryIds };
 
-    const stoneColorsData = await getStoneColorsData(jewelryIds);
+//   try {
 
-    result = { stoneColorsData };
+//     const stoneColorsData = await getStoneColorsData(jewelryIds);
 
-    res.status(200).json(result);
-  } catch (err) {
-    console.log(err);
-    res.status(401).json({
-      message: err.message,
-    });
-  }
-});
+//     result = { stoneColorsData };
+
+//     res.status(200).json(result);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(401).json({
+//       message: err.message,
+//     });
+//   }
+// });
 
 router.get("/by-jewelry/:jewelryId", async (req, res) => {
   try {

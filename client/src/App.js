@@ -140,7 +140,10 @@ function App() {
                     />
                   }
                 />
-                <Route path="/wishlist" element={<Wishlist serviceFactory={wishlistServiceFactory}/>} />
+                <Route
+                  path="/wishlist"
+                  element={<Wishlist serviceFactory={wishlistServiceFactory} />}
+                />
                 <Route
                   path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle"
                   element={<JewelryItem />}
