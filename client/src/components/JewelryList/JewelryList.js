@@ -38,7 +38,6 @@ const MENU_SUB_LABELS = {
 export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const {
     setJewelries,
-    jewelries,
     loading,
     mouseEnterHandler,
     mouseLeaveHandler,
@@ -51,9 +50,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setFilteredJewelries,
     filteredJewelries,
     setTotalCount,
-    fetchStonesCountData
-    // fetchStoneTypesData,
-    // fetchStoneColorsData,
+    fetchStonesCountData,
   } = useJewelryList(serviceFactory, entityId);
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
@@ -127,7 +124,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
   useEffect(() => {
     setJewelries([]);
-    setSelection({})
+    setSelection({});
     setSortByAvailableNow(true);
     setSortByLowToHigh(false);
     setSortByHighToLow(false);
@@ -136,8 +133,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setDisplayedItems(ITEMS_PER_PAGE);
     fetchData();
   }, [entityId]);
-
-
 
   const toggleLike = (jewelryId) => {
     setJewelries((prevJewelries) => {
@@ -191,20 +186,14 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-
-
   const stoneTypeSubmitHandler = (e) => {
     e.preventDefault();
 
     const filtered = getFilteredByStoneType();
 
-
-
     const serializedObject = getSerializedObject(filtered);
 
-
     fetchStonesCountData(serializedObject);
-
 
     updateState(filtered);
   };
@@ -216,13 +205,13 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     const serializedObject = JSON.stringify(dynamicObject);
 
     return serializedObject;
-  }
+  };
 
   const updateState = (filtered) => {
     setFilteredJewelries(filtered);
     setTotalCount(filtered.length);
     setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
-  }
+  };
 
   const stoneColorSubmitHandler = (e) => {
     e.preventDefault();
@@ -231,13 +220,9 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     const serializedObject = getSerializedObject(filtered);
 
-
-
     fetchStonesCountData(serializedObject);
 
     updateState(filtered);
-
-
   };
 
   const getFilteredByStoneType = () => {
