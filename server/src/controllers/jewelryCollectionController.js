@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const jewelryCollectionManager = require("../managers/jewelryCollectionManager");
 const { getStoneTypesData } = require("../utils/getStoneTypesData");
-const {getStoneColorsData} = require("../utils/getStoneColorsData")
+const { getStoneColorsData } = require("../utils/getStoneColorsData");
 
 router.get("/:jewelryCollectionId", async (req, res) => {
   let userId;

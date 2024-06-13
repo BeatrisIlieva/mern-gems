@@ -3,21 +3,7 @@ const jewelryManager = require("../managers/jewelryManager");
 const { getStoneTypesData } = require("../utils/getStoneTypesData");
 const {getStoneColorsData} = require("../utils/getStoneColorsData")
 
-// router.get("/by-category/:categoryId", async (req, res) => {
-//   const serializedObject =
-//     req.query.data !== "undefined" ? req.query.data : "undefined";
-//   const selection =
-//     req.query.data !== "undefined"
-//       ? JSON.parse(decodeURIComponent(serializedObject))
-//       : null;
 
-//   let userId;
-
-//   if (req.user) {
-//     userId = req.user._id;
-//   } else {
-//     userId = req.headers["user-uuid"];
-//   }
 
 //   const categoryId = Number(req.params.categoryId);
 
