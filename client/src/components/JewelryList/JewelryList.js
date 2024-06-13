@@ -191,11 +191,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
 
-  //   handleFilter();
-  // };
 
   // const handleFilter = () => {
   //   // const filtered = jewelries.filter((jewelry) => {
