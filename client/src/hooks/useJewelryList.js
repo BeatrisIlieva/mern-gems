@@ -24,7 +24,7 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
 
         setJewelries(data);
         setFilteredJewelries(data);
-        // setTotalCount(totalCount);
+
         setStoneTypesData(stoneTypesData);
         setStoneColorsData(stoneColorsData);
         setLoadMoreDisabled(totalCount <= ITEMS_PER_PAGE);
@@ -35,9 +35,6 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
       }
     }, 400);
   };
-
-  // const fetchStoneTypesData = async (serializedObject) => {
-  //   setLoading(true);
 
 
 
