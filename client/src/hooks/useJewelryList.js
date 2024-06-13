@@ -36,30 +36,53 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     }, 400);
   };
 
-  const fetchStoneTypesData = async (serializedObject) => {
-    setLoading(true);
+  // const fetchStoneTypesData = async (serializedObject) => {
+  //   setLoading(true);
 
-    setTimeout(async () => {
-      try {
-        const { stoneTypesData} =
-          await serviceFactory.findStoneTypes(serializedObject);
+  //   setTimeout(async () => {
+  //     try {
+  //       const { stoneTypesData} =
+  //         await serviceFactory.findStoneTypes(serializedObject);
 
-        setStoneTypesData(stoneTypesData);
+  //       setStoneTypesData(stoneTypesData);
 
-        const { stoneColorsData} =
-        await serviceFactory.findStoneColors(serializedObject);
+  //       const { stoneColorsData} =
+  //       await serviceFactory.findStoneColors(serializedObject);
 
-      setStoneColorsData(stoneColorsData);
+  //     setStoneColorsData(stoneColorsData);
 
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }, 400);
-  };
+  //     } catch (err) {
+  //       console.log(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }, 400);
+  // };
 
-  const fetchStoneColorsData = async (serializedObject) => {
+  // const fetchStoneColorsData = async (serializedObject) => {
+  //   setLoading(true);
+
+  //   setTimeout(async () => {
+  //     try {
+  //       const { stoneColorsData} =
+  //         await serviceFactory.findStoneColors(serializedObject);
+
+  //       setStoneColorsData(stoneColorsData);
+
+  //       const { stoneTypesData} =
+  //       await serviceFactory.findStoneTypes(serializedObject);
+
+  //     setStoneTypesData(stoneTypesData);
+
+  //     } catch (err) {
+  //       console.log(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }, 400);
+  // };
+
+  const fetchStonesCountData = async (serializedObject) => {
     setLoading(true);
 
     setTimeout(async () => {
@@ -111,7 +134,8 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     setFilteredJewelries,
     filteredJewelries,
     setTotalCount,
-    fetchStoneTypesData,
-    fetchStoneColorsData
+    // fetchStoneTypesData,
+    // fetchStoneColorsData
+    fetchStonesCountData
   };
 };

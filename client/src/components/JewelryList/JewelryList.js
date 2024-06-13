@@ -51,8 +51,9 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setFilteredJewelries,
     filteredJewelries,
     setTotalCount,
-    fetchStoneTypesData,
-    fetchStoneColorsData,
+    fetchStonesCountData
+    // fetchStoneTypesData,
+    // fetchStoneColorsData,
   } = useJewelryList(serviceFactory, entityId);
 
   const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
@@ -248,7 +249,8 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     const serializedObject = JSON.stringify(dynamicObject);
 
-    fetchStoneColorsData(serializedObject);
+    fetchStonesCountData(serializedObject);
+    // fetchStoneColorsData(serializedObject);
 
     setFilteredJewelries(filtered);
     setTotalCount(filtered.length);
@@ -265,7 +267,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     const serializedObject = JSON.stringify(dynamicObject);
 
-    fetchStoneTypesData(serializedObject);
+    fetchStonesCountData(serializedObject);
 
     setFilteredJewelries(filtered);
     setTotalCount(filtered.length);
