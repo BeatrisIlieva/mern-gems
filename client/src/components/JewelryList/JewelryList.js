@@ -193,12 +193,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-  //   if (Object.keys(selection).includes("stoneType")) {
-  //     filtered = handleFilterByStoneType();
-
-  //     const jewelryIds = filtered.map((jewelry) => jewelry._id);
-  //     const dynamicObject = { JewelryIds: jewelryIds };
-
   //     const serializedObject = JSON.stringify(dynamicObject);
 
   //     fetchStoneColorsData(serializedObject);
