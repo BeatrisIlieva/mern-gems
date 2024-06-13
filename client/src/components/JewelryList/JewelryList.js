@@ -5,7 +5,6 @@ import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
@@ -198,8 +197,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     updateState(filtered);
   };
-
-
 
   const updateState = (filtered) => {
     setFilteredJewelries(filtered);
