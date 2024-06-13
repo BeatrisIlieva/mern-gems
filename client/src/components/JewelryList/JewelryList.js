@@ -237,9 +237,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
     updateState(filtered);
 
-    // setFilteredJewelries(filtered);
-    // setTotalCount(filtered.length);
-    // setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
+
   };
 
   const getFilteredByStoneType = () => {
