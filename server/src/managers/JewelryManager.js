@@ -72,29 +72,7 @@ exports.findAll = async (data) => {
   //           input: "$inventories",
   //           initialValue: true,
   //           in: {
-  //             $and: [
-  //               "$$value",
-  //               {
-  //                 $eq: [
-  //                   {
-  //                     $size: {
-  //                       $filter: {
-  //                         input: "$$this",
-  //                         as: "inv",
-  //                         cond: {
-  //                           $gt: ["$$inv.quantity", 0],
-  //                         },
-  //                       },
-  //                     },
-  //                   },
-  //                   0,
-  //                 ],
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       },
-  //     },
+
 
 
   const query = [
