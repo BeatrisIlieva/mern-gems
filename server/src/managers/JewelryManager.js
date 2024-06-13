@@ -3,30 +3,7 @@ const Jewelry = require("../models/Jewelry");
 exports.findAll = async (data) => {
   // console.log(data.selectionQuery)
   // const query = [
-  //   // ...data.selectionQuery,
-  //   {
-  //     $lookup: {
-  //       as: "inventories",
-  //       from: "inventories",
-  //       foreignField: "jewelry",
-  //       localField: "_id",
-  //     },
-  //   },
-  //   {
-  //     $lookup: {
-  //       as: "categories",
-  //       from: "categories",
-  //       foreignField: "_id",
-  //       localField: "category",
-  //     },
-  //   },
-  //   {
-  //     $match: {
-  //       category: data.categoryId,
-  //     },
-  //   },
-  //   {
-  //     $lookup: {
+
 
 
 
