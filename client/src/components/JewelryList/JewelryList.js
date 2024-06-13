@@ -137,16 +137,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     fetchData();
   }, [entityId]);
 
-  // const handleLikedByUser = (id) => {
-  //   setJewelries((prevJewelries) =>
-  //     prevJewelries.map((jewelry) =>
-  //       jewelry._id === id
-  //         ? { ...jewelry, isLikedByUser: !jewelry.isLikedByUser }
-  //         : jewelry
-  //     )
-  //   );
-  //   fetchData();
-  // };
+
 
   const toggleLike = (jewelryId) => {
     setJewelries((prevJewelries) => {
