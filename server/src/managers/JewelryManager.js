@@ -49,29 +49,7 @@ exports.findAll = async (data) => {
   //           },
   //         },
   //       ],
-  //       as: "userWishlist",
-  //     },
-  //   },
-  //   {
-  //     $group: {
-  //       _id: "$_id",
-  //       price: { $first: { $arrayElemAt: ["$inventories.price", 0] } },
-  //       firstImageUrl: { $addToSet: "$firstImageUrl" },
-  //       jewelryIds: { $push: "$_id" },
-  //       categoryTitle: { $addToSet: "$categories.title" },
-  //       categoryId: { $addToSet: "$categories._id" },
-  //       jewelryTitle: { $addToSet: "$title" },
-  //       inventories: { $push: "$inventories" },
-  //       isLikedByUser: { $first: { $gt: [{ $size: "$userWishlist" }, 0] } },
-  //     },
-  //   },
-  //   {
-  //     $addFields: {
-  //       isSoldOut: {
-  //         $reduce: {
-  //           input: "$inventories",
-  //           initialValue: true,
-  //           in: {
+
 
 
 
