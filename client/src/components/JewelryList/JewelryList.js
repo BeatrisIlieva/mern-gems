@@ -36,9 +36,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     fetchStonesCountData,
   } = useJewelryList(serviceFactory, entityId);
 
-  // const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
-  // const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
-  // const [sortByHighToLow, setSortByHighToLow] = useState(false);
   const [page, setPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [selection, setSelection] = useState({});
