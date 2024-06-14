@@ -85,20 +85,12 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   };
 
   const getSortedByLowToHigh = () => {
-    // const sortedJewelries = [...filteredJewelries].sort((a, b) => {
-    //   return a.price - b.price;
-    // });
-
     const sortedJewelries = getSortedByPriceAsc(filteredJewelries);
 
     setFilteredJewelries(sortedJewelries);
   };
 
   const getSortedByHighToLow = () => {
-    // const sortedJewelries = [...filteredJewelries].sort((a, b) => {
-    //   return b.price - a.price;
-    // });
-
     const sortedJewelries = getSortedByPriceDesc(filteredJewelries);
 
     setFilteredJewelries(sortedJewelries);
