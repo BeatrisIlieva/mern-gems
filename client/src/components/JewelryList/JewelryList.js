@@ -11,6 +11,7 @@ import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { VerticalLine } from "../VerticalLine/VerticalLine";
 import { DynamicDropdown } from "../DynamicDropdown/DynamicDropdown";
 import { getSerializedObject } from "../../utils/getSerializedObject";
+import { getFilteredByStoneType } from "../../utils/getFilteredByStoneType";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",
@@ -186,7 +187,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
       selectionKey === FILTER_BY_MENU_LABELS.StoneColor.selectionKey &&
       selection[FILTER_BY_MENU_LABELS.StoneType.selectionKey]?.length > 0
     ) {
-      filtered = getFilteredByStoneType(jewelries);
+      filtered = getFilteredByStoneType(jewelries, selection);
     } else {
       filtered = jewelries;
     }
@@ -226,7 +227,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     let filtered;
 
     if (selectionKey === FILTER_BY_MENU_LABELS.StoneType.selectionKey) {
-      filtered = getFilteredByStoneType(filteredJewelries);
+      filtered = getFilteredByStoneType(filteredJewelries, selection);
     } else if (selectionKey === FILTER_BY_MENU_LABELS.StoneColor.selectionKey) {
       filtered = getFilteredByStoneColor(filteredJewelries);
     } else {
@@ -240,14 +241,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     updateState(filtered);
   };
 
-  const getFilteredByStoneType = (collection) => {
-    const filtered = collection.filter((jewelry) => {
-      const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
 
-      return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
-    });
-    return filtered;
-  };
 
   const getFilteredByStoneColor = (collection) => {
     const filtered = collection.filter((jewelry) => {
