@@ -59,18 +59,30 @@
   color: var(--gray);
   font-family: var(--bold-font-family);
   font-size: var(--small-font-size);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  min-width: 280px;
-  gap: 26px;
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr); */
+  gap: 12.9px;
+  /* gap: 18.6px; */
   background-color: var(--white);
+  padding: 4px;
+  display: flex;
+  flex-wrap: wrap;
+
+
 }
 
 .open-dropdown-menu {
   position: absolute;
-  top: 60px;
-  z-index: 10;
+  top: 40px;
   background-color: var(--white);
+  /* z-index: 10; */
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    top: 30px;
+  }
 }
 
 .dropdown-menu-options {
@@ -80,15 +92,21 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
-
   z-index: 10000;
+}
+
+.count-span {
+  margin-left: 4px;
+  color: var(--middle-gray);
 }
 
 .animated-button {
   position: relative;
-  padding: 16px 48px;
-  font-size: var(--medium-font-size);
+  padding: 4px 8px;
+  /* font-size: var(--medium-font-size); */
   font-family: var(--bold-italic-font-family);
   border: none;
   cursor: pointer;
@@ -98,8 +116,8 @@
   border: 1px solid var(--border);
   outline: none;
   letter-spacing: 1.2px;
-  width: 100%;
-  margin-top: 8%;
+  width: 100px;
+  /* margin-top: 20px; */
 }
 
 .animated-button::before {
@@ -127,12 +145,13 @@
   background-color: var(--white);
   outline: none;
   margin: 0;
-  padding-bottom: 24px;
+  /* padding-bottom: 24px; */
 }
 
 .custom-checkbox {
   background-color: var(--white);
   font-size: var(--extra-small-font-size);
+  vertical-align: middle;
 }
 
 .custom-checkbox.checked {

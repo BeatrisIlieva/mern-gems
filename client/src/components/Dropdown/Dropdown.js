@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Dropdown.module.css";
 
-export const Dropdown = ({ label, subLabel , children }) => {
+export const Dropdown = ({ label, subLabel, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -29,12 +30,19 @@ export const Dropdown = ({ label, subLabel , children }) => {
       <button onClick={toggleDropdown} className={styles["dropdown-toggle"]}>
         <span className={styles["label-span"]}>{subLabel}</span>
         <span className={styles["label-text"]}>{label}</span>
-        <FontAwesomeIcon
-          icon={faChevronDown}
-          className={styles["chevron-icon"]}
-        />
+        {isOpen ? (
+          <FontAwesomeIcon
+            icon={faChevronUp}
+            className={styles["chevron-icon"]}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            className={styles["chevron-icon"]}
+          />
+        )}
       </button>
-      {isOpen && <div className="dropdown-menu">{children}</div>}
+      {isOpen && <div className={styles["dropdown-menu"]}>{children}</div>}
     </div>
   );
 };

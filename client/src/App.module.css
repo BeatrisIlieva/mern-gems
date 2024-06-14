@@ -31,7 +31,6 @@
   --white-golden: #d4af37;
   --border: hsl(0deg 0.99% 80.2%);
   --transparent-gray: #f9f9f979;
-  --transparent-gray: #f9f9f979;
 }
 
 @font-face {
@@ -98,8 +97,8 @@ textarea {
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
-  width: 1.6em;
-  height: 1.6em;
+  width: var(--minimum-font-size);
+  height: var(--minimum-font-size);
   border-radius: 0.15em;
   margin-right: 0.5em;
   border: 1px solid var(--gray);

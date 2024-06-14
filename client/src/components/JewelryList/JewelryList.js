@@ -3,7 +3,7 @@ import styles from "./JewelryList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
@@ -52,6 +52,10 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [page, setPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [selection, setSelection] = useState({});
+  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
+  // const [isSelected, setIsSelected] = useState(false);
+  const [isSelectedStoneType, setIsSelectedStoneType] = useState(false);
+  const [isSelectedStoneColor, setIsSelectedStoneColor] = useState(false);
 
   const clickSortByAvailableNowHandler = () => {
     setSortByAvailableNow(true);
@@ -167,6 +171,11 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
       return newState;
     });
+    // setSelection((prevState) => {
+    //   const newState = { ...prevState };
+    //   delete newState[selectionKey];
+    //   return newState;
+    // });
   };
 
   const clearFilter = (selectionKey) => {
@@ -214,6 +223,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
         };
       }
     });
+    console.log(selection);
   };
 
   const submitHandler = (e, selectionKey) => {
@@ -264,6 +274,46 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
   };
 
+  const toggleSelectedStoneType = () => {
+    const isEmpty = selection.stoneType?.length > 0;
+    console.log(selection);
+
+    setIsSelectedStoneType(isEmpty);
+  };
+
+  const toggleSelectedStoneColor = () => {
+    const isEmpty = selection.stoneColor?.length > 0;
+
+    setIsSelectedStoneColor(isEmpty);
+  };
+
+  useEffect(() => {
+    console.log(selection); // Log updated selection whenever it changes
+  }, [selection]);
+
+  // const toggleSelected = () => {
+  //   console.log("here");
+  //   console.log(selection);
+
+  //   const hasKeys = Object.keys(selection).length > 0;
+
+  //   // if (!hasKeys) {
+  //   //   setIsSelected(false);
+  //   // } else {
+  //     const arraysNotEmpty = Object.values(selection).every((value) => {
+  //       return (
+  //         !Array.isArray(value) || (Array.isArray(value) && value.length > 0)
+  //       );
+  //     });
+
+  //     setIsSelected(arraysNotEmpty);
+  //   // }
+  // };
+  useEffect(() => {
+    toggleSelectedStoneType();
+    toggleSelectedStoneColor();
+  }, [selection]);
+  
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 
   return (
@@ -363,7 +413,10 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
         </div>
       )}
       <div className={styles["jewelries-box"]}>
-        <div className={styles["jewelries-nav"]}>
+        {/* {dropdownIsOpen && (
+          <div className={styles["overlay"]}></div>
+        )} */}
+          <div className={styles["jewelries-nav"]}>
           <div className={styles["filter-by-container"]}>
             <div>Filter By:</div>
             <ul className={styles["filter-list"]} role="list">
@@ -376,6 +429,8 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
                   selection={selection}
                   clearFilter={clearFilter}
                   selectionKey={FILTER_BY_MENU_LABELS.StoneType.selectionKey}
+                  onDropdownToggle={(isOpen) => setDropdownIsOpen(isOpen)}
+                  isSelected={isSelectedStoneType}
                 />
               </li>
               <div className={styles["form-vertical-line"]}></div>
@@ -388,6 +443,8 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
                   selection={selection}
                   clearFilter={clearFilter}
                   selectionKey={FILTER_BY_MENU_LABELS.StoneColor.selectionKey}
+                  onDropdownToggle={(isOpen) => setDropdownIsOpen(isOpen)}
+                  isSelected={isSelectedStoneColor}
                 />
               </li>
             </ul>
