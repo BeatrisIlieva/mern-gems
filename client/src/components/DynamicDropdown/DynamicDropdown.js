@@ -64,9 +64,7 @@ export const DynamicDropdown = ({
         )}
       </button>
       {isOpen && (
-        <div
-          className={styles["open-dropdown-menu"]}
-        >
+        <div className={styles["open-dropdown-menu"]}>
           <div className={styles["dropdown-menu"]}>
             {options.map((option, index) => (
               <div key={index} className={styles["dropdown-menu-options"]}>
@@ -107,25 +105,6 @@ export const DynamicDropdown = ({
               </div>
             )}
           </div>
-          {/* </div> */}
-          {/* {isSelected && (
-            <div className={styles["button-container"]}>
-              <button
-                onClick={handleSubmit}
-                className={`${styles["animated-button"]} ${styles["button"]}`}
-                type="submit"
-              >
-                Apply
-              </button>
-              <button
-                onClick={() => dismissButtonHandler(selectionKey)}
-                // onClick={() => clearFilter(selectionKey)}
-                className={styles["dismiss-button"]}
-              >
-                Clear Filters
-              </button>
-            </div>
-          )} */}
         </div>
       )}
     </div>
