@@ -66,7 +66,6 @@ export const DynamicDropdown = ({
       {isOpen && (
         <div
           className={styles["open-dropdown-menu"]}
-          // onClick={() => toggleSelected()}
         >
           <div className={styles["dropdown-menu"]}>
             {options.map((option, index) => (
@@ -77,7 +76,6 @@ export const DynamicDropdown = ({
                   value={option._id}
                   id={option._id}
                   onChange={(e) => changeHandler(e, selectionKey)}
-                  // onClick={() => toggleSelected()}
                   checked={selection[selectionKey]?.includes(option._id)}
                   className={`${styles["custom-checkbox"]} ${
                     selection[selectionKey]?.includes(option._id)
@@ -102,7 +100,6 @@ export const DynamicDropdown = ({
                 </button>
                 <button
                   onClick={() => dismissButtonHandler(selectionKey)}
-                  // onClick={() => clearFilter(selectionKey)}
                   className={styles["dismiss-button"]}
                 >
                   Clear Filters
