@@ -68,21 +68,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-  // const updateSelection = (selectionKey) => {
-  //   setSelection((prevState) => {
-  //     const newState = {
-  //       ...prevState,
-  //       [selectionKey]: [],
-  //     };
 
-  //     return newState;
-  //   });
-  // };
-
-  // const clearFilter = (selectionKey) => {
-  //   updateSelection(selectionKey);
-
-  //   let filtered;
 
   //   if (
   //     selectionKey === FILTER_BY_MENU_LABELS.StoneType.selectionKey &&
