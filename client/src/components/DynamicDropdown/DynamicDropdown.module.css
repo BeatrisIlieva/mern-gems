@@ -59,23 +59,17 @@
   color: var(--gray);
   font-family: var(--bold-font-family);
   font-size: var(--small-font-size);
-  /* display: grid;
-  grid-template-columns: repeat(4, 1fr); */
-  gap: 12.9px;
-  /* gap: 18.6px; */
   background-color: var(--white);
   padding: 4px;
   display: flex;
   flex-wrap: wrap;
-
-
 }
 
 .open-dropdown-menu {
   position: absolute;
   top: 40px;
   background-color: var(--white);
-  /* z-index: 10; */
+
   animation: slideIn 0.5s forwards;
 }
 
