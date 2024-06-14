@@ -13,6 +13,7 @@ import { DynamicDropdown } from "../DynamicDropdown/DynamicDropdown";
 import { getSerializedObject } from "../../utils/getSerializedObject";
 import { getFilteredByStoneType } from "../../utils/getFilteredByStoneType";
 import { getFilteredByStoneColor } from "../../utils/getFilteredByStoneColor";
+import { getSortedByPriceAsc } from "../../utils/getSortedByPriceAsc";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",
@@ -83,9 +84,11 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   };
 
   const getSortedByLowToHigh = () => {
-    const sortedJewelries = [...filteredJewelries].sort((a, b) => {
-      return a.price - b.price;
-    });
+    // const sortedJewelries = [...filteredJewelries].sort((a, b) => {
+    //   return a.price - b.price;
+    // });
+
+    const sortedJewelries = getSortedByPriceAsc(filteredJewelries);
 
     setFilteredJewelries(sortedJewelries);
   };
