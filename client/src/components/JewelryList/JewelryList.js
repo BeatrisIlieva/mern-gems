@@ -291,38 +291,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
       )}
       <div className={styles["jewelries-box"]}>
         <div className={styles["jewelries-nav"]}>
-          {/* <div className={styles["filter-by-container"]}>
-            <div>Filter By:</div>
-            <ul className={styles["filter-list"]} role="list">
-              <li className={styles["filter-item"]}>
-                <DynamicDropdown
-                  label={FILTER_BY_MENU_LABELS.StoneType.label}
-                  options={stoneTypesData}
-                  changeHandler={changeHandler}
-                  submitHandler={submitHandler}
-                  selection={selection}
-                  clearFilter={clearFilter}
-                  selectionKey={FILTER_BY_MENU_LABELS.StoneType.selectionKey}
-                  onDropdownToggle={(isOpen) => setDropdownIsOpen(isOpen)}
-                  isSelected={isSelectedStoneType}
-                />
-              </li>
-              <div className={styles["form-vertical-line"]}></div>
-              <li className={styles["filter-item"]}>
-                <DynamicDropdown
-                  label={FILTER_BY_MENU_LABELS.StoneColor.label}
-                  options={stoneColorsData}
-                  changeHandler={changeHandler}
-                  submitHandler={submitHandler}
-                  selection={selection}
-                  clearFilter={clearFilter}
-                  selectionKey={FILTER_BY_MENU_LABELS.StoneColor.selectionKey}
-                  onDropdownToggle={(isOpen) => setDropdownIsOpen(isOpen)}
-                  isSelected={isSelectedStoneColor}
-                />
-              </li>
-            </ul>
-          </div> */}
           <FilterBy
             stoneTypesData={stoneTypesData}
             stoneColorsData={stoneColorsData}
@@ -331,10 +299,10 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
             setTotalCount={setTotalCount}
             setLoadMoreDisabled={setLoadMoreDisabled}
             jewelries={jewelries}
-fetchStonesCountData={fetchStonesCountData}
-setSelection={setSelection}
-selection={selection}
-itemsPerPage={ITEMS_PER_PAGE}
+            fetchStonesCountData={fetchStonesCountData}
+            setSelection={setSelection}
+            selection={selection}
+            itemsPerPage={ITEMS_PER_PAGE}
           />
           <SortBy
             entityId={entityId}
