@@ -12,16 +12,6 @@ import { getFilteredByStoneType } from "../../utils/getFilteredByStoneType";
 import { getFilteredByStoneColor } from "../../utils/getFilteredByStoneColor";
 import { SortBy } from "../SortBy/SortBy";
 
-// const SORT_BY_MENU_LABELS = {
-//   AvailableNow: "Available Now",
-//   ByLowToHigh: "Price Low To High",
-//   ByHighToLow: "Price High To Low",
-// };
-
-// const SORT_BY_MENU_SUB_LABEL = {
-//   SortBy: "Sort By:",
-// };
-
 const FILTER_BY_MENU_LABELS = {
   StoneType: { label: "Stone Type", selectionKey: "stoneType" },
   StoneColor: { label: "Stone Color", selectionKey: "stoneColor" },
