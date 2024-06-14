@@ -22,22 +22,15 @@ const SORT_BY_MENU_SUB_LABEL = {
   SortBy: "Sort By:",
 };
 
-const MENU_LABELS = {
-  Collection: "collection",
-  StoneType: "stoneType",
-  StoneColor: "stoneColor",
-  AvailableNow: "Available Now",
-};
-
-const MENU_SUB_LABELS = {
-  Collection: "collection",
-  StoneType: "stoneType",
-  StoneColor: "stoneColor",
+const FILTER_BY_MENU_LABELS = {
+  StoneType: { label: "Stone Type", selectionKey: "stoneType" },
+  StoneColor: { label: "Stone Color", selectionKey: "stoneColor" },
 };
 
 export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const {
     setJewelries,
+    jewelries,
     loading,
     mouseEnterHandler,
     mouseLeaveHandler,
@@ -165,6 +158,43 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     return SORT_BY_MENU_LABELS.AvailableNow;
   };
 
+  const updateSelection = (selectionKey) => {
+    setSelection((prevState) => {
+      const newState = {
+        ...prevState,
+        [selectionKey]: [],
+      };
+
+      return newState;
+    });
+  };
+
+  const clearFilter = (selectionKey) => {
+    updateSelection(selectionKey);
+
+    let filtered;
+
+    if (
+      selectionKey === FILTER_BY_MENU_LABELS.StoneType.selectionKey &&
+      selection[FILTER_BY_MENU_LABELS.StoneColor.selectionKey]?.length > 0
+    ) {
+      filtered = getFilteredByStoneColor(jewelries);
+    } else if (
+      selectionKey === FILTER_BY_MENU_LABELS.StoneColor.selectionKey &&
+      selection[FILTER_BY_MENU_LABELS.StoneType.selectionKey]?.length > 0
+    ) {
+      filtered = getFilteredByStoneType(jewelries);
+    } else {
+      filtered = jewelries;
+    }
+
+    const serializedObject = getSerializedObject(filtered);
+
+    fetchStonesCountData(serializedObject);
+
+    updateState(filtered);
+  };
+
   const changeHandler = (e, entityTitle) => {
     const selected = e.target.value;
     const isChecked = e.target.checked;
@@ -186,10 +216,18 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-  const stoneTypeSubmitHandler = (e) => {
+  const submitHandler = (e, selectionKey) => {
     e.preventDefault();
 
-    const filtered = getFilteredByStoneType();
+    let filtered;
+
+    if (selectionKey === FILTER_BY_MENU_LABELS.StoneType.selectionKey) {
+      filtered = getFilteredByStoneType(filteredJewelries);
+    } else if (selectionKey === FILTER_BY_MENU_LABELS.StoneColor.selectionKey) {
+      filtered = getFilteredByStoneColor(filteredJewelries);
+    } else {
+      filtered = jewelries;
+    }
 
     const serializedObject = getSerializedObject(filtered);
 
@@ -198,26 +236,8 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     updateState(filtered);
   };
 
-  const updateState = (filtered) => {
-    setFilteredJewelries(filtered);
-    setTotalCount(filtered.length);
-    setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
-  };
-
-  const stoneColorSubmitHandler = (e) => {
-    e.preventDefault();
-
-    const filtered = getFilteredByStoneColor();
-
-    const serializedObject = getSerializedObject(filtered);
-
-    fetchStonesCountData(serializedObject);
-
-    updateState(filtered);
-  };
-
-  const getFilteredByStoneType = () => {
-    const filtered = filteredJewelries.filter((jewelry) => {
+  const getFilteredByStoneType = (collection) => {
+    const filtered = collection.filter((jewelry) => {
       const flattenedStoneTypes = jewelry.stoneTypeIds.flat();
 
       return flattenedStoneTypes.some((id) => selection.stoneType.includes(id));
@@ -225,8 +245,8 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     return filtered;
   };
 
-  const getFilteredByStoneColor = () => {
-    const filtered = filteredJewelries.filter((jewelry) => {
+  const getFilteredByStoneColor = (collection) => {
+    const filtered = collection.filter((jewelry) => {
       const flattenedStoneColors = jewelry.stoneColorIds.flat();
 
       return flattenedStoneColors.some((id) =>
@@ -234,6 +254,14 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
       );
     });
     return filtered;
+  };
+
+  const updateState = (filtered) => {
+    setFilteredJewelries(filtered);
+
+    setTotalCount(filtered.length);
+
+    setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
   };
 
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
@@ -339,33 +367,27 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
           <div className={styles["filter-by-container"]}>
             <div>Filter By:</div>
             <ul className={styles["filter-list"]} role="list">
-              {/* <li className={styles["filter-item"]}>
+              <li className={styles["filter-item"]}>
                 <DynamicDropdown
-                  label="Collection"
+                  label={FILTER_BY_MENU_LABELS.StoneType.label}
                   options={stoneTypesData}
                   changeHandler={changeHandler}
                   submitHandler={submitHandler}
                   selection={selection}
-                />
-              </li> */}
-              <div className={styles["form-vertical-line"]}></div>
-              <li className={styles["filter-item"]}>
-                <DynamicDropdown
-                  label="Stone Type"
-                  options={stoneTypesData}
-                  changeHandler={changeHandler}
-                  submitHandler={stoneTypeSubmitHandler}
-                  selection={selection}
+                  clearFilter={clearFilter}
+                  selectionKey={FILTER_BY_MENU_LABELS.StoneType.selectionKey}
                 />
               </li>
               <div className={styles["form-vertical-line"]}></div>
               <li className={styles["filter-item"]}>
                 <DynamicDropdown
-                  label="Stone Color"
+                  label={FILTER_BY_MENU_LABELS.StoneColor.label}
                   options={stoneColorsData}
                   changeHandler={changeHandler}
-                  submitHandler={stoneColorSubmitHandler}
+                  submitHandler={submitHandler}
                   selection={selection}
+                  clearFilter={clearFilter}
+                  selectionKey={FILTER_BY_MENU_LABELS.StoneColor.selectionKey}
                 />
               </li>
             </ul>

@@ -47,6 +47,7 @@ exports.getStoneColorsData = async (jewelryIds) => {
         },
       },
     },
+    { $sort: { _id: 1 } },
   ]);
 
   return stoneColorsData;

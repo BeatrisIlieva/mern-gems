@@ -3,6 +3,7 @@ const { getStoneTypesData } = require("../utils/getStoneTypesData");
 const { getStoneColorsData } = require("../utils/getStoneColorsData");
 
 router.get("/by-stone-types", async (req, res) => {
+
   const serializedObject =
     req.query.data !== "undefined" ? req.query.data : "undefined";
   const jewelryDictionary =

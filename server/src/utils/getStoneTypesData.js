@@ -1,7 +1,6 @@
 const JewelryStones = require("../models/JewelryStones");
 
 exports.getStoneTypesData = async (jewelryIds) => {
-  console.log(jewelryIds);
   let jewelryMatchCondition = jewelryIds.reduce((acc, curr) => {
     let jewelryId = curr;
     acc.push({ jewelry: jewelryId });

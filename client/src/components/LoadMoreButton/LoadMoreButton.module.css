@@ -1,27 +1,14 @@
 .load-more-button {
-  /* position: relative;
-  padding: 16px 48px;
-  font-size: var(--medium-font-size);
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  background: none;
-  color: var(--dark-pink);
-  box-shadow: 0 0 0 0.6px var(--medium-pink);
-  outline: none;
-  letter-spacing: 1.2px;
-  width: 50%;
-  margin-top: 8%; */
-
   position: relative;
   padding: 16px 48px;
   font-size: var(--medium-font-size);
+  font-family: var(--bold-italic-font-family);
   border: none;
   cursor: pointer;
   overflow: hidden;
-  background: var(--white-pink);
+  background: var(--white);
   color: var(--gray);
-  box-shadow: 0 0 0 0.6px var(--border);
+  border: 1px solid var(--border);
   outline: none;
   letter-spacing: 1.2px;
   width: 50%;
@@ -35,7 +22,7 @@
   height: 1px;
   bottom: 0;
   left: 50%;
-  background-color: var(--dark-pink);
+  background-color: var(--border);
   transition: width 0.3s ease, left 0.3s ease;
 }
 

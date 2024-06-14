@@ -6,9 +6,11 @@ import styles from "./DynamicDropdown.module.css";
 export const DynamicDropdown = ({
   label,
   options,
+  selectionKey,
   changeHandler,
   submitHandler,
   selection,
+  clearFilter,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -31,7 +33,7 @@ export const DynamicDropdown = ({
   }, []);
 
   const handleSubmit = (event) => {
-    submitHandler(event);
+    submitHandler(event, selectionKey);
     setIsOpen(false);
   };
 
@@ -45,29 +47,43 @@ export const DynamicDropdown = ({
         />
       </button>
       {isOpen && (
-        <div className={styles["dropdown-menu"]}>
-          {options.map((option, index) => (
-            <div key={index}>
-              <input
-                type="checkbox"
-                name={option.title}
-                value={option._id}
-                id={option._id}
-                onChange={(e) => changeHandler(e, option.entityTitle)}
-                checked={selection[option.entityTitle]?.includes(option._id)}
-              />
-              <label htmlFor={option.title}>{option.title}</label>
-              <div>{option.count}</div>
+        <div className={styles["open-dropdown-menu"]}>
+          <div className={styles["dropdown-menu"]}>
+            {options.map((option, index) => (
+              <div key={index} className={styles["dropdown-menu-options"]}>
+                <input
+                  type="checkbox"
+                  name={option.title}
+                  value={option._id}
+                  id={option._id}
+                  onChange={(e) => changeHandler(e, selectionKey)}
+                  checked={selection[selectionKey]?.includes(option._id)}
+                  className={`${styles["custom-checkbox"]} ${
+                    selection[selectionKey]?.includes(option._id)
+                      ? styles.checked
+                      : ""
+                  }`}
+                />
+                <label htmlFor={option.title}>{option.title}</label>
+                <span>({option.count})</span>
+              </div>
+            ))}
+          </div>
+          <div className={styles["button-container"]}>
+              <button
+                onClick={handleSubmit}
+                className={`${styles["animated-button"]} ${styles["button"]}`}
+                type="submit"
+              >
+                Apply
+              </button>
+              <button
+                onClick={() => clearFilter(selectionKey)}
+                className={styles["dismiss-button"]}
+              >
+                Clear Filters
+              </button>
             </div>
-          ))}
-          <button
-            onClick={handleSubmit}
-            className={`${styles["animated-button"]} ${styles["button"]}`}
-            type="submit"
-            data-testid="submit"
-          >
-            Apply
-          </button>
         </div>
       )}
     </div>

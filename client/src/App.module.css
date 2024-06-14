@@ -66,6 +66,7 @@
   --medium-font-size: 16px;
   --small-font-size: 12px;
   --minimum-font-size: 10px;
+  --extra-small-font-size: 8px;
 }
 
 input[type="text"],
@@ -92,4 +93,16 @@ input[type="email"]:focus {
 input,
 textarea {
   caret-color: var(--dark-pink);
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  border: 1px solid var(--gray);
+  outline: none;
+  cursor: pointer;
 }
