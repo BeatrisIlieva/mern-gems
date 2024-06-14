@@ -44,21 +44,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [isSelectedStoneColor, setIsSelectedStoneColor] = useState(false);
 
 
-  // const clickSortByLowToHighHandler = () => {
-  //   setSortByAvailableNow(false);
-  //   setSortByLowToHigh(true);
-  //   setSortByHighToLow(false);
 
-  //   getSortedByLowToHigh();
-  // };
-
-  // const clickSortByHighToLowHandler = () => {
-  //   setSortByAvailableNow(false);
-  //   setSortByLowToHigh(false);
-  //   setSortByHighToLow(true);
-
-  //   getSortedByHighToLow();
-  // };
 
   // const getSortedByLowToHigh = () => {
   //   const sortedJewelries = getSortedByPriceAsc(filteredJewelries);
