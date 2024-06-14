@@ -70,19 +70,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-  //   if (
-  //     selectionKey === FILTER_BY_MENU_LABELS.StoneType.selectionKey &&
-  //     selection[FILTER_BY_MENU_LABELS.StoneColor.selectionKey]?.length > 0
-  //   ) {
-  //     filtered = getFilteredByStoneColor(jewelries, selection);
-  //   } else if (
-  //     selectionKey === FILTER_BY_MENU_LABELS.StoneColor.selectionKey &&
-  //     selection[FILTER_BY_MENU_LABELS.StoneType.selectionKey]?.length > 0
-  //   ) {
-  //     filtered = getFilteredByStoneType(jewelries, selection);
-  //   } else {
-  //     filtered = jewelries;
-  //   }
+
 
   //   const serializedObject = getSerializedObject(filtered);
 
