@@ -3,7 +3,7 @@ import styles from "./JewelryList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
@@ -53,7 +53,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [selection, setSelection] = useState({});
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
-  // const [isSelected, setIsSelected] = useState(false);
   const [isSelectedStoneType, setIsSelectedStoneType] = useState(false);
   const [isSelectedStoneColor, setIsSelectedStoneColor] = useState(false);
 
@@ -171,11 +170,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
       return newState;
     });
-    // setSelection((prevState) => {
-    //   const newState = { ...prevState };
-    //   delete newState[selectionKey];
-    //   return newState;
-    // });
   };
 
   const clearFilter = (selectionKey) => {
@@ -313,7 +307,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     toggleSelectedStoneType();
     toggleSelectedStoneColor();
   }, [selection]);
-  
+
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 
   return (
