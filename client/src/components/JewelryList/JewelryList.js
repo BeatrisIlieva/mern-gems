@@ -118,18 +118,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setDisplayedItems(newDisplayedItems);
   };
 
-  useEffect(() => {
-    setJewelries([]);
-    setSelection({});
-    setSortByAvailableNow(true);
-    setSortByLowToHigh(false);
-    setSortByHighToLow(false);
-    setPage(0);
-    setLoadMoreDisabled(false);
-    setDisplayedItems(ITEMS_PER_PAGE);
-    fetchData();
-  }, [entityId, entityTitle]);
-
   const toggleLike = (jewelryId) => {
     setJewelries((prevJewelries) => {
       return prevJewelries.map((jewelry) => {
@@ -261,6 +249,17 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setIsSelectedStoneColor(isEmpty);
   };
 
+  useEffect(() => {
+    setJewelries([]);
+    setSelection({});
+    setSortByAvailableNow(true);
+    setSortByLowToHigh(false);
+    setSortByHighToLow(false);
+    setPage(0);
+    setLoadMoreDisabled(false);
+    setDisplayedItems(ITEMS_PER_PAGE);
+    fetchData();
+  }, [entityId, entityTitle]);
 
   useEffect(() => {
     toggleSelectedStoneType();
