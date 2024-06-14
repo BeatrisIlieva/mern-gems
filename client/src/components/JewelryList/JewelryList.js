@@ -399,63 +399,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
             </ul>
           </div>
           <SortBy entityId={entityId} entityTitle={entityTitle} filteredJewelries={filteredJewelries} setFilteredJewelries={setFilteredJewelries}/>
-          {/* <div className={styles["sort-by-container"]}>
-            <Dropdown
-              label={getSortLabel()}
-              subLabel={SORT_BY_MENU_SUB_LABEL.SortBy}
-            >
-              <ul className={styles["sort-list"]} role="list">
-                <li className={styles["filter-item"]}>
-                  <button
-                    className={styles["filter-button"]}
-                    onClick={() => clickSortByAvailableNowHandler()}
-                  >
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={`${styles["circle"]} ${
-                        sortByAvailableNow === true
-                          ? styles["circle-selected"]
-                          : ""
-                      }`.trim()}
-                    />
-                    {SORT_BY_MENU_LABELS.AvailableNow}
-                  </button>
-                </li>
-                <li className={styles["filter-item"]}>
-                  <button
-                    className={styles["filter-button"]}
-                    onClick={() => clickSortByLowToHighHandler()}
-                  >
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={`${styles["circle"]} ${
-                        sortByLowToHigh === true
-                          ? styles["circle-selected"]
-                          : ""
-                      }`.trim()}
-                    />
-                    {SORT_BY_MENU_LABELS.ByLowToHigh}
-                  </button>
-                </li>
-                <li className={styles["filter-item"]}>
-                  <button
-                    className={styles["filter-button"]}
-                    onClick={() => clickSortByHighToLowHandler()}
-                  >
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={`${styles["circle"]} ${
-                        sortByHighToLow === true
-                          ? styles["circle-selected"]
-                          : ""
-                      }`.trim()}
-                    />
-                    {SORT_BY_MENU_LABELS.ByHighToLow}
-                  </button>
-                </li>
-              </ul>
-            </Dropdown>
-          </div> */}
         </div>
         <div className={styles["jewelries-count"]}>
           Showing 1 -{" "}
