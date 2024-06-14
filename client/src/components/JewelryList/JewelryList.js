@@ -6,17 +6,9 @@ import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { VerticalLine } from "../VerticalLine/VerticalLine";
-// import { DynamicDropdown } from "../DynamicDropdown/DynamicDropdown";
-// import { getSerializedObject } from "../../utils/getSerializedObject";
-// import { getFilteredByStoneType } from "../../utils/getFilteredByStoneType";
-// import { getFilteredByStoneColor } from "../../utils/getFilteredByStoneColor";
 import { SortBy } from "../SortBy/SortBy";
 import { FilterBy } from "../FilterBy/FilterBy";
 
-// const FILTER_BY_MENU_LABELS = {
-//   StoneType: { label: "Stone Type", selectionKey: "stoneType" },
-//   StoneColor: { label: "Stone Color", selectionKey: "stoneColor" },
-// };
 
 export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const {
@@ -40,9 +32,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [page, setPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [selection, setSelection] = useState({});
-  // const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
-  // const [isSelectedStoneType, setIsSelectedStoneType] = useState(false);
-  // const [isSelectedStoneColor, setIsSelectedStoneColor] = useState(false);
 
   const loadMoreHandler = () => {
     const nextPage = page + 1;
