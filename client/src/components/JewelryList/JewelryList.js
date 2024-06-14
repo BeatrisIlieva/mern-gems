@@ -111,6 +111,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setPage(nextPage);
 
     const newDisplayedItems = displayedItems + ITEMS_PER_PAGE;
+
     if (newDisplayedItems >= totalCount) {
       setLoadMoreDisabled(true);
     }
@@ -260,9 +261,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setIsSelectedStoneColor(isEmpty);
   };
 
-  useEffect(() => {
-    console.log(selection);
-  }, [selection]);
 
   useEffect(() => {
     toggleSelectedStoneType();
