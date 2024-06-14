@@ -44,34 +44,11 @@
   position: relative;
 }
 
-.overlay {
-  background-color: var(--white);
-  position: absolute;
-  top: 40px;
-  left: 0;
-  z-index: 30;
-  width: 100%;
-  height: 300px;
-  animation: slideIn 0.5s forwards;
-}
-
-@keyframes slideIn {
-  from {
-    top: 28px
-  }
-  to {
-    bottom: 0;
-  }
-}
-
 .jewelries-nav {
   display: flex;
   margin: 0px 0px 110px 0px;
-  /* justify-content: space-between; */
   border-bottom: 0.1px solid var(--border);
 }
-
-
 
 .form-vertical-line {
   border: 0.1px solid var(--border);
@@ -83,28 +60,18 @@
   color: var(--middle-gray);
   font-family: var(--bold-font-family);
   font-size: var(--small-font-size);
-
 }
 
 .filter-by-container {
   display: flex;
   gap: 40px;
-  /* gap: 50px; */
 }
 
 .filter-list {
   display: flex;
-  /* gap: 60px; */
   gap: 40px;
   font-family: var(--bold-font-family);
   font-size: var(--small-font-size);
-
-}
-
-@keyframes slideIn {
-  from {
-    top: 28px;
-  }
 }
 
 .filter-button {
@@ -140,8 +107,6 @@
   animation: slideIn 0.5s forwards;
 }
 
-
-
 @keyframes slideIn {
   from {
     top: 30px;
@@ -151,10 +116,6 @@
 .filter-item {
   padding-bottom: 10px;
 }
-
-/* .filter-item:last-child {
-  padding-bottom: 10px;
-} */
 
 .circle {
   padding-right: 8px;
