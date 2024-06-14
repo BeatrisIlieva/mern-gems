@@ -69,7 +69,6 @@
   position: absolute;
   top: 40px;
   background-color: var(--white);
-
   animation: slideIn 0.5s forwards;
 }
 
@@ -77,9 +76,6 @@
   from {
     top: 30px;
   }
-}
-
-.dropdown-menu-options {
 }
 
 .button-container {
