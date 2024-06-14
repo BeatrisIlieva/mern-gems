@@ -3,7 +3,7 @@ import styles from "./JewelryList.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "../Dropdown/Dropdown";
@@ -285,7 +285,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     console.log(selection);
   }, [selection]);
 
-
   useEffect(() => {
     toggleSelectedStoneType();
     toggleSelectedStoneColor();
@@ -390,10 +389,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
         </div>
       )}
       <div className={styles["jewelries-box"]}>
-        {/* {dropdownIsOpen && (
-          <div className={styles["overlay"]}></div>
-        )} */}
-          <div className={styles["jewelries-nav"]}>
+        <div className={styles["jewelries-nav"]}>
           <div className={styles["filter-by-container"]}>
             <div>Filter By:</div>
             <ul className={styles["filter-list"]} role="list">
