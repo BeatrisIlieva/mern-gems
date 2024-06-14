@@ -43,8 +43,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [isSelectedStoneType, setIsSelectedStoneType] = useState(false);
   const [isSelectedStoneColor, setIsSelectedStoneColor] = useState(false);
 
-
-
   const loadMoreHandler = () => {
     const nextPage = page + 1;
     if (nextPage * ITEMS_PER_PAGE >= totalCount) {
@@ -79,8 +77,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
       });
     });
   };
-
-
 
   const updateSelection = (selectionKey) => {
     setSelection((prevState) => {
@@ -183,9 +179,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   useEffect(() => {
     setJewelries([]);
     setSelection({});
-    // setSortByAvailableNow(true);
-    // setSortByLowToHigh(false);
-    // setSortByHighToLow(false);
     setPage(0);
     setLoadMoreDisabled(false);
     setDisplayedItems(ITEMS_PER_PAGE);
@@ -329,7 +322,12 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
               </li>
             </ul>
           </div>
-          <SortBy entityId={entityId} entityTitle={entityTitle} filteredJewelries={filteredJewelries} setFilteredJewelries={setFilteredJewelries}/>
+          <SortBy
+            entityId={entityId}
+            entityTitle={entityTitle}
+            filteredJewelries={filteredJewelries}
+            setFilteredJewelries={setFilteredJewelries}
+          />
         </div>
         <div className={styles["jewelries-count"]}>
           Showing 1 -{" "}
