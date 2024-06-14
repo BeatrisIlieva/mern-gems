@@ -21,14 +21,13 @@ export const DynamicDropdown = ({
   const toggleDropdown = () => {
     const newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
-    onDropdownToggle(newIsOpen); // Notify parent component
+    onDropdownToggle(newIsOpen);
   };
 
   const handleClickOutside = (event) => {
     console.log(event);
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
-      // onDropdownToggle(false); // Notify parent component
     }
   };
 
@@ -42,12 +41,10 @@ export const DynamicDropdown = ({
   const handleSubmit = (event) => {
     submitHandler(event, selectionKey);
     setIsOpen(false);
-    // onDropdownToggle(false); // Notify parent component
   };
 
   const dismissButtonHandler = (selectionKey) => {
     clearFilter(selectionKey);
-    // toggleSelected();
   };
 
   return (
