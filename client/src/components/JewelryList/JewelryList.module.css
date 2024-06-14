@@ -55,8 +55,7 @@
   margin-bottom: 10px;
 }
 
-.filter-by-container,
-.sort-by-container {
+.filter-by-container {
   color: var(--middle-gray);
   font-family: var(--bold-font-family);
   font-size: var(--small-font-size);
@@ -86,47 +85,13 @@
   background-color: var(--white);
 }
 
-.sort-by-container {
-  position: absolute;
-  right: 0;
-  display: flex;
-  gap: 8px;
-}
 
-.sort-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: var(--bold-font-family);
-  font-size: var(--small-font-size);
-  background-color: var(--white);
-  z-index: 4;
-  position: absolute;
-  top: 40px;
-  width: 100%;
-  animation: slideIn 0.5s forwards;
-}
-
-@keyframes slideIn {
-  from {
-    top: 30px;
-  }
-}
 
 .filter-item {
   padding-bottom: 10px;
 }
 
-.circle {
-  padding-right: 8px;
-  height: 8px;
-  vertical-align: middle;
-  color: var(--white);
-}
 
-.circle-selected {
-  color: var(--dark-pink);
-}
 
 .jewelries-count {
   font-size: var(--small-font-size);

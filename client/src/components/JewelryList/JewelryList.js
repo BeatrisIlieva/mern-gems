@@ -4,28 +4,30 @@ import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
-import { Dropdown } from "../Dropdown/Dropdown";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCircle } from "@fortawesome/free-solid-svg-icons";
+// import { Dropdown } from "../Dropdown/Dropdown";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { VerticalLine } from "../VerticalLine/VerticalLine";
 import { DynamicDropdown } from "../DynamicDropdown/DynamicDropdown";
 import { getSerializedObject } from "../../utils/getSerializedObject";
 import { getFilteredByStoneType } from "../../utils/getFilteredByStoneType";
 import { getFilteredByStoneColor } from "../../utils/getFilteredByStoneColor";
-import { getSortedByPriceAsc } from "../../utils/getSortedByPriceAsc";
-import { getSortedByPriceDesc } from "../../utils/getSortedByPriceDesc";
-import { getSortedByAvailabilityAsc } from "../../utils/getSortedByAvailabilityAsc";
+// import { getSortedByPriceAsc } from "../../utils/getSortedByPriceAsc";
+// import { getSortedByPriceDesc } from "../../utils/getSortedByPriceDesc";
+// import { getSortedByAvailabilityAsc } from "../../utils/getSortedByAvailabilityAsc";
 
-const SORT_BY_MENU_LABELS = {
-  AvailableNow: "Available Now",
-  ByLowToHigh: "Price Low To High",
-  ByHighToLow: "Price High To Low",
-};
+import { SortBy } from "../SortBy/SortBy";
 
-const SORT_BY_MENU_SUB_LABEL = {
-  SortBy: "Sort By:",
-};
+// const SORT_BY_MENU_LABELS = {
+//   AvailableNow: "Available Now",
+//   ByLowToHigh: "Price Low To High",
+//   ByHighToLow: "Price High To Low",
+// };
+
+// const SORT_BY_MENU_SUB_LABEL = {
+//   SortBy: "Sort By:",
+// };
 
 const FILTER_BY_MENU_LABELS = {
   StoneType: { label: "Stone Type", selectionKey: "stoneType" },
@@ -51,9 +53,9 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     fetchStonesCountData,
   } = useJewelryList(serviceFactory, entityId);
 
-  const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
-  const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
-  const [sortByHighToLow, setSortByHighToLow] = useState(false);
+  // const [sortByAvailableNow, setSortByAvailableNow] = useState(true);
+  // const [sortByLowToHigh, setSortByLowToHigh] = useState(false);
+  // const [sortByHighToLow, setSortByHighToLow] = useState(false);
   const [page, setPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [selection, setSelection] = useState({});
@@ -61,47 +63,47 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [isSelectedStoneType, setIsSelectedStoneType] = useState(false);
   const [isSelectedStoneColor, setIsSelectedStoneColor] = useState(false);
 
-  const clickSortByAvailableNowHandler = () => {
-    setSortByAvailableNow(true);
-    setSortByLowToHigh(false);
-    setSortByHighToLow(false);
+  // const clickSortByAvailableNowHandler = () => {
+  //   setSortByAvailableNow(true);
+  //   setSortByLowToHigh(false);
+  //   setSortByHighToLow(false);
 
-    getSortedByAvailableNow();
-  };
+  //   getSortedByAvailableNow();
+  // };
 
-  const clickSortByLowToHighHandler = () => {
-    setSortByAvailableNow(false);
-    setSortByLowToHigh(true);
-    setSortByHighToLow(false);
+  // const clickSortByLowToHighHandler = () => {
+  //   setSortByAvailableNow(false);
+  //   setSortByLowToHigh(true);
+  //   setSortByHighToLow(false);
 
-    getSortedByLowToHigh();
-  };
+  //   getSortedByLowToHigh();
+  // };
 
-  const clickSortByHighToLowHandler = () => {
-    setSortByAvailableNow(false);
-    setSortByLowToHigh(false);
-    setSortByHighToLow(true);
+  // const clickSortByHighToLowHandler = () => {
+  //   setSortByAvailableNow(false);
+  //   setSortByLowToHigh(false);
+  //   setSortByHighToLow(true);
 
-    getSortedByHighToLow();
-  };
+  //   getSortedByHighToLow();
+  // };
 
-  const getSortedByLowToHigh = () => {
-    const sortedJewelries = getSortedByPriceAsc(filteredJewelries);
+  // const getSortedByLowToHigh = () => {
+  //   const sortedJewelries = getSortedByPriceAsc(filteredJewelries);
 
-    setFilteredJewelries(sortedJewelries);
-  };
+  //   setFilteredJewelries(sortedJewelries);
+  // };
 
-  const getSortedByHighToLow = () => {
-    const sortedJewelries = getSortedByPriceDesc(filteredJewelries);
+  // const getSortedByHighToLow = () => {
+  //   const sortedJewelries = getSortedByPriceDesc(filteredJewelries);
 
-    setFilteredJewelries(sortedJewelries);
-  };
+  //   setFilteredJewelries(sortedJewelries);
+  // };
 
-  const getSortedByAvailableNow = () => {
-    const sortedJewelries = getSortedByAvailabilityAsc(filteredJewelries);
+  // const getSortedByAvailableNow = () => {
+  //   const sortedJewelries = getSortedByAvailabilityAsc(filteredJewelries);
 
-    setFilteredJewelries(sortedJewelries);
-  };
+  //   setFilteredJewelries(sortedJewelries);
+  // };
 
   const loadMoreHandler = () => {
     const nextPage = page + 1;
@@ -138,16 +140,16 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-  const getSortLabel = () => {
-    if (sortByAvailableNow) {
-      return SORT_BY_MENU_LABELS.AvailableNow;
-    } else if (sortByLowToHigh) {
-      return SORT_BY_MENU_LABELS.ByLowToHigh;
-    } else if (sortByHighToLow) {
-      return SORT_BY_MENU_LABELS.ByHighToLow;
-    }
-    return SORT_BY_MENU_LABELS.AvailableNow;
-  };
+  // const getSortLabel = () => {
+  //   if (sortByAvailableNow) {
+  //     return SORT_BY_MENU_LABELS.AvailableNow;
+  //   } else if (sortByLowToHigh) {
+  //     return SORT_BY_MENU_LABELS.ByLowToHigh;
+  //   } else if (sortByHighToLow) {
+  //     return SORT_BY_MENU_LABELS.ByHighToLow;
+  //   }
+  //   return SORT_BY_MENU_LABELS.AvailableNow;
+  // };
 
   const updateSelection = (selectionKey) => {
     setSelection((prevState) => {
@@ -205,7 +207,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
         };
       }
     });
-    console.log(selection);
   };
 
   const submitHandler = (e, selectionKey) => {
@@ -238,7 +239,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
   const toggleSelectedStoneType = () => {
     const isEmpty = selection.stoneType?.length > 0;
-    console.log(selection);
 
     setIsSelectedStoneType(isEmpty);
   };
@@ -252,9 +252,9 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   useEffect(() => {
     setJewelries([]);
     setSelection({});
-    setSortByAvailableNow(true);
-    setSortByLowToHigh(false);
-    setSortByHighToLow(false);
+    // setSortByAvailableNow(true);
+    // setSortByLowToHigh(false);
+    // setSortByHighToLow(false);
     setPage(0);
     setLoadMoreDisabled(false);
     setDisplayedItems(ITEMS_PER_PAGE);
@@ -398,7 +398,8 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
               </li>
             </ul>
           </div>
-          <div className={styles["sort-by-container"]}>
+          <SortBy entityId={entityId} entityTitle={entityTitle} filteredJewelries={filteredJewelries} setFilteredJewelries={setFilteredJewelries}/>
+          {/* <div className={styles["sort-by-container"]}>
             <Dropdown
               label={getSortLabel()}
               subLabel={SORT_BY_MENU_SUB_LABEL.SortBy}
@@ -454,7 +455,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
                 </li>
               </ul>
             </Dropdown>
-          </div>
+          </div> */}
         </div>
         <div className={styles["jewelries-count"]}>
           Showing 1 -{" "}
