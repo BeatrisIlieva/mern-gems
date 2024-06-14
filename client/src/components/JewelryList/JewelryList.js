@@ -4,19 +4,12 @@ import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCircle } from "@fortawesome/free-solid-svg-icons";
-// import { Dropdown } from "../Dropdown/Dropdown";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { VerticalLine } from "../VerticalLine/VerticalLine";
 import { DynamicDropdown } from "../DynamicDropdown/DynamicDropdown";
 import { getSerializedObject } from "../../utils/getSerializedObject";
 import { getFilteredByStoneType } from "../../utils/getFilteredByStoneType";
 import { getFilteredByStoneColor } from "../../utils/getFilteredByStoneColor";
-// import { getSortedByPriceAsc } from "../../utils/getSortedByPriceAsc";
-// import { getSortedByPriceDesc } from "../../utils/getSortedByPriceDesc";
-// import { getSortedByAvailabilityAsc } from "../../utils/getSortedByAvailabilityAsc";
-
 import { SortBy } from "../SortBy/SortBy";
 
 // const SORT_BY_MENU_LABELS = {
