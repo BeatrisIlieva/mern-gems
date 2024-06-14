@@ -43,13 +43,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const [isSelectedStoneType, setIsSelectedStoneType] = useState(false);
   const [isSelectedStoneColor, setIsSelectedStoneColor] = useState(false);
 
-  // const clickSortByAvailableNowHandler = () => {
-  //   setSortByAvailableNow(true);
-  //   setSortByLowToHigh(false);
-  //   setSortByHighToLow(false);
-
-  //   getSortedByAvailableNow();
-  // };
 
   // const clickSortByLowToHighHandler = () => {
   //   setSortByAvailableNow(false);
