@@ -45,13 +45,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-
-  // const getSortedByAvailableNow = () => {
-  //   const sortedJewelries = getSortedByAvailabilityAsc(filteredJewelries);
-
-  //   setFilteredJewelries(sortedJewelries);
-  // };
-
   const loadMoreHandler = () => {
     const nextPage = page + 1;
     if (nextPage * ITEMS_PER_PAGE >= totalCount) {
