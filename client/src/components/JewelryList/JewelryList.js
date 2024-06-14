@@ -14,6 +14,7 @@ import { getSerializedObject } from "../../utils/getSerializedObject";
 import { getFilteredByStoneType } from "../../utils/getFilteredByStoneType";
 import { getFilteredByStoneColor } from "../../utils/getFilteredByStoneColor";
 import { getSortedByPriceAsc } from "../../utils/getSortedByPriceAsc";
+import { getSortedByPriceDesc } from "../../utils/getSortedByPriceDesc";
 
 const SORT_BY_MENU_LABELS = {
   AvailableNow: "Available Now",
@@ -94,9 +95,11 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   };
 
   const getSortedByHighToLow = () => {
-    const sortedJewelries = [...filteredJewelries].sort((a, b) => {
-      return b.price - a.price;
-    });
+    // const sortedJewelries = [...filteredJewelries].sort((a, b) => {
+    //   return b.price - a.price;
+    // });
+
+    const sortedJewelries = getSortedByPriceDesc(filteredJewelries);
 
     setFilteredJewelries(sortedJewelries);
   };
