@@ -80,16 +80,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-  // const getSortLabel = () => {
-  //   if (sortByAvailableNow) {
-  //     return SORT_BY_MENU_LABELS.AvailableNow;
-  //   } else if (sortByLowToHigh) {
-  //     return SORT_BY_MENU_LABELS.ByLowToHigh;
-  //   } else if (sortByHighToLow) {
-  //     return SORT_BY_MENU_LABELS.ByHighToLow;
-  //   }
-  //   return SORT_BY_MENU_LABELS.AvailableNow;
-  // };
+
 
   const updateSelection = (selectionKey) => {
     setSelection((prevState) => {
