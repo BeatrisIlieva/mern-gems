@@ -282,27 +282,10 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   };
 
   useEffect(() => {
-    console.log(selection); // Log updated selection whenever it changes
+    console.log(selection);
   }, [selection]);
 
-  // const toggleSelected = () => {
-  //   console.log("here");
-  //   console.log(selection);
 
-  //   const hasKeys = Object.keys(selection).length > 0;
-
-  //   // if (!hasKeys) {
-  //   //   setIsSelected(false);
-  //   // } else {
-  //     const arraysNotEmpty = Object.values(selection).every((value) => {
-  //       return (
-  //         !Array.isArray(value) || (Array.isArray(value) && value.length > 0)
-  //       );
-  //     });
-
-  //     setIsSelected(arraysNotEmpty);
-  //   // }
-  // };
   useEffect(() => {
     toggleSelectedStoneType();
     toggleSelectedStoneColor();
