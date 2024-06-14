@@ -14,8 +14,6 @@ export const DynamicDropdown = ({
   clearFilter,
   isSelected,
   onDropdownToggle = () => {},
-  // toggleSelected,
-  // toggleSelected
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
