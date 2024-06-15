@@ -27,13 +27,7 @@ export const Header = () => {
     setDisplaySearchBoxPopup(true);
   };
 
-  const popupSubmitHandler = async (popupOption) => {
-    document.body.style.overflow = "visible";
-
-    setDisplaySearchBoxPopup(false);
-  };
-
-  const popupCloseHandler = (popupOption) => {
+  const popupCloseHandler = () => {
     document.body.style.overflow = "visible";
 
     setDisplaySearchBoxPopup(false);
@@ -142,10 +136,7 @@ export const Header = () => {
         </ul>
       </div>
       {displayDisplaySearchBoxPopup && (
-        <SearchBoxPopup
-          popupSubmitHandler={popupSubmitHandler}
-          popupCloseHandler={popupCloseHandler}
-        />
+        <SearchBoxPopup popupCloseHandler={popupCloseHandler} />
       )}
     </header>
   );
