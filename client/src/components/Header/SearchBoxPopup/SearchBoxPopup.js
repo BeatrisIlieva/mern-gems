@@ -106,8 +106,19 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </h2>
               </Link>
               <Link to="/sunflower" className={styles["no-decoration"]}>
-                <h2 className={styles["collection-title"]} data-testid="sunflower-title">
+                <h2
+                  className={styles["collection-title"]}
+                  data-testid="sunflower-title"
+                >
                   Sunflower Collection
+                </h2>
+              </Link>
+              <Link to="/sparkling-cluster" className={styles["no-decoration"]}>
+                <h2
+                  className={styles["collection-title"]}
+                  data-testid="sparkling-cluster-title"
+                >
+                  Sparkling Cluster Collection
                 </h2>
               </Link>
             </div>
