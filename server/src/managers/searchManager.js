@@ -1,6 +1,6 @@
 const Jewelry = require("../models/Jewelry");
 
-exports.getSearchResults = async (search) => {
+exports.findAll = async (search) => {
   const searchResult = await Jewelry.aggregate([
     {
       $lookup: {

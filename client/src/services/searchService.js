@@ -9,13 +9,8 @@ export const searchServiceFactory = (token) => {
 
   const user = localStorage.getItem("userUUID");
 
-  const display = async (query) => {
-    const jewelries = await request.get(
-      `${baseUrl}/display/${user}?query=${query}`
-    );
-
-    return jewelries;
+  return {
+    findAll: (query) =>
+      request.get(`${baseUrl}/find-all/${user}?query=${query}`),
   };
-
-  return { display };
 };

@@ -112,6 +112,6 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     filteredJewelries,
     setTotalCount,
     fetchStonesCountData,
-    toggleLike
+    toggleLike,
   };
 };
