@@ -97,6 +97,19 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                   Pirouette Collection
                 </h2>
               </Link>
+              <Link to="/diamond-loop" className={styles["no-decoration"]}>
+                <h2
+                  className={styles["collection-title"]}
+                  data-testid="diamond-loop-title"
+                >
+                  Diamond Loop Collection
+                </h2>
+              </Link>
+              <Link to="/sunflower" className={styles["no-decoration"]}>
+                <h2 className={styles["collection-title"]} data-testid="sunflower-title">
+                  Sunflower Collection
+                </h2>
+              </Link>
             </div>
           )}
           <button
