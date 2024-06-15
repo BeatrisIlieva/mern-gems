@@ -8,7 +8,6 @@
   z-index: 100;
   opacity: 1;
   transition: opacity 0.5s ease;
-  /* overflow-y: auto; */
 }
 .modal-dialog {
   position: absolute;
@@ -25,7 +24,6 @@
 .modal-content {
   display: flex;
   flex-direction: column;
-  /* padding: 0px 20px 0px 20px; */
 }
 
 .modal-header {
@@ -57,15 +55,10 @@
   height: 20px;
 }
 
-.form-container {
-}
-
 .search-results {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   background-color: var(--white);
-  /* border-left: 0.1px solid var(--dark-pink);
-  border-right: 0.1px solid var(--dark-pink);  */
   padding: 20px;
   overflow-y: auto;
   height: 75vh;
@@ -85,7 +78,6 @@
   border-bottom: 0.1px solid var(--dark-pink);
   border-left: 0.1px solid var(--dark-pink);
   border-right: 0.1px solid var(--dark-pink);
-
 }
 
 .search-box {
@@ -97,7 +89,6 @@
   border-bottom-right-radius: 32px;
   background-color: var(--white-pink);
   width: 100%;
-  /* margin: 0px 0px 0px 0px; */
   padding: 4px;
   cursor: pointer;
 }
