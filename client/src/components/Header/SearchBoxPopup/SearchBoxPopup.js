@@ -40,7 +40,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
       <div className={styles["modal-dialog"]}>
         <div className={styles["modal-content"]}>
           <div className={styles["modal-header"]}>
-          <div id={styles["xMark"]} onClick={() => popupCloseHandler()}>
+            <div id={styles["xMark"]} onClick={() => popupCloseHandler()}>
               <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} />
             </div>
             <div className={styles["search-box"]}>
@@ -123,12 +123,6 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
               </Link>
             </div>
           )}
-          <button
-            className={styles["dismiss-button"]}
-            onClick={() => popupCloseHandler()}
-          >
-            Close
-          </button>
         </div>
       </div>
     </section>

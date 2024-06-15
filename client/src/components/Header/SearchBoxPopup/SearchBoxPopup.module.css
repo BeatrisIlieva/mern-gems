@@ -8,24 +8,24 @@
   z-index: 100;
   opacity: 1;
   transition: opacity 0.5s ease;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 .modal-dialog {
   position: absolute;
-  top: 36vh;
+  top: 48vh;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--white);
   border: 0.1px solid var(--dark-pink);
-  width: 50%;
-  height: auto;
+  width: 50vw;
+  height: 90vh;
   animation: slideIn 0.5s forwards;
 }
 
 .modal-content {
   display: flex;
   flex-direction: column;
-  padding: 0px 20px 0px 20px;
+  /* padding: 0px 20px 0px 20px; */
 }
 
 .modal-header {
@@ -54,7 +54,7 @@
 }
 .x-mark {
   color: var(--dark-pink);
-  height: 18px;
+  height: 20px;
 }
 
 .form-container {
@@ -64,8 +64,12 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   background-color: var(--white);
-  border-left: 0.1px solid var(--dark-pink);
-  border-right: 0.1px solid var(--dark-pink);
+  /* border-left: 0.1px solid var(--dark-pink);
+  border-right: 0.1px solid var(--dark-pink);  */
+  padding: 20px;
+  overflow-y: auto;
+  height: 75vh;
+  border-bottom: 0.1px solid var(--dark-pink);
 }
 
 .dismiss-button {
@@ -76,9 +80,11 @@
   background-color: var(--white);
   outline: none;
   margin: 0;
-  /* padding-bottom: 24px; */
+  padding-bottom: 20px;
   margin-bottom: 40px;
-  /* border-bottom: 0.1px solid var(--dark-pink); */
+  border-bottom: 0.1px solid var(--dark-pink);
+  border-left: 0.1px solid var(--dark-pink);
+  border-right: 0.1px solid var(--dark-pink);
 
 }
 
@@ -132,6 +138,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0px 20px 20px 20px;
+  gap: 10px;
 }
 
 .no-decoration {
