@@ -9,22 +9,13 @@ import { JewelryListItems } from "../../JewelryList/JewelryListItems/JewelryList
 import { Link } from "react-router-dom";
 import { slugify } from "../../../utils/slugify";
 
-export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
+export const SearchBoxPopup = ({ popupCloseHandler }) => {
   const [query, setQuery] = useState(null);
   const [jewelries, setJewelries] = useState([]);
   const searchService = useService(searchServiceFactory);
 
-  console.log(query);
-
   const onChange = async (e) => {
     setQuery(e.target.value);
-    console.log(query);
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
-    // navigate("/search", { state: { query: query } });
   };
 
   useEffect(() => {
@@ -35,6 +26,19 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
         console.log(err.message);
       });
   }, [query]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        popupCloseHandler();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [popupCloseHandler]);
 
   return (
     <section className={styles["popup-box"]}>
@@ -67,7 +71,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
           {jewelries.length > 0 ? (
             <div className={styles["search-results"]}>
               {jewelries.map((j) => (
-                <div key={j._id}>
+                <div key={j._id} className={styles["image-thumbnail"]}>
                   <Link
                     to={`/${slugify(j.categoryTitle)}/${slugify(
                       j.jewelryTitle
