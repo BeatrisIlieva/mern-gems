@@ -1,8 +1,8 @@
-import styles from "./SearchInput.module.css"
+import styles from "./SearchInput.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export const SearchInput = ({popupClickHandler}) => {
+export const SearchInput = ({ popupClickHandler }) => {
   return (
     <div className={styles["search-box"]}>
       <div className={styles["search-container"]}>
