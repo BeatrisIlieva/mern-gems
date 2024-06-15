@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import { useWishlistContext } from "../../contexts/WishlistContext";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 export const JewelryItem = () => {
   const { _id } = useParams();
@@ -14,6 +16,9 @@ export const JewelryItem = () => {
   const jewelryService = useService(jewelryServiceFactory);
   const [leftIsSelected, setLeftIsSelected] = useState(true);
   const [rightIsSelected, setRightIsSelected] = useState(false);
+  let [loading, setLoading] = useState(true);
+  const { onAddToWishlistClick, onRemoveFromWishlistClick } =
+    useWishlistContext();
 
   const toggleSelected = () => {
     setLeftIsSelected(!leftIsSelected);
@@ -21,18 +26,44 @@ export const JewelryItem = () => {
   };
 
   useEffect(() => {
-    fetchJewelry();
+    fetchData();
   }, []);
 
-  const fetchJewelry = async () => {
-    try {
-      const data = await jewelryService.findOne(_id);
+  const fetchData = async () => {
+    setLoading(true);
 
-      const jewelryData = Array.isArray(data) ? data[0] : data;
-      setJewelry(jewelryData);
-    } catch (err) {
-      console.log(err.message);
+    setTimeout(async () => {
+      try {
+        const data = await jewelryService.findOne(_id);
+
+        const jewelryData = Array.isArray(data) ? data[0] : data;
+        setJewelry(jewelryData);
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }, 400);
+  };
+
+  //   const fetchJewelry = async () => {
+  //     try {
+  //       const data = await jewelryService.findOne(_id);
+
+  //       const jewelryData = Array.isArray(data) ? data[0] : data;
+  //       setJewelry(jewelryData);
+  //     } catch (err) {
+  //       console.log(err.message);
+  //     }
+  //   };
+
+  const handleLikeClick = () => {
+    if (jewelry.isLikedByUser) {
+      onRemoveFromWishlistClick(jewelry._id);
+    } else {
+      onAddToWishlistClick(jewelry._id);
     }
+    fetchData();
   };
 
   return (
@@ -101,19 +132,21 @@ export const JewelryItem = () => {
                 // onClick={loadMoreHandler}
                 disabled={jewelry.isSoldOut}
               >
-                Add to Bag
+                <span className={styles["price-span"]}>${jewelry.price}</span>{" "}
+                <span className={styles["add-span"]}>Add to Bag</span>
               </button>
               <button className={styles["add-to-wishlist-button"]}>
                 <FontAwesomeIcon
                   icon={jewelry.isLikedByUser ? solidHeart : regularHeart}
                   className={styles["heart"]}
-                  //   onClick={() => handleLikeClick(_id)}
+                  onClick={() => handleLikeClick(_id)}
                 />
               </button>
             </div>
           </div>
         </div>
       )}
+      {loading && <LoadingSpinner />}
     </section>
   );
 };

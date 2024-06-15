@@ -1,5 +1,4 @@
 import { WishlistItems } from "./WishlistItems/WishlistItems";
-import { wishlistServiceFactory } from "../../services/wishlistService";
 import styles from "./Wishlist.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { useWishlistContext } from "../../contexts/WishlistContext";
@@ -8,11 +7,9 @@ import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
 
-export const Wishlist = ({  serviceFactory }) => {
-
+export const Wishlist = ({ serviceFactory }) => {
   const {
     setJewelries,
-    jewelries,
     loading,
     mouseEnterHandler,
     mouseLeaveHandler,
@@ -20,12 +17,10 @@ export const Wishlist = ({  serviceFactory }) => {
     totalCount,
     loadMoreDisabled,
     setLoadMoreDisabled,
-    setFilteredJewelries,
     filteredJewelries,
-    setTotalCount,
   } = useJewelryList(serviceFactory);
 
-  console.log(filteredJewelries)
+  console.log(filteredJewelries);
 
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
@@ -56,8 +51,6 @@ export const Wishlist = ({  serviceFactory }) => {
     }
     setDisplayedItems(newDisplayedItems);
   };
-
-  // const displayedJewelries = jewelries.slice(0, displayedItems);
 
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 

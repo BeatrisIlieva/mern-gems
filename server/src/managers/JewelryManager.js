@@ -198,37 +198,67 @@ exports.findAll = async (data) => {
   };
 };
 
-exports.findOne = async (jewelryId) => {
-  const jewelry = await Jewelry.aggregate([
+exports.findOne = async (data) => {
+  const result = await Jewelry.aggregate([
     {
       $lookup: {
-        as: "categories",
         from: "categories",
-        foreignField: "_id",
         localField: "category",
-      },
-    },
-    {
-      $lookup: {
-        as: "inventories",
-        from: "inventories",
-        foreignField: "jewelry",
-        localField: "_id",
-      },
-    },
-    {
-      $lookup: {
-        as: "sizes",
-        from: "sizes",
         foreignField: "_id",
+        as: "categories",
+      },
+    },
+    {
+      $lookup: {
+        from: "inventories",
+        localField: "_id",
+        foreignField: "jewelry",
+        as: "inventories",
+      },
+    },
+    {
+      $lookup: {
+        from: "sizes",
         localField: "inventories.size",
+        foreignField: "_id",
+        as: "sizes",
+      },
+    },
+    {
+      $lookup: {
+        from: "wishlists",
+        localField: "_id",
+        foreignField: "jewelry",
+        as: "wishlists",
+      },
+    },
+    {
+      $lookup: {
+        from: "wishlists",
+        let: { jewelryId: "$_id" },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $and: [
+                  { $eq: ["$jewelry", "$$jewelryId"] },
+                  { $eq: ["$user", data.userId] },
+                ],
+              },
+            },
+          },
+        ],
+        as: "userWishlist",
       },
     },
     {
       $addFields: {
-        price: {
-          $arrayElemAt: ["$inventories.price", 0],
-        },
+        isLikedByUser: { $gt: [{ $size: "$userWishlist" }, 0] },
+      },
+    },
+    {
+      $addFields: {
+        price: { $arrayElemAt: ["$inventories.price", 0] },
       },
     },
     {
@@ -250,12 +280,8 @@ exports.findOne = async (jewelryId) => {
                         as: "inventory",
                         cond: {
                           $and: [
-                            {
-                              $eq: ["$$inventory.size", "$$size._id"],
-                            },
-                            {
-                              $gt: ["$$inventory.quantity", 0],
-                            },
+                            { $eq: ["$$inventory.size", "$$size._id"] },
+                            { $gt: ["$$inventory.quantity", 0] },
                           ],
                         },
                       },
@@ -270,6 +296,19 @@ exports.findOne = async (jewelryId) => {
       },
     },
     {
+      $addFields: {
+        isSoldOut: {
+          $reduce: {
+            input: "$inventories",
+            initialValue: true,
+            in: {
+              $and: ["$$value", { $eq: ["$$this.quantity", 0] }],
+            },
+          },
+        },
+      },
+    },
+    {
       $project: {
         title: 1,
         price: 1,
@@ -277,14 +316,14 @@ exports.findOne = async (jewelryId) => {
         secondImageUrl: 1,
         description: 1,
         sizes: 1,
-        category: 1
+        category: 1,
+        isLikedByUser: 1,
+        isSoldOut: 1,
       },
     },
     {
-      $match: {
-        _id: jewelryId,
-      },
+      $match: { _id: data.jewelryId },
     },
   ]);
-  return jewelry;
+  return result;
 };

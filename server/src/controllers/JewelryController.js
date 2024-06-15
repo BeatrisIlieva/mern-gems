@@ -39,10 +39,20 @@ router.get("/by-category/:categoryId", async (req, res) => {
 });
 
 router.get("/by-jewelry/:jewelryId", async (req, res) => {
-  try {
-    const jewelryId = Number(req.params.jewelryId);
+  let userId;
 
-    const result = await jewelryManager.findOne(jewelryId);
+  if (req.user) {
+    userId = req.user._id;
+  } else {
+    userId = req.headers["user-uuid"];
+  }
+
+  const jewelryId = Number(req.params.jewelryId);
+
+  data = { userId, jewelryId };
+
+  try {
+    const result = await jewelryManager.findOne(data);
 
     res.status(200).json(result);
   } catch (err) {

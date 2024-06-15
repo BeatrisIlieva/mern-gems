@@ -132,6 +132,22 @@
 
 .add-to-bag-button {
   width: 90%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.price-span,
+.add-span {
+  position: absolute;
+}
+.price-span {
+  left: 0;
+  margin-left: 20px;
+}
+
+.add-span {
+  right: 0;
+  margin-right: 20px;
 }
 
 .add-to-bag-button:hover,
@@ -139,17 +155,21 @@
   background: var(--button-hover-pink);
 }
 
-.add-to-bag-button-disabled {
+.button-disabled {
   padding: 12px;
   font-size: var(--medium-font-size);
   border: none;
   overflow: hidden;
-  background: var(--middle-gray);
+  background: var(--medium-pink);
   color: var(--white);
   outline: none;
   letter-spacing: 1.2px;
   width: 90%;
   cursor: not-allowed;
+}
+
+.button-disabled:hover {
+  background: var(--medium-pink);
 }
 
 .add-to-wishlist-button {
