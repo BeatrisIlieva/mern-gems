@@ -67,7 +67,7 @@ export const DynamicDropdown = ({
         <div className={styles["open-dropdown-menu"]}>
           <div className={styles["dropdown-menu"]}>
             {options.map((option, index) => (
-              <div key={index} className={styles["dropdown-menu-options"]} >
+              <div key={index} className={styles["dropdown-menu-options"]}>
                 <input
                   type="checkbox"
                   name={option.title}

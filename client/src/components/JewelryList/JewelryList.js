@@ -9,7 +9,6 @@ import { VerticalLine } from "../VerticalLine/VerticalLine";
 import { SortBy } from "../SortBy/SortBy";
 import { FilterBy } from "../FilterBy/FilterBy";
 
-
 export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const {
     setJewelries,
@@ -68,8 +67,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     });
   };
 
-
-
   useEffect(() => {
     setJewelries([]);
     setSelection({});
@@ -78,8 +75,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     setDisplayedItems(ITEMS_PER_PAGE);
     fetchData();
   }, [entityId, entityTitle]);
-
-
 
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 
