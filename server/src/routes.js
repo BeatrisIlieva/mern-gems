@@ -7,6 +7,7 @@ const jewelryController = require("./controllers/jewelryController");
 const wishlistController = require("./controllers/wishlistController");
 const jewelryCollectionController = require("./controllers/jewelryCollectionController");
 const stoneController = require("./controllers/stoneController");
+const searchController = require("./controllers/searchController");
 
 router.use("/user-login-information", userLoginInformationController);
 router.use("/user-personal-information", userPersonalInformationController);
@@ -15,5 +16,6 @@ router.use("/jewelry", jewelryController);
 router.use("/wishlist", wishlistController);
 router.use("/collection", jewelryCollectionController);
 router.use("/stone", stoneController);
+router.use("/search", searchController);
 
 module.exports = router;

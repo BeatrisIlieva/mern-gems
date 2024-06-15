@@ -32,6 +32,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
               <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} />
             </div>
           </div>
+          <div className={styles["search-results"]}>hhhhh</div>
           <button
             className={styles["dismiss-button"]}
             onClick={() => popupCloseHandler()}
