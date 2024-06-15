@@ -277,6 +277,7 @@ exports.findOne = async (jewelryId) => {
         secondImageUrl: 1,
         description: 1,
         sizes: 1,
+        category: 1
       },
     },
     {

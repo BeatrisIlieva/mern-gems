@@ -5,7 +5,8 @@ import { jewelryServiceFactory } from "../../services/jewelryService";
 import styles from "./JewelryItem.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
-import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 
 export const JewelryItem = () => {
   const { _id } = useParams();
@@ -36,56 +37,83 @@ export const JewelryItem = () => {
 
   return (
     <section className={styles["jewelry-details-box"]}>
-      <div className={styles["jewelry-container"]}>
-        <div className={styles["jewelry-images"]}>
-          {leftIsSelected ? (
-            <div className={styles["image"]}>
-              {" "}
-              <img
-                src={jewelry.firstImageUrl}
-                alt={jewelry.title}
-                onClick={toggleSelected}
-                className={styles["left-image"]}
+      {jewelry && (
+        <div className={styles["jewelry-container"]}>
+          <div className={styles["jewelry-images"]}>
+            {leftIsSelected ? (
+              <div className={styles["image"]}>
+                {" "}
+                <img
+                  src={jewelry.firstImageUrl}
+                  alt={jewelry.title}
+                  onClick={toggleSelected}
+                  className={styles["left-image"]}
+                />
+              </div>
+            ) : (
+              <div className={styles["image"]}>
+                <img
+                  src={jewelry.secondImageUrl}
+                  alt={jewelry.title}
+                  onClick={toggleSelected}
+                  className={styles["right-image"]}
+                />
+              </div>
+            )}
+            <div className={styles["circles-container"]}>
+              <FontAwesomeIcon
+                icon={faCircle}
+                className={`${styles["circle"]} ${
+                  leftIsSelected === true ? styles["photo-selected"] : ""
+                }`.trim()}
+              />
+              <FontAwesomeIcon
+                icon={faCircle}
+                className={`${styles["circle"]} ${
+                  rightIsSelected === true ? styles["photo-selected"] : ""
+                }`.trim()}
               />
             </div>
-          ) : (
-            <div className={styles["image"]}>
+          </div>
+          <div className={styles["jewelry-info-container"]}>
+            <h2 className={styles["jewelry-title"]}>{jewelry.title}</h2>
+            <div className={styles["flex-container-line"]}>
+              <hr className={styles["hr-line"]} />
               <img
-                src={jewelry.secondImageUrl}
-                alt={jewelry.title}
-                onClick={toggleSelected}
-                className={styles["right-image"]}
+                className={styles["line-img"]}
+                src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
+                alt=""
               />
+              <hr className={styles["hr-line"]} />
             </div>
-          )}
-          <div className={styles["circles-container"]}>
-            <FontAwesomeIcon
-              icon={faCircle}
-              className={`${styles["circle"]} ${
-                leftIsSelected === true ? styles["photo-selected"] : ""
-              }`.trim()}
-            />
-            <FontAwesomeIcon
-              icon={faCircle}
-              className={`${styles["circle"]} ${
-                rightIsSelected === true ? styles["photo-selected"] : ""
-              }`.trim()}
-            />
+            <p className={styles["jewelry-description"]}>
+              {jewelry.description}.{" "}
+              {jewelry.sizes &&
+                jewelry.category === 2 &&
+                jewelry.sizes[0].measurement}
+              .
+            </p>
+            <div className={styles["button-container"]}>
+              <button
+                className={`${styles["add-to-bag-button"]} ${
+                  jewelry.isSoldOut === true ? styles["button-disabled"] : ""
+                }`.trim()}
+                // onClick={loadMoreHandler}
+                disabled={jewelry.isSoldOut}
+              >
+                Add to Bag
+              </button>
+              <button className={styles["add-to-wishlist-button"]}>
+                <FontAwesomeIcon
+                  icon={jewelry.isLikedByUser ? solidHeart : regularHeart}
+                  className={styles["heart"]}
+                  //   onClick={() => handleLikeClick(_id)}
+                />
+              </button>
+            </div>
           </div>
         </div>
-        <div className={styles["jewelry-info-container"]}>
-          <h2 className={styles["jewelry-title"]}>{jewelry.title}</h2>
-          <div className={styles["flex-container-line"]}>
-            <hr className={styles["hr-line"]} />
-            <img
-              className={styles["line-img"]}
-              src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
-              alt=""
-            />
-            <hr className={styles["hr-line"]} />
-          </div>
-        </div>
-      </div>
+      )}
     </section>
   );
 };
