@@ -77,6 +77,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 <h3>Collections</h3>
                 <Link to="/forget-me-not" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="forget-me-not-title"
                   >
@@ -85,6 +86,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </Link>
                 <Link to="/classics" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="classics-title"
                   >
@@ -93,6 +95,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </Link>
                 <Link to="/pirouette" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="pirouette-title"
                   >
@@ -101,6 +104,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </Link>
                 <Link to="/diamond-loop" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="diamond-loop-title"
                   >
@@ -109,6 +113,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </Link>
                 <Link to="/sunflower" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="sunflower-title"
                   >
@@ -120,6 +125,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                   className={styles["no-decoration"]}
                 >
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="sparkling-cluster-title"
                   >
@@ -131,6 +137,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 <h3>Categories</h3>
                 <Link to="/bracelets" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="forget-me-not-title"
                   >
@@ -139,6 +146,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </Link>
                 <Link to="/earrings" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="classics-title"
                   >
@@ -147,6 +155,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </Link>
                 <Link to="/necklaces" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="pirouette-title"
                   >
@@ -155,6 +164,7 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
                 </Link>
                 <Link to="/rings" className={styles["no-decoration"]}>
                   <h2
+                    onClick={() => popupCloseHandler()}
                     className={styles["collection-title"]}
                     data-testid="diamond-loop-title"
                   >
