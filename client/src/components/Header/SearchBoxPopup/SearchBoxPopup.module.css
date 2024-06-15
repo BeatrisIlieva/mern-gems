@@ -16,9 +16,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--white);
-  border-top: 0.1px solid var(--dark-pink);
-  border-left: 0.1px solid var(--dark-pink);
-  border-right: 0.1px solid var(--dark-pink);
+  border: 0.1px solid var(--dark-pink);
   width: 50%;
   height: auto;
   animation: slideIn 0.5s forwards;
@@ -27,6 +25,7 @@
 .modal-content {
   display: flex;
   flex-direction: column;
+  padding: 0px 20px 0px 20px;
 }
 
 .modal-header {
@@ -34,6 +33,8 @@
   align-items: center;
   padding: 20px;
   justify-content: space-between;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 @keyframes slideIn {
@@ -47,6 +48,9 @@
 
 #xMark {
   cursor: pointer;
+  position: absolute;
+  right: 12px;
+  top: 12px;
 }
 .x-mark {
   color: var(--dark-pink);
@@ -72,11 +76,10 @@
   background-color: var(--white);
   outline: none;
   margin: 0;
-  padding-bottom: 24px;
+  /* padding-bottom: 24px; */
   margin-bottom: 40px;
-  border-bottom: 0.1px solid var(--dark-pink);
-  /* position: absolute;
-  bottom: 0; */
+  /* border-bottom: 0.1px solid var(--dark-pink); */
+
 }
 
 .search-box {
@@ -88,7 +91,7 @@
   border-bottom-right-radius: 32px;
   background-color: var(--white-pink);
   width: 100%;
-  margin: 0px 20px 0px 0px;
+  /* margin: 0px 0px 0px 0px; */
   padding: 4px;
   cursor: pointer;
 }
