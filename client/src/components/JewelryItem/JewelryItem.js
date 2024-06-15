@@ -152,7 +152,7 @@ export const JewelryItem = () => {
                 jewelry.sizes[0].measurement}
               .
             </p>
-            {jewelry.category !== 2 && jewelry.sizes && (
+            {jewelry.category !== 2 && jewelry.sizes ? (
               <div>
                 <h4
                   className={styles["jewelry-details-composition-size-title"]}
@@ -218,6 +218,26 @@ export const JewelryItem = () => {
                     </button>
                   </div>
                 </form>
+              </div>
+            ) : (
+              <div className={styles["button-container"]}>
+                <button
+                  className={`${styles["add-to-bag-button"]} ${
+                    jewelry.isSoldOut === true ? styles["button-disabled"] : ""
+                  }`.trim()}
+                  // onClick={loadMoreHandler}
+                  disabled={jewelry.isSoldOut}
+                >
+                  <span className={styles["price-span"]}>${jewelry.price}</span>{" "}
+                  <span className={styles["add-span"]}>Add to Bag</span>
+                </button>
+                <button className={styles["add-to-wishlist-button"]}>
+                  <FontAwesomeIcon
+                    icon={jewelry.isLikedByUser ? solidHeart : regularHeart}
+                    className={styles["heart"]}
+                    onClick={() => handleLikeClick(_id)}
+                  />
+                </button>
               </div>
             )}
           </div>
