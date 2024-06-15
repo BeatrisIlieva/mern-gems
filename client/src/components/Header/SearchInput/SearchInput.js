@@ -9,12 +9,18 @@ export const SearchInput = ({ popupClickHandler }) => {
         <span>
           <FontAwesomeIcon icon={faSearch} className={styles["icon-search"]} />
         </span>
-        <input
+        {/* <input
           type="text"
           className={`${styles["search-input"]} ${styles["custom-placeholder"]}`}
           placeholder="Search"
           onClick={popupClickHandler}
-        />
+        /> */}
+        <div
+          className={`${styles["search-input"]} ${styles["custom-placeholder"]}`}
+          onClick={popupClickHandler}
+        >
+          Search
+        </div>
       </div>
     </div>
   );

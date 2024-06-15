@@ -15,17 +15,15 @@
 .search-container {
   position: relative;
   border-radius: 16px;
+  width: 100%;
 }
 
 .search-input {
-  color: var(--grey);
+  color: var(--middle-gray);
   text-align: left;
   background-color: transparent;
   cursor: pointer;
-}
-
-.search-container input[type="text"] {
-  padding-left: 40px;
+  margin-left: 40px;
 }
 
 .icon-search {
@@ -33,10 +31,6 @@
   transform: translateY(calc(24%));
   left: 14px;
   color: var(--dark-pink);
-}
-
-.search-container input[type="text"]:focus {
-  outline: none;
 }
 
 .icon-pink {
