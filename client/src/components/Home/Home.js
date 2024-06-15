@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
-import { VerticalLine } from "../VerticalLine/VerticalLine";
+import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
 
 export const Home = () => {
   return (
@@ -37,7 +37,7 @@ export const Home = () => {
           </div>
         </div>
       </Link>
-      <VerticalLine />
+      <HorizontalLine />
       <Link to="/classics" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
@@ -67,7 +67,7 @@ export const Home = () => {
           </div>
         </div>
       </Link>
-      <VerticalLine />
+      <HorizontalLine />
       <Link to="/pirouette" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
@@ -102,7 +102,7 @@ export const Home = () => {
           </div>
         </div>
       </Link>
-      <VerticalLine />
+      <HorizontalLine />
       <Link to="/diamond-loop" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
@@ -136,7 +136,7 @@ export const Home = () => {
           </div>
         </div>
       </Link>
-      <VerticalLine />
+      <HorizontalLine />
       <Link to="/sunflower" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
@@ -168,7 +168,7 @@ export const Home = () => {
           </div>
         </div>
       </Link>
-      <VerticalLine />
+      <HorizontalLine />
       <Link to="/sparkling-cluster" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>

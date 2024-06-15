@@ -31,7 +31,7 @@ export const JewelryItem = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [_id]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -158,7 +158,9 @@ export const JewelryItem = () => {
                               Number(values[SizeFormKeys.Size]) === item._id
                             }
                           />
-                          <label htmlFor={item._id}>{item.measurement}</label>
+                          <label className={styles["label"]} htmlFor={item._id}>
+                            {item.measurement}
+                          </label>
                         </div>
                       ) : (
                         <div key={item._id}>

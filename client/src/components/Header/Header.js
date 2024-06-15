@@ -6,7 +6,7 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useWishlistContext } from "../../contexts/WishlistContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
 import { SearchInput } from "./SearchInput/SearchInput";
 
@@ -32,6 +32,7 @@ export const Header = () => {
 
     setDisplaySearchBoxPopup(false);
   };
+
 
   return (
     <header className={styles["header"]}>

@@ -2,6 +2,7 @@ import { JewelryCard } from "../../JewelryCard/JewelryCard";
 import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
 import { slugify } from "../../../utils/slugify";
 import { useWishlistContext } from "../../../contexts/WishlistContext";
+import { useEffect } from "react";
 
 export const JewelryListItems = ({
   _id,
@@ -30,6 +31,7 @@ export const JewelryListItems = ({
     }
     toggleLike(_id);
   };
+
 
   return (
     <article

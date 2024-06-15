@@ -10,7 +10,7 @@
 }
 
 .wish-list-card {
-  height: 74vh;
+  height: 100vh;
   line-height: 1.5;
   position: relative;
 }
@@ -34,7 +34,6 @@
 .wish-list-card .wish-list-content-top .wish-list-tag {
   font-size: var(--double-large-font-size);
   font-family: var(--bold-italic-font-family);
-  /* margin-bottom: 22px; */
 }
 
 .wish-list-card .wish-list-content-top .wish-list-title {

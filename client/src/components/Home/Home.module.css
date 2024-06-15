@@ -59,8 +59,10 @@
   cursor: pointer;
   overflow: hidden;
   background: none;
-  color: var(--dark-golden);
-  box-shadow: 0 0 0 0.6px var(--white-golden);
+  background: var(--white);
+  color: var(--middle-gray);
+  border: 1px solid var(--border);
+  font-family: var(--bold-italic-font-family);
   outline: none;
   letter-spacing: 1.2px;
 }
@@ -72,7 +74,7 @@
   height: 1px;
   bottom: 0;
   left: 50%;
-  background-color: var(--white-golden);
+  background-color: var(--border);
   transition: width 0.3s ease, left 0.3s ease;
 }
 

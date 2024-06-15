@@ -5,7 +5,6 @@ import styles from "./SearchBoxPopup.module.css";
 import { useState, useEffect } from "react";
 import { searchServiceFactory } from "../../../services/searchService";
 import { useService } from "../../../hooks/useService";
-import { JewelryListItems } from "../../JewelryList/JewelryListItems/JewelryListItems";
 import { Link } from "react-router-dom";
 import { slugify } from "../../../utils/slugify";
 
