@@ -61,7 +61,7 @@
   transform: scale(1.2);
 }
 
-.search-box {
+/* .search-box {
   display: flex;
   box-shadow: 0 0 0 0.2px var(--dark-pink);
   border-top-left-radius: 32px;
@@ -100,7 +100,7 @@
 
 .search-container input[type="text"]:focus {
   outline: none;
-}
+} */
 
 .icon-pink {
   color: var(--dark-pink);

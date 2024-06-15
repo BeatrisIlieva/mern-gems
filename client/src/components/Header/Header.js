@@ -7,6 +7,9 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useWishlistContext } from "../../contexts/WishlistContext";
+import { useState } from "react";
+import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
+import { SearchInput } from "./SearchInput/SearchInput";
 
 export const Header = () => {
   const bagCountGreaterThanZero = true;
@@ -15,6 +18,27 @@ export const Header = () => {
   const { wishlistCountGreaterThanZero } = useWishlistContext();
   const bagCount = 3;
   const user = null;
+
+  const [displayDisplaySearchBoxPopup, setDisplaySearchBoxPopup] =
+    useState(false);
+
+  const popupClickHandler = async () => {
+    document.body.style.overflow = "hidden";
+
+    setDisplaySearchBoxPopup(true);
+  };
+
+  const popupSubmitHandler = async (popupOption) => {
+    document.body.style.overflow = "visible";
+
+    setDisplaySearchBoxPopup(false);
+  };
+
+  const popupCloseHandler = (popupOption) => {
+    document.body.style.overflow = "visible";
+
+    setDisplaySearchBoxPopup(false);
+  };
 
   return (
     <header className={styles["header"]}>
@@ -54,7 +78,8 @@ export const Header = () => {
             </li>
           </ul>
         </nav>
-        <div className={styles["search-box"]}>
+        <SearchInput popupClickHandler={popupClickHandler}/>
+        {/* <div className={styles["search-box"]}>
           <div className={styles["search-container"]}>
             <span>
               <FontAwesomeIcon
@@ -62,17 +87,14 @@ export const Header = () => {
                 className={styles["icon-search"]}
               />
             </span>
-            <form method="GET">
-              <input
-                //   value={query}
-                //   onChange={onChange}
-                type="text"
-                className={`${styles["search-input"]} ${styles["custom-placeholder"]}`}
-                placeholder="Search"
-              />
-            </form>
+            <input
+              type="text"
+              className={`${styles["search-input"]} ${styles["custom-placeholder"]}`}
+              placeholder="Search"
+              onClick={popupClickHandler}
+            />
           </div>
-        </div>
+        </div> */}
         <ul className={styles["icon-list"]} role="list">
           <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
             <Link
@@ -136,6 +158,12 @@ export const Header = () => {
           )}
         </ul>
       </div>
+      {displayDisplaySearchBoxPopup && (
+        <SearchBoxPopup
+          popupSubmitHandler={popupSubmitHandler}
+          popupCloseHandler={popupCloseHandler}
+        />
+      )}
     </header>
   );
 };
