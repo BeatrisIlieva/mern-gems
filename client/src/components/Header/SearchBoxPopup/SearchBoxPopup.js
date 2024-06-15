@@ -2,8 +2,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import styles from "./SearchBoxPopup.module.css";
+import { useState, useEffect } from "react";
+import { searchServiceFactory } from "../../../services/searchService";
+import { useService } from "../../../hooks/useService";
 
 export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
+  const [query, setQuery] = useState("");
+  const [jewelries, setJewelries] = useState([]);
+  const { searchService } = useService(searchServiceFactory);
+
+  const onChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    // navigate("/search", { state: { query: query } });
+  };
+
+  useEffect(() => {
+    searchService
+      .display(query)
+      .then(setJewelries)
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [query]);
+
   return (
     <section className={styles["popup-box"]}>
       <div className={styles["modal-dialog"]}>

@@ -76,6 +76,26 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     );
   };
 
+  const toggleLike = (jewelryId) => {
+    setJewelries((prevJewelries) => {
+      return prevJewelries.map((jewelry) => {
+        if (jewelry._id === jewelryId) {
+          return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
+        }
+        return jewelry;
+      });
+    });
+
+    setFilteredJewelries((prevFilteredJewelries) => {
+      return prevFilteredJewelries.map((jewelry) => {
+        if (jewelry._id === jewelryId) {
+          return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
+        }
+        return jewelry;
+      });
+    });
+  };
+
   return {
     setJewelries,
     jewelries,
@@ -92,5 +112,6 @@ export const useJewelryList = (fetchDataFunction, entityId = null) => {
     filteredJewelries,
     setTotalCount,
     fetchStonesCountData,
+    toggleLike
   };
 };

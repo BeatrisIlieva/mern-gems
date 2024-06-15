@@ -26,6 +26,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     filteredJewelries,
     setTotalCount,
     fetchStonesCountData,
+    toggleLike,
   } = useJewelryList(serviceFactory, entityId);
 
   const [page, setPage] = useState(1);
@@ -45,26 +46,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
       setLoadMoreDisabled(true);
     }
     setDisplayedItems(newDisplayedItems);
-  };
-
-  const toggleLike = (jewelryId) => {
-    setJewelries((prevJewelries) => {
-      return prevJewelries.map((jewelry) => {
-        if (jewelry._id === jewelryId) {
-          return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
-        }
-        return jewelry;
-      });
-    });
-
-    setFilteredJewelries((prevFilteredJewelries) => {
-      return prevFilteredJewelries.map((jewelry) => {
-        if (jewelry._id === jewelryId) {
-          return { ...jewelry, isLikedByUser: !jewelry.isLikedByUser };
-        }
-        return jewelry;
-      });
-    });
   };
 
   useEffect(() => {
