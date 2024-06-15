@@ -72,55 +72,96 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
               ))}
             </div>
           ) : (
-            <div className={styles["collections-container"]}>
-              <Link to="/forget-me-not" className={styles["no-decoration"]}>
-                <h2
-                  className={styles["collection-title"]}
-                  data-testid="forget-me-not-title"
+            <div className={styles["suggestions-container"]}>
+              <div className={styles["collections-container"]}>
+                <h3>Collections</h3>
+                <Link to="/forget-me-not" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="forget-me-not-title"
+                  >
+                    Forget-Me-Not Collection
+                  </h2>
+                </Link>
+                <Link to="/classics" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="classics-title"
+                  >
+                    Classics Collection
+                  </h2>
+                </Link>
+                <Link to="/pirouette" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="pirouette-title"
+                  >
+                    Pirouette Collection
+                  </h2>
+                </Link>
+                <Link to="/diamond-loop" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="diamond-loop-title"
+                  >
+                    Diamond Loop Collection
+                  </h2>
+                </Link>
+                <Link to="/sunflower" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="sunflower-title"
+                  >
+                    Sunflower Collection
+                  </h2>
+                </Link>
+                <Link
+                  to="/sparkling-cluster"
+                  className={styles["no-decoration"]}
                 >
-                  Forget-Me-Not Collection
-                </h2>
-              </Link>
-              <Link to="/classics" className={styles["no-decoration"]}>
-                <h2
-                  className={styles["collection-title"]}
-                  data-testid="classics-title"
-                >
-                  Classics Collection
-                </h2>
-              </Link>
-              <Link to="/pirouette" className={styles["no-decoration"]}>
-                <h2
-                  className={styles["collection-title"]}
-                  data-testid="pirouette-title"
-                >
-                  Pirouette Collection
-                </h2>
-              </Link>
-              <Link to="/diamond-loop" className={styles["no-decoration"]}>
-                <h2
-                  className={styles["collection-title"]}
-                  data-testid="diamond-loop-title"
-                >
-                  Diamond Loop Collection
-                </h2>
-              </Link>
-              <Link to="/sunflower" className={styles["no-decoration"]}>
-                <h2
-                  className={styles["collection-title"]}
-                  data-testid="sunflower-title"
-                >
-                  Sunflower Collection
-                </h2>
-              </Link>
-              <Link to="/sparkling-cluster" className={styles["no-decoration"]}>
-                <h2
-                  className={styles["collection-title"]}
-                  data-testid="sparkling-cluster-title"
-                >
-                  Sparkling Cluster Collection
-                </h2>
-              </Link>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="sparkling-cluster-title"
+                  >
+                    Sparkling Cluster Collection
+                  </h2>
+                </Link>
+              </div>
+              <div className={styles["collections-container"]}>
+                <h3>Categories</h3>
+                <Link to="/bracelets" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="forget-me-not-title"
+                  >
+                    Bracelets
+                  </h2>
+                </Link>
+                <Link to="/earrings" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="classics-title"
+                  >
+                    Earrings
+                  </h2>
+                </Link>
+                <Link to="/necklaces" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="pirouette-title"
+                  >
+                    Necklaces
+                  </h2>
+                </Link>
+                <Link to="/rings" className={styles["no-decoration"]}>
+                  <h2
+                    className={styles["collection-title"]}
+                    data-testid="diamond-loop-title"
+                  >
+                    Rings
+                  </h2>
+                </Link>
+              </div>
             </div>
           )}
         </div>
