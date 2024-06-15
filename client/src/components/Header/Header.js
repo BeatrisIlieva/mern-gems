@@ -1,7 +1,6 @@
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -78,7 +77,7 @@ export const Header = () => {
             </li>
           </ul>
         </nav>
-        <SearchInput popupClickHandler={popupClickHandler}/>
+        <SearchInput popupClickHandler={popupClickHandler} />
         <ul className={styles["icon-list"]} role="list">
           <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
             <Link
