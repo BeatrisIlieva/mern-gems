@@ -210,96 +210,6 @@ exports.findOne = async (jewelryId) => {
     },
     {
       $lookup: {
-        as: "jewelrymetals",
-        from: "jewelrymetals",
-        foreignField: "jewelry",
-        localField: "_id",
-      },
-    },
-    {
-      $lookup: {
-        as: "metals",
-        from: "metals",
-        foreignField: "_id",
-        localField: "jewelrymetals.metal",
-      },
-    },
-    {
-      $addFields: {
-        metalInfo: {
-          $map: {
-            input: "$jewelrymetals",
-            as: "jm",
-            in: {
-              metal: {
-                $arrayElemAt: [
-                  "$metals",
-                  {
-                    $indexOfArray: ["$metals._id", "$$jm.metal"],
-                  },
-                ],
-              },
-              caratWeight: "$$jm.caratWeight",
-            },
-          },
-        },
-      },
-    },
-    {
-      $lookup: {
-        as: "jewelrystones",
-        from: "jewelrystones",
-        foreignField: "jewelry",
-        localField: "_id",
-      },
-    },
-    {
-      $lookup: {
-        as: "stonetypes",
-        from: "stonetypes",
-        foreignField: "_id",
-        localField: "jewelrystones.stoneType",
-      },
-    },
-    {
-      $lookup: {
-        as: "stonecolors",
-        from: "stonecolors",
-        foreignField: "_id",
-        localField: "jewelrystones.stoneColor",
-      },
-    },
-    {
-      $addFields: {
-        stoneInfo: {
-          $map: {
-            input: "$jewelrystones",
-            as: "js",
-            in: {
-              stoneType: {
-                $arrayElemAt: [
-                  "$stonetypes.title",
-                  {
-                    $indexOfArray: ["$stonetypes._id", "$$js.stoneType"],
-                  },
-                ],
-              },
-              stoneColor: {
-                $arrayElemAt: [
-                  "$stonecolors.title",
-                  {
-                    $indexOfArray: ["$stonecolors._id", "$$js.stoneColor"],
-                  },
-                ],
-              },
-              caratWeight: "$$js.caratWeight",
-            },
-          },
-        },
-      },
-    },
-    {
-      $lookup: {
         as: "inventories",
         from: "inventories",
         foreignField: "jewelry",
@@ -319,37 +229,6 @@ exports.findOne = async (jewelryId) => {
         price: {
           $arrayElemAt: ["$inventories.price", 0],
         },
-      },
-    },
-
-    {
-      $addFields: {
-        categoryTitle: "$categories.title",
-      },
-    },
-    {
-      $addFields: {
-        metalTitle: "$metalInfo.metal.title",
-      },
-    },
-    {
-      $addFields: {
-        metalCaratWeight: "$metalInfo.caratWeight",
-      },
-    },
-    {
-      $addFields: {
-        stoneType: "$stoneInfo.stoneType",
-      },
-    },
-    {
-      $addFields: {
-        stoneColor: "$stoneInfo.stoneColor",
-      },
-    },
-    {
-      $addFields: {
-        stoneCaratWeight: "$stoneInfo.caratWeight",
       },
     },
     {
@@ -396,12 +275,7 @@ exports.findOne = async (jewelryId) => {
         price: 1,
         firstImageUrl: 1,
         secondImageUrl: 1,
-        categoryTitle: 1,
-        "metalInfo.metal.title": 1,
-        "metalInfo.caratWeight": 1,
-        "stoneInfo.stoneType": 1,
-        "stoneInfo.stoneColor": 1,
-        "stoneInfo.caratWeight": 1,
+        description: 1,
         sizes: 1,
       },
     },

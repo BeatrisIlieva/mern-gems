@@ -15,7 +15,6 @@ export const JewelryListItems = ({
   mouseLeaveHandler,
   toggleLike,
   price,
-  
 }) => {
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
     useWishlistContext();

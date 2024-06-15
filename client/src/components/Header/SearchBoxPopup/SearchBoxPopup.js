@@ -75,7 +75,7 @@ export const SearchBoxPopup = ({ popupCloseHandler }) => {
                   <Link
                     to={`/${slugify(j.categoryTitle)}/${slugify(
                       j.jewelryTitle
-                    )}`}
+                    )}/${j._id}`}
                   >
                     <img
                       onClick={() => popupCloseHandler()}

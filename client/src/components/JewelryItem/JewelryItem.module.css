@@ -1,0 +1,73 @@
+.jewelry-details-box {
+  margin: 40px 214px 40px 214px;
+  display: flex;
+  flex-direction: column;
+}
+
+.jewelry-container {
+  display: flex;
+}
+
+.jewelry-images {
+  width: 50%;
+  position: relative;
+}
+
+.left-image {
+  position: relative;
+  display: inline-block;
+  animation: slideInLeft 0.5s forwards;
+}
+
+.right-image {
+  position: relative;
+  display: inline-block;
+  animation: slideInRight 0.5s forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    left: -214px;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    right: -214px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.image {
+  top: 0;
+  right: 0;
+  animation: slideIn 0.5s forwards;
+  display: inline-block;
+}
+
+.jewelry-description {
+  width: 50%;
+}
+
+.circles-container {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle {
+  color: var(--extra-light-gray);
+  height: 10px;
+}
+
+.photo-selected {
+  color: var(--middle-gray);
+}

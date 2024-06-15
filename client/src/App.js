@@ -145,7 +145,7 @@ function App() {
                   element={<Wishlist serviceFactory={wishlistServiceFactory} />}
                 />
                 <Route
-                  path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle"
+                  path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle/:_id"
                   element={<JewelryItem />}
                 />
                 <Route path="/user/login" element={<Login />} />

@@ -22,7 +22,7 @@ export const JewelryCardHovered = ({
       />
 
       <div className={styles["jewelry-card-thumbnail"]}>
-        <Link to={`/${slugifiedCategoryTitle}/${slugifiedJewelryTitle}`}>
+        <Link to={`/${slugifiedCategoryTitle}/${slugifiedJewelryTitle}/${_id}`}>
           <img
             className={styles["jewelry-card-img"]}
             src={firstImageUrl}
