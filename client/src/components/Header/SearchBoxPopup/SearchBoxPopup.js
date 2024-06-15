@@ -67,7 +67,11 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
             <div className={styles["search-results"]}>
               {jewelries.map((j) => (
                 <div key={j._id}>
-                  <img src={j.firstImageUrl} alt="" />
+                  <img
+                    className={styles["image"]}
+                    src={j.firstImageUrl}
+                    alt=""
+                  />
                 </div>
               ))}
             </div>
