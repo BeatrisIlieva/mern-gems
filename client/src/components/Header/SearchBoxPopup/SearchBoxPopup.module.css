@@ -62,8 +62,7 @@
   background-color: var(--white);
   padding: 20px;
   overflow-y: auto;
-  height: 75vh;
-  border-bottom: 0.1px solid var(--dark-pink);
+  height: 74.8vh;
 }
 
 .image {
@@ -71,7 +70,7 @@
 }
 
 .image:hover {
-  border: .1px solid var(--border);
+  border: 0.1px solid var(--border);
 }
 
 .dismiss-button {
