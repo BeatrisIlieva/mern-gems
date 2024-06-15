@@ -10,6 +10,10 @@ import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
+const SizeFormKeys = {
+  Size: "size",
+};
+
 export const JewelryItem = () => {
   const { _id } = useParams();
   const [jewelry, setJewelry] = useState([]);
@@ -66,15 +70,27 @@ export const JewelryItem = () => {
     fetchData();
   };
 
+  const [values, setValues] = useState({ [SizeFormKeys.Size]: 0 });
+
+  const changeHandler = (e) => {
+    setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <section className={styles["jewelry-details-box"]}>
       {jewelry && (
         <div className={styles["jewelry-container"]}>
           <div className={styles["jewelry-images"]}>
             {leftIsSelected ? (
-              <div           className={`${styles["image"]} ${
-                jewelry.isSoldOut === true ? styles["sold-out"] : ""
-              }`.trim()}>
+              <div
+                className={`${styles["image"]} ${
+                  jewelry.isSoldOut === true ? styles["sold-out"] : ""
+                }`.trim()}
+              >
                 {" "}
                 <img
                   src={jewelry.firstImageUrl}
@@ -82,16 +98,25 @@ export const JewelryItem = () => {
                   onClick={toggleSelected}
                   className={styles["left-image"]}
                 />
-                {jewelry.isSoldOut && <span className={styles["sold-out-span"]}>SOLD OUT</span>}
+                {jewelry.isSoldOut && (
+                  <span className={styles["sold-out-span"]}>SOLD OUT</span>
+                )}
               </div>
             ) : (
-              <div className={styles["image"]}>
+              <div
+                className={`${styles["image"]} ${
+                  jewelry.isSoldOut === true ? styles["sold-out"] : ""
+                }`.trim()}
+              >
                 <img
                   src={jewelry.secondImageUrl}
                   alt={jewelry.title}
                   onClick={toggleSelected}
                   className={styles["right-image"]}
                 />
+                {jewelry.isSoldOut && (
+                  <span className={styles["sold-out-span"]}>SOLD OUT</span>
+                )}
               </div>
             )}
             <div className={styles["circles-container"]}>
@@ -127,25 +152,74 @@ export const JewelryItem = () => {
                 jewelry.sizes[0].measurement}
               .
             </p>
-            <div className={styles["button-container"]}>
-              <button
-                className={`${styles["add-to-bag-button"]} ${
-                  jewelry.isSoldOut === true ? styles["button-disabled"] : ""
-                }`.trim()}
-                // onClick={loadMoreHandler}
-                disabled={jewelry.isSoldOut}
-              >
-                <span className={styles["price-span"]}>${jewelry.price}</span>{" "}
-                <span className={styles["add-span"]}>Add to Bag</span>
-              </button>
-              <button className={styles["add-to-wishlist-button"]}>
-                <FontAwesomeIcon
-                  icon={jewelry.isLikedByUser ? solidHeart : regularHeart}
-                  className={styles["heart"]}
-                  onClick={() => handleLikeClick(_id)}
-                />
-              </button>
-            </div>
+            {jewelry.category !== 2 && jewelry.sizes && (
+              <div>
+                <h4
+                  className={styles["jewelry-details-composition-size-title"]}
+                >
+                  Size
+                </h4>
+                <form onSubmit={onSubmit} method="POST">
+                  <div className={styles["radio-container"]}>
+                    {jewelry.sizes.map((item) =>
+                      item.available ? (
+                        <div key={item._id}>
+                          <input
+                            type="radio"
+                            name={SizeFormKeys.Size}
+                            id={item._id}
+                            value={item._id}
+                            onChange={changeHandler}
+                            checked={
+                              Number(values[SizeFormKeys.Size]) === item._id
+                            }
+                          />
+                          <label htmlFor={item._id}>{item.measurement}</label>
+                        </div>
+                      ) : (
+                        <div key={item._id}>
+                          <input
+                            type="radio"
+                            disabled
+                            name={SizeFormKeys.Size}
+                            id={item._id}
+                            value={item._id}
+                            onChange={changeHandler}
+                            checked={
+                              Number(values[SizeFormKeys.Size]) === item._id
+                            }
+                          />
+                          <label htmlFor={item._id}>{item.measurement}</label>
+                        </div>
+                      )
+                    )}
+                  </div>
+                  <div className={styles["button-container"]}>
+                    <button
+                      className={`${styles["add-to-bag-button"]} ${
+                        jewelry.isSoldOut === true
+                          ? styles["button-disabled"]
+                          : ""
+                      }`.trim()}
+                      // onClick={loadMoreHandler}
+                      disabled={jewelry.isSoldOut}
+                    >
+                      <span className={styles["price-span"]}>
+                        ${jewelry.price}
+                      </span>{" "}
+                      <span className={styles["add-span"]}>Add to Bag</span>
+                    </button>
+                    <button className={styles["add-to-wishlist-button"]}>
+                      <FontAwesomeIcon
+                        icon={jewelry.isLikedByUser ? solidHeart : regularHeart}
+                        className={styles["heart"]}
+                        onClick={() => handleLikeClick(_id)}
+                      />
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
           </div>
         </div>
       )}
