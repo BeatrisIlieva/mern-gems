@@ -11,7 +11,7 @@ export const JewelryCardHovered = ({
   slugifiedCategoryTitle,
   slugifiedJewelryTitle,
   isLikedByUser,
-  price
+  price,
 }) => {
   return (
     <article className={styles["jewelry-card-hovered"]}>
@@ -31,7 +31,10 @@ export const JewelryCardHovered = ({
         </Link>
       </div>
       <div className={styles["title-container"]}>
-        <h3 className={styles["title"]}>{jewelryTitle}{price}</h3>
+        <h3 className={styles["title"]}>
+          {jewelryTitle}
+          {price}
+        </h3>
       </div>
     </article>
   );
