@@ -70,21 +70,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-  //   const serializedObject = getSerializedObject(filtered);
-
-  //   fetchStonesCountData(serializedObject);
-
-  //   updateState(filtered);
-  // };
-
-  // const updateState = (filtered) => {
-  //   setFilteredJewelries(filtered);
-
-  //   setTotalCount(filtered.length);
-
-  //   setLoadMoreDisabled(filtered.length <= ITEMS_PER_PAGE);
-  // };
-
   // const toggleSelectedStoneType = () => {
   //   const isEmpty = selection.stoneType?.length > 0;
 
