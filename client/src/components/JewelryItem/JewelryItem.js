@@ -5,6 +5,7 @@ import { jewelryServiceFactory } from "../../services/jewelryService";
 import styles from "./JewelryItem.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
 
 export const JewelryItem = () => {
   const { _id } = useParams();
@@ -72,7 +73,18 @@ export const JewelryItem = () => {
             />
           </div>
         </div>
-        <div className={styles["jewelry-description"]}></div>
+        <div className={styles["jewelry-info-container"]}>
+          <h2 className={styles["jewelry-title"]}>{jewelry.title}</h2>
+          <div className={styles["flex-container-line"]}>
+            <hr className={styles["hr-line"]} />
+            <img
+              className={styles["line-img"]}
+              src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
+              alt=""
+            />
+            <hr className={styles["hr-line"]} />
+          </div>
+        </div>
       </div>
     </section>
   );
