@@ -154,11 +154,7 @@ export const JewelryItem = () => {
             </p>
             {jewelry.category !== 2 && jewelry.sizes ? (
               <div>
-                <h4
-                  className={styles["jewelry-details-composition-size-title"]}
-                >
-                  Size
-                </h4>
+                <h4>Size</h4>
                 <form onSubmit={onSubmit} method="POST">
                   <div className={styles["radio-container"]}>
                     {jewelry.sizes.map((item) =>
