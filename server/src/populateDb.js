@@ -896,12 +896,7 @@ async function populateDb() {
     {
       jewelry: allJewelries[21],
       stoneType: allStoneTypes[4],
-      stoneColor: allStoneColors[4],
-    },
-    {
-      jewelry: allJewelries[21],
-      stoneType: allStoneTypes[1],
-      stoneColor: allStoneColors[6],
+      stoneColor: allStoneColors[0],
     },
     {
       jewelry: allJewelries[22],

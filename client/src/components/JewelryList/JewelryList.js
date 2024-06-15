@@ -71,14 +71,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-
-  //   const serializedObject = getSerializedObject(filtered);
-
-  //   fetchStonesCountData(serializedObject);
-
-  //   updateState(filtered);
-  // };
-
   // const changeHandler = (e, entityTitle) => {
   //   const selected = e.target.value;
   //   const isChecked = e.target.checked;
