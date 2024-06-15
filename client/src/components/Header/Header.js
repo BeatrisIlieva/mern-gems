@@ -79,22 +79,6 @@ export const Header = () => {
           </ul>
         </nav>
         <SearchInput popupClickHandler={popupClickHandler}/>
-        {/* <div className={styles["search-box"]}>
-          <div className={styles["search-container"]}>
-            <span>
-              <FontAwesomeIcon
-                icon={faSearch}
-                className={styles["icon-search"]}
-              />
-            </span>
-            <input
-              type="text"
-              className={`${styles["search-input"]} ${styles["custom-placeholder"]}`}
-              placeholder="Search"
-              onClick={popupClickHandler}
-            />
-          </div>
-        </div> */}
         <ul className={styles["icon-list"]} role="list">
           <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
             <Link
