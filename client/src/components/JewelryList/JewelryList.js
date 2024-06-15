@@ -70,18 +70,6 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-  // const toggleSelectedStoneType = () => {
-  //   const isEmpty = selection.stoneType?.length > 0;
-
-  //   setIsSelectedStoneType(isEmpty);
-  // };
-
-  // const toggleSelectedStoneColor = () => {
-  //   const isEmpty = selection.stoneColor?.length > 0;
-
-  //   setIsSelectedStoneColor(isEmpty);
-  // };
-
   useEffect(() => {
     setJewelries([]);
     setSelection({});
@@ -91,10 +79,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
     fetchData();
   }, [entityId, entityTitle]);
 
-  // useEffect(() => {
-  //   toggleSelectedStoneType();
-  //   toggleSelectedStoneColor();
-  // }, [selection]);
+
 
   const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 
