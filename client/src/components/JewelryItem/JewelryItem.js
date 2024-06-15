@@ -50,17 +50,6 @@ export const JewelryItem = () => {
     }, 400);
   };
 
-  //   const fetchJewelry = async () => {
-  //     try {
-  //       const data = await jewelryService.findOne(_id);
-
-  //       const jewelryData = Array.isArray(data) ? data[0] : data;
-  //       setJewelry(jewelryData);
-  //     } catch (err) {
-  //       console.log(err.message);
-  //     }
-  //   };
-
   const handleLikeClick = () => {
     if (jewelry.isLikedByUser) {
       onRemoveFromWishlistClick(jewelry._id);
@@ -150,7 +139,6 @@ export const JewelryItem = () => {
               {jewelry.sizes &&
                 jewelry.category === 2 &&
                 jewelry.sizes[0].measurement}
-              .
             </p>
             {jewelry.category !== 2 && jewelry.sizes ? (
               <div>
