@@ -71,26 +71,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
 
 
-  // const changeHandler = (e, entityTitle) => {
-  //   const selected = e.target.value;
-  //   const isChecked = e.target.checked;
-
-  //   setSelection((state) => {
-  //     if (isChecked) {
-  //       return {
-  //         ...state,
-  //         [entityTitle]: [...(state[entityTitle] || []), Number(selected)],
-  //       };
-  //     } else {
-  //       return {
-  //         ...state,
-  //         [entityTitle]: (state[entityTitle] || []).filter(
-  //           (value) => value !== Number(selected)
-  //         ),
-  //       };
-  //     }
-  //   });
-  // };
+ 
 
   // const submitHandler = (e, selectionKey) => {
   //   e.preventDefault();
