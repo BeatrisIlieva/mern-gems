@@ -7,6 +7,7 @@ import { searchServiceFactory } from "../../../services/searchService";
 import { useService } from "../../../hooks/useService";
 import { JewelryListItems } from "../../JewelryList/JewelryListItems/JewelryListItems";
 import { Link } from "react-router-dom";
+import { slugify } from "../../../utils/slugify";
 
 export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
   const [query, setQuery] = useState(null);
@@ -67,11 +68,18 @@ export const SearchBoxPopup = ({ popupSubmitHandler, popupCloseHandler }) => {
             <div className={styles["search-results"]}>
               {jewelries.map((j) => (
                 <div key={j._id}>
-                  <img
-                    className={styles["image"]}
-                    src={j.firstImageUrl}
-                    alt=""
-                  />
+                  <Link
+                    to={`/${slugify(j.categoryTitle)}/${slugify(
+                      j.jewelryTitle
+                    )}`}
+                  >
+                    <img
+                      onClick={() => popupCloseHandler()}
+                      className={styles["image"]}
+                      src={j.firstImageUrl}
+                      alt=""
+                    />
+                  </Link>
                 </div>
               ))}
             </div>
