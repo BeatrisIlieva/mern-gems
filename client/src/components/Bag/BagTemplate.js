@@ -9,18 +9,13 @@ export const BagTemplate = ({
   firstImageUrl,
   jewelryTitle,
   totalPrice,
-  minQuantity,
   maxQuantity,
   quantity,
-  size,
 }) => {
   const {
     onDecrement,
     onIncrement,
     onRemove,
-    // onQuantityChange,
-    // onBlur,
-    // quantityErrorMessage,
   } = useBagContext();
   return (
     <>
