@@ -7,7 +7,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { useBagContext } from "../../contexts/BagContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
 import { SearchInput } from "./SearchInput/SearchInput";
 
@@ -99,7 +99,9 @@ export const Header = () => {
                 />
               </span>
               {totalQuantityGreaterThanZero && (
-                <span className={styles["icon-bar-count"]}>({totalQuantity})</span>
+                <span className={styles["icon-bar-count"]}>
+                  ({totalQuantity})
+                </span>
               )}
             </Link>
           </li>

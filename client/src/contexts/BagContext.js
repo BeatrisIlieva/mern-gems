@@ -67,7 +67,7 @@ export const BagProvider = ({ children }) => {
 
       return data;
     } catch (err) {
-        console.log(err.message);
+      console.log(err.message);
     }
   };
 
