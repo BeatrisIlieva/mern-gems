@@ -31,20 +31,7 @@ export const BagTemplate = ({
         <h2 className={styles["jewelry-bag-composition-title"]}>
           {jewelryTitle}
         </h2>
-        <p className={styles["jewelry-description"]}>{description}</p>
         <div className={styles["jewelry-bag-composition-button-container"]}>
-          {/* <button
-            className={styles["jewelry-bag-composition-button"]}
-            onClick={() => onRemove(_id)}
-          >
-            Edit
-          </button>
-          <button
-            className={styles["jewelry-bag-composition-button"]}
-            onClick={() => onRemove(_id)}
-          >
-            Move to wishlist
-          </button> */}
           <button
             className={styles["jewelry-bag-composition-button"]}
             onClick={() => onRemove(_id)}

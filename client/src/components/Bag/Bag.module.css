@@ -15,12 +15,11 @@
 }
 .bag-sub-title p {
   line-height: 0;
-  font-size: 16px;
+  font-size: var(--medium-font-size);
 }
 
 .bag-sub-title h3 {
-  font-weight: 300;
-  font-size: 26px;
+  font-size: var(--large-font-size);
   padding: 0px;
   margin: 0px;
 }
@@ -33,13 +32,12 @@
 }
 
 .bag-left-container {
-  width: 70%;
+  width: 62%;
 }
 
 .bag-left-container-title {
-  padding-bottom: 16px;
-  font-size: 20px;
-  font-weight: 500;
+  padding-bottom: 8px;
+  font-size: var(--middle-font-size);
   letter-spacing: 0;
 }
 
@@ -49,15 +47,10 @@
 
 .delivery-span {
   padding-bottom: 16px;
-  font-size: 14px;
-  font-weight: 200;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 0;
-  color: rgba(0, 0, 0, 0.739);
+  font-size: var(--main-font-size);
 }
 
 .bag-left-sub-container {
-  border-radius: 16px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 32px -12px,
     rgba(0, 0, 0, 0.3) 0px 6px 12px -18px;
   padding: 32px;
@@ -70,7 +63,7 @@
 }
 
 .jewelry-bag-image {
-  width: 26%;
+  width: 32%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
@@ -83,33 +76,28 @@
 }
 
 .jewelry-bag-composition {
-  width: 60%;
+  width: 50%;
   position: relative;
 }
 
 .jewelry-bag-composition-title {
-  font-size: 14px;
+  font-size: var(--main-font-size);
+  font-family: var(--bold-font-family);
   padding: 8px;
   padding-bottom: 16px;
   padding-top: 0 !important;
   margin-top: 0 !important;
-  line-height: 0;
   overflow-wrap: break-word;
   position: absolute;
-  top: 10px;
+  top: 0;
 }
 
-.jewelry-description{
-  font-size: var(--small-font-size);
-  padding: 8px;
-}
 
 .jewelry-bag-composition {
   font-size: 16px;
   line-height: 1.5;
   padding: 16px;
 }
-
 
 .composition-item-bag {
   font-size: 16px;
@@ -140,10 +128,11 @@
 
 .jewelry-bag-price-quantity {
   position: relative;
-  width: 14%;
+  width: 18%;
 }
 
 .jewelry-bag-price {
+  font-family: var(--bold-font-family);
   position: absolute;
   right: 0;
   padding: 0;
@@ -157,7 +146,7 @@
   padding: 0;
   margin: 0;
   bottom: 0;
-  border: 1px solid rgba(0, 0, 0, 0.19);
+  border: 1px solid var(--border);
   padding: 2px;
 }
 .jewelry-bag-quantity-button,
@@ -169,7 +158,7 @@
 .jewelry-bag-quantity-button {
   text-decoration: none;
   width: 4ch;
-  background-color: white;
+  background-color: var(--white);
   color: rgba(0, 0, 0, 0.335);
   font-size: 12px;
   margin: 0px 4px 0px 4px;
@@ -182,7 +171,6 @@
   color: black;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
-
 }
 
 .jewelry-bag-quantity input[type="text"]:focus {
@@ -190,7 +178,7 @@
 }
 
 .bag-right-container {
-  width: 24%;
+  width: 32%;
 }
 
 .bag-right-container-sticky {
@@ -247,15 +235,13 @@
 }
 
 .quantity-error-message {
- position: absolute;
- bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .icon-available {
-
 }
 
 .icon-not-available {
   color: var(--not-available-gray);
 }
-
