@@ -66,8 +66,8 @@ export const BagProvider = ({ children }) => {
       console.log(data);
 
       return data;
-    } catch (error) {
-      console.error("Error removing item from bag:", error);
+    } catch (err) {
+        console.log(err.message);
     }
   };
 
@@ -97,7 +97,6 @@ export const BagProvider = ({ children }) => {
     } catch (err) {
       console.log(err.message);
       setQuantityErrorMessage(err.message);
-      console.log("error", quantityErrorMessage);
     }
   };
 
