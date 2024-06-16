@@ -3,11 +3,10 @@
 }
 
 .bag-title {
-  font-size: 30px;
+  font-size: var(--extra-large-font-size);
   padding-top: 0px;
   padding-bottom: 28px;
   text-align: center;
-  font-weight: 400;
   letter-spacing: 0;
 }
 
@@ -98,6 +97,11 @@
   overflow-wrap: break-word;
   position: absolute;
   top: 10px;
+}
+
+.jewelry-description{
+  font-size: var(--small-font-size);
+  padding: 8px;
 }
 
 .jewelry-bag-composition {

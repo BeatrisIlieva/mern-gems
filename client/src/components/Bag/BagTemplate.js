@@ -18,9 +18,7 @@ export const BagTemplate = ({
     onIncrement,
     onRemove,
   } = useBagContext();
-  console.log(description)
   return (
- 
     <>
       <div className={styles["jewelry-bag-image"]}>
         <img
@@ -33,9 +31,9 @@ export const BagTemplate = ({
         <h2 className={styles["jewelry-bag-composition-title"]}>
           {jewelryTitle}
         </h2>
-        <p>{description}</p>
+        <p className={styles["jewelry-description"]}>{description}</p>
         <div className={styles["jewelry-bag-composition-button-container"]}>
-          <button
+          {/* <button
             className={styles["jewelry-bag-composition-button"]}
             onClick={() => onRemove(_id)}
           >
@@ -46,7 +44,7 @@ export const BagTemplate = ({
             onClick={() => onRemove(_id)}
           >
             Move to wishlist
-          </button>
+          </button> */}
           <button
             className={styles["jewelry-bag-composition-button"]}
             onClick={() => onRemove(_id)}
