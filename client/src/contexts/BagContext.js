@@ -14,20 +14,9 @@ export const BagProvider = ({ children }) => {
   let [loading, setLoading] = useState(true);
   const [quantityErrorMessage, setQuantityErrorMessage] = useState(null);
 
-  //   const fetchBagItemsData = async () => {
-  //     try {
-  //       const count = await bagService.findCount();
-
-  //       setBagCount(count);
-  //     } catch (err) {
-  //       console.log(err.message);
-  //     }
-  //   };
-
   useEffect(() => {
     fetchBagItemsData();
   }, []);
-
 
   const onAddToBagClick = async (data, _id) => {
     try {
@@ -98,7 +87,6 @@ export const BagProvider = ({ children }) => {
     } catch (err) {
       console.log(err.message);
       setQuantityErrorMessage(err.message);
-      
     }
   };
 
@@ -109,40 +97,9 @@ export const BagProvider = ({ children }) => {
     } catch (err) {
       console.log(err.message);
       setQuantityErrorMessage(err.message);
-      console.log("error", quantityErrorMessage)
+      console.log("error", quantityErrorMessage);
     }
   };
-
-//   const onQuantityChange = (e, _id) => {
-//     const newQuantity =
-//       e.target.value.trim() === "" ? "" : parseInt(e.target.value);
-
-//     bagItems = bagItems.map((item) => {
-//       if (item._id === _id) {
-//         return {
-//           ...item,
-//           quantity: newQuantity,
-//         };
-//       }
-//       return item;
-//     });
-
-//     setBagItems([...bagItems]);
-//   };
-
-//   const onBlur = async (_id, quantity) => {
-//     try {
-//       await bagService.update(_id, { quantity: quantity });
-
-//       setBagItems([...bagItems]);
-
-//       fetchBagItemsData();
-//     } catch (err) {
-//       console.log(err.message);
-//       setQuantityErrorMessage(err.message);
-
-//     }
-//   };
 
   const clearShoppingBag = () => {
     setBagItems([]);
@@ -162,8 +119,6 @@ export const BagProvider = ({ children }) => {
     onDecrement,
     onIncrement,
     onRemove,
-    // onQuantityChange,
-    // onBlur,
     isEmpty,
     clearShoppingBag,
     loading,
