@@ -3,8 +3,8 @@ const bagManager = require("../managers/bagManager");
 const {
   DEFAULT_ADD_QUANTITY,
   DEFAULT_MIN_QUANTITY,
-} = require("../constants/shoppingBag");
-const shoppingBag = require("../models/Bag");
+} = require("../constants/Bag");
+const Bag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
 
 router.get("/find-all/:userId", async (req, res) => {
@@ -94,7 +94,7 @@ router.post("/create/:jewelryId", async (req, res) => {
       });
     } else {
       newQuantity = Number(bagItem.quantity) + DEFAULT_ADD_QUANTITY;
-      await shoppingBag.findOneAndUpdate(
+      await Bag.findOneAndUpdate(
         {
           user: userId,
           jewelry: jewelryId,
@@ -110,7 +110,7 @@ router.post("/create/:jewelryId", async (req, res) => {
       );
     }
 
-    const result = await shoppingBag.find({
+    const result = await Bag.find({
       user: userId,
     });
 

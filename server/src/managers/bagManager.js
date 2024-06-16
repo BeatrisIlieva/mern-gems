@@ -1,9 +1,9 @@
-const ShoppingBag = require("../models/Bag");
+const Bag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
-const { DEFAULT_MIN_QUANTITY } = require("../constants/shoppingBag");
+const { DEFAULT_MIN_QUANTITY } = require("../constants/Bag");
 
-exports.getOne = async ({ userId, jewelryId, sizeId }) => {
-  const bagItem = await ShoppingBag.findOne({
+const getOne = async ({ userId, jewelryId, sizeId }) => {
+  const bagItem = await Bag.findOne({
     user: userId,
     jewelry: jewelryId,
     size: sizeId,
@@ -12,8 +12,8 @@ exports.getOne = async ({ userId, jewelryId, sizeId }) => {
   return bagItem;
 };
 
-exports.findAll = async (userId) => {
-  const result = await ShoppingBag.aggregate([
+const findAll = async (userId) => {
+  const result = await Bag.aggregate([
     {
       $match: {
         user: userId,
@@ -156,13 +156,39 @@ exports.findAll = async (userId) => {
   return result;
 };
 
-exports.create = async ({
+const findCount = async (userId) => {
+  const result = await Bag.aggregate([
+    {
+      $match: {
+        user: userId,
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        count: {
+          $sum: 1,
+        },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        count: 1,
+      },
+    },
+  ]);
+
+  return result[0] ? result[0].count : 0;
+};
+
+const create = async ({
   userId,
   jewelryId,
   sizeId,
   quantity: DEFAULT_ADD_QUANTITY,
 }) => {
-  bagItem = await ShoppingBag.create({
+  bagItem = await Bag.create({
     user: userId,
     jewelry: jewelryId,
     size: sizeId,
@@ -176,8 +202,8 @@ exports.create = async ({
   );
 };
 
-exports.decrease = async (bagId) => {
-  let bagItem = await ShoppingBag.findById(bagId);
+const decrease = async (bagId) => {
+  let bagItem = await Bag.findById(bagId);
 
   const jewelryId = Number(bagItem.jewelry);
 
@@ -187,12 +213,12 @@ exports.decrease = async (bagId) => {
 
   const newBagQuantity = bagQuantity - 1;
 
-  await ShoppingBag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
+  await Bag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
 
-  bagItem = await ShoppingBag.findById(bagId);
+  bagItem = await Bag.findById(bagId);
 
   if (bagItem.quantity === 0) {
-    await ShoppingBag.findByIdAndDelete(bagId);
+    await Bag.findByIdAndDelete(bagId);
   }
 
   const inventoryItem = await Inventory.findOne({
@@ -209,8 +235,8 @@ exports.decrease = async (bagId) => {
   );
 };
 
-exports.increase = async (bagId) => {
-  let bagItem = await ShoppingBag.findById(bagId);
+const increase = async (bagId) => {
+  let bagItem = await Bag.findById(bagId);
 
   const jewelryId = Number(bagItem.jewelry);
 
@@ -220,9 +246,9 @@ exports.increase = async (bagId) => {
 
   const newBagQuantity = bagQuantity + 1;
 
-  await ShoppingBag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
+  await Bag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
 
-  bagItem = await ShoppingBag.findById(bagId);
+  bagItem = await Bag.findById(bagId);
 
   const inventoryItem = await Inventory.findOne({
     jewelry: jewelryId,
@@ -238,8 +264,8 @@ exports.increase = async (bagId) => {
   );
 };
 
-exports.update = async (bagItemId, updatedQuantity) => {
-  const bagItem = await ShoppingBag.findById(bagItemId);
+const update = async (bagItemId, updatedQuantity) => {
+  const bagItem = await Bag.findById(bagItemId);
 
   const sizeId = Number(bagItem.size);
 
@@ -287,8 +313,8 @@ exports.update = async (bagItemId, updatedQuantity) => {
   }
 };
 
-exports.delete = async (bagItemId) => {
-  const bagItem = await ShoppingBag.findById(bagItemId);
+const deleteBag = async (bagItemId) => {
+  const bagItem = await Bag.findById(bagItemId);
 
   const sizeId = Number(bagItem.size);
 
@@ -312,4 +338,15 @@ exports.delete = async (bagItemId) => {
   );
 
   await bagItem.deleteOne();
+};
+
+module.exports = {
+  getOne,
+  findAll,
+  findCount,
+  create,
+  decrease,
+  increase,
+  update,
+  delete: deleteBag,
 };
