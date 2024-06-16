@@ -1,7 +1,7 @@
 import styles from "./Bag.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
-import { BagTemplate } from "./BagTemplate";
+import { BagList } from "./BagList/BagList";
 import { Link } from "react-router-dom";
 import { useBagContext } from "../../contexts/BagContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
@@ -41,7 +41,7 @@ export const Bag = () => {
                     key={item._id}
                     className={styles["bag-left-sub-left-container"]}
                   >
-                    <BagTemplate {...item} />
+                    <BagList {...item} />
                   </li>
                 ))}
               </ul>
@@ -90,7 +90,9 @@ export const Bag = () => {
                     </p>
                   </div>
                   <div className={styles["continue-checkout-button-container"]}>
-                    <button className={styles["continue-checkout-button"]}>Continue Checkout</button>
+                    <button className={styles["continue-checkout-button"]}>
+                      Continue Checkout
+                    </button>
                     {/* <Link to={`/complete-order/${user}`}>
                       <input
                         className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]} ${styles["continue-checkout-button"]}`}

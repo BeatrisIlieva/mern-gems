@@ -1,23 +1,19 @@
-import styles from "./Bag.module.css";
-import { useBagContext } from "../../contexts/BagContext";
+import styles from "./BagList.module.css";
+import { useBagContext } from "../../../contexts/BagContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
-export const BagTemplate = ({
+export const BagList = ({
   _id,
   firstImageUrl,
   jewelryTitle,
   totalPrice,
   maxQuantity,
   quantity,
-  size
+  size,
 }) => {
-  const {
-    onDecrement,
-    onIncrement,
-    onRemove,
-  } = useBagContext();
+  const { onDecrement, onIncrement, onRemove } = useBagContext();
   return (
     <>
       <div className={styles["jewelry-bag-image"]}>
@@ -31,7 +27,7 @@ export const BagTemplate = ({
         <h2 className={styles["jewelry-bag-composition-title"]}>
           {jewelryTitle}
         </h2>
-        <span className={styles["size-span"]}>Size: {" "} {size}</span>
+        <span className={styles["size-span"]}>Size: {size}</span>
         <div className={styles["jewelry-bag-composition-button-container"]}>
           <button
             className={styles["jewelry-bag-composition-button"]}
@@ -52,9 +48,7 @@ export const BagTemplate = ({
               <FontAwesomeIcon icon={faMinus} className={styles["dark-pink"]} />
             </button>
           </div>
-          <div className={styles["jewelry-bag-quantity-input"]}>
-            {quantity}
-          </div>
+          <div className={styles["jewelry-bag-quantity-input"]}>{quantity}</div>
           <div>
             <button
               className={styles["jewelry-bag-quantity-button"]}
