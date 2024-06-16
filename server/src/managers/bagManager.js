@@ -35,63 +35,44 @@ const create = async ({
 const decrease = async (bagId) => {
   let bagItem = await Bag.findById(bagId);
 
-  const jewelryId = Number(bagItem.jewelry);
-
-  const sizeId = Number(bagItem.size);
-
   const bagQuantity = bagItem.quantity;
 
-  const newBagQuantity = bagQuantity - 1;
+  const updatedQuantity = bagQuantity - 1;
 
-  await Bag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
-
-  bagItem = await Bag.findById(bagId);
-
-  if (bagItem.quantity === 0) {
-    await Bag.findByIdAndDelete(bagId);
-  }
-
-  const inventoryItem = await Inventory.findOne({
-    jewelry: jewelryId,
-    size: sizeId,
-  });
-
-  const inventoryQuantity = inventoryItem.quantity || 0;
-  const newInventoryQuantity = inventoryQuantity + 1;
-  await Inventory.findOneAndUpdate(
-    { jewelry: jewelryId, size: sizeId },
-    { quantity: newInventoryQuantity },
-    { new: true }
-  );
+  await update(bagId, updatedQuantity);
 };
 
 const increase = async (bagId) => {
   let bagItem = await Bag.findById(bagId);
 
-  const jewelryId = Number(bagItem.jewelry);
+  // const jewelryId = Number(bagItem.jewelry);
 
-  const sizeId = Number(bagItem.size);
+  // const sizeId = Number(bagItem.size);
 
   const bagQuantity = bagItem.quantity;
 
-  const newBagQuantity = bagQuantity + 1;
+  const updatedQuantity = bagQuantity + 1;
 
-  await Bag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
+  await update(bagId, updatedQuantity);
 
-  bagItem = await Bag.findById(bagId);
+  // const newBagQuantity = bagQuantity + 1;
 
-  const inventoryItem = await Inventory.findOne({
-    jewelry: jewelryId,
-    size: sizeId,
-  });
+  // await Bag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
 
-  const inventoryQuantity = inventoryItem.quantity || 0;
-  const newInventoryQuantity = inventoryQuantity - 1;
-  await Inventory.findOneAndUpdate(
-    { jewelry: jewelryId, size: sizeId },
-    { quantity: newInventoryQuantity },
-    { new: true }
-  );
+  // bagItem = await Bag.findById(bagId);
+
+  // const inventoryItem = await Inventory.findOne({
+  //   jewelry: jewelryId,
+  //   size: sizeId,
+  // });
+
+  // const inventoryQuantity = inventoryItem.quantity || 0;
+  // const newInventoryQuantity = inventoryQuantity - 1;
+  // await Inventory.findOneAndUpdate(
+  //   { jewelry: jewelryId, size: sizeId },
+  //   { quantity: newInventoryQuantity },
+  //   { new: true }
+  // );
 };
 
 const update = async (bagItemId, updatedQuantity) => {

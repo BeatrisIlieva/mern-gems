@@ -46,7 +46,6 @@ export const BagProvider = ({ children }) => {
 
     setTimeout(async () => {
       try {
-        console.log("after delete")
         let data = await onDisplayBagClick();
         data = Array.isArray(data) ? data[0] : data;
         console.log(data);
@@ -77,6 +76,7 @@ export const BagProvider = ({ children }) => {
   const onDisplayBagClick = async () => {
     try {
       const data = await bagService.findAll(userId);
+      console.log(data);
 
       return data;
     } catch (error) {
@@ -94,15 +94,21 @@ export const BagProvider = ({ children }) => {
   };
 
   const onDecrement = async (bagId) => {
-    await bagService.decrease(bagId);
-
-    fetchBagItemsData();
+    try {
+      const result = await bagService.decrease(bagId);
+      fetchBagItemsData();
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   const onIncrement = async (bagId) => {
-    await bagService.increase(bagId);
-
-    fetchBagItemsData();
+    try {
+      const result = await bagService.increase(bagId);
+      fetchBagItemsData();
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   const onQuantityChange = (e, _id) => {
