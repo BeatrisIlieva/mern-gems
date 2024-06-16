@@ -7,12 +7,11 @@ import { useBagContext } from "../../contexts/BagContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 export const Bag = () => {
-  const {bagItems, totalPrice, totalQuantity, isEmpty, loading} =
+  const { bagItems, totalPrice, totalQuantity, isEmpty, loading } =
     useBagContext();
 
-
   return (
-    <>
+    <section className={styles["bag-box"]}>
       <h2 className={styles["bag-title"]}>Your Bag</h2>
       {!isEmpty ? (
         <div>
@@ -95,8 +94,7 @@ export const Bag = () => {
               </div>
             </div>
           </div>
-          {loading && (
-          <LoadingSpinner />)}
+          {loading && <LoadingSpinner />}
         </div>
       ) : (
         <>
@@ -104,78 +102,8 @@ export const Bag = () => {
             <h3>Your Shopping Bag is Empty.</h3>
             <p>Explore and add something you love.</p>
           </div>
-          <div className={styles["discover-container"]}>
-            <div>
-              <button
-                className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]}`}
-                // onClick={() => onRemove(item._id)}
-              >
-                Discover Earrings
-              </button>
-              <div className={styles["discover-image"]}>
-                <img
-                  className={styles["discover-img"]}
-                  src={
-                    "https://res.cloudinary.com/deztgvefu/image/upload/v1715272200/discover/diamond_loop_earrings_diamond_eadprddbllp_e-2_j4ugmv.webp"
-                  }
-                  alt=""
-                />
-              </div>
-            </div>
-            <div>
-              <button
-                className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]}`}
-                // onClick={() => onRemove(item._id)}
-              >
-                Discover Necklaces
-              </button>
-              <div className={styles["discover-image"]}>
-                <img
-                  className={styles["discover-img"]}
-                  src={
-                    "https://res.cloudinary.com/deztgvefu/image/upload/v1715272200/discover/sparkling_cluster_necklace_diamond_nkdpclrfspc_e-1_ztc7kf.webp"
-                  }
-                  alt=""
-                />
-              </div>
-            </div>
-            <div>
-              <button
-                className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]}`}
-                // onClick={() => onRemove(item._id)}
-              >
-                Discover Bracelets
-              </button>
-              <div className={styles["discover-image"]}>
-                <img
-                  className={styles["discover-img"]}
-                  src={
-                    "https://res.cloudinary.com/deztgvefu/image/upload/v1715272200/discover/sunflower-_bracelet_diamond_brdpnasmsf_e-1_copy_zrzmxp.webp"
-                  }
-                  alt=""
-                />
-              </div>
-            </div>
-            <div>
-              <button
-                className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]}`}
-                // onClick={() => onRemove(item._id)}
-              >
-                Discover Rings
-              </button>
-              <div className={styles["discover-image"]}>
-                <img
-                  className={styles["discover-img"]}
-                  src={
-                    "https://res.cloudinary.com/deztgvefu/image/upload/v1715272201/discover/sunflower-_ring_diamond_frdpnalgsf_e-2_pstw37.webp"
-                  }
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
         </>
       )}
-    </>
+    </section>
   );
 };
