@@ -11,7 +11,7 @@ export const BagTemplate = ({
   totalPrice,
   maxQuantity,
   quantity,
-  description
+  size
 }) => {
   const {
     onDecrement,
@@ -31,6 +31,7 @@ export const BagTemplate = ({
         <h2 className={styles["jewelry-bag-composition-title"]}>
           {jewelryTitle}
         </h2>
+        <span className={styles["size-span"]}>Size: {" "} {size}</span>
         <div className={styles["jewelry-bag-composition-button-container"]}>
           <button
             className={styles["jewelry-bag-composition-button"]}
