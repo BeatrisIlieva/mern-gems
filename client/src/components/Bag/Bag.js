@@ -70,7 +70,15 @@ export const Bag = () => {
                       Complimentary
                     </p>
                   </div>
-                  <hr className={styles["horizontal-line"]} />
+                  <div className={styles["flex-container-line"]}>
+                    <hr className={styles["hr-line"]} />
+                    <img
+                      className={styles["line-img"]}
+                      src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
+                      alt=""
+                    />
+                    <hr className={styles["hr-line"]} />
+                  </div>
                   <div className={styles["bag-right-sub-right-container"]}>
                     <p className={styles["bag-right-sub-container-bold"]}>
                       Total
@@ -82,6 +90,7 @@ export const Bag = () => {
                     </p>
                   </div>
                   <div className={styles["continue-checkout-button-container"]}>
+                    <button className={styles["continue-checkout-button"]}>Continue Checkout</button>
                     {/* <Link to={`/complete-order/${user}`}>
                       <input
                         className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]} ${styles["continue-checkout-button"]}`}
