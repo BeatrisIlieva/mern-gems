@@ -125,7 +125,7 @@ router.post("/create/:jewelryId", async (req, res) => {
 });
 
 router.put("/decrease/:bagId", async (req, res) => {
-  bagId = req.params.bagId;
+  const bagId = req.params.bagId;
 
   try {
     await bagManager.decrease(bagId);
@@ -139,7 +139,7 @@ router.put("/decrease/:bagId", async (req, res) => {
 });
 
 router.put("/increase/:bagId", async (req, res) => {
-  bagId = req.params.bagId;
+  const bagId = req.params.bagId;
 
   try {
     await bagManager.increase(bagId);
@@ -153,7 +153,7 @@ router.put("/increase/:bagId", async (req, res) => {
 });
 
 router.put("/update/:bagId", async (req, res) => {
-  bagId = req.params.bagId;
+  const bagId = req.params.bagId;
 
   const { quantity } = req.body;
 
@@ -169,7 +169,7 @@ router.put("/update/:bagId", async (req, res) => {
 });
 
 router.delete("/delete/:bagId", async (req, res) => {
-  bagId = req.params.bagId;
+  const bagId = req.params.bagId;
 
   try {
     await bagManager.delete(bagId);

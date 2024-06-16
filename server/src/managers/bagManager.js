@@ -13,7 +13,7 @@ const getOne = async ({ userId, jewelryId, sizeId }) => {
 };
 
 const findAll = async (userId) => {
-  const result = await Bag.aggregate([
+  const query = [
     {
       $match: {
         user: userId,
@@ -152,8 +152,22 @@ const findAll = async (userId) => {
         totalQuantity: 1,
       },
     },
+  ];
+
+  const result = await Bag.aggregate([
+    {
+      $facet: {
+        data: query,
+      },
+    },
   ]);
-  return result;
+
+  const count = await findCount(data.userId);
+
+  return {
+    data: result[0].data,
+    totalCount: count,
+  };
 };
 
 const findCount = async (userId) => {

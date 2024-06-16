@@ -20,8 +20,6 @@ export const Wishlist = ({ serviceFactory }) => {
     filteredJewelries,
   } = useJewelryList(serviceFactory);
 
-  console.log(filteredJewelries);
-
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
   const [page, setPage] = useState(1);
