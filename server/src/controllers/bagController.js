@@ -7,7 +7,7 @@ const {
 const shoppingBag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
 
-router.get("/display/:userId", async (req, res) => {
+router.get("/find-all/:userId", async (req, res) => {
   let userId;
 
   if (req.user) {
