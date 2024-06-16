@@ -12,7 +12,6 @@ const getOne = async ({ userId, jewelryId, sizeId }) => {
   return bagItem;
 };
 
-
 const create = async ({
   userId,
   jewelryId,
@@ -317,7 +316,6 @@ const findAll = async (userId) => {
 module.exports = {
   getOne,
   findAll,
-  findCount,
   create,
   decrease,
   increase,
