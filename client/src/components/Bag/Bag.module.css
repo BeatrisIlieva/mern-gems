@@ -10,20 +10,6 @@
   letter-spacing: 0;
 }
 
-.bag-sub-title {
-  text-align: center;
-}
-.bag-sub-title p {
-  line-height: 0;
-  font-size: var(--medium-font-size);
-}
-
-.bag-sub-title h3 {
-  font-size: var(--large-font-size);
-  padding: 0px;
-  margin: 0px;
-}
-
 .bag-container {
   display: flex;
   justify-content: space-between;
@@ -109,8 +95,6 @@
   width: 100% !important;
   margin-top: 12px;
 }
-
-
 
 .flex-container-line {
   display: flex;

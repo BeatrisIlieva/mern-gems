@@ -1,0 +1,13 @@
+.bag-sub-title {
+  text-align: center;
+}
+.bag-sub-title p {
+  line-height: 0;
+  font-size: var(--medium-font-size);
+}
+
+.bag-sub-title h3 {
+  font-size: var(--large-font-size);
+  padding: 0px;
+  margin: 0px;
+}

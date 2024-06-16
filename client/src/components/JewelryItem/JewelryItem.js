@@ -196,7 +196,10 @@ export const JewelryItem = () => {
                                   Number(values[SizeFormKeys.Size]) === item._id
                                 }
                               />
-                              <label htmlFor={item._id} className={styles["label"]}>
+                              <label
+                                htmlFor={item._id}
+                                className={styles["label"]}
+                              >
                                 {item.measurement}
                               </label>
                             </div>
