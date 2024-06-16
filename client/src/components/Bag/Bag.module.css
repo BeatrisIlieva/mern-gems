@@ -216,3 +216,7 @@
 .icon-not-available {
   color: var(--not-available-gray);
 }
+
+.delivery-icon {
+  color: var(--dark-pink);
+}

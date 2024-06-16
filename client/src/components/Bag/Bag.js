@@ -23,7 +23,7 @@ export const Bag = () => {
                 >
                   <FontAwesomeIcon
                     icon={faTruck}
-                    className={styles["dark-pink"]}
+                    className={styles["delivery-icon"]}
                   />
                 </span>
                 <span
