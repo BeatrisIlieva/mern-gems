@@ -12,31 +12,6 @@ const getOne = async ({ userId, jewelryId, sizeId }) => {
   return bagItem;
 };
 
-const findCount = async (userId) => {
-  const result = await Bag.aggregate([
-    {
-      $match: {
-        user: userId,
-      },
-    },
-    {
-      $group: {
-        _id: null,
-        count: {
-          $sum: 1,
-        },
-      },
-    },
-    {
-      $project: {
-        _id: 0,
-        count: 1,
-      },
-    },
-  ]);
-
-  return result[0] ? result[0].count : 0;
-};
 
 const create = async ({
   userId,
