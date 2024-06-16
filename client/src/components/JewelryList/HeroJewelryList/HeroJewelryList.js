@@ -6,6 +6,7 @@ import { HeroRing } from "../HeroJewelryList/HeroRing/HeroRing";
 import { HeroNecklace } from "../HeroJewelryList/HeroNecklace/HeroNecklace";
 import { HeroForgetMeNot } from "./HeroForgetMeNot/HeroForgetMeNot";
 import { HeroClassics } from "./HeroClassics/HeroClassics";
+import { HeroPirouette } from "./HeroPirouette/HeroPirouette";
 
 export const HeroJewelryList = ({ entityTitle }) => {
   return (
@@ -29,7 +30,7 @@ export const HeroJewelryList = ({ entityTitle }) => {
         <HeroClassics entityTitle={entityTitle} />
       )}
       {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][1] && (
-        <HeroBracelet entityTitle={entityTitle} />
+        <HeroPirouette entityTitle={entityTitle} />
       )}
       {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Diamond Loop"][1] && (
         <HeroBracelet entityTitle={entityTitle} />
