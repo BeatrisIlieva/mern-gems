@@ -227,8 +227,6 @@ input[type="radio"] {
   margin-right: 6px;
   margin-top: 6px;
   margin-bottom: 30px;
-  text-align: center;
-}
-input[type="radio"]:checked + label {
-  background-color: var(--not-transparent-white-pink);
+  width: 84px;
+  justify-content: center;
 }

@@ -110,3 +110,7 @@ input[type="checkbox"] {
   outline: none;
   cursor: pointer;
 }
+
+input[type="radio"]:checked + label {
+  background-color: var(--not-transparent-white-pink);
+}
