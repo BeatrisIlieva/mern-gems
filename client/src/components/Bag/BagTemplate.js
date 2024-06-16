@@ -18,9 +18,9 @@ export const BagTemplate = ({
     onDecrement,
     onIncrement,
     onRemove,
-    onQuantityChange,
-    onBlur,
-    quantityErrorMessage,
+    // onQuantityChange,
+    // onBlur,
+    // quantityErrorMessage,
   } = useBagContext();
   return (
     <>
@@ -68,15 +68,7 @@ export const BagTemplate = ({
             </button>
           </div>
           <div className={styles["jewelry-bag-quantity-input"]}>
-            <input
-              name={_id}
-              min={minQuantity}
-              max={maxQuantity}
-              type="text"
-              value={quantity}
-              onChange={(e) => onQuantityChange(e, _id)}
-              onBlur={() => onBlur(_id, quantity)}
-            />
+            {quantity}
           </div>
           <div>
             <button

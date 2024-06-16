@@ -113,36 +113,36 @@ export const BagProvider = ({ children }) => {
     }
   };
 
-  const onQuantityChange = (e, _id) => {
-    const newQuantity =
-      e.target.value.trim() === "" ? "" : parseInt(e.target.value);
+//   const onQuantityChange = (e, _id) => {
+//     const newQuantity =
+//       e.target.value.trim() === "" ? "" : parseInt(e.target.value);
 
-    bagItems = bagItems.map((item) => {
-      if (item._id === _id) {
-        return {
-          ...item,
-          quantity: newQuantity,
-        };
-      }
-      return item;
-    });
+//     bagItems = bagItems.map((item) => {
+//       if (item._id === _id) {
+//         return {
+//           ...item,
+//           quantity: newQuantity,
+//         };
+//       }
+//       return item;
+//     });
 
-    setBagItems([...bagItems]);
-  };
+//     setBagItems([...bagItems]);
+//   };
 
-  const onBlur = async (_id, quantity) => {
-    try {
-      await bagService.update(_id, { quantity: quantity });
+//   const onBlur = async (_id, quantity) => {
+//     try {
+//       await bagService.update(_id, { quantity: quantity });
 
-      setBagItems([...bagItems]);
+//       setBagItems([...bagItems]);
 
-      fetchBagItemsData();
-    } catch (err) {
-      console.log(err.message);
-      setQuantityErrorMessage(err.message);
+//       fetchBagItemsData();
+//     } catch (err) {
+//       console.log(err.message);
+//       setQuantityErrorMessage(err.message);
 
-    }
-  };
+//     }
+//   };
 
   const clearShoppingBag = () => {
     setBagItems([]);
@@ -162,8 +162,8 @@ export const BagProvider = ({ children }) => {
     onDecrement,
     onIncrement,
     onRemove,
-    onQuantityChange,
-    onBlur,
+    // onQuantityChange,
+    // onBlur,
     isEmpty,
     clearShoppingBag,
     loading,
