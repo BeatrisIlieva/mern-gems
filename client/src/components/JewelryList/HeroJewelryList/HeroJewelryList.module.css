@@ -8,7 +8,9 @@
   width: 50%;
 }
 
-.info-container {
+.info-container,
+.info-container-forget-me-not,
+.info-container-classics  {
   width: 50%;
   background-color: var(--transparent-gray);
   display: flex;
@@ -37,4 +39,12 @@
 .box-paragraph {
   text-align: center;
   width: 50%;
+}
+
+.info-container-forget-me-not {
+  background-color: #fcd3d386 !important;
+}
+
+.info-container-classics {
+  background-color: #efd0c445 !important;
 }
