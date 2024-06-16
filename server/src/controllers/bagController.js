@@ -29,6 +29,27 @@ router.get("/find-all/:userId", async (req, res) => {
   }
 });
 
+router.get("/find-count", async (req, res) => {
+  let userId;
+
+  if (req.user) {
+    userId = req.user._id;
+  } else {
+    userId = req.headers["user-uuid"];
+  }
+
+  try {
+    const result = await bagManager.findCount(userId);
+
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(401).json({
+      message: err.message,
+    });
+  }
+});
+
 router.post("/create/:jewelryId", async (req, res) => {
   let userId;
 
@@ -90,7 +111,7 @@ router.post("/create/:jewelryId", async (req, res) => {
     }
 
     const result = await shoppingBag.find({
-      user: userId
+      user: userId,
     });
 
     res.status(200).json(result);

@@ -11,6 +11,8 @@ export const bagServiceFactory = (token) => {
 
     findAll: (userId) => request.get(`${baseUrl}/find-all/${userId}`),
 
+    findCount: () => request.get(`${baseUrl}/find-count`),
+
     decrease: (bagId) => request.put(`${baseUrl}/decrease/${bagId}`),
 
     increase: (bagId) => request.put(`${baseUrl}/increase/${bagId}`),
