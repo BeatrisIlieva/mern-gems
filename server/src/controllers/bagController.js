@@ -4,7 +4,7 @@ const {
   DEFAULT_ADD_QUANTITY,
   DEFAULT_MIN_QUANTITY,
 } = require("../constants/shoppingBag");
-const shoppingBag = require("../models/ShoppingBag");
+const shoppingBag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
 
 router.get("/display/:user", async (req, res) => {

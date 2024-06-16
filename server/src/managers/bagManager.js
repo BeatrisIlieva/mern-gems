@@ -1,4 +1,4 @@
-const ShoppingBag = require("../models/ShoppingBag");
+const ShoppingBag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
 const { DEFAULT_MIN_QUANTITY } = require("../constants/shoppingBag");
 const User = require("../models/User");
