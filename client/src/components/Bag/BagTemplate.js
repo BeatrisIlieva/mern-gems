@@ -18,7 +18,9 @@ export const BagTemplate = ({
     onIncrement,
     onRemove,
   } = useBagContext();
+  console.log(description)
   return (
+ 
     <>
       <div className={styles["jewelry-bag-image"]}>
         <img

@@ -204,6 +204,9 @@ const findAll = async (userId) => {
         firstImageUrl: {
           $first: "$jewelries.firstImageUrl",
         },
+        description: {
+          $first: "$jewelries.description",
+        },
         size: {
           $first: "$sizes.measurement",
         },
@@ -238,6 +241,7 @@ const findAll = async (userId) => {
         jewelryId: 1,
         jewelryTitle: 1,
         firstImageUrl: 1,
+        description: 1,
         size: 1,
         sizeId: 1,
         quantity: 1,
