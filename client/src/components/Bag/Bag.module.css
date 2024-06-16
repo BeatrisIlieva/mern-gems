@@ -1,3 +1,7 @@
+.bag-box {
+  margin: 20px 214px 40px 214px;
+}
+
 .bag-title {
   font-size: 30px;
   padding-top: 0px;
@@ -67,31 +71,33 @@
 }
 
 .jewelry-bag-image {
-  width: 36%;
+  width: 26%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
 .jewelry-bag-img {
-  border-radius: 16px;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: rgba(255, 192, 203, 0.238);
+  background-color: var(--white-pink);
 }
 
 .jewelry-bag-composition {
-  width: 50%;
+  width: 60%;
   position: relative;
 }
 
 .jewelry-bag-composition-title {
-  font-size: 16px;
+  font-size: 14px;
   padding: 8px;
   padding-bottom: 16px;
   padding-top: 0 !important;
   margin-top: 0 !important;
   line-height: 0;
+  overflow-wrap: break-word;
+  position: absolute;
+  top: 10px;
 }
 
 .jewelry-bag-composition {
@@ -100,13 +106,7 @@
   padding: 16px;
 }
 
-.bag-composition-metal {
-  padding: 4px 0px 4px 8px;
-}
 
-.bag-composition-stone {
-  padding: 4px 0px 4px 8px;
-}
 .composition-item-bag {
   font-size: 16px;
 }
