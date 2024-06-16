@@ -14,8 +14,14 @@ export const BagTemplate = ({
   quantity,
   size,
 }) => {
-  const { onDecrement, onIncrement, onRemove, onQuantityChange, onBlur } =
-    useBagContext();
+  const {
+    onDecrement,
+    onIncrement,
+    onRemove,
+    onQuantityChange,
+    onBlur,
+    quantityErrorMessage,
+  } = useBagContext();
   return (
     <>
       <div className={styles["jewelry-bag-image"]}>
@@ -77,7 +83,12 @@ export const BagTemplate = ({
               className={styles["jewelry-bag-quantity-button"]}
               onClick={() => onIncrement(_id)}
             >
-              <FontAwesomeIcon icon={faPlus} className={styles["dark-pink"]} />
+              <FontAwesomeIcon
+                icon={faPlus}
+                className={`${styles["icon-available"]} ${
+                  maxQuantity === quantity ? styles["icon-not-available"] : ""
+                }`.trim()}
+              />
             </button>
           </div>
         </div>

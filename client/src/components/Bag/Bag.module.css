@@ -240,4 +240,16 @@
   margin-top: 12px;
 }
 
+.quantity-error-message {
+ position: absolute;
+ bottom: 0;
+}
+
+.icon-available {
+
+}
+
+.icon-not-available {
+  color: var(--not-available-gray);
+}
 

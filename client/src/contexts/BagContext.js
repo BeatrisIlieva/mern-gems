@@ -12,6 +12,7 @@ export const BagProvider = ({ children }) => {
   const totalQuantityGreaterThanZero = totalQuantity > 0;
   const userId = localStorage.getItem("userUUID");
   let [loading, setLoading] = useState(true);
+  const [quantityErrorMessage, setQuantityErrorMessage] = useState(null);
 
   //   const fetchBagItemsData = async () => {
   //     try {
@@ -27,9 +28,6 @@ export const BagProvider = ({ children }) => {
     fetchBagItemsData();
   }, []);
 
-  //   useEffect(() => {
-  //     fetchBagItemsData();
-  //   }, [totalQuantity]);
 
   const onAddToBagClick = async (data, _id) => {
     try {
@@ -99,6 +97,8 @@ export const BagProvider = ({ children }) => {
       fetchBagItemsData();
     } catch (err) {
       console.log(err.message);
+      setQuantityErrorMessage(err.message);
+      
     }
   };
 
@@ -108,6 +108,8 @@ export const BagProvider = ({ children }) => {
       fetchBagItemsData();
     } catch (err) {
       console.log(err.message);
+      setQuantityErrorMessage(err.message);
+      console.log("error", quantityErrorMessage)
     }
   };
 
@@ -135,8 +137,10 @@ export const BagProvider = ({ children }) => {
       setBagItems([...bagItems]);
 
       fetchBagItemsData();
-    } catch (error) {
-      console.error("Error updating quantity in the database:", error);
+    } catch (err) {
+      console.log(err.message);
+      setQuantityErrorMessage(err.message);
+
     }
   };
 
@@ -163,6 +167,7 @@ export const BagProvider = ({ children }) => {
     isEmpty,
     clearShoppingBag,
     loading,
+    quantityErrorMessage,
   };
 
   return <BagContext.Provider value={context}>{children}</BagContext.Provider>;
