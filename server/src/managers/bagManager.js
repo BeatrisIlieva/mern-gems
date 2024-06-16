@@ -45,34 +45,11 @@ const decrease = async (bagId) => {
 const increase = async (bagId) => {
   let bagItem = await Bag.findById(bagId);
 
-  // const jewelryId = Number(bagItem.jewelry);
-
-  // const sizeId = Number(bagItem.size);
-
   const bagQuantity = bagItem.quantity;
 
   const updatedQuantity = bagQuantity + 1;
 
   await update(bagId, updatedQuantity);
-
-  // const newBagQuantity = bagQuantity + 1;
-
-  // await Bag.findByIdAndUpdate(bagId, { quantity: newBagQuantity });
-
-  // bagItem = await Bag.findById(bagId);
-
-  // const inventoryItem = await Inventory.findOne({
-  //   jewelry: jewelryId,
-  //   size: sizeId,
-  // });
-
-  // const inventoryQuantity = inventoryItem.quantity || 0;
-  // const newInventoryQuantity = inventoryQuantity - 1;
-  // await Inventory.findOneAndUpdate(
-  //   { jewelry: jewelryId, size: sizeId },
-  //   { quantity: newInventoryQuantity },
-  //   { new: true }
-  // );
 };
 
 const update = async (bagItemId, updatedQuantity) => {
