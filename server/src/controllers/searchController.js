@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const searchManager = require("../managers/searchManager");
 
-router.get("/find-all/:user", async (req, res) => {
+router.get("/find-all/:userId", async (req, res) => {
   try {
     const search = req.query.query;
 

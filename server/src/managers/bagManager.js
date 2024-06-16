@@ -1,7 +1,6 @@
 const ShoppingBag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
 const { DEFAULT_MIN_QUANTITY } = require("../constants/shoppingBag");
-const User = require("../models/User");
 
 exports.getOne = async ({ userId, jewelryId, sizeId }) => {
   const bagItem = await ShoppingBag.findOne({
@@ -13,31 +12,13 @@ exports.getOne = async ({ userId, jewelryId, sizeId }) => {
   return bagItem;
 };
 
-exports.getAll = async (user) => {
-  let matchCondition;
-
-  if (!isNaN(Number(user))) {
-    const userById = await User.findById(user);
-
-    matchCondition = [
-      {
-        $match: {
-          userID: userById._id,
-        },
+exports.findAll = async (userId) => {
+  const result = await ShoppingBag.aggregate([
+    {
+      $match: {
+        user: userId,
       },
-    ];
-  } else {
-    matchCondition = [
-      {
-        $match: {
-          userUUID: user,
-        },
-      },
-    ];
-  }
-
-  let jewelries = await ShoppingBag.aggregate([
-    ...matchCondition,
+    },
     {
       $lookup: {
         as: "jewelries",
@@ -48,69 +29,6 @@ exports.getAll = async (user) => {
     },
     {
       $unwind: "$jewelries",
-    },
-    {
-      $lookup: {
-        as: "jewelrymetals",
-        from: "jewelrymetals",
-        foreignField: "jewelry",
-        localField: "jewelries._id",
-      },
-    },
-    {
-      $unwind: "$jewelrymetals",
-    },
-    {
-      $lookup: {
-        as: "metals",
-        from: "metals",
-        foreignField: "_id",
-        localField: "jewelrymetals.metal",
-      },
-    },
-    {
-      $unwind: "$metals",
-    },
-    {
-      $lookup: {
-        as: "jewelrystones",
-        from: "jewelrystones",
-        foreignField: "jewelry",
-        localField: "jewelries._id",
-      },
-    },
-    {
-      $unwind: "$jewelrystones",
-    },
-    {
-      $lookup: {
-        as: "stonetypes",
-        from: "stonetypes",
-        foreignField: "_id",
-        localField: "jewelrystones.stoneType",
-      },
-    },
-    {
-      $unwind: "$stonetypes",
-    },
-    {
-      $lookup: {
-        as: "stonecolors",
-        from: "stonecolors",
-        foreignField: "_id",
-        localField: "jewelrystones.stoneColor",
-      },
-    },
-    {
-      $unwind: "$stonecolors",
-    },
-    {
-      $lookup: {
-        as: "categories",
-        from: "categories",
-        foreignField: "_id",
-        localField: "jewelries.category",
-      },
     },
     {
       $lookup: {
@@ -135,9 +53,6 @@ exports.getAll = async (user) => {
       $unwind: "$sizes",
     },
     {
-      $unwind: "$categories",
-    },
-    {
       $addFields: {
         totalPrice: {
           $multiply: ["$inventories.price", "$quantity"],
@@ -145,48 +60,6 @@ exports.getAll = async (user) => {
         minQuantity: 0,
         maxQuantity: {
           $sum: ["$inventories.quantity", "$quantity"],
-        },
-      },
-    },
-    {
-      $addFields: {
-        metalInfo: {
-          $map: {
-            input: [
-              {
-                metal: "$metals",
-                caratWeight: "$jewelrymetals.caratWeight",
-              },
-            ],
-            as: "jm",
-            in: {
-              metal: "$$jm.metal.title",
-              caratWeight: "$$jm.caratWeight",
-              metalId: "$$jm.metal._id",
-            },
-          },
-        },
-      },
-    },
-    {
-      $addFields: {
-        stoneInfo: {
-          $map: {
-            input: [
-              {
-                stoneType: "$stonetypes",
-                stoneColor: "$stonecolors",
-                caratWeight: "$jewelrystones.caratWeight",
-              },
-            ],
-            as: "js",
-            in: {
-              stoneType: "$$js.stoneType.title",
-              stoneColor: "$$js.stoneColor.title",
-              caratWeight: "$$js.caratWeight",
-              stoneTypeId: "$$js.stoneType._id",
-            },
-          },
         },
       },
     },
@@ -215,23 +88,11 @@ exports.getAll = async (user) => {
         firstImageUrl: {
           $first: "$jewelries.firstImageUrl",
         },
-        categoryTitle: {
-          $first: "$categories.title",
-        },
         size: {
           $first: "$sizes.measurement",
         },
-        sizeTitle: {
-          $first: "$sizes.title",
-        },
         sizeId: {
           $first: "$sizeId",
-        },
-        metalInfo: {
-          $push: "$metalInfo",
-        },
-        stoneInfo: {
-          $push: "$stoneInfo",
         },
         quantity: {
           $first: "$quantity",
@@ -252,16 +113,6 @@ exports.getAll = async (user) => {
     },
     {
       $sort: {
-        "metalInfo.metalId": 1,
-      },
-    },
-    {
-      $sort: {
-        "stoneInfo.stoneTypeId": 1,
-      },
-    },
-    {
-      $sort: {
         createdAt: -1,
       },
     },
@@ -270,20 +121,14 @@ exports.getAll = async (user) => {
         user: 1,
         jewelryId: 1,
         jewelryTitle: 1,
-        categoryTitle: 1,
-        title: 1,
         firstImageUrl: 1,
         size: 1,
         sizeId: 1,
         sizeTitle: 1,
-        metalInfo: { $setUnion: "$metalInfo" },
-        stoneInfo: { $setUnion: "$stoneInfo" },
         quantity: 1,
         maxQuantity: 1,
         minQuantity: 1,
         totalPrice: 1,
-        metalId: 1,
-        stoneTypeId: 1,
       },
     },
     {
@@ -308,20 +153,17 @@ exports.getAll = async (user) => {
       },
     },
   ]);
-  console.log("jewelries");
-  return jewelries;
+  return result;
 };
 
 exports.create = async ({
   userId,
-  userUUID,
   jewelryId,
   sizeId,
   quantity: DEFAULT_ADD_QUANTITY,
 }) => {
   bagItem = await ShoppingBag.create({
-    userID: userId,
-    userUUID: userUUID,
+    user: userId,
     jewelry: jewelryId,
     size: sizeId,
     quantity: DEFAULT_ADD_QUANTITY,
@@ -335,16 +177,6 @@ exports.create = async ({
 };
 
 exports.decrease = async (bagId) => {
-  // let bagItem = await ShoppingBag.findByIdAndUpdate(
-  //   bagId,
-  //   { $inc: { quantity: -1 } }, // Decrease quantity by 1
-  //   { new: true } // Return the modified document
-  // );
-
-  // if (bagItem.quantity === 0) {
-  //   await ShoppingBag.findByIdAndDelete(bagId);
-  // }
-
   let bagItem = await ShoppingBag.findById(bagId);
 
   const jewelryId = Number(bagItem.jewelry);

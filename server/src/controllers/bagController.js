@@ -7,30 +7,35 @@ const {
 const shoppingBag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
 
-router.get("/display/:user", async (req, res) => {
-  try {
-    const user = req.params.user;
-
-    const jewelries = await bagManager.getAll(user);
-
-    res.status(200).json({ jewelries, DEFAULT_MIN_QUANTITY });
-  } catch (err) {
-    console.log(err.message);
-
-    res.status(400).json({
-      message: "Some error",
-    });
-  }
-});
-
-router.post("/add/:jewelryId", async (req, res) => {
-  const userUUID = req.headers["user-uuid"];
-  const { size } = req.body;
-
+router.get("/display/:userId", async (req, res) => {
   let userId;
 
   if (req.user) {
     userId = req.user._id;
+  } else {
+    userId = req.headers["user-uuid"];
+  }
+
+  try {
+    const result = await bagManager.findAll(userId);
+
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err.message);
+
+    res.status(401).json({
+      message: err.message,
+    });
+  }
+});
+
+router.post("/create/:jewelryId", async (req, res) => {
+  let userId;
+
+  if (req.user) {
+    userId = req.user._id;
+  } else {
+    userId = req.headers["user-uuid"];
   }
 
   const jewelryId = Number(req.params.jewelryId);
@@ -54,7 +59,6 @@ router.post("/add/:jewelryId", async (req, res) => {
 
       bagItem = await bagManager.getOne({
         userId,
-        userUUID,
         jewelryId,
         sizeId,
       });
@@ -63,7 +67,6 @@ router.post("/add/:jewelryId", async (req, res) => {
     if (!bagItem) {
       await bagManager.create({
         userId,
-        userUUID,
         jewelryId,
         sizeId,
         quantity: DEFAULT_ADD_QUANTITY,
@@ -73,7 +76,6 @@ router.post("/add/:jewelryId", async (req, res) => {
       await shoppingBag.findOneAndUpdate(
         {
           user: userId,
-          userUUID,
           jewelry: jewelryId,
           size: sizeId,
         },
@@ -87,16 +89,16 @@ router.post("/add/:jewelryId", async (req, res) => {
       );
     }
 
-    const allBagItems = await shoppingBag.find({
-      $or: [{ user: userId }, { userUUID: userUUID }],
+    const result = await shoppingBag.find({
+      user: userId
     });
 
-    res.json(allBagItems);
+    res.status(200).json(result);
   } catch (err) {
     console.log(err.message);
 
-    res.status(400).json({
-      message: "Some error",
+    res.status(401).json({
+      message: err.message,
     });
   }
 });
@@ -107,9 +109,9 @@ router.put("/decrease/:bagId", async (req, res) => {
   try {
     await bagManager.decrease(bagId);
 
-    res.status(204).json();
+    res.status(200).json();
   } catch (err) {
-    res.status(400).json({
+    res.status(401).json({
       message: err.message,
     });
   }
@@ -121,9 +123,9 @@ router.put("/increase/:bagId", async (req, res) => {
   try {
     await bagManager.increase(bagId);
 
-    res.status(204).json();
+    res.status(200).json();
   } catch (err) {
-    res.status(400).json({
+    res.status(401).json({
       message: err.message,
     });
   }
@@ -137,9 +139,9 @@ router.put("/update/:bagId", async (req, res) => {
   try {
     await bagManager.update(bagId, quantity);
 
-    res.status(204).json();
+    res.status(200).json();
   } catch (err) {
-    res.status(400).json({
+    res.status(401).json({
       message: err.message,
     });
   }
@@ -151,9 +153,9 @@ router.delete("/delete/:bagId", async (req, res) => {
   try {
     await bagManager.delete(bagId);
 
-    res.status(204).json();
+    res.status(200).json();
   } catch (err) {
-    res.status(400).json({
+    res.status(401).json({
       message: err.message,
     });
   }

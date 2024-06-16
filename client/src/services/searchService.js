@@ -7,10 +7,10 @@ const baseUrl = `${HOST}/search`;
 export const searchServiceFactory = (token) => {
   const request = requestFactory(token);
 
-  const user = localStorage.getItem("userUUID");
+  const userId = localStorage.getItem("userUUID");
 
   return {
     findAll: (query) =>
-      request.get(`${baseUrl}/find-all/${user}?query=${query}`),
+      request.get(`${baseUrl}/find-all/${userId}?query=${query}`),
   };
 };
