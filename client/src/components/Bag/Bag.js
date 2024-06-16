@@ -5,6 +5,7 @@ import { BagList } from "./BagList/BagList";
 import { Link } from "react-router-dom";
 import { useBagContext } from "../../contexts/BagContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { EmptyBag } from "./EmptyBag/EmptyBag";
 
 export const Bag = () => {
   const { bagItems, totalPrice, totalQuantity, isEmpty, loading } =
@@ -108,12 +109,7 @@ export const Bag = () => {
           {loading && <LoadingSpinner />}
         </div>
       ) : (
-        <section section className={styles["bag-box"]}>
-          <div className={styles["bag-sub-title"]}>
-            <h3>Your Shopping Bag is Empty.</h3>
-            <p>Explore and add something you love.</p>
-          </div>
-        </section>
+        <EmptyBag />
       )}
     </section>
   );
