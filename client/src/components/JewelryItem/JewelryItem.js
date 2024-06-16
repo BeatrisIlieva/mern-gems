@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useService } from "../../hooks/useService";
 import { jewelryServiceFactory } from "../../services/jewelryService";
 import styles from "./JewelryItem.module.css";
@@ -9,6 +9,7 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { useBagContext } from "../../contexts/BagContext";
 
 const SizeFormKeys = {
   Size: "size",
@@ -23,6 +24,7 @@ export const JewelryItem = () => {
   let [loading, setLoading] = useState(true);
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
     useWishlistContext();
+  const {onAddToBagClick} = useBagContext()
 
   const toggleSelected = () => {
     setLeftIsSelected(!leftIsSelected);
@@ -67,6 +69,16 @@ export const JewelryItem = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (jewelry.category === "2") {
+      const sizeId = jewelry.sizes[0]._id;
+
+      await onAddToBagClick({ size: sizeId }, jewelry._id);
+    } else {
+      await onAddToBagClick(values, jewelry._id);
+    }
+
+    fetchData();
   };
 
   return (

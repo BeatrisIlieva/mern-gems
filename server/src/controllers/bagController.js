@@ -17,9 +17,9 @@ router.get("/find-all/:userId", async (req, res) => {
   }
 
   try {
-    const result = await bagManager.findAll(userId);
+    const jewelries = await bagManager.findAll(userId);
 
-    res.status(200).json(result);
+    res.status(200).json({ jewelries, DEFAULT_MIN_QUANTITY });
   } catch (err) {
     console.log(err.message);
 
@@ -51,6 +51,8 @@ router.get("/find-count", async (req, res) => {
 });
 
 router.post("/create/:jewelryId", async (req, res) => {
+  const { size } = req.body;
+
   let userId;
 
   if (req.user) {
@@ -128,9 +130,9 @@ router.put("/decrease/:bagId", async (req, res) => {
   const bagId = req.params.bagId;
 
   try {
-    await bagManager.decrease(bagId);
+    const result = await bagManager.decrease(bagId);
 
-    res.status(200).json();
+    res.status(200).json({result});
   } catch (err) {
     res.status(401).json({
       message: err.message,
@@ -142,9 +144,9 @@ router.put("/increase/:bagId", async (req, res) => {
   const bagId = req.params.bagId;
 
   try {
-    await bagManager.increase(bagId);
+    const result =  await bagManager.increase(bagId);
 
-    res.status(200).json();
+    res.status(200).json({result});
   } catch (err) {
     res.status(401).json({
       message: err.message,
@@ -158,9 +160,9 @@ router.put("/update/:bagId", async (req, res) => {
   const { quantity } = req.body;
 
   try {
-    await bagManager.update(bagId, quantity);
+    const result = await bagManager.update(bagId, quantity);
 
-    res.status(200).json();
+    res.status(200).json({result});
   } catch (err) {
     res.status(401).json({
       message: err.message,
@@ -172,9 +174,9 @@ router.delete("/delete/:bagId", async (req, res) => {
   const bagId = req.params.bagId;
 
   try {
-    await bagManager.delete(bagId);
+    const result = await bagManager.delete(bagId);
 
-    res.status(200).json();
+    res.status(200).json({result});
   } catch (err) {
     res.status(401).json({
       message: err.message,

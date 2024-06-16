@@ -6,18 +6,15 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useWishlistContext } from "../../contexts/WishlistContext";
+import { useBagContext } from "../../contexts/BagContext";
 import { useEffect, useState } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
 import { SearchInput } from "./SearchInput/SearchInput";
 
 export const Header = () => {
-  const bagCountGreaterThanZero = true;
   const { isAuthenticated } = useAuthContext();
-  const { wishlistCount } = useWishlistContext();
-  const { wishlistCountGreaterThanZero } = useWishlistContext();
-  const bagCount = 3;
-  const user = null;
-
+  const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
+  const { totalQuantity, totalQuantityGreaterThanZero } = useBagContext();
   const [displayDisplaySearchBoxPopup, setDisplaySearchBoxPopup] =
     useState(false);
 
@@ -32,7 +29,6 @@ export const Header = () => {
 
     setDisplaySearchBoxPopup(false);
   };
-
 
   return (
     <header className={styles["header"]}>
@@ -77,7 +73,7 @@ export const Header = () => {
           <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
             <Link
               className={`${styles["icon-bar-item"]} ${styles["icon-bar-item-no-margin"]}`}
-              to={`/wishlist`}
+              to={"/user/wishlist"}
             >
               <span>
                 <FontAwesomeIcon
@@ -95,18 +91,15 @@ export const Header = () => {
             </Link>
           </li>
           <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
-            <Link
-              className={styles["icon-bar-item"]}
-              to={`/bag/display/${user}`}
-            >
+            <Link className={styles["icon-bar-item"]} to={"/user/shopping-bag"}>
               <span>
                 <FontAwesomeIcon
                   icon={faBagShopping}
                   className={styles["icon-pink"]}
                 />
               </span>
-              {bagCountGreaterThanZero && (
-                <span className={styles["icon-bar-count"]}>({bagCount})</span>
+              {totalQuantityGreaterThanZero && (
+                <span className={styles["icon-bar-count"]}>({totalQuantity})</span>
               )}
             </Link>
           </li>

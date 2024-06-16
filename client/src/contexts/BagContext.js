@@ -6,65 +6,77 @@ export const BagContext = createContext();
 
 export const BagProvider = ({ children }) => {
   const bagService = useService(bagServiceFactory);
-  const [bagCount, setBagCount] = useState(0);
-  const bagCountGreaterThanZero = bagCount > 0;
   let [bagItems, setBagItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const totalQuantityGreaterThanZero = totalQuantity > 0;
+  const userId = localStorage.getItem("userUUID");
+  let [loading, setLoading] = useState(true);
 
-  const fetchBagCountData = async () => {
-    try {
-      const count = await bagService.findCount();
+  //   const fetchBagItemsData = async () => {
+  //     try {
+  //       const count = await bagService.findCount();
 
-      setBagCount(count);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  //       setBagCount(count);
+  //     } catch (err) {
+  //       console.log(err.message);
+  //     }
+  //   };
 
   useEffect(() => {
-    fetchBagCountData();
     fetchBagItemsData();
-  }, [bagCount]);
+  }, []);
+
+  //   useEffect(() => {
+  //     fetchBagItemsData();
+  //   }, [totalQuantity]);
 
   const onAddToBagClick = async (data, _id) => {
     try {
       const result = await bagService.create(data, _id);
 
-      fetchBagCountData();
+      fetchBagItemsData();
     } catch (err) {
       console.log(err.message);
     }
   };
 
   const fetchBagItemsData = async () => {
-    try {
-      let data = await onDisplayBagClick();
-      data = Array.isArray(data) ? data[0] : data;
+    setLoading(true);
 
-      if (data && data.jewelries && data.jewelries.length > 0) {
-        const bagData = data.jewelries;
-        const bagItems = bagData[0].documents;
-        setBagItems(bagItems);
+    setTimeout(async () => {
+      try {
+        console.log("after delete")
+        let data = await onDisplayBagClick();
+        data = Array.isArray(data) ? data[0] : data;
+        console.log(data);
 
-        const totalPrice = bagData[0].totalTotalPrice;
-        setTotalPrice(totalPrice);
+        if (data && data.jewelries && data.jewelries.length > 0) {
+          const bagData = data.jewelries;
+          const bagItems = bagData[0].documents;
+          setBagItems(bagItems);
 
-        const totalQuantity = bagData[0].totalQuantity;
-        setTotalQuantity(totalQuantity);
-      } else {
-        setBagItems([]);
-        setTotalQuantity(0);
-        setTotalPrice(0);
+          const totalPrice = bagData[0].totalTotalPrice;
+          setTotalPrice(totalPrice);
+
+          const totalQuantity = bagData[0].totalQuantity;
+          setTotalQuantity(totalQuantity);
+        } else {
+          setBagItems([]);
+          setTotalQuantity(0);
+          setTotalPrice(0);
+        }
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.log(error.message);
-    }
+    }, 400);
   };
 
   const onDisplayBagClick = async () => {
     try {
-      const data = await bagService.findAll();
+      const data = await bagService.findAll(userId);
 
       return data;
     } catch (error) {
@@ -75,7 +87,7 @@ export const BagProvider = ({ children }) => {
   const onRemove = async (bagId) => {
     try {
       const result = await bagService.delete(bagId);
-      fetchBagCountData();
+      fetchBagItemsData();
     } catch (err) {
       console.log(err.message);
     }
@@ -116,7 +128,7 @@ export const BagProvider = ({ children }) => {
 
       setBagItems([...bagItems]);
 
-      fetchBagItems();
+      fetchBagItemsData();
     } catch (error) {
       console.error("Error updating quantity in the database:", error);
     }
@@ -131,13 +143,12 @@ export const BagProvider = ({ children }) => {
   const isEmpty = bagItems.length < 1;
 
   const context = {
-    onAddToBagClick,
-    bagCount,
-    bagCountGreaterThanZero,
     bagItems,
+    onAddToBagClick,
     onDisplayBagClick,
     totalPrice,
     totalQuantity,
+    totalQuantityGreaterThanZero,
     onDecrement,
     onIncrement,
     onRemove,
@@ -145,6 +156,7 @@ export const BagProvider = ({ children }) => {
     onBlur,
     isEmpty,
     clearShoppingBag,
+    loading,
   };
 
   return <BagContext.Provider value={context}>{children}</BagContext.Provider>;
