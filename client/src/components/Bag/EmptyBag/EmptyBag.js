@@ -1,3 +1,4 @@
+import styles from "./EmptyBag.module.css"
 export const EmptyBag = () => {
   return (
     <section section className={styles["bag-box"]}>
