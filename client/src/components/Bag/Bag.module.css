@@ -36,7 +36,7 @@
 }
 
 .bag-left-container-title {
-  padding-bottom: 8px;
+  padding-bottom: 16px;
   font-size: var(--middle-font-size);
   letter-spacing: 0;
 }
@@ -92,15 +92,8 @@
   top: 0;
 }
 
-
 .jewelry-bag-composition {
-  font-size: 16px;
-  line-height: 1.5;
   padding: 16px;
-}
-
-.composition-item-bag {
-  font-size: 16px;
 }
 
 .jewelry-bag-composition-size {
@@ -116,10 +109,8 @@
 .jewelry-bag-composition-button {
   padding: 0px 8px 0px 8px;
   text-decoration: underline;
-  text-decoration-color: black;
-  background-color: white;
-  color: rgba(0, 0, 0, 0.589);
-  font-size: 14.8px;
+  background-color: var(--white);
+  color: var(--middle-gray);
 }
 
 .jewelry-bag-composition-button:hover {
@@ -170,7 +161,6 @@
   border: none;
 }
 
-
 .bag-right-container {
   width: 32%;
 }
@@ -181,8 +171,7 @@
 }
 
 .bag-right-container-title {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: var(--middle-font-size);
   padding-bottom: 16px;
 }
 
@@ -192,24 +181,12 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.bag-right-sub-container-not-bold {
-  font-weight: 100;
-  color: rgba(0, 0, 0, 0.552);
-}
-
 .bag-right-sub-container {
   position: relative;
 }
 
 .bag-right-sub-right-container {
   display: flex;
-}
-
-.horizontal-line {
-  background-color: pink;
-  height: 1px;
-  border: none;
-  margin: 12px 0px 20px 0px;
 }
 
 .bag-right-sub-container-absolute {
