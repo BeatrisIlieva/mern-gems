@@ -6,6 +6,7 @@ import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../../hooks/useForm";
 import { DynamicFormAuthUser } from "../../../../DynamicForm/DynamicFormAuthUser";
 import { hasFormErrorOccurred } from "../../../../../utils/hasFormErrorOccurred";
+import styles from "../AccountDetails.module.css";
 
 export const PersonalInformationForm = () => {
   const { userId } = useAuthContext();
@@ -55,8 +56,6 @@ export const PersonalInformationForm = () => {
     }
   };
 
-  const buttonValue = "Save";
-
   return (
     <section>
       <form method="POST" onSubmit={onSubmit}>
@@ -68,9 +67,15 @@ export const PersonalInformationForm = () => {
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
           userInformation={userInformation}
-          buttonValue={buttonValue}
         />
       </form>
+      <button
+        className={`${styles["animated-button"]} ${styles["button"]}`}
+        type="submit"
+        data-testid="submit"
+      >
+        Save
+      </button>
     </section>
   );
 };

@@ -85,8 +85,6 @@ export const AddressInformationFormPopup = ({
     };
   }, [popupCloseHandler]);
 
-  const buttonValue = "Save";
-
   return (
     <section
       className={styles["popup-box"]}
@@ -117,8 +115,14 @@ export const AddressInformationFormPopup = ({
               changeHandler={changeHandler}
               initialFormValues={INITIAL_FORM_VALUES}
               userInformation={userInformation}
-              buttonValue={buttonValue}
             />
+            <button
+              className={`${styles["animated-button"]} ${styles["button"]}`}
+              type="submit"
+              data-testid="submit"
+            >
+              Save
+            </button>
           </form>
           <button
             className={styles["dismiss-button"]}

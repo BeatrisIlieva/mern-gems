@@ -8,7 +8,6 @@ export const DynamicFormAuthUser = ({
   changeHandler,
   initialFormValues,
   userInformation,
-  buttonValue,
 }) => {
   return (
     <>
@@ -54,13 +53,6 @@ export const DynamicFormAuthUser = ({
           </div>
         </div>
       ))}
-      <button
-        className={`${styles["animated-button"]} ${styles["button"]}`}
-        type="submit"
-        data-testid="submit"
-      >
-        {buttonValue}
-      </button>
     </>
   );
 };
