@@ -7,16 +7,32 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { useBagContext } from "../../contexts/BagContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
 import { SearchInput } from "./SearchInput/SearchInput";
-
+import { MiniHeader } from "./MiniHeader/MiniHeader";
 export const Header = () => {
   const { isAuthenticated } = useAuthContext();
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
   const { totalQuantity, totalQuantityGreaterThanZero } = useBagContext();
   const [displayDisplaySearchBoxPopup, setDisplaySearchBoxPopup] =
     useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const popupClickHandler = async () => {
     document.body.style.overflow = "hidden";
@@ -31,109 +47,124 @@ export const Header = () => {
   };
 
   return (
-    <header className={styles["header"]}>
-      <div className={styles["header-box"]}>
-        <Link to="/">
-          <div className={styles["logo-container"]}>
-            <img
-              className={styles["logo-img"]}
-              src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1717179026/template_images/Screenshot_2024-05-31_at_21.08.36_nps68o.png"
-              }
-              alt={"Logo"}
-            />
+    <>
+      {isScrolled ? (
+        <MiniHeader />
+      ) : (
+        <header className={styles["header"]}>
+          <div className={styles["header-box"]}>
+            <Link to="/">
+              <div className={styles["logo-container"]}>
+                <img
+                  className={styles["logo-img"]}
+                  src={
+                    "https://res.cloudinary.com/deztgvefu/image/upload/v1717179026/template_images/Screenshot_2024-05-31_at_21.08.36_nps68o.png"
+                  }
+                  alt={"Logo"}
+                />
+              </div>
+            </Link>
+            <nav className={styles["nav"]}>
+              <ul className={styles["nav-list"]} role="list">
+                <li>
+                  <Link className={styles["nav-item"]} to="/bracelets">
+                    <h1 className={styles["nav-title"]}>Bracelets</h1>
+                  </Link>
+                </li>
+                <li>
+                  <Link className={styles["nav-item"]} to="/earrings">
+                    <h1 className={styles["nav-title"]}>Earrings</h1>
+                  </Link>
+                </li>
+                <li>
+                  <Link className={styles["nav-item"]} to="/necklaces">
+                    <h1 className={styles["nav-title"]}>
+                      Necklaces & Pendants
+                    </h1>
+                  </Link>
+                </li>
+                <li>
+                  <Link className={styles["nav-item"]} to="/rings">
+                    <h1 className={styles["nav-title"]}>Rings</h1>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <SearchInput popupClickHandler={popupClickHandler} />
+            <ul className={styles["icon-list"]} role="list">
+              <li
+                className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
+              >
+                <Link
+                  className={`${styles["icon-bar-item"]} ${styles["icon-bar-item-no-margin"]}`}
+                  to={"/user/wishlist"}
+                >
+                  <span>
+                    <FontAwesomeIcon
+                      icon={faHeart}
+                      className={styles["icon-pink"]}
+                    />
+                  </span>
+                  {wishlistCountGreaterThanZero ? (
+                    <span className={styles["icon-bar-count"]}>
+                      ({wishlistCount})
+                    </span>
+                  ) : (
+                    <span className={styles["icon-bar-count"]} />
+                  )}
+                </Link>
+              </li>
+              <li
+                className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
+              >
+                <Link
+                  className={styles["icon-bar-item"]}
+                  to={"/user/shopping-bag"}
+                >
+                  <span>
+                    <FontAwesomeIcon
+                      icon={faBagShopping}
+                      className={styles["icon-pink"]}
+                    />
+                  </span>
+                  {totalQuantityGreaterThanZero && (
+                    <span className={styles["icon-bar-count"]}>
+                      ({totalQuantity})
+                    </span>
+                  )}
+                </Link>
+              </li>
+              {!isAuthenticated && (
+                <li className={styles["icon-item"]}>
+                  <Link className={styles["icon-bar-item"]} to="/user/login">
+                    <span>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className={styles["icon-pink"]}
+                      />
+                    </span>
+                  </Link>
+                </li>
+              )}
+              {isAuthenticated && (
+                <li className={styles["icon-item"]}>
+                  <Link className={styles["icon-bar-item"]} to="/user/account">
+                    <span>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className={styles["icon-pink"]}
+                      />
+                    </span>
+                  </Link>
+                </li>
+              )}
+            </ul>
           </div>
-        </Link>
-        <nav className={styles["nav"]}>
-          <ul className={styles["nav-list"]} role="list">
-            <li>
-              <Link className={styles["nav-item"]} to="/bracelets">
-                <h1 className={styles["nav-title"]}>Bracelets</h1>
-              </Link>
-            </li>
-            <li>
-              <Link className={styles["nav-item"]} to="/earrings">
-                <h1 className={styles["nav-title"]}>Earrings</h1>
-              </Link>
-            </li>
-            <li>
-              <Link className={styles["nav-item"]} to="/necklaces">
-                <h1 className={styles["nav-title"]}>Necklaces & Pendants</h1>
-              </Link>
-            </li>
-            <li>
-              <Link className={styles["nav-item"]} to="/rings">
-                <h1 className={styles["nav-title"]}>Rings</h1>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <SearchInput popupClickHandler={popupClickHandler} />
-        <ul className={styles["icon-list"]} role="list">
-          <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
-            <Link
-              className={`${styles["icon-bar-item"]} ${styles["icon-bar-item-no-margin"]}`}
-              to={"/user/wishlist"}
-            >
-              <span>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  className={styles["icon-pink"]}
-                />
-              </span>
-              {wishlistCountGreaterThanZero ? (
-                <span className={styles["icon-bar-count"]}>
-                  ({wishlistCount})
-                </span>
-              ) : (
-                <span className={styles["icon-bar-count"]} />
-              )}
-            </Link>
-          </li>
-          <li className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}>
-            <Link className={styles["icon-bar-item"]} to={"/user/shopping-bag"}>
-              <span>
-                <FontAwesomeIcon
-                  icon={faBagShopping}
-                  className={styles["icon-pink"]}
-                />
-              </span>
-              {totalQuantityGreaterThanZero && (
-                <span className={styles["icon-bar-count"]}>
-                  ({totalQuantity})
-                </span>
-              )}
-            </Link>
-          </li>
-          {!isAuthenticated && (
-            <li className={styles["icon-item"]}>
-              <Link className={styles["icon-bar-item"]} to="/user/login">
-                <span>
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    className={styles["icon-pink"]}
-                  />
-                </span>
-              </Link>
-            </li>
+          {displayDisplaySearchBoxPopup && (
+            <SearchBoxPopup popupCloseHandler={popupCloseHandler} />
           )}
-          {isAuthenticated && (
-            <li className={styles["icon-item"]}>
-              <Link className={styles["icon-bar-item"]} to="/user/account">
-                <span>
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    className={styles["icon-pink"]}
-                  />
-                </span>
-              </Link>
-            </li>
-          )}
-        </ul>
-      </div>
-      {displayDisplaySearchBoxPopup && (
-        <SearchBoxPopup popupCloseHandler={popupCloseHandler} />
+        </header>
       )}
-    </header>
+    </>
   );
 };

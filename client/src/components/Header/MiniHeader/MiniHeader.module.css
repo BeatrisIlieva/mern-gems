@@ -1,0 +1,38 @@
+.mini-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  border-bottom: 0.1px solid var(--border);
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgba(255, 255, 255, 0.855);
+  font-size: var(--medium-font-size);
+  justify-content: center;
+  transition: all 0.9s ease;
+  animation: slideIn 0.2s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 0;
+  }
+}
+
+.logo-container {
+  margin: 0px 40px 0px 0px;
+  width: 74px;
+  aspect-ratio: 1 / 1;
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+  display: inline-block;
+  vertical-align: middle;
+}

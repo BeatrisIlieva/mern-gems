@@ -28,7 +28,7 @@
 
 @keyframes slideInLeft {
   from {
-    left: -214px;
+    left: -94px;
   }
   to {
     left: 0;
@@ -37,7 +37,7 @@
 
 @keyframes slideInRight {
   from {
-    right: -214px;
+    right: -94px;
   }
   to {
     right: 0;
@@ -222,7 +222,7 @@ input[type="radio"] {
   display: flex;
   gap: 1px;
   background: var(--white);
-  border: 1px solid var(--dark-pink);
+  border: 1px solid var(--button-pink);
   padding: 12px;
   margin-right: 6px;
   margin-top: 6px;
