@@ -124,12 +124,20 @@ export const Payment = () => {
           <div className={styles["complete-order-left-container"]}>
             <div className={styles["complete-order-left-container-sticky"]}>
               <div className={styles["left-top-container"]}>
-                <h4 className={styles["left-top-container-title"]}>
-                  Shipping Information
-                </h4>
-                <h4 className={styles["left-top-container-email"]}>
-                  {user.email}
-                </h4>
+                <div className={styles["left-top-upper-container"]}>
+                  <h4 className={styles["left-top-container-title"]}>
+                    Shipping Information
+                  </h4>
+                  <button className={styles["left-top-container-edit-button"]}>
+                    Edit
+                  </button>
+                </div>
+                <div className={styles["left-top-sub-container"]}>
+                  <h5>email</h5>
+                  <h4 className={styles["left-bottom-container-email"]}>
+                    {user.email}
+                  </h4>
+                </div>
               </div>
               <div className={styles["left-bottom-container"]}>
                 <h4 className={styles["left-bottom-container-title"]}>
