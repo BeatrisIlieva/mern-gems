@@ -22,6 +22,7 @@ import { wishlistServiceFactory } from "./services/wishlistService";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 import { Bag } from "./components/Bag/Bag";
 import { BagProvider } from "./contexts/BagContext";
+import { CompleteOrder } from "./components/CompleteOrder/CompleteOrder";
 
 function App() {
   return (
@@ -152,16 +153,20 @@ function App() {
                     }
                   />
                   <Route
+                    path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle/:_id"
+                    element={<JewelryItem />}
+                  />
+                  <Route
                     path="/user/wishlist"
                     element={
                       <Wishlist serviceFactory={wishlistServiceFactory} />
                     }
                   />
-                  <Route path="/user/shopping-bag" element={<Bag />} />
                   <Route
-                    path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle/:_id"
-                    element={<JewelryItem />}
+                    path="/user/complete-order"
+                    element={<CompleteOrder />}
                   />
+                  <Route path="/user/shopping-bag" element={<Bag />} />
                   <Route path="/user/login" element={<Login />} />
                   <Route path="/user/register" element={<Register />} />
                   <Route path="/user/account" element={<Account />} />
