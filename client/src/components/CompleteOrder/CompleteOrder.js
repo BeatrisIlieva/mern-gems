@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useBagContext } from "../../contexts/BagContext";
 import { BagList } from "../Bag/BagList/BagList";
 import { authServiceFactory } from "../../services/authService";
+import { OrderSummary } from "../OrderSummary/OrderSummary";
 
 export const CompleteOrder = () => {
   const { bagItems, totalPrice, totalQuantity } = useBagContext();
@@ -135,16 +136,25 @@ export const CompleteOrder = () => {
           </div>
           <div className={styles["complete-order-right-container"]}>
             <div className={styles["bag-right-container-sticky"]}>
-              <ul className={styles["complete-order-left-sub-container"]}>
+              <ul className={styles["complete-order-left-sub-container"]} role="list">
                 {bagItems.map((item) => (
                   <li
                     key={item._id}
                     className={styles["bag-left-sub-left-container"]}
                   >
-                    <BagList {...item} />
+                    <OrderSummary {...item} />
                   </li>
                 ))}
               </ul>
+              <div className={styles["flex-container-line"]}>
+                  <hr className={styles["hr-line"]} />
+                  <img
+                    className={styles["line-img"]}
+                    src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
+                    alt=""
+                  />
+                  <hr className={styles["hr-line"]} />
+                </div>
               <div className={styles["bag-right-sub-container"]}>
                 <div className={styles["bag-right-sub-right-container"]}>
                   <p className={styles["bag-right-sub-container-bold"]}>
@@ -164,15 +174,6 @@ export const CompleteOrder = () => {
                     Complimentary
                   </p>
                 </div>
-                <div className={styles["flex-container-line"]}>
-                  <hr className={styles["hr-line"]} />
-                  <img
-                    className={styles["line-img"]}
-                    src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
-                    alt=""
-                  />
-                  <hr className={styles["hr-line"]} />
-                </div>
                 <div className={styles["bag-right-sub-right-container"]}>
                   <p className={styles["bag-right-sub-container-bold"]}>
                     Total
@@ -182,18 +183,6 @@ export const CompleteOrder = () => {
                   >
                     ${totalPrice}
                   </p>
-                </div>
-                <div className={styles["continue-checkout-button-container"]}>
-                  <button className={styles["continue-checkout-button"]}>
-                    Continue Checkout
-                  </button>
-                  {/* <Link to={`/complete-order/${user}`}>
-                <input
-                  className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]} ${styles["continue-checkout-button"]}`}
-                  type="submit"
-                  value="Continue Checkout"
-                />
-              </Link> */}
                 </div>
               </div>
             </div>

@@ -7,10 +7,7 @@ router.put("/update/:userId", async (req, res) => {
   data = req.body;
 
   try {
-    const address = await userAddressInformationManager.update(
-      userId,
-      data
-    );
+    const address = await userAddressInformationManager.update(userId, data);
 
     res.status(200).json(address);
   } catch (err) {
