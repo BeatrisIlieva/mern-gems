@@ -55,6 +55,7 @@
 .left-top-container-title {
   font-size: var(--middle-font-size);
   margin-top: 0px;
+
 }
 
 .left-top-container-edit-button {
@@ -66,13 +67,20 @@
 }
 
 .left-bottom-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .left-bottom-container-title {
   font-size: var(--middle-font-size);
   margin-top: 0px;
+  /* margin-bottom: 40px; */
 }
 
+.card-details-container {
+  border: 1px solid var(--border);
+}
 .left-bottom-container-email-title {
   margin: 20px 0px 0px 0px;
   padding: 0;

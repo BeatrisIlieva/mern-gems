@@ -79,6 +79,23 @@ export const SUCCESS_MESSAGES = {
   newPassword: PASSWORD_SUCCESS_MESSAGE,
 };
 
+export const LONG_CARD_NUMBER_PATTERN = /^\d{16}$/;
+
+const LONG_CARD_NUMBER_PATTERN_ERROR_MESSAGE =
+  "The card number should be exactly 16 digits long";
+
+export const EXPIRATION_DATE_PATTERN = /^\d{2}\/\d{2}$/;
+
+const EXPIRATION_DATE_PATTERN_ERROR_MESSAGE =
+  "The expiration date should be in the format MM/YY";
+
+export const CVV_CODE_PATTERN = /^\d{3}$/;
+
+const CVV_CODE_PATTERN_ERROR_MESSAGE =
+  "The CVV code should be exactly 3 digits long";
+
+const EXPIRED_CARD_ERROR_MESSAGE = "This card has expired";
+
 export const ERROR_MESSAGES = {
   password: PASSWORD_ERROR_MESSAGE,
   newPassword: PASSWORD_ERROR_MESSAGE,
@@ -98,4 +115,8 @@ export const ERROR_MESSAGES = {
   city: NAME_ERROR_MESSAGE,
   apartment: APARTMENT_ERROR_MESSAGE,
   country: NAME_ERROR_MESSAGE,
+  longCardNumber: LONG_CARD_NUMBER_PATTERN_ERROR_MESSAGE,
+  expirationDate: EXPIRATION_DATE_PATTERN_ERROR_MESSAGE,
+  cvvCode: CVV_CODE_PATTERN_ERROR_MESSAGE,
+  expiredCard: EXPIRED_CARD_ERROR_MESSAGE,
 };

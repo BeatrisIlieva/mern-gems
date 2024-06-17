@@ -19,6 +19,7 @@ import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { AddressInformationFormPopup } from "../User/Account/AccountDetails/AddressInformationFormPopup/AddressInformationFormPopup";
+import { CardDetailsForm } from "./CardDetailsForm/CardDetailsForm";
 
 export const Payment = () => {
   const { bagItems, totalPrice, totalQuantity, loading } = useBagContext();
@@ -167,8 +168,8 @@ export const Payment = () => {
                       ({totalQuantity} {totalQuantity > 1 ? "items" : "item"})
                     </span>
                     <h5 className={styles["left-bottom-container-email-title"]}>
-                    Shipping Address
-                  </h5>
+                      Shipping Address
+                    </h5>
                     <ul
                       className={styles["address-information-list"]}
                       role="list"
@@ -197,11 +198,11 @@ export const Payment = () => {
               </div>
               <div className={styles["left-bottom-container"]}>
                 <h4 className={styles["left-bottom-container-title"]}>
-                  Shipping Information
+                  Payment
                 </h4>
-                <h4 className={styles["left-bottom-container-email"]}>
-                  {user.email}
-                </h4>
+                <div className={styles["card-details-container"]}>
+                  <CardDetailsForm/>
+                </div>
               </div>
             </div>
           </div>
