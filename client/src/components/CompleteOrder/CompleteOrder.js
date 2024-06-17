@@ -15,15 +15,28 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useBagContext } from "../../contexts/BagContext";
 import { BagList } from "../Bag/BagList/BagList";
+import { authServiceFactory } from "../../services/authService";
 
 export const CompleteOrder = () => {
   const { bagItems, totalPrice, totalQuantity } = useBagContext();
-
+  const authService = useService(authServiceFactory);
   const { userId } = useAuthContext();
+  const [user, setUser] = useState([]);
   const addressInformationService = useService(
     addressInformationServiceFactory
   );
   const [userInformation, setUserInformation] = useState([]);
+
+  useEffect(() => {
+    authService
+      .find(userId)
+      .then((dataFromServer) => {
+        setUser(dataFromServer);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  });
 
   const {
     values,
@@ -91,6 +104,14 @@ export const CompleteOrder = () => {
         </div>
         <div className={styles["complete-order-container"]}>
           <div className={styles["complete-order-left-container"]}>
+            <div className={styles["left-top-container"]}>
+              <h4 className={styles["left-top-container-title"]}>
+                Shipping Information
+              </h4>
+              <h4 className={styles["left-top-container-email"]}>
+                {user.email}
+              </h4>
+            </div>
             <form
               method="POST"
               onSubmit={onSubmit}
