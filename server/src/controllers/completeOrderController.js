@@ -4,12 +4,12 @@ const userAddressInformationManager = require("../managers/userAddressInformatio
 router.put("/update/:userId", async (req, res) => {
   const userId = req.user._id;
 
-  profileData = req.body;
+  data = req.body;
 
   try {
     const address = await userAddressInformationManager.update(
       userId,
-      profileData
+      data
     );
 
     res.status(200).json(address);
