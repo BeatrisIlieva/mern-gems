@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useBagContext } from "../../contexts/BagContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { EmptyBag } from "./EmptyBag/EmptyBag";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Bag = () => {
   const { bagItems, totalPrice, totalQuantity, isEmpty, loading } =
@@ -91,16 +92,11 @@ export const Bag = () => {
                     </p>
                   </div>
                   <div className={styles["continue-checkout-button-container"]}>
-                    <button className={styles["continue-checkout-button"]}>
-                      Continue Checkout
-                    </button>
-                    {/* <Link to={`/complete-order/${user}`}>
-                      <input
-                        className={`${styles["button"]} ${styles["pink"]} ${styles["hover"]} ${styles["continue-checkout-button"]}`}
-                        type="submit"
-                        value="Continue Checkout"
-                      />
-                    </Link> */}
+                    <Link to={"/user/checkout"}>
+                      <button className={styles["continue-checkout-button"]}>
+                        Continue Checkout
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
