@@ -10,16 +10,15 @@ import {
   FORM_KEYS,
 } from "../User/Account/AccountDetails/AddressInformationFormPopup/initialFormValues";
 import styles from "./CompleteOrder.module.css";
-import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useBagContext } from "../../contexts/BagContext";
-import { BagList } from "../Bag/BagList/BagList";
 import { authServiceFactory } from "../../services/authService";
 import { OrderSummary } from "../OrderSummary/OrderSummary";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 export const CompleteOrder = () => {
-  const { bagItems, totalPrice, totalQuantity } = useBagContext();
+  const { bagItems, totalPrice, loading } = useBagContext();
   const authService = useService(authServiceFactory);
   const { userId } = useAuthContext();
   const [user, setUser] = useState([]);
@@ -136,7 +135,7 @@ export const CompleteOrder = () => {
           </div>
           <div className={styles["complete-order-right-container"]}>
             <div className={styles["complete-order-right-container-sticky"]}>
-                <h4 className={styles["order-summary-title"]}>Order Summary</h4>
+              <h4 className={styles["order-summary-title"]}>Order Summary</h4>
               <ul role="list">
                 {bagItems.map((item) => (
                   <li
@@ -148,14 +147,14 @@ export const CompleteOrder = () => {
                 ))}
               </ul>
               <div className={styles["flex-container-line"]}>
-                  <hr className={styles["hr-line"]} />
-                  <img
-                    className={styles["line-img"]}
-                    src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
-                    alt=""
-                  />
-                  <hr className={styles["hr-line"]} />
-                </div>
+                <hr className={styles["hr-line"]} />
+                <img
+                  className={styles["line-img"]}
+                  src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
+                  alt=""
+                />
+                <hr className={styles["hr-line"]} />
+              </div>
               <div className={styles["bag-right-sub-container"]}>
                 <div className={styles["bag-right-sub-right-container"]}>
                   <p className={styles["bag-right-sub-container-bold"]}>
@@ -190,6 +189,7 @@ export const CompleteOrder = () => {
           </div>
         </div>
       </div>
+      {loading && <LoadingSpinner />}
     </section>
   );
 };

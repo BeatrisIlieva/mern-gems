@@ -163,7 +163,7 @@ function App() {
                     }
                   />
                   <Route
-                    path="/user/complete-order"
+                    path="/user/checkout"
                     element={<CompleteOrder />}
                   />
                   <Route path="/user/shopping-bag" element={<Bag />} />
