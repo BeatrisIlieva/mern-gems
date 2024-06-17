@@ -88,6 +88,9 @@ export const CompleteOrder = () => {
       }
     }
   };
+
+  const buttonValue = "Continue Checkout";
+
   return (
     <section className={styles["complete-order-box"]}>
       <div>
@@ -112,6 +115,7 @@ export const CompleteOrder = () => {
                 {user.email}
               </h4>
             </div>
+            <h5 className={styles["add-address-title"]}>Add Address</h5>
             <form
               method="POST"
               onSubmit={onSubmit}
@@ -125,6 +129,7 @@ export const CompleteOrder = () => {
                 changeHandler={changeHandler}
                 initialFormValues={INITIAL_FORM_VALUES}
                 userInformation={userInformation}
+                buttonValue={buttonValue}
               />
             </form>
           </div>

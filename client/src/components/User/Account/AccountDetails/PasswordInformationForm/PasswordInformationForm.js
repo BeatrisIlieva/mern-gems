@@ -95,6 +95,8 @@ export const PasswordInformationForm = () => {
     values[FORM_KEYS.NewPassword].successMessage = "";
   };
 
+  const buttonValue = "Save";
+
   return (
     <section className={styles["slideIn"]}>
       <form
@@ -110,6 +112,7 @@ export const PasswordInformationForm = () => {
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
           userInformation={userInformation}
+          buttonValue={buttonValue}
         />
       </form>
     </section>

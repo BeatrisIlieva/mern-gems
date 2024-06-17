@@ -8,6 +8,7 @@ export const DynamicFormAuthUser = ({
   changeHandler,
   initialFormValues,
   userInformation,
+  buttonValue,
 }) => {
   return (
     <>
@@ -58,7 +59,7 @@ export const DynamicFormAuthUser = ({
         type="submit"
         data-testid="submit"
       >
-        Save
+        {buttonValue}
       </button>
     </>
   );

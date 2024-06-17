@@ -55,6 +55,8 @@ export const PersonalInformationForm = () => {
     }
   };
 
+  const buttonValue = "Save";
+
   return (
     <section>
       <form method="POST" onSubmit={onSubmit}>
@@ -66,6 +68,7 @@ export const PersonalInformationForm = () => {
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
           userInformation={userInformation}
+          buttonValue={buttonValue}
         />
       </form>
     </section>

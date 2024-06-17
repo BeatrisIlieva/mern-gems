@@ -10,6 +10,9 @@
 
 .complete-order-left-container {
   width: 60%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 32px -12px,
+    rgba(0, 0, 0, 0.3) 0px 6px 12px -18px;
+  padding: 20px;
 }
 
 .title-container {
@@ -27,27 +30,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .left-top-container-title {
-  font-size: 20px;
+  font-size: var(--middle-font-size);
+
 }
 
 .left-top-container-email {
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.472);
+  font-size: var(--medium-font-size);
+  color: var(--white-gray);
 }
 
-.form-container {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 32px -12px,
-    rgba(0, 0, 0, 0.3) 0px 6px 12px -18px;
-  padding: 32px;
-  padding-bottom: 0px;
-}
 
 .complete-order-right-container {
-  width: 30%;
+  width: 36%;
 }
 
 .title-sub-container {
@@ -56,6 +54,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 40px;
+  
 }
 
 .arrow {
@@ -72,11 +71,18 @@
 
 .main-sub-title {
   color: var(--gray);
+  
 }
 
 .arrow,
 .sub-title {
   color: var(--extra-light-gray);
+}
+
+.add-address-title {
+  font-family: var(--bold-italic-font-family);
+  font-size: var(--medium-font-size);
+  margin-bottom: 30px;
 }
 
 .bag-left-sub-left-container {

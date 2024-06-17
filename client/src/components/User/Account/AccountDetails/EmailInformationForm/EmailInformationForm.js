@@ -63,6 +63,8 @@ export const EmailInformationForm = () => {
     }
   };
 
+  const buttonValue = "Save";
+
   return (
     <section className={styles["slideIn"]}>
       <form method="POST" onSubmit={onSubmit} data-testid="update-email-form">
@@ -74,6 +76,7 @@ export const EmailInformationForm = () => {
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
           userInformation={userInformation}
+          buttonValue={buttonValue}
         />
       </form>
     </section>
