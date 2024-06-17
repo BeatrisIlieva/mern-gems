@@ -19,7 +19,7 @@ export const Bag = () => {
         <div>
           <div className={styles["bag-container"]}>
             <div className={styles["bag-left-container"]}>
-              <p className={styles["bag-left-container-title"]}>
+              <div className={styles["bag-left-container-title"]}>
                 <span
                   className={styles["bag-left-container-title-with-padding"]}
                 >
@@ -36,7 +36,7 @@ export const Bag = () => {
                 <span className={styles["delivery-span"]}>
                   ({totalQuantity} {totalQuantity > 1 ? "items" : "item"})
                 </span>
-              </p>
+              </div>
               <ul className={styles["bag-left-sub-container"]}>
                 {bagItems.map((item) => (
                   <li

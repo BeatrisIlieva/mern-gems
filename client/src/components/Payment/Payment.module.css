@@ -80,6 +80,20 @@
   font-size: var(--small-font-size);
 }
 
+.delivery-icon {
+  color: var(--dark-pink);
+  margin-right: 6px;
+  margin-top: 10px;
+
+}
+
+.delivery-title {
+  font-family: var(--bold-font-family);
+  margin-right: 6px;
+  margin-top: 10px;
+
+}
+
 .left-bottom-container-email {
   margin: 0;
   padding: 0;

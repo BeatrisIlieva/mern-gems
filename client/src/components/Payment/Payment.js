@@ -18,9 +18,10 @@ import { OrderSummary } from "../OrderSummary/OrderSummary";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { personalInformationServiceFactory } from "../../services/personalInformationService";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 
 export const Payment = () => {
-  const { bagItems, totalPrice, loading } = useBagContext();
+  const { bagItems, totalPrice, totalQuantity, loading } = useBagContext();
   const authService = useService(authServiceFactory);
   const { userId } = useAuthContext();
   const [user, setUser] = useState([]);
@@ -133,10 +134,34 @@ export const Payment = () => {
                   </button>
                 </div>
                 <div className={styles["left-bottom-sub-container"]}>
-                  <h5 className={styles["left-bottom-container-email-title"]}>Email</h5>
+                  <h5 className={styles["left-bottom-container-email-title"]}>
+                    Email
+                  </h5>
                   <h4 className={styles["left-bottom-container-email"]}>
                     {user.email}
                   </h4>
+                  <div className={styles["bag-left-container-title"]}>
+                    <span
+                      className={
+                        styles["bag-left-container-title-with-padding"]
+                      }
+                    >
+                      <FontAwesomeIcon
+                        icon={faTruck}
+                        className={styles["delivery-icon"]}
+                      />
+                    </span>
+                    <span className={styles["delivery-title"]}>Delivery</span>
+                    <span className={styles["delivery-span"]}>
+                      ({totalQuantity} {totalQuantity > 1 ? "items" : "item"})
+                    </span>
+                    <ul role="list">
+                      <li>
+                        {userPersonalInformation.firstName}{" "}
+                        {userPersonalInformation.lastName}
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               <div className={styles["left-bottom-container"]}>
