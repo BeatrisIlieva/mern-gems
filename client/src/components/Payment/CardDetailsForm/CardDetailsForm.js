@@ -10,10 +10,9 @@ export const CardDetailsForm = () => {
   const { userId } = useAuthContext();
   // const completeCheckoutService = useService(completeCheckoutServiceFactory);
   return (
-    <>
-      {" "}
+    <section className={styles["card-details-box"]}>
       <DayDropdown />
       <MonthDropdown />
-    </>
+    </section>
   );
 };
