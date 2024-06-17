@@ -166,6 +166,9 @@ export const Payment = () => {
                     <span className={styles["delivery-span"]}>
                       ({totalQuantity} {totalQuantity > 1 ? "items" : "item"})
                     </span>
+                    <h5 className={styles["left-bottom-container-email-title"]}>
+                    Shipping Address
+                  </h5>
                     <ul
                       className={styles["address-information-list"]}
                       role="list"
