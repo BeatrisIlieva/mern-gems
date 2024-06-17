@@ -67,13 +67,13 @@
 }
 
 .bag-right-sub-container-bold {
-  font-weight: 600;
+  font-family: var(--bold-italic-font-family);
   letter-spacing: 0;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .bag-right-sub-container {
   position: relative;
+  letter-spacing: 0;
 }
 
 .bag-right-sub-right-container {

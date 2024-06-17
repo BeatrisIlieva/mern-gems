@@ -135,8 +135,9 @@ export const CompleteOrder = () => {
             </form>
           </div>
           <div className={styles["complete-order-right-container"]}>
-            <div className={styles["bag-right-container-sticky"]}>
-              <ul className={styles["complete-order-left-sub-container"]} role="list">
+            <div className={styles["complete-order-right-container-sticky"]}>
+                <h4 className={styles["order-summary-title"]}>Order Summary</h4>
+              <ul role="list">
                 {bagItems.map((item) => (
                   <li
                     key={item._id}

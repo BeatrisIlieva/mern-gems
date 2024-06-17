@@ -35,14 +35,14 @@
 
 .left-top-container-title {
   font-size: var(--middle-font-size);
-
+  margin-top: 0px;
 }
 
 .left-top-container-email {
   font-size: var(--medium-font-size);
   color: var(--white-gray);
+  margin-top: 0px;
 }
-
 
 .complete-order-right-container {
   width: 36%;
@@ -54,7 +54,6 @@
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 40px;
-  
 }
 
 .arrow {
@@ -71,12 +70,18 @@
 
 .main-sub-title {
   color: var(--gray);
-  
 }
 
 .arrow,
 .sub-title {
   color: var(--extra-light-gray);
+}
+
+.order-summary-title {
+  font-size: var(--middle-font-size);
+  letter-spacing: 0;
+  margin-bottom: 40px;
+  margin-top: 0px;
 }
 
 .add-address-title {
@@ -90,13 +95,13 @@
   padding-bottom: 32px;
 }
 
-.delivery-icon {
-  color: var(--dark-pink);
-}
-
-.bag-right-container-sticky {
+.complete-order-right-container-sticky {
   position: sticky;
   top: calc(18vh + 42px);
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 32px -12px,
+    rgba(0, 0, 0, 0.3) 0px 6px 12px -18px;
+  padding: 20px;
 }
 
 .bag-right-container-title {
@@ -105,13 +110,13 @@
 }
 
 .bag-right-sub-container-bold {
-  font-weight: 600;
+  font-family: var(--bold-italic-font-family);
   letter-spacing: 0;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .bag-right-sub-container {
   position: relative;
+  letter-spacing: 0;
 }
 
 .bag-right-sub-right-container {
@@ -127,11 +132,6 @@
   padding: 0;
   margin: 0;
   padding-bottom: 8px;
-}
-
-.continue-checkout-button {
-  width: 100% !important;
-  margin-top: 12px;
 }
 
 .flex-container-line {
@@ -158,4 +158,3 @@
   vertical-align: middle;
   margin: 0px 4px;
 }
-
