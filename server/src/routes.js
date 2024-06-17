@@ -9,7 +9,7 @@ const jewelryCollectionController = require("./controllers/jewelryCollectionCont
 const stoneController = require("./controllers/stoneController");
 const searchController = require("./controllers/searchController");
 const bagController = require("./controllers/bagController");
-const completeOrderController = require ("./controllers/completeOrderController");
+const completeOrderController = require("./controllers/completeOrderController");
 
 router.use("/user-login-information", userLoginInformationController);
 router.use("/user-personal-information", userPersonalInformationController);
