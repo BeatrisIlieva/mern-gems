@@ -89,8 +89,6 @@ export const CompleteOrder = () => {
     }
   };
 
-  const buttonValue = "Continue Checkout";
-
   return (
     <section className={styles["complete-order-box"]}>
       <div>
@@ -107,31 +105,37 @@ export const CompleteOrder = () => {
         </div>
         <div className={styles["complete-order-container"]}>
           <div className={styles["complete-order-left-container"]}>
-            <div className={styles["left-top-container"]}>
-              <h4 className={styles["left-top-container-title"]}>
-                Shipping Information
-              </h4>
-              <h4 className={styles["left-top-container-email"]}>
-                {user.email}
-              </h4>
+            <div className={styles["complete-order-left-container-sticky"]}>
+              <div className={styles["left-top-container"]}>
+                <h4 className={styles["left-top-container-title"]}>
+                  Shipping Information
+                </h4>
+                <h4 className={styles["left-top-container-email"]}>
+                  {user.email}
+                </h4>
+              </div>
+              <h5 className={styles["add-address-title"]}>Add Address</h5>
+              <form
+                method="POST"
+                onSubmit={onSubmit}
+                className={styles["form-container"]}
+              >
+                <DynamicFormAuthUser
+                  values={values}
+                  formKeys={FORM_KEYS}
+                  clickHandler={clickHandler}
+                  blurHandler={blurHandler}
+                  changeHandler={changeHandler}
+                  initialFormValues={INITIAL_FORM_VALUES}
+                  userInformation={userInformation}
+                />
+                <div className={styles["continue-checkout-button-container"]}>
+                  <button className={styles["continue-checkout-button"]}>
+                    Continue Checkout
+                  </button>
+                </div>
+              </form>
             </div>
-            <h5 className={styles["add-address-title"]}>Add Address</h5>
-            <form
-              method="POST"
-              onSubmit={onSubmit}
-              className={styles["form-container"]}
-            >
-              <DynamicFormAuthUser
-                values={values}
-                formKeys={FORM_KEYS}
-                clickHandler={clickHandler}
-                blurHandler={blurHandler}
-                changeHandler={changeHandler}
-                initialFormValues={INITIAL_FORM_VALUES}
-                userInformation={userInformation}
-                buttonValue={buttonValue}
-              />
-            </form>
           </div>
           <div className={styles["complete-order-right-container"]}>
             <div className={styles["complete-order-right-container-sticky"]}>

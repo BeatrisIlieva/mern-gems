@@ -15,6 +15,11 @@
   padding: 20px;
 }
 
+.complete-order-left-container-sticky {
+  position: sticky;
+  top: 0;
+}
+
 .title-container {
   display: flex;
   justify-content: space-between;
@@ -157,4 +162,23 @@
   width: 20px;
   vertical-align: middle;
   margin: 0px 4px;
+}
+
+.continue-checkout-button {
+  padding: 12px;
+  font-size: var(--medium-font-size);
+  font-family: var(--bold-italic-font-family);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--button-pink);
+  color: var(--white);
+  outline: none;
+  letter-spacing: 1.2px;
+  width: 100%;
+  text-align: center;
+}
+
+.continue-checkout-button:hover {
+  background: var(--button-hover-pink);
 }
