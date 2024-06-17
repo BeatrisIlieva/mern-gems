@@ -9,15 +9,16 @@ import {
   INITIAL_FORM_VALUES,
   FORM_KEYS,
 } from "../User/Account/AccountDetails/AddressInformationFormPopup/initialFormValues";
-import styles from "./CompleteOrder.module.css";
+import styles from "./Checkout.module.css";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useBagContext } from "../../contexts/BagContext";
 import { authServiceFactory } from "../../services/authService";
 import { OrderSummary } from "../OrderSummary/OrderSummary";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { Link } from "react-router-dom";
 
-export const CompleteOrder = () => {
+export const Checkout = () => {
   const { bagItems, totalPrice, loading } = useBagContext();
   const authService = useService(authServiceFactory);
   const { userId } = useAuthContext();
@@ -130,9 +131,11 @@ export const CompleteOrder = () => {
                   userInformation={userInformation}
                 />
                 <div className={styles["continue-checkout-button-container"]}>
-                  <button className={styles["continue-checkout-button"]}>
-                    Continue Checkout
-                  </button>
+                  <Link to={"/user/payment"}>
+                    <button className={styles["continue-checkout-button"]}>
+                      Continue Checkout
+                    </button>
+                  </Link>
                 </div>
               </form>
             </div>

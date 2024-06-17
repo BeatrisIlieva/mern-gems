@@ -22,7 +22,8 @@ import { wishlistServiceFactory } from "./services/wishlistService";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 import { Bag } from "./components/Bag/Bag";
 import { BagProvider } from "./contexts/BagContext";
-import { CompleteOrder } from "./components/CompleteOrder/CompleteOrder";
+import { Checkout } from "./components/Checkout/Checkout";
+import { Payment } from "./components/Payment/Payment";
 
 function App() {
   return (
@@ -162,7 +163,8 @@ function App() {
                       <Wishlist serviceFactory={wishlistServiceFactory} />
                     }
                   />
-                  <Route path="/user/checkout" element={<CompleteOrder />} />
+                  <Route path="/user/checkout" element={<Checkout />} />
+                  <Route path="/user/payment" element={<Payment />} />
                   <Route path="/user/shopping-bag" element={<Bag />} />
                   <Route path="/user/login" element={<Login />} />
                   <Route path="/user/register" element={<Register />} />
