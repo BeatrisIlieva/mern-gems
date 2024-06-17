@@ -18,6 +18,7 @@ import { OrderSummary } from "../OrderSummary/OrderSummary";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import { AddressInformationFormPopup } from "../User/Account/AccountDetails/AddressInformationFormPopup/AddressInformationFormPopup";
 
 export const Payment = () => {
   const { bagItems, totalPrice, totalQuantity, loading } = useBagContext();
@@ -28,6 +29,29 @@ export const Payment = () => {
     addressInformationServiceFactory
   );
   const [userInformation, setUserInformation] = useState([]);
+
+  const [
+    displayAddressInformationFormPopup,
+    setDisplayAddressInformationFormPopup,
+  ] = useState(false);
+
+  const popupClickHandler = async () => {
+    document.body.style.overflow = "hidden";
+
+    setDisplayAddressInformationFormPopup(true);
+  };
+
+  const popupSubmitHandler = async () => {
+    document.body.style.overflow = "visible";
+
+    setDisplayAddressInformationFormPopup(false);
+  };
+
+  const popupCloseHandler = () => {
+    document.body.style.overflow = "visible";
+
+    setDisplayAddressInformationFormPopup(false);
+  };
 
   useEffect(() => {
     authService
@@ -113,7 +137,10 @@ export const Payment = () => {
                   <h4 className={styles["left-top-container-title"]}>
                     Shipping Information
                   </h4>
-                  <button className={styles["left-top-container-edit-button"]}>
+                  <button
+                    className={styles["left-top-container-edit-button"]}
+                    onClick={() => popupClickHandler()}
+                  >
                     Edit
                   </button>
                 </div>
@@ -231,6 +258,12 @@ export const Payment = () => {
           </div>
         </div>
       </div>
+      {displayAddressInformationFormPopup && (
+        <AddressInformationFormPopup
+          popupSubmitHandler={() => popupSubmitHandler()}
+          popupCloseHandler={() => popupCloseHandler()}
+        />
+      )}
       {loading && <LoadingSpinner />}
     </section>
   );
