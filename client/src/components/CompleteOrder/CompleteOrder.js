@@ -78,9 +78,19 @@ export const CompleteOrder = () => {
   return (
     <section className={styles["complete-order-box"]}>
       <div>
+        <div className={styles["title-container"]}>
+          <h2 className={styles["title"]}>Checkout</h2>
+          <div className={styles["title-sub-container"]}>
+            <h4 className={styles["main-sub-title"]}>Shipping</h4>
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className={styles["arrow"]}
+            />
+            <h4 className={styles["sub-title"]}>Payment</h4>
+          </div>
+        </div>
         <div className={styles["complete-order-container"]}>
           <div className={styles["complete-order-left-container"]}>
-              <h2 className={styles["title"]}>Checkout</h2>
             <form
               method="POST"
               onSubmit={onSubmit}
@@ -97,16 +107,8 @@ export const CompleteOrder = () => {
               />
             </form>
           </div>
-          <div className={styles["bag-right-container"]}>
+          <div className={styles["complete-order-right-container"]}>
             <div className={styles["bag-right-container-sticky"]}>
-              <div className={styles["title-sub-container"]}>
-                <h4 className={styles["main-sub-title"]}>Shipping</h4>
-                <FontAwesomeIcon
-                  icon={faChevronRight}
-                  className={styles["arrow"]}
-                />
-                <h4 className={styles["sub-title"]}>Payment</h4>
-              </div>
               <ul className={styles["complete-order-left-sub-container"]}>
                 {bagItems.map((item) => (
                   <li
