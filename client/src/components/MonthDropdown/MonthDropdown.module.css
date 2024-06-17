@@ -1,0 +1,19 @@
+/* styles.css */
+
+.select-dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--dark-pink);
+  border-radius: 5px;
+  background-color: var(--white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure relative positioning for absolute positioning of options */
+  z-index: 1; /* Ensure options are above other content when focused */
+}
+
+.select-option {
+    color: green;
+    background-color: green;
+}
+
