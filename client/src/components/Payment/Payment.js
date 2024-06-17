@@ -132,8 +132,8 @@ export const Payment = () => {
                     Edit
                   </button>
                 </div>
-                <div className={styles["left-top-sub-container"]}>
-                  <h5>email</h5>
+                <div className={styles["left-bottom-sub-container"]}>
+                  <h5 className={styles["left-bottom-container-email-title"]}>Email</h5>
                   <h4 className={styles["left-bottom-container-email"]}>
                     {user.email}
                   </h4>

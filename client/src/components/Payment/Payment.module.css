@@ -46,6 +46,12 @@
   flex-direction: column;
 }
 
+.left-bottom-sub-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .left-top-container-title {
   font-size: var(--middle-font-size);
   margin-top: 0px;
@@ -65,6 +71,19 @@
 .left-bottom-container-title {
   font-size: var(--middle-font-size);
   margin-top: 0px;
+}
+
+.left-bottom-container-email-title {
+  margin: 20px 0px 0px 0px;
+  padding: 0;
+  font-family: var(--bold-font-family);
+  font-size: var(--small-font-size);
+}
+
+.left-bottom-container-email {
+  margin: 0;
+  padding: 0;
+  font-size: var(--small-font-size);
 }
 
 .complete-order-right-container {
