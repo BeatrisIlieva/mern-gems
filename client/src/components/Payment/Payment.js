@@ -17,7 +17,6 @@ import { authServiceFactory } from "../../services/authService";
 import { OrderSummary } from "../OrderSummary/OrderSummary";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { Link } from "react-router-dom";
-import { personalInformationServiceFactory } from "../../services/personalInformationService";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 
 export const Payment = () => {
@@ -29,21 +28,6 @@ export const Payment = () => {
     addressInformationServiceFactory
   );
   const [userInformation, setUserInformation] = useState([]);
-  const personalInformationService = useService(
-    personalInformationServiceFactory
-  );
-  const [userPersonalInformation, setUserPersonalInformation] = useState([]);
-
-  useEffect(() => {
-    personalInformationService
-      .find(userId)
-      .then((data) => {
-        setUserPersonalInformation(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, [userInformation]);
 
   useEffect(() => {
     authService
@@ -155,10 +139,27 @@ export const Payment = () => {
                     <span className={styles["delivery-span"]}>
                       ({totalQuantity} {totalQuantity > 1 ? "items" : "item"})
                     </span>
-                    <ul role="list">
-                      <li>
-                        {userPersonalInformation.firstName}{" "}
-                        {userPersonalInformation.lastName}
+                    <ul
+                      className={styles["address-information-list"]}
+                      role="list"
+                    >
+                      <li className={styles["address-information-item"]}>
+                        {userInformation.firstName} {userInformation.lastName}
+                      </li>
+                      <li className={styles["address-information-item"]}>
+                        {userInformation.phoneNumber}
+                      </li>
+                      <li className={styles["address-information-item"]}>
+                        {userInformation.country}
+                      </li>
+                      <li className={styles["address-information-item"]}>
+                        {userInformation.city}, {userInformation.zipCode}
+                      </li>
+                      <li className={styles["address-information-item"]}>
+                        {userInformation.street} St.
+                      </li>
+                      <li className={styles["address-information-item"]}>
+                        Apt. {userInformation.apartment}
                       </li>
                     </ul>
                   </div>

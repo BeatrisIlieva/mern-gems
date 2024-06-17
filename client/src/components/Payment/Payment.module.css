@@ -100,6 +100,14 @@
   font-size: var(--small-font-size);
 }
 
+.address-information-list {
+    margin-top: 10px;
+}
+
+.address-information-item {
+margin-bottom: 5px;
+}
+
 .complete-order-right-container {
   width: 36%;
 }
