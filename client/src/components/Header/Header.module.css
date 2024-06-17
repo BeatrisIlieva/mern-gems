@@ -1,5 +1,7 @@
 .header {
   position: fixed;
+  top: 0;
+  z-index: 20;
   border-bottom: 0.1px solid var(--border);
   display: flex;
   margin-top: auto;
@@ -8,7 +10,7 @@
   font-size: var(--medium-font-size);
   transition: all 0.9s ease;
   width: 100%;
-  animation: slideIn 0.2s forwards;
+  animation: slideIn 0.4s forwards;
 }
 
 @keyframes slideIn {

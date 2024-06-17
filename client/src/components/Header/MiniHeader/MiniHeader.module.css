@@ -1,16 +1,16 @@
 .mini-header {
   position: sticky;
-  z-index: 20;
+  z-index: 30;
   top: 0;
   border-bottom: 0.1px solid var(--border);
   display: flex;
   margin-top: auto;
   margin-bottom: auto;
-  background-color: rgba(255, 255, 255, 0.855);
+  background-color: var(--white);
   font-size: var(--medium-font-size);
   justify-content: center;
   transition: all 0.9s ease;
-  animation: slideIn 0.2s forwards;
+  animation: slideIn 0.4s forwards;
 }
 
 @keyframes slideIn {

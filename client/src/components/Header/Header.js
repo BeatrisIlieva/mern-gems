@@ -18,21 +18,30 @@ export const Header = () => {
   const [displayDisplaySearchBoxPopup, setDisplaySearchBoxPopup] =
     useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 10 && currentScrollY > lastScrollY) {
         setIsScrolled(true);
-      } else {
+        setIsScrollingUp(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsScrolled(false);
+        setIsScrollingUp(true);
+      } else if (currentScrollY === 0) {
         setIsScrolled(false);
       }
-    };
 
+      setLastScrollY(currentScrollY);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [lastScrollY]);
 
   const popupClickHandler = async () => {
     document.body.style.overflow = "hidden";
