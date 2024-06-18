@@ -1,7 +1,7 @@
 import { requestFactory } from "./requester";
 import { HOST } from "../constants/host";
 
-const baseUrl = `${HOST}/complete-transaction`;
+const baseUrl = `${HOST}/payment`;
 
 export const paymentServiceFactory = (token) => {
   const request = requestFactory(token);

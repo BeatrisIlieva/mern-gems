@@ -1,9 +1,9 @@
 import { requestFactory } from "./requester";
 import { HOST } from "../constants/host";
 
-const baseUrl = `${HOST}/complete-order`;
+const baseUrl = `${HOST}/checkout`;
 
-export const completeOrderServiceFactory = (token) => {
+export const checkoutServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {

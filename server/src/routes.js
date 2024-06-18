@@ -9,7 +9,9 @@ const jewelryCollectionController = require("./controllers/jewelryCollectionCont
 const stoneController = require("./controllers/stoneController");
 const searchController = require("./controllers/searchController");
 const bagController = require("./controllers/bagController");
-const completeOrderController = require("./controllers/completeOrderController");
+const checkoutController = require("./controllers/checkoutController");
+const paymentController = require("./controllers/paymentController");
+const orderConfirmationController = require("./controllers/orderConfirmationController")
 
 router.use("/user-login-information", userLoginInformationController);
 router.use("/user-personal-information", userPersonalInformationController);
@@ -20,6 +22,8 @@ router.use("/collection", jewelryCollectionController);
 router.use("/stone", stoneController);
 router.use("/search", searchController);
 router.use("/bag", bagController);
-router.use("/complete-order", completeOrderController);
+router.use("/checkout", checkoutController);
+router.use("/payment", paymentController);
+router.use("/order-confirmation", orderConfirmationController);
 
 module.exports = router;

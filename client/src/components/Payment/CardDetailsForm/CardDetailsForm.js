@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "../../../hooks/useForm";
 import { hasFormErrorOccurred } from "../../../utils/hasFormErrorOccurred";
 import { useBagContext } from "../../../contexts/BagContext";
+import { useNavigate } from "react-router-dom";
 
 export const CardDetailsForm = () => {
   const { userId } = useAuthContext();
@@ -19,6 +20,7 @@ export const CardDetailsForm = () => {
     useState(false);
   const [expirationMonthErrorOccurred, setExpirationMonthErrorOccurred] =
     useState(false);
+    const navigate = useNavigate();
 
   const { totalPrice } = useBagContext();
 
@@ -65,16 +67,19 @@ export const CardDetailsForm = () => {
     ) {
       const longCardNumber = values.longCardNumber.fieldValue;
       const cardHolder = values.cardHolder.fieldValue;
+      const cvvCode = values.cvvCode.fieldValue;
 
       const data = {
         longCardNumber,
         cardHolder,
+        cvvCode,
         expirationMonth,
         expirationYear,
       };
 
       try {
         await paymentService.confirm(userId, data);
+        navigate("/user/order-confirmation");
       } catch (err) {
         console.log(err.message);
 
