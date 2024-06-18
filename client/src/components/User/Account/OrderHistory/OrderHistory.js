@@ -10,7 +10,7 @@ export const OrderHistory = () => {
 
   useEffect(() => {
     orderHistoryService
-      .find(userId)
+      .findAll(userId)
       .then((data) => {
         setOrderInformation(data);
       })
@@ -19,5 +19,5 @@ export const OrderHistory = () => {
       });
   }, []);
 
-  console.log(orderInformation)
+  console.log(orderInformation);
 };

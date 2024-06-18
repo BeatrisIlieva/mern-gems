@@ -23,7 +23,7 @@ export const OrderConfirmation = () => {
 
   const fetchOrder = async () => {
     try {
-      const order = await orderConfirmationService.display(userId);
+      const order = await orderConfirmationService.findOne(userId);
 
       setOrder(order);
 

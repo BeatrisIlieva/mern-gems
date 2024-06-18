@@ -7,6 +7,6 @@ export const orderConfirmationServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
-    display: (userId) => request.get(`${baseUrl}/display/${userId}`),
+    findOne: (userId) => request.get(`${baseUrl}/display/${userId}`),
   };
 };

@@ -7,6 +7,6 @@ export const orderHistoryServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
-    display: (userId) => request.get(`${baseUrl}/display/${userId}`),
+    findAll: (userId) => request.get(`${baseUrl}/display/${userId}`),
   };
 };
