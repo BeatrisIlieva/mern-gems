@@ -1,18 +1,16 @@
-import styles from "./CardDetails.module.css";
+import styles from "./CardDetailsForm.module.css";
 // import { completeCheckoutServiceFactory } from "../../../services/completeCheckoutService";
 import { useNavigate } from "react-router-dom";
 import { useService } from "../../../hooks/useService";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { DayDropdown } from "../../DayDropdown/DayDropdown";
-// import { MonthDropdown } from "../../MonthDropdown/MonthDropdown";
+import { YearDropdown } from "./YearDropdown/YearDropdown";
 
 export const CardDetailsForm = () => {
   const { userId } = useAuthContext();
   // const completeCheckoutService = useService(completeCheckoutServiceFactory);
   return (
     <section className={styles["card-details-box"]}>
-      <DayDropdown />
-      {/* <MonthDropdown /> */}
+<YearDropdown/>
     </section>
   );
 };
