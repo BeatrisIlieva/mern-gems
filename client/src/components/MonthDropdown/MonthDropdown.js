@@ -1,33 +1,51 @@
-import React, { useState, useEffect } from "react";
-import styles from "./MonthDropdown.module.css";
+// import React, { useState, useEffect } from "react";
+// import styles from "./MonthDropdown.module.css";
 
-export const MonthDropdown = () => {
-  const [months, setMonths] = useState([]);
-  const [selectedMonth, setSelectedMonth] = useState("MM");
+// export const MonthDropdown = () => {
+//   const [months, setMonths] = useState([]);
+//   const [selectedMonth, setSelectedMonth] = useState("MM");
 
-  useEffect(() => {
-    const generateMonthOptions = () => {
-      const currentMonth = new Date().getMonth() + 1;
-      const monthsArray = [];
+//   useEffect(() => {
+//     const generateMonthOptions = () => {
+//       const currentMonth = new Date().getMonth() + 1;
+//       const monthsArray = [];
 
-      for (let month = currentMonth; month <= 12; month++) {
-        monthsArray.push(month.toString().padStart(2, "0"));
-      }
+//       for (let month = currentMonth; month <= 12; month++) {
+//         monthsArray.push(month.toString().padStart(2, "0"));
+//       }
 
-      setMonths(monthsArray);
-    };
+//       setMonths(monthsArray);
+//     };
 
-    generateMonthOptions();
-  }, []);
+//     generateMonthOptions();
+//   }, []);
 
-  return (
-    <select className={styles["select-dropdown"]} value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
-      <option  value="MM" disabled>MM</option>
-      {months.map((month) => (
-        <option key={month} value={month}>
-         <span className={styles["select-option"]}>{month}</span>
-        </option>
-      ))}
-    </select>
-  );
-};
+//   // return (
+//   //   <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+//   //     <option  value="MM" disabled>MM</option>
+//   //     {months.map((month) => (
+//   //       <option key={month} value={month}>
+//   //        {month}
+//   //       </option>
+//   //     ))}
+//   //   </select>
+//   // );
+
+//   return (
+//     <div className={styles["dropdown"]}>
+//       <button className={styles["dropdown-toggle"]} onClick={() => setIsOpen(!isOpen)}>
+//         {selectedMonth}
+//       </button>
+//       {isOpen && (
+//         <ul className={styles["dropdown-menu"]}>
+//           <li onClick={() => handleSelect('MM')}>MM</li>
+//           {months.map((month) => (
+//             <li key={month} onClick={() => handleSelect(month)}>
+//               {month}
+//             </li>
+//           ))}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// };

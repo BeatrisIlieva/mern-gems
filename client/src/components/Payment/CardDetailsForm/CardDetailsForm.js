@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useService } from "../../../hooks/useService";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { DayDropdown } from "../../DayDropdown/DayDropdown";
-import { MonthDropdown } from "../../MonthDropdown/MonthDropdown";
+// import { MonthDropdown } from "../../MonthDropdown/MonthDropdown";
 
 export const CardDetailsForm = () => {
   const { userId } = useAuthContext();
@@ -12,7 +12,7 @@ export const CardDetailsForm = () => {
   return (
     <section className={styles["card-details-box"]}>
       <DayDropdown />
-      <MonthDropdown />
+      {/* <MonthDropdown /> */}
     </section>
   );
 };
