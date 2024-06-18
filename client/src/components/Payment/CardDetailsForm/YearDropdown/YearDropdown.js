@@ -3,7 +3,7 @@ import styles from "../CardDetailsForm.module.css";
 
 export const YearDropdown = () => {
   const [years, setYears] = useState([]);
-  const [selectedYear, setSelectedYear] = useState("YY");
+  const [selectedYear, setSelectedYear] = useState("YY *");
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -51,7 +51,9 @@ export const YearDropdown = () => {
       </button>
       {isOpen && (
         <ul className={styles["dropdown-menu"]}>
-          <li onClick={() => handleSelect("DD")}>YY</li>
+          <li onClick={() => handleSelect("DD")} className={styles["top-li"]}>
+            YY
+          </li>
           {years.map((year) => (
             <li key={year} onClick={() => handleSelect(year)}>
               {year}

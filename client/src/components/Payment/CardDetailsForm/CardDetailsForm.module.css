@@ -39,3 +39,7 @@
 .dropdown-menu li:hover {
   background-color: var(--not-available-gray);
 }
+
+.top-li {
+  color: var(--extra-light-gray);
+}

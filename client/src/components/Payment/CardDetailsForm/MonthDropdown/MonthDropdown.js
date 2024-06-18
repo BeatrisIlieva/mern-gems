@@ -3,7 +3,7 @@ import styles from "../CardDetailsForm.module.css";
 
 export const MonthDropdown = () => {
   const [months, setMonths] = useState([]);
-  const [selectedMonth, setSelectedMonth] = useState("YY");
+  const [selectedMonth, setSelectedMonth] = useState("MM *");
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -50,7 +50,9 @@ export const MonthDropdown = () => {
       </button>
       {isOpen && (
         <ul className={styles["dropdown-menu"]}>
-          <li onClick={() => handleSelect("DD")}>YY</li>
+          <li onClick={() => handleSelect("DD")} className={styles["top-li"]}>
+            MM
+          </li>
           {months.map((month) => (
             <li key={month} onClick={() => handleSelect(month)}>
               {month}
