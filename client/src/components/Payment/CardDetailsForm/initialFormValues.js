@@ -10,9 +10,10 @@ const FORM_KEYS = {
   CvvCode: "cvvCode",
 };
 
+
 export const INITIAL_FORM_VALUES = {
   [FORM_KEYS.LongCardNumber]: {
-    fieldLabel: "Card Number",
+    fieldLabel: "Card Number *",
     fieldValue: "",
     regexPattern: LONG_CARD_NUMBER_PATTERN,
     errorMessage: "",
@@ -24,7 +25,7 @@ export const INITIAL_FORM_VALUES = {
   },
 
   [FORM_KEYS.CardHolder]: {
-    fieldLabel: "Name on card",
+    fieldLabel: "Name on card *",
     fieldValue: "",
     regexPattern: CARD_HOLDER_NAME_PATTERN,
     errorMessage: "",
@@ -36,7 +37,7 @@ export const INITIAL_FORM_VALUES = {
   },
 
   [FORM_KEYS.CvvCode]: {
-    fieldLabel: "CVV",
+    fieldLabel: "CVV *",
     fieldValue: "",
     regexPattern: CVV_CODE_PATTERN,
     errorMessage: "",

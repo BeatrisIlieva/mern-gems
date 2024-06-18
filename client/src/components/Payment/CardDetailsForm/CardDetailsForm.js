@@ -67,9 +67,18 @@ export const CardDetailsForm = () => {
   return (
     <section className={styles["card-details-box"]}>
       <h4 className={styles["card-details-title"]}>Card Details</h4>
-      <form method="POST" onSubmit={onSubmit} className={styles["card-details-form"]}>
+      <form
+        method="POST"
+        onSubmit={onSubmit}
+        className={styles["card-details-form"]}
+      >
         {Object.entries(FORM_KEYS).map(([key, value]) => (
-          <div key={key} className={styles["field-box"]}>
+          <div
+            key={key}
+            className={`${styles["field-box"]} ${
+              key === "CvvCode" ? styles["field-box-cvv"] : ""
+            }`.trim()}
+          >
             <div
               className={`${styles["field-container"]} ${
                 values[value].errorMessage !== "" ? styles["error"] : ""
@@ -113,7 +122,7 @@ export const CardDetailsForm = () => {
         <YearDropdown setExpirationYear={setExpirationYear} />
         <MonthDropdown setExpirationMonth={setExpirationMonth} />
         <button
-          className={`${styles["animated-button"]} ${styles["button"]}`}
+          className={styles["continue-checkout-button"]}
           type="submit"
           data-testid="submit"
         >
