@@ -3,7 +3,7 @@ import { HOST } from "../constants/host";
 
 const baseUrl = `${HOST}/complete-transaction`;
 
-export const completeCheckoutServiceFactory = (token) => {
+export const paymentServiceFactory = (token) => {
   const request = requestFactory(token);
 
   return {
