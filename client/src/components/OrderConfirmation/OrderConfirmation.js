@@ -62,13 +62,17 @@ export const OrderConfirmation = () => {
               <p className={styles["bottom-paragraph"]}>
                 You can find all the details and track the status of your
                 purchase in your account under the{" "}
-                <button
-                  className={styles["order-history-button"]}
-                >
+                <button className={styles["order-history-button"]}>
                   Order History
                 </button>{" "}
                 menu.
               </p>
+              <div className={styles["image-container"]}>
+                <img className={styles["image"]}
+                  src="https://res.cloudinary.com/deztgvefu/image/upload/v1715634191/template_images/herolarged_ny24_plp_cl_earrings_qswzmg.avif"
+                  alt="img"
+                />
+              </div>
             </div>
           </div>
         </section>
