@@ -1,0 +1,38 @@
+.order-details-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-title-content {
+  font-size: var(--extra-large-font-size);
+  font-family: var(--bold-italic-font-family);
+}
+
+.order-info {
+  text-align: center;
+  font-size: var(--medium-font-size);
+}
+
+.id-span {
+  font-family: var(--bold-font-family);
+  font-size: var(--medium-font-size);
+  margin-left: 6px;
+}
+
+.order-history-button {
+  text-decoration: underline;
+  font-family: var(--main-font-family);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: var(--white);
+  outline: none;
+  margin: 0;
+}
+
+.bottom-paragraph {
+  margin-top: 40px;
+  font-size: var(--medium-font-size);
+}

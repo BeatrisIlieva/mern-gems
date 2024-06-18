@@ -54,16 +54,20 @@ export const OrderConfirmation = () => {
           </div>
           <div className={styles["order-details-wrapper"]}>
             <div>
-              <h5 className={styles["order-subtitle-content"]}>
-                Order Confirmation:
-              </h5>
               <p className={styles["order-info"]}>
-                Your order ID: #{order._id}
+                Your order{" "}
+                <span className={styles["id-span"]}> ID: #{order._id} </span>
                 has been successfully placed.
               </p>
-              <p>
+              <p className={styles["bottom-paragraph"]}>
                 You can find all the details and track the status of your
-                purchase in your account under the 'Order History' menu.
+                purchase in your account under the{" "}
+                <button
+                  className={styles["order-history-button"]}
+                >
+                  Order History
+                </button>{" "}
+                menu.
               </p>
             </div>
           </div>
