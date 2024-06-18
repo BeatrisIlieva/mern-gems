@@ -12,6 +12,7 @@ const bagController = require("./controllers/bagController");
 const checkoutController = require("./controllers/checkoutController");
 const paymentController = require("./controllers/paymentController");
 const orderConfirmationController = require("./controllers/orderConfirmationController");
+const orderHistoryController = require("./controllers/orderHistoryController");
 
 router.use("/user-login-information", userLoginInformationController);
 router.use("/user-personal-information", userPersonalInformationController);
@@ -25,5 +26,6 @@ router.use("/bag", bagController);
 router.use("/checkout", checkoutController);
 router.use("/payment", paymentController);
 router.use("/order-confirmation", orderConfirmationController);
+router.use("/order-history", orderHistoryController);
 
 module.exports = router;
