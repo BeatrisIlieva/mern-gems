@@ -4,11 +4,9 @@ const Bag = require("../models/Bag");
 
 router.get("/display/:userId", async (req, res) => {
   const userId = req.user._id;
-  console.log("here");
+
   try {
     const order = await orderConfirmationManager.getOne(userId);
-
-    console.log(order);
 
     await Bag.deleteMany({ user: userId });
 
