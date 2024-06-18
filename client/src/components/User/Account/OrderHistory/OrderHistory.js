@@ -1,15 +1,15 @@
-import { orderConfirmationServiceFactory } from "../../../../services/orderConfirmationService";
+import { orderHistoryServiceFactory } from "../../../../services/orderHistoryService";
 import { useService } from "../../../../hooks/useService";
 import { useAuthContext } from "../../../../contexts/AuthContext";
 import { useState, useEffect } from "react";
 
 export const OrderHistory = () => {
-  const orderConfirmationService = useService(orderConfirmationServiceFactory);
+  const orderHistoryService = useService(orderHistoryServiceFactory);
   const { userId } = useAuthContext();
   const [orderInformation, setOrderInformation] = useState([]);
 
   useEffect(() => {
-    orderConfirmationService
+    orderHistoryService
       .find(userId)
       .then((data) => {
         setOrderInformation(data);
@@ -18,4 +18,6 @@ export const OrderHistory = () => {
         console.log(err.message);
       });
   }, []);
+
+  console.log(orderInformation)
 };
