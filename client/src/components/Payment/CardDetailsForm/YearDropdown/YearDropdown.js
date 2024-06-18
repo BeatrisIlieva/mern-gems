@@ -4,7 +4,10 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const YearDropdown = ({setExpirationYear}) => {
+export const YearDropdown = ({
+  setExpirationYear,
+  expirationYearErrorOccurred,
+}) => {
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState("YY *");
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +32,7 @@ export const YearDropdown = ({setExpirationYear}) => {
   const handleSelect = (year) => {
     setSelectedYear(year);
     setIsOpen(false);
-    setExpirationYear(year)
+    setExpirationYear(year);
   };
 
   const handleClickOutside = (event) => {
@@ -46,7 +49,12 @@ export const YearDropdown = ({setExpirationYear}) => {
     };
   }, []);
   return (
-    <div ref={dropdownRef} className={styles["dropdown"]}>
+    <div
+      ref={dropdownRef}
+      className={`${styles["dropdown"]} ${
+        expirationYearErrorOccurred === true ? styles["error"] : ""
+      }`.trim()}
+    >
       <button
         className={styles["dropdown-toggle"]}
         onClick={() => setIsOpen(!isOpen)}
@@ -64,6 +72,11 @@ export const YearDropdown = ({setExpirationYear}) => {
           />
         )}
       </button>
+      {expirationYearErrorOccurred && (
+        <div className={styles["error-message"]}>
+          Expiration year is required
+        </div>
+      )}
       {isOpen && (
         <ul className={styles["dropdown-menu"]}>
           <li onClick={() => handleSelect("DD")} className={styles["top-li"]}>

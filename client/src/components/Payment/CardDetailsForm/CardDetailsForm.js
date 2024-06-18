@@ -16,6 +16,10 @@ export const CardDetailsForm = () => {
   const paymentService = useService(paymentServiceFactory);
   const [expirationMonth, setExpirationMonth] = useState(null);
   const [expirationYear, setExpirationYear] = useState(null);
+  const [expirationYearErrorOccurred, setExpirationYearErrorOccurred] =
+    useState(false);
+  const [expirationMonthErrorOccurred, setExpirationMonthErrorOccurred] =
+    useState(false);
 
   let {
     values,
@@ -41,7 +45,19 @@ export const CardDetailsForm = () => {
 
     const errorOccurred = hasFormErrorOccurred(values);
 
-    if (!errorOccurred) {
+    if (expirationMonth === null) {
+      setExpirationMonthErrorOccurred(true);
+    }
+
+    if (expirationYear === null) {
+      setExpirationYearErrorOccurred(true);
+    }
+
+    if (
+      !errorOccurred &&
+      !expirationYearErrorOccurred &&
+      !expirationMonthErrorOccurred
+    ) {
       const longCardNumber = values.longCardNumber.fieldValue;
       const cardHolder = values.cardHolder.fieldValue;
 
@@ -119,8 +135,14 @@ export const CardDetailsForm = () => {
             </div>
           </div>
         ))}
-        <YearDropdown setExpirationYear={setExpirationYear} />
-        <MonthDropdown setExpirationMonth={setExpirationMonth} />
+        <YearDropdown
+          setExpirationYear={setExpirationYear}
+          expirationYearErrorOccurred={expirationYearErrorOccurred}
+        />
+        <MonthDropdown
+          setExpirationMonth={setExpirationMonth}
+          expirationMonthErrorOccurred={expirationMonthErrorOccurred}
+        />
         <button
           className={styles["continue-checkout-button"]}
           type="submit"
