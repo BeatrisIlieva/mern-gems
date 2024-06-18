@@ -19,17 +19,17 @@
   .dropdown-menu {
     display: block;
     position: absolute;
-    bottom: 100%; /* Position above the button */
+    bottom: 100%;
     left: 0;
     background-color: white;
     border: 1px solid #ccc;
-    margin-bottom: -1px; /* Remove the gap between the button and the dropdown */
+    margin-bottom: -1px; 
     list-style: none;
     padding: 0;
-    width: 100%; /* Ensure the dropdown menu matches the button width */
-    z-index: 1000; /* Ensure the dropdown is above other elements */
-    max-height: 200px; /* Set a maximum height for the dropdown */
-    overflow-y: auto; /* Enable vertical scrolling */
+    width: 100%; 
+    z-index: 1000; 
+    max-height: 200px; 
+    overflow-y: auto; 
   }
   
   .dropdown-menu li {

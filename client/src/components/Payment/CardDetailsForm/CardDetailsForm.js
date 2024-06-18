@@ -11,8 +11,8 @@ export const CardDetailsForm = () => {
   // const completeCheckoutService = useService(completeCheckoutServiceFactory);
   return (
     <section className={styles["card-details-box"]}>
-<YearDropdown/>
-<MonthDropdown/>
+      <YearDropdown />
+      <MonthDropdown />
     </section>
   );
 };
