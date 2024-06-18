@@ -65,56 +65,16 @@ export const Payment = () => {
       });
   });
 
-  const {
-    values,
-    updateForm,
-    clickHandler,
-    blurHandler,
-    changeHandler,
-    submitHandler,
-  } = useForm(INITIAL_FORM_VALUES);
-
   useEffect(() => {
     addressInformationService
       .find(userId)
       .then((data) => {
         setUserInformation(data);
-        updateForm();
       })
       .catch((err) => {
         console.log(err.message);
       });
   }, [userInformation]);
-
-  const onSubmit = async (e) => {
-    submitHandler(e);
-
-    const errorOccurred = hasFormErrorOccurred(values);
-
-    if (!errorOccurred) {
-      const phoneNumber = values.phoneNumber.fieldValue;
-      const country = values.country.fieldValue;
-      const city = values.city.fieldValue;
-      const street = values.street.fieldValue;
-      const apartment = values.apartment.fieldValue;
-      const zipCode = values.zipCode.fieldValue;
-
-      const data = {
-        phoneNumber,
-        country,
-        city,
-        street,
-        apartment,
-        zipCode,
-      };
-
-      try {
-        await addressInformationService.update(userId, data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    }
-  };
 
   return (
     <section className={styles["complete-order-box"]}>
@@ -201,7 +161,7 @@ export const Payment = () => {
                   Payment
                 </h4>
                 <div className={styles["card-details-container"]}>
-                  <CardDetailsForm/>
+                  <CardDetailsForm />
                 </div>
               </div>
             </div>
