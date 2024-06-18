@@ -66,19 +66,6 @@ export const CardDetailsForm = () => {
 
   return (
     <section className={styles["card-details-box"]}>
-      {/* <YearDropdown setExpirationYear={setExpirationYear}/>
-      <MonthDropdown setExpirationMonth={setExpirationMonth}/>
-      <form method="POST" onSubmit={onSubmit}>
-        <DynamicFormNotAuthUser
-          values={values}
-          formKeys={FORM_KEYS}
-          clickHandler={clickHandler}
-          blurHandler={blurHandler}
-          changeHandler={changeHandler}
-          initialFormValues={INITIAL_FORM_VALUES}
-          buttonValue={buttonValue}
-        />
-      </form> */}
       <form method="POST" onSubmit={onSubmit}>
         {Object.entries(FORM_KEYS).map(([key, value]) => (
           <div key={key} className={styles["field-box"]}>
@@ -135,5 +122,3 @@ export const CardDetailsForm = () => {
     </section>
   );
 };
-
-
