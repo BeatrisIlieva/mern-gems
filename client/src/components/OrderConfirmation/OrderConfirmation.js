@@ -21,7 +21,6 @@ export const OrderConfirmation = () => {
   }, []);
 
   const fetchOrder = async () => {
-
     try {
       const order = await orderConfirmationService.display(userId);
 
@@ -47,31 +46,28 @@ export const OrderConfirmation = () => {
   return (
     <>
       {order && userPersonalInformation && (
-        <>
-          <section className={styles["order-details-section"]}>
-            <div className={styles["order-title-content"]}>
-              <h4>
-                Thank you for your purchase, {userPersonalInformation.firstName}
-                !
-              </h4>
+        <section className={styles["order-details-section"]}>
+          <div className={styles["order-title-content"]}>
+            <h4>
+              Thank you for your purchase, {userPersonalInformation.firstName}!
+            </h4>
+          </div>
+          <div className={styles["order-details-wrapper"]}>
+            <div>
+              <h5 className={styles["order-subtitle-content"]}>
+                Order Confirmation:
+              </h5>
+              <p className={styles["order-info"]}>
+                Your order ID: #{order._id}
+                has been successfully placed.
+              </p>
+              <p>
+                You can find all the details and track the status of your
+                purchase in your account under the 'Order History' menu.
+              </p>
             </div>
-            <div className={styles["order-details-wrapper"]}>
-              <div>
-                <h5 className={styles["order-subtitle-content"]}>
-                  Order Confirmation:
-                </h5>
-                <p className={styles["order-info"]}>
-                  Your order ID: #{order._id}
-                  has been successfully placed.
-                </p>
-                <p>
-                  You can find all the details and track the status of your
-                  purchase in your account under the 'Order History' menu.
-                </p>
-              </div>
-            </div>
-          </section>
-        </>
+          </div>
+        </section>
       )}
     </>
   );
