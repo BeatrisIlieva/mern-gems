@@ -16,7 +16,7 @@ import { useBagContext } from "../../contexts/BagContext";
 import { authServiceFactory } from "../../services/authService";
 import { OrderSummary } from "../OrderSummary/OrderSummary";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Checkout = () => {
   const { bagItems, totalPrice, loading } = useBagContext();
@@ -27,6 +27,7 @@ export const Checkout = () => {
     addressInformationServiceFactory
   );
   const [userInformation, setUserInformation] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     authService
@@ -84,6 +85,7 @@ export const Checkout = () => {
 
       try {
         await addressInformationService.update(userId, data);
+        navigate("/user/payment");
       } catch (err) {
         console.log(err.message);
       }
@@ -131,11 +133,12 @@ export const Checkout = () => {
                   userInformation={userInformation}
                 />
                 <div className={styles["continue-checkout-button-container"]}>
-                  <Link to={"/user/payment"}>
-                    <button className={styles["continue-checkout-button"]}>
-                      Continue Checkout
-                    </button>
-                  </Link>
+                  <button
+                    className={styles["continue-checkout-button"]}
+                    type="submit"
+                  >
+                    Continue Checkout
+                  </button>
                 </div>
               </form>
             </div>
