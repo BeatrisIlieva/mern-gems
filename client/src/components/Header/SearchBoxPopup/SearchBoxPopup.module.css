@@ -64,11 +64,11 @@
 }
 
 .left-container {
-  width: 70%;
+  width: 64%;
 }
 
 .right-container {
-  width: 30%;
+  width: 36%;
 }
 
 .search-results {
@@ -164,8 +164,6 @@
   column-gap: 40px;
 }
 
-
-
 .no-decoration {
   text-decoration: none;
 }
@@ -176,7 +174,7 @@
 }
 
 .image-container {
-  width: 70%;
+  width: 96%;
   margin-top: 40px;
   display: flex;
   margin-left: auto;
