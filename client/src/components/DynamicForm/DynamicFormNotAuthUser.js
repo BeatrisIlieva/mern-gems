@@ -26,7 +26,7 @@ export const DynamicFormNotAuthUser = ({
 
   const location = useLocation();
   const isLoginPage = location.pathname === "/user/login";
-  
+
   return (
     <>
       {Object.entries(formKeys).map(([key, value]) => (

@@ -145,7 +145,6 @@ textarea {
 
 .continue-checkout-button {
   padding: 12px;
-  font-size: var(--medium-font-size);
   font-family: var(--bold-font-family);
   border: none;
   cursor: pointer;

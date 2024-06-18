@@ -1,11 +1,9 @@
 import styles from "./CardDetailsForm.module.css";
 import { paymentServiceFactory } from "../../../services/paymentService";
-import { useNavigate } from "react-router-dom";
 import { useService } from "../../../hooks/useService";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { YearDropdown } from "./YearDropdown/YearDropdown";
 import { MonthDropdown } from "./MonthDropdown/MonthDropdown";
-import { DynamicFormNotAuthUser } from "../../DynamicForm/DynamicFormNotAuthUser";
 import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useState, useEffect } from "react";
 import { useForm } from "../../../hooks/useForm";
