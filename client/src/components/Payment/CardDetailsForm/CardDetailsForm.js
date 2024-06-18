@@ -47,10 +47,14 @@ export const CardDetailsForm = () => {
 
     if (expirationMonth === null) {
       setExpirationMonthErrorOccurred(true);
+    } else {
+      setExpirationMonthErrorOccurred(false);
     }
 
     if (expirationYear === null) {
       setExpirationYearErrorOccurred(true);
+    } else {
+      setExpirationYearErrorOccurred(false);
     }
 
     if (
@@ -138,10 +142,12 @@ export const CardDetailsForm = () => {
         <YearDropdown
           setExpirationYear={setExpirationYear}
           expirationYearErrorOccurred={expirationYearErrorOccurred}
+          setExpirationYearErrorOccurred={setExpirationYearErrorOccurred}
         />
         <MonthDropdown
           setExpirationMonth={setExpirationMonth}
           expirationMonthErrorOccurred={expirationMonthErrorOccurred}
+          setExpirationMonthErrorOccurred={setExpirationMonthErrorOccurred}
         />
         <button
           className={styles["continue-checkout-button"]}

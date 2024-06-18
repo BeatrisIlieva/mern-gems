@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const YearDropdown = ({
   setExpirationYear,
+  setExpirationYearErrorOccurred,
   expirationYearErrorOccurred,
 }) => {
   const [years, setYears] = useState([]);
@@ -33,6 +34,7 @@ export const YearDropdown = ({
     setSelectedYear(year);
     setIsOpen(false);
     setExpirationYear(year);
+    setExpirationYearErrorOccurred(false)
   };
 
   const handleClickOutside = (event) => {

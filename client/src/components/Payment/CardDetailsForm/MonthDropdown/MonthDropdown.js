@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const MonthDropdown = ({
   setExpirationMonth,
+  setExpirationMonthErrorOccurred,
   expirationMonthErrorOccurred,
 }) => {
   const [months, setMonths] = useState([]);
@@ -32,6 +33,7 @@ export const MonthDropdown = ({
     setSelectedMonth(month);
     setIsOpen(false);
     setExpirationMonth(month);
+    setExpirationMonthErrorOccurred(false)
   };
 
   const handleClickOutside = (event) => {
