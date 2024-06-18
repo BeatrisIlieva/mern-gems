@@ -4,7 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const MonthDropdown = () => {
+export const MonthDropdown = ({setExpirationMonth}) => {
   const [months, setMonths] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("MM *");
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +28,7 @@ export const MonthDropdown = () => {
   const handleSelect = (month) => {
     setSelectedMonth(month);
     setIsOpen(false);
+    setExpirationMonth(month)
   };
 
   const handleClickOutside = (event) => {

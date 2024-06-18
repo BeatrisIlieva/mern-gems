@@ -2,7 +2,7 @@ import {
   LONG_CARD_NUMBER_PATTERN,
   CARD_HOLDER_NAME_PATTERN,
   CVV_CODE_PATTERN,
-} from "../../../../../constants/forms";
+} from "../../../constants/forms";
 
 const FORM_KEYS = {
   LongCardNumber: "longCardNumber",
@@ -35,7 +35,7 @@ export const INITIAL_FORM_VALUES = {
     emptyTestData: "",
   },
 
-  [FORM_KEYS.CardHolder]: {
+  [FORM_KEYS.CvvCode]: {
     fieldLabel: "CVV",
     fieldValue: "",
     regexPattern: CVV_CODE_PATTERN,
