@@ -8,8 +8,10 @@ import { MonthDropdown } from "./MonthDropdown/MonthDropdown";
 
 export const CardDetailsForm = () => {
   const { userId } = useAuthContext();
-  // const completeCheckoutService = useService(completeCheckoutServiceFactory);
+  const paymentService = useService(paymentServiceFactory);
+
   const buttonValue = "Place Order";
+
   return (
     <section className={styles["card-details-box"]}>
       <YearDropdown />
