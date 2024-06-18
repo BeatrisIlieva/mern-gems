@@ -87,58 +87,67 @@ export const CardDetailsForm = () => {
   return (
     <section className={styles["card-details-box"]}>
       <h4 className={styles["card-details-title"]}>Card Details</h4>
-      <form
-        method="POST"
-        onSubmit={onSubmit}
-        className={styles["card-details-form"]}
-      >
-        {Object.entries(FORM_KEYS).map(([key, value]) => (
-          <div
-            key={key}
-            className={`${styles["field-box"]} ${
-              key === "CvvCode" ? styles["field-box-cvv"] : ""
-            }`.trim()}
-          >
+      <div className={styles["card-details-form"]}>
+        <form
+          method="POST"
+          onSubmit={onSubmit}
+          className={styles["form"]}
+        >
+          {Object.entries(FORM_KEYS).map(([key, value]) => (
             <div
-              className={`${styles["field-container"]} ${
-                values[value].errorMessage !== "" ? styles["error"] : ""
+              key={key}
+              className={`${styles["field-box"]} ${
+                key === "CvvCode" ? styles["field-box-cvv"] : ""
               }`.trim()}
-              onClick={() => clickHandler(value)}
-              onBlur={() => blurHandler(value)}
             >
-              <input
-                type={values[value].fieldType}
-                name={value}
-                id={value}
-                value={values[key]}
-                onChange={(e) => changeHandler(value, e.target.value)}
-                onFocus={() => clickHandler(value)}
-                data-testid={`${value}-input`}
-                className={styles["input"]}
-              />
-              <label
-                htmlFor={value}
-                className={`${styles["label"]} ${
-                  values[value].isFocused === true ? styles["isFocused"] : ""
+              <div
+                className={`${styles["field-container"]} ${
+                  values[value].errorMessage !== "" ? styles["error"] : ""
                 }`.trim()}
+                onClick={() => clickHandler(value)}
+                onBlur={() => blurHandler(value)}
               >
-                {INITIAL_FORM_VALUES[value].fieldLabel}
-              </label>
+                <input
+                  type={values[value].fieldType}
+                  name={value}
+                  id={value}
+                  value={values[key]}
+                  onChange={(e) => changeHandler(value, e.target.value)}
+                  onFocus={() => clickHandler(value)}
+                  data-testid={`${value}-input`}
+                  className={styles["input"]}
+                />
+                <label
+                  htmlFor={value}
+                  className={`${styles["label"]} ${
+                    values[value].isFocused === true ? styles["isFocused"] : ""
+                  }`.trim()}
+                >
+                  {INITIAL_FORM_VALUES[value].fieldLabel}
+                </label>
+              </div>
+              <div
+                className={styles["error-message"]}
+                data-testid={`${value}-error`}
+              >
+                {values[value].errorMessage}
+              </div>
+              <div
+                className={styles["success-message"]}
+                data-testid={`${value}-success`}
+              >
+                {values[value].successMessage}
+              </div>
             </div>
-            <div
-              className={styles["error-message"]}
-              data-testid={`${value}-error`}
-            >
-              {values[value].errorMessage}
-            </div>
-            <div
-              className={styles["success-message"]}
-              data-testid={`${value}-success`}
-            >
-              {values[value].successMessage}
-            </div>
-          </div>
-        ))}
+          ))}
+          <button
+            className={styles["continue-checkout-button"]}
+            type="submit"
+            data-testid="submit"
+          >
+            {buttonValue}
+          </button>
+        </form>
         <YearDropdown
           setExpirationYear={setExpirationYear}
           expirationYearErrorOccurred={expirationYearErrorOccurred}
@@ -149,14 +158,7 @@ export const CardDetailsForm = () => {
           expirationMonthErrorOccurred={expirationMonthErrorOccurred}
           setExpirationMonthErrorOccurred={setExpirationMonthErrorOccurred}
         />
-        <button
-          className={styles["continue-checkout-button"]}
-          type="submit"
-          data-testid="submit"
-        >
-          {buttonValue}
-        </button>
-      </form>
+      </div>
     </section>
   );
 };

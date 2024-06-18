@@ -38,7 +38,7 @@ export const YearDropdown = ({
   };
 
   const handleClickOutside = (event) => {
-    console.log(event);
+
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }
@@ -53,7 +53,7 @@ export const YearDropdown = ({
   return (
     <div
       ref={dropdownRef}
-      className={`${styles["dropdown"]} ${
+      className={`${styles["dropdown-year"]} ${
         expirationYearErrorOccurred === true ? styles["error"] : ""
       }`.trim()}
     >
