@@ -68,9 +68,7 @@
 .field-container {
   border: 0.1px solid var(--border);
   position: relative;
-  padding: 14px;
-  display: flex;
-  align-items: center;
+  padding: 10px 10px 0px 14px;
 }
 
 .field-container:focus {
@@ -98,6 +96,7 @@
   color: var(--middle-gray);
   position: absolute;
   left: 14px;
+  top: 14px;
 }
 
 .isFocused {
@@ -110,5 +109,5 @@
 .input,
 textarea {
   caret-color: var(--border);
-  padding: 8px 0px;
+  padding: 10px 0px;
 }
