@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../CardDetailsForm.module.css";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const YearDropdown = () => {
   const [years, setYears] = useState([]);
@@ -48,6 +51,17 @@ export const YearDropdown = () => {
         onClick={() => setIsOpen(!isOpen)}
       >
         {selectedYear}
+        {isOpen ? (
+          <FontAwesomeIcon
+            icon={faChevronUp}
+            className={styles["chevron-icon"]}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            className={styles["chevron-icon"]}
+          />
+        )}
       </button>
       {isOpen && (
         <ul className={styles["dropdown-menu"]}>

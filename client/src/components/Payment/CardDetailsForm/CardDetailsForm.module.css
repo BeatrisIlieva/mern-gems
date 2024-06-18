@@ -31,7 +31,7 @@
 }
 
 .dropdown-menu li {
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
   background-color: var(--white);
 }
@@ -42,4 +42,10 @@
 
 .top-li {
   color: var(--extra-light-gray);
+}
+
+.chevron-icon {
+  color: var(--white-gray);
+  position: absolute;
+  right: 10px;
 }
