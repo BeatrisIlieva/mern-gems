@@ -1,14 +1,7 @@
-import { DynamicFormAuthUser } from "../DynamicForm/DynamicFormAuthUser";
 import { useService } from "../../hooks/useService";
 import { addressInformationServiceFactory } from "../../services/addressInformationService";
 import { useAuthContext } from "../../contexts/AuthContext";
-import { useForm } from "../../hooks/useForm";
 import { useState, useEffect } from "react";
-import { hasFormErrorOccurred } from "../../utils/hasFormErrorOccurred";
-import {
-  INITIAL_FORM_VALUES,
-  FORM_KEYS,
-} from "../User/Account/AccountDetails/AddressInformationFormPopup/initialFormValues";
 import styles from "./Payment.module.css";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +9,6 @@ import { useBagContext } from "../../contexts/BagContext";
 import { authServiceFactory } from "../../services/authService";
 import { OrderSummary } from "../OrderSummary/OrderSummary";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import { Link } from "react-router-dom";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { AddressInformationFormPopup } from "../User/Account/AccountDetails/AddressInformationFormPopup/AddressInformationFormPopup";
 import { CardDetailsForm } from "./CardDetailsForm/CardDetailsForm";
