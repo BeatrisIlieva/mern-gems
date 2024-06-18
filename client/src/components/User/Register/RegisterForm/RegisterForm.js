@@ -8,6 +8,7 @@ import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../hooks/useForm";
 import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthUser";
 import { hasFormErrorOccurred } from "../../../../utils/hasFormErrorOccurred";
+import styles from "../Register.module.css";
 
 export const RegisterForm = () => {
   const { onRegisterSubmit } = useContext(AuthContext);
@@ -88,8 +89,6 @@ export const RegisterForm = () => {
     }
   };
 
-  const buttonValue = "Create an account";
-
   return (
     <section>
       <form method="POST" onSubmit={onSubmit}>
@@ -100,8 +99,14 @@ export const RegisterForm = () => {
           blurHandler={blurHandler}
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
-          buttonValue={buttonValue}
         />
+        <button
+          className={`${styles["animated-button"]} ${styles["button"]}`}
+          type="submit"
+          data-testid="submit"
+        >
+          Create an account
+        </button>
       </form>
     </section>
   );

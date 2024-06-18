@@ -6,6 +6,7 @@ import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useForm } from "../../../../hooks/useForm";
 import { DynamicFormNotAuthUser } from "../../../DynamicForm/DynamicFormNotAuthUser";
 import { hasFormErrorOccurred } from "../../../../utils/hasFormErrorOccurred";
+import styles from "../Login.module.css";
 
 export const LoginForm = () => {
   const { onLoginSubmit } = useContext(AuthContext);
@@ -58,8 +59,6 @@ export const LoginForm = () => {
     }
   };
 
-  const buttonValue = "Sign In";
-
   return (
     <section>
       <form method="POST" onSubmit={onSubmit}>
@@ -70,8 +69,14 @@ export const LoginForm = () => {
           blurHandler={blurHandler}
           changeHandler={changeHandler}
           initialFormValues={INITIAL_FORM_VALUES}
-          buttonValue={buttonValue}
         />
+        <button
+          className={`${styles["animated-button"]} ${styles["button"]}`}
+          type="submit"
+          data-testid="submit"
+        >
+          Sign In
+        </button>
       </form>
     </section>
   );

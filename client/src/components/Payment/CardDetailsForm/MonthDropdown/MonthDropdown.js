@@ -33,11 +33,10 @@ export const MonthDropdown = ({
     setSelectedMonth(month);
     setIsOpen(false);
     setExpirationMonth(month);
-    setExpirationMonthErrorOccurred(false)
+    setExpirationMonthErrorOccurred(false);
   };
 
   const handleClickOutside = (event) => {
- 
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { LoginForm } from "./LoginForm/LoginForm";
 import styles from "./Login.module.css";
-import dynamicFormStyles from "../../DynamicForm/DynamicForm.module.css";
 
 export const Login = () => {
   return (
@@ -46,16 +45,17 @@ export const Login = () => {
               Enjoy the convenience of saving your wishlist permanently
             </li>
           </ul>
-          <Link to="/user/register">
-            <button
-              className={`${dynamicFormStyles["animated-button"]} ${styles["register-button"]} `}
-              type="submit"
-              data-testid="submit"
-              data-testid="sign-up-button"
-            >
-              Create an Account
-            </button>
-          </Link>
+          <div className={`${styles["register-button"]}`}>
+            <Link to="/user/register">
+              <button
+                className={`${styles["animated-button"]}`}
+                type="submit"
+                data-testid="sign-up-button"
+              >
+                Create an Account
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

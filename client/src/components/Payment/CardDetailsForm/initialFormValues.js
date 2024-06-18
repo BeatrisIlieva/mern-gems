@@ -10,7 +10,6 @@ const FORM_KEYS = {
   CvvCode: "cvvCode",
 };
 
-
 export const INITIAL_FORM_VALUES = {
   [FORM_KEYS.LongCardNumber]: {
     fieldLabel: "Card Number *",

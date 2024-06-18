@@ -79,7 +79,7 @@
 }
 
 .card-details-container {
-  border: 1px solid var(--gray);
+  border: 1px solid var(--button-gray-hover);
 }
 .left-bottom-container-email-title {
   margin: 20px 0px 0px 0px;

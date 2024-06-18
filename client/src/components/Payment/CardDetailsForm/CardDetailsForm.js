@@ -10,6 +10,7 @@ import { INITIAL_FORM_VALUES, FORM_KEYS } from "./initialFormValues";
 import { useState, useEffect } from "react";
 import { useForm } from "../../../hooks/useForm";
 import { hasFormErrorOccurred } from "../../../utils/hasFormErrorOccurred";
+import { useBagContext } from "../../../contexts/BagContext";
 
 export const CardDetailsForm = () => {
   const { userId } = useAuthContext();
@@ -20,6 +21,8 @@ export const CardDetailsForm = () => {
     useState(false);
   const [expirationMonthErrorOccurred, setExpirationMonthErrorOccurred] =
     useState(false);
+
+  const { totalPrice } = useBagContext();
 
   let {
     values,
@@ -88,11 +91,7 @@ export const CardDetailsForm = () => {
     <section className={styles["card-details-box"]}>
       <h4 className={styles["card-details-title"]}>Card Details</h4>
       <div className={styles["card-details-form"]}>
-        <form
-          method="POST"
-          onSubmit={onSubmit}
-          className={styles["form"]}
-        >
+        <form method="POST" onSubmit={onSubmit} className={styles["form"]}>
           {Object.entries(FORM_KEYS).map(([key, value]) => (
             <div
               key={key}
@@ -145,7 +144,7 @@ export const CardDetailsForm = () => {
             type="submit"
             data-testid="submit"
           >
-            {buttonValue}
+            {buttonValue} ${totalPrice}
           </button>
         </form>
         <YearDropdown

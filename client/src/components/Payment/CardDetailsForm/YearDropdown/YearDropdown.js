@@ -34,11 +34,10 @@ export const YearDropdown = ({
     setSelectedYear(year);
     setIsOpen(false);
     setExpirationYear(year);
-    setExpirationYearErrorOccurred(false)
+    setExpirationYearErrorOccurred(false);
   };
 
   const handleClickOutside = (event) => {
-
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }

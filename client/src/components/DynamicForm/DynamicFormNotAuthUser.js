@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { QuestionMarkEmailRegister } from "./QuestionMarkEmailRegister/QuestionMarkEmailRegister";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export const DynamicFormNotAuthUser = ({
   values,
@@ -11,7 +12,6 @@ export const DynamicFormNotAuthUser = ({
   blurHandler,
   changeHandler,
   initialFormValues,
-  buttonValue,
 }) => {
   const [hoveredQuestionMarkEmail, setHoveredQuestionMarkEmail] =
     useState(false);
@@ -23,11 +23,15 @@ export const DynamicFormNotAuthUser = ({
   const onUnhoverQuestionMarkEmail = () => {
     setHoveredQuestionMarkEmail(false);
   };
+
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/user/login";
+  
   return (
     <>
       {Object.entries(formKeys).map(([key, value]) => (
         <div key={key} className={styles["field-box"]}>
-          {key === "Email" && buttonValue === "Create an account" && (
+          {key === "Email" && !isLoginPage && (
             <span>
               <>{hoveredQuestionMarkEmail && <QuestionMarkEmailRegister />}</>
               <FontAwesomeIcon
@@ -78,13 +82,6 @@ export const DynamicFormNotAuthUser = ({
           </div>
         </div>
       ))}
-      <button
-        className={`${styles["animated-button"]} ${styles["button"]}`}
-        type="submit"
-        data-testid="submit"
-      >
-        {buttonValue}
-      </button>
     </>
   );
 };
