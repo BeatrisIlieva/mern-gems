@@ -11,7 +11,7 @@ const searchController = require("./controllers/searchController");
 const bagController = require("./controllers/bagController");
 const checkoutController = require("./controllers/checkoutController");
 const paymentController = require("./controllers/paymentController");
-const orderConfirmationController = require("./controllers/orderConfirmationController")
+const orderConfirmationController = require("./controllers/orderConfirmationController");
 
 router.use("/user-login-information", userLoginInformationController);
 router.use("/user-personal-information", userPersonalInformationController);

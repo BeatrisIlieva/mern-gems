@@ -72,7 +72,10 @@ export const Account = () => {
           Order History
         </h3>
       </div>
-      <div className={styles["bottom-container"]} data-testid="bottom-container-element">
+      <div
+        className={styles["bottom-container"]}
+        data-testid="bottom-container-element"
+      >
         {selectedSubMenu === SUB_MENU_OPTIONS.AccountDetails && (
           <AccountDetails />
         )}

@@ -20,7 +20,7 @@ export const CardDetailsForm = () => {
     useState(false);
   const [expirationMonthErrorOccurred, setExpirationMonthErrorOccurred] =
     useState(false);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { totalPrice } = useBagContext();
 

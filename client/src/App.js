@@ -164,7 +164,10 @@ function App() {
                       <Wishlist serviceFactory={wishlistServiceFactory} />
                     }
                   />
-                  <Route path="/user/order-confirmation" element={<OrderConfirmation />} />
+                  <Route
+                    path="/user/order-confirmation"
+                    element={<OrderConfirmation />}
+                  />
                   <Route path="/user/checkout" element={<Checkout />} />
                   <Route path="/user/payment" element={<Payment />} />
                   <Route path="/user/shopping-bag" element={<Bag />} />

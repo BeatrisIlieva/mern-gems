@@ -11,6 +11,7 @@ exports.verifyCardDetails = (
   const sixteenDigitsPattern = /^\d{16}$/;
   const cvvPattern = /^\d{3}$/;
   const expirationDatePattern = /^\d{2}\/\d{2}$/;
+  const cardHolderNamePattern = /^[a-zA-Z\s'-]{2,50}$/;
 
   if (!sixteenDigitsPattern.test(longCardNumber)) {
     throw new Error("The card number should be exactly 16 digits long.");
@@ -20,6 +21,9 @@ exports.verifyCardDetails = (
     throw new Error("The expiration date should be in the format MM/YY.");
   } else if (isCardExpired(expirationDate)) {
     throw new Error("This card has expired.");
+  } else if (!cardHolderNamePattern.test(cardHolder)) {
+    console.log(!cardHolderNamePattern.test(cardHolder));
+    throw new Error("Ensure you enter a valid name");
   }
 };
 

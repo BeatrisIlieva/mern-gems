@@ -1,7 +1,6 @@
 const Order = require("../models/Order");
 const bagManager = require("../managers/bagManager");
 
-
 exports.create = async (userId) => {
   const orderData = await bagManager.findAll(userId);
 
@@ -20,7 +19,6 @@ exports.create = async (userId) => {
 };
 
 exports.getOne = async (userId) => {
-    const order = await Order.findOne({user: userId}).sort({ createdAt: -1 });
-    return order;
-}
-
+  const order = await Order.findOne({ user: userId }).sort({ createdAt: -1 });
+  return order;
+};

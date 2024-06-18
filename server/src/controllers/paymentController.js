@@ -24,7 +24,7 @@ router.post("/:userId", async (req, res) => {
 
     const order = await orderConfirmationManager.create(userId);
 
-    res.status(200).json({order});
+    res.status(200).json({ order });
   } catch (err) {
     res.status(401).json({ message: err.message });
   }
