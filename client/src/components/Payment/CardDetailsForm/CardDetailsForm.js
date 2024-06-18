@@ -66,7 +66,8 @@ export const CardDetailsForm = () => {
 
   return (
     <section className={styles["card-details-box"]}>
-      <form method="POST" onSubmit={onSubmit}>
+      <h4 className={styles["card-details-title"]}>Card Details</h4>
+      <form method="POST" onSubmit={onSubmit} className={styles["card-details-form"]}>
         {Object.entries(FORM_KEYS).map(([key, value]) => (
           <div key={key} className={styles["field-box"]}>
             <div
@@ -84,7 +85,7 @@ export const CardDetailsForm = () => {
                 onChange={(e) => changeHandler(value, e.target.value)}
                 onFocus={() => clickHandler(value)}
                 data-testid={`${value}-input`}
-                className={styles["password"]}
+                className={styles["input"]}
               />
               <label
                 htmlFor={value}

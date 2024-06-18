@@ -75,11 +75,11 @@
 .left-bottom-container-title {
   font-size: var(--middle-font-size);
   margin-top: 0px;
-  /* margin-bottom: 40px; */
+  margin-bottom: 20px;
 }
 
 .card-details-container {
-  border: 1px solid var(--border);
+  border: 1px solid var(--gray);
 }
 .left-bottom-container-email-title {
   margin: 20px 0px 0px 0px;

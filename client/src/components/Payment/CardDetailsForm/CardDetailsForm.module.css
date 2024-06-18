@@ -1,3 +1,8 @@
+.card-details-title {
+  padding-left: 20px;
+  font-family: var(--bold-font-family);
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -50,7 +55,9 @@
   right: 10px;
 }
 
-
+.card-details-form {
+  padding: 20px;
+}
 
 .field-box {
   height: 90px;
@@ -59,13 +66,19 @@
 }
 
 .field-container {
-  border-bottom: 0.1px solid var(--dark-pink);
+  border: 0.1px solid var(--border);
   position: relative;
-  padding: 4px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.field-container:focus {
+  background-color: black;
 }
 
 .error {
-  border-bottom: 0.1px solid var(--dark-red);
+  border: 0.1px solid var(--dark-red);
 }
 
 .error-message {
@@ -76,40 +89,26 @@
   padding-bottom: 0px;
 }
 
-.success-message {
-  font-size: var(--small-font-size);
-  color: var(--green);
-  padding-top: 4px;
-  margin: 0px;
-  padding-bottom: 0px;
-}
-
 .custom-placeholder::placeholder {
-  color: var(--dark-pink);
+  color: var(--border) !important;
   opacity: 1;
 }
 
 .label {
   color: var(--middle-gray);
   position: absolute;
-  left: 0;
+  left: 14px;
 }
 
 .isFocused {
-  top: -12px;
-  left: 0;
+  top: 0px;
+  padding: 4px 0px;
+  left: 14px;
   font-size: var(--minimum-font-size);
 }
 
-.input-icon {
-  position: absolute;
-  top: 0px;
-  right: 0;
-  color: var(--gray);
-  background-color: var(--medium-pink);
-  border-radius: 32px;
-  padding: 3px;
-  z-index: 10;
-  width: 9px;
+.input,
+textarea {
+  caret-color: var(--border);
+  padding: 8px 0px;
 }
-
