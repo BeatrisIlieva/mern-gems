@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useBagContext } from "../../contexts/BagContext";
 import styles from "./OrderConfirmation.module.css";
 import { personalInformationServiceFactory } from "../../services/personalInformationService";
+import { Link } from "react-router-dom";
 
 export const OrderConfirmation = () => {
   const orderConfirmationService = useService(orderConfirmationServiceFactory);
@@ -62,9 +63,11 @@ export const OrderConfirmation = () => {
               <p className={styles["bottom-paragraph"]}>
                 You can find all the details and track the status of your
                 purchase in your account under the{" "}
-                <button className={styles["order-history-button"]}>
-                  Order History
-                </button>{" "}
+                <Link>
+                  <button className={styles["order-history-button"]}>
+                    Order History
+                  </button>
+                </Link>
                 menu.
               </p>
               <div className={styles["image-container"]}>
