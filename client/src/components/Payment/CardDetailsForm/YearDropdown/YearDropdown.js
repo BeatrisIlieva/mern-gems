@@ -28,11 +28,6 @@ export const YearDropdown = () => {
     setIsOpen(false);
   };
 
-  const toggleDropdown = () => {
-    const newIsOpen = !isOpen;
-    setIsOpen(newIsOpen);
-  };
-
   const handleClickOutside = (event) => {
     console.log(event);
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

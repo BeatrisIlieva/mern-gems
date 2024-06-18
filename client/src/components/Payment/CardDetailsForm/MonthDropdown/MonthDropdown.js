@@ -7,7 +7,7 @@ export const MonthDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-    useEffect(() => {
+  useEffect(() => {
     const generateMonthOptions = () => {
       const currentMonth = new Date().getMonth() + 1;
       const monthsArray = [];
@@ -25,11 +25,6 @@ export const MonthDropdown = () => {
   const handleSelect = (month) => {
     setSelectedMonth(month);
     setIsOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    const newIsOpen = !isOpen;
-    setIsOpen(newIsOpen);
   };
 
   const handleClickOutside = (event) => {
