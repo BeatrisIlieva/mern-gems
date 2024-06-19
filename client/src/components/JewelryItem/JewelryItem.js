@@ -10,6 +10,11 @@ import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { useBagContext } from "../../contexts/BagContext";
+import {
+  setBodyOverflowVisible,
+  setBodyOverflowHidden,
+} from "../../utils/useSetBodyOverflow";
+import { MiniBag } from "../Bag/MiniBag/MiniBag";
 
 const SizeFormKeys = {
   Size: "size",
@@ -25,6 +30,7 @@ export const JewelryItem = () => {
   const { onAddToWishlistClick, onRemoveFromWishlistClick } =
     useWishlistContext();
   const { onAddToBagClick } = useBagContext();
+  const [miniBag, setMiniBag] = useState(false);
 
   const toggleSelected = () => {
     setLeftIsSelected(!leftIsSelected);
@@ -70,8 +76,6 @@ export const JewelryItem = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(jewelry.category);
-
     if (jewelry.category === 2) {
       const sizeId = jewelry.sizes[0]._id;
 
@@ -81,131 +85,181 @@ export const JewelryItem = () => {
     }
 
     fetchData();
+
+    setMiniBag(true);
+
+    setBodyOverflowHidden();
+  };
+
+  const onClose = () => {
+    setMiniBag(false);
+
+    setBodyOverflowVisible();
   };
 
   return (
-    <section className={styles["jewelry-details-box"]}>
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <>
-          {jewelry && (
-            <div className={styles["jewelry-container"]}>
-              <div className={styles["jewelry-images"]}>
-                {leftIsSelected ? (
-                  <div
-                    className={`${styles["image"]} ${
-                      jewelry.isSoldOut === true ? styles["sold-out"] : ""
-                    }`.trim()}
-                  >
-                    {" "}
-                    <img
-                      src={jewelry.firstImageUrl}
-                      alt={jewelry.title}
-                      onClick={toggleSelected}
-                      className={styles["left-image"]}
+    <>
+      <>{miniBag && <MiniBag onClose={onClose} />}</>
+      <section className={styles["jewelry-details-box"]}>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            {jewelry && (
+              <div className={styles["jewelry-container"]}>
+                <div className={styles["jewelry-images"]}>
+                  {leftIsSelected ? (
+                    <div
+                      className={`${styles["image"]} ${
+                        jewelry.isSoldOut === true ? styles["sold-out"] : ""
+                      }`.trim()}
+                    >
+                      {" "}
+                      <img
+                        src={jewelry.firstImageUrl}
+                        alt={jewelry.title}
+                        onClick={toggleSelected}
+                        className={styles["left-image"]}
+                      />
+                      {jewelry.isSoldOut && (
+                        <span className={styles["sold-out-span"]}>
+                          SOLD OUT
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div
+                      className={`${styles["image"]} ${
+                        jewelry.isSoldOut === true ? styles["sold-out"] : ""
+                      }`.trim()}
+                    >
+                      <img
+                        src={jewelry.secondImageUrl}
+                        alt={jewelry.title}
+                        onClick={toggleSelected}
+                        className={styles["right-image"]}
+                      />
+                      {jewelry.isSoldOut && (
+                        <span className={styles["sold-out-span"]}>
+                          SOLD OUT
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  <div className={styles["circles-container"]}>
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className={`${styles["circle"]} ${
+                        leftIsSelected === true ? styles["photo-selected"] : ""
+                      }`.trim()}
                     />
-                    {jewelry.isSoldOut && (
-                      <span className={styles["sold-out-span"]}>SOLD OUT</span>
-                    )}
-                  </div>
-                ) : (
-                  <div
-                    className={`${styles["image"]} ${
-                      jewelry.isSoldOut === true ? styles["sold-out"] : ""
-                    }`.trim()}
-                  >
-                    <img
-                      src={jewelry.secondImageUrl}
-                      alt={jewelry.title}
-                      onClick={toggleSelected}
-                      className={styles["right-image"]}
+                    <FontAwesomeIcon
+                      icon={faCircle}
+                      className={`${styles["circle"]} ${
+                        rightIsSelected === true ? styles["photo-selected"] : ""
+                      }`.trim()}
                     />
-                    {jewelry.isSoldOut && (
-                      <span className={styles["sold-out-span"]}>SOLD OUT</span>
-                    )}
                   </div>
-                )}
-                <div className={styles["circles-container"]}>
-                  <FontAwesomeIcon
-                    icon={faCircle}
-                    className={`${styles["circle"]} ${
-                      leftIsSelected === true ? styles["photo-selected"] : ""
-                    }`.trim()}
-                  />
-                  <FontAwesomeIcon
-                    icon={faCircle}
-                    className={`${styles["circle"]} ${
-                      rightIsSelected === true ? styles["photo-selected"] : ""
-                    }`.trim()}
-                  />
                 </div>
-              </div>
-              <div className={styles["jewelry-info-container"]}>
-                <h2 className={styles["jewelry-title"]}>{jewelry.title}</h2>
-                <div className={styles["flex-container-line"]}>
-                  <hr className={styles["hr-line"]} />
-                  <img
-                    className={styles["line-img"]}
-                    src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
-                    alt=""
-                  />
-                  <hr className={styles["hr-line"]} />
-                </div>
-                <p className={styles["jewelry-description"]}>
-                  {jewelry.description}.{" "}
-                  {jewelry.sizes &&
-                    jewelry.category === 2 &&
-                    jewelry.sizes[0].measurement}
-                </p>
-                {jewelry.category !== 2 && jewelry.sizes ? (
-                  <div>
-                    <h4>Size</h4>
+                <div className={styles["jewelry-info-container"]}>
+                  <h2 className={styles["jewelry-title"]}>{jewelry.title}</h2>
+                  <div className={styles["flex-container-line"]}>
+                    <hr className={styles["hr-line"]} />
+                    <img
+                      className={styles["line-img"]}
+                      src="https://res.cloudinary.com/deztgvefu/image/upload/v1707499296/template_images/giphy_s_b3cfly_1_b0dwbo.gif"
+                      alt=""
+                    />
+                    <hr className={styles["hr-line"]} />
+                  </div>
+                  <p className={styles["jewelry-description"]}>
+                    {jewelry.description}.{" "}
+                    {jewelry.sizes &&
+                      jewelry.category === 2 &&
+                      jewelry.sizes[0].measurement}
+                  </p>
+                  {jewelry.category !== 2 && jewelry.sizes ? (
+                    <div>
+                      <h4>Size</h4>
+                      <form onSubmit={onSubmit} method="POST">
+                        <div className={styles["radio-container"]}>
+                          {jewelry.sizes.map((item) =>
+                            item.available ? (
+                              <div key={item._id}>
+                                <input
+                                  type="radio"
+                                  name={SizeFormKeys.Size}
+                                  id={item._id}
+                                  value={item._id}
+                                  onChange={changeHandler}
+                                  checked={
+                                    Number(values[SizeFormKeys.Size]) ===
+                                    item._id
+                                  }
+                                />
+                                <label
+                                  className={styles["label"]}
+                                  htmlFor={item._id}
+                                >
+                                  {item.measurement}
+                                </label>
+                              </div>
+                            ) : (
+                              <div key={item._id}>
+                                <input
+                                  type="radio"
+                                  disabled
+                                  name={SizeFormKeys.Size}
+                                  id={item._id}
+                                  value={item._id}
+                                  onChange={changeHandler}
+                                  checked={
+                                    Number(values[SizeFormKeys.Size]) ===
+                                    item._id
+                                  }
+                                />
+                                <label
+                                  htmlFor={item._id}
+                                  className={styles["label"]}
+                                >
+                                  {item.measurement}
+                                </label>
+                              </div>
+                            )
+                          )}
+                        </div>
+                        <div className={styles["button-container"]}>
+                          <button
+                            className={`${styles["add-to-bag-button"]} ${
+                              jewelry.isSoldOut === true
+                                ? styles["button-disabled"]
+                                : ""
+                            }`.trim()}
+                            disabled={jewelry.isSoldOut}
+                          >
+                            <span className={styles["price-span"]}>
+                              ${jewelry.price}
+                            </span>{" "}
+                            <span className={styles["add-span"]}>
+                              Add to Bag
+                            </span>
+                          </button>
+                          <button className={styles["add-to-wishlist-button"]}>
+                            <FontAwesomeIcon
+                              icon={
+                                jewelry.isLikedByUser
+                                  ? solidHeart
+                                  : regularHeart
+                              }
+                              className={styles["heart"]}
+                              onClick={() => handleLikeClick(_id)}
+                            />
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  ) : (
                     <form onSubmit={onSubmit} method="POST">
-                      <div className={styles["radio-container"]}>
-                        {jewelry.sizes.map((item) =>
-                          item.available ? (
-                            <div key={item._id}>
-                              <input
-                                type="radio"
-                                name={SizeFormKeys.Size}
-                                id={item._id}
-                                value={item._id}
-                                onChange={changeHandler}
-                                checked={
-                                  Number(values[SizeFormKeys.Size]) === item._id
-                                }
-                              />
-                              <label
-                                className={styles["label"]}
-                                htmlFor={item._id}
-                              >
-                                {item.measurement}
-                              </label>
-                            </div>
-                          ) : (
-                            <div key={item._id}>
-                              <input
-                                type="radio"
-                                disabled
-                                name={SizeFormKeys.Size}
-                                id={item._id}
-                                value={item._id}
-                                onChange={changeHandler}
-                                checked={
-                                  Number(values[SizeFormKeys.Size]) === item._id
-                                }
-                              />
-                              <label
-                                htmlFor={item._id}
-                                className={styles["label"]}
-                              >
-                                {item.measurement}
-                              </label>
-                            </div>
-                          )
-                        )}
-                      </div>
                       <div className={styles["button-container"]}>
                         <button
                           className={`${styles["add-to-bag-button"]} ${
@@ -231,40 +285,13 @@ export const JewelryItem = () => {
                         </button>
                       </div>
                     </form>
-                  </div>
-                ) : (
-                  <form onSubmit={onSubmit} method="POST">
-                    <div className={styles["button-container"]}>
-                      <button
-                        className={`${styles["add-to-bag-button"]} ${
-                          jewelry.isSoldOut === true
-                            ? styles["button-disabled"]
-                            : ""
-                        }`.trim()}
-                        disabled={jewelry.isSoldOut}
-                      >
-                        <span className={styles["price-span"]}>
-                          ${jewelry.price}
-                        </span>{" "}
-                        <span className={styles["add-span"]}>Add to Bag</span>
-                      </button>
-                      <button className={styles["add-to-wishlist-button"]}>
-                        <FontAwesomeIcon
-                          icon={
-                            jewelry.isLikedByUser ? solidHeart : regularHeart
-                          }
-                          className={styles["heart"]}
-                          onClick={() => handleLikeClick(_id)}
-                        />
-                      </button>
-                    </div>
-                  </form>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
-          )}
-        </>
-      )}
-    </section>
+            )}
+          </>
+        )}
+      </section>
+    </>
   );
 };

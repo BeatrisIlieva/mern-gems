@@ -1,0 +1,84 @@
+.mini-bag-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: var(--gray);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: slideIn 1s forwards;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.mini-bag-shadow.active {
+  opacity: 0.4;
+}
+
+.mini-bag-dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 1060;
+  width: 560px;
+  background-color: var(--white);
+  overflow-y: auto;
+  animation: slideIn 1s forwards;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+@keyframes slideIn {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-body {
+  padding: 20px;
+  min-height: calc(380px);
+}
+
+#xMark {
+  cursor: pointer;
+}
+.x-mark {
+  padding: 20px;
+  color: var(--middle-gray);
+  height: 20px;
+}
+
+.flex-container-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+.hr-line {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 0 0.2px var(--dark-pink);
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+.line-img {
+  width: 20px;
+  vertical-align: middle;
+  margin: 0px 4px;
+}
