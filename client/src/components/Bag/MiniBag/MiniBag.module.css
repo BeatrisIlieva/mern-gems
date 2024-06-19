@@ -43,7 +43,9 @@
 }
 
 .top-container {
-  height: 10vh;
+  height: 12.8vh;
+  background-color: white;
+  z-index: 50000;
 }
 
 .modal-header {
@@ -65,9 +67,8 @@
 }
 
 .modal-body {
-  padding: 20px;
-  height: 70vh;
-  height: calc(64vh);
+  padding: 0px 20px;
+  height: 61.2vh;
   overflow-y: auto;
 }
 
