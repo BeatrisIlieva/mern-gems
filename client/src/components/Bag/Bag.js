@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 import { useBagContext } from "../../contexts/BagContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { EmptyBag } from "./EmptyBag/EmptyBag";
-import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Bag = () => {
   const { bagItems, totalPrice, totalQuantity, isEmpty, loading } =
     useBagContext();
+
+  const from = "/user/shopping-bag";
+  localStorage.setItem("lastLocation", from);
 
   return (
     <section className={styles["bag-box"]}>

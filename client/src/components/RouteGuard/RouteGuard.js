@@ -6,7 +6,7 @@ export const RouteGuard = ({ children }) => {
 
   const location = useLocation();
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && location.pathname !== "/user/payment") {
     return <Navigate to="/user/login" state={{ from: location }} />;
   }
 

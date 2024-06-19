@@ -29,6 +29,9 @@ export const Checkout = () => {
   const [userInformation, setUserInformation] = useState([]);
   const navigate = useNavigate();
 
+  const from = "/user/checkout";
+  localStorage.setItem("lastLocation", from);
+
   useEffect(() => {
     authService
       .find(userId)

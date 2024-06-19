@@ -21,6 +21,9 @@ export const Account = () => {
     SUB_MENU_OPTIONS.AccountDetails
   );
 
+  const from = "/user/account";
+  localStorage.setItem("lastLocation", from);
+
   const switchSubmenuHandler = (option) => {
     setSelectedSubMenu(option);
   };

@@ -25,7 +25,6 @@ export const DynamicDropdown = ({
   };
 
   const handleClickOutside = (event) => {
-    console.log(event);
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }

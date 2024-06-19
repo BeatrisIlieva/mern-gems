@@ -93,7 +93,7 @@ async function generateToken(user) {
     _id: user._id,
   };
 
-  const token = await jwt.sign(payload, SECRET, { expiresIn: "1d" });
+  const token = await jwt.sign(payload, SECRET);
 
   const result = {
     _id: user._id,
