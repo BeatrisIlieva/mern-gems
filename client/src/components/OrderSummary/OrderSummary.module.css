@@ -56,6 +56,7 @@
 .jewelry-bag-price {
   font-family: var(--bold-font-family);
   position: absolute;
+  top: 0;
   right: 0;
   padding: 0;
   margin: 0;

@@ -25,7 +25,6 @@ import { BagProvider } from "./contexts/BagContext";
 import { Checkout } from "./components/Checkout/Checkout";
 import { Payment } from "./components/Payment/Payment";
 import { OrderConfirmation } from "./components/OrderConfirmation/OrderConfirmation";
-import { OrderHistory } from "./components/User/Account/OrderHistory/OrderHistory";
 
 function App() {
   return (
@@ -175,10 +174,6 @@ function App() {
                   <Route path="/user/shopping-bag" element={<Bag />} />
                   <Route path="/user/checkout" element={<Checkout />} />
                   <Route path="/user/payment" element={<Payment />} />
-                  <Route
-                    path="/user/order-history"
-                    element={<OrderHistory />}
-                  />
                 </Routes>
               </main>
               <Footer />

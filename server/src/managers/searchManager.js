@@ -1,6 +1,12 @@
 const Jewelry = require("../models/Jewelry");
 
 exports.findAll = async (search) => {
+  const searchTerms = search
+    .split(" ")
+    .map((term) => term.trim())
+    .filter((term) => term.length > 0);
+  const regexTerms = searchTerms.map((term) => new RegExp(term, "i"));
+
   const searchResult = await Jewelry.aggregate([
     {
       $lookup: {
@@ -24,6 +30,14 @@ exports.findAll = async (search) => {
         from: "categories",
         foreignField: "_id",
         localField: "category",
+      },
+    },
+    {
+      $lookup: {
+        as: "collections",
+        from: "collections",
+        foreignField: "_id",
+        localField: "collection",
       },
     },
     {
@@ -67,32 +81,17 @@ exports.findAll = async (search) => {
     },
     {
       $match: {
-        $or: [
-          {
-            title: {
-              $regex: new RegExp(search, "i"),
-            },
-          },
-          {
-            "metals.title": {
-              $regex: new RegExp(search, "i"),
-            },
-          },
-          {
-            "categories.title": {
-              $regex: new RegExp(search.replace(/s$/, "(s|)"), "i"),
-            },
-          },
-          {
-            "stonetypes.title": {
-              $regex: new RegExp(search, "i"),
-            },
-          },
-          {
-            "stonecolors.title": {
-              $regex: new RegExp(search, "i"),
-            },
-          },
+        $and: [
+          ...regexTerms.map((regex) => ({
+            $or: [
+              { title: { $regex: regex } },
+              { "metals.title": { $regex: regex } },
+              { "categories.title": { $regex: regex } },
+              { "collections.title": { $regex: regex } },
+              { "stonetypes.title": { $regex: regex } },
+              { "stonecolors.title": { $regex: regex } },
+            ],
+          })),
         ],
       },
     },
@@ -113,6 +112,9 @@ exports.findAll = async (search) => {
         categoryTitle: {
           $addToSet: "$categories.title",
         },
+        collectionTitle: {
+          $addToSet: "$collections.title",
+        },
         jewelryTitle: {
           $addToSet: "$title",
         },
@@ -124,6 +126,7 @@ exports.findAll = async (search) => {
         firstImageUrl: 1,
         jewelryIds: 1,
         categoryTitle: 1,
+        collectionTitle: 1,
         jewelryTitle: 1,
       },
     },

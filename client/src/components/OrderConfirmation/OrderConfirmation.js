@@ -62,13 +62,12 @@ export const OrderConfirmation = () => {
               </p>
               <p className={styles["bottom-paragraph"]}>
                 You can find all the details and track the status of your
-                purchase in your account under the{" "}
-                <Link>
+                purchase in your
+                <Link to={"/user/account"}>
                   <button className={styles["order-history-button"]}>
-                    Order History
+                    Account.
                   </button>
                 </Link>
-                menu.
               </p>
               <div className={styles["image-container"]}>
                 <img
