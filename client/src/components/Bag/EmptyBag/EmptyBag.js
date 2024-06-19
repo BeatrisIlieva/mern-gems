@@ -6,6 +6,7 @@ import { HeroDiamondLoop } from "../../JewelryList/HeroJewelryList/HeroDiamondLo
 import { HeroSunflower } from "../../JewelryList/HeroJewelryList/HeroSunflower/HeroSunflower";
 import { HeroSparklingCluster } from "../../JewelryList/HeroJewelryList/HeroSparklingCluster/HeroSparklingCluster";
 import { Link } from "react-router-dom";
+import { COLLECTIONS_BY_ID_AND_TITLE } from "../../../constants/collections";
 export const EmptyBag = () => {
   return (
     <section className={styles["empty-bag-box"]}>
@@ -14,22 +15,34 @@ export const EmptyBag = () => {
         <p>Explore and add something you love.</p>
       </div>
       <Link to="/forget-me-not" className={styles["no-decoration"]}>
-        <HeroForgetMeNot />
+        <HeroForgetMeNot
+          entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Forget-Me-Not"][1]}
+        />
       </Link>
       <Link to="/classics" className={styles["no-decoration"]}>
-        <HeroClassics />
+        <HeroClassics
+          entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Classics"][1]}
+        />
       </Link>
       <Link to="/pirouette" className={styles["no-decoration"]}>
-        <HeroPirouette />
+        <HeroPirouette
+          entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][1]}
+        />
       </Link>
       <Link to="/diamond-loop" className={styles["no-decoration"]}>
-        <HeroDiamondLoop />
+        <HeroDiamondLoop
+          entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Diamond Loop"][1]}
+        />
       </Link>
       <Link to="/sunflower" className={styles["no-decoration"]}>
-        <HeroSunflower />
+        <HeroSunflower
+          entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Sunflower"][1]}
+        />
       </Link>
       <Link to="/sparkling-cluster" className={styles["no-decoration"]}>
-        <HeroSparklingCluster />
+        <HeroSparklingCluster
+          entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Sparkling Cluster"][1]}
+        />
       </Link>
     </section>
   );
