@@ -24,7 +24,7 @@ export const MiniBag = ({ onClose }) => {
             <div className={styles["top-container"]}>
               <div className={styles["modal-header"]}>
                 <h2 className={styles["popup-title"]}>
-                  Your Bag
+                  Your Bag{" "}
                   <span className={styles["popup-items"]}>
                     {totalQuantity} {totalQuantity > 1 ? "items" : "item"}
                   </span>
@@ -47,12 +47,9 @@ export const MiniBag = ({ onClose }) => {
               </div>
             </div>
             <div className={styles["modal-body"]}>
-              <ul className={styles["bag-left-sub-container"]} role="list">
+              <ul role="list">
                 {bagItems.map((item) => (
-                  <li
-                    key={item._id}
-                    className={styles["bag-left-sub-left-container"]}
-                  >
+                  <li key={item._id} className={styles["bag-item"]}>
                     <BagList {...item} />
                   </li>
                 ))}
@@ -68,16 +65,26 @@ export const MiniBag = ({ onClose }) => {
                 />
                 <hr className={styles["hr-line"]} />
               </div>
+              <div className={styles["price-container"]}>
+                <span>Total:</span>
+                <span>${totalPrice}</span>
+              </div>
               <div className={styles["view-bag-button-container"]}>
-                <Link to={"/user/shopping-card"}>
-                  <button className={styles["view-bag-button"]}>
+                <Link to={"/user/shopping-bag"}>
+                  <button
+                    className={styles["view-bag-button"]}
+                    onClick={setBodyOverflowVisible}
+                  >
                     View Bag
                   </button>
                 </Link>
               </div>
               <div className={styles["continue-checkout-button-container"]}>
                 <Link to={"/user/checkout"}>
-                  <button className={styles["continue-checkout-button"]}>
+                  <button
+                    className={styles["continue-checkout-button"]}
+                    onClick={setBodyOverflowVisible}
+                  >
                     Continue Checkout
                   </button>
                 </Link>
