@@ -158,22 +158,49 @@ function App() {
                     path="/:slugifiedCategoryTitle/:slugifiedJewelryTitle/:_id"
                     element={<JewelryItem />}
                   />
+                  <Route path="/user/register" element={<Register />} />
+                  <Route path="/user/login" element={<Login />} />
+                  <Route path="/user/shopping-bag" element={<Bag />} />
                   <Route
                     path="/user/wishlist"
                     element={
                       <Wishlist serviceFactory={wishlistServiceFactory} />
                     }
                   />
-                  <Route
-                    path="/user/order-confirmation"
-                    element={<OrderConfirmation />}
-                  />
-                  <Route path="/user/register" element={<Register />} />
-                  <Route path="/user/login" element={<Login />} />
-                  <Route path="/user/account" element={<Account />} />
-                  <Route path="/user/shopping-bag" element={<Bag />} />
-                  <Route path="/user/checkout" element={<Checkout />} />
-                  <Route path="/user/payment" element={<Payment />} />
+                  <Route element={<RouteGuard />}>
+                    <Route
+                      path="/user/account"
+                      element={
+                        <RouteGuard>
+                          <Account />
+                        </RouteGuard>
+                      }
+                    />
+                    <Route
+                      path="/user/checkout"
+                      element={
+                        <RouteGuard>
+                          <Checkout />
+                        </RouteGuard>
+                      }
+                    />
+                    <Route
+                      path="/user/payment"
+                      element={
+                        <RouteGuard>
+                          <Payment />
+                        </RouteGuard>
+                      }
+                    />
+                    <Route
+                      path="/user/order-confirmation"
+                      element={
+                        <RouteGuard>
+                          <OrderConfirmation />
+                        </RouteGuard>
+                      }
+                    />
+                  </Route>
                 </Routes>
               </main>
               <Footer />
