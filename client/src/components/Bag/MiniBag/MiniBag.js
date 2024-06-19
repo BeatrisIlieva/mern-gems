@@ -4,6 +4,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useBagContext } from "../../../contexts/BagContext";
 import { Link } from "react-router-dom";
 import { setBodyOverflowVisible } from "../../../utils/useSetBodyOverflow";
+import { BagList } from "../BagList/BagList";
 
 export const MiniBag = ({ onClose }) => {
   const { bagItems, totalPrice, totalQuantity } = useBagContext();
@@ -40,7 +41,18 @@ export const MiniBag = ({ onClose }) => {
               />
               <hr className={styles["hr-line"]} />
             </div>
-            <div className={styles["modal-body"]}></div>
+            <div className={styles["modal-body"]}>
+              <ul className={styles["bag-left-sub-container"]} role="list">
+                {bagItems.map((item) => (
+                  <li
+                    key={item._id}
+                    className={styles["bag-left-sub-left-container"]}
+                  >
+                    <BagList {...item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className={styles["flex-container-line"]}>
               <hr className={styles["hr-line"]} />
               <img
@@ -50,7 +62,22 @@ export const MiniBag = ({ onClose }) => {
               />
               <hr className={styles["hr-line"]} />
             </div>
-            <div className={styles["bag-popup-checkout-container"]}></div>
+            <div className={styles["bag-popup-checkout-container"]}>
+              <div className={styles["view-bag-button-container"]}>
+                <Link to={"/user/shopping-card"}>
+                  <button className={styles["view-bag-button"]}>
+                    View Bag
+                  </button>
+                </Link>
+              </div>
+              <div className={styles["continue-checkout-button-container"]}>
+                <Link to={"/user/checkout"}>
+                  <button className={styles["continue-checkout-button"]}>
+                    Continue Checkout
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

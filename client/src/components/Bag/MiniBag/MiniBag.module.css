@@ -25,7 +25,6 @@
   z-index: 1060;
   width: 560px;
   background-color: var(--white);
-  overflow-y: auto;
   animation: slideIn 1s forwards;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -46,7 +45,8 @@
 
 .modal-body {
   padding: 20px;
-  min-height: calc(380px);
+  height: calc(380px);
+  overflow-y: auto;
 }
 
 #xMark {
@@ -81,4 +81,62 @@
   width: 20px;
   vertical-align: middle;
   margin: 0px 4px;
+}
+
+.bag-left-sub-left-container {
+  display: flex;
+  overflow-y: auto;
+}
+
+.bag-popup-checkout-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 0px 20px;
+}
+
+.continue-checkout-button {
+  width: 100% !important;
+}
+
+.continue-checkout-button {
+  padding: 12px;
+  font-size: var(--medium-font-size);
+  font-family: var(--bold-italic-font-family);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--button-gray);
+  color: var(--white);
+  outline: none;
+  letter-spacing: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.continue-checkout-button:hover {
+  background: var(--button-gray-hover);
+}
+
+.view-bag-button {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+
+.view-bag-button {
+  padding: 12px;
+  font-size: var(--medium-font-size);
+  font-family: var(--bold-italic-font-family);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--button-pink);
+  color: var(--white);
+  outline: none;
+  letter-spacing: 1.2px;
+  width: 100%;
+  text-align: center;
+}
+
+.view-bag-button:hover {
+  background: var(--button-hover-pink);
 }
