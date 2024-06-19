@@ -30,13 +30,25 @@
 }
 .title-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 86%;
+  left: 30%;
+  transform: translate(-20%, -50%);
 }
 .title {
   color: var(--gray);
-  position: absolute;
-  bottom: 0px;
+  margin: 0px 0px 6px 0px;
   text-align: center;
-  margin: 0px 28px 10px 28px;
+  padding: 0;
+}
+
+.price {
+  color: var(--gray);
+  font-size: var(--main-font-size);
+  font-family: var(--bold-font-family);
+  margin: 0;
+  padding: 0;
 }

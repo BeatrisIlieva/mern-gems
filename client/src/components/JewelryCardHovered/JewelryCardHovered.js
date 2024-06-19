@@ -31,10 +31,8 @@ export const JewelryCardHovered = ({
         </Link>
       </div>
       <div className={styles["title-container"]}>
-        <h3 className={styles["title"]}>
-          {jewelryTitle}
-          {price}
-        </h3>
+        <h3 className={styles["title"]}>{jewelryTitle}</h3>
+        <h5 className={styles["price"]}>${price}</h5>
       </div>
     </article>
   );

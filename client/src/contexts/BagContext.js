@@ -35,7 +35,6 @@ export const BagProvider = ({ children }) => {
       try {
         let data = await onDisplayBagClick();
         data = Array.isArray(data) ? data[0] : data;
-        console.log(data);
 
         if (data && data.jewelries && data.jewelries.length > 0) {
           const bagData = data.jewelries;
