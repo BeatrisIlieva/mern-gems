@@ -287,7 +287,10 @@ export const JewelryItem = () => {
                               Add to Bag
                             </span>
                           </button>
-                          <button className={styles["add-to-wishlist-button"]}>
+                          <button
+                            className={styles["add-to-wishlist-button"]}
+                            onClick={() => handleLikeClick(_id)}
+                          >
                             <FontAwesomeIcon
                               icon={
                                 jewelry.isLikedByUser
@@ -295,7 +298,6 @@ export const JewelryItem = () => {
                                   : regularHeart
                               }
                               className={styles["heart"]}
-                              onClick={() => handleLikeClick(_id)}
                             />
                           </button>
                         </div>
@@ -317,13 +319,15 @@ export const JewelryItem = () => {
                           </span>{" "}
                           <span className={styles["add-span"]}>Add to Bag</span>
                         </button>
-                        <button className={styles["add-to-wishlist-button"]}>
+                        <button
+                          className={styles["add-to-wishlist-button"]}
+                          onClick={() => handleLikeClick(_id)}
+                        >
                           <FontAwesomeIcon
                             icon={
                               jewelry.isLikedByUser ? solidHeart : regularHeart
                             }
                             className={styles["heart"]}
-                            onClick={() => handleLikeClick(_id)}
                           />
                         </button>
                       </div>
