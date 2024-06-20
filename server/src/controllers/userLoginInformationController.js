@@ -5,6 +5,7 @@ const userAddressInformationManager = require("../managers/userAddressInformatio
 const userLoginInformation = require("../models/UserLoginInformation");
 const { transferBag } = require("../utils/transferBag");
 const { transferWishlist } = require("../utils/transferWishlist");
+const { sendRegistrationEmail } = require("../../mailer");
 
 router.post("/register", async (req, res) => {
   const userUUID = req.headers["user-uuid"];
@@ -26,6 +27,8 @@ router.post("/register", async (req, res) => {
 
     await userAddressInformationManager.create({ _id: userUUID });
 
+    sendRegistrationEmail(email, firstName);
+
     res.status(201).json({ token, userId: userUUID });
   } catch (err) {
     console.log(err);
@@ -42,12 +45,15 @@ router.post("/login", async (req, res) => {
 
   try {
     const user = await userLoginInformation.findOne({ email });
-    const userId = user._id;
 
-    if (userId !== userUUID) {
-      await transferWishlist(userUUID, userId);
+    if (user) {
+      const userId = user._id;
 
-      await transferBag(userUUID, userId);
+      if (userId !== userUUID) {
+        await transferWishlist(userUUID, userId);
+
+        await transferBag(userUUID, userId);
+      }
     }
 
     const result = await userLoginInformationManager.login({ email, password });

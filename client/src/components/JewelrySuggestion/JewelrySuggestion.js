@@ -30,13 +30,14 @@ export const JewelrySuggestion = ({ jewelryId }) => {
       <div className={styles["images-container"]}>
         {jewelries.map((j) => (
           <Link
+            key={j._id}
             to={`/${slugify(j.categories[0].title)}/${slugify(j.title)}/${
               j._id
             }`}
             className={styles["no-decoration"]}
           >
             <div className={styles["jewelry-wrapper"]}>
-              <div key={j._id} className={styles["image-container"]}>
+              <div className={styles["image-container"]}>
                 <img
                   src={j.firstImageUrl}
                   alt="img"

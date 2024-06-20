@@ -66,7 +66,7 @@ export const APARTMENT_PATTERN = new RegExp(
 const APARTMENT_ERROR_MESSAGE = `* This field requires ${APARTMENT_LENGTH.MIN}-${APARTMENT_LENGTH.MAX} characters`;
 
 const ZIP_CODE_LENGTH = {
-  MIN: 0,
+  MIN: 4,
   MAX: 15,
 };
 

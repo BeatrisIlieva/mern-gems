@@ -1,5 +1,5 @@
 const ZIP_CODE_LENGTH = {
-  MIN: 0,
+  MIN: 4,
   MAX: 15,
 };
 

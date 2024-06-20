@@ -17,7 +17,7 @@ const FORM_KEYS = {
 
 export const INITIAL_FORM_VALUES = {
   [FORM_KEYS.PhoneNumber]: {
-    fieldLabel: "Phone Number",
+    fieldLabel: "Phone Number *",
     fieldValue: "",
     regexPattern: PHONE_PATTERN,
     errorMessage: "",
@@ -29,7 +29,7 @@ export const INITIAL_FORM_VALUES = {
   },
 
   [FORM_KEYS.Country]: {
-    fieldLabel: "Country",
+    fieldLabel: "Country *",
     fieldValue: "",
     regexPattern: NAME_PATTERN,
     errorMessage: "",
@@ -41,7 +41,7 @@ export const INITIAL_FORM_VALUES = {
   },
 
   [FORM_KEYS.City]: {
-    fieldLabel: "City",
+    fieldLabel: "City *",
     fieldValue: "",
     regexPattern: NAME_PATTERN,
     errorMessage: "",
@@ -53,7 +53,7 @@ export const INITIAL_FORM_VALUES = {
   },
 
   [FORM_KEYS.Street]: {
-    fieldLabel: "Street",
+    fieldLabel: "Street *",
     fieldValue: "",
     regexPattern: STREET_PATTERN,
     errorMessage: "",
@@ -77,7 +77,7 @@ export const INITIAL_FORM_VALUES = {
   },
 
   [FORM_KEYS.ZipCode]: {
-    fieldLabel: "Zip Code",
+    fieldLabel: "Zip Code *",
     fieldValue: "",
     regexPattern: ZIP_CODE_PATTERN,
     errorMessage: "",

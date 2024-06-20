@@ -41,7 +41,7 @@ export const JewelryItem = () => {
   };
 
   // jewelries with category id 2 have only one size so a user do not need to select a size
-  const [sizeIsSelected, setSizeIsSelected] = useState(jewelry.category === 2);
+  const [sizeIsSelected, setSizeIsSelected] = useState(true);
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -57,6 +57,9 @@ export const JewelryItem = () => {
         const data = await jewelryService.findOne(_id);
 
         const jewelryData = Array.isArray(data) ? data[0] : data;
+
+        setSizeIsSelected(jewelryData.category === 2);
+
         setJewelry(jewelryData);
       } catch (err) {
         console.log(err.message);

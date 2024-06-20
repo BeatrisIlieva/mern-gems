@@ -26,7 +26,7 @@ router.post("/:userId", async (req, res) => {
 
     res.status(200).json({ order });
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message);
     res.status(401).json({ message: err.message });
   }
 });
