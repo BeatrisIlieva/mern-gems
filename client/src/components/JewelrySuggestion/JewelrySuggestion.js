@@ -20,7 +20,6 @@ export const JewelrySuggestion = ({ jewelryId }) => {
       });
   }, [jewelryId]);
 
-
   return (
     <section className={styles["suggestion-box"]}>
       <div className={styles["title-container"]}>
@@ -31,7 +30,9 @@ export const JewelrySuggestion = ({ jewelryId }) => {
       <div className={styles["images-container"]}>
         {jewelries.map((j) => (
           <Link
-            to={`/${slugify(j.categories[0].title)}/${slugify(j.title)}/${j._id}`}
+            to={`/${slugify(j.categories[0].title)}/${slugify(j.title)}/${
+              j._id
+            }`}
             className={styles["no-decoration"]}
           >
             <div className={styles["jewelry-wrapper"]}>
@@ -53,7 +54,7 @@ export const JewelrySuggestion = ({ jewelryId }) => {
                 />
               </button>
             </div>
-        </Link>
+          </Link>
         ))}
       </div>
     </section>

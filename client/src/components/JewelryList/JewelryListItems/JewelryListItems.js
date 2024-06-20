@@ -31,7 +31,6 @@ export const JewelryListItems = ({
     toggleLike(_id);
   };
 
-
   return (
     <article
       onMouseEnter={() => mouseEnterHandler(_id)}

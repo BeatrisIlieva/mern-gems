@@ -87,6 +87,6 @@
 }
 
 .no-decoration {
-    text-decoration: none;
-    color: var(--gray);
+  text-decoration: none;
+  color: var(--gray);
 }
