@@ -16,6 +16,7 @@ import {
 } from "../../utils/useSetBodyOverflow";
 import { MiniBag } from "../Bag/MiniBag/MiniBag";
 import { JewelrySuggestion } from "../JewelrySuggestion/JewelrySuggestion";
+import {HorizontalLine} from "../HorizontalLine/HorizontalLine"
 
 const SizeFormKeys = {
   Size: "size",
@@ -330,8 +331,9 @@ export const JewelryItem = () => {
             )}
           </>
         )}
-        <JewelrySuggestion jewelryId={_id}/>
       </section>
+      <HorizontalLine/>
+      <JewelrySuggestion jewelryId={_id}/>
     </>
   );
 };
