@@ -13,6 +13,7 @@ const checkoutController = require("./controllers/checkoutController");
 const paymentController = require("./controllers/paymentController");
 const orderConfirmationController = require("./controllers/orderConfirmationController");
 const orderHistoryController = require("./controllers/orderHistoryController");
+const jewelrySuggestionController = require("./controllers/jewelrySuggestionController");
 
 router.use("/user-login-information", userLoginInformationController);
 router.use("/user-personal-information", userPersonalInformationController);
@@ -27,5 +28,6 @@ router.use("/checkout", checkoutController);
 router.use("/payment", paymentController);
 router.use("/order-confirmation", orderConfirmationController);
 router.use("/order-history", orderHistoryController);
+router.use("/suggestion", jewelrySuggestionController);
 
 module.exports = router;

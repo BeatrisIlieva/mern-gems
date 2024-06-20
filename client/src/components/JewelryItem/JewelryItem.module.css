@@ -226,7 +226,22 @@ input[type="radio"] {
   padding: 12px;
   margin-right: 6px;
   margin-top: 6px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   width: 96px;
   justify-content: center;
+}
+
+.size-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.size-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+}
+
+.error-message {
+  color: var(--dark-red);
 }

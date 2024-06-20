@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
         localStorage.removeItem("auth");
         await authService.logout();
-      }, 600000000);
+      }, 600000);
     }
   };
 
@@ -39,8 +39,8 @@ export const AuthProvider = ({ children }) => {
     }
 
     return () => {
-      window.removeEventListener("mousemove", handleActivity);
-      window.removeEventListener("keydown", handleActivity);
+      window.addEventListener("mousemove", handleActivity);
+      window.addEventListener("keydown", handleActivity);
       window.addEventListener("scroll", handleActivity);
 
       clearTimeout(logoutTimer);

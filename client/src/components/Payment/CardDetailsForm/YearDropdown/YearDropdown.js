@@ -20,7 +20,7 @@ export const YearDropdown = ({
       const endYear = currentYear + 10;
       const yearsArray = [];
 
-      for (let year = currentYear + 1; year <= endYear; year++) {
+      for (let year = currentYear; year <= endYear; year++) {
         yearsArray.push(year.toString());
       }
 

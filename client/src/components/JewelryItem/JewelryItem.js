@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useService } from "../../hooks/useService";
 import { jewelryServiceFactory } from "../../services/jewelryService";
 import styles from "./JewelryItem.module.css";
@@ -15,6 +15,7 @@ import {
   setBodyOverflowHidden,
 } from "../../utils/useSetBodyOverflow";
 import { MiniBag } from "../Bag/MiniBag/MiniBag";
+import { JewelrySuggestion } from "../JewelrySuggestion/JewelrySuggestion";
 
 const SizeFormKeys = {
   Size: "size",
@@ -31,11 +32,17 @@ export const JewelryItem = () => {
     useWishlistContext();
   const { onAddToBagClick } = useBagContext();
   const [miniBag, setMiniBag] = useState(false);
+  const miniBagRef = useRef(null);
 
   const toggleSelected = () => {
     setLeftIsSelected(!leftIsSelected);
     setRightIsSelected(!rightIsSelected);
   };
+
+  // jewelries with category id 2 have only one size so a user do not need to select a size
+  const [sizeIsSelected, setSizeIsSelected] = useState(jewelry.category === 2);
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -76,6 +83,11 @@ export const JewelryItem = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    if (!sizeIsSelected) {
+      setErrorMessage("Ensure you have selected the desired size");
+      return;
+    }
+
     if (jewelry.category === 2) {
       const sizeId = jewelry.sizes[0]._id;
 
@@ -94,12 +106,31 @@ export const JewelryItem = () => {
   const onClose = () => {
     setMiniBag(false);
 
+    fetchData();
+
     setBodyOverflowVisible();
   };
 
+  const handleClickOutside = (event) => {
+    if (miniBagRef.current && !miniBagRef.current.contains(event.target)) {
+      setMiniBag(false);
+
+      fetchData();
+
+      setBodyOverflowVisible();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
-      <>{miniBag && <MiniBag onClose={onClose} />}</>
+      <>{miniBag && <MiniBag onClose={onClose} miniBagRef={miniBagRef} />}</>
       <section className={styles["jewelry-details-box"]}>
         {loading ? (
           <LoadingSpinner />
@@ -114,7 +145,6 @@ export const JewelryItem = () => {
                         jewelry.isSoldOut === true ? styles["sold-out"] : ""
                       }`.trim()}
                     >
-                      {" "}
                       <img
                         src={jewelry.firstImageUrl}
                         alt={jewelry.title}
@@ -179,54 +209,63 @@ export const JewelryItem = () => {
                       jewelry.sizes[0].measurement}
                   </p>
                   {jewelry.category !== 2 && jewelry.sizes ? (
-                    <div>
+                    <div className={styles["size-form"]}>
                       <h4>Size</h4>
                       <form onSubmit={onSubmit} method="POST">
-                        <div className={styles["radio-container"]}>
-                          {jewelry.sizes.map((item) =>
-                            item.available ? (
-                              <div key={item._id}>
-                                <input
-                                  type="radio"
-                                  name={SizeFormKeys.Size}
-                                  id={item._id}
-                                  value={item._id}
-                                  onChange={changeHandler}
-                                  checked={
-                                    Number(values[SizeFormKeys.Size]) ===
-                                    item._id
-                                  }
-                                />
-                                <label
-                                  className={styles["label"]}
-                                  htmlFor={item._id}
-                                >
-                                  {item.measurement}
-                                </label>
-                              </div>
-                            ) : (
-                              <div key={item._id}>
-                                <input
-                                  type="radio"
-                                  disabled
-                                  name={SizeFormKeys.Size}
-                                  id={item._id}
-                                  value={item._id}
-                                  onChange={changeHandler}
-                                  checked={
-                                    Number(values[SizeFormKeys.Size]) ===
-                                    item._id
-                                  }
-                                />
-                                <label
-                                  htmlFor={item._id}
-                                  className={styles["label"]}
-                                >
-                                  {item.measurement}
-                                </label>
-                              </div>
-                            )
-                          )}
+                        <div className={styles["size-wrapper"]}>
+                          <div className={styles["radio-container"]}>
+                            {jewelry.sizes.map((item) =>
+                              item.available ? (
+                                <div key={item._id}>
+                                  <input
+                                    type="radio"
+                                    name={SizeFormKeys.Size}
+                                    id={item._id}
+                                    value={item._id}
+                                    onChange={changeHandler}
+                                    checked={
+                                      Number(values[SizeFormKeys.Size]) ===
+                                      item._id
+                                    }
+                                    onClick={() => {
+                                      setSizeIsSelected(true);
+                                      setErrorMessage("");
+                                    }}
+                                  />
+                                  <label
+                                    className={styles["label"]}
+                                    htmlFor={item._id}
+                                  >
+                                    {item.measurement}
+                                  </label>
+                                </div>
+                              ) : (
+                                <div key={item._id}>
+                                  <input
+                                    type="radio"
+                                    disabled
+                                    name={SizeFormKeys.Size}
+                                    id={item._id}
+                                    value={item._id}
+                                    onChange={changeHandler}
+                                    checked={
+                                      Number(values[SizeFormKeys.Size]) ===
+                                      item._id
+                                    }
+                                  />
+                                  <label
+                                    htmlFor={item._id}
+                                    className={styles["label"]}
+                                  >
+                                    {item.measurement}
+                                  </label>
+                                </div>
+                              )
+                            )}
+                          </div>
+                          <div className={styles["error-message"]}>
+                            {errorMessage}
+                          </div>
                         </div>
                         <div className={styles["button-container"]}>
                           <button
@@ -291,6 +330,7 @@ export const JewelryItem = () => {
             )}
           </>
         )}
+        <JewelrySuggestion jewelryId={_id}/>
       </section>
     </>
   );

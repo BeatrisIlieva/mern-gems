@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { setBodyOverflowVisible } from "../../../utils/useSetBodyOverflow";
 import { BagList } from "../BagList/BagList";
 
-export const MiniBag = ({ onClose }) => {
+export const MiniBag = ({ onClose, miniBagRef }) => {
   const { bagItems, totalPrice, totalQuantity } = useBagContext();
 
   const isVisible = true;
@@ -20,7 +20,7 @@ export const MiniBag = ({ onClose }) => {
       ></div>
       <div className={styles["mini-bag-dialog"]}>
         <div className={styles["modal-dialog"]}>
-          <div className={styles["modal-content"]}>
+          <div className={styles["modal-content"]} ref={miniBagRef}>
             <div className={styles["top-container"]}>
               <div className={styles["modal-header"]}>
                 <h2 className={styles["popup-title"]}>
