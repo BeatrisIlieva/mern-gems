@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./JewelrySuggestion.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { slugify } from "../../utils/slugify";
 
 export const JewelrySuggestion = ({ jewelryId }) => {
   const jewelrySuggestionService = useService(jewelrySuggestionServiceFactory);
@@ -18,7 +19,8 @@ export const JewelrySuggestion = ({ jewelryId }) => {
       });
   }, [jewelryId]);
 
-  console.log(jewelries);
+  const slugifiedCategoryTitle = slugify(categoryTitle);
+  const slugifiedJewelryTitle = slugify(jewelryTitle);
 
   return (
     <section className={styles["suggestion-box"]}>

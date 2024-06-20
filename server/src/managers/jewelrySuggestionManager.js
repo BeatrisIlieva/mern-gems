@@ -1,29 +1,5 @@
 const Jewelry = require("../models/Jewelry");
-const Category = require("../models/Category");
-
-// const getCategoryIds = async (categoryId) => {
-//   try {
-//     const allCategories = await Category.find({}, "_id").lean();
-//     console.log(allCategories, "categories")
-//     return allCategories.map((doc) => doc._id !== categoryId);
-//   } catch (err) {
-//     console.log(err.message);
-//   }
-// };
-
-const getCategoryIds = async (excludeCategoryId) => {
-  try {
-    const allCategories = await Category.find({}, "_id").lean();
-
-    const categoryIds = allCategories
-      .map((doc) => doc._id)
-      .filter((id) => id.toString() !== excludeCategoryId.toString());
-
-    return categoryIds;
-  } catch (err) {
-    console.log(err.message);
-  }
-};
+const getCategoryIds = require("../utils/getCategoryIds");
 
 exports.findAll = async (jewelryId) => {
   const jewelry = await Jewelry.findById(jewelryId);
