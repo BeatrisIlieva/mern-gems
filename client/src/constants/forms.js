@@ -56,7 +56,7 @@ export const STREET_PATTERN = new RegExp(
 const STREET_ERROR_MESSAGE = `* This field requires ${STREET_LENGTH.MIN}-${STREET_LENGTH.MAX} characters`;
 
 const APARTMENT_LENGTH = {
-  MIN: 1,
+  MIN: 0,
   MAX: 10,
 };
 
@@ -66,7 +66,7 @@ export const APARTMENT_PATTERN = new RegExp(
 const APARTMENT_ERROR_MESSAGE = `* This field requires ${APARTMENT_LENGTH.MIN}-${APARTMENT_LENGTH.MAX} characters`;
 
 const ZIP_CODE_LENGTH = {
-  MIN: 4,
+  MIN: 0,
   MAX: 15,
 };
 

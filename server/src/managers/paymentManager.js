@@ -22,7 +22,6 @@ exports.verifyCardDetails = (
   } else if (isCardExpired(expirationDate)) {
     throw new Error("This card has expired.");
   } else if (!cardHolderNamePattern.test(cardHolder)) {
-    console.log(!cardHolderNamePattern.test(cardHolder));
     throw new Error("Ensure you enter a valid name");
   }
 };

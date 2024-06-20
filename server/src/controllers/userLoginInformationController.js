@@ -2,6 +2,9 @@ const router = require("express").Router();
 const userLoginInformationManager = require("../managers/userLoginInformationManager");
 const userPersonalInformationManager = require("../managers/userPersonalInformationManager");
 const userAddressInformationManager = require("../managers/userAddressInformationManager");
+const userLoginInformation = require("../models/UserLoginInformation");
+const { transferBag } = require("../utils/transferBag");
+const { transferWishlist } = require("../utils/transferWishlist");
 
 router.post("/register", async (req, res) => {
   const userUUID = req.headers["user-uuid"];
@@ -33,8 +36,20 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  const userUUID = req.headers["user-uuid"];
+
+  const { email, password } = { ...req.body };
+
   try {
-    const { email, password } = { ...req.body };
+    const user = await userLoginInformation.findOne({ email });
+    const userId = user._id;
+
+    if (userId !== userUUID) {
+      await transferWishlist(userUUID, userId);
+
+      await transferBag(userUUID, userId);
+    }
+
     const result = await userLoginInformationManager.login({ email, password });
 
     res.status(200).json(result);

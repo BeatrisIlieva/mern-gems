@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
         localStorage.removeItem("auth");
         await authService.logout();
-      }, 600000);
+      }, 2000000000);
     }
   };
 

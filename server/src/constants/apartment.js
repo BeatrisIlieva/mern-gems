@@ -1,5 +1,5 @@
 const APARTMENT_LENGTH = {
-  MIN: 1,
+  MIN: 0,
   MAX: 10,
 };
 
