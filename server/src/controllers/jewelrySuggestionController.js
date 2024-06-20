@@ -6,7 +6,6 @@ router.get("/:jewelryId", async (req, res) => {
 
   try {
     const result = await jewelrySuggestionManager.findAll(jewelryId);
-    console.log(result)
 
     res.status(200).json(result);
   } catch (err) {

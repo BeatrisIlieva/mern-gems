@@ -1,5 +1,5 @@
 const Jewelry = require("../models/Jewelry");
-const getCategoryIds = require("../utils/getCategoryIds");
+const { getCategoryIds } = require("../utils/getCategoryIds");
 
 exports.findAll = async (jewelryId) => {
   const jewelry = await Jewelry.findById(jewelryId);
@@ -9,7 +9,6 @@ exports.findAll = async (jewelryId) => {
   const collectionId = jewelry.jewelryCollection;
 
   const categoryIds = await getCategoryIds(categoryId);
-
   const result = await Jewelry.aggregate([
     {
       $lookup: {
@@ -58,12 +57,23 @@ exports.findAll = async (jewelryId) => {
       },
     },
     {
+      $group: {
+        _id: "$category",
+        firstJewelry: { $first: "$$ROOT" },
+      },
+    },
+    {
+      $replaceRoot: { newRoot: "$firstJewelry" },
+    },
+    {
       $project: {
         "categories.title": 1,
         title: 1,
         firstImageUrl: 1,
+        _id: 1,
       },
     },
   ]);
+
   return result;
 };

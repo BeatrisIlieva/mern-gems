@@ -5,6 +5,7 @@ import styles from "./JewelrySuggestion.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { slugify } from "../../utils/slugify";
+import { Link } from "react-router-dom";
 
 export const JewelrySuggestion = ({ jewelryId }) => {
   const jewelrySuggestionService = useService(jewelrySuggestionServiceFactory);
@@ -19,8 +20,6 @@ export const JewelrySuggestion = ({ jewelryId }) => {
       });
   }, [jewelryId]);
 
-  const slugifiedCategoryTitle = slugify(categoryTitle);
-  const slugifiedJewelryTitle = slugify(jewelryTitle);
 
   return (
     <section className={styles["suggestion-box"]}>
@@ -31,25 +30,30 @@ export const JewelrySuggestion = ({ jewelryId }) => {
       </div>
       <div className={styles["images-container"]}>
         {jewelries.map((j) => (
-          <div className={styles["jewelry-wrapper"]}>
-            <div key={j._id} className={styles["image-container"]}>
-              <img
-                src={j.firstImageUrl}
-                alt="img"
-                className={styles["image"]}
-              />
+          <Link
+            to={`/${slugify(j.categories[0].title)}/${slugify(j.title)}/${j._id}`}
+            className={styles["no-decoration"]}
+          >
+            <div className={styles["jewelry-wrapper"]}>
+              <div key={j._id} className={styles["image-container"]}>
+                <img
+                  src={j.firstImageUrl}
+                  alt="img"
+                  className={styles["image"]}
+                />
+              </div>
+              <h4 className={styles["jewelry-suggestion-image-title"]}>
+                {j.title}
+              </h4>
+              <button className={styles["suggestion-button"]}>
+                Explore{" "}
+                <FontAwesomeIcon
+                  icon={faChevronRight}
+                  className={styles["chevron-icon"]}
+                />
+              </button>
             </div>
-            <h4 className={styles["jewelry-suggestion-image-title"]}>
-              {j.title}
-            </h4>
-            <button className={styles["suggestion-button"]}>
-              Explore{" "}
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                className={styles["chevron-icon"]}
-              />
-            </button>
-          </div>
+        </Link>
         ))}
       </div>
     </section>
