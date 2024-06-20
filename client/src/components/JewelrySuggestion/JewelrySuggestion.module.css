@@ -76,6 +76,10 @@
   color: var(--white-gray);
 }
 
+.suggestion-button:hover {
+  color: var(--middle-gray);
+}
+
 .chevron-icon {
   height: 10px;
   vertical-align: middle;

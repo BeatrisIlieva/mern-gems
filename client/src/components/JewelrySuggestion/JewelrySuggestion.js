@@ -37,11 +37,16 @@ export const JewelrySuggestion = ({ jewelryId }) => {
                 className={styles["image"]}
               />
             </div>
-            <h4 className={styles["jewelry-suggestion-image-title"]}>{j.title}</h4>
-            <button className={styles["suggestion-button"]}>Explore           <FontAwesomeIcon
-            icon={faChevronRight}
-            className={styles["chevron-icon"]}
-          /></button>
+            <h4 className={styles["jewelry-suggestion-image-title"]}>
+              {j.title}
+            </h4>
+            <button className={styles["suggestion-button"]}>
+              Explore{" "}
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className={styles["chevron-icon"]}
+              />
+            </button>
           </div>
         ))}
       </div>
