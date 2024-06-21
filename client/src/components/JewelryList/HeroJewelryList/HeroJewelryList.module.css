@@ -24,19 +24,18 @@
   object-fit: cover;
 }
 
-/* .info-container,
+.info-container,
 .info-container-forget-me-not,
 .info-container-classics,
 .info-container-pirouette,
 .info-container-sunflower,
 .info-container-diamond-loop,
 .info-container-sparkling-cluster {
-  width: 50vw;
-  background-color: var(--transparent-gray);
   display: flex;
   justify-content: center;
   flex-direction: column;
-} */
+  font-size: var(--small-font-size);
+}
 
 .paragraph-container {
   display: flex;
