@@ -8,6 +8,7 @@ import { ITEMS_PER_PAGE } from "../../constants/pagination";
 import { SortBy } from "../SortBy/SortBy";
 import { FilterBy } from "../FilterBy/FilterBy";
 import { HeroJewelryList } from "./HeroJewelryList/HeroJewelryList";
+import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
 
 export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const {
@@ -103,12 +104,15 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
         {loading ? (
           <LoadingSpinner />
         ) : (
-          <div className={styles["load-more-button"]}>
-            <LoadMoreButton
-              loadMoreHandler={loadMoreHandler}
-              loadMoreDisabled={loadMoreDisabled}
-            />
-          </div>
+          <>
+            <div className={styles["load-more-button"]}>
+              <LoadMoreButton
+                loadMoreHandler={loadMoreHandler}
+                loadMoreDisabled={loadMoreDisabled}
+              />
+            </div>
+            <HorizontalLine />
+          </>
         )}
       </div>
     </section>

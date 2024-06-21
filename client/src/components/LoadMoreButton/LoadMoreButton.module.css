@@ -11,8 +11,8 @@
   border: 1px solid var(--border);
   outline: none;
   letter-spacing: 1.2px;
-  width: 50%;
-  margin-top: 8%;
+  width: 24%;
+  margin: 80px 0px 60px 0px;
 }
 
 .load-more-button::before {
