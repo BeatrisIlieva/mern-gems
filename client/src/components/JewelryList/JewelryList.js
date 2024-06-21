@@ -9,6 +9,7 @@ import { SortBy } from "../SortBy/SortBy";
 import { FilterBy } from "../FilterBy/FilterBy";
 import { HeroJewelryList } from "./HeroJewelryList/HeroJewelryList";
 import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
+import { FooterJewelryList } from "./FooterJewelryList/FooterJewelryList";
 
 export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
   const {
@@ -115,6 +116,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
           </>
         )}
       </div>
+      <FooterJewelryList entityTitle={entityTitle}/>
     </section>
   );
 };

@@ -1,0 +1,34 @@
+.footer-container {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+.footer-img-container {
+  width: 50%;
+}
+.footer-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.footer-info-container {
+    width: 50%;
+}
+
+.footer-paragraph-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-box-title {
+  text-align: center;
+  font-family: var(--bold-italic-font-family);
+  font-size: var(--extra-large-font-size);
+  padding: 0px;
+}
+.footer-box-paragraph {
+  text-align: center;
+  width: 50%;
+}
