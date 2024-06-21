@@ -1,15 +1,3 @@
-import { CATEGORIES_BY_ID_AND_TITLE } from "../../../constants/categories";
-import { COLLECTIONS_BY_ID_AND_TITLE } from "../../../constants/collections";
-import { HeroEarring } from "../HeroJewelryList/HeroEarring/HeroEarring";
-import { HeroBracelet } from "../HeroJewelryList/HeroBracelet/HeroBracelet";
-import { HeroRing } from "../HeroJewelryList/HeroRing/HeroRing";
-import { HeroNecklace } from "../HeroJewelryList/HeroNecklace/HeroNecklace";
-import { HeroForgetMeNot } from "./HeroForgetMeNot/HeroForgetMeNot";
-import { HeroClassics } from "./HeroClassics/HeroClassics";
-import { HeroPirouette } from "./HeroPirouette/HeroPirouette";
-import { HeroDiamondLoop } from "./HeroDiamondLoop/HeroDiamondLoop";
-import { HeroSunflower } from "./HeroSunflower/HeroSunflower";
-import { HeroSparklingCluster } from "./HeroSparklingCluster/HeroSparklingCluster";
 import { HEROES_BY_TITLE } from "../../../constants/heroes";
 import styles from "./HeroJewelryList.module.css";
 import { HorizontalLine } from "../../HorizontalLine/HorizontalLine";
