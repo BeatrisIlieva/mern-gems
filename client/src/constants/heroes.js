@@ -15,4 +15,13 @@ export const HEROES_BY_TITLE = {
     "https://res.cloudinary.com/deztgvefu/image/upload/v1718123003/ReactGems/common_img/largeherod_l2_hj_hope_2_main_ahryjw.avif",
     "React Gems' rings feature the most exceptional diamonds and gemstones and are known for their unequivocal beauty.",
   ],
+  "Diamond Loop": [
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1718557542/ReactGems/common_img/herolarged_pdp_diamondloop_hgmz3j.avif",
+    "In this exquisite interpretation, the delicate details of the loop motif re-imagine the beloved stone’s graceful lines through an elegant collection of everyday jewels.",
+  ],
+  "Sparkling Cluster": [
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/sparklingcluster_hpovka.webp",
+    "Sparkling Cluster is a stunning fine jewelry collection that recalls enduring commitment to making brilliant celebrations shine even brighter with magnificent diamonds. Round brilliant and pear-shaped diamonds, set in a feminine and fluid pattern, seemingly float against the wearer and sparkle with unparalleled brilliance.",
+  ],
+  "Forget-Me-Not": [3, "Forget-Me-Not"],
 };
