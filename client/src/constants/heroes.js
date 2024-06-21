@@ -10,7 +10,7 @@ export const HEROES_BY_TITLE = {
     "/earrings",
   ],
   "Necklaces & Pendants": [
-    "https://res.cloudinary.com/deztgvefu/image/upload/v1718123000/ReactGems/common_img/herolarged_incredibles_yellow_1_w7m1st.avif",
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1718988248/ReactGems/common_img/herolarged_incredibles_yellow_1_w7m1st_2_rf2l9f.jpg",
     "React Gems's precious gemstones necklaces and pendants, set in platinum, offer a more delicate interpretation of the House's signature fine jewelry aesthetic.",
     "/necklaces",
   ],

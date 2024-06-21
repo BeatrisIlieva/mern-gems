@@ -1,21 +1,21 @@
 export const FOOTERS_BY_TITLE = {
   Bracelets: [
-    "https://res.cloudinary.com/deztgvefu/image/upload/v1718985789/template_images/prod_fe_bri24_sp_wdj_a_u9aw8s.avif",
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1718985091/template_images/sbs_lp_sparklingcluster_avxce8.avif",
     "Rendered in luminous diamonds, a Diamond Bracelet makes your day shine even brighter.",
     "/bracelets",
   ],
   Earrings: [
-    "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/pirouette_zshews.webp",
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1718987632/ReactGems/common_img/sbs_sunflower24_plp_pkv8bx.jpg",
     "Jewelries that brighten life’s everyday moments, no matter the occasion or the hour.",
     "/earrings",
   ],
   "Necklaces & Pendants": [
-    "https://res.cloudinary.com/deztgvefu/image/upload/v1718556853/ReactGems/common_img/prod_fe_br_23_wdj_a_oaoeuu.webp",
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1718987631/ReactGems/common_img/sbs_lp_classic_qqstsw.avif",
     "Elegant designs that highlight the innate brilliance of incredible gems.",
     "/necklaces",
   ],
   Rings: [
-    "https://res.cloudinary.com/deztgvefu/image/upload/v1718984589/template_images/sbs_lp_forgetmenot_whetr3.jpg",
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1718987631/ReactGems/common_img/sbs_belle_br_sp23_bc_a_i5yqqd.avif",
     "Natural brilliance radiates in timeless blooms.",
     "/rings",
   ],
