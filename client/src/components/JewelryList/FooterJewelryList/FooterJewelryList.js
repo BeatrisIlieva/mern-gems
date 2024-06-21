@@ -1,6 +1,5 @@
-import { HEROES_BY_TITLE } from "../../../constants/heroes";
+import { FOOTERS_BY_TITLE } from "../../../constants/footers";
 import styles from "./FooterJewelryList.module.css";
-import { HorizontalLine } from "../../HorizontalLine/HorizontalLine";
 
 export const FooterJewelryList = ({ entityTitle }) => {
   return (
@@ -8,16 +7,15 @@ export const FooterJewelryList = ({ entityTitle }) => {
       <div className={styles["footer-img-container"]}>
         <img
           className={styles["footer-img"]}
-          src={HEROES_BY_TITLE[entityTitle][0]}
+          src={FOOTERS_BY_TITLE[entityTitle][0]}
           alt={"Img"}
         />
       </div>
       <div className={styles["footer-info-container"]}>
-        <h2 className={styles["footer-box-title"]}>{entityTitle}</h2>
-        <HorizontalLine />
+        <h2 className={styles["footer-box-title"]}>{entityTitle} Collection</h2>
         <div className={styles["footer-paragraph-container"]}>
           <p className={styles["footer-box-paragraph"]}>
-            {HEROES_BY_TITLE[entityTitle][1]}
+            {FOOTERS_BY_TITLE[entityTitle][1]}
           </p>
         </div>
       </div>

@@ -31,7 +31,7 @@ export const HEROES_BY_TITLE = {
   ],
   "Forget-Me-Not": [
     "https://res.cloudinary.com/deztgvefu/image/upload/v1718556061/ReactGems/common_img/herolarged_pdp_forget-me-not_l7zskd.avif",
-    "Nature, the House's enduring muse, continues to inspire ethereal fine jewelry designs destined to stand the test of time. The enchanting and delicate beauty of a Forget-Me-Not flower in bloom is captured in a series of fine jewelry designs that celebrate the endless beauty of nature’s greatest gifts – rare gemstones and flowers in bloom.",
+    "Nature, the House's enduring muse, continues to inspire ethereal fine jewelry designs destined to stand the test of time.",
     "/forget-me-not",
   ],
 };

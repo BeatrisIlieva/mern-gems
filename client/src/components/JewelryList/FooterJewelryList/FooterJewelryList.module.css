@@ -1,10 +1,11 @@
 .footer-container {
   display: flex;
   flex-direction: row-reverse;
-  width: 100%;
+  margin: 20px 0px 40px 214px;
+  gap: 120px;
 }
 .footer-img-container {
-  width: 50%;
+  width: 60%;
 }
 .footer-img {
   width: 100%;
@@ -12,7 +13,8 @@
   object-fit: contain;
 }
 .footer-info-container {
-    width: 50%;
+    width: 40%;
+    margin-top: 120px;
 }
 
 .footer-paragraph-container {
@@ -23,12 +25,12 @@
 }
 
 .footer-box-title {
-  text-align: center;
+  text-align: left;
   font-family: var(--bold-italic-font-family);
   font-size: var(--extra-large-font-size);
   padding: 0px;
 }
 .footer-box-paragraph {
-  text-align: center;
-  width: 50%;
+  text-align: left;
+  font-size: var(--small-font-size);
 }
