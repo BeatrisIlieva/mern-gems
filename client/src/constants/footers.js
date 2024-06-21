@@ -25,8 +25,8 @@ export const FOOTERS_BY_TITLE = {
       "/diamond-loop",
     ],
     "Sparkling Cluster": [
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/sparklingcluster_hpovka.webp",
-      "Sparkling Cluster is a stunning fine jewelry collection that recalls enduring commitment to making brilliant celebrations shine even brighter with magnificent diamonds. Round brilliant and pear-shaped diamonds, set in a feminine and fluid pattern, seemingly float against the wearer and sparkle with unparalleled brilliance.",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1718985091/template_images/sbs_lp_sparklingcluster_avxce8.avif",
+      "Round brilliant and pear-shaped diamonds, set in a feminine and fluid pattern, seemingly float against the wearer and sparkle with unparalleled brilliance.",
       "/sparkling-cluster",
     ],
     "Forget-Me-Not": [
