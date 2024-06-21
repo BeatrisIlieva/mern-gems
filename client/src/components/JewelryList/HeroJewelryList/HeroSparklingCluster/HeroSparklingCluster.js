@@ -8,12 +8,12 @@ export const HeroSparklingCluster = ({ entityTitle }) => {
         <img
           className={styles["hero-img"]}
           src={
-            "https://res.cloudinary.com/deztgvefu/image/upload/v1718558389/ReactGems/common_img/herolarged_pdp_sparklingcluster_cssq84.avif"
+            "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/sparklingcluster_hpovka.webp"
           }
           alt={"Img"}
         />
       </div>
-      <div className={styles["info-container-sparkling-cluster"]}>
+      {/* <div className={styles["info-container-sparkling-cluster"]}>
         <h2 className={styles["box-title"]}>{entityTitle}</h2>
         <HorizontalLine />
         <div className={styles["paragraph-container"]}>
@@ -25,7 +25,7 @@ export const HeroSparklingCluster = ({ entityTitle }) => {
             against the wearer and sparkle with unparalleled brilliance.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -17,7 +17,7 @@ const jewelrySchema = new mongoose.Schema({
   },
   secondImageUrl: {
     type: String,
-    required: true,
+    required: false,
   },
   category: {
     type: Number,

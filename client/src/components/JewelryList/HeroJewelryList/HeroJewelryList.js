@@ -29,18 +29,18 @@ export const HeroJewelryList = ({ entityTitle }) => {
       {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Forget-Me-Not"][1] && (
         <HeroForgetMeNot entityTitle={entityTitle} />
       )}
-      {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Classics"][1] && (
+      {/* {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Classics"][1] && (
         <HeroClassics entityTitle={entityTitle} />
-      )}
-      {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][1] && (
+      )} */}
+      {/* {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][1] && (
         <HeroPirouette entityTitle={entityTitle} />
-      )}
+      )} */}
       {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Diamond Loop"][1] && (
         <HeroDiamondLoop entityTitle={entityTitle} />
       )}
-      {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Sunflower"][1] && (
+      {/* {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Sunflower"][1] && (
         <HeroSunflower entityTitle={entityTitle} />
-      )}
+      )} */}
       {entityTitle === COLLECTIONS_BY_ID_AND_TITLE["Sparkling Cluster"][1] && (
         <HeroSparklingCluster entityTitle={entityTitle} />
       )}

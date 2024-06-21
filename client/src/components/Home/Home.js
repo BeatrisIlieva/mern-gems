@@ -38,7 +38,7 @@ export const Home = () => {
         </div>
       </Link>
       <HorizontalLine />
-      <Link to="/classics" className={styles["no-decoration"]}>
+      {/* <Link to="/classics" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="classics-title">
@@ -66,9 +66,9 @@ export const Home = () => {
             />
           </div>
         </div>
-      </Link>
-      <HorizontalLine />
-      <Link to="/pirouette" className={styles["no-decoration"]}>
+      </Link> */}
+      {/* <HorizontalLine /> */}
+      {/* <Link to="/pirouette" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="pirouette-title">
@@ -101,10 +101,46 @@ export const Home = () => {
             />
           </div>
         </div>
+      </Link> */}
+      {/* <HorizontalLine /> */}
+      <Link to="/sparkling-cluster" className={styles["no-decoration"]}>
+        <div className={styles["hero-box-reverse"]}>
+          <div className={styles["hero-text"]}>
+            <h2
+              className={styles["title"]}
+              data-testid="sparkling-cluster-title"
+            >
+              Sparkling Cluster Collection
+            </h2>
+            <p
+              className={styles["paragraph"]}
+              data-testid="sparkling-cluster-paragraph"
+            >
+              Captivating diamond jewels designed to perfectly complement
+              brilliant celebrations.
+            </p>
+            <button
+              className={styles["animated-button"]}
+              data-testid="sparkling-cluster-button"
+            >
+              Discover
+            </button>
+          </div>
+          <div className={styles["hero-img-container"]}>
+            <img
+              className={styles["hero-img"]}
+              data-testid="sparkling-cluster-image"
+              src={
+                "https://res.cloudinary.com/deztgvefu/image/upload/v1717917440/collections/herolarged_l2_bri24_sp_wdj_hero_dl66ao.webp"
+              }
+              alt={"Img"}
+            />
+          </div>
+        </div>
       </Link>
       <HorizontalLine />
       <Link to="/diamond-loop" className={styles["no-decoration"]}>
-        <div className={styles["hero-box-reverse"]}>
+        <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="diamond-loop-title">
               Diamond Loop Collection
@@ -136,8 +172,7 @@ export const Home = () => {
           </div>
         </div>
       </Link>
-      <HorizontalLine />
-      <Link to="/sunflower" className={styles["no-decoration"]}>
+      {/* <Link to="/sunflower" className={styles["no-decoration"]}>
         <div className={styles["hero-box"]}>
           <div className={styles["hero-text"]}>
             <h2 className={styles["title"]} data-testid="sunflower-title">
@@ -167,43 +202,8 @@ export const Home = () => {
             />
           </div>
         </div>
-      </Link>
-      <HorizontalLine />
-      <Link to="/sparkling-cluster" className={styles["no-decoration"]}>
-        <div className={styles["hero-box-reverse"]}>
-          <div className={styles["hero-text"]}>
-            <h2
-              className={styles["title"]}
-              data-testid="sparkling-cluster-title"
-            >
-              Sparkling Cluster Collection
-            </h2>
-            <p
-              className={styles["paragraph"]}
-              data-testid="sparkling-cluster-paragraph"
-            >
-              Captivating diamond jewels designed to perfectly complement
-              brilliant celebrations.
-            </p>
-            <button
-              className={styles["animated-button"]}
-              data-testid="sparkling-cluster-button"
-            >
-              Discover
-            </button>
-          </div>
-          <div className={styles["hero-img-container"]}>
-            <img
-              className={styles["hero-img"]}
-              data-testid="sparkling-cluster-image"
-              src={
-                "https://res.cloudinary.com/deztgvefu/image/upload/v1716995569/collections/sparklingcluster_hpovka.webp"
-              }
-              alt={"Img"}
-            />
-          </div>
-        </div>
-      </Link>
+      </Link>  */}
+      {/* <HorizontalLine /> */}
     </section>
   );
 };

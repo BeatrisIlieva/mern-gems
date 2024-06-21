@@ -13,7 +13,7 @@ export const HeroForgetMeNot = ({ entityTitle }) => {
           alt={"Img"}
         />
       </div>
-      <div className={styles["info-container-forget-me-not"]}>
+      {/* <div className={styles["info-container-forget-me-not"]}>
         <h2 className={styles["box-title"]}>{entityTitle}</h2>
         <HorizontalLine />
         <div className={styles["paragraph-container"]}>
@@ -26,7 +26,7 @@ export const HeroForgetMeNot = ({ entityTitle }) => {
             flowers in bloom.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

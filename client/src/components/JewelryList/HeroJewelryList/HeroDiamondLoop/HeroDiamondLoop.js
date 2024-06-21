@@ -13,7 +13,7 @@ export const HeroDiamondLoop = ({ entityTitle }) => {
           alt={"Img"}
         />
       </div>
-      <div className={styles["info-container-diamond-loop"]}>
+      {/* <div className={styles["info-container-diamond-loop"]}>
         <h2 className={styles["box-title"]}>{entityTitle}</h2>
         <HorizontalLine />
         <div className={styles["paragraph-container"]}>
@@ -23,7 +23,7 @@ export const HeroDiamondLoop = ({ entityTitle }) => {
             elegant collection of everyday jewels.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

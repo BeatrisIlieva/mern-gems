@@ -408,7 +408,7 @@ async function populateDb() {
   await Jewelry.create({
     title: "Forget-Me-Not Ruby and Diamond Earrings",
     firstImageUrl:
-      "https://res.cloudinary.com/deztgvefu/image/upload/v1718968220/mern-gems/forget-me-not/earrings/forget_me_not_drop_earrings_diamond_and_sapphire_easpdrflrfmn_ee-1_keujzm.webp",
+      "https://res.cloudinary.com/deztgvefu/image/upload/v1718968227/mern-gems/forget-me-not/earrings/forget-me-not_winstonearrings_ruby_and_diamond_earp1mflrfmn_e-1_q4kqfv.avif",
     category: allCategories[1],
     jewelryCollection: allJewelryCollections[2],
     description:
@@ -764,22 +764,22 @@ async function populateDb() {
       stoneColor: allStoneColors[3],
     },
     {
-      jewelry: allJewelries[29],
+      jewelry: allJewelries[28],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[5],
     },
     {
-      jewelry: allJewelries[29],
+      jewelry: allJewelries[28],
       stoneType: allStoneTypes[3],
       stoneColor: allStoneColors[2],
     },
     {
-      jewelry: allJewelries[30],
+      jewelry: allJewelries[29],
       stoneType: allStoneTypes[1],
       stoneColor: allStoneColors[5],
     },
     {
-      jewelry: allJewelries[30],
+      jewelry: allJewelries[29],
       stoneType: allStoneTypes[2],
       stoneColor: allStoneColors[4],
     },
@@ -1183,38 +1183,38 @@ async function populateDb() {
       price: 17000,
     },
     {
-      jewelry: allJewelries[29],
+      jewelry: allJewelries[28],
       size: allSizes[9],
       quantity: 3,
       price: 17000,
     },
     {
-      jewelry: allJewelries[29],
+      jewelry: allJewelries[28],
       size: allSizes[10],
       quantity: 3,
       price: 17000,
     },
     {
-      jewelry: allJewelries[29],
+      jewelry: allJewelries[28],
       size: allSizes[11],
       quantity: 3,
       price: 17000,
     },
 
     {
-      jewelry: allJewelries[30],
+      jewelry: allJewelries[29],
       size: allSizes[9],
       quantity: 3,
       price: 18000,
     },
     {
-      jewelry: allJewelries[30],
+      jewelry: allJewelries[29],
       size: allSizes[10],
       quantity: 3,
       price: 18000,
     },
     {
-      jewelry: allJewelries[30],
+      jewelry: allJewelries[29],
       size: allSizes[11],
       quantity: 3,
       price: 18000,

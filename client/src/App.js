@@ -52,7 +52,7 @@ function App() {
                       />
                     }
                   />
-                  <Route
+                  {/* <Route
                     path="/classics"
                     element={
                       <JewelryList
@@ -61,8 +61,8 @@ function App() {
                         serviceFactory={jewelryCollectionServiceFactory}
                       />
                     }
-                  />
-                  <Route
+                  /> */}
+                  {/* <Route
                     path="/pirouette"
                     element={
                       <JewelryList
@@ -73,7 +73,7 @@ function App() {
                         serviceFactory={jewelryCollectionServiceFactory}
                       />
                     }
-                  />
+                  /> */}
                   <Route
                     path="/diamond-loop"
                     element={
@@ -88,7 +88,7 @@ function App() {
                       />
                     }
                   />
-                  <Route
+                  {/* <Route
                     path="/sunflower"
                     element={
                       <JewelryList
@@ -99,7 +99,7 @@ function App() {
                         serviceFactory={jewelryCollectionServiceFactory}
                       />
                     }
-                  />
+                  /> */}
                   <Route
                     path="/sparkling-cluster"
                     element={
