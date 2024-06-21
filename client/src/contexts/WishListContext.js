@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { wishlistServiceFactory } from "../services/wishlistService";
 import { useService } from "../hooks/useService";
+import { useAuthContext } from "./AuthContext";
 
 export const WishlistContext = createContext();
 
@@ -8,6 +9,7 @@ export const WishlistProvider = ({ children }) => {
   const wishlistService = useService(wishlistServiceFactory);
   const [wishlistCount, setWishlistCount] = useState(0);
   const wishlistCountGreaterThanZero = wishlistCount > 0;
+  const {isAuthenticated} = useAuthContext();
 
   const fetchData = async () => {
     try {
@@ -21,7 +23,7 @@ export const WishlistProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData();
-  }, [wishlistCount]);
+  }, [wishlistCount, isAuthenticated]);
 
   const onAddToWishlistClick = async (jewelryId) => {
     try {

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { bagServiceFactory } from "../services/bagService";
 import { useService } from "../hooks/useService";
+import  {useAuthContext} from "../contexts/AuthContext";
 
 export const BagContext = createContext();
 
@@ -13,10 +14,11 @@ export const BagProvider = ({ children }) => {
   const userId = localStorage.getItem("userUUID");
   let [loading, setLoading] = useState(true);
   const [quantityErrorMessage, setQuantityErrorMessage] = useState(null);
+  const {isAuthenticated} = useAuthContext();
 
   useEffect(() => {
     fetchBagItemsData();
-  }, []);
+  }, [isAuthenticated]);
 
   const onAddToBagClick = async (data, _id) => {
     try {

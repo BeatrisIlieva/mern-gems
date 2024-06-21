@@ -3,6 +3,7 @@ const wishlistManager = require("../managers/wishlistManager");
 
 router.get("/find-all", async (req, res) => {
   let userId;
+  console.log("wishlist", req.user)
 
   if (req.user) {
     userId = req.user._id;

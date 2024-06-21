@@ -13,6 +13,7 @@ export const WishlistItems = ({
   mouseEnterHandler,
   mouseLeaveHandler,
   toggleLike,
+  price
 }) => {
   const { onRemoveFromWishlistClick } = useWishlistContext();
 
@@ -39,6 +40,7 @@ export const WishlistItems = ({
           slugifiedCategoryTitle={slugifiedCategoryTitle}
           slugifiedJewelryTitle={slugifiedJewelryTitle}
           isLikedByUser={true}
+          price={price}
         />
       ) : (
         <JewelryCard

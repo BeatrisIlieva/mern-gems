@@ -10,7 +10,7 @@ import { ITEMS_PER_PAGE } from "../../constants/pagination";
 export const Wishlist = ({ serviceFactory }) => {
   const {
     setJewelries,
-    jewelries,
+    filteredJewelries,
     loading,
     mouseEnterHandler,
     mouseLeaveHandler,
@@ -19,7 +19,6 @@ export const Wishlist = ({ serviceFactory }) => {
     loadMoreDisabled,
     setLoadMoreDisabled,
   } = useJewelryList(serviceFactory);
-
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
 
   const [page, setPage] = useState(1);
@@ -50,7 +49,7 @@ export const Wishlist = ({ serviceFactory }) => {
     setDisplayedItems(newDisplayedItems);
   };
 
-  const displayedJewelries = jewelries.slice(0, displayedItems);
+  const displayedJewelries = filteredJewelries.slice(0, displayedItems);
 
   return (
     <>

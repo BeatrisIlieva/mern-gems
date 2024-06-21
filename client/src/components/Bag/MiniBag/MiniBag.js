@@ -9,6 +9,9 @@ import { BagList } from "../BagList/BagList";
 export const MiniBag = ({ onClose, miniBagRef }) => {
   const { bagItems, totalPrice, totalQuantity } = useBagContext();
 
+  const from = "/user/shopping-bag";
+  localStorage.setItem("lastLocation", from);
+
   const isVisible = true;
 
   return (
