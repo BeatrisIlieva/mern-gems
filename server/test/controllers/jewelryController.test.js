@@ -19,6 +19,7 @@ describe("bagController", () => {
 
   const userUUID = "user-id";
   const categoryId = 1;
+  const jewelryId = 1;
 
   afterEach(async () => {
     await server.close();
@@ -36,5 +37,30 @@ describe("bagController", () => {
     expect(res.body).toHaveProperty("data");
     expect(res.body).toHaveProperty("stoneTypesData");
     expect(res.body).toHaveProperty("stoneColorsData");
+  });
+
+  test("Test find one jewelry; Expect success", async () => {
+    await request.get("/").set("user-uuid", userUUID);
+
+    const res = await request
+      .get(`/jewelry/by-jewelry/${jewelryId}`)
+      .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(200);
+
+    const responseBody = res.body;
+    expect(responseBody).toBeInstanceOf(Array);
+
+    responseBody.forEach((item) => {
+      expect(item).toHaveProperty("firstImageUrl");
+      expect(item).toHaveProperty("title");
+      expect(item).toHaveProperty("price");
+      expect(item).toHaveProperty("sizes");
+      expect(item).toHaveProperty("isLikedByUser");
+      expect(item).toHaveProperty("isSoldOut");
+      expect(item).toHaveProperty("description");
+      expect(item).toHaveProperty("category");
+      expect(item).toHaveProperty("_id");
+    });
   });
 });
