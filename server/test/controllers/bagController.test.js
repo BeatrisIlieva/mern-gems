@@ -157,19 +157,46 @@ describe("bagController", () => {
 
     const bagId = createdBag[0]._id;
 
-    await request
-      .put(`/bag/decrease/${bagId}`)
-      .set("user-uuid", userUUID);
-
+    await request.put(`/bag/decrease/${bagId}`).set("user-uuid", userUUID);
 
     const res = await request
-    .put(`/bag/decrease/${bagId}`)
-    .set("user-uuid", userUUID);
+      .put(`/bag/decrease/${bagId}`)
+      .set("user-uuid", userUUID);
 
     expect(res.status).toBe(401);
 
     const bag = await Bag.find({ user: userUUID });
 
     expect(bag.length).toBe(0);
+  });
+
+  test("Test increase quantity; Expect success", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID)
+      .send({
+        size,
+      });
+
+    const createdBag = await Bag.find({ user: userUUID });
+
+    const bagId = createdBag[0]._id;
+
+    const res = await request
+      .put(`/bag/increase/${bagId}`)
+      .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(200);
+
+    const bag = await Bag.find({ user: userUUID });
+
+    const bagQuantity = bag[0].quantity;
+
+    expect(bagQuantity).toBe(2);
   });
 });
