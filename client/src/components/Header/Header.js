@@ -9,7 +9,6 @@ import { useWishlistContext } from "../../contexts/WishlistContext";
 import { useBagContext } from "../../contexts/BagContext";
 import { useState, useEffect } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
-import { SearchInput } from "./SearchInput/SearchInput";
 import { MiniHeader } from "./MiniHeader/MiniHeader";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 export const Header = () => {
@@ -143,9 +142,7 @@ export const Header = () => {
                     )}
                   </Link>
                 </li>
-                <li
-                  className={`${styles["icon-item"]}`}
-                >
+                <li className={`${styles["icon-item"]}`}>
                   <Link
                     className={styles["icon-bar-item"]}
                     to={"/user/shopping-bag"}
