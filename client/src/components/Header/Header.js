@@ -145,7 +145,6 @@ export const Header = () => {
                 </li>
                 <li
                   className={`${styles["icon-item"]}`}
-                  // className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
                 >
                   <Link
                     className={styles["icon-bar-item"]}
