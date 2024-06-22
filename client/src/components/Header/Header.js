@@ -120,7 +120,6 @@ export const Header = () => {
                   </li>
                 </ul>
               </nav>
-              {/* <SearchInput popupClickHandler={popupClickHandler} /> */}
               <ul className={styles["icon-list"]} role="list">
                 <li
                   className={`${styles["icon-item-width"]} ${styles["icon-item"]}`}
