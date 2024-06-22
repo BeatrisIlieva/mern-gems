@@ -40,15 +40,13 @@ describe("bagController", () => {
     await UserLoginInformation.findByIdAndDelete(userUUID);
     await UserPersonalInformation.findByIdAndDelete(userUUID);
     await UserAddressInformation.findByIdAndDelete(userUUID);
-    await Bag.findOneAndDelete({user: userUUID});
+    await Bag.findOneAndDelete({ user: userUUID });
 
     await server.close();
   });
 
   test("Test add to shopping bag, not registered user; Expect success", async () => {
-    await request
-      .get("/")
-      .set("user-uuid", userUUID)
+    await request.get("/").set("user-uuid", userUUID);
 
     const res2 = await request
       .post(`/bag/create/${jewelryId}`)
@@ -84,5 +82,33 @@ describe("bagController", () => {
     const bag = await Bag.find({ user: userUUID });
 
     expect(bag[0].quantity).toBe(DEFAULT_ADD_QUANTITY);
+  });
+
+  test("Test remove from shopping bag; Expect success", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID)
+      .send({
+        size,
+      });
+
+    const createdBag = await Bag.find({ user: userUUID });
+
+    const bagId = createdBag[0]._id;
+
+    const res = await request
+      .delete(`/bag/delete/${bagId}`)
+      .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(200);
+
+    const bag = await Bag.find({ user: userUUID });
+
+    expect(bag.length).toBe(0);
   });
 });
