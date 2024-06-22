@@ -40,8 +40,28 @@ describe("bagController", () => {
     await UserLoginInformation.findByIdAndDelete(userUUID);
     await UserPersonalInformation.findByIdAndDelete(userUUID);
     await UserAddressInformation.findByIdAndDelete(userUUID);
+    await Bag.findOneAndDelete({user: userUUID});
 
     await server.close();
+  });
+
+  test("Test add to shopping bag, not registered user; Expect success", async () => {
+    await request
+      .get("/")
+      .set("user-uuid", userUUID)
+
+    const res2 = await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID)
+      .send({
+        size,
+      });
+
+    expect(res2.status).toBe(200);
+
+    const bag = await Bag.find({ user: userUUID });
+
+    expect(bag[0].quantity).toBe(DEFAULT_ADD_QUANTITY);
   });
 
   test("Test add to shopping bag, registered user; Expect success", async () => {
