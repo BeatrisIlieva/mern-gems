@@ -342,7 +342,7 @@ export const JewelryItem = () => {
                         >
                           <span className={styles["price-span"]}>
                             ${jewelry.price}
-                          </span>{" "}
+                          </span>
                           <span className={styles["add-span"]}>Add to Bag</span>
                         </button>
                         <button

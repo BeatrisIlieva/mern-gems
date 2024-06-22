@@ -56,8 +56,8 @@ export const Payment = () => {
       .then((dataFromServer) => {
         setUser(dataFromServer);
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
+      .catch((err) => {
+        console.log(err.message);
       });
   }, []);
 
