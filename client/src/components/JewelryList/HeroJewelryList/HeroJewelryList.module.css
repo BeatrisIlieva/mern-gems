@@ -31,6 +31,7 @@
   justify-content: center;
   flex-direction: column;
   font-size: var(--small-font-size);
+  margin: 20px 0px;
 }
 
 .paragraph-container {

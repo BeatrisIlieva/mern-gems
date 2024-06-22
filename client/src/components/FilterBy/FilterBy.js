@@ -51,6 +51,7 @@ export const FilterBy = ({
     fetchStonesCountData(serializedObject);
 
     updateState(filtered);
+    setLoadMoreDisabled(filtered.length > itemsPerPage);
   };
 
   const changeHandler = (e, entityTitle) => {

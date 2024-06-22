@@ -34,4 +34,9 @@ export const HEROES_BY_TITLE = {
     "Nature, the House's enduring muse, continues to inspire ethereal fine jewelry designs destined to stand the test of time.",
     "/forget-me-not",
   ],
+  Sunflower: [
+    "https://res.cloudinary.com/deztgvefu/image/upload/v1718558072/ReactGems/common_img/herolarged_sunflower24_pdp_ogqv7s.jpg",
+    "Classic floral form into a timeless fine jewelry motif that reflects the beauty of nature.",
+    "/sunflower",
+  ],
 };

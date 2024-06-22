@@ -142,8 +142,66 @@ export const JewelryItem = () => {
           <>
             {jewelry && (
               <div className={styles["jewelry-container"]}>
-                <div className={styles["jewelry-images"]}>
-                  {leftIsSelected ? (
+                {jewelry.secondImageUrl ? (
+                  <div className={styles["jewelry-images"]}>
+                    {leftIsSelected ? (
+                      <div
+                        className={`${styles["image"]} ${
+                          jewelry.isSoldOut === true ? styles["sold-out"] : ""
+                        }`.trim()}
+                      >
+                        <img
+                          src={jewelry.firstImageUrl}
+                          alt={jewelry.title}
+                          onClick={toggleSelected}
+                          className={styles["left-image"]}
+                        />
+                        {jewelry.isSoldOut && (
+                          <span className={styles["sold-out-span"]}>
+                            SOLD OUT
+                          </span>
+                        )}
+                      </div>
+                    ) : (
+                      <div
+                        className={`${styles["image"]} ${
+                          jewelry.isSoldOut === true ? styles["sold-out"] : ""
+                        }`.trim()}
+                      >
+                        <img
+                          src={jewelry.secondImageUrl}
+                          alt={jewelry.title}
+                          onClick={toggleSelected}
+                          className={styles["right-image"]}
+                        />
+                        {jewelry.isSoldOut && (
+                          <span className={styles["sold-out-span"]}>
+                            SOLD OUT
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    <div className={styles["circles-container"]}>
+                      <FontAwesomeIcon
+                        icon={faCircle}
+                        className={`${styles["circle"]} ${
+                          leftIsSelected === true
+                            ? styles["photo-selected"]
+                            : ""
+                        }`.trim()}
+                      />
+                      <FontAwesomeIcon
+                        icon={faCircle}
+                        className={`${styles["circle"]} ${
+                          rightIsSelected === true
+                            ? styles["photo-selected"]
+                            : ""
+                        }`.trim()}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles["jewelry-images"]}>
                     <div
                       className={`${styles["image"]} ${
                         jewelry.isSoldOut === true ? styles["sold-out"] : ""
@@ -161,40 +219,8 @@ export const JewelryItem = () => {
                         </span>
                       )}
                     </div>
-                  ) : (
-                    <div
-                      className={`${styles["image"]} ${
-                        jewelry.isSoldOut === true ? styles["sold-out"] : ""
-                      }`.trim()}
-                    >
-                      <img
-                        src={jewelry.secondImageUrl}
-                        alt={jewelry.title}
-                        onClick={toggleSelected}
-                        className={styles["right-image"]}
-                      />
-                      {jewelry.isSoldOut && (
-                        <span className={styles["sold-out-span"]}>
-                          SOLD OUT
-                        </span>
-                      )}
-                    </div>
-                  )}
-                  <div className={styles["circles-container"]}>
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={`${styles["circle"]} ${
-                        leftIsSelected === true ? styles["photo-selected"] : ""
-                      }`.trim()}
-                    />
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      className={`${styles["circle"]} ${
-                        rightIsSelected === true ? styles["photo-selected"] : ""
-                      }`.trim()}
-                    />
                   </div>
-                </div>
+                )}
                 <div className={styles["jewelry-info-container"]}>
                   <h2 className={styles["jewelry-title"]}>{jewelry.title}</h2>
                   <div className={styles["flex-container-line"]}>

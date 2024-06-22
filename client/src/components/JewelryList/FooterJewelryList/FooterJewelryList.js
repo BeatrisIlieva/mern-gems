@@ -12,7 +12,9 @@ export const FooterJewelryList = ({ entityTitle }) => {
         />
       </div>
       <div className={styles["footer-info-container"]}>
-        <h2 className={styles["footer-box-title"]}>{entityTitle}</h2>
+        <h2 className={styles["footer-box-title"]}>
+          {FOOTERS_BY_TITLE[entityTitle][3]} Collection
+        </h2>
         <div className={styles["footer-paragraph-container"]}>
           <p className={styles["footer-box-paragraph"]}>
             {FOOTERS_BY_TITLE[entityTitle][1]}

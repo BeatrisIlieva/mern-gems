@@ -88,7 +88,7 @@ function App() {
                       />
                     }
                   />
-                  {/* <Route
+                  <Route
                     path="/sunflower"
                     element={
                       <JewelryList
@@ -99,7 +99,7 @@ function App() {
                         serviceFactory={jewelryCollectionServiceFactory}
                       />
                     }
-                  /> */}
+                  />
                   <Route
                     path="/sparkling-cluster"
                     element={

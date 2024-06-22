@@ -106,17 +106,19 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
           <LoadingSpinner />
         ) : (
           <>
-            <div className={styles["load-more-button"]}>
-              <LoadMoreButton
-                loadMoreHandler={loadMoreHandler}
-                loadMoreDisabled={loadMoreDisabled}
-              />
-            </div>
+            {loadMoreDisabled === false && (
+              <div className={styles["load-more-button"]}>
+                <LoadMoreButton
+                  loadMoreHandler={loadMoreHandler}
+                  loadMoreDisabled={loadMoreDisabled}
+                />
+              </div>
+            )}
             <HorizontalLine />
           </>
         )}
       </div>
-      <FooterJewelryList entityTitle={entityTitle}/>
+      <FooterJewelryList entityTitle={entityTitle} />
     </section>
   );
 };
