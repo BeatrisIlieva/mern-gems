@@ -157,11 +157,9 @@ export const Header = () => {
                       />
                     </span>
                     <span className={styles["text-span"]}>My Bag</span>
-                    {/* {totalQuantityGreaterThanZero && ( */}
                     <span className={styles["icon-bar-count"]}>
                       ({totalQuantity})
                     </span>
-                    {/* )} */}
                   </Link>
                 </li>
                 {!isAuthenticated && (
