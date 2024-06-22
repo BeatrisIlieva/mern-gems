@@ -1,6 +1,6 @@
 const Bag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
-const { DEFAULT_MIN_QUANTITY } = require("../constants/Bag");
+const { DEFAULT_MIN_QUANTITY } = require("../constants/bag");
 
 const getOne = async ({ userId, jewelryId, sizeId }) => {
   const bagItem = await Bag.findOne({

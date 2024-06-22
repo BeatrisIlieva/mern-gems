@@ -13,7 +13,7 @@ exports.sendRegistrationEmail = (email, firstName) => {
 
   fs.readFile("email-greeting.html", "utf8", (err, html) => {
     if (err) {
-      console.error("❌ Error reading HTML file:", err);
+      // console.error("❌ Error reading HTML file:", err);
       return;
     }
 
@@ -28,9 +28,9 @@ exports.sendRegistrationEmail = (email, firstName) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.error("❌ Error:", error.message);
+        // console.error("❌ Error:", error.message);
       } else {
-        console.log("✅ Email sent:", info.response);
+        // console.log("✅ Email sent:", info.response);
       }
     });
   });
@@ -47,7 +47,7 @@ exports.sendOrderConfirmationEmail = (email, firstName) => {
 
   fs.readFile("email-order-confirmation.html", "utf8", (err, html) => {
     if (err) {
-      console.error("❌ Error reading HTML file:", err);
+      // console.error("❌ Error reading HTML file:", err);
       return;
     }
 
@@ -62,9 +62,9 @@ exports.sendOrderConfirmationEmail = (email, firstName) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.error("❌ Error:", error.message);
+        // console.error("❌ Error:", error.message);
       } else {
-        console.log("✅ Email sent:", info.response);
+        // console.log("✅ Email sent:", info.response);
       }
     });
   });

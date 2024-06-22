@@ -3,7 +3,9 @@ const bagManager = require("../managers/bagManager");
 const {
   DEFAULT_ADD_QUANTITY,
   DEFAULT_MIN_QUANTITY,
-} = require("../constants/Bag");
+  NOT_SELECTED_SIZE_ERROR_MESSAGE,
+  SOLD_OUT_JEWELRY_ERROR_MESSAGE,
+} = require("../constants/bag");
 const Bag = require("../models/Bag");
 const Inventory = require("../models/Inventory");
 
@@ -74,9 +76,9 @@ router.post("/create/:jewelryId", async (req, res) => {
     });
 
     if (!size) {
-      throw new Error("Ensure you have selected the desired size.");
+      throw new Error(NOT_SELECTED_SIZE_ERROR_MESSAGE);
     } else if (!isAvailable) {
-      throw new Error("The jewelry has been sold out.");
+      throw new Error(SOLD_OUT_JEWELRY_ERROR_MESSAGE);
     } else {
       sizeId = Number(size);
 
