@@ -11,7 +11,6 @@
   justify-content: center;
   transition: all 0.3s ease;
   animation: slideIn 0.3s forwards;
-  /* background-color: var(--picture); */
 }
 
 @keyframes slideIn {
