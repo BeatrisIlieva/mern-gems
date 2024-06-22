@@ -139,4 +139,37 @@ describe("bagController", () => {
 
     expect(bag.length).toBe(0);
   });
+
+  test("Test decrease quantity higher than in bag; Expect error", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID)
+      .send({
+        size,
+      });
+
+    const createdBag = await Bag.find({ user: userUUID });
+
+    const bagId = createdBag[0]._id;
+
+    await request
+      .put(`/bag/decrease/${bagId}`)
+      .set("user-uuid", userUUID);
+
+
+    const res = await request
+    .put(`/bag/decrease/${bagId}`)
+    .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(401);
+
+    const bag = await Bag.find({ user: userUUID });
+
+    expect(bag.length).toBe(0);
+  });
 });
