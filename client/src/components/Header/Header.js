@@ -15,7 +15,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 export const Header = () => {
   const { isAuthenticated } = useAuthContext();
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
-  const { totalQuantity, totalQuantityGreaterThanZero } = useBagContext();
+  const { totalQuantity } = useBagContext();
   const [displayDisplaySearchBoxPopup, setDisplaySearchBoxPopup] =
     useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,7 +86,12 @@ export const Header = () => {
                     className={styles["icon-pink"]}
                     onClick={popupClickHandler}
                   />{" "}
-                  <span className={styles["text-span"]} onClick={popupClickHandler}>Search</span>
+                  <span
+                    className={styles["text-span"]}
+                    onClick={popupClickHandler}
+                  >
+                    Search
+                  </span>
                 </span>
               </div>
               <nav className={styles["nav"]}>
