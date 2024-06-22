@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   z-index: 20;
-  border-bottom: 0.1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   display: flex;
   margin-top: auto;
   margin-bottom: auto;
@@ -11,6 +11,8 @@
   transition: all 0.9s ease;
   width: 100%;
   animation: slideIn 0.4s forwards;
+  /* background-color: var(--picture); */
+  /* font-family: var(--bold-italic-font-family); */
 }
 
 @keyframes slideIn {
@@ -24,9 +26,15 @@
 
 .header-box {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin: 0 40px;
   width: 100%;
+}
+
+.top-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo-container {
@@ -48,8 +56,39 @@
   transform: scale(1.1);
 }
 
+.bottom-container {
+  position: relative;
+  height: 66px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* gap: 134px; */
+}
+
+.search-container {
+  position: absolute;
+  left: 0;
+  top: 20%;
+}
+
+
+
 .nav {
-  width: 50.02%;
+  position: absolute;
+  /* font-weight: 900; */
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  /* font-family: var(--bold-font-family); */
+}
+
+.icon-list {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  /* width: 40%; */
 }
 
 .nav-list {
@@ -73,22 +112,27 @@
   transform: scale(1.2);
 }
 
+.text-span {
+  color: var(--gray);
+  margin-left: 4px;
+  font-size: var(--main-font-size);
+}
+
 .icon-pink {
   color: var(--dark-pink);
 }
 
-.icon-list {
-  display: flex;
-}
+
 
 .icon-item-width {
-  width: 60px;
+  /* width: 60px; */
 }
 
 .icon-item {
   font-weight: 600;
   transition: transform 0.5s ease-in-out;
   display: inline-block;
+  /* margin-left: 20px; */
 }
 
 .icon-item:hover {
@@ -97,7 +141,7 @@
 
 .icon-bar-count {
   font-size: 14px;
-  color: var(--dark-pink);
+  color: var(--gray);
   margin-left: 4px;
   font-weight: 400;
 }
