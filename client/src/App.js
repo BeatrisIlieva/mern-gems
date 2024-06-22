@@ -52,28 +52,6 @@ function App() {
                       />
                     }
                   />
-                  {/* <Route
-                    path="/classics"
-                    element={
-                      <JewelryList
-                        entityId={COLLECTIONS_BY_ID_AND_TITLE["Classics"][0]}
-                        entityTitle={COLLECTIONS_BY_ID_AND_TITLE["Classics"][1]}
-                        serviceFactory={jewelryCollectionServiceFactory}
-                      />
-                    }
-                  /> */}
-                  {/* <Route
-                    path="/pirouette"
-                    element={
-                      <JewelryList
-                        entityId={COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][0]}
-                        entityTitle={
-                          COLLECTIONS_BY_ID_AND_TITLE["Pirouette"][1]
-                        }
-                        serviceFactory={jewelryCollectionServiceFactory}
-                      />
-                    }
-                  /> */}
                   <Route
                     path="/diamond-loop"
                     element={
