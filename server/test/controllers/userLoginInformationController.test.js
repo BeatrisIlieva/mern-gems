@@ -9,7 +9,8 @@ const {
   EMAIL_ALREADY_EXISTS_ERROR_MESSAGE,
 } = require("../../src/constants/email");
 const bcrypt = require("bcrypt");
-const Bag = require("../../src/models/Bag")
+const Bag = require("../../src/models/Bag");
+const Wishlist = require("../../src/models/Wishlist");
 
 describe("userLoginInformationController", () => {
   beforeAll(async () => {
@@ -47,7 +48,8 @@ describe("userLoginInformationController", () => {
     await UserPersonalInformation.findByIdAndDelete(userUUID2);
     await UserAddressInformation.findByIdAndDelete(userUUID2);
 
-    await Bag.findOneAndDelete({user: userUUID1})
+    await Bag.findOneAndDelete({ user: userUUID1 });
+    await Wishlist.findOneAndDelete({ user: userUUID1 });
     await server.close();
   });
 
@@ -275,34 +277,61 @@ describe("userLoginInformationController", () => {
   });
 
   test("Test transfer shopping bag; Expect success", async () => {
-
     await request
       .post("/user-login-information/register")
       .set("user-uuid", userUUID1)
       .send({ email, password, firstName, lastName });
 
-      await request.get("/user-login-information/logout");
+    await request.get("/user-login-information/logout");
 
-      await request.get("/").set("user-uuid", userUUID2);
+    await request.get("/").set("user-uuid", userUUID2);
 
-      await request
-        .post(`/bag/create/${jewelryId}`)
-        .set("user-uuid", userUUID2)
-        .send({
-          size,
-        });
+    await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID2)
+      .send({
+        size,
+      });
 
     const res = await request
       .post("/user-login-information/login")
       .set("user-uuid", userUUID2)
       .send({ email, password });
 
-      expect(res.status).toBe(200);
+    expect(res.status).toBe(200);
 
-      const transferredBag = await Bag.find({ user: userUUID1 });
-      const previousBag = await Bag.find({ user: userUUID2 });
-  
-      expect(transferredBag.length).toBe(1);
-      expect(previousBag.length).toBe(0);
+    const transferredBag = await Bag.find({ user: userUUID1 });
+    const previousBag = await Bag.find({ user: userUUID2 });
+
+    expect(transferredBag.length).toBe(1);
+    expect(previousBag.length).toBe(0);
+  });
+
+  test("Test transfer wishlist; Expect success", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID1)
+      .send({ email, password, firstName, lastName });
+
+    await request.get("/user-login-information/logout");
+
+    await request.get("/").set("user-uuid", userUUID2);
+
+    await request
+      .post(`/wishlist/create/${jewelryId}`)
+      .set("user-uuid", userUUID2);
+
+    const res = await request
+      .post("/user-login-information/login")
+      .set("user-uuid", userUUID2)
+      .send({ email, password });
+
+    expect(res.status).toBe(200);
+
+    const transferredWishlist = await Wishlist.find({ user: userUUID1 });
+    const previousWishlist = await Wishlist.find({ user: userUUID2 });
+
+    expect(transferredWishlist.length).toBe(1);
+    expect(previousWishlist.length).toBe(0);
   });
 });

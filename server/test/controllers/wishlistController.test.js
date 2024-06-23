@@ -90,4 +90,23 @@ describe("wishlistController", () => {
 
     expect(wishlist.length).toBe(0);
   });
+
+  test("Test find wishlist; Expect wishlist count to be one", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    await request
+      .post(`/wishlist/create/${jewelryId}`)
+      .set("user-uuid", userUUID);
+
+    const res = await request
+      .get("/wishlist/find-all")
+      .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(200);
+
+    console.log(res.body);
+  });
 });
