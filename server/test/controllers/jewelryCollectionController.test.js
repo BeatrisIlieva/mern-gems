@@ -24,7 +24,7 @@ describe("jewelryCollectionController", () => {
     await server.close();
   });
 
-  test("Test find all jewelries by category; Expect success", async () => {
+  test("Test find all jewelries by collection; Expect success", async () => {
     await request.get("/").set("user-uuid", userUUID);
 
     const res = await request
@@ -36,5 +36,7 @@ describe("jewelryCollectionController", () => {
     expect(res.body).toHaveProperty("data");
     expect(res.body).toHaveProperty("stoneTypesData");
     expect(res.body).toHaveProperty("stoneColorsData");
+    expect(res.body).toHaveProperty("totalCount");
+    expect(res.body.totalCount).toBe(10);
   });
 });

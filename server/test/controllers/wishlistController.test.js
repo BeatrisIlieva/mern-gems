@@ -107,6 +107,25 @@ describe("wishlistController", () => {
 
     expect(res.status).toBe(200);
 
-    console.log(res.body);
+    expect(res.body).toHaveProperty("totalCount");
+
+    expect(res.body.totalCount).toBe(1);
+  });
+
+  test("Test find count; Expect wishlist count to be one", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    await request
+      .post(`/wishlist/create/${jewelryId}`)
+      .set("user-uuid", userUUID);
+
+    const res = await request
+      .get("/wishlist/find-count")
+      .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(200);
   });
 });
