@@ -11,6 +11,8 @@ import { useState, useEffect } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
 import { MiniHeader } from "./MiniHeader/MiniHeader";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
 export const Header = () => {
   const { isAuthenticated } = useAuthContext();
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
@@ -84,12 +86,29 @@ export const Header = () => {
                     icon={faSearch}
                     className={styles["icon-pink"]}
                     onClick={popupClickHandler}
-                  />{" "}
+                  />
                   <span
                     className={styles["text-span"]}
                     onClick={popupClickHandler}
                   >
                     Search
+                  </span>
+                </span>
+              </div>
+              <div
+                className={`${styles["icon-item-width"]} ${styles["icon-item"]} ${styles["location-container"]}`}
+              >
+                <span>
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    className={`${styles["icon-pink"]} ${styles["icon-with-margin"]}`}
+                    onClick={popupClickHandler}
+                  />
+                  <span
+                    className={styles["text-span"]}
+                    onClick={popupClickHandler}
+                  >
+                    Location
                   </span>
                 </span>
               </div>

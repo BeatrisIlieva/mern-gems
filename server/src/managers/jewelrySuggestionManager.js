@@ -46,7 +46,6 @@ exports.findAll = async (jewelryId) => {
   ]);
 
   const colorIds = extractStoneColors(colors);
-  console.log(colorIds);
 
   const result = await Jewelry.aggregate([
     {

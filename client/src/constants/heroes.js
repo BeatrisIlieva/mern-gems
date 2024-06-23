@@ -1,22 +1,22 @@
 export const HEROES_BY_TITLE = {
   Bracelets: [
     "https://res.cloudinary.com/deztgvefu/image/upload/v1718125861/ReactGems/common_img/Screenshot_2024-06-11_at_20.09.57_cc9fga.png",
-    "From sparkling diamond bracelets to chic diamond bangles, explore the brilliant designs from the House of React Gems'.",
+    "From sparkling diamond bracelets to chic diamond bangles, explore the brilliant designs from the House of MERN Gems'.",
     "/bracelets",
   ],
   Earrings: [
     "https://res.cloudinary.com/deztgvefu/image/upload/v1718118512/ReactGems/common_img/largeherod_l2_hj_incre_heartshape_ea_main_rjzvzb.avif",
-    "From floral fine jewelry styles to bold designs, to classic earstuds, chandeliers and diamond drops, explore React Gems' selection of diamond earrings.",
+    "From floral fine jewelry styles to bold designs, to classic earstuds, chandeliers and diamond drops, explore MERN Gems' selection of diamond earrings.",
     "/earrings",
   ],
   "Necklaces & Pendants": [
     "https://res.cloudinary.com/deztgvefu/image/upload/v1718988248/ReactGems/common_img/herolarged_incredibles_yellow_1_w7m1st_2_rf2l9f.jpg",
-    "React Gems's precious gemstones necklaces and pendants, set in platinum, offer a more delicate interpretation of the House's signature fine jewelry aesthetic.",
+    "MERN Gems's precious gemstones necklaces and pendants, set in platinum, offer a more delicate interpretation of the House's signature fine jewelry aesthetic.",
     "/necklaces",
   ],
   Rings: [
     "https://res.cloudinary.com/deztgvefu/image/upload/v1718123003/ReactGems/common_img/largeherod_l2_hj_hope_2_main_ahryjw.avif",
-    "React Gems' rings feature the most exceptional diamonds and gemstones and are known for their unequivocal beauty.",
+    "MERN Gems' rings feature the most exceptional diamonds and gemstones and are known for their unequivocal beauty.",
     "/rings",
   ],
   "Diamond Loop": [
