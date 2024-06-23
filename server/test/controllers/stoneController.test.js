@@ -57,4 +57,39 @@ describe("stoneController", () => {
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ stoneTypesData: expectedData });
   });
+
+  test("Test search a jewelry by stone color; Expect two stone colors to be found", async () => {
+    await request.get("/").set("user-uuid", userUUID);
+
+    const expectedData = [
+      {
+        _id: 5,
+        count: 3,
+        entityTitle: "stoneColor",
+        stoneColorId: 5,
+        title: "Red",
+      },
+      {
+        _id: 6,
+        count: 3,
+        entityTitle: "stoneColor",
+        stoneColorId: 6,
+        title: "White",
+      },
+    ];
+
+    const jewelryIds = [5, 24, 33];
+
+    const serializedObject = encodeURIComponent(
+      JSON.stringify({ JewelryIds: jewelryIds })
+    );
+
+    const res = await request
+      .get(`/stone/by-stone-colors`)
+      .set("user-uuid", userUUID)
+      .query({ data: serializedObject });
+
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ stoneColorsData: expectedData });
+  });
 });
