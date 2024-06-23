@@ -24,7 +24,7 @@
 .header-box {
   display: flex;
   flex-direction: column;
-  margin: 0 40px;
+  margin: 0 50px;
   width: 100%;
 }
 

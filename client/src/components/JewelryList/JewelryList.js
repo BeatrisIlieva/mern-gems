@@ -63,7 +63,7 @@ export const JewelryList = ({ entityId, entityTitle, serviceFactory }) => {
 
   return (
     <section>
-      <HeroJewelryList entityTitle={entityTitle} />
+      <HeroJewelryList entityTitle={entityTitle} data-testid="hero-jewelry-list"/>
       <div className={styles["jewelries-box"]}>
         <div className={styles["jewelries-nav"]}>
           <FilterBy
