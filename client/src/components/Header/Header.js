@@ -9,15 +9,23 @@ import { useWishlistContext } from "../../contexts/WishlistContext";
 import { useBagContext } from "../../contexts/BagContext";
 import { useState, useEffect } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";
+import { LocationPopup } from "./LocationPopup/LocationPopup";
 import { MiniHeader } from "./MiniHeader/MiniHeader";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
+const POPUP_OPTIONS = {
+  Search: "search",
+  Location: "location",
+};
 
 export const Header = () => {
   const { isAuthenticated } = useAuthContext();
   const { wishlistCount, wishlistCountGreaterThanZero } = useWishlistContext();
   const { totalQuantity } = useBagContext();
   const [displayDisplaySearchBoxPopup, setDisplaySearchBoxPopup] =
+    useState(false);
+  const [displayLocationPopup, setDisplayLocationPopup] =
     useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
@@ -45,16 +53,24 @@ export const Header = () => {
     };
   }, [lastScrollY]);
 
-  const popupClickHandler = async () => {
+  const popupClickHandler = async (popupOption) => {
     document.body.style.overflow = "hidden";
 
-    setDisplaySearchBoxPopup(true);
+    if (popupOption === POPUP_OPTIONS.Search) {
+      setDisplaySearchBoxPopup(true);
+    } else if (popupOption === POPUP_OPTIONS.Location) {
+      setDisplayLocationPopup(true);
+    }
   };
 
-  const popupCloseHandler = () => {
+  const popupCloseHandler = (popupOption) => {
     document.body.style.overflow = "visible";
 
-    setDisplaySearchBoxPopup(false);
+    if (popupOption === POPUP_OPTIONS.Search) {
+      setDisplaySearchBoxPopup(false);
+    } else if (popupOption === POPUP_OPTIONS.Location) {
+      setDisplayLocationPopup(false);
+    }
   };
 
   return (
@@ -85,11 +101,11 @@ export const Header = () => {
                   <FontAwesomeIcon
                     icon={faSearch}
                     className={styles["icon-pink"]}
-                    onClick={popupClickHandler}
+                    onClick={() => popupClickHandler(POPUP_OPTIONS.Search)}
                   />
                   <span
                     className={styles["text-span"]}
-                    onClick={popupClickHandler}
+                    onClick={() => popupClickHandler(POPUP_OPTIONS.Search)}
                   >
                     Search
                   </span>
@@ -102,11 +118,11 @@ export const Header = () => {
                   <FontAwesomeIcon
                     icon={faLocationDot}
                     className={`${styles["icon-pink"]} ${styles["icon-with-margin"]}`}
-                    onClick={popupClickHandler}
+                    onClick={() => popupClickHandler(POPUP_OPTIONS.Location)}
                   />
                   <span
                     className={styles["text-span"]}
-                    onClick={popupClickHandler}
+                    onClick={() => popupClickHandler(POPUP_OPTIONS.Location)}
                   >
                     Location
                   </span>
@@ -211,7 +227,14 @@ export const Header = () => {
             </div>
           </div>
           {displayDisplaySearchBoxPopup && (
-            <SearchBoxPopup popupCloseHandler={popupCloseHandler} />
+            <SearchBoxPopup
+              popupCloseHandler={() => popupCloseHandler(POPUP_OPTIONS.Search)}
+            />
+          )}
+          {displayLocationPopup && (
+            <LocationPopup
+              popupCloseHandler={() => popupCloseHandler(POPUP_OPTIONS.Location)}
+            />
           )}
         </header>
       )}
