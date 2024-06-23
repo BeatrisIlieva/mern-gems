@@ -4,7 +4,6 @@ const orderConfirmationManager = require("../managers/orderConfirmationManager")
 
 router.post("/:userId", async (req, res) => {
   const userId = req.params.userId;
-  // const userId = req.user._id;
 
   const {
     longCardNumber,
@@ -25,7 +24,7 @@ router.post("/:userId", async (req, res) => {
 
     const order = await orderConfirmationManager.create(userId);
 
-    res.status(200).json({ order });
+    res.status(201).json({ order });
   } catch (err) {
     console.log(err.message);
     res.status(401).json({ message: err.message });
