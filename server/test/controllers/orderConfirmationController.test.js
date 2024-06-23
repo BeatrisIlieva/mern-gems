@@ -49,16 +49,19 @@ describe("orderConfirmationController", () => {
   });
 
   test("Test delete bag after completing purchase; Expect success", async () => {
-    request
+    await request
       .post("/user-login-information/register")
       .set("user-uuid", userUUID)
       .send({ email, password, firstName, lastName });
 
-    request.post(`/bag/create/${jewelryId}`).set("user-uuid", userUUID).send({
-      size,
-    });
+    await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID)
+      .send({
+        size,
+      });
 
-    request
+    await request
       .put(`/checkout/update/${userUUID}`)
       .set("user-uuid", userUUID)
       .send({
@@ -70,7 +73,7 @@ describe("orderConfirmationController", () => {
         phoneNumber,
       });
 
-    request.post(`/payment/${userUUID}`).set("user-uuid", userUUID).send({
+    await request.post(`/payment/${userUUID}`).set("user-uuid", userUUID).send({
       longCardNumber,
       cardHolder,
       cvvCode,
@@ -78,9 +81,11 @@ describe("orderConfirmationController", () => {
       expirationYear,
     });
 
-    request
+    const res = await request
       .get(`/order-confirmation/display/${userUUID}`)
       .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(200);
 
     const bag = await Bag.find({ user: userUUID });
 

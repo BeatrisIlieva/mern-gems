@@ -86,9 +86,11 @@ describe("orderHistoryController", () => {
       .get(`/order-confirmation/display/${userUUID}`)
       .set("user-uuid", userUUID);
 
-    await request
+    const res = await request
       .get(`/order-history/display/${userUUID}`)
       .set("user-uuid", userUUID);
+
+    expect(res.status).toBe(200);
 
     const order = await Order.find({ user: userUUID });
 
