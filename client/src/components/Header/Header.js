@@ -25,8 +25,7 @@ export const Header = () => {
   const { totalQuantity } = useBagContext();
   const [displayDisplaySearchBoxPopup, setDisplaySearchBoxPopup] =
     useState(false);
-  const [displayLocationPopup, setDisplayLocationPopup] =
-    useState(false);
+  const [displayLocationPopup, setDisplayLocationPopup] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -233,7 +232,9 @@ export const Header = () => {
           )}
           {displayLocationPopup && (
             <LocationPopup
-              popupCloseHandler={() => popupCloseHandler(POPUP_OPTIONS.Location)}
+              popupCloseHandler={() =>
+                popupCloseHandler(POPUP_OPTIONS.Location)
+              }
             />
           )}
         </header>

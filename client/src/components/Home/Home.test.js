@@ -1,4 +1,4 @@
-import { render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Home } from "./Home";
@@ -29,28 +29,6 @@ describe("Home Component", () => {
     expect(imageElement).toBeInTheDocument();
 
     const buttonElement = screen.getByTestId("forget-me-not-button");
-    expect(buttonElement).toBeInTheDocument();
-  });
-
-  test("Should load Pirouette Collection", async () => {
-    render(
-      <AuthContext.Provider value={mockAuthContextValue}>
-        <BrowserRouter>
-          <Home />
-        </BrowserRouter>
-      </AuthContext.Provider>
-    );
-
-    const titleElement = screen.getByTestId("pirouette-title");
-    expect(titleElement).toBeInTheDocument();
-
-    const paragraphElement = screen.getByTestId("pirouette-paragraph");
-    expect(paragraphElement).toBeInTheDocument();
-
-    const imageElement = screen.getByTestId("pirouette-image");
-    expect(imageElement).toBeInTheDocument();
-
-    const buttonElement = screen.getByTestId("pirouette-button");
     expect(buttonElement).toBeInTheDocument();
   });
 

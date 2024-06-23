@@ -111,19 +111,19 @@ export const Home = () => {
       <Link to="/sunflower" className={styles["no-decoration"]}>
         <div className={styles["hero-box-reverse"]}>
           <div className={styles["hero-text"]}>
-            <h2 className={styles["title"]} data-testid="diamond-loop-title">
+            <h2 className={styles["title"]} data-testid="sunflower-title">
               Sunflower Collection
             </h2>
             <p
               className={styles["paragraph"]}
-              data-testid="diamond-loop-paragraph"
+              data-testid="sunflower-paragraph"
             >
               Natural brilliance radiates in timeless blooms.
             </p>
 
             <button
               className={styles["animated-button"]}
-              data-testid="diamond-loop-button"
+              data-testid="sunflower-button"
             >
               Discover
             </button>
@@ -131,7 +131,7 @@ export const Home = () => {
           <div className={styles["hero-img-container"]}>
             <img
               className={styles["hero-img"]}
-              data-testid="diamond-loop-image"
+              data-testid="sunflower-image"
               src={
                 "https://res.cloudinary.com/deztgvefu/image/upload/v1716995568/collections/sunflower_jreu5p.webp"
               }
