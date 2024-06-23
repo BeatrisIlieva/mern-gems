@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1719146879709" clover="3.2.0">
-  <project timestamp="1719146879709" name="All files">
-    <metrics statements="873" coveredstatements="747" conditionals="104" coveredconditionals="64" methods="114" coveredmethods="100" elements="1091" coveredelements="911" complexity="0" loc="873" ncloc="873" packages="11" files="58" classes="58"/>
+<coverage generated="1719163715550" clover="3.2.0">
+  <project timestamp="1719163715550" name="All files">
+    <metrics statements="878" coveredstatements="747" conditionals="104" coveredconditionals="63" methods="114" coveredmethods="99" elements="1096" coveredelements="909" complexity="0" loc="878" ncloc="878" packages="11" files="58" classes="58"/>
     <package name="server">
-      <metrics statements="21" coveredstatements="19" conditionals="8" coveredconditionals="4" methods="6" coveredmethods="6"/>
+      <metrics statements="26" coveredstatements="19" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="5"/>
       <file name="mailer.js" path="/Users/beatrisilieve/VSC/ReactGems/server/mailer.js">
-        <metrics statements="21" coveredstatements="19" conditionals="8" coveredconditionals="4" methods="6" coveredmethods="6"/>
+        <metrics statements="26" coveredstatements="19" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="5"/>
         <line num="1" count="13" type="stmt"/>
         <line num="2" count="13" type="stmt"/>
         <line num="3" count="13" type="stmt"/>
@@ -13,11 +13,14 @@
         <line num="6" count="33" type="stmt"/>
         <line num="14" count="33" type="stmt"/>
         <line num="15" count="33" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="33" type="stmt"/>
         <line num="22" count="33" type="stmt"/>
         <line num="29" count="33" type="stmt"/>
-        <line num="30" count="33" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="23" type="cond" truecount="1" falsecount="1"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="23" type="stmt"/>
         <line num="39" count="13" type="stmt"/>
         <line num="40" count="2" type="stmt"/>
         <line num="48" count="2" type="stmt"/>
@@ -26,7 +29,9 @@
         <line num="54" count="2" type="stmt"/>
         <line num="56" count="2" type="stmt"/>
         <line num="63" count="2" type="stmt"/>
-        <line num="64" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
       </file>
     </package>
     <package name="server.src">
