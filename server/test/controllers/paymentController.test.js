@@ -139,4 +139,47 @@ describe("paymentController", () => {
 
     expect(order.length).toBe(0);
   });
+
+  test("Test complete payment with invalid card holder; Expect error", async () => {
+    await request
+      .post("/user-login-information/register")
+      .set("user-uuid", userUUID)
+      .send({ email, password, firstName, lastName });
+
+    await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID)
+      .send({
+        size,
+      });
+
+    await request
+      .put(`/checkout/update/${userUUID}`)
+      .set("user-uuid", userUUID)
+      .send({
+        country,
+        city,
+        street,
+        apartment,
+        zipCode,
+        phoneNumber,
+      });
+
+    const res = await request
+      .post(`/payment/${userUUID}`)
+      .set("user-uuid", userUUID)
+      .send({
+        longCardNumber,
+        invalidCardHolder,
+        cvvCode,
+        expirationMonth,
+        expirationYear,
+      });
+
+    expect(res.status).toBe(401);
+
+    const order = await Order.find({ user: userUUID });
+
+    expect(order.length).toBe(0);
+  });
 });
