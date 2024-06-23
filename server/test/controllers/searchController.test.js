@@ -56,8 +56,6 @@ describe("searchController", () => {
 
     const responseBody = res.body;
 
-    console.log(responseBody);
-
     expect(responseBody.length).toBe(1);
   });
 });

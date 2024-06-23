@@ -12,7 +12,6 @@ router.get("/by-stone-types", async (req, res) => {
       : null;
 
   const jewelryIds = jewelryDictionary["JewelryIds"];
-  console.log(jewelryIds);
 
   data = { jewelryIds };
 
