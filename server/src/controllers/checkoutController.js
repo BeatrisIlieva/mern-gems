@@ -4,7 +4,7 @@ const userAddressInformationManager = require("../managers/userAddressInformatio
 router.put("/update/:userId", async (req, res) => {
   const userId = req.user._id;
 
-  data = req.body;
+  const data = req.body;
 
   try {
     const address = await userAddressInformationManager.update(userId, data);

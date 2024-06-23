@@ -3,7 +3,7 @@ const { app, server } = require("../../src/index");
 const request = supertest(app);
 const { connectDB, disconnectDB } = require("../database");
 
-describe("bagController", () => {
+describe("jewelryController", () => {
   beforeAll(async () => {
     await connectDB();
   });

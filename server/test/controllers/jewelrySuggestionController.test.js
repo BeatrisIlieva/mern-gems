@@ -3,7 +3,7 @@ const { app, server } = require("../../src/index");
 const request = supertest(app);
 const { connectDB, disconnectDB } = require("../database");
 
-describe("bagController", () => {
+describe("jewelrySuggestionController", () => {
   beforeAll(async () => {
     await connectDB();
   });
@@ -33,8 +33,6 @@ describe("bagController", () => {
       .set("user-uuid", userUUID);
 
     expect(res.status).toBe(200);
-
-    console.log(res.body);
 
     const responseBody = res.body;
 
