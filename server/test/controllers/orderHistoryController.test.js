@@ -5,9 +5,9 @@ const { connectDB, disconnectDB } = require("../database");
 const UserLoginInformation = require("../../src/models/UserLoginInformation");
 const UserPersonalInformation = require("../../src/models/UserPersonalInformation");
 const UserAddressInformation = require("../../src/models/UserAddressInformation");
-const Bag = require("../../src/models/Bag");
+const Order = require("../../src/models/Order");
 
-describe("orderConfirmationController", () => {
+describe("orderHistoryController", () => {
   beforeAll(async () => {
     await connectDB();
   });
@@ -21,7 +21,7 @@ describe("orderConfirmationController", () => {
     jest.setTimeout(30000);
   });
 
-  const userUUID = "user-id5";
+  const userUUID = "user-id3";
   const email = "test@email.com";
   const password = "123456Bb";
   const firstName = "TestName";
@@ -44,21 +44,25 @@ describe("orderConfirmationController", () => {
     await UserLoginInformation.findByIdAndDelete(userUUID);
     await UserPersonalInformation.findByIdAndDelete(userUUID);
     await UserAddressInformation.findByIdAndDelete(userUUID);
+    await Order.findOneAndDelete({ user: userUUID });
 
     await server.close();
   });
 
-  test("Test delete bag after completing purchase; Expect success", async () => {
-    request
+  test("Test show Order History after completing order; Expect success", async () => {
+    await request
       .post("/user-login-information/register")
       .set("user-uuid", userUUID)
       .send({ email, password, firstName, lastName });
 
-    request.post(`/bag/create/${jewelryId}`).set("user-uuid", userUUID).send({
-      size,
-    });
+    await request
+      .post(`/bag/create/${jewelryId}`)
+      .set("user-uuid", userUUID)
+      .send({
+        size,
+      });
 
-    request
+    await request
       .put(`/checkout/update/${userUUID}`)
       .set("user-uuid", userUUID)
       .send({
@@ -70,7 +74,7 @@ describe("orderConfirmationController", () => {
         phoneNumber,
       });
 
-    request.post(`/payment/${userUUID}`).set("user-uuid", userUUID).send({
+    await request.post(`/payment/${userUUID}`).set("user-uuid", userUUID).send({
       longCardNumber,
       cardHolder,
       cvvCode,
@@ -78,12 +82,16 @@ describe("orderConfirmationController", () => {
       expirationYear,
     });
 
-    request
+    await request
       .get(`/order-confirmation/display/${userUUID}`)
       .set("user-uuid", userUUID);
 
-    const bag = await Bag.find({ user: userUUID });
+    await request
+      .get(`/order-history/display/${userUUID}`)
+      .set("user-uuid", userUUID);
 
-    expect(bag.length).toBe(0);
+    const order = await Order.find({ user: userUUID });
+
+    expect(order.length).toBe(1);
   });
 });

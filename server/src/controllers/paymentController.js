@@ -3,7 +3,8 @@ const paymentManager = require("../managers/paymentManager");
 const orderConfirmationManager = require("../managers/orderConfirmationManager");
 
 router.post("/:userId", async (req, res) => {
-  const userId = req.user._id;
+  const userId = req.params.userId;
+  // const userId = req.user._id;
 
   const {
     longCardNumber,

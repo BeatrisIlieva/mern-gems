@@ -2,7 +2,8 @@ const router = require("express").Router();
 const Order = require("../models/Order");
 
 router.get("/display/:userId", async (req, res) => {
-  const userId = req.user._id;
+  const userId = req.params.userId;
+  // const userId = req.user._id;
   try {
     orderItems = await Order.find({ user: userId }).sort({ createdAt: -1 });
 

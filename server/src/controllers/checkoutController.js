@@ -2,7 +2,8 @@ const router = require("express").Router();
 const userAddressInformationManager = require("../managers/userAddressInformationManager");
 
 router.put("/update/:userId", async (req, res) => {
-  const userId = req.user._id;
+  const userId = req.params.userId;
+  // const userId = req.user._id;
 
   const data = req.body;
 
