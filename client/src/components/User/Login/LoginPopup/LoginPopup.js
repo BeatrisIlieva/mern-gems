@@ -5,7 +5,7 @@ export const LoginPopup = () => {
   return (
     <section
       className={styles["popup-box"]}
-      data-testid="address-information-form-popup"
+      data-testid="login-popup"
     >
       <div className={styles["modal-dialog"]}>
         <div className={styles["modal-content"]}>
