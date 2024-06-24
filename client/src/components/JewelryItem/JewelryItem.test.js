@@ -126,4 +126,70 @@ describe("JewelryItem component", () => {
       );
     });
   });
+
+  test("adds item to wishlist on heart icon click", async () => {
+    const mockJewelryData = {
+      _id: "123",
+      title: "Test Jewelry",
+      firstImageUrl: "test-image-1.jpg",
+      isSoldOut: false,
+      price: 100,
+      isLikedByUser: false,
+      category: 1,
+      sizes: [{ _id: 1, measurement: "6.98", available: true }],
+    };
+
+    mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
+
+    render(
+      <Router>
+        <JewelryItem />
+      </Router>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId("jewelry-title")).toBeInTheDocument();
+    });
+
+    const heartIcon = screen.getByTestId("add-to-wishlist-button");
+    fireEvent.click(heartIcon);
+
+    await waitFor(() => {
+      expect(mockWishlistContext.onAddToWishlistClick).toHaveBeenCalledWith(
+        "123"
+      );
+    });
+  });
+
+  test("adds item to bag on 'Add to Bag' button click", async () => {
+    const mockJewelryData = {
+      _id: "123",
+      title: "Test Jewelry",
+      firstImageUrl: "test-image-1.jpg",
+      isSoldOut: false,
+      price: 100,
+      isLikedByUser: false,
+      category: 1,
+      sizes: [{ _id: 1, measurement: "6.98", available: true }],
+    };
+
+    mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
+
+    render(
+      <Router>
+        <JewelryItem />
+      </Router>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId("jewelry-title")).toBeInTheDocument();
+    });
+
+    const addToBagButton = screen.getByRole("button", { name: /add to bag/i });
+    fireEvent.click(addToBagButton);
+
+    await waitFor(() => {
+      expect(mockBagContext.onAddToBagClick).toHaveBeenCalled();
+    });
+  });
 });

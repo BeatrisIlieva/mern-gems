@@ -309,6 +309,7 @@ export const JewelryItem = () => {
                                 : ""
                             }`.trim()}
                             disabled={jewelry.isSoldOut}
+                            data-testid="add-to-bag-button"
                           >
                             <span className={styles["price-span"]}>
                               ${jewelry.price}
@@ -320,6 +321,7 @@ export const JewelryItem = () => {
                           <button
                             className={styles["add-to-wishlist-button"]}
                             onClick={() => handleLikeClick(_id)}
+                            data-testid="add-to-wishlist-button"
                           >
                             <FontAwesomeIcon
                               icon={
