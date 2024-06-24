@@ -21,38 +21,54 @@ export const BagList = ({
           className={styles["jewelry-bag-img"]}
           src={firstImageUrl}
           alt={firstImageUrl}
+          data-testid="image"
         />
       </div>
       <div className={styles["jewelry-bag-composition"]}>
-        <h2 className={styles["jewelry-bag-composition-title"]}>
+        <h2
+          className={styles["jewelry-bag-composition-title"]}
+          data-testid="title"
+        >
           {jewelryTitle}
         </h2>
-        <span className={styles["size-span"]}>Size: {size}</span>
+        <span className={styles["size-span"]} data-testid="size">
+          Size: {size}
+        </span>
         <div className={styles["jewelry-bag-composition-button-container"]}>
           <button
             className={styles["jewelry-bag-composition-button"]}
             onClick={() => onRemove(_id)}
+            data-testid="remove-button"
           >
             Remove
           </button>
         </div>
       </div>
       <div className={styles["jewelry-bag-price-quantity"]}>
-        <h4 className={styles["jewelry-bag-price"]}>${totalPrice}</h4>
+        <h4 className={styles["jewelry-bag-price"]} data-testid="total-price">
+          ${totalPrice}
+        </h4>
         <div className={styles["jewelry-bag-quantity"]}>
           <div>
             <button
               className={styles["jewelry-bag-quantity-button"]}
               onClick={() => onDecrement(_id)}
+              data-testid="decrement-button"
             >
               <FontAwesomeIcon icon={faMinus} className={styles["dark-pink"]} />
             </button>
           </div>
-          <div className={styles["jewelry-bag-quantity-input"]}>{quantity}</div>
+          <div
+            className={styles["jewelry-bag-quantity-input"]}
+            data-testid="quantity"
+          >
+            {quantity}
+          </div>
           <div>
             <button
               className={styles["jewelry-bag-quantity-button"]}
               onClick={() => onIncrement(_id)}
+              data-testid="increment-button"
             >
               <FontAwesomeIcon
                 icon={faPlus}
