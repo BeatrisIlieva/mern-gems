@@ -1,8 +1,11 @@
 import styles from "./LoadingSpinner.module.css";
 export const LoadingSpinner = () => {
   return (
-    <div className={styles["loading-spinner-box"]}>
-      <div className={styles["loading-spinner"]}>
+    <div
+      className={styles["loading-spinner-box"]}
+      data-testid="loading-spinner-box"
+    >
+      <div className={styles["loading-spinner"]} data-testid="loading-spinner">
         <div className={styles["image-container"]}>
           <img
             className={styles["image"]}
