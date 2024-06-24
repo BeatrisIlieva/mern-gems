@@ -5,6 +5,7 @@ import { JewelryItem } from "./JewelryItem";
 import { useService } from "../../hooks/useService";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { useBagContext } from "../../contexts/BagContext";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -14,7 +15,7 @@ jest.mock("../../hooks/useService");
 jest.mock("../../contexts/WishlistContext");
 jest.mock("../../contexts/BagContext");
 jest.mock("../LoadingSpinner/LoadingSpinner", () => ({
-  LoadingSpinner: () => <div>Loading...</div>,
+  LoadingSpinner: () => <div data-testid="loading-spinner">Loading...</div>,
 }));
 jest.mock("../Bag/MiniBag/MiniBag", () => ({
   MiniBag: ({ onClose, miniBagRef }) => (
@@ -73,7 +74,11 @@ describe("JewelryItem component", () => {
       </Router>
     );
 
+    expect(screen.getByTestId("loading-spinner")).toBeInTheDocument();
+
     await waitFor(() => {
+      expect(screen.queryByTestId("loading-spinner")).not.toBeInTheDocument();
+
       expect(screen.getByTestId("jewelry-title")).toBeInTheDocument();
       expect(screen.getByTestId("jewelry-title")).toHaveTextContent(
         "Test Jewelry"
@@ -190,6 +195,24 @@ describe("JewelryItem component", () => {
 
     await waitFor(() => {
       expect(mockBagContext.onAddToBagClick).toHaveBeenCalled();
+    });
+  });
+
+  test("renders loading spinner while fetching data", async () => {
+    mockJewelryService.findOne.mockResolvedValueOnce({});
+
+    render(
+      <Router>
+        <JewelryItem />
+      </Router>
+    );
+
+    expect(screen.getByTestId("loading-spinner")).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.queryByTestId("loading-spinner")).not.toBeInTheDocument();
+
+      expect(mockJewelryService.findOne).toHaveBeenCalledTimes(2);
     });
   });
 });
