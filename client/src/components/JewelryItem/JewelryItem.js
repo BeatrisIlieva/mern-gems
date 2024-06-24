@@ -155,6 +155,7 @@ export const JewelryItem = () => {
                           alt={jewelry.title}
                           onClick={toggleSelected}
                           className={styles["left-image"]}
+                          data-testid="first-image-url"
                         />
                         {jewelry.isSoldOut && (
                           <span className={styles["sold-out-span"]}>
@@ -173,6 +174,7 @@ export const JewelryItem = () => {
                           alt={jewelry.title}
                           onClick={toggleSelected}
                           className={styles["right-image"]}
+                          data-testid="second-image-url"
                         />
                         {jewelry.isSoldOut && (
                           <span className={styles["sold-out-span"]}>
@@ -222,7 +224,7 @@ export const JewelryItem = () => {
                   </div>
                 )}
                 <div className={styles["jewelry-info-container"]}>
-                  <h2 className={styles["jewelry-title"]}>{jewelry.title}</h2>
+                  <h2 className={styles["jewelry-title"]} data-testid="jewelry-title">{jewelry.title}</h2>
                   <div className={styles["flex-container-line"]}>
                     <hr className={styles["hr-line"]} />
                     <img
@@ -261,10 +263,12 @@ export const JewelryItem = () => {
                                       setSizeIsSelected(true);
                                       setErrorMessage("");
                                     }}
+                                    data-testid={`size-${item._id}`}
                                   />
                                   <label
                                     className={styles["label"]}
                                     htmlFor={item._id}
+                                    data-testid={`size-label-${item._id}`}
                                   >
                                     {item.measurement}
                                   </label>
