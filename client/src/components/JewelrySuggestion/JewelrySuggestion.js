@@ -40,7 +40,7 @@ export const JewelrySuggestion = ({ jewelryId }) => {
               <div className={styles["image-container"]}>
                 <img
                   src={j.firstImageUrl}
-                  alt="img"
+                  alt={j.title}
                   className={styles["image"]}
                 />
               </div>
