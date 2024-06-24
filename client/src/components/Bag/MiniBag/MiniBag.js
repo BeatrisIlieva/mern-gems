@@ -32,7 +32,7 @@ export const MiniBag = ({ onClose, miniBagRef }) => {
                     {totalQuantity} {totalQuantity > 1 ? "items" : "item"}
                   </span>
                 </h2>
-                <div id={styles["xMark"]} onClick={onClose}>
+                <div id={styles["xMark"]} onClick={onClose} data-testid="x-mark">
                   <FontAwesomeIcon
                     icon={faXmark}
                     className={styles["x-mark"]}
