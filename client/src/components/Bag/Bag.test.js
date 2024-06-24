@@ -40,7 +40,7 @@ describe("Bag Component", () => {
     jest.resetAllMocks();
   });
 
-  it("renders correctly with bag items, total price, and total quantity", () => {
+  test("renders correctly with bag items, total price, and total quantity", () => {
     useBagContext.mockReturnValue({
       bagItems: mockBagItems,
       totalPrice: 300,
@@ -70,7 +70,7 @@ describe("Bag Component", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the EmptyBag component when the bag is empty", () => {
+  test("renders the EmptyBag component when the bag is empty", () => {
     useBagContext.mockReturnValue({
       bagItems: [],
       totalPrice: 0,
@@ -87,7 +87,7 @@ describe("Bag Component", () => {
     expect(screen.getByText("Your Shopping Bag is Empty.")).toBeInTheDocument();
   });
 
-  it("renders the LoadingSpinner component when loading", () => {
+  test("renders the LoadingSpinner component when loading", () => {
     useBagContext.mockReturnValue({
       bagItems: mockBagItems,
       totalPrice: 300,
