@@ -45,7 +45,7 @@ export const SearchBoxPopup = ({ popupCloseHandler }) => {
         <div className={styles["modal-content"]}>
           <div className={styles["modal-header"]}>
             <div id={styles["xMark"]} onClick={() => popupCloseHandler()}>
-              <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} />
+              <FontAwesomeIcon icon={faXmark} className={styles["x-mark"]} data-testid="x-mark"/>
             </div>
             <div className={styles["search-box"]}>
               <div className={styles["search-container"]}>
