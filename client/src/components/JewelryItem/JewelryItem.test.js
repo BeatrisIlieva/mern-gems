@@ -6,7 +6,7 @@ import { useService } from "../../hooks/useService";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { useBagContext } from "../../contexts/BagContext";
 
-// Mocking the dependencies
+
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: jest.fn(),
@@ -54,7 +54,7 @@ describe("JewelryItem component", () => {
   });
 
   test("renders jewelry item details after loading", async () => {
-    // Mock data for the jewelry item
+
     const mockJewelryData = {
       _id: "123",
       title: "Test Jewelry",
@@ -67,17 +67,17 @@ describe("JewelryItem component", () => {
       sizes: [{ _id: 1, measurement: "6.98", available: true }],
     };
 
-    // Mock the findOne method to resolve with mock data
+
     mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
 
-    // Render the component with Router for useParams to work
+
     render(
       <Router>
         <JewelryItem />
       </Router>
     );
 
-    // Use waitFor to ensure async operations are complete
+
     await waitFor(() => {
       expect(screen.getByTestId("jewelry-title")).toBeInTheDocument();
       expect(screen.getByTestId("jewelry-title")).toHaveTextContent(
