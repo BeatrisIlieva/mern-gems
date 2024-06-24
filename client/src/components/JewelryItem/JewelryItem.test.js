@@ -6,7 +6,6 @@ import { useService } from "../../hooks/useService";
 import { useWishlistContext } from "../../contexts/WishlistContext";
 import { useBagContext } from "../../contexts/BagContext";
 
-
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: jest.fn(),
@@ -54,7 +53,6 @@ describe("JewelryItem component", () => {
   });
 
   test("renders jewelry item details after loading", async () => {
-
     const mockJewelryData = {
       _id: "123",
       title: "Test Jewelry",
@@ -67,16 +65,13 @@ describe("JewelryItem component", () => {
       sizes: [{ _id: 1, measurement: "6.98", available: true }],
     };
 
-
     mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
-
 
     render(
       <Router>
         <JewelryItem />
       </Router>
     );
-
 
     await waitFor(() => {
       expect(screen.getByTestId("jewelry-title")).toBeInTheDocument();
@@ -96,7 +91,6 @@ describe("JewelryItem component", () => {
   });
 
   test("renders second image after clicking on first image", async () => {
-    // Mock data for the jewelry item
     const mockJewelryData = {
       _id: "123",
       title: "Test Jewelry",
@@ -109,26 +103,21 @@ describe("JewelryItem component", () => {
       sizes: [{ _id: 1, measurement: "6.98", available: true }],
     };
 
-    // Mock the findOne method to resolve with mock data
     mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
 
-    // Render the component with Router for useParams to work
     render(
       <Router>
         <JewelryItem />
       </Router>
     );
 
-    // Wait for the component to finish rendering with mock data
     await waitFor(() => {
       expect(screen.getByTestId("first-image-url")).toBeInTheDocument();
     });
 
-    // Find and click the first image element
     const firstImage = screen.getByTestId("first-image-url");
     fireEvent.click(firstImage);
 
-    // Wait for the second image to appear in the DOM
     await waitFor(() => {
       expect(screen.getByTestId("second-image-url")).toBeInTheDocument();
       expect(screen.getByTestId("second-image-url")).toHaveAttribute(
