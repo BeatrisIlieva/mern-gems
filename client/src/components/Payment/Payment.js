@@ -95,7 +95,7 @@ export const Payment = () => {
                 <div className={styles["complete-order-left-container-sticky"]}>
                   <div className={styles["left-top-container"]}>
                     <div className={styles["left-top-upper-container"]}>
-                      <h4 className={styles["left-top-container-title"]}>
+                      <h4 className={styles["left-top-container-title"]} data-testid="shipping-information">
                         Shipping Information
                       </h4>
                       <button

@@ -1,21 +1,16 @@
 import React from "react";
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Payment } from "./Payment";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useBagContext } from "../../contexts/BagContext";
-import { useService } from "../../hooks/useService"; // Adjust path as needed
-import { authServiceFactory } from "../../services/authService";
-import { addressInformationServiceFactory } from "../../services/addressInformationService";
-import { LoginPopup } from "../User/Login/LoginPopup/LoginPopup";
-import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import { AddressInformationFormPopup } from "../User/Account/AccountDetails/AddressInformationFormPopup/AddressInformationFormPopup";
+import { useService } from "../../hooks/useService";
 
 jest.mock("../../contexts/AuthContext");
 jest.mock("../../contexts/BagContext");
 jest.mock("../../hooks/useService");
 
-describe("<Payment />", () => {
+describe("Payment Component", () => {
   const mockUserId = "mockUserId";
   const mockUser = {
     email: "test@example.com",
