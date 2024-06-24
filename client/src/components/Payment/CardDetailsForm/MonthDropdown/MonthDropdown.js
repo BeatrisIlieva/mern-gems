@@ -60,30 +60,36 @@ export const MonthDropdown = ({
       <button
         className={styles["dropdown-toggle"]}
         onClick={() => setIsOpen(!isOpen)}
-        data-testid="dropdown-toggle"
+        data-testid="dropdown-toggle-month"
       >
         {selectedMonth}
         {isOpen ? (
           <FontAwesomeIcon
             icon={faChevronUp}
             className={styles["chevron-icon"]}
-            data-testid="chevron-up-icon"
+            // data-testid="chevron-up-icon"
           />
         ) : (
           <FontAwesomeIcon
             icon={faChevronDown}
             className={styles["chevron-icon"]}
-            data-testid="chevron-down-icon"
+            // data-testid="chevron-down-icon"
           />
         )}
       </button>
       {expirationMonthErrorOccurred && (
-        <div className={styles["error-message"]} data-testid="error-message">
+        <div
+          className={styles["error-message"]}
+          data-testid="error-message-month"
+        >
           {EXPIRATION_MONTH_ERROR_MESSAGE}
         </div>
       )}
       {isOpen && (
-        <ul className={styles["dropdown-menu"]} data-testid="dropdown-menu">
+        <ul
+          className={styles["dropdown-menu"]}
+          data-testid="dropdown-menu-month"
+        >
           <li
             onClick={() => handleSelect("DD")}
             className={styles["top-li"]}

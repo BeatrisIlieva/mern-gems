@@ -22,41 +22,41 @@ describe("MonthDropdown Component", () => {
     renderComponent();
 
     expect(screen.getByText("MM *")).toBeInTheDocument();
-    expect(screen.getByTestId("dropdown-toggle")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdown-toggle-month")).toBeInTheDocument();
   });
 
   test("toggles dropdown menu on button click", () => {
     renderComponent();
 
-    const button = screen.getByTestId("dropdown-toggle");
+    const button = screen.getByTestId("dropdown-toggle-month");
     fireEvent.click(button);
 
-    expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdown-menu-month")).toBeInTheDocument();
 
     fireEvent.click(button);
 
-    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("dropdown-menu-month")).not.toBeInTheDocument();
   });
 
   test("selects a month and closes dropdown", () => {
     renderComponent();
 
-    const button = screen.getByTestId("dropdown-toggle");
+    const button = screen.getByTestId("dropdown-toggle-month");
     fireEvent.click(button);
 
-    const month = (new Date().getMonth() + 1).toString().padStart(2, '0');
+    const month = (new Date().getMonth() + 1).toString().padStart(2, "0");
     fireEvent.click(screen.getByTestId(`month-option-${month}`));
 
     expect(mockSetExpirationMonth).toHaveBeenCalledWith(month);
     expect(mockSetExpirationMonthErrorOccurred).toHaveBeenCalledWith(false);
     expect(screen.getByText(month)).toBeInTheDocument();
-    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("dropdown-menu-month")).not.toBeInTheDocument();
   });
 
   test("displays error message when expirationMonthErrorOccurred is true", () => {
     renderComponent(true);
 
-    expect(screen.getByTestId("error-message")).toHaveTextContent(
+    expect(screen.getByTestId("error-message-month")).toHaveTextContent(
       EXPIRATION_MONTH_ERROR_MESSAGE
     );
   });
@@ -64,13 +64,13 @@ describe("MonthDropdown Component", () => {
   test("closes dropdown when clicking outside", () => {
     renderComponent();
 
-    const button = screen.getByTestId("dropdown-toggle");
+    const button = screen.getByTestId("dropdown-toggle-month");
     fireEvent.click(button);
 
-    expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdown-menu-month")).toBeInTheDocument();
 
     fireEvent.mouseDown(document);
 
-    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("dropdown-menu-month")).not.toBeInTheDocument();
   });
 });

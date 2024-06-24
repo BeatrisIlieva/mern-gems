@@ -22,26 +22,26 @@ describe("YearDropdown Component", () => {
     renderComponent();
 
     expect(screen.getByText("YY *")).toBeInTheDocument();
-    expect(screen.getByTestId("dropdown-toggle")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdown-toggle-year")).toBeInTheDocument();
   });
 
   test("toggles dropdown menu on button click", () => {
     renderComponent();
 
-    const button = screen.getByTestId("dropdown-toggle");
+    const button = screen.getByTestId("dropdown-toggle-year");
     fireEvent.click(button);
 
-    expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdown-menu-year")).toBeInTheDocument();
 
     fireEvent.click(button);
 
-    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("dropdown-menu-year")).not.toBeInTheDocument();
   });
 
   test("selects a year and closes dropdown", () => {
     renderComponent();
 
-    const button = screen.getByTestId("dropdown-toggle");
+    const button = screen.getByTestId("dropdown-toggle-year");
     fireEvent.click(button);
 
     const year = new Date().getFullYear().toString();
@@ -50,13 +50,13 @@ describe("YearDropdown Component", () => {
     expect(mockSetExpirationYear).toHaveBeenCalledWith(year);
     expect(mockSetExpirationYearErrorOccurred).toHaveBeenCalledWith(false);
     expect(screen.getByText(year)).toBeInTheDocument();
-    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("dropdown-menu-year")).not.toBeInTheDocument();
   });
 
   test("displays error message when expirationYearErrorOccurred is true", () => {
     renderComponent(true);
 
-    expect(screen.getByTestId("error-message")).toHaveTextContent(
+    expect(screen.getByTestId("error-message-year")).toHaveTextContent(
       EXPIRATION_YEAR_ERROR_MESSAGE
     );
   });
@@ -64,13 +64,13 @@ describe("YearDropdown Component", () => {
   test("closes dropdown when clicking outside", () => {
     renderComponent();
 
-    const button = screen.getByTestId("dropdown-toggle");
+    const button = screen.getByTestId("dropdown-toggle-year");
     fireEvent.click(button);
 
-    expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument();
+    expect(screen.getByTestId("dropdown-menu-year")).toBeInTheDocument();
 
     fireEvent.mouseDown(document);
 
-    expect(screen.queryByTestId("dropdown-menu")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("dropdown-menu-year")).not.toBeInTheDocument();
   });
 });
