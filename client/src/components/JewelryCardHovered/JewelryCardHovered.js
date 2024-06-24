@@ -19,6 +19,7 @@ export const JewelryCardHovered = ({
         icon={isLikedByUser ? solidHeart : regularHeart}
         className={styles["heart"]}
         onClick={() => handleLikeClick(_id)}
+        data-testid="heart-icon"
       />
 
       <div className={styles["jewelry-card-thumbnail"]}>

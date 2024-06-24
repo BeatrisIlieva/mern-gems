@@ -31,11 +31,11 @@ describe("DynamicDropdown Component", () => {
     );
   });
 
-  it("renders correctly with label", () => {
+  test("renders correctly with label", () => {
     expect(screen.getByText(label)).toBeInTheDocument();
   });
 
-  it("toggles dropdown content on button click", () => {
+  test("toggles dropdown content on button click", () => {
     const toggleButton = screen.getByRole("button");
 
     expect(screen.queryByText("Option 1")).not.toBeInTheDocument();
@@ -50,7 +50,7 @@ describe("DynamicDropdown Component", () => {
     expect(screen.queryByText("Option 2")).not.toBeInTheDocument();
   });
 
-  it("closes dropdown when clicking outside", () => {
+  test("closes dropdown when clicking outside", () => {
     const toggleButton = screen.getByRole("button");
 
     fireEvent.click(toggleButton);
