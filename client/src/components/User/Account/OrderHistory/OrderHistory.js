@@ -52,7 +52,7 @@ export const OrderHistory = () => {
             />
             <hr className={styles["hr-line"]} />
           </div>
-          <ul className={styles["order-history-container"]} role="list">
+          <ul className={styles["order-history-container"]} role="list" data-testid="order-history-list">
             {orderItems.map((item) => (
               <li key={item._id}>
                 <OrderHistoryList {...item} />
