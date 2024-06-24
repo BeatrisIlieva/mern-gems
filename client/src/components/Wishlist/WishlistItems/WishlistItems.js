@@ -13,7 +13,7 @@ export const WishlistItems = ({
   mouseEnterHandler,
   mouseLeaveHandler,
   toggleLike,
-  price
+  price,
 }) => {
   const { onRemoveFromWishlistClick } = useWishlistContext();
 
