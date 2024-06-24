@@ -215,4 +215,28 @@ describe("JewelryItem component", () => {
       expect(mockJewelryService.findOne).toHaveBeenCalledTimes(2);
     });
   });
+
+  test("disables 'Add to Bag' button and displays 'SOLD OUT' message for sold out items", async () => {
+    const mockJewelryData = {
+      _id: "123",
+      title: "Test Jewelry",
+      isSoldOut: true,
+      price: 100,
+      category: 1,
+      sizes: [{ _id: 1, measurement: "6.98", available: true }],
+    };
+
+    mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
+
+    render(
+      <Router>
+        <JewelryItem />
+      </Router>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId("add-to-bag-button")).toBeDisabled();
+      expect(screen.getByText("SOLD OUT")).toBeInTheDocument();
+    });
+  });
 });
