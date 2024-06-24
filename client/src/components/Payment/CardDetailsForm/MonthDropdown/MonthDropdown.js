@@ -4,6 +4,8 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const EXPIRATION_MONTH_ERROR_MESSAGE = "Expiration month is required";
+
 export const MonthDropdown = ({
   setExpirationMonth,
   setExpirationMonthErrorOccurred,
@@ -74,7 +76,7 @@ export const MonthDropdown = ({
       </button>
       {expirationMonthErrorOccurred && (
         <div className={styles["error-message"]}>
-          Expiration month is required
+          {EXPIRATION_MONTH_ERROR_MESSAGE}
         </div>
       )}
       {isOpen && (

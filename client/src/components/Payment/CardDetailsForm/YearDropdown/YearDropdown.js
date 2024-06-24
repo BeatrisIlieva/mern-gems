@@ -4,6 +4,8 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const EXPIRATION_YEAR_ERROR_MESSAGE = "Expiration year is required";
+
 export const YearDropdown = ({
   setExpirationYear,
   setExpirationYearErrorOccurred,
@@ -59,32 +61,43 @@ export const YearDropdown = ({
       <button
         className={styles["dropdown-toggle"]}
         onClick={() => setIsOpen(!isOpen)}
+        data-testid="dropdown-toggle"
       >
         {selectedYear}
         {isOpen ? (
           <FontAwesomeIcon
             icon={faChevronUp}
             className={styles["chevron-icon"]}
+            data-testid="chevron-up-icon"
           />
         ) : (
           <FontAwesomeIcon
             icon={faChevronDown}
             className={styles["chevron-icon"]}
+            data-testid="chevron-down-icon"
           />
         )}
       </button>
       {expirationYearErrorOccurred && (
-        <div className={styles["error-message"]}>
-          Expiration year is required
+        <div className={styles["error-message"]} data-testid="error-message">
+          {EXPIRATION_YEAR_ERROR_MESSAGE}
         </div>
       )}
       {isOpen && (
-        <ul className={styles["dropdown-menu"]}>
-          <li onClick={() => handleSelect("DD")} className={styles["top-li"]}>
+        <ul className={styles["dropdown-menu"]} data-testid="dropdown-menu">
+          <li
+            onClick={() => handleSelect("DD")}
+            className={styles["top-li"]}
+            data-testid="year-dropdown-title"
+          >
             YY
           </li>
           {years.map((year) => (
-            <li key={year} onClick={() => handleSelect(year)}>
+            <li
+              key={year}
+              onClick={() => handleSelect(year)}
+              data-testid={`year-option-${year}`}
+            >
               {year}
             </li>
           ))}
