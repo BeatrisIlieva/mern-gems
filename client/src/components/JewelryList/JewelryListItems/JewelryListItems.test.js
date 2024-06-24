@@ -2,15 +2,11 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { JewelryListItems } from "./JewelryListItems";
 import { useWishlistContext } from "../../../contexts/WishlistContext";
-import { JewelryCard } from "../../JewelryCard/JewelryCard";
-import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
 
-// Mock useWishlistContext hook
 jest.mock("../../../contexts/WishlistContext", () => ({
   useWishlistContext: jest.fn(),
 }));
 
-// Mock JewelryCard and JewelryCardHovered components
 jest.mock("../../JewelryCard/JewelryCard", () => ({
   JewelryCard: jest.fn(() => <div>JewelryCard Component</div>),
 }));
@@ -24,13 +20,11 @@ describe("JewelryListItems component", () => {
   const mockOnRemoveFromWishlistClick = jest.fn();
 
   beforeEach(() => {
-    // Mock the return values of useWishlistContext
     useWishlistContext.mockReturnValue({
       onAddToWishlistClick: mockOnAddToWishlistClick,
       onRemoveFromWishlistClick: mockOnRemoveFromWishlistClick,
     });
 
-    // Clear mock function calls between tests
     jest.clearAllMocks();
   });
 

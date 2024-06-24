@@ -8,6 +8,7 @@ export const LoadMoreButton = ({ loadMoreHandler, loadMoreDisabled }) => {
       }`.trim()}
       onClick={loadMoreHandler}
       disabled={loadMoreDisabled}
+      data-testid="load-more-button"
     >
       Load More
     </button>
