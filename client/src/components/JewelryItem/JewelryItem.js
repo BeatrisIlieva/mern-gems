@@ -224,7 +224,12 @@ export const JewelryItem = () => {
                   </div>
                 )}
                 <div className={styles["jewelry-info-container"]}>
-                  <h2 className={styles["jewelry-title"]} data-testid="jewelry-title">{jewelry.title}</h2>
+                  <h2
+                    className={styles["jewelry-title"]}
+                    data-testid="jewelry-title"
+                  >
+                    {jewelry.title}
+                  </h2>
                   <div className={styles["flex-container-line"]}>
                     <hr className={styles["hr-line"]} />
                     <img
@@ -330,6 +335,7 @@ export const JewelryItem = () => {
                                   : regularHeart
                               }
                               className={styles["heart"]}
+                              data-testid="heart-icon"
                             />
                           </button>
                         </div>
@@ -360,6 +366,7 @@ export const JewelryItem = () => {
                               jewelry.isLikedByUser ? solidHeart : regularHeart
                             }
                             className={styles["heart"]}
+                            data-testid="heart-icon"
                           />
                         </button>
                       </div>

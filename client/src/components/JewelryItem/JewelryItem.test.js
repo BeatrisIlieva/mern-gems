@@ -239,4 +239,72 @@ describe("JewelryItem component", () => {
       expect(screen.getByText("SOLD OUT")).toBeInTheDocument();
     });
   });
+
+  test("displays error when adding to bag without selecting size for category not equal to 2", async () => {
+    const mockJewelryData = {
+      _id: "123",
+      title: "Test Jewelry",
+      firstImageUrl: "test-image-1.jpg",
+      isSoldOut: false,
+      price: 100,
+      category: 1,
+      sizes: [{ _id: 1, measurement: "6.98", available: true }],
+    };
+
+    mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
+
+    render(
+      <Router>
+        <JewelryItem />
+      </Router>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId("jewelry-title")).toBeInTheDocument();
+    });
+
+    const addToBagButton = screen.getByRole("button", { name: /add to bag/i });
+    fireEvent.click(addToBagButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText("Ensure you have selected the desired size")
+      ).toBeInTheDocument();
+      expect(mockBagContext.onAddToBagClick).not.toHaveBeenCalled();
+    });
+  });
+  
+  test("does not display error when adding to bag without selecting size for category equal to 2", async () => {
+    const mockJewelryData = {
+      _id: "123",
+      title: "Test Jewelry",
+      firstImageUrl: "test-image-1.jpg",
+      isSoldOut: false,
+      price: 100,
+      category: 2, 
+      sizes: [{ _id: 1, measurement: "6.98", available: true }],
+    };
+
+    mockJewelryService.findOne.mockResolvedValueOnce(mockJewelryData);
+
+    render(
+      <Router>
+        <JewelryItem />
+      </Router>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId("jewelry-title")).toBeInTheDocument();
+    });
+
+    const addToBagButton = screen.getByRole("button", { name: /add to bag/i });
+    fireEvent.click(addToBagButton);
+
+    await waitFor(() => {
+      expect(
+        screen.queryByText("Ensure you have selected the desired size")
+      ).not.toBeInTheDocument();
+      expect(mockBagContext.onAddToBagClick).toHaveBeenCalled();
+    });
+  });
 });
