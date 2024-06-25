@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 
 export const LoginPopup = () => {
   return (
-    <section
-      className={styles["popup-box"]}
-      data-testid="login-popup"
-    >
+    <section className={styles["popup-box"]} data-testid="login-popup">
       <div className={styles["modal-dialog"]}>
         <div className={styles["modal-content"]}>
           <div className={styles["modal-header"]}>
