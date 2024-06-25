@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   z-index: 20;
-  border-bottom: .1px solid var(--border);
+  border-bottom: 0.1px solid var(--border);
   display: flex;
   margin-top: auto;
   margin-bottom: auto;
@@ -35,7 +35,6 @@
 }
 
 .logo-container {
-  margin: 0px 40px 0px 0px;
   width: 128px;
   aspect-ratio: 1 / 1;
 }
