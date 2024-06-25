@@ -7,9 +7,10 @@ const StoneColor = require("./models/StoneColor");
 const JewelryStones = require("./models/JewelryStones");
 const Size = require("./models/Size");
 const Inventory = require("./models/Inventory");
+require("dotenv").config();
 
 async function populateDb() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/react-gems");
+  await mongoose.connect(process.env.MONGODB_URI);
 
   await Category.create({
     title: "Bracelet",
