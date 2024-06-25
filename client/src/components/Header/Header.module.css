@@ -35,7 +35,7 @@
 }
 
 .logo-container {
-  width: 128px;
+  width: 130px;
   aspect-ratio: 1 / 1;
 }
 
@@ -60,18 +60,18 @@
 .search-container {
   position: absolute;
   left: 0;
-  top: -20px;
+  top: -15px;
 }
 
 .location-container {
   position: absolute;
   left: 90px;
-  top: -20px;
+  top: -15px;
 }
 
 .nav {
   position: absolute;
-  top: -6px;
+  top: -10px;
   left: 50%;
   transform: translate(-50%, -6px);
 }
@@ -81,7 +81,7 @@
   gap: 20px;
   position: absolute;
   right: 0;
-  top: -20px;
+  top: -15px;
 }
 
 .nav-list {
@@ -96,7 +96,6 @@
 .nav-item {
   color: var(--gray);
   text-decoration: none;
-  font-weight: 500;
   transition: transform 0.5s ease-in-out;
   display: inline-block;
 }
@@ -107,7 +106,7 @@
 
 .text-span {
   color: var(--gray);
-  margin-left: 4px;
+  margin-left: 6px;
   font-size: var(--main-font-size);
 }
 
@@ -127,7 +126,7 @@
 .icon-bar-count {
   font-size: 14px;
   color: var(--gray);
-  margin-left: 4px;
+  margin-left: 6px;
 }
 
 .icon-bar-item {
