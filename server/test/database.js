@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
+require("dotenv").config();
+
 let mongod = null;
 
 const connectDB = async () => {
   try {
-    let dbUrl = "mongodb://127.0.0.1:27017/react-gems";
+    let dbUrl = process.env.MONGODB_URI;
+
     if (process.env.NODE_ENV === "test") {
       mongod = await MongoMemoryServer.create();
       dbUrl = mongod.getUri();

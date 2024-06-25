@@ -925,7 +925,7 @@ async function populateDb() {
     {
       jewelry: allJewelries[0],
       size: allSizes[0],
-      quantity: 200,
+      quantity: 100,
       price: 32000,
     },
     {

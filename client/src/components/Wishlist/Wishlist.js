@@ -6,6 +6,7 @@ import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";
 import { ITEMS_PER_PAGE } from "../../constants/pagination";
+import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
 
 export const Wishlist = ({ serviceFactory }) => {
   const {
@@ -92,12 +93,17 @@ export const Wishlist = ({ serviceFactory }) => {
           {loading ? (
             <LoadingSpinner />
           ) : (
-            <div className={styles["load-more-button"]}>
-              <LoadMoreButton
-                loadMoreHandler={loadMoreHandler}
-                loadMoreDisabled={loadMoreDisabled}
-              />
-            </div>
+            <>
+              {loadMoreDisabled === false && (
+                <div className={styles["load-more-button"]}>
+                  <LoadMoreButton
+                    loadMoreHandler={loadMoreHandler}
+                    loadMoreDisabled={loadMoreDisabled}
+                  />
+                </div>
+              )}
+              <HorizontalLine />
+            </>
           )}
         </section>
       )}

@@ -37,6 +37,7 @@ export const PersonalInformationForm = () => {
   }, [userInformation]);
 
   const onSubmit = async (e) => {
+    console.log("here");
     submitHandler(e);
 
     const errorOccurred = hasFormErrorOccurred(values);
@@ -68,14 +69,14 @@ export const PersonalInformationForm = () => {
           initialFormValues={INITIAL_FORM_VALUES}
           userInformation={userInformation}
         />
+        <button
+          className={`${styles["animated-button"]} ${styles["button"]}`}
+          type="submit"
+          data-testid="submit"
+        >
+          Save
+        </button>
       </form>
-      <button
-        className={`${styles["animated-button"]} ${styles["button"]}`}
-        type="submit"
-        data-testid="submit"
-      >
-        Save
-      </button>
     </section>
   );
 };

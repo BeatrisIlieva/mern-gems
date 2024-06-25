@@ -23,7 +23,7 @@ export const Login = () => {
             className={styles["sub-title"]}
             data-testid="sign-in-sub-title-element"
           >
-            Please Sign In to your ReactGems account
+            Please Sign In to your MERN Gems account
           </h3>
           <LoginForm />
         </div>
@@ -36,7 +36,7 @@ export const Login = () => {
             className={styles["sub-title"]}
             data-testid="sign-up-sub-title-element"
           >
-            Register with React Gems for the following benefits:
+            Register with MERN Gems for the following benefits:
           </h3>
           <ul role="list" className={styles["list"]}>
             <li className={styles["item"]}>Faster checkout</li>

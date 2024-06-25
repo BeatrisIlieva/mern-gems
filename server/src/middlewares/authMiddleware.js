@@ -1,4 +1,4 @@
-const { SECRET} = require("../config/config");
+const { SECRET } = require("../config/config");
 const jwt = require("jsonwebtoken");
 
 exports.auth = (req, res, next) => {
@@ -6,15 +6,15 @@ exports.auth = (req, res, next) => {
 
   if (token) {
     try {
-        const decodedToken = jwt.verify(token, SECRET);
+      const decodedToken = jwt.verify(token, SECRET);
 
-        req.user = decodedToken;
+      req.user = decodedToken;
 
-        next();
+      next();
     } catch (err) {
-        res.status(401).json({
-            message: "You are not authorized!",
-        })
+      res.status(401).json({
+        message: "You are not authorized!",
+      });
     }
   } else {
     next();

@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const authService = authServiceFactory(auth.accessToken);
   const navigate = useNavigate();
   const location = useLocation();
-  // 600000    10000
+
   const resetTimer = () => {
     if (auth.accessToken) {
       clearTimeout(logoutTimer);
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
         localStorage.removeItem("auth");
         await authService.logout();
-      }, 500000000000);
+      }, 600000);
     }
   };
 
@@ -50,6 +50,8 @@ export const AuthProvider = ({ children }) => {
   const onRegisterSubmit = async (data) => {
     const from = location.state?.from?.pathname || "/";
 
+    const lastLocation = localStorage.getItem("lastLocation") || from;
+
     try {
       const result = await authService.register({ ...data });
 
@@ -57,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
       setAuth(token);
 
-      navigate(from, { replace: true });
+      navigate(lastLocation, { replace: true });
     } catch (err) {
       const errorMessage = err.message;
       console.log(err.message);

@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid var(--border);
+  border-bottom: .1px solid var(--border);
   display: flex;
   margin-top: auto;
   margin-bottom: auto;
@@ -74,7 +74,7 @@
   position: absolute;
   top: -6px;
   left: 50%;
-  transform: translate(-50%, -6px); 
+  transform: translate(-50%, -6px);
 }
 
 .icon-list {
@@ -117,7 +117,6 @@
 }
 
 .icon-item {
-  font-weight: 600;
   transition: transform 0.5s ease-in-out;
   display: inline-block;
 }
@@ -130,7 +129,6 @@
   font-size: 14px;
   color: var(--gray);
   margin-left: 4px;
-  font-weight: 400;
 }
 
 .icon-bar-item {

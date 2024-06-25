@@ -7,6 +7,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  margin-bottom: 40px;
 }
 
 .wish-list-card {
@@ -37,7 +38,7 @@
 }
 
 .wish-list-card .wish-list-content-top .wish-list-title {
-  font-size: var(--large-font-size);
+  font-size: var(--middle-font-size);
 }
 
 .wish-list-card .wish-list-content-top {

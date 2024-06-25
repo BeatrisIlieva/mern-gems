@@ -3,11 +3,12 @@ const routes = require("./routes");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const { auth } = require("./middlewares/authMiddleware");
+require("dotenv").config();
 
 const app = express();
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/react-gems")
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("DB connected"))
   .catch((err) => console.log(err.message));
 
@@ -22,10 +23,8 @@ app.get("/", (req, res) => {
 
 app.use(routes);
 
-const port = 3030;
-
-const server = app.listen(port, () =>
-  console.log(`RESTful server is listening on port ${port}...`)
+const server = app.listen(process.env.PORT, () =>
+  console.log(`RESTful server is listening on port ${process.env.PORT}...`)
 );
 
 module.exports = { app, server };
