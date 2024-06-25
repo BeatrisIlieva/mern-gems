@@ -9,7 +9,7 @@ export const WishlistProvider = ({ children }) => {
   const wishlistService = useService(wishlistServiceFactory);
   const [wishlistCount, setWishlistCount] = useState(0);
   const wishlistCountGreaterThanZero = wishlistCount > 0;
-  const {isAuthenticated} = useAuthContext();
+  const { isAuthenticated } = useAuthContext();
 
   const fetchData = async () => {
     try {
