@@ -60,13 +60,13 @@
 .search-container {
   position: absolute;
   left: 0;
-  top: -15px;
+  top: -20px;
 }
 
 .location-container {
   position: absolute;
   left: 90px;
-  top: -15px;
+  top: -20px;
 }
 
 .nav {
@@ -81,7 +81,7 @@
   gap: 20px;
   position: absolute;
   right: 0;
-  top: -15px;
+  top: -20px;
 }
 
 .nav-list {
