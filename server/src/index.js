@@ -23,10 +23,8 @@ app.get("/", (req, res) => {
 
 app.use(routes);
 
-const server = app.listen(process.env.PORT || 5000, () =>
-  console.log(
-    `RESTful server is listening on port ${process.env.PORT || 5000}...`
-  )
+const server = app.listen(process.env.PORT, () =>
+  console.log(`RESTful server is listening on port ${process.env.PORT}...`)
 );
 
 module.exports = { app, server };

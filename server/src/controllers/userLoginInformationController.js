@@ -6,6 +6,8 @@ const userLoginInformation = require("../models/UserLoginInformation");
 const { transferBag } = require("../utils/transferBag");
 const { transferWishlist } = require("../utils/transferWishlist");
 const { sendRegistrationEmail } = require("../../mailer");
+const Bag = require("../models/Bag");
+const Wishlist = require("../models/Wishlist");
 
 router.post("/register", async (req, res) => {
   const userUUID = req.headers["user-uuid"];
@@ -132,6 +134,9 @@ router.delete("/:userId", async (req, res) => {
     await userPersonalInformationManager.delete(userId);
 
     await userAddressInformationManager.delete(userId);
+
+    await Bag.deleteMany({ user: userId });
+    await Wishlist.deleteMany({ user: userId });
 
     res.status(200).json(result);
   } catch (err) {

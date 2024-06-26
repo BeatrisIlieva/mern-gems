@@ -98,12 +98,16 @@ export const AuthProvider = ({ children }) => {
   };
 
   const onDelete = async () => {
+    navigate("/user/register");
+
     await authService.delete(auth._id);
 
     setAuth({});
 
     localStorage.removeItem("auth");
     localStorage.removeItem("userUUID");
+
+    localStorage.removeItem("lastLocation");
 
     navigate("/user/register");
   };
