@@ -1,7 +1,7 @@
 import { WishlistItems } from "./WishlistItems/WishlistItems";
 import styles from "./Wishlist.module.css";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import { useWishlistContext } from "../../contexts/WishlistContext";
+import { useWishlistContext } from "../../contexts/WishListContext";
 import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { useJewelryList } from "../../hooks/useJewelryList";
 import { useEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import { useWishlistContext } from "../../../contexts/WishlistContext";
+import { useWishlistContext } from "../../../contexts/WishListContext";
 import { JewelryCard } from "../../JewelryCard/JewelryCard";
 import { JewelryCardHovered } from "../../JewelryCardHovered/JewelryCardHovered";
 import { slugify } from "../../../utils/slugify";

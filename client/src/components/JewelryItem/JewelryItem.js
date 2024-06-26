@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
-import { useWishlistContext } from "../../contexts/WishlistContext";
+import { useWishlistContext } from "../../contexts/WishListContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { useBagContext } from "../../contexts/BagContext";
 import {

@@ -5,7 +5,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { useAuthContext } from "../../contexts/AuthContext";
-import { useWishlistContext } from "../../contexts/WishlistContext";
+import { useWishlistContext } from "../../contexts/WishListContext";
 import { useBagContext } from "../../contexts/BagContext";
 import { useState, useEffect } from "react";
 import { SearchBoxPopup } from "./SearchBoxPopup/SearchBoxPopup";

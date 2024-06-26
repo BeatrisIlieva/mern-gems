@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { wishlistServiceFactory } from "../services/wishlistService";
+import { wishlistServiceFactory } from "../services/wishListService";
 import { useService } from "../hooks/useService";
 import { useAuthContext } from "./AuthContext";
 
