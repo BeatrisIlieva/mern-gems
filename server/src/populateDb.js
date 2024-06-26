@@ -10,7 +10,7 @@ const Inventory = require("./models/Inventory");
 require("dotenv").config();
 
 async function populateDb() {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.URI);
 
   await Category.create({
     title: "Bracelet",

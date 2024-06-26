@@ -8,7 +8,7 @@ require("dotenv").config();
 const app = express();
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.URI)
   .then(() => console.log("DB connected"))
   .catch((err) => console.log(err.message));
 
@@ -23,8 +23,10 @@ app.get("/", (req, res) => {
 
 app.use(routes);
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(`RESTful server is listening on port ${process.env.PORT}...`)
+const server = app.listen(process.env.PORT || 5000, () =>
+  console.log(
+    `RESTful server is listening on port ${process.env.PORT || 5000}...`
+  )
 );
 
 module.exports = { app, server };

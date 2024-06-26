@@ -46,6 +46,8 @@ export const JewelryItem = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    setLeftIsSelected(true);
+    setRightIsSelected(false);
     fetchData();
   }, [_id]);
 

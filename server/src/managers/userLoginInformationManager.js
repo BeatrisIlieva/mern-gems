@@ -8,7 +8,7 @@ const {
   DEFAULT_SALT,
   INVALID_PASSWORD_ERROR_MESSAGE,
 } = require("../constants/password");
-const { SECRET } = require("../config/config");
+require("dotenv").config();
 
 exports.register = async (data) => {
   const user = await UserLoginInformation.findOne({ email: data.email });
@@ -93,7 +93,7 @@ async function generateToken(user) {
     _id: user._id,
   };
 
-  const token = await jwt.sign(payload, SECRET);
+  const token = await jwt.sign(payload, process.env.SECRET);
 
   const result = {
     _id: user._id,

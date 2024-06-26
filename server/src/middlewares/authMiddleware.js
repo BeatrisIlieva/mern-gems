@@ -1,12 +1,12 @@
-const { SECRET } = require("../config/config");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 exports.auth = (req, res, next) => {
   const token = req.header("X-Authorization");
 
   if (token) {
     try {
-      const decodedToken = jwt.verify(token, SECRET);
+      const decodedToken = jwt.verify(token, process.env.SECRET);
 
       req.user = decodedToken;
 

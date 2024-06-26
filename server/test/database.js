@@ -6,7 +6,7 @@ let mongod = null;
 
 const connectDB = async () => {
   try {
-    let dbUrl = process.env.MONGODB_URI;
+    let dbUrl = process.env.URI;
 
     if (process.env.NODE_ENV === "test") {
       mongod = await MongoMemoryServer.create();
