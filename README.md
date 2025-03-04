@@ -12,7 +12,7 @@
 
 ## Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/MBGi5NiVf_8/maxresdefault.jpg)](https://www.youtube.com/watch?v=MBGi5NiVf_8)
+[![Watch the video](https://img.youtube.com/vi/MTtAupdKb5A/maxresdefault.jpg)](https://www.youtube.com/watch?v=MTtAupdKb5A)
 
 <p align="right" dir="auto"><a href="#js-gems">Back To Top</a></p>
 
